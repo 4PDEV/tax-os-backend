@@ -144,9 +144,11 @@ def db_session(engine):
 
 
 @pytest.fixture()
-def client(db_session):
+def client(db_session, tmp_path):
     from app.db.deps import get_db
     from app.main import app
+    from app.storage.deps import get_storage
+    from app.storage.local import LocalFileStorage
 
     def override_get_db():
         try:
@@ -154,7 +156,10 @@ def client(db_session):
         finally:
             pass
 
+    storage = LocalFileStorage(tmp_path)
+
     app.dependency_overrides[get_db] = override_get_db
+    app.dependency_overrides[get_storage] = lambda: storage
 
     with TestClient(app) as test_client:
         yield test_client
