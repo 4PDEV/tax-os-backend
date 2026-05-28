@@ -2,6 +2,11 @@ from sqlalchemy.orm import Session
 
 from app.core.datetime_utils import utc_now
 from app.models.source_version import SourceVersion
+from app.services.ingestion_status import (
+    INGESTION_STATUS_NOT_STARTED,
+    INGESTION_STATUS_QUEUED,
+    transition_ingestion_status,
+)
 from app.services.source_attachment import (
     AttachmentStateError,
     has_attached_file,
@@ -75,6 +80,9 @@ def upload_source_version_file(
     record.file_size = stored.file_size
     record.mime_type = mime_type
     record.retrieved_at = utc_now()
+
+    if record.ingestion_status == INGESTION_STATUS_NOT_STARTED:
+        transition_ingestion_status(record, INGESTION_STATUS_QUEUED)
 
     db.commit()
     db.refresh(record)

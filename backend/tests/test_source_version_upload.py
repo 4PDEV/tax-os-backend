@@ -65,6 +65,7 @@ def test_upload_source_version_file(client):
     assert data["mime_type"] == "application/pdf"
     assert data["file_attached"] is True
     assert data["attachment_status"] == "attached"
+    assert data["ingestion_status"] == "queued"
 
 
 def test_get_source_version_before_upload_is_pending(client):

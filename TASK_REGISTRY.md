@@ -16,6 +16,7 @@ Bounded task tracking for `tax-os-backend`. Authoritative specs remain in `tax-o
 | TASK-001I | Timezone-aware UTC timestamps | Complete | `utc_now()` across models |
 | TASK-001J | Source Upload Internal API | Complete | `POST /source-versions/{id}/upload` |
 | TASK-001K | Source Version File Attachment Workflow | Complete | Attachment state, API metadata, docs |
+| TASK-001L | Source Ingestion Status + Workflow State Machine | Complete | `ingestion_status` field, governed transitions, internal API |
 
 ## Status Legend
 
