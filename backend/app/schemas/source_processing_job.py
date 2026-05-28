@@ -20,6 +20,25 @@ class SourceProcessingJobCreate(BaseModel):
         return value
 
 
+class SourceProcessingJobClaimRequest(BaseModel):
+    locked_by: str
+    job_type: str | None = None
+
+    @field_validator("locked_by")
+    @classmethod
+    def locked_by_must_not_be_blank(cls, value: str) -> str:
+        if not value.strip():
+            raise ValueError("locked_by must not be empty")
+        return value.strip()
+
+    @field_validator("job_type")
+    @classmethod
+    def job_type_must_be_valid_when_provided(cls, value: str | None) -> str | None:
+        if value is not None and value not in JOB_TYPES:
+            raise ValueError(f"invalid job type: {value}")
+        return value
+
+
 class SourceProcessingJobStatusUpdate(BaseModel):
     job_status: str
     last_error: str | None = None
@@ -44,6 +63,8 @@ class SourceProcessingJobRead(BaseModel):
     queued_at: datetime
     started_at: datetime | None = None
     completed_at: datetime | None = None
+    locked_at: datetime | None = None
+    locked_by: str | None = None
     created_at: datetime
     updated_at: datetime
 

@@ -7,6 +7,7 @@ from app.db.deps import get_db
 from app.models.source_processing_job import SourceProcessingJob
 from app.models.source_version import SourceVersion
 from app.schemas.source_processing_job import (
+    SourceProcessingJobClaimRequest,
     SourceProcessingJobCreate,
     SourceProcessingJobRead,
     SourceProcessingJobStatusUpdate,
@@ -14,6 +15,7 @@ from app.schemas.source_processing_job import (
 from app.services.processing_queue import (
     JOB_STATUS_FAILED,
     ProcessingQueueError,
+    claim_next_processing_job,
     has_active_job,
     transition_job_status,
     validate_enqueue,
@@ -63,6 +65,28 @@ def list_source_processing_jobs(
     if job_status is not None:
         query = query.filter(SourceProcessingJob.job_status == job_status)
     return query.all()
+
+
+@router.post("/claim-next", response_model=SourceProcessingJobRead)
+def claim_next_source_processing_job(
+    payload: SourceProcessingJobClaimRequest,
+    db: Session = Depends(get_db),
+):
+    try:
+        record = claim_next_processing_job(
+            db,
+            locked_by=payload.locked_by,
+            job_type=payload.job_type,
+        )
+    except ProcessingQueueError as exc:
+        message = exc.message
+        if message == "no queued processing job available":
+            raise HTTPException(status_code=404, detail=message) from exc
+        raise HTTPException(status_code=422, detail=message) from exc
+
+    db.commit()
+    db.refresh(record)
+    return record
 
 
 @router.get("/{job_id}", response_model=SourceProcessingJobRead)

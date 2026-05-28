@@ -10,6 +10,7 @@ from app.services.processing_queue import (
     JOB_STATUS_QUEUED,
     JOB_TYPE_SOURCE_INGESTION,
     ProcessingQueueError,
+    claim_processing_job,
     has_active_job,
     transition_job_status,
     validate_enqueue,
@@ -60,6 +61,22 @@ def test_transition_rejects_retry_when_max_attempts_exceeded():
     job = _job(JOB_STATUS_FAILED, attempt_count=3, max_attempts=3)
     with pytest.raises(ProcessingQueueError):
         transition_job_status(job, JOB_STATUS_QUEUED)
+
+
+def test_claim_processing_job_sets_lock_and_processing_state():
+    job = _job(JOB_STATUS_QUEUED)
+    claim_processing_job(job, "worker-1")
+    assert job.job_status == JOB_STATUS_PROCESSING
+    assert job.attempt_count == 1
+    assert job.locked_by == "worker-1"
+    assert job.locked_at is not None
+    assert job.started_at is not None
+
+
+def test_claim_processing_job_rejects_non_queued_job():
+    job = _job(JOB_STATUS_PROCESSING, attempt_count=1)
+    with pytest.raises(ProcessingQueueError):
+        claim_processing_job(job, "worker-1")
 
 
 def test_transition_completed_sets_completed_at():
