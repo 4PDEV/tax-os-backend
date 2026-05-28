@@ -1,3 +1,5 @@
+from sqlalchemy.orm import Session
+
 from app.core.datetime_utils import utc_now
 from app.models.source_processing_job import SourceProcessingJob
 from app.models.source_version import SourceVersion
@@ -107,6 +109,8 @@ def transition_job_status(
     elif target_status == JOB_STATUS_QUEUED:
         job.started_at = None
         job.completed_at = None
+        job.locked_at = None
+        job.locked_by = None
         job.queued_at = now
     elif target_status == JOB_STATUS_CANCELLED:
         job.completed_at = now
@@ -114,3 +118,46 @@ def transition_job_status(
     job.job_status = target_status
     job.updated_at = now
     return job
+
+
+def claim_processing_job(job: SourceProcessingJob, locked_by: str) -> SourceProcessingJob:
+    if not locked_by or not locked_by.strip():
+        raise ProcessingQueueError("locked_by is required to claim a processing job")
+
+    if job.job_status != JOB_STATUS_QUEUED:
+        raise ProcessingQueueError("only queued jobs can be claimed")
+
+    now = utc_now()
+    job.locked_by = locked_by.strip()
+    job.locked_at = now
+    transition_job_status(job, JOB_STATUS_PROCESSING)
+    return job
+
+
+def claim_next_processing_job(
+    db: Session,
+    *,
+    locked_by: str,
+    job_type: str | None = None,
+) -> SourceProcessingJob:
+    if job_type is not None:
+        validate_job_type(job_type)
+
+    query = db.query(SourceProcessingJob).filter(
+        SourceProcessingJob.job_status == JOB_STATUS_QUEUED
+    )
+    if job_type is not None:
+        query = query.filter(SourceProcessingJob.job_type == job_type)
+
+    job = (
+        query.order_by(
+            SourceProcessingJob.priority.desc(),
+            SourceProcessingJob.queued_at.asc(),
+        )
+        .with_for_update(skip_locked=True)
+        .first()
+    )
+    if not job:
+        raise ProcessingQueueError("no queued processing job available")
+
+    return claim_processing_job(job, locked_by)
