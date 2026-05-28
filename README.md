@@ -1,125 +1,103 @@
-# tax-os-backend
-
-Backend implementation repository for TAX-OS.
-
-## Purpose
-
-This repository contains the backend API, database models, migrations, services, storage abstraction, audit logic, and deterministic source registry infrastructure.
-
-## Initial Stack
-
-- Python
-- FastAPI
-- SQLAlchemy 2.x
-- Alembic
-- PostgreSQL
-- Pytest
-
-## Governance
-
-Implementation must follow the architecture repository:
-
-- tax-os-architecture
-- bounded tasks only
-- deterministic-first
-- source-referenced
-- version-aware
-- audit-first
-
 # TAX-OS Backend
 
-Backend infrastructure for the Source-Referenced Business & Tax Research Platform.
+Backend for the **Source-Referenced Business & Tax Research Platform**.
 
 ## Purpose
 
-This repository contains the deterministic backend foundation for:
+This repository provides deterministic backend infrastructure for:
 
-- source registry
-- versioned legal source storage
-- legal object infrastructure
-- effective-date handling
-- citation infrastructure
-- audit logging
-- ingestion pipelines
-- workflow orchestration
+- legal source registry
+- immutable source versioning
+- effective-date-aware source metadata
+- audit logging foundation
+- internal admin CRUD APIs for registry entities
 
-The platform is designed to operate:
-- country by country
-- tax regime by tax regime
-- module by module
+The platform is built for operational auditability and source-backed research—not probabilistic outputs.
 
-Initial jurisdiction:
-- Rwanda
+## Architecture Philosophy
 
-Initial focus:
-- VAT
-- PAYE/PIT
-- Withholding Tax
-- Corporate Tax
-- Capital Gains
-- Customs & Excise
+- **Deterministic-first** — behavior is explicit and reproducible.
+- **Source-referenced** — conclusions trace to versioned legal sources.
+- **Immutable historical versions** — `source_versions` are append-only at the API layer.
+- **Effective-date-aware** — temporal fields are first-class on versions.
+- **Auditability** — changes must be traceable over time.
+- **Bounded execution** — tasks implement only approved scope.
 
----
+Architecture governance lives in the separate `tax-os-architecture` repository. This repo implements approved tasks only.
 
-## Core Principles
+## Technology Stack
 
-- deterministic-first
-- source-referenced
-- version-aware
-- effective-date-aware
-- auditable
-- modular
-- extensible
-- cloud-portable
-
-AI assists workflows but is NOT the source of truth.
-
----
-
-## Initial Stack
-
-- Python
-- FastAPI
-- PostgreSQL
-- SQLAlchemy
-- Alembic
-- Docker
-- pgAdmin
-
----
+| Component | Version / tool |
+|-----------|----------------|
+| Python | 3.14+ (project venv) |
+| FastAPI | 0.136.x |
+| SQLAlchemy | 2.x |
+| Alembic | 1.18.x |
+| PostgreSQL | 16 |
+| Pytest | 9.x |
+| Docker | PostgreSQL / pgAdmin on VM |
 
 ## Repository Structure
 
-backend/
-  app/
-    api/
-    audit/
-    core/
-    db/
-    models/
-    schemas/
-    services/
-    storage/
+```
+tax-os-backend/
+  alembic.ini
+  requirements.txt
+  pytest.ini
+  backend/
+    .env                 # local credentials (not committed)
+    app/
+      api/routes/        # countries, tax-types, source-documents, source-versions
+      core/              # settings
+      db/                # session, dependencies
+      models/
+      schemas/
+    migrations/
+      versions/          # Alembic revisions
+    tests/               # baseline API tests (integration marker)
+```
 
-  migrations/
-  scripts/
-  tests/
+## Current Development Status
 
----
+| Area | Status |
+|------|--------|
+| Core registry tables | Operational |
+| Alembic migrations | Head `fd6be8e34b7b` |
+| Admin CRUD APIs | Operational (countries, tax_types, source_documents, source_versions) |
+| Baseline API tests (TASK-001F) | Implemented; **merge acceptance requires VM verification** against running PostgreSQL |
+| Documentation / runbook (TASK-001G) | This task |
+
+Initial jurisdiction focus: **Rwanda**. Initial tax domains: VAT, PAYE/PIT, WHT, corporate tax, capital gains, customs & excise (registry phase only).
+
+## Setup Summary
+
+1. Clone repository to VM (e.g. `/opt/tax-os/repos/tax-os-backend`).
+2. Create Python venv and install dependencies — see [DEVELOPMENT_SETUP.md](DEVELOPMENT_SETUP.md).
+3. Configure `backend/.env` and start PostgreSQL (Docker) — see [OPERATIONAL_RUNBOOK.md](OPERATIONAL_RUNBOOK.md).
+4. Run migrations: `alembic upgrade head` from repository root.
+5. Start API: `uvicorn app.main:app --app-dir backend --host 0.0.0.0 --port 8000`.
+6. Run tests with `TEST_POSTGRES_*` set — see [DEVELOPMENT_SETUP.md](DEVELOPMENT_SETUP.md).
+
+## Documentation Index
+
+| Document | Purpose |
+|----------|---------|
+| [DEVELOPMENT_SETUP.md](DEVELOPMENT_SETUP.md) | Developer bootstrap |
+| [OPERATIONAL_RUNBOOK.md](OPERATIONAL_RUNBOOK.md) | Day-to-day operations |
+| [BACKUP_AND_RECOVERY.md](BACKUP_AND_RECOVERY.md) | Backup and restore |
+| [MIGRATION_WORKFLOW.md](MIGRATION_WORKFLOW.md) | Alembic discipline |
+| [DEVELOPMENT_WORKFLOW.md](DEVELOPMENT_WORKFLOW.md) | AI-assisted dev governance |
+| [TASK_EXECUTION_STANDARD.md](TASK_EXECUTION_STANDARD.md) | Task implementation rules |
+| [INCIDENT_RESPONSE.md](INCIDENT_RESPONSE.md) | Failure handling |
+| [RELEASE_CHECKLIST.md](RELEASE_CHECKLIST.md) | Release discipline |
+| [PROJECT_STATE.md](PROJECT_STATE.md) | Canonical current state |
+| [KNOWN_LIMITATIONS.md](KNOWN_LIMITATIONS.md) | Known gaps |
+| [OPEN_DECISIONS.md](OPEN_DECISIONS.md) | Pending decisions |
+| [CHANGELOG.md](CHANGELOG.md) | Version history |
+| [TASK_REGISTRY.md](TASK_REGISTRY.md) | Task tracking |
 
 ## Governance
 
-All implementation must follow:
-- bounded task execution
-- architecture governance
-- deterministic principles
-- version-controlled evolution
-
-No uncontrolled AI-generated architecture changes are permitted.
-
----
-
-## Current Phase
-
-TASK-001
-Source Registry & Versioned Source Storage Foundation
+- No direct database schema changes outside Alembic.
+- No unbounded AI-driven architecture changes.
+- Implementation follows bounded tasks with explicit acceptance criteria.
