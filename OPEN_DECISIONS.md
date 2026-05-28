@@ -18,3 +18,22 @@ Pending architectural or operational decisions. Resolve via `tax-os-architecture
 | — | *(none recorded yet)* | — |
 
 When closing a decision, move row to Decision Log and reference approving task.
+
+## StorageService Interface Scope
+
+Current StorageService implementation includes:
+- save_bytes
+- read_bytes
+
+Deferred decision:
+- whether exists()
+- whether delete()
+
+These methods are intentionally deferred until:
+- upload APIs
+- ingestion agents
+- lifecycle management
+- retention workflows
+
+Rationale:
+avoid premature abstraction expansion before real ingestion workflows exist.

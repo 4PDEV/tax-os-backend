@@ -34,3 +34,17 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Version
 - FastAPI application skeleton and health endpoint.
 - PostgreSQL models and Alembic migration `fd6be8e34b7b` (source registry tables).
 - Alembic migration infrastructure and discipline.
+
+## v0.1.2 — Storage Foundation
+
+Added:
+- storage abstraction layer
+- local filesystem storage backend
+- SHA-256 checksum utilities
+- safe path normalization
+- overwrite protection
+- storage unit tests
+
+Verified:
+42 tests passing
+0 skipped

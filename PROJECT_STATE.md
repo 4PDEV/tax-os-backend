@@ -1,94 +1,400 @@
-# Project State
+# PROJECT_STATE.md
 
-Canonical snapshot for `tax-os-backend`. Update this file when tasks complete or infrastructure changes.
+## PROJECT
 
-**Last updated:** 2026-05-28
+Source-Referenced Business & Tax Research Platform
 
-## Infrastructure
+---
 
-| Component | Status | Notes |
-|-----------|--------|-------|
-| Ubuntu VM | Operational | Primary dev host |
-| Docker | Operational | `taxos-postgres` container |
-| PostgreSQL 16 | Operational | DB `taxos`, port 5432 |
-| pgAdmin | Operational | Optional admin UI |
-| GitHub | Operational | `tax-os-backend` repository |
+# CURRENT PLATFORM STATUS
 
-## Application State
+## STATUS
 
-| Area | Status |
-|------|--------|
-| FastAPI | Operational |
-| SQLAlchemy 2.x | Operational |
-| Alembic | Operational — head `fd6be8e34b7b` |
-| Internal admin CRUD | Operational |
-| Authentication | Not implemented (by design, current phase) |
-| Frontend | Not in this repository |
-| AI / embeddings | Not implemented |
+FOUNDATION PHASE ACTIVE
 
-## Database Tables
+The platform has successfully established the initial deterministic backend foundation required for:
 
-- `countries`
-- `tax_types`
-- `source_documents`
-- `source_versions` (immutable via API: no PUT/DELETE routes)
-- `source_retrieval_log`
-- `audit_log`
+* source registry
+* versioned legal source storage
+* migration governance
+* CRUD administration APIs
+* deterministic storage abstraction
+* checksum verification
+* operational governance
+* documentation discipline
+* testing discipline
 
-## API Endpoints (Current)
+The platform is currently operating as:
 
-| Prefix | Methods |
-|--------|---------|
-| `/health` | GET |
-| `/countries` | POST, GET, GET/{id}, PUT/{id}, DELETE/{id} (soft) |
-| `/tax-types` | POST, GET, GET/{id}, PUT/{id}, DELETE/{id} (soft) |
-| `/source-documents` | POST, GET, GET/{id}, PUT/{id}, DELETE/{id} (soft) |
-| `/source-versions` | POST, GET, GET/{id} only |
+* development environment
+* internal staging environment
 
-## Completed Tasks
+No public production deployment exists yet.
 
-| Task | Summary |
-|------|---------|
-| TASK-001 (series) | Source registry foundation |
-| TASK-001C | Alembic infrastructure |
-| TASK-001E | Migration discipline |
-| TASK-001 (CRUD) | Admin CRUD APIs — tag `v0.1.1-crud-foundation` |
-| TASK-001F | Baseline API tests — **implementation accepted; VM merge acceptance pending** |
-| TASK-001G | Documentation + operational runbook |
+---
 
-## Active Tasks
+# CURRENT ARCHITECTURE STATUS
 
-None formally in progress in this snapshot.
+## BACKEND FOUNDATION
 
-## Pending / Follow-Up
+STATUS: VERIFIED
 
-| Item | Notes |
-|------|-------|
-| TASK-001F final acceptance | Run `pytest -q` on VM with `TEST_POSTGRES_*` — must pass, not skip |
-| Source file storage | `storage_path` on versions; backup procedures documented, implementation evolving |
-| Audit log population | Table exists; write path not yet in CRUD APIs |
-| Retrieval pipeline | Out of current phase |
+Implemented:
 
-## Testing
+* FastAPI runtime foundation
+* SQLAlchemy integration
+* Alembic migration governance
+* PostgreSQL integration
+* deterministic configuration loading
+* environment-based configuration
+* Dockerized infrastructure foundation
 
-- Location: `backend/tests/`
-- Marker: `@pytest.mark.integration` (module-level `pytestmark`)
-- Skip guard: integration tests skip with clear message if test DB unreachable
-- **Sandbox-only skipped runs are not merge acceptance**
+---
 
-## Known Limitations
+## DATABASE FOUNDATION
 
-See [KNOWN_LIMITATIONS.md](KNOWN_LIMITATIONS.md).
+STATUS: VERIFIED
 
-## Operational Notes
+Implemented:
 
-- Application config: `backend/.env` (`POSTGRES_*`, `APP_NAME`, `APP_ENV`).
-- Run Alembic and uvicorn from repository root.
-- Test DB defaults: `taxos_test` via `TEST_POSTGRES_*` or `TEST_DATABASE_URL`.
-- Docker container name on VM: commonly `taxos-postgres` (confirm with `docker ps`).
+* countries
+* tax_types
+* source_documents
+* source_versions
+* audit_log
+* source_retrieval_log
 
-## Repository Paths
+Migration governance established.
 
-```
-/opt/tax-os/repos/tax-os-backend
-```
+Rules enforced:
+
+* no direct DB modification
+* version-controlled migrations only
+* downgrade verification required
+* rebuild verification required
+
+---
+
+## API FOUNDATION
+
+STATUS: VERIFIED
+
+Implemented:
+
+* CRUD APIs
+* internal admin routes
+* validation schemas
+* soft-delete behavior
+* immutable source version enforcement
+* Swagger/OpenAPI support
+
+No authentication implemented yet.
+
+---
+
+## STORAGE FOUNDATION
+
+STATUS: VERIFIED
+
+Implemented:
+
+* deterministic storage abstraction
+* local filesystem backend
+* SHA-256 checksum utilities
+* path traversal protection
+* overwrite protection
+* storage metadata handling
+* isolated storage tests
+
+Current storage backend:
+
+* local filesystem only
+
+Deferred:
+
+* AWS S3
+* Azure Blob
+* MinIO
+* upload APIs
+* ingestion agents
+
+Tag:
+v0.1.2-storage-foundation
+
+---
+
+# TESTING STATUS
+
+## STATUS
+
+VERIFIED
+
+Verified VM result:
+
+42 passed
+0 skipped
+
+Warnings:
+
+* timezone-aware UTC cleanup still pending
+* no failing tests currently known
+
+Testing currently includes:
+
+* CRUD API testing
+* migration verification
+* storage abstraction testing
+* checksum testing
+* validation testing
+* immutability testing
+
+---
+
+# DOCUMENTATION STATUS
+
+## STATUS
+
+ESTABLISHED
+
+Implemented:
+
+* README.md
+* DEVELOPMENT_SETUP.md
+* OPERATIONAL_RUNBOOK.md
+* BACKUP_AND_RECOVERY.md
+* MIGRATION_WORKFLOW.md
+* DEVELOPMENT_WORKFLOW.md
+* TASK_EXECUTION_STANDARD.md
+* INCIDENT_RESPONSE.md
+* RELEASE_CHECKLIST.md
+* CHANGELOG.md
+* KNOWN_LIMITATIONS.md
+* OPEN_DECISIONS.md
+* TASK_REGISTRY.md
+
+Operational governance documentation established successfully.
+
+---
+
+# CURRENT INFRASTRUCTURE
+
+## HOSTING
+
+In-house VM
+
+## OS
+
+Ubuntu 26.04 LTS
+
+## CONTAINERIZATION
+
+Docker + Docker Compose
+
+## DATABASE
+
+PostgreSQL 16
+
+## ADMIN TOOLING
+
+pgAdmin
+
+## REPOSITORY
+
+GitHub
+
+---
+
+# COMPLETED TASKS
+
+| Task      | Status                                            |
+| --------- | ------------------------------------------------- |
+| TASK-001A | Runtime foundation — VERIFIED                     |
+| TASK-001D | CRUD + internal admin APIs — VERIFIED             |
+| TASK-001E | Alembic migration discipline — VERIFIED           |
+| TASK-001F | Baseline API tests — verified on VM               |
+| TASK-001G | Documentation + operational runbooks — VERIFIED   |
+| TASK-001H | Storage abstraction + checksum utility — VERIFIED |
+
+---
+
+# CURRENT BRANCH STATUS
+
+## ACTIVE BRANCH
+
+feature/task-001f-baseline-tests
+
+## MAIN BRANCH
+
+main
+
+Feature branch currently contains:
+
+* TASK-001F
+* TASK-001G
+* TASK-001H
+
+Pending merge into main.
+
+---
+
+# CURRENT TAGS
+
+* v0.1.0-task-001-foundation
+* v0.1.1-crud-foundation
+* v0.1.1-task-001-foundation-verified
+* v0.1.2-storage-foundation
+
+---
+
+# NEXT APPROVED TASKS
+
+## TASK-001I
+
+Replace utcnow with timezone-aware UTC timestamps
+
+Purpose:
+
+* eliminate SQLAlchemy deprecation warnings
+* enforce timezone-safe UTC handling
+* establish long-term timestamp governance
+
+---
+
+## TASK-001J
+
+Source Upload Internal API
+
+Purpose:
+
+* controlled source upload workflow
+* deterministic source attachment handling
+* internal upload operations
+
+---
+
+## TASK-001K
+
+Source Version File Attachment Workflow
+
+Purpose:
+
+* immutable source version linkage
+* file-to-version association
+* deterministic source attachment governance
+
+---
+
+# DEFERRED WORK
+
+Deferred intentionally:
+
+* ingestion agents
+* OCR
+* semantic extraction
+* embeddings
+* vector DB
+* retrieval ranking
+* AI reasoning
+* upload UI
+* public APIs
+* authentication/RBAC
+* enterprise workflows
+
+Reason:
+foundation-first architecture discipline.
+
+---
+
+# OPEN DECISIONS
+
+## StorageService Interface Scope
+
+Current implementation includes:
+
+* save_bytes
+* read_bytes
+
+Deferred decision:
+
+* exists()
+* delete()
+
+Decision deferred until:
+
+* upload APIs
+* ingestion workflows
+* lifecycle management
+* retention policies
+
+Reason:
+avoid premature abstraction expansion before real ingestion workflows exist.
+
+---
+
+# KNOWN LIMITATIONS
+
+Current limitations:
+
+* local storage only
+* no authentication
+* no object storage provider
+* no upload APIs
+* no ingestion automation
+* no public deployment
+* no source parsing yet
+* no retrieval engine yet
+
+These limitations are intentional at current phase.
+
+---
+
+# OPERATIONAL NOTES
+
+## TEST EXECUTION
+
+Integration tests require:
+
+* TEST_POSTGRES_* environment variables
+
+Shell-export consistency improvement still pending.
+
+---
+
+## DATABASE GOVERNANCE
+
+All schema evolution must occur through:
+
+* Alembic migrations only
+
+Direct DB modification prohibited.
+
+---
+
+## STORAGE GOVERNANCE
+
+Raw legal source files:
+
+* stored outside PostgreSQL
+* checksum verified
+* immutable where required
+* path-normalized
+* deterministic
+
+---
+
+# CURRENT PRIORITY
+
+Current engineering priority:
+
+1. timestamp governance
+2. controlled upload workflows
+3. immutable source attachment workflows
+4. ingestion infrastructure
+5. ingestion orchestration
+6. retrieval architecture
+
+AI ingestion agents remain intentionally deferred until deterministic ingestion foundation is complete.
+
+---
+
+END OF PROJECT STATE
