@@ -5,6 +5,7 @@ from sqlalchemy import Date, DateTime, ForeignKey, Integer, String, Text
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
+from app.core.datetime_utils import utc_now
 from app.models.base.base import Base
 
 
@@ -33,7 +34,7 @@ class SourceVersion(Base):
     retrieved_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True),
         nullable=False,
-        default=datetime.utcnow,
+        default=utc_now,
     )
 
     checksum_sha256: Mapped[str] = mapped_column(String(64), nullable=False)
@@ -58,7 +59,7 @@ class SourceVersion(Base):
     created_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True),
         nullable=False,
-        default=datetime.utcnow,
+        default=utc_now,
     )
 
     source_document = relationship("SourceDocument")

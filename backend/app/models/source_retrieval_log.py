@@ -5,6 +5,7 @@ from sqlalchemy import DateTime, ForeignKey, String, Text
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
+from app.core.datetime_utils import utc_now
 from app.models.base.base import Base
 
 
@@ -29,7 +30,7 @@ class SourceRetrievalLog(Base):
     retrieval_timestamp: Mapped[datetime] = mapped_column(
         DateTime(timezone=True),
         nullable=False,
-        default=datetime.utcnow,
+        default=utc_now,
     )
 
     retrieval_status: Mapped[str] = mapped_column(String(50), nullable=False)
