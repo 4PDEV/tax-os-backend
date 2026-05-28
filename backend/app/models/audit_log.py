@@ -5,6 +5,7 @@ from sqlalchemy import DateTime, String
 from sqlalchemy.dialects.postgresql import JSONB, UUID
 from sqlalchemy.orm import Mapped, mapped_column
 
+from app.core.datetime_utils import utc_now
 from app.models.base.base import Base
 
 
@@ -27,7 +28,7 @@ class AuditLog(Base):
     timestamp: Mapped[datetime] = mapped_column(
         DateTime(timezone=True),
         nullable=False,
-        default=datetime.utcnow,
+        default=utc_now,
     )
 
     previous_state_json: Mapped[dict | None] = mapped_column(JSONB, nullable=True)
