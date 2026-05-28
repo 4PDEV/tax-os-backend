@@ -6,7 +6,16 @@ from sqlalchemy.orm import Session
 from app.db.deps import get_db
 from app.models.source_document import SourceDocument
 from app.models.source_version import SourceVersion
-from app.schemas.source_version import SourceVersionCreate, SourceVersionRead
+from app.schemas.source_version import (
+    SourceVersionCreate,
+    SourceVersionIngestionStatusUpdate,
+    SourceVersionRead,
+)
+from app.services.ingestion_status import (
+    INGESTION_STATUS_SUPERSEDED,
+    IngestionStatusError,
+    transition_ingestion_status,
+)
 from app.services.source_attachment import AttachmentStateError, build_source_version_read
 from app.services.source_upload import SourceUploadError, upload_source_version_file
 from app.storage.deps import get_storage
@@ -42,6 +51,11 @@ def create_source_version(
         )
         if not superseded:
             raise HTTPException(status_code=404, detail="Superseded source version not found")
+        if superseded.ingestion_status != INGESTION_STATUS_SUPERSEDED:
+            try:
+                transition_ingestion_status(superseded, INGESTION_STATUS_SUPERSEDED)
+            except IngestionStatusError as exc:
+                raise HTTPException(status_code=422, detail=exc.message) from exc
 
     record = SourceVersion(**payload.model_dump())
     db.add(record)
@@ -108,4 +122,25 @@ def upload_source_version(
     except ValueError as exc:
         raise HTTPException(status_code=422, detail=str(exc)) from exc
 
+    return _to_read_model(record, storage)
+
+
+@router.post("/{source_version_id}/ingestion-status", response_model=SourceVersionRead)
+def update_source_version_ingestion_status(
+    source_version_id: UUID,
+    payload: SourceVersionIngestionStatusUpdate,
+    db: Session = Depends(get_db),
+    storage: LocalFileStorage = Depends(get_storage),
+):
+    record = db.query(SourceVersion).filter(SourceVersion.id == source_version_id).first()
+    if not record:
+        raise HTTPException(status_code=404, detail="Source version not found")
+
+    try:
+        transition_ingestion_status(record, payload.ingestion_status)
+    except IngestionStatusError as exc:
+        raise HTTPException(status_code=422, detail=exc.message) from exc
+
+    db.commit()
+    db.refresh(record)
     return _to_read_model(record, storage)

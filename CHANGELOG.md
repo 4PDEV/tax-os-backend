@@ -8,6 +8,10 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Version
 
 ### Added
 
+- TASK-001L: `ingestion_status` on `source_versions`, governed transition service, `POST /source-versions/{id}/ingestion-status`, auto `queued` on upload, `superseded` on supersede.
+
+### Added (prior unreleased)
+
 - TASK-001G: operational and governance documentation set (README, runbooks, workflows, project state).
 - TASK-001F: pytest foundation, integration marker, skip guard, baseline API tests for registry CRUD and `source_versions` immutability.
 - TASK-001H: storage abstraction, local filesystem backend, SHA-256 checksum utilities.

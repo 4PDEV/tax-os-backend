@@ -48,6 +48,12 @@ class SourceVersion(Base):
         default="active",
     )
 
+    ingestion_status: Mapped[str] = mapped_column(
+        String(50),
+        nullable=False,
+        default="not_started",
+    )
+
     supersedes_version_id: Mapped[uuid.UUID | None] = mapped_column(
         UUID(as_uuid=True),
         ForeignKey("source_versions.id"),
