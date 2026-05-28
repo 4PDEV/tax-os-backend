@@ -59,4 +59,22 @@ Persists: `result_json`, `failed_by`, `last_error`, `job_status=failed`.
 - `completed_by` / `failed_by` are required on finalization endpoints.
 - `last_error` is required on fail.
 - Repeat finalization returns **422**.
-- No workers or parsers run in this phase.
+
+## Worker contract (TASK-001P)
+
+Bounded one-shot execution via `app.workers.runner.run_next_job_once`:
+
+1. Claim next `queued` job (`locked_by` = worker id)
+2. Invoke a `SourceJobProcessor` implementation
+3. Finalize as `completed` or `failed` with structured `result_json`
+
+`NoopProcessor` is the reference harness — no parsing, OCR, or background loops.
+
+```python
+from app.workers import NoopProcessor, run_next_job_once
+
+result = run_next_job_once(db, worker_id="worker-alpha", processor=NoopProcessor())
+# result.outcome: "no_job" | "completed" | "failed"
+```
+
+See [WORKER_CONTRACT.md](WORKER_CONTRACT.md).
