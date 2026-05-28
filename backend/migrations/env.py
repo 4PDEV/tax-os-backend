@@ -19,6 +19,7 @@ from app.models import (  # noqa: F401
     AuditLog,
     Country,
     SourceDocument,
+    SourceProcessingJob,
     SourceRetrievalLog,
     SourceVersion,
     TaxType,

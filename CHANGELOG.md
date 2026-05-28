@@ -9,6 +9,7 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Version
 ### Added
 
 - TASK-001L: `ingestion_status` on `source_versions`, governed transition service, `POST /source-versions/{id}/ingestion-status`, auto `queued` on upload, `superseded` on supersede.
+- TASK-001M: `source_processing_jobs` table, queue service, internal enqueue/list/get/status APIs.
 
 ### Added (prior unreleased)
 
