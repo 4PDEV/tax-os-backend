@@ -11,6 +11,8 @@ class Settings(BaseSettings):
     POSTGRES_USER: str
     POSTGRES_PASSWORD: str
 
+    STORAGE_ROOT: str = "backend/storage"
+
     model_config = SettingsConfigDict(
         env_file="backend/.env",
         extra="ignore"
