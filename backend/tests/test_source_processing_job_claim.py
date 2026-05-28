@@ -73,6 +73,10 @@ def test_claim_next_processing_job(client):
     assert data["locked_at"] is not None
     assert data["started_at"] is not None
 
+    version = client.get(f"/source-versions/{job['source_version_id']}")
+    assert version.status_code == 200
+    assert version.json()["ingestion_status"] == "processing"
+
 
 def test_claim_next_returns_404_when_no_queued_jobs(client):
     response = client.post(

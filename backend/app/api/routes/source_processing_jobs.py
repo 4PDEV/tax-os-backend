@@ -8,7 +8,9 @@ from app.models.source_processing_job import SourceProcessingJob
 from app.models.source_version import SourceVersion
 from app.schemas.source_processing_job import (
     SourceProcessingJobClaimRequest,
+    SourceProcessingJobCompleteRequest,
     SourceProcessingJobCreate,
+    SourceProcessingJobFailRequest,
     SourceProcessingJobRead,
     SourceProcessingJobStatusUpdate,
 )
@@ -16,6 +18,8 @@ from app.services.processing_queue import (
     JOB_STATUS_FAILED,
     ProcessingQueueError,
     claim_next_processing_job,
+    complete_processing_job,
+    fail_processing_job,
     has_active_job,
     transition_job_status,
     validate_enqueue,
@@ -94,6 +98,57 @@ def get_source_processing_job(job_id: UUID, db: Session = Depends(get_db)):
     record = db.query(SourceProcessingJob).filter(SourceProcessingJob.id == job_id).first()
     if not record:
         raise HTTPException(status_code=404, detail="Source processing job not found")
+    return record
+
+
+@router.post("/{job_id}/complete", response_model=SourceProcessingJobRead)
+def complete_source_processing_job(
+    job_id: UUID,
+    payload: SourceProcessingJobCompleteRequest,
+    db: Session = Depends(get_db),
+):
+    record = db.query(SourceProcessingJob).filter(SourceProcessingJob.id == job_id).first()
+    if not record:
+        raise HTTPException(status_code=404, detail="Source processing job not found")
+
+    try:
+        complete_processing_job(
+            db,
+            record,
+            completed_by=payload.completed_by,
+            result_json=payload.result_json,
+        )
+    except ProcessingQueueError as exc:
+        raise HTTPException(status_code=422, detail=exc.message) from exc
+
+    db.commit()
+    db.refresh(record)
+    return record
+
+
+@router.post("/{job_id}/fail", response_model=SourceProcessingJobRead)
+def fail_source_processing_job(
+    job_id: UUID,
+    payload: SourceProcessingJobFailRequest,
+    db: Session = Depends(get_db),
+):
+    record = db.query(SourceProcessingJob).filter(SourceProcessingJob.id == job_id).first()
+    if not record:
+        raise HTTPException(status_code=404, detail="Source processing job not found")
+
+    try:
+        fail_processing_job(
+            db,
+            record,
+            failed_by=payload.failed_by,
+            last_error=payload.last_error,
+            result_json=payload.result_json,
+        )
+    except ProcessingQueueError as exc:
+        raise HTTPException(status_code=422, detail=exc.message) from exc
+
+    db.commit()
+    db.refresh(record)
     return record
 
 

@@ -3,7 +3,14 @@ from sqlalchemy.orm import Session
 from app.core.datetime_utils import utc_now
 from app.models.source_processing_job import SourceProcessingJob
 from app.models.source_version import SourceVersion
-from app.services.ingestion_status import INGESTION_STATUS_QUEUED
+from app.services.ingestion_status import (
+    INGESTION_STATUS_FAILED,
+    INGESTION_STATUS_PARSED,
+    INGESTION_STATUS_PROCESSING,
+    INGESTION_STATUS_QUEUED,
+    IngestionStatusError,
+    transition_ingestion_status,
+)
 
 JOB_TYPE_SOURCE_INGESTION = "source_ingestion"
 
@@ -111,12 +118,107 @@ def transition_job_status(
         job.completed_at = None
         job.locked_at = None
         job.locked_by = None
+        job.result_json = None
+        job.completed_by = None
+        job.failed_by = None
         job.queued_at = now
     elif target_status == JOB_STATUS_CANCELLED:
         job.completed_at = now
 
     job.job_status = target_status
     job.updated_at = now
+    return job
+
+
+def _sync_ingestion_on_claim(db: Session, job: SourceProcessingJob) -> None:
+    version = (
+        db.query(SourceVersion)
+        .filter(SourceVersion.id == job.source_version_id)
+        .first()
+    )
+    if not version:
+        raise ProcessingQueueError("source version not found for processing job")
+
+    if version.ingestion_status == INGESTION_STATUS_QUEUED:
+        try:
+            transition_ingestion_status(version, INGESTION_STATUS_PROCESSING)
+        except IngestionStatusError as exc:
+            raise ProcessingQueueError(exc.message) from exc
+
+
+def _sync_ingestion_on_complete(db: Session, job: SourceProcessingJob) -> None:
+    version = (
+        db.query(SourceVersion)
+        .filter(SourceVersion.id == job.source_version_id)
+        .first()
+    )
+    if not version:
+        raise ProcessingQueueError("source version not found for processing job")
+
+    try:
+        transition_ingestion_status(version, INGESTION_STATUS_PARSED)
+    except IngestionStatusError as exc:
+        raise ProcessingQueueError(exc.message) from exc
+
+
+def _sync_ingestion_on_fail(db: Session, job: SourceProcessingJob) -> None:
+    version = (
+        db.query(SourceVersion)
+        .filter(SourceVersion.id == job.source_version_id)
+        .first()
+    )
+    if not version:
+        raise ProcessingQueueError("source version not found for processing job")
+
+    try:
+        transition_ingestion_status(version, INGESTION_STATUS_FAILED)
+    except IngestionStatusError as exc:
+        raise ProcessingQueueError(exc.message) from exc
+
+
+def _require_actor(actor: str, field_name: str) -> str:
+    if not actor or not actor.strip():
+        raise ProcessingQueueError(f"{field_name} is required")
+    return actor.strip()
+
+
+def complete_processing_job(
+    db: Session,
+    job: SourceProcessingJob,
+    *,
+    completed_by: str,
+    result_json: dict | None,
+) -> SourceProcessingJob:
+    if job.job_status != JOB_STATUS_PROCESSING:
+        raise ProcessingQueueError("only processing jobs can be completed")
+
+    job.completed_by = _require_actor(completed_by, "completed_by")
+    job.failed_by = None
+    job.result_json = result_json
+    transition_job_status(job, JOB_STATUS_COMPLETED)
+    _sync_ingestion_on_complete(db, job)
+    return job
+
+
+def fail_processing_job(
+    db: Session,
+    job: SourceProcessingJob,
+    *,
+    failed_by: str,
+    last_error: str,
+    result_json: dict | None = None,
+) -> SourceProcessingJob:
+    if job.job_status != JOB_STATUS_PROCESSING:
+        raise ProcessingQueueError("only processing jobs can be failed")
+
+    if not last_error or not last_error.strip():
+        raise ProcessingQueueError("last_error is required when job fails")
+
+    job.failed_by = _require_actor(failed_by, "failed_by")
+    job.completed_by = None
+    job.result_json = result_json
+    transition_job_status(job, JOB_STATUS_FAILED, last_error=last_error.strip())
+    _sync_ingestion_on_fail(db, job)
     return job
 
 
@@ -160,4 +262,6 @@ def claim_next_processing_job(
     if not job:
         raise ProcessingQueueError("no queued processing job available")
 
-    return claim_processing_job(job, locked_by)
+    claimed = claim_processing_job(job, locked_by)
+    _sync_ingestion_on_claim(db, job)
+    return claimed

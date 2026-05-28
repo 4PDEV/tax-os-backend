@@ -1,7 +1,10 @@
+from unittest.mock import MagicMock
+
 import pytest
 
 from app.models.source_processing_job import SourceProcessingJob
 from app.models.source_version import SourceVersion
+from app.services.ingestion_status import INGESTION_STATUS_PROCESSING
 from app.services.ingestion_status import INGESTION_STATUS_QUEUED
 from app.services.processing_queue import (
     JOB_STATUS_COMPLETED,
@@ -11,6 +14,8 @@ from app.services.processing_queue import (
     JOB_TYPE_SOURCE_INGESTION,
     ProcessingQueueError,
     claim_processing_job,
+    complete_processing_job,
+    fail_processing_job,
     has_active_job,
     transition_job_status,
     validate_enqueue,
@@ -77,6 +82,55 @@ def test_claim_processing_job_rejects_non_queued_job():
     job = _job(JOB_STATUS_PROCESSING, attempt_count=1)
     with pytest.raises(ProcessingQueueError):
         claim_processing_job(job, "worker-1")
+
+
+def _db_with_version(version: SourceVersion) -> MagicMock:
+    db = MagicMock()
+    db.query.return_value.filter.return_value.first.return_value = version
+    return db
+
+
+def test_complete_processing_job_sets_metadata_and_ingestion_status():
+    job = _job(JOB_STATUS_PROCESSING, attempt_count=1)
+    version = _version(INGESTION_STATUS_PROCESSING)
+    complete_processing_job(
+        _db_with_version(version),
+        job,
+        completed_by="worker-1",
+        result_json={"pages": 12},
+    )
+    assert job.job_status == JOB_STATUS_COMPLETED
+    assert job.completed_by == "worker-1"
+    assert job.result_json == {"pages": 12}
+    assert job.failed_by is None
+    assert version.ingestion_status == "parsed"
+
+
+def test_fail_processing_job_sets_metadata_and_ingestion_status():
+    job = _job(JOB_STATUS_PROCESSING, attempt_count=1)
+    version = _version(INGESTION_STATUS_PROCESSING)
+    fail_processing_job(
+        _db_with_version(version),
+        job,
+        failed_by="worker-1",
+        last_error="parser error",
+        result_json={"stage": "ocr"},
+    )
+    assert job.job_status == JOB_STATUS_FAILED
+    assert job.failed_by == "worker-1"
+    assert job.last_error == "parser error"
+    assert version.ingestion_status == "failed"
+
+
+def test_complete_rejects_non_processing_job():
+    job = _job(JOB_STATUS_QUEUED)
+    with pytest.raises(ProcessingQueueError):
+        complete_processing_job(
+            _db_with_version(_version(INGESTION_STATUS_PROCESSING)),
+            job,
+            completed_by="worker-1",
+            result_json={},
+        )
 
 
 def test_transition_completed_sets_completed_at():
