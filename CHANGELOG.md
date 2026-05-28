@@ -12,6 +12,7 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Version
 - TASK-001M: `source_processing_jobs` table, queue service, internal enqueue/list/get/status APIs.
 - TASK-001N: `POST /source-processing-jobs/claim-next`, lock metadata, concurrency-safe claim via `FOR UPDATE SKIP LOCKED`.
 - TASK-001O: job complete/fail endpoints, `result_json`/`completed_by`/`failed_by`, ingestion status sync.
+- TASK-001P: worker contract, `NoopProcessor`, `run_next_job_once` one-shot harness.
 
 ### Added (prior unreleased)
 
