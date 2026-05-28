@@ -10,14 +10,15 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Version
 
 - TASK-001G: operational and governance documentation set (README, runbooks, workflows, project state).
 - TASK-001F: pytest foundation, integration marker, skip guard, baseline API tests for registry CRUD and `source_versions` immutability.
+- TASK-001H: storage abstraction, local filesystem backend, SHA-256 checksum utilities.
+- TASK-001J: `POST /source-versions/{id}/upload` internal upload API.
+- TASK-001K: attachment state helpers, `file_attached` / `attachment_status` on API responses, `SOURCE_ATTACHMENT_WORKFLOW.md`.
 
 ### Changed
 
 - README consolidated and linked to documentation index.
-
-### Pending
-
-- TASK-001F: final merge acceptance pending VM integration test execution (`pytest -q` with reachable test DB).
+- TASK-001I: `datetime.utcnow` replaced with timezone-aware `utc_now()`.
+- Upload workflow enforces attachment state validation and rejects duplicate or inconsistent attachment.
 
 ## [0.1.1-crud-foundation] - 2026-05-27
 

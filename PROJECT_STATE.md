@@ -264,11 +264,11 @@ Purpose:
 
 Source Upload Internal API
 
-Purpose:
+STATUS: COMPLETE
 
-* controlled source upload workflow
-* deterministic source attachment handling
-* internal upload operations
+* `POST /source-versions/{id}/upload`
+* checksum-verified write via `LocalFileStorage`
+* no overwrite on duplicate upload
 
 ---
 
@@ -276,11 +276,11 @@ Purpose:
 
 Source Version File Attachment Workflow
 
-Purpose:
+STATUS: COMPLETE
 
-* immutable source version linkage
-* file-to-version association
-* deterministic source attachment governance
+* `has_attached_file`, `validate_attachment_state`, `get_attachment_status`
+* API fields: `file_attached`, `attachment_status` (`pending` | `attached` | `inconsistent`)
+* see [SOURCE_ATTACHMENT_WORKFLOW.md](SOURCE_ATTACHMENT_WORKFLOW.md)
 
 ---
 

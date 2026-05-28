@@ -63,6 +63,72 @@ def test_upload_source_version_file(client):
     assert data["checksum_sha256"] == sha256_bytes(content)
     assert data["file_size"] == len(content)
     assert data["mime_type"] == "application/pdf"
+    assert data["file_attached"] is True
+    assert data["attachment_status"] == "attached"
+
+
+def test_get_source_version_before_upload_is_pending(client):
+    country = _create_country(client)
+    document = _create_source_document(client, country["id"])
+    content = b"pending attachment"
+    version = _create_source_version(
+        client,
+        document["id"],
+        content=content,
+        storage_path="rw/vat/v1/pending.pdf",
+    )
+
+    response = client.get(f"/source-versions/{version['id']}")
+    assert response.status_code == 200
+    data = response.json()
+    assert data["file_attached"] is False
+    assert data["attachment_status"] == "pending"
+
+
+def test_upload_rejects_inconsistent_partial_metadata(client):
+    country = _create_country(client)
+    document = _create_source_document(client, country["id"])
+    content = b"partial metadata case"
+    checksum = sha256_bytes(content)
+    version = client.post(
+        "/source-versions",
+        json={
+            "source_document_id": document["id"],
+            "version_label": "v1",
+            "checksum_sha256": checksum,
+            "storage_path": "rw/vat/v1/partial.pdf",
+            "file_size": len(content),
+        },
+    ).json()
+
+    response = client.post(
+        f"/source-versions/{version['id']}/upload",
+        files={"file": ("partial.pdf", content, "application/pdf")},
+    )
+    assert response.status_code == 422
+    assert "inconsistent" in response.json()["detail"].lower()
+
+
+def test_upload_without_explicit_content_type_persists_mime_type(client):
+    country = _create_country(client)
+    document = _create_source_document(client, country["id"])
+    content = b"upload without explicit multipart content type"
+    version = _create_source_version(
+        client,
+        document["id"],
+        content=content,
+        storage_path="rw/vat/v1/no-explicit-mime.pdf",
+    )
+
+    response = client.post(
+        f"/source-versions/{version['id']}/upload",
+        files={"file": ("no-explicit-mime.pdf", content)},
+    )
+    assert response.status_code == 200
+    data = response.json()
+    assert data["mime_type"]
+    assert data["file_attached"] is True
+    assert data["attachment_status"] == "attached"
 
 
 def test_upload_rejects_checksum_mismatch(client):
@@ -105,6 +171,7 @@ def test_upload_rejects_duplicate_upload(client):
         files={"file": ("statute.pdf", content, "application/pdf")},
     )
     assert second.status_code == 409
+    assert "already attached" in second.json()["detail"].lower()
 
 
 def test_upload_rejects_empty_file(client):
