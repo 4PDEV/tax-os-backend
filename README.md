@@ -96,6 +96,7 @@ Initial jurisdiction focus: **Rwanda**. Initial tax domains: VAT, PAYE/PIT, WHT,
 | [CHANGELOG.md](CHANGELOG.md) | Version history |
 | [TASK_REGISTRY.md](TASK_REGISTRY.md) | Task tracking |
 | [SOURCE_ATTACHMENT_WORKFLOW.md](SOURCE_ATTACHMENT_WORKFLOW.md) | Source file attachment lifecycle |
+| [SOURCE_PROCESSING_WORKFLOW.md](SOURCE_PROCESSING_WORKFLOW.md) | Processing queue and job finalization |
 
 ## Governance
 
