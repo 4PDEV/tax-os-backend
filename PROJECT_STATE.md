@@ -1,0 +1,400 @@
+# PROJECT_STATE.md
+
+## PROJECT
+
+Source-Referenced Business & Tax Research Platform
+
+---
+
+# CURRENT PLATFORM STATUS
+
+## STATUS
+
+FOUNDATION PHASE ACTIVE
+
+The platform has successfully established the initial deterministic backend foundation required for:
+
+* source registry
+* versioned legal source storage
+* migration governance
+* CRUD administration APIs
+* deterministic storage abstraction
+* checksum verification
+* operational governance
+* documentation discipline
+* testing discipline
+
+The platform is currently operating as:
+
+* development environment
+* internal staging environment
+
+No public production deployment exists yet.
+
+---
+
+# CURRENT ARCHITECTURE STATUS
+
+## BACKEND FOUNDATION
+
+STATUS: VERIFIED
+
+Implemented:
+
+* FastAPI runtime foundation
+* SQLAlchemy integration
+* Alembic migration governance
+* PostgreSQL integration
+* deterministic configuration loading
+* environment-based configuration
+* Dockerized infrastructure foundation
+
+---
+
+## DATABASE FOUNDATION
+
+STATUS: VERIFIED
+
+Implemented:
+
+* countries
+* tax_types
+* source_documents
+* source_versions
+* audit_log
+* source_retrieval_log
+
+Migration governance established.
+
+Rules enforced:
+
+* no direct DB modification
+* version-controlled migrations only
+* downgrade verification required
+* rebuild verification required
+
+---
+
+## API FOUNDATION
+
+STATUS: VERIFIED
+
+Implemented:
+
+* CRUD APIs
+* internal admin routes
+* validation schemas
+* soft-delete behavior
+* immutable source version enforcement
+* Swagger/OpenAPI support
+
+No authentication implemented yet.
+
+---
+
+## STORAGE FOUNDATION
+
+STATUS: VERIFIED
+
+Implemented:
+
+* deterministic storage abstraction
+* local filesystem backend
+* SHA-256 checksum utilities
+* path traversal protection
+* overwrite protection
+* storage metadata handling
+* isolated storage tests
+
+Current storage backend:
+
+* local filesystem only
+
+Deferred:
+
+* AWS S3
+* Azure Blob
+* MinIO
+* upload APIs
+* ingestion agents
+
+Tag:
+v0.1.2-storage-foundation
+
+---
+
+# TESTING STATUS
+
+## STATUS
+
+VERIFIED
+
+Verified VM result:
+
+42 passed
+0 skipped
+
+Warnings:
+
+* timezone-aware UTC cleanup still pending
+* no failing tests currently known
+
+Testing currently includes:
+
+* CRUD API testing
+* migration verification
+* storage abstraction testing
+* checksum testing
+* validation testing
+* immutability testing
+
+---
+
+# DOCUMENTATION STATUS
+
+## STATUS
+
+ESTABLISHED
+
+Implemented:
+
+* README.md
+* DEVELOPMENT_SETUP.md
+* OPERATIONAL_RUNBOOK.md
+* BACKUP_AND_RECOVERY.md
+* MIGRATION_WORKFLOW.md
+* DEVELOPMENT_WORKFLOW.md
+* TASK_EXECUTION_STANDARD.md
+* INCIDENT_RESPONSE.md
+* RELEASE_CHECKLIST.md
+* CHANGELOG.md
+* KNOWN_LIMITATIONS.md
+* OPEN_DECISIONS.md
+* TASK_REGISTRY.md
+
+Operational governance documentation established successfully.
+
+---
+
+# CURRENT INFRASTRUCTURE
+
+## HOSTING
+
+In-house VM
+
+## OS
+
+Ubuntu 26.04 LTS
+
+## CONTAINERIZATION
+
+Docker + Docker Compose
+
+## DATABASE
+
+PostgreSQL 16
+
+## ADMIN TOOLING
+
+pgAdmin
+
+## REPOSITORY
+
+GitHub
+
+---
+
+# COMPLETED TASKS
+
+| Task      | Status                                            |
+| --------- | ------------------------------------------------- |
+| TASK-001A | Runtime foundation — VERIFIED                     |
+| TASK-001D | CRUD + internal admin APIs — VERIFIED             |
+| TASK-001E | Alembic migration discipline — VERIFIED           |
+| TASK-001F | Baseline API tests — verified on VM               |
+| TASK-001G | Documentation + operational runbooks — VERIFIED   |
+| TASK-001H | Storage abstraction + checksum utility — VERIFIED |
+
+---
+
+# CURRENT BRANCH STATUS
+
+## ACTIVE BRANCH
+
+feature/task-001f-baseline-tests
+
+## MAIN BRANCH
+
+main
+
+Feature branch currently contains:
+
+* TASK-001F
+* TASK-001G
+* TASK-001H
+
+Pending merge into main.
+
+---
+
+# CURRENT TAGS
+
+* v0.1.0-task-001-foundation
+* v0.1.1-crud-foundation
+* v0.1.1-task-001-foundation-verified
+* v0.1.2-storage-foundation
+
+---
+
+# NEXT APPROVED TASKS
+
+## TASK-001I
+
+Replace utcnow with timezone-aware UTC timestamps
+
+Purpose:
+
+* eliminate SQLAlchemy deprecation warnings
+* enforce timezone-safe UTC handling
+* establish long-term timestamp governance
+
+---
+
+## TASK-001J
+
+Source Upload Internal API
+
+Purpose:
+
+* controlled source upload workflow
+* deterministic source attachment handling
+* internal upload operations
+
+---
+
+## TASK-001K
+
+Source Version File Attachment Workflow
+
+Purpose:
+
+* immutable source version linkage
+* file-to-version association
+* deterministic source attachment governance
+
+---
+
+# DEFERRED WORK
+
+Deferred intentionally:
+
+* ingestion agents
+* OCR
+* semantic extraction
+* embeddings
+* vector DB
+* retrieval ranking
+* AI reasoning
+* upload UI
+* public APIs
+* authentication/RBAC
+* enterprise workflows
+
+Reason:
+foundation-first architecture discipline.
+
+---
+
+# OPEN DECISIONS
+
+## StorageService Interface Scope
+
+Current implementation includes:
+
+* save_bytes
+* read_bytes
+
+Deferred decision:
+
+* exists()
+* delete()
+
+Decision deferred until:
+
+* upload APIs
+* ingestion workflows
+* lifecycle management
+* retention policies
+
+Reason:
+avoid premature abstraction expansion before real ingestion workflows exist.
+
+---
+
+# KNOWN LIMITATIONS
+
+Current limitations:
+
+* local storage only
+* no authentication
+* no object storage provider
+* no upload APIs
+* no ingestion automation
+* no public deployment
+* no source parsing yet
+* no retrieval engine yet
+
+These limitations are intentional at current phase.
+
+---
+
+# OPERATIONAL NOTES
+
+## TEST EXECUTION
+
+Integration tests require:
+
+* TEST_POSTGRES_* environment variables
+
+Shell-export consistency improvement still pending.
+
+---
+
+## DATABASE GOVERNANCE
+
+All schema evolution must occur through:
+
+* Alembic migrations only
+
+Direct DB modification prohibited.
+
+---
+
+## STORAGE GOVERNANCE
+
+Raw legal source files:
+
+* stored outside PostgreSQL
+* checksum verified
+* immutable where required
+* path-normalized
+* deterministic
+
+---
+
+# CURRENT PRIORITY
+
+Current engineering priority:
+
+1. timestamp governance
+2. controlled upload workflows
+3. immutable source attachment workflows
+4. ingestion infrastructure
+5. ingestion orchestration
+6. retrieval architecture
+
+AI ingestion agents remain intentionally deferred until deterministic ingestion foundation is complete.
+
+---
+
+END OF PROJECT STATE
