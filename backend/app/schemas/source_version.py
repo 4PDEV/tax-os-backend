@@ -28,5 +28,7 @@ class SourceVersionCreate(SourceVersionBase):
 class SourceVersionRead(SourceVersionBase):
     id: UUID
     created_at: datetime
+    file_attached: bool = False
+    attachment_status: str = "pending"
 
     model_config = ConfigDict(from_attributes=True)
