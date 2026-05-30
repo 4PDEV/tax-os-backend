@@ -130,6 +130,17 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Version
   - `constraints.py`, `indexes.py`, `immutability.py`, `lineage.py` — intended DB constraints, indexes, immutability rules, lineage and duplicate assumptions, migration expectations.
   - `LEGAL_OBJECT_SCHEMA_CONTRACT.md` documentation.
 - Input remains `ConvergedLegalObjectCandidate` only; **no SQLAlchemy, Alembic, repositories, or CRUD**.
+- Merged to main — tag `task-003a-merged`.
+
+## [task-003b-complete] - 2026-05-30
+
+### Added
+
+- TASK-003B: canonical legal object SQLAlchemy ORM models (definitions only). New `backend/app/models/` files:
+  - `LegalObject`, `LegalObjectVersion`, `LegalObjectLineage`, `LegalObjectDuplicate`
+  - Aligned with TASK-003A schema contract; `legal_object_id` externally supplied (no random PK default)
+  - Models registered in `backend/app/models/__init__.py` for future Alembic discovery
+- **No Alembic migrations**, repositories, CRUD APIs, or persistence services introduced.
 
 ## [Unreleased]
 
