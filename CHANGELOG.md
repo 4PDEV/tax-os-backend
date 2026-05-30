@@ -197,6 +197,10 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Version
 - **No CRUD APIs, ingestion orchestration, UI, or answer engine.**
 - **Pending:** architectural review, merge to `main`, tag `checkpoint-task-003e` (after merge only)
 
+### Fixed
+
+- Supersession trust-layer guards: reject when `persist()` does not return `CREATED`; reject self-referential `legal_object_id` supersession; rollback on rejection to prevent invalid lineage.
+
 ## [Unreleased]
 
 ### Added

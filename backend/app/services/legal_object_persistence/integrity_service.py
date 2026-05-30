@@ -11,7 +11,7 @@ from app.services.legal_object_persistence.contract import (
     LegalObjectPersistenceError,
     assert_converged_persistence_input,
 )
-from app.services.legal_object_persistence.enums import IntegrityOperationStatus
+from app.services.legal_object_persistence.enums import IntegrityOperationStatus, PersistenceStatus
 from app.services.legal_object_persistence.immutability import (
     ImmutabilityViolationError,
     assert_no_destructive_legal_object_update,
@@ -119,17 +119,39 @@ class LegalObjectIntegrityService:
 
             previous_status = prior.status
             persist_result = self._persistence.persist(db, superseding, commit=False)
-            if persist_result.persistence_status.value in {"rejected", "failed"}:
+            if persist_result.persistence_status != PersistenceStatus.CREATED:
                 db.rollback()
+                operation_status = (
+                    IntegrityOperationStatus.FAILED
+                    if persist_result.persistence_status
+                    in {PersistenceStatus.REJECTED, PersistenceStatus.FAILED}
+                    else IntegrityOperationStatus.REJECTED
+                )
                 return LegalObjectIntegrityResult(
                     legal_object_id=supersedes_legal_object_id,
                     operation="supersede",
-                    operation_status=IntegrityOperationStatus.FAILED,
-                    warnings=persist_result.warnings,
+                    operation_status=operation_status,
+                    warnings=persist_result.warnings
+                    + [
+                        "supersession requires a newly created legal object; "
+                        f"persist returned {persist_result.persistence_status.value}"
+                    ],
                     metadata={"persist_result": persist_result.persistence_status.value},
                 )
 
             new_object_id = persist_result.legal_object_id
+            if new_object_id == supersedes_legal_object_id:
+                db.rollback()
+                return LegalObjectIntegrityResult(
+                    legal_object_id=supersedes_legal_object_id,
+                    operation="supersede",
+                    operation_status=IntegrityOperationStatus.REJECTED,
+                    warnings=[
+                        "supersession rejected: new and superseded legal_object_id must differ"
+                    ],
+                    previous_status=previous_status,
+                )
+
             source_version_id = UUID(superseding.candidate.source_version_id)
 
             self._repository.update_legal_object_status(

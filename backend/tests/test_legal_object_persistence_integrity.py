@@ -284,6 +284,88 @@ def test_supersession_preserves_old_object_and_records_lineage(db_session):
 
 
 @pytest.mark.integration
+def test_supersede_rejected_when_persist_is_duplicate(db_session):
+    version = _seed_source_version(db_session)
+    original = _candidate(source_version_id=str(version.id))
+    LegalObjectPersistenceService().persist(db_session, _converged(original))
+
+    result = LegalObjectIntegrityService().supersede_legal_object(
+        db_session,
+        _converged(original),
+        supersedes_legal_object_id=original.legal_object_id,
+    )
+
+    assert result.operation_status == IntegrityOperationStatus.REJECTED
+    prior = db_session.query(LegalObject).filter_by(legal_object_id=original.legal_object_id).one()
+    assert prior.status == LegalObjectStatus.ACTIVE.value
+    assert db_session.query(LegalObjectLineage).count() == 0
+
+
+@pytest.mark.integration
+def test_supersede_rejected_when_persist_creates_version_not_object(db_session):
+    version = _seed_source_version(db_session)
+    original = _candidate(source_version_id=str(version.id))
+    LegalObjectPersistenceService().persist(db_session, _converged(original))
+
+    same_id_new_hash = _candidate(
+        source_version_id=str(version.id),
+        legal_object_id=original.legal_object_id,
+        raw_text="Different text for version-only persist.",
+    )
+    result = LegalObjectIntegrityService().supersede_legal_object(
+        db_session,
+        _converged(same_id_new_hash),
+        supersedes_legal_object_id=original.legal_object_id,
+    )
+
+    assert result.operation_status == IntegrityOperationStatus.REJECTED
+    prior = db_session.query(LegalObject).filter_by(legal_object_id=original.legal_object_id).one()
+    assert prior.status == LegalObjectStatus.ACTIVE.value
+    assert db_session.query(LegalObjectLineage).count() == 0
+
+
+def test_supersede_rejects_self_referential_legal_object_id():
+    from unittest.mock import MagicMock
+
+    from app.services.legal_object_persistence.models import LegalObjectPersistenceResult
+
+    shared_id = "lo_self_referential_test_id"
+    prior = MagicMock()
+    prior.status = LegalObjectStatus.ACTIVE.value
+
+    repository = MagicMock()
+    repository.get_legal_object.return_value = prior
+
+    persistence = MagicMock()
+    persistence.persist.return_value = LegalObjectPersistenceResult(
+        legal_object_id=shared_id,
+        legal_object_version_id=str(uuid4()),
+        persistence_status=PersistenceStatus.CREATED,
+        created_legal_object=True,
+        created_version=True,
+    )
+
+    candidate = _candidate(source_version_id=str(uuid4()), legal_object_id=shared_id)
+    db = MagicMock()
+    db.rollback = MagicMock()
+
+    result = LegalObjectIntegrityService(
+        repository=repository,
+        persistence_service=persistence,
+    ).supersede_legal_object(
+        db,
+        _converged(candidate),
+        supersedes_legal_object_id=shared_id,
+    )
+
+    assert result.operation_status == IntegrityOperationStatus.REJECTED
+    assert "must differ" in result.warnings[0]
+    db.rollback.assert_called_once()
+    repository.update_legal_object_status.assert_not_called()
+    repository.create_lineage_record.assert_not_called()
+
+
+@pytest.mark.integration
 def test_parent_lineage_written_on_persist(db_session):
     version = _seed_source_version(db_session)
     parent = _candidate(source_version_id=str(version.id), canonical_path="PART I > Section 1")
