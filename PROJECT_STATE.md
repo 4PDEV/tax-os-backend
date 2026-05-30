@@ -501,6 +501,33 @@ Tests (main, post-merge): **232 passed, 115 skipped**
 
 ---
 
+## CITATION CANDIDATE PREPARATION
+
+STATUS: **IMPLEMENTED — PENDING REVIEW** (TASK-004C on feature branch)
+
+Feature branch: `feature/task-004c-citation-candidate-contract` @ `2e419d8`
+
+Implemented (TASK-004C):
+
+* citation candidate contract (`backend/app/services/citation_candidate/`)
+* `CitationCandidateBuilder` — `build()`, `build_from_retrieval_result()`, `build_from_resolution_result()`
+* `CitationCandidateRequest` / `CitationCandidate` strict Pydantic models
+* `CandidateStatus` — `ready`, `source_traceability_failed`, `integrity_failed`, `date_ambiguous`, `date_not_applicable`, `missing_effective_date`
+* resolution status mapping from TASK-004B (conservative; no silent `ready` for ambiguous/missing-date cases)
+* source traceability from `source_documents`, `source_versions`, `countries`, `tax_types`
+* integrity verification reused from TASK-004A
+* deterministic ordering inherited from retrieval/resolution — no ranking
+
+Tests (feature branch): **11 citation candidate tests pass**; full suite **350 passed** (PostgreSQL)
+
+**Out of scope (preserved):** final citation formatting, citation style rules, answer generation, authority weighting, legal interpretation, AI, RAG, embeddings, semantic retrieval, API routes, candidate persistence, database migrations
+
+**Pending:** architectural review, merge, tag (`checkpoint-task-004c`)
+
+**VM snapshot:** not required — no schema or persistence behavior changes.
+
+---
+
 ## STATUS
 
 VERIFIED
@@ -525,6 +552,7 @@ Testing currently includes:
 * immutability testing
 * legal object retrieval testing (TASK-004A)
 * effective-date resolver testing (TASK-004B)
+* citation candidate builder testing (TASK-004C)
 
 ---
 
@@ -616,6 +644,7 @@ GitHub
 | TASK-003E | Legal object persistence integrity & immutability enforcement — **MERGED / CLOSED** (tag `checkpoint-task-003e`) |
 | TASK-004A | Legal object retrieval contract — **MERGED / CLOSED** (tag `checkpoint-task-004a`) |
 | TASK-004B | Effective-date resolver contract — **MERGED / CLOSED** (tag `checkpoint-task-004b`) |
+| TASK-004C | Citation candidate contract — **IMPLEMENTED — PENDING REVIEW** (branch `feature/task-004c-citation-candidate-contract`) |
 
 ---
 
@@ -623,11 +652,11 @@ GitHub
 
 ## ACTIVE BRANCH
 
-main (no feature branch in progress)
+`feature/task-004c-citation-candidate-contract` (TASK-004C — pending review)
 
 ## MAIN BRANCH
 
-main (at `08efa3b` — TASK-004B merged; tag `checkpoint-task-004b`)
+main (at `c4d0eff` — TASK-004B docs; merge `08efa3b`; tag `checkpoint-task-004b`)
 
 Legal memory stack on `main`:
 
@@ -641,10 +670,15 @@ Legal memory stack on `main`:
 004B → Effective-Date Resolver
 ```
 
-**Current boundary:** persistence, integrity, retrieval, and effective-date resolution active on `main`.
-No AI/semantic retrieval, CRUD APIs, or ingestion orchestration.
+Feature branch extends stack (not yet merged):
 
-**VM snapshot:** not required before next TASK-004 task unless schema or persistence behavior changes.
+```text
+004C → Citation Candidate Preparation (pending review)
+```
+
+**Current boundary:** persistence, integrity, retrieval, and effective-date resolution active on `main`. Citation candidate DTO preparation implemented on feature branch — no final citation formatting, no persistence, no API routes.
+
+**VM snapshot:** not required — TASK-004C does not change schema or persistence behavior.
 
 ---
 
@@ -688,7 +722,7 @@ No AI/semantic retrieval, CRUD APIs, or ingestion orchestration.
 
 # NEXT APPROVED TASKS
 
-*(None registered — awaiting next TASK-004 spec)*
+TASK-004C — Citation Candidate Contract: **implemented on feature branch; pending review, merge, and tag.**
 
 **VM snapshot:** not required unless next task changes schema or persistence behavior.
 

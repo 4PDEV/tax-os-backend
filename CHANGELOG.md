@@ -272,6 +272,29 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Version
 
 - VM snapshot not required before next TASK-004 task unless schema or persistence behavior changes.
 
+- VM snapshot not required before next TASK-004 task unless schema or persistence behavior changes.
+
+## [task-004c-complete] - 2026-05-30
+
+### Added
+
+- TASK-004C: citation candidate contract. New `backend/app/services/citation_candidate/` package with:
+  - `CitationCandidateBuilder` — `build()`, `build_from_retrieval_result()`, `build_from_resolution_result()`
+  - `CitationCandidateRequest` / `CitationCandidate` strict Pydantic models
+  - `CandidateStatus` enum — `ready`, `source_traceability_failed`, `integrity_failed`, `date_ambiguous`, `date_not_applicable`, `missing_effective_date`
+  - Conservative resolution status mapping from TASK-004B (`APPLICABLE` → `ready`; ambiguous/missing-date cases never silently promoted)
+  - Source traceability from `source_documents`, `source_versions`, `countries`, `tax_types`
+  - Integrity verification reused from TASK-004A hash verification
+  - Deterministic ordering inherited from retrieval/resolution — no ranking or authority weighting
+  - `CITATION_CANDIDATE_CONTRACT.md` documentation
+- Feature branch: `feature/task-004c-citation-candidate-contract` @ `2e419d8`
+- Tests: 11 citation candidate tests; full suite 350 passed (PostgreSQL)
+- **No final citation formatting, persistence, API routes, AI, RAG, embeddings, or schema changes.**
+
+### Pending
+
+- Architectural review, merge, tag (`checkpoint-task-004c`)
+
 ## [Unreleased]
 
 ### Added
