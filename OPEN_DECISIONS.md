@@ -13,7 +13,7 @@ Pending architectural or operational decisions. Resolve via `tax-os-architecture
 | OD-007 | Cross-reference persistence | When/how detected references are stored and linked to citation anchors or registry entities | Open |
 | OD-008 | Cross-reference resolution | Whether target_candidate strings are resolved to source_versions automatically or remain unresolved surface labels until a dedicated task | Open |
 | OD-009 | Structure parser vs segmentation | Whether `structure_parser` replaces, complements, or converges with `segmentation` generic segmenter for downstream legal-object work | Open |
-| OD-010 | Legal object identity (002G) | Canonical identity rules, object lineage, and extraction semantics before proto-legal intelligence tasks proceed | Open |
+| OD-010 | Legal object identity and dual extraction paths | **Material — must be resolved or explicitly governed before legal object persistence.** Two contract-level candidate-producing paths now exist: (1) `segmentation` → `legal_objects` (TASK-002C, segment-backed, `source_segment_id` lineage) and (2) `structure_parser` → `legal_object_extraction` (TASK-002G, structural-unit-backed, `structural_unit_id`, `canonical_path`, SHA-256 `legal_object_id`). Coexistence is tolerable at contract level; **not** at persistence level. Required decision: canonical pipeline, identity convergence, deprecation path, or explicit dual-store governance with merge rules. Blocks: legal object DB tables, CRUD, citation-anchor persistence wiring, and any task that assumes a single legal object identity model. | Open — review checkpoint |
 
 ## Decision Log (Closed)
 
