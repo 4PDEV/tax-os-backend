@@ -170,6 +170,14 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Version
   - `LEGAL_OBJECT_PERSISTENCE_REPOSITORY_CONTRACT.md` documentation
 - **No CRUD APIs, ingestion wiring, batch jobs, or UI.**
 
+## [task-003d-merged] - 2026-05-30
+
+### Added
+
+- TASK-003D merged to `main` — merge commit `82e2e79`.
+- Controlled repository/service write path active: `LegalObjectPersistenceService.persist()` from `ConvergedLegalObjectCandidate` only.
+- **`legal_object_lineage` and `legal_object_duplicates` table writes remain deferred** (explicit in project state; targeted by TASK-003E).
+
 ## [Unreleased]
 
 ### Added

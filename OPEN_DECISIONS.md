@@ -13,7 +13,7 @@ Pending architectural or operational decisions. Resolve via `tax-os-architecture
 | OD-007 | Cross-reference persistence | When/how detected references are stored and linked to citation anchors or registry entities | Open |
 | OD-008 | Cross-reference resolution | Whether target_candidate strings are resolved to source_versions automatically or remain unresolved surface labels until a dedicated task | Open |
 | OD-009 | Structure parser vs segmentation | Whether `structure_parser` replaces, complements, or converges with `segmentation` generic segmenter for downstream legal-object work | Open |
-| OD-010 | Legal object identity and dual extraction paths | **Governed (002H–003D).** Canonical input: `ConvergedLegalObjectCandidate`. Tables materialized (003C). Repository write path (003D). **CRUD APIs and ingestion wiring still blocked.** Remaining: lineage/duplicate table writes, batch parent resolution, segment deprecation. | Governed — write path active; API gate active |
+| OD-010 | Legal object identity and dual extraction paths | **Governed (002H–003D merged).** Canonical input: `ConvergedLegalObjectCandidate`. Tables materialized (003C). Repository write path (003D merged). **CRUD APIs and ingestion wiring still blocked.** Lineage/duplicate table writes deferred — **TASK-003E approved.** Remaining after 003E: batch parent resolution, segment deprecation. | Governed — write path active; integrity enforcement next |
 
 ## Decision Log (Closed)
 
