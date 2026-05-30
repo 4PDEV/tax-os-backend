@@ -445,10 +445,10 @@ Tests (main, post-merge): **225 passed, 91 skipped**
 
 ## LEGAL OBJECT RETRIEVAL
 
-STATUS: **COMPLETE — pending architectural review** (TASK-004A on feature branch)
+STATUS: **MERGED / CLOSED** (TASK-004A on `main`)
 
-Branch: `feature/task-004a-legal-object-retrieval-contract`
-Implementation commit: `d604d96`
+Merge commit: `90357ff`
+Checkpoint tag: `checkpoint-task-004a`
 
 Implemented (TASK-004A):
 
@@ -461,11 +461,13 @@ Implemented (TASK-004A):
 * source traceability — every result carries `source_document_id`, `source_version_id`, hashes, identifiers
 * deterministic ordering only — no semantic/AI ranking
 
-Tests (feature branch): **230 passed, 104 skipped**
+Tests (main, post-merge): **230 passed, 104 skipped**
 
 **Out of scope (preserved):** embeddings, pgvector, semantic search, RAG, AI retrieval, answer generation, citation assembly, CRUD APIs
 
-**Pending:** architectural review → merge to `main` → tag
+**Deferred hardening:** apply deterministic ordering before `.first()` in `retrieve_by_id()` when `effective_on` is set and multiple version rows match.
+
+**VM snapshot:** not required before TASK-004B unless schema or persistence behavior changes.
 
 ---
 
@@ -475,7 +477,7 @@ Tests (feature branch): **230 passed, 104 skipped**
 
 VERIFIED
 
-Latest suite result (feature branch, TASK-004A):
+Latest suite result (main, post TASK-004A merge):
 
 230 passed
 104 skipped (integration tests without PostgreSQL)
@@ -583,7 +585,7 @@ GitHub
 | TASK-003C | Canonical legal object Alembic migration — VERIFIED (merged to main) |
 | TASK-003D | Legal object persistence repository contract — **MERGED / CLOSED** (tag `task-003d-merged`) |
 | TASK-003E | Legal object persistence integrity & immutability enforcement — **MERGED / CLOSED** (tag `checkpoint-task-003e`) |
-| TASK-004A | Legal object retrieval contract — **COMPLETE (pending review)** |
+| TASK-004A | Legal object retrieval contract — **MERGED / CLOSED** (tag `checkpoint-task-004a`) |
 
 ---
 
@@ -591,13 +593,13 @@ GitHub
 
 ## ACTIVE BRANCH
 
-`feature/task-004a-legal-object-retrieval-contract` (implementation `d604d96`)
+main (no feature branch in progress)
 
 ## MAIN BRANCH
 
-main (at `f0cf016` — checkpoint `checkpoint-task-003e`; TASK-003E merged)
+main (at `90357ff` — TASK-004A merged; tag `checkpoint-task-004a`)
 
-Persistence + integrity baseline on `main`:
+Legal memory stack on `main`:
 
 ```text
 003A → Schema Contract
@@ -605,12 +607,13 @@ Persistence + integrity baseline on `main`:
 003C → Alembic Materialization
 003D → Controlled Write Path
 003E → Integrity & Immutability Enforcement
+004A → Deterministic Legal Object Retrieval
 ```
 
-TASK-004A (feature branch) adds deterministic retrieval layer — **pending review before merge**.
+**Current boundary:** persistence, integrity, and deterministic retrieval active on `main`.
+No AI/semantic retrieval, CRUD APIs, or ingestion orchestration.
 
-**Current boundary on main:** persistence + integrity active; retrieval not yet on `main`.
-No AI/semantic retrieval, CRUD APIs, or ingestion orchestration on any branch.
+**VM snapshot:** not required before TASK-004B unless schema or persistence behavior changes.
 
 ---
 
@@ -647,16 +650,17 @@ No AI/semantic retrieval, CRUD APIs, or ingestion orchestration on any branch.
 * task-003d-complete
 * task-003d-merged
 * checkpoint-task-003e
+* checkpoint-task-004a
 
 ---
 
 # NEXT APPROVED TASKS
 
-## TASK-004 series
+## TASK-004B
 
-TASK-004A implemented on feature branch — **pending architectural review**.
+STATUS: **Not registered** — awaiting approved spec.
 
-Further TASK-004 tasks not yet registered.
+No VM snapshot required before TASK-004B unless schema or persistence behavior changes.
 
 ---
 

@@ -222,7 +222,22 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Version
 - Feature branch: `feature/task-004a-legal-object-retrieval-contract` @ `d604d96`
 - Tests: 230 passed, 104 skipped
 - **No AI, semantic retrieval, embeddings, pgvector, RAG, answer generation, or CRUD APIs.**
-- **Pending:** architectural review, merge to `main`, tag
+
+## [checkpoint-task-004a] - 2026-05-30
+
+### Added
+
+- TASK-004A merged to `main` — merge commit `90357ff`.
+- **Deterministic legal object retrieval** active at tag `checkpoint-task-004a`.
+- Stack on `main`: 003A → 003B → 003C → 003D → 003E → 004A.
+
+### Deferred
+
+- Deterministic ordering hardening for `retrieve_by_id()` when `effective_on` is set and multiple version rows match.
+
+### Notes
+
+- VM snapshot not required before TASK-004B unless schema or persistence behavior changes.
 
 ## [Unreleased]
 
