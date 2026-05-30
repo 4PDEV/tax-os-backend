@@ -193,13 +193,21 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Version
   - Alembic `b8d4e1a92c05` — status CHECK constraints + `UNIQUE (legal_object_id, text_hash)`
   - `LEGAL_OBJECT_PERSISTENCE_INTEGRITY_CONTRACT.md` documentation
 - Feature branch: `feature/task-003e-legal-object-persistence-integrity` @ `52994a4`
-- Tests: 224 passed, 89 skipped
+- Tests: 225 passed, 91 skipped
 - **No CRUD APIs, ingestion orchestration, UI, or answer engine.**
-- **Pending:** architectural review, merge to `main`, tag `checkpoint-task-003e` (after merge only)
 
 ### Fixed
 
 - Supersession trust-layer guards: reject when `persist()` does not return `CREATED`; reject self-referential `legal_object_id` supersession; rollback on rejection to prevent invalid lineage.
+
+## [checkpoint-task-003e] - 2026-05-30
+
+### Added
+
+- TASK-003E merged to `main` — merge commit `0213fb1`.
+- **Legal Object Persistence Integrity baseline frozen** at tag `checkpoint-task-003e`.
+- Full persistence stack on `main`: 003A → 003B → 003C → 003D → 003E.
+- **Next gate:** VM snapshot before TASK-004 series.
 
 ## [Unreleased]
 
