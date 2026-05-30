@@ -298,7 +298,7 @@ task-002g-complete, task-002g-merged (on main)
 
 ## LEGAL OBJECT CONVERGENCE FOUNDATION
 
-STATUS: VERIFIED (no DB persistence; feature branch — **pending architectural review before merge**)
+STATUS: VERIFIED (no DB persistence; merged to main)
 
 Implemented (TASK-002H):
 
@@ -313,8 +313,30 @@ Resolves **OD-010 at contract level**. Two upstream pipelines may coexist; all
 candidates must converge before persistence planning. Segment path (`legal_objects/`)
 is legacy for identity purposes.
 
+Tags:
+task-002h-complete, task-002h-merged (on main)
+
+---
+
+## LEGAL OBJECT PERSISTENCE PLANNING
+
+STATUS: VERIFIED (planning only; feature branch — **pending architectural review before merge**)
+
+Implemented (TASK-002I):
+
+* legal object persistence planning contract (`backend/app/services/legal_object_persistence_planning/`)
+* `PlannedLegalObjectPersistenceModel` — Pydantic planning model only; no DB bindings
+* canonical persistence input rule — only `ConvergedLegalObjectCandidate`
+* `rules.py` — NEVER / ALWAYS persistence rules
+* `duplicate_strategy.py`, `lineage_strategy.py`, `migration_plan.py`, `risks.py`
+* phased migration sequence (tables → lineage → effective dates → citation anchors)
+
+Strictly: **Persistence Governance** — NOT Persistence Implementation.
+No database tables, migrations, repositories, or CRUD. Persistence implementation
+may not proceed until this planning contract is architecturally approved.
+
 Tag:
-task-002h-complete (feature branch only; not merged)
+task-002i-complete (feature branch only; not merged)
 
 ---
 
@@ -324,9 +346,9 @@ task-002h-complete (feature branch only; not merged)
 
 VERIFIED
 
-Latest suite result (002H feature branch):
+Latest suite result (002I feature branch):
 
-157 passed
+172 passed
 69 skipped (integration tests without PostgreSQL)
 
 Warnings:
@@ -424,7 +446,8 @@ GitHub
 | TASK-002E | Cross-reference detection contract — VERIFIED (merged to main) |
 | TASK-002F | Structural section parser contract — VERIFIED (merged to main) |
 | TASK-002G | Structural legal object extraction contract — VERIFIED (merged to main) |
-| TASK-002H | Legal object candidate convergence contract — VERIFIED (feature branch; **pending review before merge**) |
+| TASK-002H | Legal object candidate convergence contract — VERIFIED (merged to main) |
+| TASK-002I | Legal object persistence planning contract — VERIFIED (feature branch; **pending review before merge**) |
 
 ---
 
@@ -432,16 +455,16 @@ GitHub
 
 ## ACTIVE BRANCH
 
-feature/task-002h-legal-object-convergence-contract
+feature/task-002i-legal-object-persistence-planning-contract
 
 ## MAIN BRANCH
 
-main (at `9637e24` — TASK-002G merged)
+main (at `bcff405` — TASK-002H merged)
 
-TASK-002A through TASK-002G are merged into main.
-TASK-002H is committed on the feature branch;
-**not merged to main** — architectural review required (OD-010 governed at contract
-level; persistence gate documented).
+TASK-002A through TASK-002H are merged into main.
+TASK-002I is committed on the feature branch;
+**not merged to main** — architectural review required (persistence planning
+governance; no implementation in this task).
 
 ---
 
@@ -465,7 +488,9 @@ level; persistence gate documented).
 * task-002f-merged
 * task-002g-complete
 * task-002g-merged
-* task-002h-complete (feature branch only)
+* task-002h-complete
+* task-002h-merged
+* task-002i-complete (feature branch only)
 
 ---
 
@@ -532,9 +557,9 @@ foundation-first architecture discipline.
 
 See [OPEN_DECISIONS.md](OPEN_DECISIONS.md) for the full decision register.
 
-**OD-010 (governed by TASK-002H):** Two upstream pipelines coexist; convergence
-boundary enforces one canonical candidate shape. Persistence remains blocked until
-architecture approves a persistence task consuming converged candidates only.
+**OD-010 (governed by TASK-002H + TASK-002I):** Convergence enforces one canonical
+candidate shape. TASK-002I defines persistence planning governance only — persistence
+implementation remains blocked until planning contract is approved.
 
 ## StorageService Interface Scope
 
