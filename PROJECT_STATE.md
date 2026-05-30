@@ -439,7 +439,7 @@ Tests (main, post-merge): **225 passed, 91 skipped**
 
 **Out of scope (preserved):** CRUD APIs, ingestion orchestration, UI, answer engine
 
-**Next gate before TASK-004:** VM snapshot of checkpoint baseline
+**VM snapshot gate:** complete — Docker, Postgres, and pgAdmin verified running post-snapshot.
 
 ---
 
