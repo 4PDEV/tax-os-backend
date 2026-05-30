@@ -109,6 +109,7 @@ Initial jurisdiction focus: **Rwanda**. Initial tax domains: VAT, PAYE/PIT, WHT,
 | [LEGAL_OBJECT_PERSISTENCE_PLANNING_CONTRACT.md](backend/app/services/legal_object_persistence_planning/LEGAL_OBJECT_PERSISTENCE_PLANNING_CONTRACT.md) | Legal object persistence planning contract (governance only; no implementation) |
 | [LEGAL_OBJECT_SCHEMA_CONTRACT.md](backend/app/services/legal_object_schema_contract/LEGAL_OBJECT_SCHEMA_CONTRACT.md) | Canonical legal object persistence schema contract (planning only; no DB code) |
 | [LEGAL_OBJECT_PERSISTENCE_REPOSITORY_CONTRACT.md](backend/app/services/legal_object_persistence/LEGAL_OBJECT_PERSISTENCE_REPOSITORY_CONTRACT.md) | Legal object persistence repository contract (controlled write path) |
+| [LEGAL_OBJECT_PERSISTENCE_INTEGRITY_CONTRACT.md](backend/app/services/legal_object_persistence/LEGAL_OBJECT_PERSISTENCE_INTEGRITY_CONTRACT.md) | Legal object persistence integrity & immutability enforcement (TASK-003E) |
 
 ## Governance
 
