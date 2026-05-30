@@ -178,6 +178,25 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Version
 - Controlled repository/service write path active: `LegalObjectPersistenceService.persist()` from `ConvergedLegalObjectCandidate` only.
 - **`legal_object_lineage` and `legal_object_duplicates` table writes remain deferred** (explicit in project state; targeted by TASK-003E).
 
+## [task-003e-complete] - 2026-05-30
+
+### Added
+
+- TASK-003E: legal object persistence integrity & immutability enforcement. Extends `backend/app/services/legal_object_persistence/` with:
+  - `integrity_hash.py` — deterministic SHA-256 over stable fields; `text_hash` verification against `raw_text`
+  - `immutability.py` — prohibits destructive updates and hard delete at repository layer
+  - `traceability.py` — requires resolvable `source_version_id` and `source_document`
+  - `status_enums.py` — governed statuses (`draft`, `active`, `superseded`, `archived`, `rejected`)
+  - `LegalObjectIntegrityService` — `archive_legal_object`, `supersede_legal_object`, guarded `update_legal_object`
+  - `audit.py` — lifecycle events written to `audit_log`
+  - Enhanced `persist()` — lineage writes, cross-object duplicate records, transaction rollback
+  - Alembic `b8d4e1a92c05` — status CHECK constraints + `UNIQUE (legal_object_id, text_hash)`
+  - `LEGAL_OBJECT_PERSISTENCE_INTEGRITY_CONTRACT.md` documentation
+- Feature branch: `feature/task-003e-legal-object-persistence-integrity` @ `52994a4`
+- Tests: 224 passed, 89 skipped
+- **No CRUD APIs, ingestion orchestration, UI, or answer engine.**
+- **Pending:** architectural review, merge to `main`, tag `checkpoint-task-003e` (after merge only)
+
 ## [Unreleased]
 
 ### Added
