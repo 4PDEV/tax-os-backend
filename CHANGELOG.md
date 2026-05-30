@@ -69,6 +69,17 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Version
   - `CROSS_REFERENCE_CONTRACT.md` documentation.
 - No database persistence, graph storage, or interpretation layer introduced (identify/record/link only).
 
+## [task-002f-complete] - 2026-05-30
+
+### Added
+
+- TASK-002F: structural section parser contract. New `backend/app/services/structure_parser/` package with:
+  - `StructuralUnit` strict Pydantic model (`extra="forbid"`) with hierarchy, offsets, heading fields, and `parser_version`.
+  - `StructuralUnitType` enum (`act`, `law`, `title`, `part`, `chapter`, `section`, `article`, `regulation`, `schedule`, `paragraph`, `subparagraph`, `unknown`).
+  - `StructuralParser.parse()` — regex-based line-start detection (Roman/Arabic numerals, lettered schedules), deterministic parent/child hierarchy, heading label/title split, offset and raw-text preservation.
+  - `STRUCTURE_PARSER_CONTRACT.md` documentation.
+- No database persistence or semantic interpretation introduced (document structure detection only).
+
 ## [Unreleased]
 
 ### Added
