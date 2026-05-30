@@ -4,6 +4,20 @@ All notable changes to `tax-os-backend` are documented here.
 
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versions align with git tags where applicable.
 
+## [0.2.0-task-002a] - 2026-05-30
+
+### Added
+
+- TASK-002A: source text extraction contract. New `backend/app/services/extraction/` package with:
+  - `ExtractionResult` / `ExtractionMetadata` Pydantic models (`extra="forbid"`, non-interpretive).
+  - `ExtractionStatus` enum restricted to `pending` / `success` / `failed` / `partial`.
+  - `sha256_text` integrity hashing over raw extracted text.
+  - `BaseExtractor` interface (`can_handle`, `extract`) with mandatory `name` / `version`.
+  - Fully implemented `TxtExtractor` (faithful, deterministic; `PARTIAL` degrade on invalid UTF-8).
+  - Skeleton `PdfExtractor` / `HtmlExtractor` raising `NotImplementedError`.
+  - `EXTRACTION_CONTRACT.md` documentation.
+- No database persistence introduced (contract + pipeline structure only).
+
 ## [Unreleased]
 
 ### Added
@@ -13,7 +27,6 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Version
 - TASK-001N: `POST /source-processing-jobs/claim-next`, lock metadata, concurrency-safe claim via `FOR UPDATE SKIP LOCKED`.
 - TASK-001O: job complete/fail endpoints, `result_json`/`completed_by`/`failed_by`, ingestion status sync.
 - TASK-001P: worker contract, `NoopProcessor`, `run_next_job_once` one-shot harness.
-- TASK-002A: source text extraction contract (`ExtractionResult`/`ExtractionMetadata`), `ExtractionStatus` enum, SHA-256 text hashing, `BaseExtractor`, full `TxtExtractor`, skeleton `PdfExtractor`/`HtmlExtractor`. No storage persistence.
 
 ### Added (prior unreleased)
 
