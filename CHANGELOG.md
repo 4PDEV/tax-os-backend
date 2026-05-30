@@ -104,6 +104,20 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Version
   - `LEGAL_OBJECT_CONVERGENCE_CONTRACT.md` documentation.
 - Establishes persistence gate: all future legal object candidates must converge to one canonical shape before persistence planning.
 - No database persistence, migrations, or CRUD introduced.
+- Merged to main — tag `task-002h-merged`.
+
+## [task-002i-complete] - 2026-05-30
+
+### Added
+
+- TASK-002I: legal object persistence planning contract (architecture governance only). New `backend/app/services/legal_object_persistence_planning/` package with:
+  - `PlannedLegalObjectPersistenceModel` — Pydantic planning model (`extra="forbid"`); no DB bindings.
+  - `contract.py` — canonical input rule: only `ConvergedLegalObjectCandidate`; blocked direct sources documented.
+  - `rules.py` — explicit NEVER / ALWAYS persistence rules.
+  - `duplicate_strategy.py`, `lineage_strategy.py`, `migration_plan.py`, `risks.py` — planning-only strategies, phased migration sequence, risk register, blocked assumptions.
+  - `LEGAL_OBJECT_PERSISTENCE_PLANNING_CONTRACT.md` documentation.
+- Establishes persistence governance boundary; **no tables, migrations, repositories, or CRUD**.
+- Persistence implementation may not proceed until planning contract is architecturally approved.
 
 ## [Unreleased]
 
