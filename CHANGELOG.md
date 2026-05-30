@@ -155,6 +155,20 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Version
   - Legal object models imported in `backend/migrations/env.py`
   - `backend/tests/test_legal_object_alembic_migration.py` — migration structure and integration verification
 - **No repositories, CRUD APIs, persistence services, or ingestion wiring.**
+- Merged to main — tag `task-003c-merged`.
+
+## [task-003d-complete] - 2026-05-30
+
+### Added
+
+- TASK-003D: legal object persistence repository contract. New `backend/app/services/legal_object_persistence/` package with:
+  - `LegalObjectPersistenceService.persist()` — controlled write path from `ConvergedLegalObjectCandidate` only
+  - `LegalObjectPersistenceRepository` — SQLAlchemy session pattern; creates `legal_objects` and `legal_object_versions` rows
+  - `LegalObjectPersistenceResult` and `PersistenceStatus` enum (`created`, `version_created`, `duplicate_detected`, `rejected`, `failed`)
+  - Duplicate detection by `legal_object_id` + `text_hash`; no auto-merge; immutable version fields preserved
+  - `current_version_id` updated only after new version creation
+  - `LEGAL_OBJECT_PERSISTENCE_REPOSITORY_CONTRACT.md` documentation
+- **No CRUD APIs, ingestion wiring, batch jobs, or UI.**
 
 ## [Unreleased]
 
