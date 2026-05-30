@@ -253,7 +253,24 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Version
 - Feature branch: `feature/task-004b-effective-date-resolver-contract` @ `e569d57`
 - Tests: 232 passed, 115 skipped
 - **No AI, RAG, embeddings, pgvector, citation assembly, answer generation, or API routes.**
-- **Pending:** architectural review, merge to `main`, tag
+
+## [checkpoint-task-004b] - 2026-05-30
+
+### Added
+
+- TASK-004B merged to `main` — merge commit `08efa3b`.
+- **Effective-date resolver** active at tag `checkpoint-task-004b`.
+- Stack on `main`: 003A → 003B → 003C → 003D → 003E → 004A → 004B.
+
+### Deferred
+
+- Overlap result metadata enrichment for `AMBIGUOUS_OVERLAP` results.
+- Outer sort `created_at` parity hardening in resolver result ordering.
+- TASK-004A: deterministic ordering hardening for `retrieve_by_id()` when `effective_on` is set.
+
+### Notes
+
+- VM snapshot not required before next TASK-004 task unless schema or persistence behavior changes.
 
 ## [Unreleased]
 

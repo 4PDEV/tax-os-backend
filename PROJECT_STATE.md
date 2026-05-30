@@ -473,10 +473,10 @@ Tests (main, post-merge): **230 passed, 104 skipped**
 
 ## EFFECTIVE-DATE RESOLVER
 
-STATUS: **COMPLETE — pending architectural review** (TASK-004B on feature branch)
+STATUS: **MERGED / CLOSED** (TASK-004B on `main`)
 
-Branch: `feature/task-004b-effective-date-resolver-contract`
-Implementation commit: `e569d57`
+Merge commit: `08efa3b`
+Checkpoint tag: `checkpoint-task-004b`
 
 Implemented (TASK-004B):
 
@@ -488,11 +488,16 @@ Implemented (TASK-004B):
 * missing effective dates flagged when both bounds are NULL
 * integrity verification on read; reuses TASK-004A status filters
 
-Tests (feature branch): **232 passed, 115 skipped**
+Tests (main, post-merge): **232 passed, 115 skipped**
 
 **Out of scope (preserved):** AI, RAG, embeddings, pgvector, citation assembly, answer generation, API routes
 
-**Pending:** architectural review → merge to `main` → tag
+**Deferred hardening:**
+
+* overlap result metadata enrichment (conflicting version IDs in `AMBIGUOUS_OVERLAP` results)
+* outer sort `created_at` parity hardening in resolver result ordering
+
+**VM snapshot:** not required before next TASK-004 task unless schema or persistence behavior changes.
 
 ---
 
@@ -500,7 +505,7 @@ Tests (feature branch): **232 passed, 115 skipped**
 
 VERIFIED
 
-Latest suite result (feature branch, TASK-004B):
+Latest suite result (main, post TASK-004B merge):
 
 232 passed
 115 skipped (integration tests without PostgreSQL)
@@ -610,7 +615,7 @@ GitHub
 | TASK-003D | Legal object persistence repository contract — **MERGED / CLOSED** (tag `task-003d-merged`) |
 | TASK-003E | Legal object persistence integrity & immutability enforcement — **MERGED / CLOSED** (tag `checkpoint-task-003e`) |
 | TASK-004A | Legal object retrieval contract — **MERGED / CLOSED** (tag `checkpoint-task-004a`) |
-| TASK-004B | Effective-date resolver contract — **COMPLETE (pending review)** |
+| TASK-004B | Effective-date resolver contract — **MERGED / CLOSED** (tag `checkpoint-task-004b`) |
 
 ---
 
@@ -618,11 +623,11 @@ GitHub
 
 ## ACTIVE BRANCH
 
-`feature/task-004b-effective-date-resolver-contract` (implementation `e569d57`)
+main (no feature branch in progress)
 
 ## MAIN BRANCH
 
-main (at `5fc4f57` — TASK-004A merged; tag `checkpoint-task-004a`)
+main (at `08efa3b` — TASK-004B merged; tag `checkpoint-task-004b`)
 
 Legal memory stack on `main`:
 
@@ -633,12 +638,13 @@ Legal memory stack on `main`:
 003D → Controlled Write Path
 003E → Integrity & Immutability Enforcement
 004A → Deterministic Legal Object Retrieval
+004B → Effective-Date Resolver
 ```
 
-TASK-004B (feature branch) adds time-aware effective-date resolution — **pending review before merge**.
-
-**Current boundary on main:** persistence, integrity, and deterministic retrieval active.
+**Current boundary:** persistence, integrity, retrieval, and effective-date resolution active on `main`.
 No AI/semantic retrieval, CRUD APIs, or ingestion orchestration.
+
+**VM snapshot:** not required before next TASK-004 task unless schema or persistence behavior changes.
 
 ---
 
@@ -676,16 +682,15 @@ No AI/semantic retrieval, CRUD APIs, or ingestion orchestration.
 * task-003d-merged
 * checkpoint-task-003e
 * checkpoint-task-004a
+* checkpoint-task-004b
 
 ---
 
 # NEXT APPROVED TASKS
 
-## TASK-004B
+*(None registered — awaiting next TASK-004 spec)*
 
-STATUS: **Implemented on feature branch — pending architectural review.**
-
-Further TASK-004 tasks not yet registered.
+**VM snapshot:** not required unless next task changes schema or persistence behavior.
 
 ---
 
