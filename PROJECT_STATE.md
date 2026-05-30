@@ -238,7 +238,7 @@ Canonical Citation Anchors.
 
 ## CROSS-REFERENCE DETECTION FOUNDATION
 
-STATUS: VERIFIED (no DB persistence; feature branch — pending architectural review before merge)
+STATUS: VERIFIED (no DB persistence)
 
 Implemented (TASK-002E):
 
@@ -252,8 +252,31 @@ Strictly: identify, record, link — NOT interpret, prioritize, or reason. Every
 result requires `source_version_id`. Cross-references are not persisted and are
 not resolved to registry entities yet.
 
+Tags:
+task-002e-complete, task-002e-merged (on main)
+
+---
+
+## STRUCTURAL PARSER FOUNDATION
+
+STATUS: VERIFIED (no DB persistence; feature branch — pending architectural review before merge)
+
+Implemented (TASK-002F):
+
+* deterministic structural section parser contract (`backend/app/services/structure_parser/`)
+* `StructuralUnit` Pydantic model (strict, non-interpretive)
+* `StructuralUnitType` enum and line-start regex heading detection
+* `StructuralParser.parse()` with deterministic hierarchy assignment, heading label/title extraction, offset and raw-text preservation
+
+Strictly: Extracted Text → Structural Units. Document structure detection only —
+NOT legal meaning extraction. Structural units are not persisted yet.
+
 Tag:
-task-002e-complete
+task-002f-complete
+
+Architectural note: TASK-002G (Legal Object Extraction) is the next major boundary
+(proto-legal intelligence). Review checkpoint required after 002F finalization
+and before 002G merge path begins.
 
 ---
 
@@ -360,7 +383,8 @@ GitHub
 | TASK-002B | Structural source segmentation contract — VERIFIED  |
 | TASK-002C | Legal object extraction contract — VERIFIED         |
 | TASK-002D | Canonical citation anchor contract — VERIFIED       |
-| TASK-002E | Cross-reference detection contract — VERIFIED (feature branch; pending review) |
+| TASK-002E | Cross-reference detection contract — VERIFIED (merged to main) |
+| TASK-002F | Structural section parser contract — VERIFIED (feature branch; pending review) |
 
 ---
 
@@ -368,16 +392,16 @@ GitHub
 
 ## ACTIVE BRANCH
 
-feature/task-002e-cross-reference-detection-contract
+feature/task-002f-structural-section-parser-contract
 
 ## MAIN BRANCH
 
-main (at `07181d3` — TASK-002D merged)
+main (at `ed442e5` — TASK-002E merged)
 
-TASK-002A through TASK-002D are merged into main.
-TASK-002E is committed on the feature branch and tagged `task-002e-complete`;
-**not merged to main** — pending architectural review, integration checkpoint,
-and ingestion pipeline review before merge.
+TASK-002A through TASK-002E are merged into main.
+TASK-002F is committed on the feature branch and tagged `task-002f-complete`;
+**not merged to main** — pending architectural review checkpoint before 002G
+(proto-legal intelligence boundary) work begins.
 
 ---
 
@@ -396,6 +420,8 @@ and ingestion pipeline review before merge.
 * v0.2.3-task-002c
 * v0.2.4-task-002d
 * task-002e-complete
+* task-002e-merged
+* task-002f-complete
 
 ---
 

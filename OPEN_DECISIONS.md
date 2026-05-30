@@ -12,6 +12,8 @@ Pending architectural or operational decisions. Resolve via `tax-os-architecture
 | OD-006 | CI runner | GitHub Actions vs VM-only verification for integration tests | Open |
 | OD-007 | Cross-reference persistence | When/how detected references are stored and linked to citation anchors or registry entities | Open |
 | OD-008 | Cross-reference resolution | Whether target_candidate strings are resolved to source_versions automatically or remain unresolved surface labels until a dedicated task | Open |
+| OD-009 | Structure parser vs segmentation | Whether `structure_parser` replaces, complements, or converges with `segmentation` generic segmenter for downstream legal-object work | Open |
+| OD-010 | Legal object identity (002G) | Canonical identity rules, object lineage, and extraction semantics before proto-legal intelligence tasks proceed | Open |
 
 ## Decision Log (Closed)
 

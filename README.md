@@ -103,6 +103,7 @@ Initial jurisdiction focus: **Rwanda**. Initial tax domains: VAT, PAYE/PIT, WHT,
 | [LEGAL_OBJECT_CONTRACT.md](LEGAL_OBJECT_CONTRACT.md) | Legal object extraction contract and extractors |
 | [CITATION_ANCHOR_CONTRACT.md](CITATION_ANCHOR_CONTRACT.md) | Canonical citation anchor contract and generators |
 | [CROSS_REFERENCE_CONTRACT.md](CROSS_REFERENCE_CONTRACT.md) | Cross-reference detection contract and detector |
+| [STRUCTURE_PARSER_CONTRACT.md](STRUCTURE_PARSER_CONTRACT.md) | Structural section parser contract and parser |
 
 ## Governance
 
