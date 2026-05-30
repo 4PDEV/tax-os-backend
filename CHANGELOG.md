@@ -31,6 +31,19 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Version
   - `EXTRACTION_CONTRACT.md` documentation.
 - No database persistence introduced (contract + pipeline structure only).
 
+## [0.2.3-task-002c] - 2026-05-30
+
+### Added
+
+- TASK-002C: legal object extraction contract. New `backend/app/services/legal_objects/` package with:
+  - `LegalObjectCandidate` / `LegalObjectExtractionResult` / `LegalObjectMetadata` / `LegalObjectExtractionMetadata` strict Pydantic models (`extra="forbid"`).
+  - `LegalObjectType` enum (structural only: `act`, `regulation`, `order`, `notice`, `judgment`, `treaty`, `part`, `chapter`, `section`, `article`, `clause`, `subclause`, `paragraph`, `schedule`, `definition`, `unknown`) and `ExtractionStatus` enum (`pending` / `success` / `failed` / `partial`).
+  - `BaseLegalObjectExtractor` interface (`can_handle`, `extract`) with mandatory `name` / `version`.
+  - Fully implemented deterministic `GenericLegalObjectExtractor` (segment→object surface mapping, preserving offsets, sequencing, and parent/child hierarchy).
+  - Skeleton `LegislativeLegalObjectExtractor` raising `NotImplementedError`.
+  - `LEGAL_OBJECT_CONTRACT.md` documentation.
+- No database persistence, migrations, or registry storage introduced (contract + deterministic extraction only).
+
 ## [Unreleased]
 
 ### Added
