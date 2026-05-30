@@ -15,6 +15,7 @@ Explicit gaps in the current `tax-os-backend` phase. Not a backlog commitment or
 - Soft delete sets `status` / `version_status` to inactive; records remain in database.
 - `audit_log` and `source_retrieval_log` tables exist without automated write integration from CRUD routes.
 - No full-text search or citation graph APIs.
+- Cross-reference detection contract exists (TASK-002E) but references are not persisted, resolved to registry entities, or ranked by authority.
 - Source binary storage (`storage_path`) is referenced but ingestion/storage service is not part of current CRUD scope.
 
 ## Operations

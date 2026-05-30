@@ -10,6 +10,8 @@ Pending architectural or operational decisions. Resolve via `tax-os-architecture
 | OD-004 | Audit log writes | Which CRUD events write to `audit_log` first | Open |
 | OD-005 | Storage backend | Local filesystem vs object storage for `storage_path` | Open |
 | OD-006 | CI runner | GitHub Actions vs VM-only verification for integration tests | Open |
+| OD-007 | Cross-reference persistence | When/how detected references are stored and linked to citation anchors or registry entities | Open |
+| OD-008 | Cross-reference resolution | Whether target_candidate strings are resolved to source_versions automatically or remain unresolved surface labels until a dedicated task | Open |
 
 ## Decision Log (Closed)
 
