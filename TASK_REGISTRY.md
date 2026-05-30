@@ -29,7 +29,8 @@ Bounded task tracking for `tax-os-backend`. Authoritative specs remain in `tax-o
 | TASK-002F | Structural Section Parser Contract | Complete | `StructuralUnit`, `StructuralParser`, hierarchy resolution, heading extraction, offset preservation, no persistence |
 | TASK-002G | Structural Legal Object Extraction Contract | Complete | `LegalObjectExtractor`, deterministic `legal_object_id`, canonical paths; merged — tag `task-002g-merged` |
 | TASK-002H | Legal Object Candidate Convergence Contract | Complete | OD-010 governed at contract level; merged — tag `task-002h-merged` |
-| TASK-002I | Legal Object Persistence Planning Contract | Complete (pending review) | Persistence governance only; `PlannedLegalObjectPersistenceModel`, rules, risks, migration plan; **not merged** — architectural review required |
+| TASK-002I | Legal Object Persistence Planning Contract | Complete | Persistence governance only; merged — tag `task-002i-merged` |
+| TASK-003A | Canonical Legal Object Persistence Schema Contract | Complete (pending review) | Schema planning only; four proposed tables, constraints, indexes; **not merged** — architectural review required |
 
 ## Status Legend
 

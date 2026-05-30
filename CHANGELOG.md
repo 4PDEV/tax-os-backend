@@ -118,6 +118,18 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Version
   - `LEGAL_OBJECT_PERSISTENCE_PLANNING_CONTRACT.md` documentation.
 - Establishes persistence governance boundary; **no tables, migrations, repositories, or CRUD**.
 - Persistence implementation may not proceed until planning contract is architecturally approved.
+- Merged to main — tag `task-002i-merged`.
+
+## [task-003a-complete] - 2026-05-30
+
+### Added
+
+- TASK-003A: canonical legal object persistence schema contract (planning only). New `backend/app/services/legal_object_schema_contract/` package with:
+  - Proposed table contracts: `legal_objects`, `legal_object_versions`, `legal_object_lineage`, `legal_object_duplicates`.
+  - `schema_definition.py` — field-level Pydantic contract definitions (`extra="forbid"`).
+  - `constraints.py`, `indexes.py`, `immutability.py`, `lineage.py` — intended DB constraints, indexes, immutability rules, lineage and duplicate assumptions, migration expectations.
+  - `LEGAL_OBJECT_SCHEMA_CONTRACT.md` documentation.
+- Input remains `ConvergedLegalObjectCandidate` only; **no SQLAlchemy, Alembic, repositories, or CRUD**.
 
 ## [Unreleased]
 

@@ -107,6 +107,7 @@ Initial jurisdiction focus: **Rwanda**. Initial tax domains: VAT, PAYE/PIT, WHT,
 | [LEGAL_OBJECT_EXTRACTION_CONTRACT.md](backend/app/services/legal_object_extraction/LEGAL_OBJECT_EXTRACTION_CONTRACT.md) | Structural legal object extraction contract (structural units → candidates) |
 | [LEGAL_OBJECT_CONVERGENCE_CONTRACT.md](backend/app/services/legal_object_convergence/LEGAL_OBJECT_CONVERGENCE_CONTRACT.md) | Legal object candidate convergence contract (OD-010; canonical shape enforcement) |
 | [LEGAL_OBJECT_PERSISTENCE_PLANNING_CONTRACT.md](backend/app/services/legal_object_persistence_planning/LEGAL_OBJECT_PERSISTENCE_PLANNING_CONTRACT.md) | Legal object persistence planning contract (governance only; no implementation) |
+| [LEGAL_OBJECT_SCHEMA_CONTRACT.md](backend/app/services/legal_object_schema_contract/LEGAL_OBJECT_SCHEMA_CONTRACT.md) | Canonical legal object persistence schema contract (planning only; no DB code) |
 
 ## Governance
 
