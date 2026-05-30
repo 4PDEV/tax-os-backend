@@ -44,7 +44,7 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Version
   - `LEGAL_OBJECT_CONTRACT.md` documentation.
 - No database persistence, migrations, or registry storage introduced (contract + deterministic extraction only).
 
-## [Unreleased]
+## [0.2.4-task-002d] - 2026-05-30
 
 ### Added
 
@@ -57,6 +57,10 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Version
   - `CITATION_ANCHOR_CONTRACT.md` documentation.
 - Anchors derive only from stable structural inputs (no DB IDs, UUID randomness, timestamps, AI, or raw-text hashing as primary anchor).
 - No database persistence, migrations, or registry storage introduced (contract + deterministic generation only).
+
+## [Unreleased]
+
+### Added
 
 - TASK-001L: `ingestion_status` on `source_versions`, governed transition service, `POST /source-versions/{id}/ingestion-status`, auto `queued` on upload, `superseded` on supersede.
 - TASK-001M: `source_processing_jobs` table, queue service, internal enqueue/list/get/status APIs.
