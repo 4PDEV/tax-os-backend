@@ -278,7 +278,7 @@ task-002f-complete, task-002f-merged (on main)
 
 ## STRUCTURAL LEGAL OBJECT EXTRACTION FOUNDATION
 
-STATUS: VERIFIED (no DB persistence; feature branch — **pending architectural review before merge**)
+STATUS: VERIFIED (no DB persistence; merged to main)
 
 Implemented (TASK-002G):
 
@@ -291,13 +291,30 @@ Strictly: Structural Units → Legal Object Candidates. First proto-legal-intell
 boundary. No legal interpretation, topic classification, authority ranking,
 conflict resolution, citation generation, or persistence.
 
-**Review checkpoint:** OD-010 is material. Two candidate-producing paths now exist at
-contract level (`segmentation` → `legal_objects` and `structure_parser` →
-`legal_object_extraction`). This is tolerable pre-persistence; **OD-010 must be
-resolved or explicitly governed before legal object persistence.**
+Tags:
+task-002g-complete, task-002g-merged (on main)
+
+---
+
+## LEGAL OBJECT CONVERGENCE FOUNDATION
+
+STATUS: VERIFIED (no DB persistence; feature branch — **pending architectural review before merge**)
+
+Implemented (TASK-002H):
+
+* legal object candidate convergence contract (`backend/app/services/legal_object_convergence/`)
+* `ConvergedLegalObjectCandidate` wrapping canonical `legal_object_extraction.models.LegalObjectCandidate`
+* `ConvergenceSource` and `ConvergenceStatus` enums
+* `LegalObjectCandidateMapper` — structural pass-through (`CANONICAL`), segment mapping (`MAPPED`/`PARTIAL`), explicit `REJECTED`
+* `LegalObjectCandidateValidator` — identity, hash, offset, and duplicate-ID checks
+* canonical identity centralized on `generate_legal_object_id`
+
+Resolves **OD-010 at contract level**. Two upstream pipelines may coexist; all
+candidates must converge before persistence planning. Segment path (`legal_objects/`)
+is legacy for identity purposes.
 
 Tag:
-task-002g-complete (feature branch only; not merged)
+task-002h-complete (feature branch only; not merged)
 
 ---
 
@@ -307,9 +324,9 @@ task-002g-complete (feature branch only; not merged)
 
 VERIFIED
 
-Latest suite result (002G feature branch):
+Latest suite result (002H feature branch):
 
-143 passed
+157 passed
 69 skipped (integration tests without PostgreSQL)
 
 Warnings:
@@ -406,7 +423,8 @@ GitHub
 | TASK-002D | Canonical citation anchor contract — VERIFIED       |
 | TASK-002E | Cross-reference detection contract — VERIFIED (merged to main) |
 | TASK-002F | Structural section parser contract — VERIFIED (merged to main) |
-| TASK-002G | Structural legal object extraction contract — VERIFIED (feature branch; **pending OD-010 review before merge**) |
+| TASK-002G | Structural legal object extraction contract — VERIFIED (merged to main) |
+| TASK-002H | Legal object candidate convergence contract — VERIFIED (feature branch; **pending review before merge**) |
 
 ---
 
@@ -414,16 +432,16 @@ GitHub
 
 ## ACTIVE BRANCH
 
-feature/task-002g-legal-object-extraction-contract
+feature/task-002h-legal-object-convergence-contract
 
 ## MAIN BRANCH
 
-main (at `8626dd5` — TASK-002F merged)
+main (at `9637e24` — TASK-002G merged)
 
-TASK-002A through TASK-002F are merged into main.
-TASK-002G is committed on the feature branch and tagged `task-002g-complete`;
-**not merged to main** — formal architectural review checkpoint required (OD-010:
-dual legal object candidate paths vs persistence).
+TASK-002A through TASK-002G are merged into main.
+TASK-002H is committed on the feature branch;
+**not merged to main** — architectural review required (OD-010 governed at contract
+level; persistence gate documented).
 
 ---
 
@@ -445,7 +463,9 @@ dual legal object candidate paths vs persistence).
 * task-002e-merged
 * task-002f-complete
 * task-002f-merged
-* task-002g-complete (feature branch only)
+* task-002g-complete
+* task-002g-merged
+* task-002h-complete (feature branch only)
 
 ---
 
@@ -512,9 +532,9 @@ foundation-first architecture discipline.
 
 See [OPEN_DECISIONS.md](OPEN_DECISIONS.md) for the full decision register.
 
-**Material checkpoint (OD-010):** Two legal object candidate contracts coexist
-(`legal_objects/` segment-backed vs `legal_object_extraction/` structural-unit-backed).
-Must be resolved or explicitly governed before legal object persistence.
+**OD-010 (governed by TASK-002H):** Two upstream pipelines coexist; convergence
+boundary enforces one canonical candidate shape. Persistence remains blocked until
+architecture approves a persistence task consuming converged candidates only.
 
 ## StorageService Interface Scope
 
