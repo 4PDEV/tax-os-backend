@@ -17,7 +17,7 @@ Explicit gaps in the current `tax-os-backend` phase. Not a backlog commitment or
 - No full-text search or citation graph APIs.
 - Cross-reference detection contract exists (TASK-002E) but references are not persisted, resolved to registry entities, or ranked by authority.
 - Structural parser contract exists (TASK-002F) but structural units are not persisted; relationship to segmentation/legal-object layers not yet unified.
-- TASK-003A–003C schema/ORM/migration materialize legal object tables. TASK-003D adds controlled repository write path from `ConvergedLegalObjectCandidate` — **no CRUD APIs or ingestion wiring yet**.
+- TASK-003A–003C schema/ORM/migration materialize legal object tables. TASK-003D adds controlled repository write path from `ConvergedLegalObjectCandidate` — **no CRUD APIs or ingestion wiring yet**. **`legal_object_lineage` and `legal_object_duplicates` writes deferred** (duplicate detection only; no auto-merge or lineage persistence).
 - Source binary storage (`storage_path`) is referenced but ingestion/storage service is not part of current CRUD scope.
 
 ## Operations

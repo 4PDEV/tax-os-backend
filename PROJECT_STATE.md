@@ -394,6 +394,11 @@ Implemented (TASK-003D):
 * creates `legal_objects` and `legal_object_versions` rows; duplicate detection without auto-merge
 * immutable version fields; `current_version_id` updated after new version only
 
+**Deferred (explicit — not in TASK-003D scope):**
+
+* `legal_object_lineage` table writes — candidate `parent_legal_object_id` preserved on version rows only; lineage table population deferred
+* `legal_object_duplicates` table writes — duplicate detection returns `DUPLICATE_DETECTED` with warnings; no duplicate-resolution or auto-merge records yet
+
 Strictly: **Controlled Write Path** — NOT CRUD APIs, ingestion wiring, or UI.
 
 Tag:
@@ -632,7 +637,9 @@ See [OPEN_DECISIONS.md](OPEN_DECISIONS.md) for the full decision register.
 
 **OD-010 (governed through TASK-003D):** Convergence → schema → ORM → migration →
 **repository write path** (`LegalObjectPersistenceService`). CRUD APIs and ingestion
-wiring remain blocked.
+wiring remain blocked. **`legal_object_lineage` and `legal_object_duplicates` table
+writes remain deferred** — duplicate detection is in-memory/lookup only; no lineage
+or duplicate-resolution persistence yet.
 
 ## StorageService Interface Scope
 
