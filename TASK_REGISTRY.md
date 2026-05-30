@@ -35,6 +35,7 @@ Bounded task tracking for `tax-os-backend`. Authoritative specs remain in `tax-o
 | TASK-003C | Canonical Legal Object Alembic Migration | Complete | Revision `f7c2d9e41a83`; merged — tag `task-003c-merged` |
 | TASK-003D | Legal Object Persistence Repository Contract | Complete (merged) | Write path from `ConvergedLegalObjectCandidate`; merged — tag `task-003d-merged` |
 | TASK-003E | Legal Object Persistence Integrity & Immutability Enforcement | Complete (merged) | Integrity baseline frozen — tag `checkpoint-task-003e`; merge `0213fb1` |
+| TASK-004A | Legal Object Retrieval Contract | Complete (pending review) | Deterministic retrieval; branch `feature/task-004a-legal-object-retrieval-contract` @ `d604d96`; **not merged** |
 
 ## Status Legend
 

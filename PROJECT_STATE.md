@@ -443,16 +443,42 @@ Tests (main, post-merge): **225 passed, 91 skipped**
 
 ---
 
+## LEGAL OBJECT RETRIEVAL
+
+STATUS: **COMPLETE — pending architectural review** (TASK-004A on feature branch)
+
+Branch: `feature/task-004a-legal-object-retrieval-contract`
+Implementation commit: `d604d96`
+
+Implemented (TASK-004A):
+
+* deterministic legal object retrieval contract (`backend/app/services/retrieval/`)
+* `LegalObjectRetrievalService` — `retrieve()`, `retrieve_by_id()`, `retrieve_active()`, `retrieve_effective()`
+* `LegalObjectRetrievalRequest` / `LegalObjectRetrievalResult` strict Pydantic models
+* effective-date filtering — `effective_from <= effective_on AND (effective_to IS NULL OR effective_to >= effective_on)`
+* status filtering — excludes `archived`/`rejected` by default; `superseded` unless `include_superseded=True`
+* integrity verification on read — `text_hash` check + `integrity_hash` computation
+* source traceability — every result carries `source_document_id`, `source_version_id`, hashes, identifiers
+* deterministic ordering only — no semantic/AI ranking
+
+Tests (feature branch): **230 passed, 104 skipped**
+
+**Out of scope (preserved):** embeddings, pgvector, semantic search, RAG, AI retrieval, answer generation, citation assembly, CRUD APIs
+
+**Pending:** architectural review → merge to `main` → tag
+
+---
+
 # TESTING STATUS
 
 ## STATUS
 
 VERIFIED
 
-Latest suite result (main, post TASK-003E merge):
+Latest suite result (feature branch, TASK-004A):
 
-225 passed
-91 skipped (integration tests without PostgreSQL)
+230 passed
+104 skipped (integration tests without PostgreSQL)
 
 Warnings:
 
@@ -467,6 +493,7 @@ Testing currently includes:
 * checksum testing
 * validation testing
 * immutability testing
+* legal object retrieval testing (TASK-004A)
 
 ---
 
@@ -556,6 +583,7 @@ GitHub
 | TASK-003C | Canonical legal object Alembic migration — VERIFIED (merged to main) |
 | TASK-003D | Legal object persistence repository contract — **MERGED / CLOSED** (tag `task-003d-merged`) |
 | TASK-003E | Legal object persistence integrity & immutability enforcement — **MERGED / CLOSED** (tag `checkpoint-task-003e`) |
+| TASK-004A | Legal object retrieval contract — **COMPLETE (pending review)** |
 
 ---
 
@@ -563,26 +591,26 @@ GitHub
 
 ## ACTIVE BRANCH
 
-main (checkpoint frozen — no feature branch in progress)
+`feature/task-004a-legal-object-retrieval-contract` (implementation `d604d96`)
 
 ## MAIN BRANCH
 
-main (at `0213fb1` — TASK-003E merged; tag `checkpoint-task-003e`)
+main (at `f0cf016` — checkpoint `checkpoint-task-003e`; TASK-003E merged)
 
-Persistence stack (frozen baseline):
+Persistence + integrity baseline on `main`:
 
 ```text
 003A → Schema Contract
 003B → SQLAlchemy ORM Models
 003C → Alembic Materialization
-003D → Controlled Repository/Service Write Path
-003E → Legal Object Persistence Integrity & Immutability Enforcement
+003D → Controlled Write Path
+003E → Integrity & Immutability Enforcement
 ```
 
-**Current boundary:** persistence + integrity enforcement active on `main`.
-Automatic ingestion wiring and CRUD APIs remain blocked.
+TASK-004A (feature branch) adds deterministic retrieval layer — **pending review before merge**.
 
-**Before TASK-004:** take VM snapshot at `checkpoint-task-003e`.
+**Current boundary on main:** persistence + integrity active; retrieval not yet on `main`.
+No AI/semantic retrieval, CRUD APIs, or ingestion orchestration on any branch.
 
 ---
 
@@ -626,9 +654,9 @@ Automatic ingestion wiring and CRUD APIs remain blocked.
 
 ## TASK-004 series
 
-STATUS: **Awaiting VM snapshot** at `checkpoint-task-003e` before start.
+TASK-004A implemented on feature branch — **pending architectural review**.
 
-No TASK-004 task registered in implementation repo yet.
+Further TASK-004 tasks not yet registered.
 
 ---
 

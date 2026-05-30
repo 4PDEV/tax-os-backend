@@ -209,6 +209,21 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Version
 - Full persistence stack on `main`: 003A → 003B → 003C → 003D → 003E.
 - **Next gate:** VM snapshot before TASK-004 series.
 
+## [task-004a-complete] - 2026-05-30
+
+### Added
+
+- TASK-004A: legal object retrieval contract. New `backend/app/services/retrieval/` package with:
+  - `LegalObjectRetrievalService` — `retrieve()`, `retrieve_by_id()`, `retrieve_active()`, `retrieve_effective()`
+  - `LegalObjectRetrievalRequest` / `LegalObjectRetrievalResult` strict Pydantic models
+  - Deterministic effective-date and status filtering; integrity verification on read
+  - Source traceability preserved on every result (`source_document_id`, `source_version_id`, hashes)
+  - `LEGAL_OBJECT_RETRIEVAL_CONTRACT.md` documentation
+- Feature branch: `feature/task-004a-legal-object-retrieval-contract` @ `d604d96`
+- Tests: 230 passed, 104 skipped
+- **No AI, semantic retrieval, embeddings, pgvector, RAG, answer generation, or CRUD APIs.**
+- **Pending:** architectural review, merge to `main`, tag
+
 ## [Unreleased]
 
 ### Added
