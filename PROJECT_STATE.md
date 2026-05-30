@@ -184,6 +184,30 @@ v0.2.1-task-002b
 
 ---
 
+## LEGAL OBJECT FOUNDATION
+
+STATUS: VERIFIED (no DB persistence)
+
+Implemented (TASK-002C):
+
+* deterministic legal object extraction contract (`backend/app/services/legal_objects/`)
+* `LegalObjectCandidate` / `LegalObjectExtractionResult` Pydantic models (strict, non-interpretive)
+* `LegalObjectType` (canonical structural labels only) and `ExtractionStatus` enums
+* `BaseLegalObjectExtractor` interface with mandatory `name` / `version`
+* fully implemented deterministic `GenericLegalObjectExtractor` (segment→object surface mapping)
+* skeleton `LegislativeLegalObjectExtractor` (raises `NotImplementedError`)
+
+Strictly: STRUCTURED TEXT SEGMENTS → CANONICAL LEGAL OBJECT CANDIDATES. No legal
+interpretation, summarization, topic classification, authority ranking, or
+legal-effect determination. Each candidate is segment-backed and preserves
+`source_segment_id`, `raw_text`, offsets, sequencing, and hierarchy. Legal
+objects are not persisted to the database yet.
+
+Tag:
+v0.2.3-task-002c
+
+---
+
 # TESTING STATUS
 
 ## STATUS
@@ -285,6 +309,7 @@ GitHub
 | TASK-001P | Worker contract + no-op harness — VERIFIED          |
 | TASK-002A | Source text extraction contract — VERIFIED          |
 | TASK-002B | Structural source segmentation contract — VERIFIED  |
+| TASK-002C | Legal object extraction contract — VERIFIED         |
 
 ---
 
@@ -292,14 +317,14 @@ GitHub
 
 ## ACTIVE BRANCH
 
-main
+feature/task-002c-legal-object-extraction-contract
 
 ## MAIN BRANCH
 
 main
 
-TASK-002A and TASK-002B are merged into main (no-ff merges), with implementation
-tags `v0.2.0-task-002a` and `v0.2.1-task-002b` preserved in history.
+TASK-002A and TASK-002B are merged into main (no-ff merges, with `v0.2.2-post-merge-stabilization`).
+TASK-002C is committed on the feature branch and tagged `v0.2.3-task-002c`; pending merge into main.
 
 ---
 
@@ -314,6 +339,8 @@ tags `v0.2.0-task-002a` and `v0.2.1-task-002b` preserved in history.
 * v0.1.10-worker-contract-noop
 * v0.2.0-task-002a
 * v0.2.1-task-002b
+* v0.2.2-post-merge-stabilization
+* v0.2.3-task-002c
 
 ---
 
