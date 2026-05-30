@@ -4,6 +4,20 @@ All notable changes to `tax-os-backend` are documented here.
 
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versions align with git tags where applicable.
 
+## [0.2.0-task-002a] - 2026-05-30
+
+### Added
+
+- TASK-002A: source text extraction contract. New `backend/app/services/extraction/` package with:
+  - `ExtractionResult` / `ExtractionMetadata` Pydantic models (`extra="forbid"`, non-interpretive).
+  - `ExtractionStatus` enum restricted to `pending` / `success` / `failed` / `partial`.
+  - `sha256_text` integrity hashing over raw extracted text.
+  - `BaseExtractor` interface (`can_handle`, `extract`) with mandatory `name` / `version`.
+  - Fully implemented `TxtExtractor` (faithful, deterministic; `PARTIAL` degrade on invalid UTF-8).
+  - Skeleton `PdfExtractor` / `HtmlExtractor` raising `NotImplementedError`.
+  - `EXTRACTION_CONTRACT.md` documentation.
+- No database persistence introduced (contract + pipeline structure only).
+
 ## [Unreleased]
 
 ### Added
