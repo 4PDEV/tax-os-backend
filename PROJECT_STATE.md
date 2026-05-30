@@ -371,22 +371,33 @@ task-003b-complete, task-003b-merged (on main)
 
 ## LEGAL OBJECT ALEMBIC MIGRATION
 
-STATUS: VERIFIED (feature branch — **pending architectural review before merge**)
+STATUS: VERIFIED (merged to main)
 
 Implemented (TASK-003C):
 
-* Alembic revision `f7c2d9e41a83` — `create legal object persistence tables`
-* materializes: `legal_objects`, `legal_object_versions`, `legal_object_lineage`, `legal_object_duplicates`
-* indexes and `ck_legal_object_versions_offsets` per TASK-003A contract
-* downgrade drops tables in reverse dependency order
-* legal object models registered in `backend/migrations/env.py`
+* Alembic revision `f7c2d9e41a83` — four legal object persistence tables
+* Alembic head: `f7c2d9e41a83`
 
-Strictly: **Database Materialization** — NOT repositories, CRUD, persistence services, or ingestion wiring.
+Tags:
+task-003c-complete, task-003c-merged (on main)
+
+---
+
+## LEGAL OBJECT PERSISTENCE REPOSITORY
+
+STATUS: VERIFIED (feature branch — **pending architectural review before merge**)
+
+Implemented (TASK-003D):
+
+* legal object persistence repository contract (`backend/app/services/legal_object_persistence/`)
+* `LegalObjectPersistenceService.persist()` — only `ConvergedLegalObjectCandidate` input
+* creates `legal_objects` and `legal_object_versions` rows; duplicate detection without auto-merge
+* immutable version fields; `current_version_id` updated after new version only
+
+Strictly: **Controlled Write Path** — NOT CRUD APIs, ingestion wiring, or UI.
 
 Tag:
-task-003c-complete (feature branch only; not merged)
-
-Alembic head (after merge): `f7c2d9e41a83`
+task-003d-complete (feature branch only; not merged)
 
 ---
 
@@ -396,10 +407,10 @@ Alembic head (after merge): `f7c2d9e41a83`
 
 VERIFIED
 
-Latest suite result (003C feature branch):
+Latest suite result (003D feature branch):
 
-208 passed
-75 skipped (integration tests without PostgreSQL; 6 migration integration tests when DB reachable)
+213 passed
+80 skipped (integration tests without PostgreSQL)
 
 Warnings:
 
@@ -500,7 +511,8 @@ GitHub
 | TASK-002I | Legal object persistence planning contract — VERIFIED (merged to main) |
 | TASK-003A | Canonical legal object persistence schema contract — VERIFIED (merged to main) |
 | TASK-003B | Canonical legal object SQLAlchemy models — VERIFIED (merged to main) |
-| TASK-003C | Canonical legal object Alembic migration — VERIFIED (feature branch; **pending review before merge**) |
+| TASK-003C | Canonical legal object Alembic migration — VERIFIED (merged to main) |
+| TASK-003D | Legal object persistence repository contract — VERIFIED (feature branch; **pending review before merge**) |
 
 ---
 
@@ -508,16 +520,16 @@ GitHub
 
 ## ACTIVE BRANCH
 
-feature/task-003c-legal-object-alembic-migration
+feature/task-003d-legal-object-persistence-repository-contract
 
 ## MAIN BRANCH
 
-main (at `5320e07` — TASK-003B merged)
+main (at `6446238` — TASK-003C merged)
 
-TASK-002A through TASK-003B are merged into main.
-TASK-003C is committed on the feature branch;
-**not merged to main** — architectural review required (first DB materialization;
-no persistence services in this task).
+TASK-002A through TASK-003C are merged into main.
+TASK-003D is committed on the feature branch;
+**not merged to main** — architectural review required (repository/service write path;
+no CRUD APIs in this task).
 
 ---
 
@@ -549,7 +561,9 @@ no persistence services in this task).
 * task-003a-merged
 * task-003b-complete
 * task-003b-merged
-* task-003c-complete (feature branch only)
+* task-003c-complete
+* task-003c-merged
+* task-003d-complete (feature branch only)
 
 ---
 
@@ -616,9 +630,9 @@ foundation-first architecture discipline.
 
 See [OPEN_DECISIONS.md](OPEN_DECISIONS.md) for the full decision register.
 
-**OD-010 (governed through TASK-003C):** Schema contract, ORM models, and Alembic
-migration (`f7c2d9e41a83`) materialize legal object tables. Persistence services,
-repositories, and CRUD remain blocked.
+**OD-010 (governed through TASK-003D):** Convergence → schema → ORM → migration →
+**repository write path** (`LegalObjectPersistenceService`). CRUD APIs and ingestion
+wiring remain blocked.
 
 ## StorageService Interface Scope
 
