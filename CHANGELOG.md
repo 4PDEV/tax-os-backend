@@ -239,6 +239,22 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Version
 
 - VM snapshot not required before TASK-004B unless schema or persistence behavior changes.
 
+## [task-004b-complete] - 2026-05-30
+
+### Added
+
+- TASK-004B: effective-date resolver contract. New `backend/app/services/effective_date/` package with:
+  - `EffectiveDateResolver` — `resolve()`, `resolve_by_legal_object_id()`
+  - `EffectiveDateResolutionRequest` / `EffectiveDateResolutionResult` strict Pydantic models
+  - `ResolutionStatus` enum — applicable, not_applicable, ambiguous_overlap, missing_effective_date, integrity_failed
+  - Deterministic date rule; ambiguous overlap flagged (addresses TASK-004A deferred hardening at resolver layer)
+  - Reuses TASK-004A status filters and integrity verification on read
+  - `EFFECTIVE_DATE_RESOLVER_CONTRACT.md` documentation
+- Feature branch: `feature/task-004b-effective-date-resolver-contract` @ `e569d57`
+- Tests: 232 passed, 115 skipped
+- **No AI, RAG, embeddings, pgvector, citation assembly, answer generation, or API routes.**
+- **Pending:** architectural review, merge to `main`, tag
+
 ## [Unreleased]
 
 ### Added
