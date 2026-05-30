@@ -340,7 +340,7 @@ task-002i-complete, task-002i-merged (on main)
 
 ## LEGAL OBJECT PERSISTENCE SCHEMA CONTRACT
 
-STATUS: VERIFIED (schema planning only; feature branch — **pending architectural review before merge**)
+STATUS: VERIFIED (schema planning only; merged to main)
 
 Implemented (TASK-003A):
 
@@ -348,13 +348,29 @@ Implemented (TASK-003A):
 * proposed tables: `legal_objects`, `legal_object_versions`, `legal_object_lineage`, `legal_object_duplicates`
 * `schema_definition.py` — field-level contract definitions
 * `constraints.py`, `indexes.py`, `immutability.py`, `lineage.py`
-* duplicate handling assumptions and migration expectations documented
 
-Strictly: **Schema Planning** — NOT Schema Implementation.
-No SQLAlchemy models, Alembic revisions, repositories, or CRUD.
+Tags:
+task-003a-complete, task-003a-merged (on main)
+
+---
+
+## LEGAL OBJECT SQLALCHEMY MODELS
+
+STATUS: VERIFIED (ORM definitions only; feature branch — **pending architectural review before merge**)
+
+Implemented (TASK-003B):
+
+* SQLAlchemy ORM models in `backend/app/models/`:
+  * `LegalObject`, `LegalObjectVersion`, `LegalObjectLineage`, `LegalObjectDuplicate`
+* aligned with TASK-003A schema contract
+* registered in `backend/app/models/__init__.py` for Alembic discovery
+* `legal_object_id` externally supplied — no random ID generation on identity PK
+
+Strictly: **ORM Definitions** — NOT migrations, repositories, CRUD, or persistence execution.
+No Alembic revision in this task.
 
 Tag:
-task-003a-complete (feature branch only; not merged)
+task-003b-complete (feature branch only; not merged)
 
 ---
 
@@ -364,9 +380,9 @@ task-003a-complete (feature branch only; not merged)
 
 VERIFIED
 
-Latest suite result (003A feature branch):
+Latest suite result (003B feature branch):
 
-187 passed
+202 passed
 69 skipped (integration tests without PostgreSQL)
 
 Warnings:
@@ -466,7 +482,8 @@ GitHub
 | TASK-002G | Structural legal object extraction contract — VERIFIED (merged to main) |
 | TASK-002H | Legal object candidate convergence contract — VERIFIED (merged to main) |
 | TASK-002I | Legal object persistence planning contract — VERIFIED (merged to main) |
-| TASK-003A | Canonical legal object persistence schema contract — VERIFIED (feature branch; **pending review before merge**) |
+| TASK-003A | Canonical legal object persistence schema contract — VERIFIED (merged to main) |
+| TASK-003B | Canonical legal object SQLAlchemy models — VERIFIED (feature branch; **pending review before merge**) |
 
 ---
 
@@ -474,16 +491,16 @@ GitHub
 
 ## ACTIVE BRANCH
 
-feature/task-003a-legal-object-schema-contract
+feature/task-003b-legal-object-sqlalchemy-models
 
 ## MAIN BRANCH
 
-main (at `787bd71` — TASK-002I merged)
+main (at `3d2ffb1` — TASK-003A merged)
 
-TASK-002A through TASK-002I are merged into main.
-TASK-003A is committed on the feature branch;
-**not merged to main** — architectural review required (schema planning only;
-no SQLAlchemy or Alembic in this task).
+TASK-002A through TASK-003A are merged into main.
+TASK-003B is committed on the feature branch;
+**not merged to main** — architectural review required (ORM models only;
+no Alembic migration in this task).
 
 ---
 
@@ -511,7 +528,9 @@ no SQLAlchemy or Alembic in this task).
 * task-002h-merged
 * task-002i-complete
 * task-002i-merged
-* task-003a-complete (feature branch only)
+* task-003a-complete
+* task-003a-merged
+* task-003b-complete (feature branch only)
 
 ---
 
@@ -578,10 +597,9 @@ foundation-first architecture discipline.
 
 See [OPEN_DECISIONS.md](OPEN_DECISIONS.md) for the full decision register.
 
-**OD-010 (governed by TASK-002H + TASK-002I + TASK-003A):** Convergence enforces
-canonical candidate shape. Planning and schema contracts define persistence
-governance and proposed tables — Alembic implementation blocked until schema
-contract is approved.
+**OD-010 (governed through TASK-003B):** Convergence, planning, and schema contract
+govern persistence inputs. TASK-003B adds SQLAlchemy ORM model definitions aligned
+with TASK-003A — **Alembic migration still required** before tables exist in PostgreSQL.
 
 ## StorageService Interface Scope
 
