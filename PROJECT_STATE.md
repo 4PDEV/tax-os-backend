@@ -208,6 +208,34 @@ v0.2.3-task-002c
 
 ---
 
+## CITATION ANCHOR FOUNDATION
+
+STATUS: VERIFIED (no DB persistence)
+
+Implemented (TASK-002D):
+
+* deterministic canonical citation anchor contract (`backend/app/services/citation_anchors/`)
+* `CanonicalCitationAnchor` / `CitationAnchorGenerationResult` Pydantic models (strict, non-interpretive)
+* `CitationAnchorType` (structural labels only) and `GenerationStatus` enums
+* `BaseCitationAnchorGenerator` interface with mandatory `name` / `version`
+* fully implemented deterministic `GenericCitationAnchorGenerator` (structure-based anchors, ancestor lineage, SHA-256 identity, missing-parent degradation)
+* skeleton `LegislativeCitationAnchorGenerator` (raises `NotImplementedError`)
+
+Strictly: LEGAL OBJECT CANDIDATES → CANONICAL CITATION ANCHORS. Anchors derive
+only from stable structural inputs (no DB IDs, UUID randomness, timestamps, AI,
+or raw-text hashing as primary anchor). Full traceability chain preserved
+(`source_version_id`, `legal_object_id`, `source_segment_id`, `raw_text`,
+offsets). Anchors are not persisted to the database yet.
+
+Tag:
+v0.2.4-task-002d
+
+This completes the governed deterministic lineage chain:
+Source File → Extracted Text → Structural Segments → Legal Object Candidates →
+Canonical Citation Anchors.
+
+---
+
 # TESTING STATUS
 
 ## STATUS
@@ -310,6 +338,7 @@ GitHub
 | TASK-002A | Source text extraction contract — VERIFIED          |
 | TASK-002B | Structural source segmentation contract — VERIFIED  |
 | TASK-002C | Legal object extraction contract — VERIFIED         |
+| TASK-002D | Canonical citation anchor contract — VERIFIED       |
 
 ---
 
@@ -317,14 +346,15 @@ GitHub
 
 ## ACTIVE BRANCH
 
-feature/task-002c-legal-object-extraction-contract
+feature/task-002d-citation-anchor-contract
 
 ## MAIN BRANCH
 
 main
 
-TASK-002A and TASK-002B are merged into main (no-ff merges, with `v0.2.2-post-merge-stabilization`).
-TASK-002C is committed on the feature branch and tagged `v0.2.3-task-002c`; pending merge into main.
+TASK-002A, TASK-002B, and TASK-002C are merged into main (no-ff merges; 002A+002B
+integration tagged `v0.2.2-post-merge-stabilization`).
+TASK-002D is committed on the feature branch and tagged `v0.2.4-task-002d`; pending merge into main.
 
 ---
 
@@ -341,6 +371,7 @@ TASK-002C is committed on the feature branch and tagged `v0.2.3-task-002c`; pend
 * v0.2.1-task-002b
 * v0.2.2-post-merge-stabilization
 * v0.2.3-task-002c
+* v0.2.4-task-002d
 
 ---
 
