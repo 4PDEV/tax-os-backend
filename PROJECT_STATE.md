@@ -471,16 +471,39 @@ Tests (main, post-merge): **230 passed, 104 skipped**
 
 ---
 
-# TESTING STATUS
+## EFFECTIVE-DATE RESOLVER
+
+STATUS: **COMPLETE — pending architectural review** (TASK-004B on feature branch)
+
+Branch: `feature/task-004b-effective-date-resolver-contract`
+Implementation commit: `e569d57`
+
+Implemented (TASK-004B):
+
+* effective-date resolver contract (`backend/app/services/effective_date/`)
+* `EffectiveDateResolver` — `resolve()`, `resolve_by_legal_object_id()`
+* `EffectiveDateResolutionRequest` / `EffectiveDateResolutionResult` strict Pydantic models
+* `ResolutionStatus` — `applicable`, `not_applicable`, `ambiguous_overlap`, `missing_effective_date`, `integrity_failed`
+* deterministic date rule (aligned with TASK-004A); ambiguous overlap flagged, not silently resolved
+* missing effective dates flagged when both bounds are NULL
+* integrity verification on read; reuses TASK-004A status filters
+
+Tests (feature branch): **232 passed, 115 skipped**
+
+**Out of scope (preserved):** AI, RAG, embeddings, pgvector, citation assembly, answer generation, API routes
+
+**Pending:** architectural review → merge to `main` → tag
+
+---
 
 ## STATUS
 
 VERIFIED
 
-Latest suite result (main, post TASK-004A merge):
+Latest suite result (feature branch, TASK-004B):
 
-230 passed
-104 skipped (integration tests without PostgreSQL)
+232 passed
+115 skipped (integration tests without PostgreSQL)
 
 Warnings:
 
@@ -496,6 +519,7 @@ Testing currently includes:
 * validation testing
 * immutability testing
 * legal object retrieval testing (TASK-004A)
+* effective-date resolver testing (TASK-004B)
 
 ---
 
@@ -586,6 +610,7 @@ GitHub
 | TASK-003D | Legal object persistence repository contract — **MERGED / CLOSED** (tag `task-003d-merged`) |
 | TASK-003E | Legal object persistence integrity & immutability enforcement — **MERGED / CLOSED** (tag `checkpoint-task-003e`) |
 | TASK-004A | Legal object retrieval contract — **MERGED / CLOSED** (tag `checkpoint-task-004a`) |
+| TASK-004B | Effective-date resolver contract — **COMPLETE (pending review)** |
 
 ---
 
@@ -593,11 +618,11 @@ GitHub
 
 ## ACTIVE BRANCH
 
-main (no feature branch in progress)
+`feature/task-004b-effective-date-resolver-contract` (implementation `e569d57`)
 
 ## MAIN BRANCH
 
-main (at `90357ff` — TASK-004A merged; tag `checkpoint-task-004a`)
+main (at `5fc4f57` — TASK-004A merged; tag `checkpoint-task-004a`)
 
 Legal memory stack on `main`:
 
@@ -610,10 +635,10 @@ Legal memory stack on `main`:
 004A → Deterministic Legal Object Retrieval
 ```
 
-**Current boundary:** persistence, integrity, and deterministic retrieval active on `main`.
-No AI/semantic retrieval, CRUD APIs, or ingestion orchestration.
+TASK-004B (feature branch) adds time-aware effective-date resolution — **pending review before merge**.
 
-**VM snapshot:** not required before TASK-004B unless schema or persistence behavior changes.
+**Current boundary on main:** persistence, integrity, and deterministic retrieval active.
+No AI/semantic retrieval, CRUD APIs, or ingestion orchestration.
 
 ---
 
@@ -658,9 +683,9 @@ No AI/semantic retrieval, CRUD APIs, or ingestion orchestration.
 
 ## TASK-004B
 
-STATUS: **Not registered** — awaiting approved spec.
+STATUS: **Implemented on feature branch — pending architectural review.**
 
-No VM snapshot required before TASK-004B unless schema or persistence behavior changes.
+Further TASK-004 tasks not yet registered.
 
 ---
 

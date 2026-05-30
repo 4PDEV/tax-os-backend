@@ -128,12 +128,54 @@ def set_version_effective_dates(
     *,
     effective_from,
     effective_to,
+    version_id=None,
 ) -> LegalObjectVersion:
     legal_object = db_session.query(LegalObject).filter_by(legal_object_id=legal_object_id).one()
-    version = db_session.query(LegalObjectVersion).filter_by(
-        legal_object_version_id=legal_object.current_version_id
-    ).one()
+    query = db_session.query(LegalObjectVersion).filter_by(legal_object_id=legal_object_id)
+    if version_id is not None:
+        version = query.filter_by(legal_object_version_id=version_id).one()
+    else:
+        version = query.filter_by(legal_object_version_id=legal_object.current_version_id).one()
     version.effective_from = effective_from
     version.effective_to = effective_to
+    db_session.flush()
+    return version
+
+
+def add_version_row(
+    db_session,
+    *,
+    legal_object_id: str,
+    source_version_id,
+    raw_text: str,
+    object_label: str,
+    structural_unit_id: str,
+    effective_from=None,
+    effective_to=None,
+) -> LegalObjectVersion:
+    import uuid
+
+    from app.services.legal_object_persistence.status_enums import LegalObjectVersionStatus
+
+    text_hash = sha256_text(raw_text)
+    version = LegalObjectVersion(
+        legal_object_version_id=uuid.uuid4(),
+        legal_object_id=legal_object_id,
+        source_version_id=source_version_id,
+        parent_legal_object_id=None,
+        structural_unit_id=structural_unit_id,
+        object_label=object_label,
+        object_title=None,
+        start_offset=10,
+        end_offset=20,
+        raw_text=raw_text,
+        text_hash=text_hash,
+        effective_from=effective_from,
+        effective_to=effective_to,
+        version_status=LegalObjectVersionStatus.ACTIVE.value,
+        extraction_status="success",
+        created_at=utc_now(),
+    )
+    db_session.add(version)
     db_session.flush()
     return version
