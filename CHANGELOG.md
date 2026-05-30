@@ -8,6 +8,15 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Version
 
 ### Added
 
+- TASK-002B: structural source segmentation contract. New `backend/app/services/segmentation/` package with:
+  - `Segment` / `SegmentationResult` / `SegmentMetadata` / `SegmentationMetadata` strict Pydantic models (`extra="forbid"`).
+  - `SegmentType` enum (`document`, `part`, `chapter`, `section`, `article`, `clause`, `subclause`, `paragraph`, `schedule`, `unknown`) and `SegmentationStatus` enum (`pending` / `success` / `failed` / `partial`).
+  - `BaseSegmenter` interface (`can_handle`, `segment`) with mandatory `name` / `version`.
+  - Fully implemented deterministic `GenericSegmenter` with offset tracking, structural typing, and parent/child hierarchy.
+  - Skeleton `LegislativeSegmenter` raising `NotImplementedError`.
+  - `SEGMENTATION_CONTRACT.md` documentation.
+- No database persistence introduced (contract + segmentation behavior only).
+
 - TASK-001L: `ingestion_status` on `source_versions`, governed transition service, `POST /source-versions/{id}/ingestion-status`, auto `queued` on upload, `superseded` on supersede.
 - TASK-001M: `source_processing_jobs` table, queue service, internal enqueue/list/get/status APIs.
 - TASK-001N: `POST /source-processing-jobs/claim-next`, lock metadata, concurrency-safe claim via `FOR UPDATE SKIP LOCKED`.
