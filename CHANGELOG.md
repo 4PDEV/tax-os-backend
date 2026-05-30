@@ -4,7 +4,7 @@ All notable changes to `tax-os-backend` are documented here.
 
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versions align with git tags where applicable.
 
-## [Unreleased]
+## [0.2.1-task-002b] - 2026-05-30
 
 ### Added
 
@@ -16,6 +16,10 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Version
   - Skeleton `LegislativeSegmenter` raising `NotImplementedError`.
   - `SEGMENTATION_CONTRACT.md` documentation.
 - No database persistence introduced (contract + segmentation behavior only).
+
+## [Unreleased]
+
+### Added
 
 - TASK-001L: `ingestion_status` on `source_versions`, governed transition service, `POST /source-versions/{id}/ingestion-status`, auto `queued` on upload, `superseded` on supersede.
 - TASK-001M: `source_processing_jobs` table, queue service, internal enqueue/list/get/status APIs.

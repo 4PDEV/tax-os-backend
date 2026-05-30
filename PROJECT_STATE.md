@@ -115,11 +115,50 @@ Deferred:
 * AWS S3
 * Azure Blob
 * MinIO
-* upload APIs
-* ingestion agents
 
 Tag:
 v0.1.2-storage-foundation
+
+---
+
+## INGESTION / PROCESSING FOUNDATION
+
+STATUS: VERIFIED
+
+Implemented:
+
+* source upload internal API (`POST /source-versions/{id}/upload`)
+* source attachment workflow + state (`file_attached`, `attachment_status`)
+* governed `ingestion_status` state machine
+* `source_processing_jobs` queue table + service
+* enqueue / list / get / status-transition APIs
+* claim/lock API (`claim-next`, `FOR UPDATE SKIP LOCKED`)
+* result/completion APIs (`/complete`, `/fail`, ingestion sync)
+* worker contract + `NoopProcessor` + `run_next_job_once` one-shot harness
+
+No autonomous background daemon. No parsing/OCR/AI.
+
+---
+
+## SEGMENTATION FOUNDATION
+
+STATUS: VERIFIED (no DB persistence)
+
+Implemented (TASK-002B):
+
+* deterministic structural segmentation contract (`backend/app/services/segmentation/`)
+* `Segment` / `SegmentationResult` Pydantic models (strict, non-interpretive)
+* `SegmentType` (structural labels only) and `SegmentationStatus` enums
+* `BaseSegmenter` interface with mandatory `name` / `version`
+* fully implemented deterministic `GenericSegmenter` (offset tracking + parent/child hierarchy)
+* skeleton `LegislativeSegmenter` (raises `NotImplementedError`)
+
+Strictly: RAW EXTRACTED TEXT → STRUCTURED TEXT SEGMENTS. No interpretation,
+summarization, or legal inference. Every segment preserves exact source offsets
+(`raw_text == source[start:end]`). Segments are not persisted to the database yet.
+
+Tag:
+v0.2.1-task-002b
 
 ---
 
@@ -206,14 +245,23 @@ GitHub
 
 # COMPLETED TASKS
 
-| Task      | Status                                            |
-| --------- | ------------------------------------------------- |
-| TASK-001A | Runtime foundation — VERIFIED                     |
-| TASK-001D | CRUD + internal admin APIs — VERIFIED             |
-| TASK-001E | Alembic migration discipline — VERIFIED           |
-| TASK-001F | Baseline API tests — verified on VM               |
-| TASK-001G | Documentation + operational runbooks — VERIFIED   |
-| TASK-001H | Storage abstraction + checksum utility — VERIFIED |
+| Task      | Status                                              |
+| --------- | --------------------------------------------------- |
+| TASK-001A | Runtime foundation — VERIFIED                       |
+| TASK-001D | CRUD + internal admin APIs — VERIFIED               |
+| TASK-001E | Alembic migration discipline — VERIFIED             |
+| TASK-001F | Baseline API tests — verified on VM                 |
+| TASK-001G | Documentation + operational runbooks — VERIFIED     |
+| TASK-001H | Storage abstraction + checksum utility — VERIFIED   |
+| TASK-001I | Timezone-aware UTC timestamps — VERIFIED            |
+| TASK-001J | Source upload internal API — VERIFIED               |
+| TASK-001K | Source attachment workflow — VERIFIED               |
+| TASK-001L | Source ingestion status state machine — VERIFIED    |
+| TASK-001M | Source processing queue table — VERIFIED            |
+| TASK-001N | Processing job claim / lock API — VERIFIED          |
+| TASK-001O | Processing job result / completion API — VERIFIED   |
+| TASK-001P | Worker contract + no-op harness — VERIFIED          |
+| TASK-002B | Structural source segmentation contract — VERIFIED  |
 
 ---
 
@@ -221,19 +269,13 @@ GitHub
 
 ## ACTIVE BRANCH
 
-feature/task-001f-baseline-tests
+feature/task-002b-structural-segmentation-contract
 
 ## MAIN BRANCH
 
 main
 
-Feature branch currently contains:
-
-* TASK-001F
-* TASK-001G
-* TASK-001H
-
-Pending merge into main.
+TASK-002B is committed on the feature branch and tagged; pending squash merge into main.
 
 ---
 
@@ -243,6 +285,10 @@ Pending merge into main.
 * v0.1.1-crud-foundation
 * v0.1.1-task-001-foundation-verified
 * v0.1.2-storage-foundation
+* v0.1.8-processing-job-claim-api
+* v0.1.9-processing-job-result-api
+* v0.1.10-worker-contract-noop
+* v0.2.1-task-002b
 
 ---
 
