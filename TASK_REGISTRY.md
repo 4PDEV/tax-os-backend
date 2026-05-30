@@ -27,6 +27,7 @@ Bounded task tracking for `tax-os-backend`. Authoritative specs remain in `tax-o
 | TASK-002D | Canonical Citation Anchor Contract | Complete | Citation anchor contract/models/enums, `BaseCitationAnchorGenerator`, deterministic `GenericCitationAnchorGenerator` (structure-based anchors + SHA-256 id + lineage), legislative skeleton |
 | TASK-002E | Cross-Reference Detection Contract | Complete | `CrossReferenceResult`, `CrossReferenceDetector`, deterministic regex patterns, confidence model, no persistence |
 | TASK-002F | Structural Section Parser Contract | Complete | `StructuralUnit`, `StructuralParser`, hierarchy resolution, heading extraction, offset preservation, no persistence |
+| TASK-002G | Structural Legal Object Extraction Contract | Complete (pending review) | `LegalObjectExtractor`, deterministic `legal_object_id`, canonical paths, structural-unit-backed candidates; feature branch tagged `task-002g-complete`; **not merged** — OD-010 review checkpoint required |
 
 ## Status Legend
 

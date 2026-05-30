@@ -259,7 +259,7 @@ task-002e-complete, task-002e-merged (on main)
 
 ## STRUCTURAL PARSER FOUNDATION
 
-STATUS: VERIFIED (no DB persistence; feature branch — pending architectural review before merge)
+STATUS: VERIFIED (no DB persistence; merged to main)
 
 Implemented (TASK-002F):
 
@@ -271,12 +271,33 @@ Implemented (TASK-002F):
 Strictly: Extracted Text → Structural Units. Document structure detection only —
 NOT legal meaning extraction. Structural units are not persisted yet.
 
-Tag:
-task-002f-complete
+Tags:
+task-002f-complete, task-002f-merged (on main)
 
-Architectural note: TASK-002G (Legal Object Extraction) is the next major boundary
-(proto-legal intelligence). Review checkpoint required after 002F finalization
-and before 002G merge path begins.
+---
+
+## STRUCTURAL LEGAL OBJECT EXTRACTION FOUNDATION
+
+STATUS: VERIFIED (no DB persistence; feature branch — **pending architectural review before merge**)
+
+Implemented (TASK-002G):
+
+* deterministic structural legal object extraction contract (`backend/app/services/legal_object_extraction/`)
+* `LegalObjectCandidate` Pydantic model (strict, non-interpretive) with deterministic `legal_object_id`, `canonical_path`, `parent_legal_object_id`, `structural_unit_id`, offsets, `raw_text`, SHA-256 `text_hash`
+* `LegalObjectType` and `LegalObjectExtractionStatus` enums
+* `LegalObjectExtractor.extract()` — one candidate per `StructuralUnit`, structural lineage paths, parent resolution, `PARTIAL` on missing structural parent
+
+Strictly: Structural Units → Legal Object Candidates. First proto-legal-intelligence
+boundary. No legal interpretation, topic classification, authority ranking,
+conflict resolution, citation generation, or persistence.
+
+**Review checkpoint:** OD-010 is material. Two candidate-producing paths now exist at
+contract level (`segmentation` → `legal_objects` and `structure_parser` →
+`legal_object_extraction`). This is tolerable pre-persistence; **OD-010 must be
+resolved or explicitly governed before legal object persistence.**
+
+Tag:
+task-002g-complete (feature branch only; not merged)
 
 ---
 
@@ -286,10 +307,10 @@ and before 002G merge path begins.
 
 VERIFIED
 
-Verified VM result:
+Latest suite result (002G feature branch):
 
-42 passed
-0 skipped
+143 passed
+69 skipped (integration tests without PostgreSQL)
 
 Warnings:
 
@@ -384,7 +405,8 @@ GitHub
 | TASK-002C | Legal object extraction contract — VERIFIED         |
 | TASK-002D | Canonical citation anchor contract — VERIFIED       |
 | TASK-002E | Cross-reference detection contract — VERIFIED (merged to main) |
-| TASK-002F | Structural section parser contract — VERIFIED (feature branch; pending review) |
+| TASK-002F | Structural section parser contract — VERIFIED (merged to main) |
+| TASK-002G | Structural legal object extraction contract — VERIFIED (feature branch; **pending OD-010 review before merge**) |
 
 ---
 
@@ -392,16 +414,16 @@ GitHub
 
 ## ACTIVE BRANCH
 
-feature/task-002f-structural-section-parser-contract
+feature/task-002g-legal-object-extraction-contract
 
 ## MAIN BRANCH
 
-main (at `ed442e5` — TASK-002E merged)
+main (at `8626dd5` — TASK-002F merged)
 
-TASK-002A through TASK-002E are merged into main.
-TASK-002F is committed on the feature branch and tagged `task-002f-complete`;
-**not merged to main** — pending architectural review checkpoint before 002G
-(proto-legal intelligence boundary) work begins.
+TASK-002A through TASK-002F are merged into main.
+TASK-002G is committed on the feature branch and tagged `task-002g-complete`;
+**not merged to main** — formal architectural review checkpoint required (OD-010:
+dual legal object candidate paths vs persistence).
 
 ---
 
@@ -422,6 +444,8 @@ TASK-002F is committed on the feature branch and tagged `task-002f-complete`;
 * task-002e-complete
 * task-002e-merged
 * task-002f-complete
+* task-002f-merged
+* task-002g-complete (feature branch only)
 
 ---
 
@@ -485,6 +509,12 @@ foundation-first architecture discipline.
 ---
 
 # OPEN DECISIONS
+
+See [OPEN_DECISIONS.md](OPEN_DECISIONS.md) for the full decision register.
+
+**Material checkpoint (OD-010):** Two legal object candidate contracts coexist
+(`legal_objects/` segment-backed vs `legal_object_extraction/` structural-unit-backed).
+Must be resolved or explicitly governed before legal object persistence.
 
 ## StorageService Interface Scope
 

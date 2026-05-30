@@ -80,6 +80,18 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Version
   - `STRUCTURE_PARSER_CONTRACT.md` documentation.
 - No database persistence or semantic interpretation introduced (document structure detection only).
 
+## [task-002g-complete] - 2026-05-30
+
+### Added
+
+- TASK-002G: structural legal object extraction contract (proto-legal intelligence boundary). New `backend/app/services/legal_object_extraction/` package with:
+  - `LegalObjectCandidate` strict Pydantic model (`extra="forbid"`) with `source_version_id`, deterministic `legal_object_id`, `canonical_path`, `parent_legal_object_id`, `structural_unit_id`, offsets, `raw_text`, SHA-256 `text_hash`, and extraction metadata.
+  - `LegalObjectType` enum (`act`, `law`, `title`, `part`, `chapter`, `section`, `article`, `regulation`, `schedule`, `paragraph`, `subparagraph`, `definition`, `unknown`) and `LegalObjectExtractionStatus` enum (`success`, `partial`, `failed`, `unknown`).
+  - `LegalObjectExtractor.extract()` — one candidate per `StructuralUnit`, deterministic type mapping, canonical path from structural lineage (` > ` separator), SHA-256 identity (`lo_<32-hex>`), parent resolution via prior candidates, `PARTIAL` on missing structural parent.
+  - `LEGAL_OBJECT_EXTRACTION_CONTRACT.md` documentation.
+- Consumes `StructuralUnit` from `structure_parser` only; no interpretation, persistence, or AI.
+- **Architectural review checkpoint required before merge** — OD-010 (dual candidate-producing paths vs persistence) must be resolved or explicitly governed.
+
 ## [Unreleased]
 
 ### Added

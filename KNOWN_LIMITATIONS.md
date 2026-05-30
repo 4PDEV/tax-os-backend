@@ -17,6 +17,7 @@ Explicit gaps in the current `tax-os-backend` phase. Not a backlog commitment or
 - No full-text search or citation graph APIs.
 - Cross-reference detection contract exists (TASK-002E) but references are not persisted, resolved to registry entities, or ranked by authority.
 - Structural parser contract exists (TASK-002F) but structural units are not persisted; relationship to segmentation/legal-object layers not yet unified.
+- Two legal object candidate contracts coexist: `legal_objects/` (segment-backed, TASK-002C) and `legal_object_extraction/` (structural-unit-backed, TASK-002G). Both are deterministic and non-persistent; **OD-010 must be resolved before either path is persisted** (see [OPEN_DECISIONS.md](OPEN_DECISIONS.md)).
 - Source binary storage (`storage_path`) is referenced but ingestion/storage service is not part of current CRUD scope.
 
 ## Operations
