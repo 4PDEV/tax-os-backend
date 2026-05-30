@@ -170,11 +170,7 @@ def test_models_included_in_models_init():
     assert "LegalObjectDuplicate" in models_all
 
 
-def test_no_alembic_migration_created_for_legal_objects():
+def test_legal_object_migration_file_exists():
     migrations_dir = Path(__file__).resolve().parents[1] / "migrations" / "versions"
-    legal_object_migrations = [
-        path
-        for path in migrations_dir.glob("*.py")
-        if "legal_object" in path.read_text().lower()
-    ]
-    assert legal_object_migrations == []
+    migration = migrations_dir / "f7c2d9e41a83_create_legal_object_persistence_tables.py"
+    assert migration.is_file()

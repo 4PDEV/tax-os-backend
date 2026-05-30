@@ -18,6 +18,10 @@ from urllib.parse import quote_plus
 from app.models import (  # noqa: F401
     AuditLog,
     Country,
+    LegalObject,
+    LegalObjectDuplicate,
+    LegalObjectLineage,
+    LegalObjectVersion,
     SourceDocument,
     SourceProcessingJob,
     SourceRetrievalLog,
