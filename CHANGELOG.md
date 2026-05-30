@@ -13,6 +13,7 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Version
 - TASK-001N: `POST /source-processing-jobs/claim-next`, lock metadata, concurrency-safe claim via `FOR UPDATE SKIP LOCKED`.
 - TASK-001O: job complete/fail endpoints, `result_json`/`completed_by`/`failed_by`, ingestion status sync.
 - TASK-001P: worker contract, `NoopProcessor`, `run_next_job_once` one-shot harness.
+- TASK-002A: source text extraction contract (`ExtractionResult`/`ExtractionMetadata`), `ExtractionStatus` enum, SHA-256 text hashing, `BaseExtractor`, full `TxtExtractor`, skeleton `PdfExtractor`/`HtmlExtractor`. No storage persistence.
 
 ### Added (prior unreleased)
 
