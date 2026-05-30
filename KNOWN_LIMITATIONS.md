@@ -17,7 +17,7 @@ Explicit gaps in the current `tax-os-backend` phase. Not a backlog commitment or
 - No full-text search or citation graph APIs.
 - Cross-reference detection contract exists (TASK-002E) but references are not persisted, resolved to registry entities, or ranked by authority.
 - Structural parser contract exists (TASK-002F) but structural units are not persisted; relationship to segmentation/legal-object layers not yet unified.
-- Two upstream candidate pipelines coexist; TASK-002H convergence governs OD-010 at contract level. TASK-003A schema contract and TASK-003B SQLAlchemy ORM models exist — **no Alembic migration or persistence services yet**; tables are not created in PostgreSQL until a future approved migration task.
+- TASK-003A schema contract, TASK-003B ORM models, and TASK-003C Alembic migration (`f7c2d9e41a83`) materialize legal object tables in PostgreSQL when `alembic upgrade head` is applied. **No persistence services, repositories, or CRUD APIs yet** — tables exist but no write path from converged candidates.
 - Source binary storage (`storage_path`) is referenced but ingestion/storage service is not part of current CRUD scope.
 
 ## Operations

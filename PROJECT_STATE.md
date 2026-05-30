@@ -356,21 +356,37 @@ task-003a-complete, task-003a-merged (on main)
 
 ## LEGAL OBJECT SQLALCHEMY MODELS
 
-STATUS: VERIFIED (ORM definitions only; feature branch — **pending architectural review before merge**)
+STATUS: VERIFIED (ORM definitions only; merged to main)
 
 Implemented (TASK-003B):
 
-* SQLAlchemy ORM models in `backend/app/models/`:
-  * `LegalObject`, `LegalObjectVersion`, `LegalObjectLineage`, `LegalObjectDuplicate`
+* SQLAlchemy ORM models in `backend/app/models/`
 * aligned with TASK-003A schema contract
-* registered in `backend/app/models/__init__.py` for Alembic discovery
 * `legal_object_id` externally supplied — no random ID generation on identity PK
 
-Strictly: **ORM Definitions** — NOT migrations, repositories, CRUD, or persistence execution.
-No Alembic revision in this task.
+Tags:
+task-003b-complete, task-003b-merged (on main)
+
+---
+
+## LEGAL OBJECT ALEMBIC MIGRATION
+
+STATUS: VERIFIED (feature branch — **pending architectural review before merge**)
+
+Implemented (TASK-003C):
+
+* Alembic revision `f7c2d9e41a83` — `create legal object persistence tables`
+* materializes: `legal_objects`, `legal_object_versions`, `legal_object_lineage`, `legal_object_duplicates`
+* indexes and `ck_legal_object_versions_offsets` per TASK-003A contract
+* downgrade drops tables in reverse dependency order
+* legal object models registered in `backend/migrations/env.py`
+
+Strictly: **Database Materialization** — NOT repositories, CRUD, persistence services, or ingestion wiring.
 
 Tag:
-task-003b-complete (feature branch only; not merged)
+task-003c-complete (feature branch only; not merged)
+
+Alembic head (after merge): `f7c2d9e41a83`
 
 ---
 
@@ -380,10 +396,10 @@ task-003b-complete (feature branch only; not merged)
 
 VERIFIED
 
-Latest suite result (003B feature branch):
+Latest suite result (003C feature branch):
 
-202 passed
-69 skipped (integration tests without PostgreSQL)
+208 passed
+75 skipped (integration tests without PostgreSQL; 6 migration integration tests when DB reachable)
 
 Warnings:
 
@@ -483,7 +499,8 @@ GitHub
 | TASK-002H | Legal object candidate convergence contract — VERIFIED (merged to main) |
 | TASK-002I | Legal object persistence planning contract — VERIFIED (merged to main) |
 | TASK-003A | Canonical legal object persistence schema contract — VERIFIED (merged to main) |
-| TASK-003B | Canonical legal object SQLAlchemy models — VERIFIED (feature branch; **pending review before merge**) |
+| TASK-003B | Canonical legal object SQLAlchemy models — VERIFIED (merged to main) |
+| TASK-003C | Canonical legal object Alembic migration — VERIFIED (feature branch; **pending review before merge**) |
 
 ---
 
@@ -491,16 +508,16 @@ GitHub
 
 ## ACTIVE BRANCH
 
-feature/task-003b-legal-object-sqlalchemy-models
+feature/task-003c-legal-object-alembic-migration
 
 ## MAIN BRANCH
 
-main (at `3d2ffb1` — TASK-003A merged)
+main (at `5320e07` — TASK-003B merged)
 
-TASK-002A through TASK-003A are merged into main.
-TASK-003B is committed on the feature branch;
-**not merged to main** — architectural review required (ORM models only;
-no Alembic migration in this task).
+TASK-002A through TASK-003B are merged into main.
+TASK-003C is committed on the feature branch;
+**not merged to main** — architectural review required (first DB materialization;
+no persistence services in this task).
 
 ---
 
@@ -530,7 +547,9 @@ no Alembic migration in this task).
 * task-002i-merged
 * task-003a-complete
 * task-003a-merged
-* task-003b-complete (feature branch only)
+* task-003b-complete
+* task-003b-merged
+* task-003c-complete (feature branch only)
 
 ---
 
@@ -597,9 +616,9 @@ foundation-first architecture discipline.
 
 See [OPEN_DECISIONS.md](OPEN_DECISIONS.md) for the full decision register.
 
-**OD-010 (governed through TASK-003B):** Convergence, planning, and schema contract
-govern persistence inputs. TASK-003B adds SQLAlchemy ORM model definitions aligned
-with TASK-003A — **Alembic migration still required** before tables exist in PostgreSQL.
+**OD-010 (governed through TASK-003C):** Schema contract, ORM models, and Alembic
+migration (`f7c2d9e41a83`) materialize legal object tables. Persistence services,
+repositories, and CRUD remain blocked.
 
 ## StorageService Interface Scope
 

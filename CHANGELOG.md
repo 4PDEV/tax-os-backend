@@ -141,6 +141,20 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Version
   - Aligned with TASK-003A schema contract; `legal_object_id` externally supplied (no random PK default)
   - Models registered in `backend/app/models/__init__.py` for future Alembic discovery
 - **No Alembic migrations**, repositories, CRUD APIs, or persistence services introduced.
+- Merged to main — tag `task-003b-merged`.
+
+## [task-003c-complete] - 2026-05-30
+
+### Added
+
+- TASK-003C: canonical legal object Alembic migration (`f7c2d9e41a83`). Creates PostgreSQL tables:
+  - `legal_objects`, `legal_object_versions`, `legal_object_lineage`, `legal_object_duplicates`
+  - Indexes per TASK-003A schema contract; `ck_legal_object_versions_offsets` check constraint
+  - Circular FK (`current_version_id`) resolved via deferred FK after versions table creation
+  - Downgrade drops tables in reverse dependency order
+  - Legal object models imported in `backend/migrations/env.py`
+  - `backend/tests/test_legal_object_alembic_migration.py` — migration structure and integration verification
+- **No repositories, CRUD APIs, persistence services, or ingestion wiring.**
 
 ## [Unreleased]
 
