@@ -17,7 +17,27 @@ All schema changes must be expressed as Alembic revisions, reviewed, and applied
 | `backend/migrations/versions/` | Revision files |
 | `backend/migrations/env.py` | Runtime URL from `backend/.env` |
 
-Current head: **`fd6be8e34b7b`** (`create_source_registry_tables`).
+Current head: **`f7c2d9e41a83`** (`create legal object persistence tables`).
+
+Previous head: `e5f2a8c31b74` (`add processing job result metadata`).
+
+### Legal object persistence tables (TASK-003C)
+
+Revision `f7c2d9e41a83` materializes:
+
+- `legal_objects`
+- `legal_object_versions`
+- `legal_object_lineage`
+- `legal_object_duplicates`
+
+Verify upgrade/downgrade cycle:
+
+```bash
+alembic upgrade head
+alembic downgrade -1
+alembic upgrade head
+pytest -q backend/tests/test_legal_object_alembic_migration.py
+```
 
 ## Prerequisites
 

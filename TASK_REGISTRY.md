@@ -31,7 +31,8 @@ Bounded task tracking for `tax-os-backend`. Authoritative specs remain in `tax-o
 | TASK-002H | Legal Object Candidate Convergence Contract | Complete | OD-010 governed at contract level; merged — tag `task-002h-merged` |
 | TASK-002I | Legal Object Persistence Planning Contract | Complete | Persistence governance only; merged — tag `task-002i-merged` |
 | TASK-003A | Canonical Legal Object Persistence Schema Contract | Complete | Schema planning only; merged — tag `task-003a-merged` |
-| TASK-003B | Canonical Legal Object SQLAlchemy Models | Complete (pending review) | ORM definitions only; four models in `app/models/`; **not merged** — no migration in this task |
+| TASK-003B | Canonical Legal Object SQLAlchemy Models | Complete | ORM definitions; merged — tag `task-003b-merged` |
+| TASK-003C | Canonical Legal Object Alembic Migration | Complete (pending review) | Revision `f7c2d9e41a83`; four tables materialized; **not merged** — architectural review required |
 
 ## Status Legend
 
