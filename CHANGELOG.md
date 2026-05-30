@@ -58,6 +58,17 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Version
 - Anchors derive only from stable structural inputs (no DB IDs, UUID randomness, timestamps, AI, or raw-text hashing as primary anchor).
 - No database persistence, migrations, or registry storage introduced (contract + deterministic generation only).
 
+## [task-002e-complete] - 2026-05-30
+
+### Added
+
+- TASK-002E: cross-reference detection contract. New `backend/app/services/cross_reference/` package with:
+  - `CrossReferenceResult` strict Pydantic model (`extra="forbid"`) with `source_version_id`, `source_location`, `reference_text`, `reference_type`, `target_candidate`, `confidence`, `detected_at`, `detector_version`.
+  - `ReferenceType` enum (`section`, `article`, `regulation`, `schedule`, `part`, `chapter`, `act`, `law`, `guidance`, `case`, `treaty`, `unknown`) and deterministic `ReferenceConfidence` (`high`, `medium`, `low`).
+  - `CrossReferenceDetector` with regex-based `detect()` — Section/Article/Regulation/Schedule/Part/Chapter patterns, range patterns (medium confidence), vague phrase patterns (low confidence), and surface `target_candidate` extraction from ``of the X Act`` phrases.
+  - `CROSS_REFERENCE_CONTRACT.md` documentation.
+- No database persistence, graph storage, or interpretation layer introduced (identify/record/link only).
+
 ## [Unreleased]
 
 ### Added

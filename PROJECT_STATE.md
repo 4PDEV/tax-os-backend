@@ -236,6 +236,27 @@ Canonical Citation Anchors.
 
 ---
 
+## CROSS-REFERENCE DETECTION FOUNDATION
+
+STATUS: VERIFIED (no DB persistence; feature branch — pending architectural review before merge)
+
+Implemented (TASK-002E):
+
+* deterministic cross-reference detection contract (`backend/app/services/cross_reference/`)
+* `CrossReferenceResult` Pydantic model (strict, non-interpretive)
+* `ReferenceType` and deterministic `ReferenceConfidence` enums
+* `CrossReferenceDetector` with regex-only `detect()` (Section/Article/Regulation/Schedule/Part/Chapter + ranges + vague phrases)
+* surface `target_candidate` extraction from ``of the X Act`` phrases (no resolution)
+
+Strictly: identify, record, link — NOT interpret, prioritize, or reason. Every
+result requires `source_version_id`. Cross-references are not persisted and are
+not resolved to registry entities yet.
+
+Tag:
+task-002e-complete
+
+---
+
 # TESTING STATUS
 
 ## STATUS
@@ -339,6 +360,7 @@ GitHub
 | TASK-002B | Structural source segmentation contract — VERIFIED  |
 | TASK-002C | Legal object extraction contract — VERIFIED         |
 | TASK-002D | Canonical citation anchor contract — VERIFIED       |
+| TASK-002E | Cross-reference detection contract — VERIFIED (feature branch; pending review) |
 
 ---
 
@@ -346,15 +368,16 @@ GitHub
 
 ## ACTIVE BRANCH
 
-feature/task-002d-citation-anchor-contract
+feature/task-002e-cross-reference-detection-contract
 
 ## MAIN BRANCH
 
-main
+main (at `07181d3` — TASK-002D merged)
 
-TASK-002A, TASK-002B, and TASK-002C are merged into main (no-ff merges; 002A+002B
-integration tagged `v0.2.2-post-merge-stabilization`).
-TASK-002D is committed on the feature branch and tagged `v0.2.4-task-002d`; pending merge into main.
+TASK-002A through TASK-002D are merged into main.
+TASK-002E is committed on the feature branch and tagged `task-002e-complete`;
+**not merged to main** — pending architectural review, integration checkpoint,
+and ingestion pipeline review before merge.
 
 ---
 
@@ -372,6 +395,7 @@ TASK-002D is committed on the feature branch and tagged `v0.2.4-task-002d`; pend
 * v0.2.2-post-merge-stabilization
 * v0.2.3-task-002c
 * v0.2.4-task-002d
+* task-002e-complete
 
 ---
 
