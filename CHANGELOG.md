@@ -90,7 +90,20 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Version
   - `LegalObjectExtractor.extract()` — one candidate per `StructuralUnit`, deterministic type mapping, canonical path from structural lineage (` > ` separator), SHA-256 identity (`lo_<32-hex>`), parent resolution via prior candidates, `PARTIAL` on missing structural parent.
   - `LEGAL_OBJECT_EXTRACTION_CONTRACT.md` documentation.
 - Consumes `StructuralUnit` from `structure_parser` only; no interpretation, persistence, or AI.
-- **Architectural review checkpoint required before merge** — OD-010 (dual candidate-producing paths vs persistence) must be resolved or explicitly governed.
+- Merged to main — tag `task-002g-merged`.
+
+## [task-002h-complete] - 2026-05-30
+
+### Added
+
+- TASK-002H: legal object candidate convergence contract (OD-010 contract-level resolution). New `backend/app/services/legal_object_convergence/` package with:
+  - `ConvergedLegalObjectCandidate` strict Pydantic model wrapping canonical `legal_object_extraction.models.LegalObjectCandidate`.
+  - `ConvergenceSource` enum (`structural_unit`, `segment`, `legacy`, `unknown`) and `ConvergenceStatus` enum (`canonical`, `mapped`, `partial`, `rejected`).
+  - `LegalObjectCandidateMapper` — structural pass-through as `CANONICAL`; segment/legacy mapping with canonical identity regeneration via `generate_legal_object_id`; explicit `REJECTED` for unmappable inputs.
+  - `LegalObjectCandidateValidator` — required-field, text-hash, identity, offset, and duplicate-ID checks.
+  - `LEGAL_OBJECT_CONVERGENCE_CONTRACT.md` documentation.
+- Establishes persistence gate: all future legal object candidates must converge to one canonical shape before persistence planning.
+- No database persistence, migrations, or CRUD introduced.
 
 ## [Unreleased]
 

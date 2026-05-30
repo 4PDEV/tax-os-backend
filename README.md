@@ -105,6 +105,7 @@ Initial jurisdiction focus: **Rwanda**. Initial tax domains: VAT, PAYE/PIT, WHT,
 | [CROSS_REFERENCE_CONTRACT.md](CROSS_REFERENCE_CONTRACT.md) | Cross-reference detection contract and detector |
 | [STRUCTURE_PARSER_CONTRACT.md](STRUCTURE_PARSER_CONTRACT.md) | Structural section parser contract and parser |
 | [LEGAL_OBJECT_EXTRACTION_CONTRACT.md](backend/app/services/legal_object_extraction/LEGAL_OBJECT_EXTRACTION_CONTRACT.md) | Structural legal object extraction contract (structural units → candidates) |
+| [LEGAL_OBJECT_CONVERGENCE_CONTRACT.md](backend/app/services/legal_object_convergence/LEGAL_OBJECT_CONVERGENCE_CONTRACT.md) | Legal object candidate convergence contract (OD-010; canonical shape enforcement) |
 
 ## Governance
 
