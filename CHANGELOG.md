@@ -4,6 +4,19 @@ All notable changes to `tax-os-backend` are documented here.
 
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versions align with git tags where applicable.
 
+## [0.2.1-task-002b] - 2026-05-30
+
+### Added
+
+- TASK-002B: structural source segmentation contract. New `backend/app/services/segmentation/` package with:
+  - `Segment` / `SegmentationResult` / `SegmentMetadata` / `SegmentationMetadata` strict Pydantic models (`extra="forbid"`).
+  - `SegmentType` enum (`document`, `part`, `chapter`, `section`, `article`, `clause`, `subclause`, `paragraph`, `schedule`, `unknown`) and `SegmentationStatus` enum (`pending` / `success` / `failed` / `partial`).
+  - `BaseSegmenter` interface (`can_handle`, `segment`) with mandatory `name` / `version`.
+  - Fully implemented deterministic `GenericSegmenter` with offset tracking, structural typing, and parent/child hierarchy.
+  - Skeleton `LegislativeSegmenter` raising `NotImplementedError`.
+  - `SEGMENTATION_CONTRACT.md` documentation.
+- No database persistence introduced (contract + segmentation behavior only).
+
 ## [0.2.0-task-002a] - 2026-05-30
 
 ### Added

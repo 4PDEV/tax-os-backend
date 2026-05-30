@@ -162,6 +162,28 @@ v0.2.0-task-002a
 
 ---
 
+## SEGMENTATION FOUNDATION
+
+STATUS: VERIFIED (no DB persistence)
+
+Implemented (TASK-002B):
+
+* deterministic structural segmentation contract (`backend/app/services/segmentation/`)
+* `Segment` / `SegmentationResult` Pydantic models (strict, non-interpretive)
+* `SegmentType` (structural labels only) and `SegmentationStatus` enums
+* `BaseSegmenter` interface with mandatory `name` / `version`
+* fully implemented deterministic `GenericSegmenter` (offset tracking + parent/child hierarchy)
+* skeleton `LegislativeSegmenter` (raises `NotImplementedError`)
+
+Strictly: RAW EXTRACTED TEXT → STRUCTURED TEXT SEGMENTS. No interpretation,
+summarization, or legal inference. Every segment preserves exact source offsets
+(`raw_text == source[start:end]`). Segments are not persisted to the database yet.
+
+Tag:
+v0.2.1-task-002b
+
+---
+
 # TESTING STATUS
 
 ## STATUS
@@ -245,23 +267,24 @@ GitHub
 
 # COMPLETED TASKS
 
-| Task      | Status                                                  |
-| --------- | ------------------------------------------------------- |
-| TASK-001A | Runtime foundation — VERIFIED                           |
-| TASK-001D | CRUD + internal admin APIs — VERIFIED                   |
-| TASK-001E | Alembic migration discipline — VERIFIED                 |
-| TASK-001F | Baseline API tests — verified on VM                     |
-| TASK-001G | Documentation + operational runbooks — VERIFIED         |
-| TASK-001H | Storage abstraction + checksum utility — VERIFIED       |
-| TASK-001I | Timezone-aware UTC timestamps — VERIFIED                |
-| TASK-001J | Source upload internal API — VERIFIED                   |
-| TASK-001K | Source attachment workflow — VERIFIED                   |
-| TASK-001L | Source ingestion status state machine — VERIFIED        |
-| TASK-001M | Source processing queue table — VERIFIED                |
-| TASK-001N | Processing job claim / lock API — VERIFIED              |
-| TASK-001O | Processing job result / completion API — VERIFIED       |
-| TASK-001P | Worker contract + no-op harness — VERIFIED              |
-| TASK-002A | Source text extraction contract — VERIFIED              |
+| Task      | Status                                              |
+| --------- | --------------------------------------------------- |
+| TASK-001A | Runtime foundation — VERIFIED                       |
+| TASK-001D | CRUD + internal admin APIs — VERIFIED               |
+| TASK-001E | Alembic migration discipline — VERIFIED             |
+| TASK-001F | Baseline API tests — verified on VM                 |
+| TASK-001G | Documentation + operational runbooks — VERIFIED     |
+| TASK-001H | Storage abstraction + checksum utility — VERIFIED   |
+| TASK-001I | Timezone-aware UTC timestamps — VERIFIED            |
+| TASK-001J | Source upload internal API — VERIFIED               |
+| TASK-001K | Source attachment workflow — VERIFIED               |
+| TASK-001L | Source ingestion status state machine — VERIFIED    |
+| TASK-001M | Source processing queue table — VERIFIED            |
+| TASK-001N | Processing job claim / lock API — VERIFIED          |
+| TASK-001O | Processing job result / completion API — VERIFIED   |
+| TASK-001P | Worker contract + no-op harness — VERIFIED          |
+| TASK-002A | Source text extraction contract — VERIFIED          |
+| TASK-002B | Structural source segmentation contract — VERIFIED  |
 
 ---
 
@@ -269,13 +292,14 @@ GitHub
 
 ## ACTIVE BRANCH
 
-feature/task-002a-source-text-extraction-contract
+main
 
 ## MAIN BRANCH
 
 main
 
-TASK-002A is committed on the feature branch and tagged; pending squash merge into main.
+TASK-002A and TASK-002B are merged into main (no-ff merges), with implementation
+tags `v0.2.0-task-002a` and `v0.2.1-task-002b` preserved in history.
 
 ---
 
@@ -289,6 +313,7 @@ TASK-002A is committed on the feature branch and tagged; pending squash merge in
 * v0.1.9-processing-job-result-api
 * v0.1.10-worker-contract-noop
 * v0.2.0-task-002a
+* v0.2.1-task-002b
 
 ---
 

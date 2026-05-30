@@ -99,6 +99,7 @@ Initial jurisdiction focus: **Rwanda**. Initial tax domains: VAT, PAYE/PIT, WHT,
 | [SOURCE_PROCESSING_WORKFLOW.md](SOURCE_PROCESSING_WORKFLOW.md) | Processing queue and job finalization |
 | [WORKER_CONTRACT.md](WORKER_CONTRACT.md) | Worker processor contract and no-op harness |
 | [EXTRACTION_CONTRACT.md](EXTRACTION_CONTRACT.md) | Source text extraction contract and extractors |
+| [SEGMENTATION_CONTRACT.md](SEGMENTATION_CONTRACT.md) | Structural source segmentation contract and segmenters |
 
 ## Governance
 
