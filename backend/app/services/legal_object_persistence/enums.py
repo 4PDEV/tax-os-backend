@@ -9,3 +9,11 @@ class PersistenceStatus(str, Enum):
     DUPLICATE_DETECTED = "duplicate_detected"
     REJECTED = "rejected"
     FAILED = "failed"
+
+
+class IntegrityOperationStatus(str, Enum):
+    """Result status for integrity lifecycle operations."""
+
+    SUCCESS = "success"
+    REJECTED = "rejected"
+    FAILED = "failed"

@@ -408,16 +408,49 @@ Merge commit: `82e2e79`
 
 ---
 
+## LEGAL OBJECT PERSISTENCE INTEGRITY
+
+STATUS: **COMPLETE — pending architectural review** (TASK-003E on feature branch)
+
+Branch: `feature/task-003e-legal-object-persistence-integrity`
+Implementation commit: `52994a4`
+
+Implemented (TASK-003E):
+
+* integrity & immutability enforcement (`backend/app/services/legal_object_persistence/`)
+* deterministic content integrity hashing (`integrity_hash.py`) — stable fields only; volatile fields excluded
+* source traceability validation — requires resolvable `source_version_id` and `source_document`
+* status discipline — `draft`, `active`, `superseded`, `archived`, `rejected` (app + DB CHECK constraints)
+* `LegalObjectIntegrityService` — `archive_legal_object`, `supersede_legal_object`, guarded `update_legal_object`
+* hard delete prohibited at repository layer; archive/supersede preserve historical rows
+* `legal_object_lineage` writes — `parent_child`, `supersedes`, `superseded_by`
+* `legal_object_duplicates` writes — cross-object hash collision recorded; no auto-merge
+* transaction rollback on persistence failure
+* `audit_log` writes for create, duplicate, archive, supersede lifecycle events
+* Alembic `b8d4e1a92c05` — status CHECK constraints + `UNIQUE (legal_object_id, text_hash)`
+
+Tests (feature branch): **224 passed, 89 skipped**
+
+**Out of scope (preserved):**
+
+* CRUD APIs, ingestion orchestration, UI, answer engine
+* duplicate resolution logic (records only; review deferred)
+* direct SQL immutability (application-layer enforcement only)
+
+**Pending:** architectural review → merge to `main` → tag `checkpoint-task-003e` (after merge only)
+
+---
+
 # TESTING STATUS
 
 ## STATUS
 
 VERIFIED
 
-Latest suite result (main, post TASK-003D merge):
+Latest suite result (feature branch, TASK-003E):
 
-213 passed
-80 skipped (integration tests without PostgreSQL)
+224 passed
+89 skipped (integration tests without PostgreSQL)
 
 Warnings:
 
@@ -520,7 +553,7 @@ GitHub
 | TASK-003B | Canonical legal object SQLAlchemy models — VERIFIED (merged to main) |
 | TASK-003C | Canonical legal object Alembic migration — VERIFIED (merged to main) |
 | TASK-003D | Legal object persistence repository contract — **MERGED / CLOSED** (tag `task-003d-merged`) |
-| TASK-003E | Legal object persistence integrity & immutability enforcement — **APPROVED, not started** |
+| TASK-003E | Legal object persistence integrity & immutability enforcement — **COMPLETE (pending review)** |
 
 ---
 
@@ -528,17 +561,21 @@ GitHub
 
 ## ACTIVE BRANCH
 
-main (no feature branch in progress)
+`feature/task-003e-legal-object-persistence-integrity` (implementation `52994a4`)
 
 ## MAIN BRANCH
 
-main (at `82e2e79` — TASK-003D merged)
+main (at `82e2e79` + governance `d48366e` — TASK-003D merged)
 
 TASK-002A through TASK-003D are merged into main.
-Persistence stack: 003A schema contract → 003B ORM → 003C migration → 003D controlled write path.
+TASK-003E is complete on feature branch — **pending architectural review before merge**.
 
-**Current boundary:** persistence write path exists; automatic ingestion wiring, CRUD APIs, and
-lineage/duplicate table writes do not (lineage/duplicate writes targeted by TASK-003E).
+Persistence stack on main: 003A schema contract → 003B ORM → 003C migration → 003D controlled write path.
+003E (feature branch) adds integrity enforcement layer on top of 003D write path.
+
+**Current boundary on main:** persistence write path exists; integrity enforcement, lineage/duplicate
+writes, and DB integrity constraints are on feature branch only until merge.
+Automatic ingestion wiring and CRUD APIs remain blocked.
 
 ---
 
@@ -579,26 +616,7 @@ lineage/duplicate table writes do not (lineage/duplicate writes targeted by TASK
 
 # NEXT APPROVED TASKS
 
-## TASK-003E
-
-Legal Object Persistence Integrity & Immutability Enforcement
-
-STATUS: APPROVED — not started
-
-Focus:
-
-* immutability enforcement on version rows
-* transaction safety and rollback behavior
-* `legal_object_lineage` table writes
-* `legal_object_duplicates` table writes
-* stronger repository tests
-
-Out of scope:
-
-* CRUD APIs
-* ingestion orchestration
-* UI
-* answer engine
+*(None registered — TASK-003E pending review/merge)*
 
 ---
 
@@ -663,11 +681,10 @@ foundation-first architecture discipline.
 
 See [OPEN_DECISIONS.md](OPEN_DECISIONS.md) for the full decision register.
 
-**OD-010 (governed through TASK-003D; integrity work in TASK-003E):** Convergence → schema →
-ORM → migration → **repository write path** (`LegalObjectPersistenceService`). CRUD APIs and
-ingestion wiring remain blocked. **`legal_object_lineage` and `legal_object_duplicates` table
-writes remain deferred on main** — duplicate detection is lookup-only; lineage/duplicate
-persistence is the primary scope of TASK-003E.
+**OD-010 (governed through TASK-003E feature branch):** Convergence → schema → ORM → migration →
+repository write path → **integrity enforcement** (`LegalObjectIntegrityService`, lineage/duplicate
+writes, hash/traceability guards). CRUD APIs and ingestion wiring remain blocked on all branches.
+Merge of TASK-003E required before integrity controls are active on `main`.
 
 ## StorageService Interface Scope
 

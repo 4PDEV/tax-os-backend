@@ -34,7 +34,7 @@ Bounded task tracking for `tax-os-backend`. Authoritative specs remain in `tax-o
 | TASK-003B | Canonical Legal Object SQLAlchemy Models | Complete | ORM definitions; merged — tag `task-003b-merged` |
 | TASK-003C | Canonical Legal Object Alembic Migration | Complete | Revision `f7c2d9e41a83`; merged — tag `task-003c-merged` |
 | TASK-003D | Legal Object Persistence Repository Contract | Complete (merged) | Write path from `ConvergedLegalObjectCandidate`; merged — tag `task-003d-merged` |
-| TASK-003E | Legal Object Persistence Integrity & Immutability Enforcement | Planned | Immutability enforcement, transaction safety, lineage/duplicate table writes, stronger repository tests; **not started** |
+| TASK-003E | Legal Object Persistence Integrity & Immutability Enforcement | Complete (pending review) | Integrity hashing, immutability guards, lineage/duplicate writes, supersession/archive; branch `feature/task-003e-legal-object-persistence-integrity` @ `52994a4`; **not merged** |
 
 ## Status Legend
 
