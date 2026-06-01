@@ -272,8 +272,6 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Version
 
 - VM snapshot not required before next TASK-004 task unless schema or persistence behavior changes.
 
-- VM snapshot not required before next TASK-004 task unless schema or persistence behavior changes.
-
 ## [task-004c-complete] - 2026-05-30
 
 ### Added
@@ -288,12 +286,22 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Version
   - Deterministic ordering inherited from retrieval/resolution — no ranking or authority weighting
   - `CITATION_CANDIDATE_CONTRACT.md` documentation
 - Feature branch: `feature/task-004c-citation-candidate-contract` @ `2e419d8`
-- Tests: 11 citation candidate tests; full suite 350 passed (PostgreSQL)
+- Tests: 11 citation candidate tests; full suite 350 passed (PostgreSQL VM)
 - **No final citation formatting, persistence, API routes, AI, RAG, embeddings, or schema changes.**
 
-### Pending
+## [checkpoint-task-004c] - 2026-05-30
 
-- Architectural review, merge, tag (`checkpoint-task-004c`)
+### Added
+
+- TASK-004C merged to `main` — merge commit `1349eb7`.
+- **Citation candidate preparation baseline frozen** at tag `checkpoint-task-004c`.
+- Architectural review: **APPROVED FOR MERGE** (seven confirmations; blocker scan: NONE).
+- Stack on `main`: 003A → 003B → 003C → 003D → 003E → 004A → 004B → 004C.
+
+### Notes
+
+- Forward-governance notes for TASK-004D recorded in `KNOWN_LIMITATIONS.md`.
+- VM snapshot not required before TASK-004D unless schema or persistence behavior changes.
 
 ## [Unreleased]
 

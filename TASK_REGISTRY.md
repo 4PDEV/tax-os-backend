@@ -37,7 +37,7 @@ Bounded task tracking for `tax-os-backend`. Authoritative specs remain in `tax-o
 | TASK-003E | Legal Object Persistence Integrity & Immutability Enforcement | Complete (merged) | Integrity baseline frozen — tag `checkpoint-task-003e`; merge `0213fb1` |
 | TASK-004A | Legal Object Retrieval Contract | Complete (merged) | Deterministic retrieval — tag `checkpoint-task-004a`; merge `90357ff` |
 | TASK-004B | Effective-Date Resolver Contract | Complete (merged) | Time-aware resolution — tag `checkpoint-task-004b`; merge `08efa3b` |
-| TASK-004C | Citation Candidate Contract | In progress | Citation-ready DTO preparation — branch `feature/task-004c-citation-candidate-contract`; pending review |
+| TASK-004C | Citation Candidate Contract | Complete (merged) | Citation-ready DTO preparation — tag `checkpoint-task-004c`; merge `1349eb7` |
 
 ## Status Legend
 
