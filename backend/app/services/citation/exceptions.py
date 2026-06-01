@@ -15,3 +15,7 @@ class MissingLocationReferenceError(CitationAssemblyError):
 
 class LegalObjectVersionMismatchError(CitationAssemblyError):
     """Raised when the pinned version does not belong to the legal object."""
+
+
+class SourceDocumentMismatchError(CitationAssemblyError):
+    """Raised when source_version lineage does not match the legal object source document."""

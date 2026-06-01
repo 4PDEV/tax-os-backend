@@ -32,8 +32,16 @@ This establishes **Authority → Citation**, not **Authority → Meaning**.
 
 ## Version awareness
 
-Citations require an explicit `legal_object_version_id`. The assembler never resolves
-“latest” or `current_version_id` implicitly.
+Citations require an explicit `legal_object_version_id` on input **and** on output (`CitationResult.legal_object_version_id`).
+The assembler never resolves “latest” or `current_version_id` implicitly.
+
+Citations are version-pinned outputs, not only version-pinned inputs.
+
+## Citation identity
+
+- `citation_hash` and `citation_id` include `legal_object_version_id`.
+- Citation identity must **not** rely on `legal_object_id` alone.
+- Same `legal_object_id` with different `legal_object_version_id` values must produce different `citation_hash` and `citation_id`.
 
 ## Source traceability
 
@@ -41,10 +49,11 @@ Assembly fails when:
 
 - `source_version_id` cannot be resolved
 - `location_reference` cannot be built (missing `object_label`)
+- `source_version.source_document_id` does not match `legal_object.source_document_id` (`SourceDocumentMismatchError`)
 
 ## Hash
 
-`citation_hash = SHA-256(source_version_id | legal_object_id | location_reference)`
+`citation_hash = SHA-256(source_version_id | legal_object_id | legal_object_version_id | location_reference)`
 
 ## Immutability
 

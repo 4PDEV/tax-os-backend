@@ -15,6 +15,7 @@ from app.services.citation.exceptions import (
     LegalObjectVersionMismatchError,
     MissingLocationReferenceError,
     MissingSourceVersionError,
+    SourceDocumentMismatchError,
 )
 from app.services.citation.formatter import CitationFormatter
 from app.services.citation.hash import citation_id_from_hash, compute_citation_hash
@@ -111,6 +112,11 @@ class CitationAssembler:
                 f"source version not found: {version.source_version_id}"
             )
 
+        if source_version.source_document_id != legal_object.source_document_id:
+            raise SourceDocumentMismatchError(
+                "source_version.source_document_id does not match legal_object.source_document_id"
+            )
+
         document = (
             db.query(SourceDocument)
             .filter(SourceDocument.id == legal_object.source_document_id)
@@ -129,6 +135,7 @@ class CitationAssembler:
         citation_hash = compute_citation_hash(
             source_version_id=source_version.id,
             legal_object_id=legal_object.legal_object_id,
+            legal_object_version_id=version.legal_object_version_id,
             location_reference=location_reference,
         )
 
@@ -151,6 +158,7 @@ class CitationAssembler:
             source_document_id=document.id,
             source_version_id=source_version.id,
             legal_object_id=legal_object.legal_object_id,
+            legal_object_version_id=version.legal_object_version_id,
             authority_type=authority_type,
             source_title=document.title,
             official_reference=document.official_reference,

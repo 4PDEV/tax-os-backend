@@ -9,6 +9,7 @@ from app.services.citation.exceptions import (
     LegalObjectVersionMismatchError,
     MissingLocationReferenceError,
     MissingSourceVersionError,
+    SourceDocumentMismatchError,
 )
 from app.services.citation.formatter import CitationFormatter
 from app.services.citation.models import (
@@ -32,4 +33,5 @@ __all__ = [
     "MissingLocationReferenceError",
     "MissingSourceVersionError",
     "PROHIBITED_CITATION_ASSEMBLY_CAPABILITIES",
+    "SourceDocumentMismatchError",
 ]

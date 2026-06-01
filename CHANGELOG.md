@@ -326,6 +326,18 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Version
 
 - Architectural review, merge, tag (`checkpoint-task-004d`)
 
+## [task-004d-amendment-a] - 2026-06-01
+
+### Changed
+
+- TASK-004D-AMENDMENT-A: citation identity hardening (pre-merge, feature branch).
+  - `CitationResult.legal_object_version_id` — mandatory output field
+  - `citation_hash` includes `legal_object_version_id` (same `legal_object_id`, different version → different hash/id)
+  - `SourceDocumentMismatchError` when `source_version.source_document_id` ≠ `legal_object.source_document_id`
+  - Contract doc updated; 4 new tests (20 total citation tests on VM)
+- **Status:** implemented / pending renewed architecture review
+- **Do not merge** until review passes
+
 ## [Unreleased]
 
 ### Added

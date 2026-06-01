@@ -12,9 +12,12 @@ def compute_citation_hash(
     *,
     source_version_id: UUID,
     legal_object_id: str,
+    legal_object_version_id: UUID,
     location_reference: str,
 ) -> str:
-    payload = f"{source_version_id}|{legal_object_id}|{location_reference}"
+    payload = (
+        f"{source_version_id}|{legal_object_id}|{legal_object_version_id}|{location_reference}"
+    )
     return sha256_text(payload)
 
 

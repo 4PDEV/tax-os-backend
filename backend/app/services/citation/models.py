@@ -54,6 +54,7 @@ class CitationResult(BaseModel):
     source_document_id: UUID
     source_version_id: UUID
     legal_object_id: str
+    legal_object_version_id: UUID
     authority_type: AuthorityType
     source_title: str
     official_reference: str | None = None

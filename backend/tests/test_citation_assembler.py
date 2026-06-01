@@ -15,6 +15,7 @@ from app.services.citation import (
     LegalObjectVersionMismatchError,
     MissingLocationReferenceError,
     MissingSourceVersionError,
+    SourceDocumentMismatchError,
 )
 from app.services.citation.hash import compute_citation_hash
 from app.services.citation.location import build_location_reference
@@ -47,18 +48,135 @@ def test_build_location_reference_rejects_empty_label():
 
 def test_citation_hash_deterministic():
     version_id = uuid4()
+    legal_object_version_id = uuid4()
     first = compute_citation_hash(
         source_version_id=version_id,
         legal_object_id="lo_abc",
+        legal_object_version_id=legal_object_version_id,
         location_reference="Section 15",
     )
     second = compute_citation_hash(
         source_version_id=version_id,
         legal_object_id="lo_abc",
+        legal_object_version_id=legal_object_version_id,
         location_reference="Section 15",
     )
     assert first == second
     assert len(first) == 64
+
+
+def test_citation_hash_differs_by_legal_object_version_id():
+    source_version_id = uuid4()
+    shared = dict(
+        source_version_id=source_version_id,
+        legal_object_id="lo_abc",
+        location_reference="Section 15",
+    )
+    first = compute_citation_hash(legal_object_version_id=uuid4(), **shared)
+    second = compute_citation_hash(legal_object_version_id=uuid4(), **shared)
+    assert first != second
+
+
+@pytest.mark.integration
+def test_citation_result_includes_legal_object_version_id(db_session):
+    _, _, _, version = seed_source_version(db_session)
+    candidate = persist_candidate(
+        db_session,
+        make_candidate(source_version_id=str(version.id)),
+    )
+    legal_object = db_session.query(LegalObject).filter_by(
+        legal_object_id=candidate.legal_object_id
+    ).one()
+    legal_object_version = db_session.query(LegalObjectVersion).filter_by(
+        legal_object_id=candidate.legal_object_id
+    ).one()
+
+    result = CitationAssembler().assemble(
+        db_session,
+        legal_object,
+        legal_object_version_id=legal_object_version.legal_object_version_id,
+    )
+    assert result.legal_object_version_id == legal_object_version.legal_object_version_id
+
+
+@pytest.mark.integration
+def test_different_legal_object_versions_produce_different_citation_identity(db_session):
+    _, _, _, version = seed_source_version(db_session)
+    candidate = persist_candidate(
+        db_session,
+        make_candidate(source_version_id=str(version.id)),
+    )
+    first_version = db_session.query(LegalObjectVersion).filter_by(
+        legal_object_id=candidate.legal_object_id
+    ).one()
+
+    add_version_row(
+        db_session,
+        legal_object_id=candidate.legal_object_id,
+        source_version_id=version.id,
+        raw_text="Alternate version text.",
+        object_label="Section 15",
+        structural_unit_id="su-0001",
+        effective_from=date(2025, 1, 1),
+        effective_to=date(2025, 12, 31),
+    )
+    second_version = (
+        db_session.query(LegalObjectVersion)
+        .filter(LegalObjectVersion.legal_object_id == candidate.legal_object_id)
+        .filter(LegalObjectVersion.legal_object_version_id != first_version.legal_object_version_id)
+        .one()
+    )
+    legal_object = db_session.query(LegalObject).filter_by(
+        legal_object_id=candidate.legal_object_id
+    ).one()
+
+    first_result = CitationAssembler().assemble(
+        db_session,
+        legal_object,
+        legal_object_version_id=first_version.legal_object_version_id,
+    )
+    second_result = CitationAssembler().assemble(
+        db_session,
+        legal_object,
+        legal_object_version_id=second_version.legal_object_version_id,
+    )
+
+    assert first_result.legal_object_id == second_result.legal_object_id
+    assert first_result.legal_object_version_id != second_result.legal_object_version_id
+    assert first_result.citation_hash != second_result.citation_hash
+    assert first_result.citation_id != second_result.citation_id
+
+
+def test_source_document_mismatch_fails():
+    assembler = CitationAssembler()
+    legal_object = MagicMock(source_document_id=uuid4())
+    version = MagicMock(
+        object_label="Section 15",
+        source_version_id=uuid4(),
+        legal_object_version_id=uuid4(),
+    )
+    source_version = MagicMock(
+        id=version.source_version_id,
+        source_document_id=uuid4(),
+        version_label="v1",
+        publication_date=None,
+        effective_from=None,
+        effective_to=None,
+    )
+    db = MagicMock()
+    db.query.return_value.filter.return_value.first.side_effect = [
+        source_version,
+        MagicMock(
+            id=legal_object.source_document_id,
+            source_type="law",
+            authority_level="national",
+            title="VAT Law",
+            official_reference=None,
+        ),
+    ]
+
+    with pytest.raises(SourceDocumentMismatchError):
+        assembler._assemble_from_version(db, legal_object, version)
 
 
 @pytest.mark.integration
@@ -93,6 +211,7 @@ def test_citation_generation(db_session):
     assert result.source_document_id == document.id
     assert result.source_version_id == version.id
     assert result.legal_object_id == candidate.legal_object_id
+    assert result.legal_object_version_id == legal_object_version.legal_object_version_id
     assert result.authority_type == AuthorityType.STATUTE
     assert result.source_title == "VAT Law"
     assert result.location_reference == "Section 15"

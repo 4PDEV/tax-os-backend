@@ -548,7 +548,9 @@ Implemented (TASK-004D):
 * source traceability enforcement — fails on missing `source_version_id` or `location_reference`
 * version awareness — never resolves implicit latest / `current_version_id`
 
-Tests (feature branch VM): **16 citation assembly tests passed** (11 assembler + 5 formatter unit/integration)
+Tests (feature branch VM): **20 citation assembly tests passed** (formatter + assembler; post AMENDMENT-A)
+
+**TASK-004D-AMENDMENT-A (Citation Identity Hardening):** implemented on feature branch; pending renewed review. Adds `CitationResult.legal_object_version_id`, hash includes version pin, `SourceDocumentMismatchError` for document lineage consistency.
 
 **Out of scope (preserved):** answer generation, citation ranking, authority weighting, legal reasoning, AI, semantic search, retrieval, topic classification, API routes, citation persistence, database migrations
 
