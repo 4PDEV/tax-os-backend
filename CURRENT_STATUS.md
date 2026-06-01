@@ -1,0 +1,165 @@
+# Current Status
+
+**Canonical high-level platform status** (TASK-DOC-001).  
+For detailed historical sections, see [PROJECT_STATE.md](PROJECT_STATE.md). For task-level tracking, see [TASK_REGISTRY.md](TASK_REGISTRY.md).
+
+**Last realigned:** 2026-06-01  
+**Branch:** `main`  
+**Alembic head:** `c9a2f3b81d06` (ingestion persistence tables)
+
+---
+
+## Current Architecture Phase
+
+**Legal memory, temporal governance, and ingestion persistence — test hardening gate**
+
+The platform is materially beyond early foundation. Core registry, processing queue, extraction/parser **contracts**, legal-object **persistence**, citation **governance**, temporal **governance**, and ingestion **artifact persistence** are in place on `main`.
+
+**Active gate:** full-suite test stability (**TEST-GAP-001**) must be resolved before workers, agent expansion, or further migration-heavy work.
+
+**Environments:** development and internal staging only. No public production deployment.
+
+---
+
+## Completed Major Milestones
+
+| Layer | Milestone | Tasks / artifacts |
+|-------|-----------|-------------------|
+| Foundation | Source registry, versioning, migrations, CRUD, storage, upload, processing queue | TASK-001* |
+| Extraction contracts | Deterministic text extraction (no AI) | TASK-002A |
+| Segmentation / parser contracts | Structural segmentation, section parser, cross-refs | TASK-002B–F, 002E |
+| Legal object governance | Extraction, convergence, schema, ORM, migration, repository, integrity | TASK-002G–I, 003A–E |
+| Citation governance | Retrieval, effective-date resolver, candidates, assembly + identity hardening | TASK-004A–D, 004D-AMENDMENT-A |
+| Temporal governance | Architecture spec, resolution amendments, pre-merge cleanup | TASK-005A-SPEC, 005B, 005C |
+| Ingestion persistence | Append-only extraction/parser tables and services | TASK-006A |
+
+**Checkpoint tags (selected):** `checkpoint-task-003e` … `checkpoint-task-005a-spec`
+
+---
+
+## Temporal Governance Milestone (TASK-005A / 005B / 005C)
+
+**Status:** MERGED / CLOSED on `main` (merge `43c6ad0`, tag `checkpoint-task-005a-spec`)
+
+| Item | Location |
+|------|----------|
+| Authoritative temporal architecture | [TEMPORAL_VERSIONING_ARCHITECTURE.md](TEMPORAL_VERSIONING_ARCHITECTURE.md) (v1.1.1) |
+| Task specs | [TASKS/TASK-005A-*.md](TASKS/), [TASKS/TASK-005B-*.md](TASKS/) |
+| Addendum V6 | `tax-os-architecture/ADDENDUMS/ADDENDUM_V6_TEMPORAL_RESOLUTION_AND_VERSION_PINNING.md` |
+| Merge record | [MERGE_SUMMARY_TASK-005A.md](MERGE_SUMMARY_TASK-005A.md) |
+
+**Doctrine now canonical:**
+
+* No silent temporal inference
+* Explicit version pinning (never assume latest)
+* Ambiguity preservation (no silent resolution)
+* Derived temporal status (not stored as mutable truth)
+* Transaction/applicability date vs knowledge date distinction
+* Citation temporal rules at governance level (Addendum V6; C1 resolved in docs)
+
+**TASK-005C:** Pre-merge consistency cleanup (IMP-1–3, IMP-5) — status vocabulary, derived-status matrix, terminology — merged with 005A branch, not a separate implementation track.
+
+---
+
+## Ingestion Persistence Milestone (TASK-006A)
+
+**Status:** IMPLEMENTED / ACCEPTED FOR TARGETED REVIEW (commit `acc32e4`)
+
+* Tables: `extraction_runs`, `extracted_texts`, `parser_runs`, `parsed_structures`, `ingestion_state_transitions`
+* Services: `backend/app/services/ingestion/`
+* Append-only, failed-run preservation, SHA-256 hashes
+* Pipeline artifact states **separate** from `source_versions.ingestion_status` (worker queue)
+
+**Not yet wired:** autonomous workers, ingestion APIs, artifact → legal-object automation.
+
+**Validation:** ingestion tests 12/12 (PostgreSQL VM).
+
+---
+
+## Current Approved Task
+
+| Task | Title | Why now |
+|------|-------|---------|
+| **TASK-006B** | Test Isolation & Full-Suite Stability | Resolve **TEST-GAP-001** before pipeline/agents/migrations |
+
+See [IMPLEMENTATION_ROADMAP.md](IMPLEMENTATION_ROADMAP.md) for full sequencing.
+
+### TASK-006B resequencing (mandatory)
+
+An earlier roadmap draft labeled **TASK-006B** as *Source Monitoring Agent Contract*. That sequencing is **superseded**.
+
+After TASK-006A, migration and persistence complexity exposed **test instability risk**. **Test stabilization now correctly precedes agent expansion.** The approved **TASK-006B** is **Test Isolation & Full-Suite Stability** only.
+
+---
+
+## Deferred Tasks
+
+| Task | Title | Status | Reason |
+|------|-------|--------|--------|
+| **TASK-004E** | Citation Temporal Compliance Remediation | **DEFERRED / TRACKED** | Known bounded gap: `CitationAssembler` date fallback vs Addendum V6. Not blocking ingestion pipeline. Spec: [TASKS/TASK-004E-CITATION-TEMPORAL-COMPLIANCE-REMEDIATION.md](TASKS/TASK-004E-CITATION-TEMPORAL-COMPLIANCE-REMEDIATION.md). Tracked as OD-016. |
+
+Do not implement TASK-004E unless it blocks active work.
+
+---
+
+## Known Gaps
+
+| ID | Gap | Impact | Owner task |
+|----|-----|--------|------------|
+| **TEST-GAP-001** | Full-suite instability in legal-object integrity / retrieval tests during 006A validation | Suite not fully trustworthy for merge confidence | **TASK-006B** |
+| **OD-016** | Citation assembler temporal code vs governance | Citation output may not match Addendum V6 until TASK-004E | TASK-004E (deferred) |
+| **OD-017 / OD-018** | 003E reconciliation, overlap disclosure | Non-blocking governance follow-ups | Future review |
+
+Ingestion workers, embeddings, answer engine, public ingestion APIs: **not started** (by design).
+
+---
+
+## Governance Status
+
+| Area | Status |
+|------|--------|
+| Architecture repo | Authoritative for addenda and cross-repo doctrine |
+| Task specs | `TASKS/TASK-<ID>-*.md` required for review |
+| Task tracking | [TASK_REGISTRY.md](TASK_REGISTRY.md) |
+| Open decisions | [OPEN_DECISIONS.md](OPEN_DECISIONS.md) |
+| Temporal architecture | [TEMPORAL_VERSIONING_ARCHITECTURE.md](TEMPORAL_VERSIONING_ARCHITECTURE.md) |
+| Implementation sequencing | [IMPLEMENTATION_ROADMAP.md](IMPLEMENTATION_ROADMAP.md) |
+| Phase evolution map | [ARCHITECTURE_PHASE_MAP.md](ARCHITECTURE_PHASE_MAP.md) |
+
+---
+
+## Merge Stability Status
+
+| Item | Status |
+|------|--------|
+| `main` | TASK-006A + governance closeout pushed |
+| Last major merge | TASK-005A temporal governance (`43c6ad0`, `--no-ff`) |
+| Checkpoint tags | Through `checkpoint-task-005a-spec` |
+| Test confidence | **Partial** — ingestion 12/12; full suite under TEST-GAP-001 |
+
+---
+
+## Stabilization Priorities
+
+1. **TASK-006B** — isolate and fix test harness / transaction isolation (TEST-GAP-001)
+2. Restore full-suite green on PostgreSQL VM before workers or large migrations
+3. Then: ingestion worker wiring (future bounded task), not before 006B
+
+---
+
+## Next Major Architectural Goal
+
+After test hardening: connect ingestion persistence to processing workers in a **bounded** task (no agent/AI scope creep), preserving append-only discipline and temporal governance.
+
+Longer horizon (not approved for immediate implementation): agent layer → retrieval layer → answer assembly. See [ARCHITECTURE_PHASE_MAP.md](ARCHITECTURE_PHASE_MAP.md).
+
+---
+
+## Architectural Sequencing (summary)
+
+```text
+FOUNDATION → EXTRACTION CONTRACTS → LEGAL OBJECT GOVERNANCE → CITATION GOVERNANCE
+→ TEMPORAL GOVERNANCE → INGESTION PERSISTENCE → [TEST HARDENING] → AGENT LAYER → …
+```
+
+**You are here:** ingestion persistence complete; **test hardening** is the approved next step.

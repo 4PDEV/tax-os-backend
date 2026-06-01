@@ -61,11 +61,13 @@ tax-os-backend/
 
 | Area | Status |
 |------|--------|
-| Core registry tables | Operational |
-| Alembic migrations | Head `fd6be8e34b7b` |
-| Admin CRUD APIs | Operational (countries, tax_types, source_documents, source_versions) |
-| Baseline API tests (TASK-001F) | Implemented; **merge acceptance requires VM verification** against running PostgreSQL |
-| Documentation / runbook (TASK-001G) | This task |
+| Platform phase | Legal memory + temporal governance + ingestion persistence (see [CURRENT_STATUS.md](CURRENT_STATUS.md)) |
+| Alembic migrations | Head `c9a2f3b81d06` |
+| Approved next task | **TASK-006B** — Test Isolation & Full-Suite Stability (TEST-GAP-001) |
+| Admin CRUD APIs | Operational |
+| Legal object / citation contracts | Merged on `main` (003A–004D) |
+| Temporal governance | Merged (005A–005C); tag `checkpoint-task-005a-spec` |
+| Ingestion artifact persistence | TASK-006A on `main` |
 
 Initial jurisdiction focus: **Rwanda**. Initial tax domains: VAT, PAYE/PIT, WHT, corporate tax, capital gains, customs & excise (registry phase only).
 
@@ -90,7 +92,10 @@ Initial jurisdiction focus: **Rwanda**. Initial tax domains: VAT, PAYE/PIT, WHT,
 | [TASK_EXECUTION_STANDARD.md](TASK_EXECUTION_STANDARD.md) | Task implementation rules |
 | [INCIDENT_RESPONSE.md](INCIDENT_RESPONSE.md) | Failure handling |
 | [RELEASE_CHECKLIST.md](RELEASE_CHECKLIST.md) | Release discipline |
-| [PROJECT_STATE.md](PROJECT_STATE.md) | Canonical current state |
+| [CURRENT_STATUS.md](CURRENT_STATUS.md) | **Canonical** high-level platform status (onboarding) |
+| [IMPLEMENTATION_ROADMAP.md](IMPLEMENTATION_ROADMAP.md) | Authoritative task sequencing (COMPLETE / NEXT / DEFERRED) |
+| [ARCHITECTURE_PHASE_MAP.md](ARCHITECTURE_PHASE_MAP.md) | Architecture phase evolution map |
+| [PROJECT_STATE.md](PROJECT_STATE.md) | Detailed milestone history |
 | [KNOWN_LIMITATIONS.md](KNOWN_LIMITATIONS.md) | Known gaps |
 | [OPEN_DECISIONS.md](OPEN_DECISIONS.md) | Pending decisions |
 | [CHANGELOG.md](CHANGELOG.md) | Version history |

@@ -4,13 +4,17 @@
 
 Source-Referenced Business & Tax Research Platform
 
+> **Onboarding:** Prefer [CURRENT_STATUS.md](CURRENT_STATUS.md) for canonical high-level status, [IMPLEMENTATION_ROADMAP.md](IMPLEMENTATION_ROADMAP.md) for sequencing, and [ARCHITECTURE_PHASE_MAP.md](ARCHITECTURE_PHASE_MAP.md) for phase evolution. This file retains detailed milestone history.
+
 ---
 
 # CURRENT PLATFORM STATUS
 
 ## STATUS
 
-FOUNDATION PHASE ACTIVE
+LEGAL MEMORY, TEMPORAL GOVERNANCE & INGESTION PERSISTENCE — TEST HARDENING GATE
+
+(Former label “FOUNDATION PHASE ACTIVE” is stale; foundation is complete. See CURRENT_STATUS.md.)
 
 The platform has successfully established the initial deterministic backend foundation required for:
 

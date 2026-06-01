@@ -398,6 +398,22 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Version
   - **Deferred tracked:** IMP-4 (OD-017), IMP-6 (OD-018)
 - Architectural review: **APPROVED FOR MERGE**
 
+## [task-doc-001] - 2026-06-01
+
+### Added
+
+- TASK-DOC-001: master status document realignment.
+  - [CURRENT_STATUS.md](CURRENT_STATUS.md) — canonical high-level status
+  - [IMPLEMENTATION_ROADMAP.md](IMPLEMENTATION_ROADMAP.md) — COMPLETE / APPROVED NEXT / DEFERRED / FUTURE
+  - [ARCHITECTURE_PHASE_MAP.md](ARCHITECTURE_PHASE_MAP.md) — phase evolution for onboarding
+  - TASK-006B resequencing documented (test stability supersedes draft Source Monitoring Agent 006B)
+  - Temporal (005A–C), ingestion (006A), TEST-GAP-001, deferred TASK-004E
+
+### Changed
+
+- [PROJECT_STATE.md](PROJECT_STATE.md) — phase label corrected; pointers to canonical status docs
+- [README.md](README.md) — documentation index and development status table updated
+
 ## [task-006a-complete] - 2026-06-01
 
 ### Added
