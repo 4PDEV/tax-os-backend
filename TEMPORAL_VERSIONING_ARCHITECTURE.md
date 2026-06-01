@@ -342,7 +342,10 @@ Everything else in the platform depends on this capability.
 
 | Document | Role |
 |----------|------|
+| [TASKS/TASK-005A-REVIEWER-PACKAGE.md](TASKS/TASK-005A-REVIEWER-PACKAGE.md) | **Reviewer index** — all files required for TASK-005A review |
 | [TASKS/TASK-005A-TEMPORAL-VERSIONING-ARCHITECTURE-SPEC.md](TASKS/TASK-005A-TEMPORAL-VERSIONING-ARCHITECTURE-SPEC.md) | Approved task specification |
+| [architecture-references/README.md](architecture-references/README.md) | Cross-repo paths to `tax-os-architecture` |
+| [ADDENDUM_V5 (architecture repo)](../tax-os-architecture/ADDENDUMS/ADDENDUM_V5_TEMPORAL_AND_VERSIONING_GOVERNANCE.md) | Temporal & versioning governance addendum |
 | [backend/app/services/effective_date/EFFECTIVE_DATE_RESOLVER_CONTRACT.md](backend/app/services/effective_date/EFFECTIVE_DATE_RESOLVER_CONTRACT.md) | Implemented per-object date resolution |
 | [backend/app/services/citation/CITATION_ASSEMBLY_CONTRACT.md](backend/app/services/citation/CITATION_ASSEMBLY_CONTRACT.md) | Version-pinned citations |
 | [KNOWN_LIMITATIONS.md](KNOWN_LIMITATIONS.md) | Deferred hardening items |
