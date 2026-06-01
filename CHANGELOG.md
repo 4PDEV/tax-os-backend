@@ -355,6 +355,49 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Version
 - Non-blocking citation follow-ups recorded in `OPEN_DECISIONS.md`.
 - VM snapshot not required — no schema or persistence behavior changes.
 
+- VM snapshot not required — no schema or persistence behavior changes.
+
+## [task-005a-spec-complete] - 2026-06-01
+
+### Added
+
+- TASK-005A-SPEC: temporal & versioning architecture specification (documentation only).
+  - `TEMPORAL_VERSIONING_ARCHITECTURE.md` — authoritative temporal architecture
+  - `TASKS/TASK-005A-TEMPORAL-VERSIONING-ARCHITECTURE-SPEC.md` — approved task spec
+  - Temporal philosophy, versioning philosophy, amendment chains, future law, as-of query model
+  - Answer-date resolution contract `resolve_authorities_as_of()` — specified, not implemented
+  - Conflict preservation rules; version selection governance (never assume latest)
+- Feature branch: `feature/task-005a-temporal-versioning-architecture-spec`
+- **No code, migrations, APIs, answer engine, or AI.**
+
+### Pending
+
+- Review and merge (documentation-only)
+
+## [task-005b-complete] - 2026-06-01
+
+### Changed
+
+- TASK-005B: temporal resolution governance amendments following Claude architecture review (documentation only).
+  - `ADDENDUM_V6_TEMPORAL_RESOLUTION_AND_VERSION_PINNING.md` — no silent inheritance, derived temporal status, transaction vs knowledge date, answer disclosure, `current_version_id` governance, citation temporal doctrine
+  - `TEMPORAL_VERSIONING_ARCHITECTURE.md` v1.1.0 — cross-references and clarifications
+  - `CITATION_ASSEMBLY_CONTRACT.md` — C1 governance resolution (no silent source-version date inheritance)
+  - `TASK-005A-TEMPORAL-VERSIONING-ARCHITECTURE-SPEC.md` — Addendum V6 cross-reference
+  - Known gap documented: `CitationAssembler` date fallback requires future code task
+- **No code, schema, API, or test changes.**
+
+## [task-005a-pre-merge-cleanup] - 2026-06-01
+
+### Changed
+
+- Pre-merge cleanup per final architectural assessment (documentation only):
+  - **IMP-1:** Status vocabulary reconciliation — `source_versions`, `ingestion_status`, legal object statuses, derived temporal status
+  - **IMP-2:** Total derived-status matrix (single-null-bound cases; default unknown with disclosure)
+  - **IMP-3:** Terminology — transaction/applicability date only; removed "query date" from derivation semantics
+  - **IMP-5:** TASK-004E registered — Citation Temporal Compliance Remediation (`TASK_REGISTRY`, `OPEN_DECISIONS` OD-016)
+  - **Deferred tracked:** IMP-4 (OD-017), IMP-6 (OD-018)
+- Architectural review: **APPROVED FOR MERGE**
+
 ## [Unreleased]
 
 ### Added

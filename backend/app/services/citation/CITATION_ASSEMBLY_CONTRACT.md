@@ -55,6 +55,27 @@ Assembly fails when:
 
 `citation_hash = SHA-256(source_version_id | legal_object_id | legal_object_version_id | location_reference)`
 
+## Temporal metadata on citations (TASK-005B — resolves C1)
+
+Citation assembly must distinguish three classes of temporal information:
+
+| Class | Source | Use in citation |
+|-------|--------|-----------------|
+| **Source version temporal metadata** | `source_versions` (publication, instrument effective dates) | May appear only when labeled as source-level metadata |
+| **Legal object temporal applicability** | `legal_object_versions.effective_from` / `effective_to` | Primary dates for provision applicability in citation output |
+| **Citation assembly timestamp** | `CitationResult.assembled_at` | When the citation DTO was built — not legal effective date |
+
+### Rules (governance)
+
+1. Citations may display effective dates **only when** those dates come from the legal object version or from **explicitly provenance-marked** inherited/derived metadata.
+2. Citations must **not** silently treat `source_version.effective_from` / `effective_to` as legal-object applicability dates.
+3. If the legal object version has **no** effective dates, citation output must **not** imply applicability dates by falling back to source-version dates without provenance disclosure.
+4. Missing dates remain **unknown** — not inferred.
+
+### Implementation note
+
+Current `CitationAssembler` uses `version.effective_from or source_version.effective_from` for `CitationResult` and formatter input. This pattern is **non-compliant with Addendum V6** and must be remediated in a future bounded implementation task. TASK-005B updates governance only.
+
 ## Immutability
 
 Assembled citations are in-memory DTOs only — **no persistence** in TASK-004D.

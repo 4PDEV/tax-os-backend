@@ -20,6 +20,7 @@ Examples:
 | Artifact | Role |
 |----------|------|
 | `TASKS/TASK-*.md` | Full approved spec — **reviewer source of truth** |
+| `TASKS/TASK-*-REVIEWER-PACKAGE.md` | Index of all files required for review (when present) |
 | `TASK_REGISTRY.md` | Status tracking only (not a substitute for the spec) |
 | `*/CONTRACT.md` under `backend/app/services/` | Runtime contract documentation in code |
 

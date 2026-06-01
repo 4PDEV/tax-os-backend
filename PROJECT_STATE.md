@@ -565,6 +565,43 @@ Tests (post-merge VM): **20 citation assembly tests passed**
 
 ---
 
+## TEMPORAL & VERSIONING ARCHITECTURE
+
+STATUS: **SPECIFICATION COMPLETE — APPROVED FOR MERGE** (TASK-005A-SPEC + TASK-005B on feature branch)
+
+**Architectural review:** APPROVED FOR MERGE (Claude — no CRITICAL findings; C1 resolved at governance level; CitationAssembler gap deferred to TASK-004E).
+
+**Pre-merge cleanup (IMP-1–3, IMP-5):** completed on branch — status vocabulary reconciliation, total derived-status matrix, transaction/applicability date terminology, TASK-004E registered.
+
+Authoritative document: `TEMPORAL_VERSIONING_ARCHITECTURE.md` (v1.1.0 post–005B)  
+Task specs: `TASKS/TASK-005A-TEMPORAL-VERSIONING-ARCHITECTURE-SPEC.md`, `TASKS/TASK-005B-TEMPORAL-RESOLUTION-GOVERNANCE-AMENDMENT.md`  
+Governance addendum: `ADDENDUM_V6_TEMPORAL_RESOLUTION_AND_VERSION_PINNING.md` (architecture repo)
+
+**TASK-005B (merged into branch):** Claude review amendments — no silent temporal inheritance (C1), derived temporal status (C3/I5), transaction vs knowledge date (I1), answer disclosure (I2), `current_version_id` semantics (I3), citation contract C1 resolution at governance level.
+
+Documented (TASK-005A-SPEC):
+
+* temporal philosophy — past, present, future, unknown
+* temporal axes — publication, effective from/to, retrieval, processing
+* versioning philosophy — nothing overwritten; reproducible history
+* source version governance — statuses, supersession chain
+* legal object temporal model — effective dates + source_version_id
+* amendment chain model — supersedes / superseded_by relationships
+* future law support — published but not yet effective
+* temporal query model — jurisdiction, tax type, question, **as-of date**
+* answer-date resolution contract — `resolve_authorities_as_of()` (spec only; not implemented)
+* temporal conflict handling — preserve ambiguity; never silently guess
+* authority-type temporal extensions — court, guidance, treaty, accounting (specified, not implemented)
+* version selection principle — never assume latest; date-aware explicit pins
+
+**Out of scope (preserved):** answer engine, legal reasoning, authority ranking, temporal AI, effective-date inference, code changes
+
+**Pending:** review, merge (documentation-only)
+
+**VM snapshot:** not required — specification only; no schema or code changes.
+
+---
+
 ## STATUS
 
 VERIFIED
@@ -691,11 +728,11 @@ GitHub
 
 ## ACTIVE BRANCH
 
-main (no feature branch in progress)
+`feature/task-005a-temporal-versioning-architecture-spec` (TASK-005A-SPEC — pending review)
 
 ## MAIN BRANCH
 
-main (at `0588637` — TASK-004D merged; tag `checkpoint-task-004d`)
+main (at `cd9f176` — TASK-004D governance closeout; merge `0588637`; tag `checkpoint-task-004d`)
 
 Legal memory stack on `main`:
 
@@ -759,9 +796,9 @@ Legal memory stack on `main`:
 
 # NEXT APPROVED TASKS
 
-*(None registered — awaiting next TASK-004 spec)*
+TASK-005A-SPEC — Temporal & Versioning Architecture: **approved for merge** (documentation-only). Post-merge: TASK-004E (citation temporal compliance code).
 
-**VM snapshot:** not required unless next task changes schema or persistence behavior.
+**VM snapshot:** not required — TASK-005A-SPEC is documentation only.
 
 ---
 
