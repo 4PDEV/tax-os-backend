@@ -33,6 +33,12 @@ Pending architectural or operational decisions. Resolve via `tax-os-architecture
 | OD-017 | 003E enforcement reconciliation (IMP-4) | Align documented immutability rules with all read/update paths; post-merge review | Deferred / future review |
 | OD-018 | Overlap ambiguity disclosure (IMP-6) | Enrich `AMBIGUOUS_OVERLAP` results with conflicting version identifiers for operators | Deferred / future review |
 
+## Test gaps (QA)
+
+| ID | Topic | Context | Status |
+|----|-------|---------|--------|
+| TEST-GAP-001 | Full-suite instability | Full-suite instability observed in legal-object integrity / retrieval tests during TASK-006A validation. Ingestion tests passed 12/12. Investigation deferred to bounded QA task (**TASK-006B**) before next migration-heavy task. | Open — blocks push confidence until TASK-006B |
+
 ## Decision Log (Closed)
 
 | ID | Decision | Date |

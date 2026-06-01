@@ -398,6 +398,20 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Version
   - **Deferred tracked:** IMP-4 (OD-017), IMP-6 (OD-018)
 - Architectural review: **APPROVED FOR MERGE**
 
+## [task-006a-complete] - 2026-06-01
+
+### Added
+
+- TASK-006A: source ingestion persistence layer.
+  - Tables: `extraction_runs`, `extracted_texts`, `parser_runs`, `parsed_structures`, `ingestion_state_transitions`
+  - Services: `backend/app/services/ingestion/` (append-only, SHA-256, governed pipeline artifact states)
+  - Alembic: `c9a2f3b81d06`
+  - Ingestion tests: 12/12 passed (PostgreSQL VM)
+
+### Notes
+
+- **TEST-GAP-001:** full-suite instability in legal-object integrity / retrieval tests during validation — see `OPEN_DECISIONS.md`. Next: **TASK-006B**.
+
 ## [checkpoint-task-005a-spec] - 2026-06-01
 
 ### Merged

@@ -602,19 +602,41 @@ Documented (TASK-005A-SPEC):
 
 ---
 
+## SOURCE INGESTION PERSISTENCE (TASK-006A)
+
+STATUS: **IMPLEMENTED — ACCEPTED FOR TARGETED REVIEW** (commit `acc32e4` on `main`; push allowed after TEST-GAP-001 recorded)
+
+Implemented:
+
+* append-only `extraction_runs` / `extracted_texts` / `parser_runs` / `parsed_structures`
+* governed pipeline artifact states (`ingestion_state_transitions`) — separate from `source_versions.ingestion_status`
+* deterministic SHA-256 hashing for text and parsed structures
+* failed-run preservation; immutability discipline
+* Alembic revision `c9a2f3b81d06`
+
+**Validation:** ingestion tests 12/12 passed (PostgreSQL VM).
+
+**Test gap:** **TEST-GAP-001** — full-suite instability in legal-object integrity / retrieval tests during 006A validation; see `OPEN_DECISIONS.md`. **TASK-006B** (test isolation & full-suite stability) is next before workers or further pipeline complexity.
+
+**Out of scope (preserved):** workers, orchestration, APIs, embeddings, legal-object wiring from ingestion artifacts
+
+---
+
 ## STATUS
 
-VERIFIED
+VERIFIED (ingestion layer); **FULL SUITE UNDER REVIEW** (TEST-GAP-001)
 
-Latest suite result (main, post TASK-004D merge):
+Latest targeted result (TASK-006A validation, PostgreSQL VM):
 
-370 passed (PostgreSQL VM; includes 20 citation assembly tests)
-115 skipped (integration tests without PostgreSQL)
+* ingestion persistence tests: 12 passed
+* full suite: intermittent failures in `test_legal_object_persistence_integrity.py` and `test_retrieval_service.py` — tracked as TEST-GAP-001
+
+Prior baseline (main, post TASK-004D merge): 370 passed, 115 skipped (integration without PostgreSQL).
 
 Warnings:
 
 * timezone-aware UTC cleanup still pending
-* no failing tests currently known
+* full-suite stability investigation required (TASK-006B) before treating CI/VM suite as fully green
 
 Testing currently includes:
 
@@ -723,6 +745,7 @@ GitHub
 | TASK-004D | Citation assembly contract — **MERGED / CLOSED** (tag `checkpoint-task-004d`) |
 | TASK-005A-SPEC | Temporal & versioning architecture — **MERGED / CLOSED** (tag `checkpoint-task-005a-spec`) |
 | TASK-005B | Temporal resolution governance amendment — **MERGED / CLOSED** (with 005A-SPEC) |
+| TASK-006A | Source ingestion persistence layer — **IMPLEMENTED** (commit `acc32e4`; Alembic `c9a2f3b81d06`) |
 
 ---
 
@@ -734,7 +757,7 @@ GitHub
 
 ## MAIN BRANCH
 
-main (at post–TASK-005A governance closeout; merge `43c6ad0`; tag `checkpoint-task-005a-spec`)
+main (TASK-006A implemented `acc32e4`; TEST-GAP-001 recorded; push after governance note)
 
 Legal memory stack on `main`:
 
@@ -750,9 +773,10 @@ Legal memory stack on `main`:
 004D → Citation Assembly (+ AMENDMENT-A identity hardening)
 005A-SPEC → Temporal & Versioning Architecture (governance)
 005B → Temporal Resolution Governance (Addendum V6 alignment)
+006A → Source Ingestion Persistence (extraction/parser artifacts)
 ```
 
-**Current boundary:** persistence, integrity, retrieval, effective-date resolution, citation candidates, deterministic citation assembly, and **canonical temporal/versioning governance** active on `main`. Citation identity is version-pinned on input and output; source document lineage is enforced. `CitationAssembler` temporal compliance deferred to TASK-004E. No answer generation, no citation persistence, no API routes.
+**Current boundary:** persistence, integrity, retrieval, effective-date resolution, citation candidates, deterministic citation assembly, **canonical temporal/versioning governance**, and **ingestion artifact persistence** active on `main`. Citation identity is version-pinned; `CitationAssembler` temporal compliance deferred to TASK-004E. Ingestion workers/API wiring not started. No answer generation, no citation persistence, no public API routes for ingestion artifacts.
 
 **VM snapshot:** not required before next task unless schema or persistence behavior changes.
 
@@ -801,9 +825,11 @@ Legal memory stack on `main`:
 
 # NEXT APPROVED TASKS
 
-TASK-004E — Citation Temporal Compliance Remediation (planned — align `CitationAssembler` with Addendum V6; code task).
+**TASK-006B** — Test Isolation & Full-Suite Stability (priority — resolve TEST-GAP-001 before workers or migration-heavy work).
 
-**VM snapshot:** not required for TASK-004E unless schema or persistence behavior changes beyond assembler logic.
+TASK-004E — Citation Temporal Compliance Remediation (planned — align `CitationAssembler` with Addendum V6; defer unless blocking).
+
+**VM snapshot:** not required for TASK-006B unless fixture/migration harness changes require it.
 
 ---
 
