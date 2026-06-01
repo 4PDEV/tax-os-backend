@@ -532,9 +532,11 @@ Tests (post-merge VM): **11 citation candidate tests passed**; full suite **350 
 
 ## CITATION ASSEMBLY
 
-STATUS: **IMPLEMENTED — PENDING REVIEW** (TASK-004D on feature branch)
+STATUS: **MERGED / CLOSED** (TASK-004D + AMENDMENT-A on `main`)
 
-Feature branch: `feature/task-004d-citation-assembly-contract` @ `e008fe7`
+Merge commit: `0588637`
+Checkpoint tag: `checkpoint-task-004d`
+Review verdict: **APPROVED FOR MERGE** (Claude architecture review)
 
 Implemented (TASK-004D):
 
@@ -543,18 +545,21 @@ Implemented (TASK-004D):
 * `CitationFormatter` — display text only, separate from assembly
 * `CitationResult` / `CitationAssemblyRequest` strict Pydantic models
 * `AuthorityType` enum — statute, regulation, guidance, case, treaty, etc.
-* location reference contract — Section, Article, Regulation, Part, Chapter, Schedule, Paragraph, Clause, Subsection (identification only)
-* `citation_hash` — SHA-256(`source_version_id | legal_object_id | location_reference`)
-* source traceability enforcement — fails on missing `source_version_id` or `location_reference`
+* location reference contract — identification only (Section, Article, Regulation, etc.)
 * version awareness — never resolves implicit latest / `current_version_id`
 
-Tests (feature branch VM): **20 citation assembly tests passed** (formatter + assembler; post AMENDMENT-A)
+Implemented (TASK-004D-AMENDMENT-A — Citation Identity Hardening):
 
-**TASK-004D-AMENDMENT-A (Citation Identity Hardening):** implemented on feature branch; pending renewed review. Adds `CitationResult.legal_object_version_id`, hash includes version pin, `SourceDocumentMismatchError` for document lineage consistency.
+* `CitationResult.legal_object_version_id` — mandatory on output (version-pinned citations, not only inputs)
+* `citation_hash` — SHA-256(`source_version_id | legal_object_id | legal_object_version_id | location_reference`)
+* `SourceDocumentMismatchError` — lineage enforcement when source version document ≠ legal object document
+* same `legal_object_id` + different `legal_object_version_id` → different `citation_hash` / `citation_id`
 
-**Out of scope (preserved):** answer generation, citation ranking, authority weighting, legal reasoning, AI, semantic search, retrieval, topic classification, API routes, citation persistence, database migrations
+Tests (post-merge VM): **20 citation assembly tests passed**
 
-**Pending:** architectural review, merge, tag (`checkpoint-task-004d`)
+**Out of scope (preserved):** answer generation, citation ranking, authority weighting, legal reasoning, AI, semantic search, retrieval, API routes, citation persistence, database migrations
+
+**Non-blocking follow-ups:** recorded in `OPEN_DECISIONS.md` (formatter locale, hash delimiter framing, shared hash utility, formatter version on `citation_text`, authority fallback)
 
 **VM snapshot:** not required — no schema or persistence behavior changes.
 
@@ -564,9 +569,9 @@ Tests (feature branch VM): **20 citation assembly tests passed** (formatter + as
 
 VERIFIED
 
-Latest suite result (main, post TASK-004C merge):
+Latest suite result (main, post TASK-004D merge):
 
-350 passed (PostgreSQL VM)
+370 passed (PostgreSQL VM; includes 20 citation assembly tests)
 115 skipped (integration tests without PostgreSQL)
 
 Warnings:
@@ -678,6 +683,7 @@ GitHub
 | TASK-004A | Legal object retrieval contract — **MERGED / CLOSED** (tag `checkpoint-task-004a`) |
 | TASK-004B | Effective-date resolver contract — **MERGED / CLOSED** (tag `checkpoint-task-004b`) |
 | TASK-004C | Citation candidate contract — **MERGED / CLOSED** (tag `checkpoint-task-004c`) |
+| TASK-004D | Citation assembly contract — **MERGED / CLOSED** (tag `checkpoint-task-004d`) |
 
 ---
 
@@ -685,11 +691,11 @@ GitHub
 
 ## ACTIVE BRANCH
 
-`feature/task-004d-citation-assembly-contract` (TASK-004D — pending review)
+main (no feature branch in progress)
 
 ## MAIN BRANCH
 
-main (at `8d68a87` — TASK-004C docs; merge `1349eb7`; tag `checkpoint-task-004c`)
+main (at `0588637` — TASK-004D merged; tag `checkpoint-task-004d`)
 
 Legal memory stack on `main`:
 
@@ -702,17 +708,12 @@ Legal memory stack on `main`:
 004A → Deterministic Legal Object Retrieval
 004B → Effective-Date Resolver
 004C → Citation Candidate Preparation
+004D → Citation Assembly (+ AMENDMENT-A identity hardening)
 ```
 
-Feature branch extends stack (not yet merged):
+**Current boundary:** persistence, integrity, retrieval, effective-date resolution, citation candidates, and deterministic citation assembly active on `main`. Citation identity is version-pinned on input and output; source document lineage is enforced. No answer generation, no citation persistence, no API routes.
 
-```text
-004D → Citation Assembly (pending review)
-```
-
-**Current boundary:** through 004C on `main`. TASK-004D adds deterministic citation assembly on feature branch — no answer generation, no citation persistence, no API routes.
-
-**VM snapshot:** not required — TASK-004D does not change schema or persistence behavior.
+**VM snapshot:** not required before next task unless schema or persistence behavior changes.
 
 ---
 
@@ -752,12 +753,13 @@ Feature branch extends stack (not yet merged):
 * checkpoint-task-004a
 * checkpoint-task-004b
 * checkpoint-task-004c
+* checkpoint-task-004d
 
 ---
 
 # NEXT APPROVED TASKS
 
-TASK-004D — Citation Assembly Contract: **implemented on feature branch; pending review, merge, and tag.**
+*(None registered — awaiting next TASK-004 spec)*
 
 **VM snapshot:** not required unless next task changes schema or persistence behavior.
 

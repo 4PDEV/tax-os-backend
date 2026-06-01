@@ -15,6 +15,16 @@ Pending architectural or operational decisions. Resolve via `tax-os-architecture
 | OD-009 | Structure parser vs segmentation | Whether `structure_parser` replaces, complements, or converges with `segmentation` generic segmenter for downstream legal-object work | Open |
 | OD-010 | Legal object identity and dual extraction paths | **Governed (002H–003D merged).** Canonical input: `ConvergedLegalObjectCandidate`. Tables materialized (003C). Repository write path (003D merged). **CRUD APIs and ingestion wiring still blocked.** Lineage/duplicate table writes deferred — **TASK-003E approved.** Remaining after 003E: batch parent resolution, segment deprecation. | Governed — write path active; integrity enforcement next |
 
+## Citation assembly (TASK-004D) — non-blocking / future review
+
+| ID | Topic | Context | Status |
+|----|-------|---------|--------|
+| OD-011 | Citation formatter locale | `_format_date` uses locale-dependent month names (`strftime('%B')`); may affect cross-environment reproducibility of `citation_text` | Non-blocking / future review |
+| OD-012 | Citation hash delimiter framing | Pipe-delimited hash payload; document canonical delimiter policy for future hash utilities | Non-blocking / future review |
+| OD-013 | Shared canonical hash utility | Citation hash uses `sha256_text` from legal object extraction; consider shared governance module for cross-layer hashes | Non-blocking / future review |
+| OD-014 | Formatter version on `citation_text` | `assembler_version` recorded; `citation_text` has no separate formatter version for audit replay | Non-blocking / future review |
+| OD-015 | Authority classification fallback | `resolve_authority_type` maps unknown `source_type` via `authority_level` heuristics → `OTHER`; document explicit taxonomy governance | Non-blocking / future review |
+
 ## Decision Log (Closed)
 
 | ID | Decision | Date |

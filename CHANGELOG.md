@@ -315,7 +315,7 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Version
   - `CitationResult` / `CitationAssemblyRequest` strict Pydantic models
   - `AuthorityType` enum — statute, regulation, guidance, public_ruling, private_ruling, case, tribunal, treaty, accounting_standard, other
   - Location reference construction — Section, Article, Regulation, Part, Chapter, Schedule, Paragraph, Clause, Subsection
-  - `citation_hash` — SHA-256 over `source_version_id`, `legal_object_id`, `location_reference`
+  - `citation_hash` — SHA-256 over `source_version_id`, `legal_object_id`, `legal_object_version_id`, `location_reference` (AMENDMENT-A)
   - Source traceability enforcement — fails on missing source version or location reference
   - `CITATION_ASSEMBLY_CONTRACT.md` documentation
 - Feature branch: `feature/task-004d-citation-assembly-contract` @ `e008fe7`
@@ -324,7 +324,7 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Version
 
 ### Pending
 
-- Architectural review, merge, tag (`checkpoint-task-004d`)
+- ~~Architectural review, merge, tag (`checkpoint-task-004d`)~~ — **closed** (see `[checkpoint-task-004d]`)
 
 ## [task-004d-amendment-a] - 2026-06-01
 
@@ -335,8 +335,25 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Version
   - `citation_hash` includes `legal_object_version_id` (same `legal_object_id`, different version → different hash/id)
   - `SourceDocumentMismatchError` when `source_version.source_document_id` ≠ `legal_object.source_document_id`
   - Contract doc updated; 4 new tests (20 total citation tests on VM)
-- **Status:** implemented / pending renewed architecture review
-- **Do not merge** until review passes
+- **Merged with TASK-004D** — see `[checkpoint-task-004d]`
+
+## [checkpoint-task-004d] - 2026-06-01
+
+### Added
+
+- TASK-004D merged to `main` — merge commit `0588637`.
+- **Citation assembly governance checkpoint frozen** at tag `checkpoint-task-004d`.
+- Citation assembly contract completed (`CitationAssembler`, `CitationFormatter`, `CitationResult`).
+- Version-aware citation identity — `legal_object_version_id` on input and output; hash includes version pin (AMENDMENT-A).
+- Lineage validation enforcement — `SourceDocumentMismatchError` for source document consistency.
+- Deterministic citation hashing — reproducible `citation_hash` / `citation_id`.
+- Architectural review completed — Claude verdict: **APPROVED FOR MERGE**.
+- Stack on `main`: 003A → 003B → 003C → 003D → 003E → 004A → 004B → 004C → 004D.
+
+### Notes
+
+- Non-blocking citation follow-ups recorded in `OPEN_DECISIONS.md`.
+- VM snapshot not required — no schema or persistence behavior changes.
 
 ## [Unreleased]
 
