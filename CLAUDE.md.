@@ -1,0 +1,64 @@
+#Required confirmations
+#Please confirm all seven points exactly as listed:
+
+ 1) Status mapping from 004B — APPLICABLE → ready; AMBIGUOUS_OVERLAP → date_ambiguous; NOT_APPLICABLE → date_not_applicable; MISSING_EFFECTIVE_DATE → missing_effective_date; INTEGRITY_FAILED → integrity_failed; no silent promotion to ready
+ 2) Source traceability completeness — metadata loaded from source_documents, source_versions, countries, tax_types; missing linkage → source_traceability_failed
+ 3) Integrity failure handling — reuses 004A hash verification; failures → integrity_failed, not ready
+ 4) DTO-only boundary — CitationCandidate is an in-memory Pydantic model; no ORM model, no persistence layer
+ 5) No citation formatting — no style rules, no formatted citation strings
+ 6) No persistence/schema changes — no migrations, no citation_candidates table, no write path
+ 7)Scope creep — no AI, RAG, embeddings, semantic search, API routes, ranking, or authority weighting
+
+#Blocker scan (flag if present)
+#Please flag any accidental introduction of the following — each is a merge blocker:
+
+|Blocker                     | 	Present?           |
+-----------------------------|---------------------|
+|formatted_citation          |                     |
+|citation_style              |                     |
+|citation_text               |                     |
+|citation_candidates table   |                     |
+|New migration files         |                     |
+|API router changes          |                     |
+|AI / semantic imports       |                     |
+----------------------------------------------------
+
+
+#Pre-scan on branch (for reviewer reference only — not a substitute for your review):
+
+No formatted_citation, citation_style, or citation_text in implementation code
+No citation_candidates table or ORM model (test explicitly asserts table absent)
+No new migration files in branch diff
+No API router changes in branch diff
+No AI/semantic imports in citation_candidate/ (only prohibited-capability strings in contract docs)
+
+
+#Review scope
+Files to review:
+
+backend/app/services/citation_candidate/
+backend/tests/test_citation_candidate_builder.py
+README.md
+Out of scope for this review: governance doc wording (PROJECT_STATE.md, TASK_REGISTRY.md, CHANGELOG.md) unless it misstates implementation.
+
+Verdict template
+Please reply with one of:
+
+VERDICT: APPROVED FOR MERGE
+Confirmed:
+1. Status mapping from 004B — YES
+2. Source traceability completeness — YES
+3. Integrity failure handling — YES
+4. DTO-only boundary — YES
+5. No citation formatting — YES
+6. No persistence/schema changes — YES
+7. Scope creep — YES
+Blocker scan: NONE
+
+or
+
+VERDICT: CHANGES REQUESTED / REJECTED
+[Findings…]
+
+Do not merge or tag until APPROVED FOR MERGE is recorded.
+
