@@ -40,6 +40,7 @@ Bounded task tracking for `tax-os-backend`. Authoritative specs remain in `tax-o
 | TASK-004C | Citation Candidate Contract | Complete (merged) | Citation-ready DTO preparation — tag `checkpoint-task-004c`; merge `1349eb7` |
 | TASK-004D | Citation Assembly Contract | Complete (merged) | Deterministic citation assembly — tag `checkpoint-task-004d`; merge `0588637` |
 | TASK-004D-AMENDMENT-A | Citation Identity Hardening | Complete (merged) | Version-pinned citation identity + lineage enforcement — merged with 004D |
+| TASK-005A-SPEC | Temporal & Versioning Architecture | In progress | Architecture specification only — branch `feature/task-005a-temporal-versioning-architecture-spec` |
 
 ## Status Legend
 

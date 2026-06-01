@@ -355,6 +355,25 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Version
 - Non-blocking citation follow-ups recorded in `OPEN_DECISIONS.md`.
 - VM snapshot not required — no schema or persistence behavior changes.
 
+- VM snapshot not required — no schema or persistence behavior changes.
+
+## [task-005a-spec-complete] - 2026-06-01
+
+### Added
+
+- TASK-005A-SPEC: temporal & versioning architecture specification (documentation only).
+  - `TEMPORAL_VERSIONING_ARCHITECTURE.md` — authoritative temporal architecture
+  - `TASKS/TASK-005A-TEMPORAL-VERSIONING-ARCHITECTURE-SPEC.md` — approved task spec
+  - Temporal philosophy, versioning philosophy, amendment chains, future law, as-of query model
+  - Answer-date resolution contract `resolve_authorities_as_of()` — specified, not implemented
+  - Conflict preservation rules; version selection governance (never assume latest)
+- Feature branch: `feature/task-005a-temporal-versioning-architecture-spec`
+- **No code, migrations, APIs, answer engine, or AI.**
+
+### Pending
+
+- Review and merge (documentation-only)
+
 ## [Unreleased]
 
 ### Added
