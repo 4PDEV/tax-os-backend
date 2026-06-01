@@ -303,6 +303,29 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Version
 - Forward-governance notes for TASK-004D recorded in `KNOWN_LIMITATIONS.md`.
 - VM snapshot not required before TASK-004D unless schema or persistence behavior changes.
 
+- VM snapshot not required before TASK-004D unless schema or persistence behavior changes.
+
+## [task-004d-complete] - 2026-06-01
+
+### Added
+
+- TASK-004D: citation assembly contract. New `backend/app/services/citation/` package with:
+  - `CitationAssembler` — `assemble()`, `assemble_by_request()` with explicit `legal_object_version_id` pin (no implicit latest)
+  - `CitationFormatter` — deterministic display text, separate from assembly logic
+  - `CitationResult` / `CitationAssemblyRequest` strict Pydantic models
+  - `AuthorityType` enum — statute, regulation, guidance, public_ruling, private_ruling, case, tribunal, treaty, accounting_standard, other
+  - Location reference construction — Section, Article, Regulation, Part, Chapter, Schedule, Paragraph, Clause, Subsection
+  - `citation_hash` — SHA-256 over `source_version_id`, `legal_object_id`, `location_reference`
+  - Source traceability enforcement — fails on missing source version or location reference
+  - `CITATION_ASSEMBLY_CONTRACT.md` documentation
+- Feature branch: `feature/task-004d-citation-assembly-contract` @ `e008fe7`
+- Tests: 16 passed (PostgreSQL VM)
+- **No answer generation, citation ranking, legal reasoning, AI, retrieval, persistence, API routes, or schema changes.**
+
+### Pending
+
+- Architectural review, merge, tag (`checkpoint-task-004d`)
+
 ## [Unreleased]
 
 ### Added
