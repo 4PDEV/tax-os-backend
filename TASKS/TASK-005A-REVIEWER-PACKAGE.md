@@ -48,6 +48,7 @@ Temporal architecture must align with immutability, citations, and source tracea
 
 | Artifact | Path |
 |----------|------|
+| **Task spec** | [`TASKS/TASK-003E-LEGAL-OBJECT-PERSISTENCE-INTEGRITY.md`](TASK-003E-LEGAL-OBJECT-PERSISTENCE-INTEGRITY.md) |
 | Integrity contract (implemented) | [`backend/app/services/legal_object_persistence/LEGAL_OBJECT_PERSISTENCE_INTEGRITY_CONTRACT.md`](../backend/app/services/legal_object_persistence/LEGAL_OBJECT_PERSISTENCE_INTEGRITY_CONTRACT.md) |
 | Persistence repository contract | [`backend/app/services/legal_object_persistence/LEGAL_OBJECT_PERSISTENCE_REPOSITORY_CONTRACT.md`](../backend/app/services/legal_object_persistence/LEGAL_OBJECT_PERSISTENCE_REPOSITORY_CONTRACT.md) |
 | Checkpoint | tag `checkpoint-task-003e` on `main` |
