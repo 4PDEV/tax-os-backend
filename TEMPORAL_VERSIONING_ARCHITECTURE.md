@@ -1,8 +1,8 @@
 # Temporal & Versioning Architecture
 
-**Task:** TASK-005A-SPEC  
+**Task:** TASK-005A-SPEC (amended by TASK-005B)  
 **Status:** Authoritative architecture specification (documentation only)  
-**Version:** 1.0.0
+**Version:** 1.1.0 (TASK-005B governance amendments)
 
 This document defines how the Source-Referenced Business & Tax Research Platform handles time, versions, and legal state. It is the governing reference for all temporal behavior in retrieval, citation, and (future) answer assembly.
 
@@ -105,6 +105,15 @@ Every legal object version must carry:
 
 A legal object **without temporal context is incomplete** for answer or citation purposes.
 
+### Legal object dates ≠ source version dates (TASK-005B)
+
+Legal-object `effective_from` / `effective_to` describe **provision applicability**.  
+Source-version `effective_from` / `effective_to` describe **instrument/file-level** timing.
+
+They are **not automatically identical**. Missing legal-object effective dates must remain **unknown** unless explicitly resolved with provenance (see Addendum V6).
+
+**No temporal inference without provenance** — copying source-version dates onto legal objects or citations without explicit, auditable, disclosed inheritance is prohibited.
+
 **Date rule (implemented — TASK-004B):**
 
 ```text
@@ -126,6 +135,19 @@ Future answer engine inputs must include:
 | **As-of date** | Yes | 15 March 2024 |
 
 The as-of date is **fundamental retrieval context**, not a display preference.
+
+### Transaction date vs knowledge date (TASK-005B)
+
+| Date | Meaning |
+|------|---------|
+| **Transaction / as-of date** | Date the law applies to the user's fact pattern |
+| **Knowledge / observation date** | When the platform retrieved, processed, or answered |
+
+These must **never** be conflated. Every future answer must record both.
+
+### Answer-layer disclosure (TASK-005B)
+
+The answer layer must **never** default to “current law” without explicit disclosure. Required answer metadata eventually includes: as-of date, knowledge timestamp, source version IDs, legal object version IDs, derived temporal status.
 
 ### Query classes (test scenarios for later implementation)
 
@@ -168,12 +190,18 @@ Example:
 - Finance Act enacted (publication_date: 2026-06-15)
 - Effective: 1 January 2027 (effective_from: 2027-01-01)
 
-### Distinctions required
+### Distinctions required (derived — not stored)
 
-| Label | Condition (conceptual) |
-|-------|----------------------|
-| **Current law** | effective_from ≤ as_of_date AND (effective_to IS NULL OR effective_to ≥ as_of_date) |
-| **Future law** | effective_from > as_of_date (may be published) |
+Temporal labels **current**, **future**, **expired**, and **historical** are **derived at query time** from `effective_from`, `effective_to`, and `as_of_date` — not stored as mutable truth (Addendum V6).
+
+| Label | Derived condition (conceptual) |
+|-------|-------------------------------|
+| **Current** | `effective_from ≤ as_of_date` AND (`effective_to` IS NULL OR `effective_to ≥ as_of_date`) |
+| **Future** | `effective_from > as_of_date` |
+| **Historical / expired** | `effective_to < as_of_date` |
+| **Unknown** | Dates missing or applicability not established |
+
+**Stored lifecycle status** (`draft`, `active`, `superseded`, `repealed`, `archived`, `future_effective`) is separate from **derived temporal status**.
 
 Future law must be **queryable separately** from current law — never merged silently into “the law.”
 
@@ -280,8 +308,10 @@ The platform must **never** assume the **latest** version is correct.
 | Prohibited | Required |
 |------------|----------|
 | Implicit “current” / `current_version_id` for citations or answers | Explicit `legal_object_version_id` pin (TASK-004D) |
+| Treating `current_version_id` as “law in force today” | Operational pointer only; date-aware explicit pins for outputs |
 | “Latest” `source_version` without as-of date | Date-aware selection via `effective_on` + status filters |
 | Silent promotion of future law to current | Explicit `future_effective` handling |
+| Silent inheritance of source-version dates as legal-object dates | Provenance-marked inheritance only (Addendum V6) |
 
 Version selection is always **date-aware** and **explicitly pinned** at citation and (future) answer boundaries.
 
@@ -296,6 +326,7 @@ Version selection is always **date-aware** and **explicitly pinned** at citation
 004C       Citation candidates (conservative date status mapping)
 004D       Citation assembly (version-pinned output + lineage check)
 005A-SPEC  Temporal & versioning architecture (this document)
+005B       Temporal resolution governance amendments (Addendum V6; pre-merge)
 ```
 
 ---
@@ -309,10 +340,14 @@ Version selection is always **date-aware** and **explicitly pinned** at citation
 5. **Latest is not default** — date-aware, explicit version pins only.
 6. **Publication ≠ effective** — retroactive legislation must be representable.
 7. **Reproducibility** — same inputs (jurisdiction, tax type, as-of date, version pins) → same outputs.
+8. **No silent temporal inheritance** — source-version dates ≠ legal-object dates without provenance (Addendum V6).
+9. **Derived temporal status only** — current/future/historical computed at query time, not stored as mutable truth.
+10. **Transaction ≠ knowledge date** — both recorded for answers.
+11. **Temporal correction via new versions** — not in-place edits (TASK-003E).
 
 ---
 
-## 16. Out of scope (TASK-005A)
+## 16. Out of scope (TASK-005A / TASK-005B)
 
 This specification does **not** implement:
 
@@ -321,7 +356,11 @@ This specification does **not** implement:
 - authority ranking or weighting
 - temporal AI or inference of effective dates
 - new database migrations (unless a future task authorizes)
-- changes to existing resolver/citation code
+- changes to existing resolver/citation **code** (TASK-005B is governance documentation only)
+
+### Known implementation alignment (post–TASK-005B)
+
+`CitationAssembler` currently uses `version.effective_from or source_version.effective_from` as a display fallback. This **conflicts with Addendum V6 (C1)**. Alignment requires a **future bounded code task** — not silent fix during spec merge.
 
 ---
 
@@ -346,6 +385,8 @@ Everything else in the platform depends on this capability.
 | [TASKS/TASK-005A-TEMPORAL-VERSIONING-ARCHITECTURE-SPEC.md](TASKS/TASK-005A-TEMPORAL-VERSIONING-ARCHITECTURE-SPEC.md) | Approved task specification |
 | [architecture-references/README.md](architecture-references/README.md) | Cross-repo paths to `tax-os-architecture` |
 | [ADDENDUM_V5 (architecture repo)](../tax-os-architecture/ADDENDUMS/ADDENDUM_V5_TEMPORAL_AND_VERSIONING_GOVERNANCE.md) | Temporal & versioning governance addendum |
+| [ADDENDUM_V6 (architecture repo)](../tax-os-architecture/ADDENDUMS/ADDENDUM_V6_TEMPORAL_RESOLUTION_AND_VERSION_PINNING.md) | Temporal resolution & version pinning (TASK-005B) |
+| [TASKS/TASK-005B-TEMPORAL-RESOLUTION-GOVERNANCE-AMENDMENT.md](TASKS/TASK-005B-TEMPORAL-RESOLUTION-GOVERNANCE-AMENDMENT.md) | TASK-005B approved amendment spec |
 | [backend/app/services/effective_date/EFFECTIVE_DATE_RESOLVER_CONTRACT.md](backend/app/services/effective_date/EFFECTIVE_DATE_RESOLVER_CONTRACT.md) | Implemented per-object date resolution |
 | [backend/app/services/citation/CITATION_ASSEMBLY_CONTRACT.md](backend/app/services/citation/CITATION_ASSEMBLY_CONTRACT.md) | Version-pinned citations |
 | [KNOWN_LIMITATIONS.md](KNOWN_LIMITATIONS.md) | Deferred hardening items |

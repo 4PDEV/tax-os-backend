@@ -567,10 +567,13 @@ Tests (post-merge VM): **20 citation assembly tests passed**
 
 ## TEMPORAL & VERSIONING ARCHITECTURE
 
-STATUS: **SPECIFICATION COMPLETE — PENDING REVIEW** (TASK-005A-SPEC on feature branch)
+STATUS: **SPECIFICATION COMPLETE — PENDING REVIEW** (TASK-005A-SPEC + TASK-005B on feature branch)
 
-Authoritative document: `TEMPORAL_VERSIONING_ARCHITECTURE.md`  
-Task spec: `TASKS/TASK-005A-TEMPORAL-VERSIONING-ARCHITECTURE-SPEC.md`
+Authoritative document: `TEMPORAL_VERSIONING_ARCHITECTURE.md` (v1.1.0 post–005B)  
+Task specs: `TASKS/TASK-005A-TEMPORAL-VERSIONING-ARCHITECTURE-SPEC.md`, `TASKS/TASK-005B-TEMPORAL-RESOLUTION-GOVERNANCE-AMENDMENT.md`  
+Governance addendum: `ADDENDUM_V6_TEMPORAL_RESOLUTION_AND_VERSION_PINNING.md` (architecture repo)
+
+**TASK-005B (merged into branch):** Claude review amendments — no silent temporal inheritance (C1), derived temporal status (C3/I5), transaction vs knowledge date (I1), answer disclosure (I2), `current_version_id` semantics (I3), citation contract C1 resolution at governance level.
 
 Documented (TASK-005A-SPEC):
 

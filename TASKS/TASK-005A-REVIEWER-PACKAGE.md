@@ -13,6 +13,7 @@
 |---|------|------------|------|
 | 1 | Master Architecture v1 | `tax-os-architecture` | [`MASTER_ARCHITECTURE/PROJECT_SCOPE_AND_OPERATING_PRINCIPLES_v1.md`](../../tax-os-architecture/MASTER_ARCHITECTURE/PROJECT_SCOPE_AND_OPERATING_PRINCIPLES_v1.md) |
 | 2 | **Addendum V5 — Temporal & Versioning** | `tax-os-architecture` | [`ADDENDUMS/ADDENDUM_V5_TEMPORAL_AND_VERSIONING_GOVERNANCE.md`](../../tax-os-architecture/ADDENDUMS/ADDENDUM_V5_TEMPORAL_AND_VERSIONING_GOVERNANCE.md) |
+| 2b | **Addendum V6 — Temporal Resolution (TASK-005B)** | `tax-os-architecture` | [`ADDENDUMS/ADDENDUM_V6_TEMPORAL_RESOLUTION_AND_VERSION_PINNING.md`](../../tax-os-architecture/ADDENDUMS/ADDENDUM_V6_TEMPORAL_RESOLUTION_AND_VERSION_PINNING.md) |
 
 ### Earlier addendums (context)
 
@@ -104,6 +105,7 @@ Confirm TASK-005A documentation:
 - [ ] Aligns with 004B date rule and ambiguity preservation?
 - [ ] Aligns with 004D version-pinned citations and lineage checks?
 - [ ] States `resolve_authorities_as_of` as **future** only (not implemented)?
+- [ ] Addendum V6 rules reflected (no silent inheritance, derived status, C1 citation doctrine)?
 - [ ] No scope creep (no answer engine, AI inference, migrations, code)?
 
 ---

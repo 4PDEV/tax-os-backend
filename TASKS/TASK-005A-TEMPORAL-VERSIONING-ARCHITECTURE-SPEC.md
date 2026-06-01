@@ -291,7 +291,21 @@ TASK-005A-SPEC complete when:
 - conflict preservation rules documented
 - governance principles documented
 
-## 22. FINAL PRINCIPLE
+## 22. ADDENDUM V6 CROSS-REFERENCE (TASK-005B)
+
+TASK-005B amends this specification via **Addendum V6 — Temporal Resolution and Version Pinning**.
+
+Clarifications added before merge:
+
+- **Temporal resolution is not inference** — applicability requires explicit dates or explicit provenance-marked inheritance
+- **Ambiguity must be preserved** — unknown dates stay unknown
+- **Current / future / historical status is derived** from `effective_from`, `effective_to`, and `as_of_date` — not stored as mutable truth
+- **Answer-date resolution** requires explicit transaction/as-of date plus knowledge/observation timestamp
+- **Lifecycle status** (`active`, `superseded`, etc.) is not the same as derived temporal status (`current`, `future`, `historical`)
+
+See: `tax-os-architecture/ADDENDUMS/ADDENDUM_V6_TEMPORAL_RESOLUTION_AND_VERSION_PINNING.md`
+
+## 23. FINAL PRINCIPLE
 
 The platform's long-term trust depends on answering:
 

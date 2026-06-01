@@ -374,6 +374,18 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Version
 
 - Review and merge (documentation-only)
 
+## [task-005b-complete] - 2026-06-01
+
+### Changed
+
+- TASK-005B: temporal resolution governance amendments following Claude architecture review (documentation only).
+  - `ADDENDUM_V6_TEMPORAL_RESOLUTION_AND_VERSION_PINNING.md` — no silent inheritance, derived temporal status, transaction vs knowledge date, answer disclosure, `current_version_id` governance, citation temporal doctrine
+  - `TEMPORAL_VERSIONING_ARCHITECTURE.md` v1.1.0 — cross-references and clarifications
+  - `CITATION_ASSEMBLY_CONTRACT.md` — C1 governance resolution (no silent source-version date inheritance)
+  - `TASK-005A-TEMPORAL-VERSIONING-ARCHITECTURE-SPEC.md` — Addendum V6 cross-reference
+  - Known gap documented: `CitationAssembler` date fallback requires future code task
+- **No code, schema, API, or test changes.**
+
 ## [Unreleased]
 
 ### Added
