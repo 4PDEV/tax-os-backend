@@ -113,6 +113,7 @@ Initial jurisdiction focus: **Rwanda**. Initial tax domains: VAT, PAYE/PIT, WHT,
 | [LEGAL_OBJECT_RETRIEVAL_CONTRACT.md](backend/app/services/retrieval/LEGAL_OBJECT_RETRIEVAL_CONTRACT.md) | Legal object retrieval contract — deterministic retrieval (TASK-004A) |
 | [EFFECTIVE_DATE_RESOLVER_CONTRACT.md](backend/app/services/effective_date/EFFECTIVE_DATE_RESOLVER_CONTRACT.md) | Effective-date resolver contract — time-aware version resolution (TASK-004B) |
 | [CITATION_CANDIDATE_CONTRACT.md](backend/app/services/citation_candidate/CITATION_CANDIDATE_CONTRACT.md) | Citation candidate contract — citation-ready DTO preparation (TASK-004C) |
+| [CITATION_ASSEMBLY_CONTRACT.md](backend/app/services/citation/CITATION_ASSEMBLY_CONTRACT.md) | Citation assembly contract — deterministic source-backed citations (TASK-004D) |
 
 ## Governance
 
