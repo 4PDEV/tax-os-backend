@@ -25,6 +25,14 @@ Pending architectural or operational decisions. Resolve via `tax-os-architecture
 | OD-014 | Formatter version on `citation_text` | `assembler_version` recorded; `citation_text` has no separate formatter version for audit replay | Non-blocking / future review |
 | OD-015 | Authority classification fallback | `resolve_authority_type` maps unknown `source_type` via `authority_level` heuristics → `OTHER`; document explicit taxonomy governance | Non-blocking / future review |
 
+## Temporal / integrity (post–TASK-005A review)
+
+| ID | Topic | Context | Status |
+|----|-------|---------|--------|
+| OD-016 | **TASK-004E** — Citation temporal compliance | Remediate `CitationAssembler` silent `source_version` date fallback (Addendum V6 C1); spec in `TASKS/TASK-004E-CITATION-TEMPORAL-COMPLIANCE-REMEDIATION.md` | Planned |
+| OD-017 | 003E enforcement reconciliation (IMP-4) | Align documented immutability rules with all read/update paths; post-merge review | Deferred / future review |
+| OD-018 | Overlap ambiguity disclosure (IMP-6) | Enrich `AMBIGUOUS_OVERLAP` results with conflicting version identifiers for operators | Deferred / future review |
+
 ## Decision Log (Closed)
 
 | ID | Decision | Date |

@@ -386,6 +386,18 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Version
   - Known gap documented: `CitationAssembler` date fallback requires future code task
 - **No code, schema, API, or test changes.**
 
+## [task-005a-pre-merge-cleanup] - 2026-06-01
+
+### Changed
+
+- Pre-merge cleanup per final architectural assessment (documentation only):
+  - **IMP-1:** Status vocabulary reconciliation — `source_versions`, `ingestion_status`, legal object statuses, derived temporal status
+  - **IMP-2:** Total derived-status matrix (single-null-bound cases; default unknown with disclosure)
+  - **IMP-3:** Terminology — transaction/applicability date only; removed "query date" from derivation semantics
+  - **IMP-5:** TASK-004E registered — Citation Temporal Compliance Remediation (`TASK_REGISTRY`, `OPEN_DECISIONS` OD-016)
+  - **Deferred tracked:** IMP-4 (OD-017), IMP-6 (OD-018)
+- Architectural review: **APPROVED FOR MERGE**
+
 ## [Unreleased]
 
 ### Added

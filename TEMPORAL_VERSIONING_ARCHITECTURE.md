@@ -2,7 +2,7 @@
 
 **Task:** TASK-005A-SPEC (amended by TASK-005B)  
 **Status:** Authoritative architecture specification (documentation only)  
-**Version:** 1.1.0 (TASK-005B governance amendments)
+**Version:** 1.1.1 (pre-merge cleanup IMP-1–3, IMP-5)
 
 This document defines how the Source-Referenced Business & Tax Research Platform handles time, versions, and legal state. It is the governing reference for all temporal behavior in retrieval, citation, and (future) answer assembly.
 
@@ -91,6 +91,45 @@ Every source version must support:
 
 **Governance:** Default retrieval and resolution must respect status filters (aligned with TASK-004A / 004B).
 
+### Status vocabulary reconciliation (IMP-1)
+
+Three **distinct** status namespaces exist. They must not be conflated.
+
+#### A. `source_versions.version_status` (source registry lifecycle)
+
+| Status | Meaning |
+|--------|---------|
+| `draft` | Version recorded; not yet authoritative for downstream legal memory |
+| `active` | Default operational status; version available for ingestion and linkage |
+| `superseded` | Replaced by a newer `source_version` (`supersedes_version_id`) |
+| `repealed` | Source instrument/version no longer in force (registry-level) |
+| `archived` | Retained for audit; excluded from default retrieval |
+| `future_effective` | Published; `effective_from` in the future at source level |
+
+**Note:** `repealed` and `future_effective` are **governance targets** for the source registry. Confirm column constraints and ingestion workflows before persisting these values.
+
+#### B. `source_versions.ingestion_status` (workflow — not legal lifecycle)
+
+Separate from `version_status`. Tracks ingest pipeline state (`not_started`, `queued`, `processing`, etc.). **Not** used for temporal derivation or legal applicability.
+
+#### C. `legal_objects.status` and `legal_object_versions.version_status` (legal memory lifecycle)
+
+**Enforced in application and database** (TASK-003E, Alembic `b8d4e1a92c05`):
+
+| Status | `legal_objects` | `legal_object_versions` |
+|--------|-----------------|-------------------------|
+| `draft` | Yes | Yes |
+| `active` | Yes | Yes |
+| `superseded` | Yes | Yes |
+| `archived` | Yes | Yes |
+| `rejected` | Yes | Yes |
+
+**Not used on legal object tables today:** `repealed`, `future_effective` (source-registry concepts only unless a future task extends schema).
+
+#### D. Derived temporal status (not stored)
+
+`current`, `future`, `historical` / `expired`, `unknown` — computed at resolution time only (see §9). Never written to `version_status` or `status` columns.
+
 ---
 
 ## 6. Legal object temporal model
@@ -134,7 +173,17 @@ Future answer engine inputs must include:
 | Question | Yes | Input VAT recovery |
 | **As-of date** | Yes | 15 March 2024 |
 
-The as-of date is **fundamental retrieval context**, not a display preference.
+The as-of date is the **transaction / applicability date** — the date the law applies to the user's fact pattern. It is **not** a "query date" and must not be confused with system retrieval or processing time.
+
+### Terminology (IMP-3)
+
+| Term | Meaning | Must not be called |
+|------|---------|-------------------|
+| **Transaction / applicability date** | Date law applies to the fact pattern | — |
+| **`as_of_date`** | Parameter name for transaction/applicability date in APIs and specs | "query date" |
+| **Knowledge / observation date** | When the platform retrieved, processed, or answered | transaction date |
+
+Temporal **derivation** of current/future/historical uses **transaction/applicability date only** — never knowledge date.
 
 ### Transaction date vs knowledge date (TASK-005B)
 
@@ -192,16 +241,36 @@ Example:
 
 ### Distinctions required (derived — not stored)
 
-Temporal labels **current**, **future**, **expired**, and **historical** are **derived at query time** from `effective_from`, `effective_to`, and `as_of_date` — not stored as mutable truth (Addendum V6).
+Temporal labels **current**, **future**, **historical** / **expired**, and **unknown** are **derived at resolution time** from `effective_from`, `effective_to`, and the **transaction/applicability date** (`as_of_date` parameter) — not stored as mutable truth (Addendum V6).
 
-| Label | Derived condition (conceptual) |
-|-------|-------------------------------|
-| **Current** | `effective_from ≤ as_of_date` AND (`effective_to` IS NULL OR `effective_to ≥ as_of_date`) |
-| **Future** | `effective_from > as_of_date` |
-| **Historical / expired** | `effective_to < as_of_date` |
-| **Unknown** | Dates missing or applicability not established |
+#### Total derived-status matrix (IMP-2)
 
-**Stored lifecycle status** (`draft`, `active`, `superseded`, `repealed`, `archived`, `future_effective`) is separate from **derived temporal status**.
+Let **T** = transaction/applicability date (`as_of_date`).  
+If `effective_from > effective_to` when both are set → **unknown** (invalid bounds; disclose).
+
+| effective_from | effective_to | Condition on T | Derived status |
+|----------------|--------------|----------------|----------------|
+| NULL | NULL | any | **unknown** (disclosure required) |
+| NULL | NOT NULL | T ≤ effective_to | **current** (open start; disclose `effective_from` unknown) |
+| NULL | NOT NULL | T > effective_to | **historical** / expired |
+| NOT NULL | NULL | T < effective_from | **future** |
+| NOT NULL | NULL | T ≥ effective_from | **current** (open end; disclose `effective_to` open) |
+| NOT NULL | NOT NULL | T < effective_from | **future** |
+| NOT NULL | NOT NULL | effective_from ≤ T ≤ effective_to | **current** |
+| NOT NULL | NOT NULL | T > effective_to | **historical** / expired |
+
+**Default rule:** any row not matched above → **unknown** with explicit disclosure (no silent undefined state).
+
+#### Summary labels
+
+| Label | Typical condition |
+|-------|-------------------|
+| **Current** | Provision applicable on T per matrix above |
+| **Future** | `effective_from` known and T < effective_from |
+| **Historical / expired** | `effective_to` known and T > effective_to |
+| **Unknown** | Both bounds null, invalid bounds, or non-total case |
+
+**Stored lifecycle status** (`draft`, `active`, `superseded`, `repealed`, `archived`, `future_effective` on sources; `rejected` on legal objects) is separate from **derived temporal status**.
 
 Future law must be **queryable separately** from current law — never merged silently into “the law.”
 
@@ -360,7 +429,7 @@ This specification does **not** implement:
 
 ### Known implementation alignment (post–TASK-005B)
 
-`CitationAssembler` currently uses `version.effective_from or source_version.effective_from` as a display fallback. This **conflicts with Addendum V6 (C1)**. Alignment requires a **future bounded code task** — not silent fix during spec merge.
+`CitationAssembler` currently uses `version.effective_from or source_version.effective_from` as a display fallback. This **conflicts with Addendum V6 (C1)**. Alignment is **TASK-004E** (planned; registered in `TASK_REGISTRY` and `OPEN_DECISIONS.md`).
 
 ---
 

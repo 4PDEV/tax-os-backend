@@ -567,7 +567,11 @@ Tests (post-merge VM): **20 citation assembly tests passed**
 
 ## TEMPORAL & VERSIONING ARCHITECTURE
 
-STATUS: **SPECIFICATION COMPLETE — PENDING REVIEW** (TASK-005A-SPEC + TASK-005B on feature branch)
+STATUS: **SPECIFICATION COMPLETE — APPROVED FOR MERGE** (TASK-005A-SPEC + TASK-005B on feature branch)
+
+**Architectural review:** APPROVED FOR MERGE (Claude — no CRITICAL findings; C1 resolved at governance level; CitationAssembler gap deferred to TASK-004E).
+
+**Pre-merge cleanup (IMP-1–3, IMP-5):** completed on branch — status vocabulary reconciliation, total derived-status matrix, transaction/applicability date terminology, TASK-004E registered.
 
 Authoritative document: `TEMPORAL_VERSIONING_ARCHITECTURE.md` (v1.1.0 post–005B)  
 Task specs: `TASKS/TASK-005A-TEMPORAL-VERSIONING-ARCHITECTURE-SPEC.md`, `TASKS/TASK-005B-TEMPORAL-RESOLUTION-GOVERNANCE-AMENDMENT.md`  
@@ -792,7 +796,7 @@ Legal memory stack on `main`:
 
 # NEXT APPROVED TASKS
 
-TASK-005A-SPEC — Temporal & Versioning Architecture: **specification on feature branch; pending review and merge.**
+TASK-005A-SPEC — Temporal & Versioning Architecture: **approved for merge** (documentation-only). Post-merge: TASK-004E (citation temporal compliance code).
 
 **VM snapshot:** not required — TASK-005A-SPEC is documentation only.
 
