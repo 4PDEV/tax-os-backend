@@ -410,7 +410,7 @@ Version selection is always **date-aware** and **explicitly pinned** at citation
 6. **Publication ≠ effective** — retroactive legislation must be representable.
 7. **Reproducibility** — same inputs (jurisdiction, tax type, as-of date, version pins) → same outputs.
 8. **No silent temporal inheritance** — source-version dates ≠ legal-object dates without provenance (Addendum V6).
-9. **Derived temporal status only** — current/future/historical computed at query time, not stored as mutable truth.
+9. **Derived temporal status only** — current/future/historical computed at resolution time from transaction/applicability date, not stored as mutable truth.
 10. **Transaction ≠ knowledge date** — both recorded for answers.
 11. **Temporal correction via new versions** — not in-place edits (TASK-003E).
 
