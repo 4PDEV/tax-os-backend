@@ -398,6 +398,20 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Version
   - **Deferred tracked:** IMP-4 (OD-017), IMP-6 (OD-018)
 - Architectural review: **APPROVED FOR MERGE**
 
+## [checkpoint-task-005a-spec] - 2026-06-01
+
+### Merged
+
+- TASK-005A-SPEC + TASK-005B + pre-merge cleanup (TASK-005C consistency) merged to `main` via `--no-ff` merge `43c6ad0`.
+- Checkpoint tag: `checkpoint-task-005a-spec`.
+- `MERGE_SUMMARY_TASK-005A.md` — merge record (documentation only; no implementation).
+- Stack on `main` extended: 005A-SPEC → temporal/versioning governance; 005B → Addendum V6 alignment.
+- **No code, migrations, APIs, or resolver implementation.**
+
+### Next
+
+- TASK-004E — Citation Temporal Compliance Remediation (planned code task).
+
 ## [Unreleased]
 
 ### Added

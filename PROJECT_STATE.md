@@ -567,13 +567,13 @@ Tests (post-merge VM): **20 citation assembly tests passed**
 
 ## TEMPORAL & VERSIONING ARCHITECTURE
 
-STATUS: **SPECIFICATION COMPLETE — APPROVED FOR MERGE** (TASK-005A-SPEC + TASK-005B on feature branch)
+STATUS: **MERGED / CLOSED** (TASK-005A-SPEC + TASK-005B + pre-merge cleanup on `main`; tag `checkpoint-task-005a-spec`; merge `43c6ad0`)
 
 **Architectural review:** APPROVED FOR MERGE (Claude — no CRITICAL findings; C1 resolved at governance level; CitationAssembler gap deferred to TASK-004E).
 
-**Pre-merge cleanup (IMP-1–3, IMP-5):** completed on branch — status vocabulary reconciliation, total derived-status matrix, transaction/applicability date terminology, TASK-004E registered.
+**Pre-merge cleanup (TASK-005C / IMP-1–3, IMP-5):** merged — status vocabulary reconciliation, total derived-status matrix, transaction/applicability date terminology, TASK-004E registered.
 
-Authoritative document: `TEMPORAL_VERSIONING_ARCHITECTURE.md` (v1.1.0 post–005B)  
+Authoritative document: `TEMPORAL_VERSIONING_ARCHITECTURE.md` (v1.1.1 post–cleanup)  
 Task specs: `TASKS/TASK-005A-TEMPORAL-VERSIONING-ARCHITECTURE-SPEC.md`, `TASKS/TASK-005B-TEMPORAL-RESOLUTION-GOVERNANCE-AMENDMENT.md`  
 Governance addendum: `ADDENDUM_V6_TEMPORAL_RESOLUTION_AND_VERSION_PINNING.md` (architecture repo)
 
@@ -596,7 +596,7 @@ Documented (TASK-005A-SPEC):
 
 **Out of scope (preserved):** answer engine, legal reasoning, authority ranking, temporal AI, effective-date inference, code changes
 
-**Pending:** review, merge (documentation-only)
+**Merge summary:** `MERGE_SUMMARY_TASK-005A.md`
 
 **VM snapshot:** not required — specification only; no schema or code changes.
 
@@ -721,6 +721,8 @@ GitHub
 | TASK-004B | Effective-date resolver contract — **MERGED / CLOSED** (tag `checkpoint-task-004b`) |
 | TASK-004C | Citation candidate contract — **MERGED / CLOSED** (tag `checkpoint-task-004c`) |
 | TASK-004D | Citation assembly contract — **MERGED / CLOSED** (tag `checkpoint-task-004d`) |
+| TASK-005A-SPEC | Temporal & versioning architecture — **MERGED / CLOSED** (tag `checkpoint-task-005a-spec`) |
+| TASK-005B | Temporal resolution governance amendment — **MERGED / CLOSED** (with 005A-SPEC) |
 
 ---
 
@@ -728,11 +730,11 @@ GitHub
 
 ## ACTIVE BRANCH
 
-`feature/task-005a-temporal-versioning-architecture-spec` (TASK-005A-SPEC — pending review)
+`main`
 
 ## MAIN BRANCH
 
-main (at `cd9f176` — TASK-004D governance closeout; merge `0588637`; tag `checkpoint-task-004d`)
+main (at post–TASK-005A governance closeout; merge `43c6ad0`; tag `checkpoint-task-005a-spec`)
 
 Legal memory stack on `main`:
 
@@ -746,9 +748,11 @@ Legal memory stack on `main`:
 004B → Effective-Date Resolver
 004C → Citation Candidate Preparation
 004D → Citation Assembly (+ AMENDMENT-A identity hardening)
+005A-SPEC → Temporal & Versioning Architecture (governance)
+005B → Temporal Resolution Governance (Addendum V6 alignment)
 ```
 
-**Current boundary:** persistence, integrity, retrieval, effective-date resolution, citation candidates, and deterministic citation assembly active on `main`. Citation identity is version-pinned on input and output; source document lineage is enforced. No answer generation, no citation persistence, no API routes.
+**Current boundary:** persistence, integrity, retrieval, effective-date resolution, citation candidates, deterministic citation assembly, and **canonical temporal/versioning governance** active on `main`. Citation identity is version-pinned on input and output; source document lineage is enforced. `CitationAssembler` temporal compliance deferred to TASK-004E. No answer generation, no citation persistence, no API routes.
 
 **VM snapshot:** not required before next task unless schema or persistence behavior changes.
 
@@ -791,14 +795,15 @@ Legal memory stack on `main`:
 * checkpoint-task-004b
 * checkpoint-task-004c
 * checkpoint-task-004d
+* checkpoint-task-005a-spec
 
 ---
 
 # NEXT APPROVED TASKS
 
-TASK-005A-SPEC — Temporal & Versioning Architecture: **approved for merge** (documentation-only). Post-merge: TASK-004E (citation temporal compliance code).
+TASK-004E — Citation Temporal Compliance Remediation (planned — align `CitationAssembler` with Addendum V6; code task).
 
-**VM snapshot:** not required — TASK-005A-SPEC is documentation only.
+**VM snapshot:** not required for TASK-004E unless schema or persistence behavior changes beyond assembler logic.
 
 ---
 
