@@ -1,6 +1,6 @@
 # Task Registry
 
-Bounded task tracking for `tax-os-backend`. Authoritative specs remain in `tax-os-architecture`; this file tracks implementation status.
+Bounded task tracking for `tax-os-backend`. Authoritative specs remain in `tax-os-architecture` and in **`TASKS/TASK-<ID>-*.md`** (required for reviewer); this file tracks implementation status only.
 
 | Task ID | Title | Status | Notes |
 |---------|-------|--------|-------|

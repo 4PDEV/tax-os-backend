@@ -6,7 +6,7 @@ Standard discipline for implementing bounded tasks in `tax-os-backend`.
 
 | Phase | Activity |
 |-------|----------|
-| 1. Intake | Task approved with objective, scope, out-of-scope, acceptance criteria |
+| 1. Intake | Task approved with objective, scope, out-of-scope, acceptance criteria; **spec filed in `TASKS/TASK-<ID>-*.md`** (required for review) |
 | 2. Branch | Create task-scoped feature branch |
 | 3. Implement | Minimal change set aligned to spec |
 | 4. Verify | Tests and operational checks per task |
@@ -82,6 +82,7 @@ Before merge, confirm rollback path:
 
 ## Deliverables Checklist (Per Task)
 
+- [ ] Spec file in `TASKS/` (required for reviewer — see [TASKS/README.md](TASKS/README.md))
 - [ ] Code merged on feature branch
 - [ ] Tests pass per acceptance rules
 - [ ] Migrations reviewed (if applicable)
