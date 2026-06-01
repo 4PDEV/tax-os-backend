@@ -94,7 +94,8 @@ Initial jurisdiction focus: **Rwanda**. Initial tax domains: VAT, PAYE/PIT, WHT,
 | [KNOWN_LIMITATIONS.md](KNOWN_LIMITATIONS.md) | Known gaps |
 | [OPEN_DECISIONS.md](OPEN_DECISIONS.md) | Pending decisions |
 | [CHANGELOG.md](CHANGELOG.md) | Version history |
-| [TASK_REGISTRY.md](TASK_REGISTRY.md) | Task tracking |
+- [TASK_REGISTRY.md](TASK_REGISTRY.md) | Task tracking |
+| [TASKS/](TASKS/) | **Authoritative task specs (required for review)** |
 | [SOURCE_ATTACHMENT_WORKFLOW.md](SOURCE_ATTACHMENT_WORKFLOW.md) | Source file attachment lifecycle |
 | [SOURCE_PROCESSING_WORKFLOW.md](SOURCE_PROCESSING_WORKFLOW.md) | Processing queue and job finalization |
 | [WORKER_CONTRACT.md](WORKER_CONTRACT.md) | Worker processor contract and no-op harness |
@@ -113,6 +114,7 @@ Initial jurisdiction focus: **Rwanda**. Initial tax domains: VAT, PAYE/PIT, WHT,
 | [LEGAL_OBJECT_RETRIEVAL_CONTRACT.md](backend/app/services/retrieval/LEGAL_OBJECT_RETRIEVAL_CONTRACT.md) | Legal object retrieval contract — deterministic retrieval (TASK-004A) |
 | [EFFECTIVE_DATE_RESOLVER_CONTRACT.md](backend/app/services/effective_date/EFFECTIVE_DATE_RESOLVER_CONTRACT.md) | Effective-date resolver contract — time-aware version resolution (TASK-004B) |
 | [CITATION_CANDIDATE_CONTRACT.md](backend/app/services/citation_candidate/CITATION_CANDIDATE_CONTRACT.md) | Citation candidate contract — citation-ready DTO preparation (TASK-004C) |
+| [CITATION_ASSEMBLY_CONTRACT.md](backend/app/services/citation/CITATION_ASSEMBLY_CONTRACT.md) | Citation assembly contract — deterministic source-backed citations (TASK-004D) |
 
 ## Governance
 

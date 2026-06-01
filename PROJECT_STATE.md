@@ -530,6 +530,36 @@ Tests (post-merge VM): **11 citation candidate tests passed**; full suite **350 
 
 ---
 
+## CITATION ASSEMBLY
+
+STATUS: **IMPLEMENTED — PENDING REVIEW** (TASK-004D on feature branch)
+
+Feature branch: `feature/task-004d-citation-assembly-contract` @ `e008fe7`
+
+Implemented (TASK-004D):
+
+* citation assembly contract (`backend/app/services/citation/`)
+* `CitationAssembler` — `assemble()`, `assemble_by_request()` with required `legal_object_version_id` pin
+* `CitationFormatter` — display text only, separate from assembly
+* `CitationResult` / `CitationAssemblyRequest` strict Pydantic models
+* `AuthorityType` enum — statute, regulation, guidance, case, treaty, etc.
+* location reference contract — Section, Article, Regulation, Part, Chapter, Schedule, Paragraph, Clause, Subsection (identification only)
+* `citation_hash` — SHA-256(`source_version_id | legal_object_id | location_reference`)
+* source traceability enforcement — fails on missing `source_version_id` or `location_reference`
+* version awareness — never resolves implicit latest / `current_version_id`
+
+Tests (feature branch VM): **20 citation assembly tests passed** (formatter + assembler; post AMENDMENT-A)
+
+**TASK-004D-AMENDMENT-A (Citation Identity Hardening):** implemented on feature branch; pending renewed review. Adds `CitationResult.legal_object_version_id`, hash includes version pin, `SourceDocumentMismatchError` for document lineage consistency.
+
+**Out of scope (preserved):** answer generation, citation ranking, authority weighting, legal reasoning, AI, semantic search, retrieval, topic classification, API routes, citation persistence, database migrations
+
+**Pending:** architectural review, merge, tag (`checkpoint-task-004d`)
+
+**VM snapshot:** not required — no schema or persistence behavior changes.
+
+---
+
 ## STATUS
 
 VERIFIED
@@ -555,6 +585,7 @@ Testing currently includes:
 * legal object retrieval testing (TASK-004A)
 * effective-date resolver testing (TASK-004B)
 * citation candidate builder testing (TASK-004C)
+* citation assembly testing (TASK-004D)
 
 ---
 
@@ -654,11 +685,11 @@ GitHub
 
 ## ACTIVE BRANCH
 
-main (no feature branch in progress)
+`feature/task-004d-citation-assembly-contract` (TASK-004D — pending review)
 
 ## MAIN BRANCH
 
-main (at `1349eb7` — TASK-004C merged; tag `checkpoint-task-004c`)
+main (at `8d68a87` — TASK-004C docs; merge `1349eb7`; tag `checkpoint-task-004c`)
 
 Legal memory stack on `main`:
 
@@ -673,9 +704,15 @@ Legal memory stack on `main`:
 004C → Citation Candidate Preparation
 ```
 
-**Current boundary:** persistence, integrity, retrieval, effective-date resolution, and citation candidate DTO preparation active on `main`. No final citation formatting, no candidate persistence, no API routes.
+Feature branch extends stack (not yet merged):
 
-**VM snapshot:** not required before TASK-004D unless schema or persistence behavior changes.
+```text
+004D → Citation Assembly (pending review)
+```
+
+**Current boundary:** through 004C on `main`. TASK-004D adds deterministic citation assembly on feature branch — no answer generation, no citation persistence, no API routes.
+
+**VM snapshot:** not required — TASK-004D does not change schema or persistence behavior.
 
 ---
 
@@ -720,7 +757,7 @@ Legal memory stack on `main`:
 
 # NEXT APPROVED TASKS
 
-*(None registered — awaiting TASK-004D spec)*
+TASK-004D — Citation Assembly Contract: **implemented on feature branch; pending review, merge, and tag.**
 
 **VM snapshot:** not required unless next task changes schema or persistence behavior.
 

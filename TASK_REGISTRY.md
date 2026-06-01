@@ -1,6 +1,6 @@
 # Task Registry
 
-Bounded task tracking for `tax-os-backend`. Authoritative specs remain in `tax-os-architecture`; this file tracks implementation status.
+Bounded task tracking for `tax-os-backend`. Authoritative specs remain in `tax-os-architecture` and in **`TASKS/TASK-<ID>-*.md`** (required for reviewer); this file tracks implementation status only.
 
 | Task ID | Title | Status | Notes |
 |---------|-------|--------|-------|
@@ -38,6 +38,7 @@ Bounded task tracking for `tax-os-backend`. Authoritative specs remain in `tax-o
 | TASK-004A | Legal Object Retrieval Contract | Complete (merged) | Deterministic retrieval — tag `checkpoint-task-004a`; merge `90357ff` |
 | TASK-004B | Effective-Date Resolver Contract | Complete (merged) | Time-aware resolution — tag `checkpoint-task-004b`; merge `08efa3b` |
 | TASK-004C | Citation Candidate Contract | Complete (merged) | Citation-ready DTO preparation — tag `checkpoint-task-004c`; merge `1349eb7` |
+| TASK-004D | Citation Assembly Contract | In progress | Deterministic citation assembly — branch `feature/task-004d-citation-assembly-contract`; AMENDMENT-A identity hardening pending review |
 
 ## Status Legend
 
