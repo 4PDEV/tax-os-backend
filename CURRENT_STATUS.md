@@ -80,7 +80,7 @@ The platform is materially beyond early foundation. Core registry, processing qu
 
 | Task | Title | Why now |
 |------|-------|---------|
-| **TASK-006B** | Test Isolation & Full-Suite Stability | Resolve **TEST-GAP-001** before pipeline/agents/migrations |
+| **TASK-006B** | Test Isolation & Full-Suite Stability | **Completed** — TEST-GAP-001 resolved; suite stable |
 
 See [IMPLEMENTATION_ROADMAP.md](IMPLEMENTATION_ROADMAP.md) for full sequencing.
 
@@ -106,7 +106,7 @@ Do not implement TASK-004E unless it blocks active work.
 
 | ID | Gap | Impact | Owner task |
 |----|-----|--------|------------|
-| **TEST-GAP-001** | Full-suite instability in legal-object integrity / retrieval tests during 006A validation | Suite not fully trustworthy for merge confidence | **TASK-006B** |
+| **TEST-GAP-001** | Full-suite instability in legal-object integrity / retrieval tests during 006A validation | **Resolved in TASK-006B** (root-cause isolated and fixed) | Closed |
 | **OD-016** | Citation assembler temporal code vs governance | Citation output may not match Addendum V6 until TASK-004E | TASK-004E (deferred) |
 | **OD-017 / OD-018** | 003E reconciliation, overlap disclosure | Non-blocking governance follow-ups | Future review |
 
@@ -135,15 +135,15 @@ Ingestion workers, embeddings, answer engine, public ingestion APIs: **not start
 | `main` | TASK-006A + governance closeout pushed |
 | Last major merge | TASK-005A temporal governance (`43c6ad0`, `--no-ff`) |
 | Checkpoint tags | Through `checkpoint-task-005a-spec` |
-| Test confidence | **Partial** — ingestion 12/12; full suite under TEST-GAP-001 |
+| Test confidence | **Green (stabilized)** — full suite passed 3 consecutive runs (390/390) |
 
 ---
 
 ## Stabilization Priorities
 
-1. **TASK-006B** — isolate and fix test harness / transaction isolation (TEST-GAP-001)
-2. Restore full-suite green on PostgreSQL VM before workers or large migrations
-3. Then: ingestion worker wiring (future bounded task), not before 006B
+1. Keep `TEST_DATABASE_URL` safety guard enabled for destructive integration workflows
+2. Preserve nested-transaction isolation in `backend/tests/conftest.py`
+3. Re-run full suite before migration-heavy tasks
 
 ---
 
@@ -162,4 +162,4 @@ FOUNDATION → EXTRACTION CONTRACTS → LEGAL OBJECT GOVERNANCE → CITATION GOV
 → TEMPORAL GOVERNANCE → INGESTION PERSISTENCE → [TEST HARDENING] → AGENT LAYER → …
 ```
 
-**You are here:** ingestion persistence complete; **test hardening** is the approved next step.
+**You are here:** ingestion persistence complete; **test hardening completed in TASK-006B**.

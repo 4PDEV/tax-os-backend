@@ -1,24 +1,33 @@
 import os
 from pathlib import Path
-from urllib.parse import quote_plus
+from urllib.parse import quote_plus, urlparse
 
 import pytest
 from alembic import command
 from alembic.config import Config
 from fastapi.testclient import TestClient
-from sqlalchemy import create_engine, text
+from sqlalchemy import create_engine, event, text
 from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy.orm import sessionmaker
-
 
 ROOT_DIR = Path(__file__).resolve().parents[2]
 ALEMBIC_INI_PATH = ROOT_DIR / "alembic.ini"
 MIGRATIONS_PATH = ROOT_DIR / "backend" / "migrations"
 
-
 def _build_db_url(host: str, port: str, user: str, password: str, db_name: str) -> str:
     encoded_password = quote_plus(password)
     return f"postgresql://{user}:{encoded_password}@{host}:{port}/{db_name}"
+
+
+def _requires_explicit_test_database_url() -> bool:
+    value = os.getenv("REQUIRE_TEST_DATABASE_URL", "1").strip().lower()
+    return value not in {"0", "false", "no"}
+
+
+def _is_safe_test_database_url(database_url: str) -> bool:
+    parsed = urlparse(database_url)
+    db_name = parsed.path.lstrip("/").lower()
+    return bool(db_name) and ("test" in db_name or db_name.endswith("_ci"))
 
 
 def _test_db_config() -> dict[str, str]:
@@ -27,13 +36,19 @@ def _test_db_config() -> dict[str, str]:
     db_name = os.getenv("TEST_POSTGRES_DB", "taxos_test")
     user = os.getenv("TEST_POSTGRES_USER", "postgres")
     password = os.getenv("TEST_POSTGRES_PASSWORD", "postgres")
-    database_url = os.getenv("TEST_DATABASE_URL") or _build_db_url(
-        host=host,
-        port=port,
-        user=user,
-        password=password,
-        db_name=db_name,
-    )
+
+    explicit_database_url = os.getenv("TEST_DATABASE_URL")
+    if _requires_explicit_test_database_url() and not explicit_database_url:
+        database_url = ""
+    else:
+        database_url = explicit_database_url or _build_db_url(
+            host=host,
+            port=port,
+            user=user,
+            password=password,
+            db_name=db_name,
+        )
+
     return {
         "host": host,
         "port": port,
@@ -49,9 +64,16 @@ def _integration_skip_reason() -> str | None:
     database_url = cfg["database_url"]
     if not database_url:
         return (
-            "Skipping integration DB tests: TEST_DATABASE_URL is not configured. "
-            "Provide TEST_DATABASE_URL or TEST_POSTGRES_* variables."
+            "Skipping integration DB tests: TEST_DATABASE_URL is required for destructive "
+            "migration/isolation tests. Set TEST_DATABASE_URL to a dedicated test database."
         )
+
+    if not _is_safe_test_database_url(database_url):
+        return (
+            "Skipping integration DB tests: TEST_DATABASE_URL does not look like a dedicated "
+            "test database (name must include 'test' or end with '_ci')."
+        )
+
     engine = create_engine(database_url, connect_args={"connect_timeout": 3})
     try:
         with engine.connect() as conn:
@@ -84,6 +106,7 @@ def _configure_test_database_env():
     os.environ["POSTGRES_DB"] = cfg["db_name"]
     os.environ["POSTGRES_USER"] = cfg["user"]
     os.environ["POSTGRES_PASSWORD"] = cfg["password"]
+
 
 @pytest.fixture(scope="session")
 def migrated_test_database(_configure_test_database_env):
@@ -132,14 +155,29 @@ def engine(migrated_test_database):
 def db_session(engine):
     connection = engine.connect()
     transaction = connection.begin()
-    testing_session = sessionmaker(autocommit=False, autoflush=False, bind=connection)
+
+    testing_session = sessionmaker(
+        autocommit=False,
+        autoflush=False,
+        bind=connection,
+        expire_on_commit=False,
+    )
     session = testing_session()
+
+    session.begin_nested()
+
+    @event.listens_for(session, "after_transaction_end")
+    def _restart_savepoint(sess, trans):
+        if trans.nested and not trans._parent.nested:
+            sess.begin_nested()
 
     try:
         yield session
     finally:
-        session.close()
-        transaction.rollback()
+        if session.is_active:
+            session.close()
+        if transaction.is_active:
+            transaction.rollback()
         connection.close()
 
 

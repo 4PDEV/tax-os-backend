@@ -37,13 +37,13 @@ Pending architectural or operational decisions. Resolve via `tax-os-architecture
 
 | ID | Topic | Context | Status |
 |----|-------|---------|--------|
-| TEST-GAP-001 | Full-suite instability | Full-suite instability observed in legal-object integrity / retrieval tests during TASK-006A validation. Ingestion tests passed 12/12. Investigation deferred to bounded QA task (**TASK-006B**) before next migration-heavy task. | Open — blocks push confidence until TASK-006B |
+| TEST-GAP-001 | Full-suite instability | Observed during TASK-006A validation. Root cause isolated in TASK-006B (service-level rollback scope + stale migration downgrade assumption + unstable resolver ordering). Fixed; full suite now passes 3 consecutive runs. | **Resolved (TASK-006B)** |
 
 ## Decision Log (Closed)
 
 | ID | Decision | Date |
 |----|----------|------|
-| — | *(none recorded yet)* | — |
+| TEST-GAP-001 | Full-suite instability resolved in TASK-006B | 2026-06-02 |
 
 When closing a decision, move row to Decision Log and reference approving task.
 

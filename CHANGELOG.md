@@ -4,6 +4,24 @@ All notable changes to `tax-os-backend` are documented here.
 
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versions align with git tags where applicable.
 
+## [task-006b-stability] - 2026-06-02
+
+### Changed
+
+- TASK-006B: test isolation and full-suite stability hardening.
+  - `backend/tests/conftest.py`: explicit `TEST_DATABASE_URL` safety guard for destructive integration tests, test-DB name safety check, and nested transaction/savepoint fixture isolation.
+  - `backend/app/services/legal_object_persistence/integrity_service.py`: removed broad rollback on expected rejected flows to avoid wiping test setup state.
+  - `backend/app/services/legal_object_persistence/service.py`: duplicate-record creation moved after legal object creation to satisfy FK discipline.
+  - `backend/app/services/effective_date/resolver.py`: deterministic ordering aligned with effective-date semantics.
+  - `backend/tests/test_legal_object_alembic_migration.py`: downgrade assertion updated for post-006A head.
+
+### Validation
+
+- Ingestion suite: 12 passed.
+- Legal-object integrity + retrieval focus: 27 passed.
+- Full suite: 390 passed in 3 consecutive runs.
+- Alembic head verified: `c9a2f3b81d06`.
+
 ## [0.2.1-task-002b] - 2026-05-30
 
 ### Added

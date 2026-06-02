@@ -360,7 +360,7 @@ def test_supersede_rejects_self_referential_legal_object_id():
 
     assert result.operation_status == IntegrityOperationStatus.REJECTED
     assert "must differ" in result.warnings[0]
-    db.rollback.assert_called_once()
+    db.rollback.assert_not_called()
     repository.update_legal_object_status.assert_not_called()
     repository.create_lineage_record.assert_not_called()
 

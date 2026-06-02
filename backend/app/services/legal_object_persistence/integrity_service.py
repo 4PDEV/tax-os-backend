@@ -120,7 +120,6 @@ class LegalObjectIntegrityService:
             previous_status = prior.status
             persist_result = self._persistence.persist(db, superseding, commit=False)
             if persist_result.persistence_status != PersistenceStatus.CREATED:
-                db.rollback()
                 operation_status = (
                     IntegrityOperationStatus.FAILED
                     if persist_result.persistence_status
@@ -141,7 +140,6 @@ class LegalObjectIntegrityService:
 
             new_object_id = persist_result.legal_object_id
             if new_object_id == supersedes_legal_object_id:
-                db.rollback()
                 return LegalObjectIntegrityResult(
                     legal_object_id=supersedes_legal_object_id,
                     operation="supersede",
@@ -250,7 +248,6 @@ class LegalObjectIntegrityService:
                 operation_status=IntegrityOperationStatus.SUCCESS,
             )
         except (ImmutabilityViolationError, LegalObjectPersistenceError, ValueError) as exc:
-            db.rollback()
             return LegalObjectIntegrityResult(
                 legal_object_id=legal_object_id,
                 operation="update",

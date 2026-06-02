@@ -52,9 +52,10 @@ class EffectiveDateResolver:
         ordered = sorted(
             results,
             key=lambda item: (
-                item.legal_object_id,
                 item.effective_from or date.min,
                 item.effective_to or date.max,
+                item.object_identifier,
+                item.legal_object_id,
                 item.legal_object_version_id or UUID(int=0),
             ),
         )

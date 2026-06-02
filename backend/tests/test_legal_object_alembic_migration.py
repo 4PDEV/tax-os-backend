@@ -176,7 +176,7 @@ def test_migration_offset_check_constraint_exists(engine):
 def test_downgrade_removes_legal_object_tables(migrated_test_database):
     alembic_cfg = Config(str(ALEMBIC_INI_PATH))
     alembic_cfg.set_main_option("script_location", str(MIGRATIONS_PATH))
-    command.downgrade(alembic_cfg, "-1")
+    command.downgrade(alembic_cfg, "e5f2a8c31b74")
 
     from app.db.session import engine as app_engine
 

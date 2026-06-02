@@ -151,21 +151,6 @@ class LegalObjectPersistenceService:
                 text_hash=candidate.text_hash,
                 exclude_legal_object_id=candidate.legal_object_id,
             )
-            if cross_object_match is not None:
-                self._repository.create_duplicate_record(
-                    db,
-                    primary_legal_object_id=cross_object_match.legal_object_id,
-                    duplicate_legal_object_id=candidate.legal_object_id,
-                    duplicate_type=DuplicateType.TEXT_HASH.value,
-                    text_hash_match=True,
-                    canonical_path_match=cross_object_match.legal_object.canonical_path
-                    == candidate.canonical_path,
-                    notes="detected during persistence; no auto-merge",
-                )
-                warnings.append(
-                    "duplicate text_hash detected for different legal_object_id; "
-                    "recorded in legal_object_duplicates without auto-merge"
-                )
 
             legal_object = self._repository.get_legal_object(db, candidate.legal_object_id)
             created_legal_object = False
@@ -184,6 +169,22 @@ class LegalObjectPersistenceService:
             elif legal_object.canonical_path != candidate.canonical_path:
                 warnings.append(
                     "canonical_path differs from persisted legal object identity record"
+                )
+
+            if cross_object_match is not None:
+                self._repository.create_duplicate_record(
+                    db,
+                    primary_legal_object_id=cross_object_match.legal_object_id,
+                    duplicate_legal_object_id=candidate.legal_object_id,
+                    duplicate_type=DuplicateType.TEXT_HASH.value,
+                    text_hash_match=True,
+                    canonical_path_match=cross_object_match.legal_object.canonical_path
+                    == candidate.canonical_path,
+                    notes="detected during persistence; no auto-merge",
+                )
+                warnings.append(
+                    "duplicate text_hash detected for different legal_object_id; "
+                    "recorded in legal_object_duplicates without auto-merge"
                 )
 
             path_conflict = self._repository.find_version_with_different_hash_same_path(

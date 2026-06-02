@@ -44,7 +44,7 @@ Bounded task tracking for `tax-os-backend`. Authoritative specs remain in `tax-o
 | TASK-005B | Temporal Resolution Governance Amendment | Complete (merged) | Addendum V6 + doc amendments — merged with 005A-SPEC |
 | TASK-004E | Citation Temporal Compliance Remediation | Planned | Align `CitationAssembler` with Addendum V6 — code task; defer unless blocking |
 | TASK-006A | Source Ingestion Persistence Layer | Complete (main) | Append-only extraction/parser persistence — commit `acc32e4`; TEST-GAP-001 |
-| TASK-006B | Test Isolation & Full-Suite Stability | Approved | Resolve TEST-GAP-001 before workers / next migration-heavy task; supersedes draft “Source Monitoring Agent” 006B |
+| TASK-006B | Test Isolation & Full-Suite Stability | Complete (merged) | TEST-GAP-001 resolved; 3 consecutive full-suite passes; test DB safety guard + fixture hardening |
 | TASK-DOC-001 | Master Status Document Realignment | Complete | CURRENT_STATUS, IMPLEMENTATION_ROADMAP, ARCHITECTURE_PHASE_MAP |
 
 ## Status Legend

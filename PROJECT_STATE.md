@@ -620,7 +620,7 @@ Implemented:
 
 **Validation:** ingestion tests 12/12 passed (PostgreSQL VM).
 
-**Test gap:** **TEST-GAP-001** — full-suite instability in legal-object integrity / retrieval tests during 006A validation; see `OPEN_DECISIONS.md`. **TASK-006B** (test isolation & full-suite stability) is next before workers or further pipeline complexity.
+**Test gap (resolved):** **TEST-GAP-001** — isolated in TASK-006B and resolved via fixture transaction hardening + deterministic ordering/migration-test updates. See `OPEN_DECISIONS.md` and `TESTING_GUIDE.md`.
 
 **Out of scope (preserved):** workers, orchestration, APIs, embeddings, legal-object wiring from ingestion artifacts
 
@@ -628,19 +628,21 @@ Implemented:
 
 ## STATUS
 
-VERIFIED (ingestion layer); **FULL SUITE UNDER REVIEW** (TEST-GAP-001)
+VERIFIED (ingestion + stability)
 
-Latest targeted result (TASK-006A validation, PostgreSQL VM):
+Latest TASK-006B validation (PostgreSQL VM, `TEST_DATABASE_URL`):
 
 * ingestion persistence tests: 12 passed
-* full suite: intermittent failures in `test_legal_object_persistence_integrity.py` and `test_retrieval_service.py` — tracked as TEST-GAP-001
+* legal-object integrity + retrieval focused suite: 27 passed
+* full suite run #1: 390 passed
+* full suite run #2: 390 passed
+* full suite run #3: 390 passed
 
-Prior baseline (main, post TASK-004D merge): 370 passed, 115 skipped (integration without PostgreSQL).
+Alembic test head verified: `c9a2f3b81d06`.
 
 Warnings:
 
 * timezone-aware UTC cleanup still pending
-* full-suite stability investigation required (TASK-006B) before treating CI/VM suite as fully green
 
 Testing currently includes:
 
@@ -829,11 +831,11 @@ Legal memory stack on `main`:
 
 # NEXT APPROVED TASKS
 
-**TASK-006B** — Test Isolation & Full-Suite Stability (priority — resolve TEST-GAP-001 before workers or migration-heavy work).
-
 TASK-004E — Citation Temporal Compliance Remediation (planned — align `CitationAssembler` with Addendum V6; defer unless blocking).
 
-**VM snapshot:** not required for TASK-006B unless fixture/migration harness changes require it.
+Next bounded implementation after 006B should focus on ingestion automation only after test foundation remains stable.
+
+**VM snapshot:** run full-suite verification before migration-heavy work.
 
 ---
 
