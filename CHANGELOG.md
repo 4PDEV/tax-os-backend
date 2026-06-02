@@ -4,6 +4,31 @@ All notable changes to `tax-os-backend` are documented here.
 
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versions align with git tags where applicable.
 
+## [task-006t1a-parsed-structure-identity-hardening] - 2026-06-02
+
+### Changed
+
+- TASK-006T1A: remediate Claude review P-01 — one `parsed_structure` per `parser_run`.
+  - Migration `a4d2e8f93b36`: `UNIQUE(parsed_structures.parser_run_id)`
+  - Service duplicate rejection in `persist_parsed_structure()` preserved and tested
+  - Tests: `test_parsed_structure_identity_hardening.py`, `test_parsed_structure_identity_alembic_migration.py`
+
+### Notes
+
+- `sha256_structure()` reviewed; no redesign required.
+- Legal-object promotion remains gated pending 006Q–006T review acknowledgment.
+
+## [task-006t-controlled-parsing-execution-review-prep] - 2026-06-02
+
+### Added
+
+- `CLAUDE_REVIEW_PARSING_PIPELINE_006Q-T.md` — architecture review artifact for parsing pipeline 006Q–006T.
+- `TASKS/TASK-006Q-T-PARSING-PIPELINE-REVIEWER-PACKAGE.md` — reviewer package index.
+
+### Notes
+
+- Legal-object promotion blocked until Claude review acknowledgment.
+
 ## [task-006t-controlled-parsing-execution] - 2026-06-02
 
 ### Added

@@ -62,7 +62,7 @@ tax-os-backend/
 | Area | Status |
 |------|--------|
 | Platform phase | Legal memory + temporal governance + ingestion persistence (see [CURRENT_STATUS.md](CURRENT_STATUS.md)) |
-| Alembic migrations | Head `f3b9c2e81a25` |
+| Alembic migrations | Head `a4d2e8f93b36` |
 | Approved next task | *(await explicit authorization)* — TASK-006T complete |
 | Admin CRUD APIs | Operational |
 | Legal object / citation contracts | Merged on `main` (003A–004D) |
@@ -137,6 +137,7 @@ Initial jurisdiction focus: **Rwanda**. Initial tax domains: VAT, PAYE/PIT, WHT,
 | `backend/app/workers/parsing/` | TASK-006S/006T parsing worker (dry-run + controlled structural execution) |
 | [TASKS/TASK-006S-PARSING-WORKER-SKELETON.md](TASKS/TASK-006S-PARSING-WORKER-SKELETON.md) | TASK-006S task record |
 | [TASKS/TASK-006T-CONTROLLED-PARSING-EXECUTION.md](TASKS/TASK-006T-CONTROLLED-PARSING-EXECUTION.md) | TASK-006T task record |
+| [TASKS/TASK-006T1A-PARSED-STRUCTURE-IDENTITY-HARDENING.md](TASKS/TASK-006T1A-PARSED-STRUCTURE-IDENTITY-HARDENING.md) | TASK-006T1A P-01 remediation |
 | `backend/app/services/extraction_trigger/` | TASK-006N extraction trigger persistence service (append-only requests/results, trigger hash, idempotency checks) |
 | `backend/app/workers/extraction/` | TASK-006O/006P extraction worker (dry-run orchestration + controlled local text extraction) |
 | [CLAUDE_REVIEW_EXTRACTION_PIPELINE_006M-P.md](CLAUDE_REVIEW_EXTRACTION_PIPELINE_006M-P.md) | Architecture review — extraction pipeline 006M–006P |

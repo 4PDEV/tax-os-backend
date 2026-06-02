@@ -41,9 +41,11 @@ Pending architectural or operational decisions. Resolve via `tax-os-architecture
 | OD-020 | Trigger `completed` vs text-ready semantics | `trigger_status=completed` on dry-run does not imply `extracted_text` exists; consumers must join `extracted_text` / check extractor identity | Documented — non-blocking |
 | OD-021 | Multi-worker ingestion race (extraction + parsing) | Extraction: app + worker + DB idempotency (006P1). Parsing: creation-time DB idempotency (006R); execution-time race mitigation deferred to parser worker tasks. LOW now, MEDIUM under concurrency | Open — worker execution-time mitigation deferred |
 
-**Parsing pipeline:** TASK-006Q–006T complete at `checkpoint-task-006t-controlled-parsing-execution`. Claude review pending: [`CLAUDE_REVIEW_PARSING_PIPELINE_006Q-T.md`](CLAUDE_REVIEW_PARSING_PIPELINE_006Q-T.md).
+| OD-022 | Parsed structure identity (P-01) | `UNIQUE(parsed_structures.parser_run_id)` enforced in TASK-006T1A; one canonical structure per `parser_run` at DB + service layers | **Resolved (TASK-006T1A)** |
 
-**Legal-object promotion gate:** **BLOCKED** until 006Q–006T architecture review is acknowledged. Do not promote `parsed_structure` to legal objects before sign-off.
+**Parsing pipeline:** TASK-006Q–006T complete at `checkpoint-task-006t-controlled-parsing-execution`. P-01 remediated in TASK-006T1A. Claude review: [`CLAUDE_REVIEW_PARSING_PIPELINE_006Q-T.md`](CLAUDE_REVIEW_PARSING_PIPELINE_006Q-T.md).
+
+**Legal-object promotion gate:** **BLOCKED** until 006Q–006T review acknowledgment and post-006T1A targeted verification. Do not promote `parsed_structure` to legal objects before sign-off.
 
 ## Test gaps (QA)
 

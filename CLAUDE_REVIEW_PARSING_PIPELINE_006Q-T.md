@@ -62,7 +62,7 @@ The parsing pipeline from canonical `extracted_text` through parsing-trigger gov
 | ID | Risk | Severity | Notes |
 |----|------|----------|-------|
 | A-01 | **Application-layer immutability only** | LOW | Direct SQL could mutate rows; same class as extraction/legal-object |
-| A-02 | **No DB UNIQUE on `parsed_structures.parser_run_id` at migration f3b9c2e81a25** | LOW | Service enforces one-per-run; consider DB constraint in future hardening micro-task |
+| A-02 | **No DB UNIQUE on `parsed_structures.parser_run_id`** | — | **REMEDIATED (TASK-006T1A)** — `uq_parsed_structures_parser_run_id` |
 
 **Verdict:** Append-only doctrine **satisfied** at service boundary for TASK-006T scope.
 

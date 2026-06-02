@@ -5,7 +5,7 @@ For detailed historical sections, see [PROJECT_STATE.md](PROJECT_STATE.md). For 
 
 **Last realigned:** 2026-06-02  
 **Branch:** `main`  
-**Alembic head:** `f3b9c2e81a25` (parsing trigger persistence)
+**Alembic head:** `a4d2e8f93b36` (parsed structure identity hardening)
 
 ---
 
@@ -50,8 +50,9 @@ The platform is materially beyond early foundation. Core registry, processing qu
 | Parsing trigger persistence | Append-only parsing trigger requests/results, DB partial unique index, `extracted_text_id` idempotency | TASK-006R |
 | Parsing worker skeleton | Dry-run orchestration from parsing triggers to `parser_run` lifecycle | TASK-006S |
 | Controlled parsing execution | Structural `parsed_structures` from `extracted_text`; non-interpretive segmentation only | TASK-006T |
+| Parsed structure identity hardening | `UNIQUE(parsed_structures.parser_run_id)`; P-01 remediated | TASK-006T1A |
 
-**Checkpoint tags (selected):** `checkpoint-task-003e` … `checkpoint-task-006s-parsing-worker-skeleton`
+**Checkpoint tags (selected):** `checkpoint-task-003e` … `checkpoint-task-006t-controlled-parsing-execution`
 
 ---
 
@@ -253,7 +254,7 @@ Ingestion workers, live monitoring agents, live fetchers, change-detection engin
 
 ## Next Major Architectural Goal
 
-Parsing layer: contract → persistence → worker → controlled structural execution complete (006Q–006T) at `checkpoint-task-006t-controlled-parsing-execution`. **Claude review 006Q–006T pending** — legal-object promotion blocked until acknowledgment. Doctrine: `parsed_structure` ≠ legal meaning.
+Parsing layer: 006Q–006T complete; P-01 remediated (006T1A). **Claude review 006Q–006T pending acknowledgment** — legal-object promotion blocked until sign-off + targeted verification. Doctrine: `parsed_structure` ≠ legal meaning.
 
 Longer horizon (not approved for immediate implementation): agent layer → retrieval layer → answer assembly. See [ARCHITECTURE_PHASE_MAP.md](ARCHITECTURE_PHASE_MAP.md).
 
