@@ -50,13 +50,15 @@ Controlled source fetch contract (TASK-006F): bounded fetch governance, taxonomy
 
 Source change detection contract (TASK-006G): bounded detection governance and classification doctrine without engine implementation.
 
+Controlled fetch implementation (TASK-006H): dry-run/local-fixture fetch execution, fixture safety boundaries, checksum/content-type validation, and no external network access.
+
 ---
 
 ## ACTIVE
 
 | Task | Title | Notes |
 |------|-------|-------|
-| — | *(none in implementation)* | No code task in flight at doc realignment |
+| — | *(none in implementation)* | TASK-006H implementation complete; awaiting next bounded approval |
 
 ---
 

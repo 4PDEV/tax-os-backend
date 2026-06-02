@@ -179,7 +179,19 @@ FOUNDATION
 
 ---
 
-### 13. AGENT LAYER — **FUTURE**
+### 13. CONTROLLED FETCH IMPLEMENTATION — **COMPLETE**
+
+**Intent:** Prove fetch lifecycle mechanics safely using deterministic synthetic content and local fixtures only.
+
+**Representative task:** TASK-006H
+
+**Key artifacts:** `backend/app/services/fetch/` (`DryRunFetcher`, `LocalFixtureFetcher`, request/result contracts, checksum/content-type/safety utilities) and fixture-based tests under `backend/tests/`.
+
+**Boundaries:** no live HTTP/HTTPS, no crawling/scraping, no source-version creation, no legal-object creation, no ingestion approval automation.
+
+---
+
+### 14. AGENT LAYER — **FUTURE**
 
 **Intent:** Autonomous or semi-autonomous ingestion/monitoring agents operating on governed contracts and persistence.
 
@@ -189,7 +201,7 @@ FOUNDATION
 
 ---
 
-### 14. RETRIEVAL LAYER — **FUTURE**
+### 15. RETRIEVAL LAYER — **FUTURE**
 
 **Intent:** Research-grade retrieval beyond 004A contract (ranking, multi-source assembly, operational APIs as governed).
 
@@ -197,7 +209,7 @@ FOUNDATION
 
 ---
 
-### 15. ANSWER ASSEMBLY — **FUTURE**
+### 16. ANSWER ASSEMBLY — **FUTURE**
 
 **Intent:** Source-referenced answers with mandatory disclosure, ambiguity surfacing, no silent legal inference.
 
@@ -209,7 +221,7 @@ FOUNDATION
 
 ## Current position (one line)
 
-**Phases 1–12 complete on `main`; next implementation work is controlled fetch and change-detection implementation under bounded governance.**
+**Phases 1–13 complete on `main`; next implementation work remains bounded expansion from local fetch execution toward controlled acquisition under governance.**
 
 ---
 

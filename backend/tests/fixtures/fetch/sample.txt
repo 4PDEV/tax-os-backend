@@ -1,0 +1,1 @@
+Dry run local fixture text content.

@@ -63,7 +63,7 @@ tax-os-backend/
 |------|--------|
 | Platform phase | Legal memory + temporal governance + ingestion persistence (see [CURRENT_STATUS.md](CURRENT_STATUS.md)) |
 | Alembic migrations | Head `c9a2f3b81d06` |
-| Approved next task | **Post-006G controlled fetch/detection implementation planning** (no live acquisition without explicit approval) |
+| Approved next task | **Awaiting next bounded task after TASK-006H** (local/dry-run fetch implementation complete; no live acquisition) |
 | Admin CRUD APIs | Operational |
 | Legal object / citation contracts | Merged on `main` (003A–004D) |
 | Temporal governance | Merged (005A–005C); tag `checkpoint-task-005a-spec` |
@@ -128,6 +128,7 @@ Initial jurisdiction focus: **Rwanda**. Initial tax domains: VAT, PAYE/PIT, WHT,
 | [TASKS/TASK-006F-CONTROLLED-SOURCE-FETCH-CONTRACT.md](TASKS/TASK-006F-CONTROLLED-SOURCE-FETCH-CONTRACT.md) | TASK-006F contract record |
 | [SOURCE_CHANGE_DETECTION_ENGINE_CONTRACT.md](SOURCE_CHANGE_DETECTION_ENGINE_CONTRACT.md) | Source change-detection governance contract (TASK-006G; contract-only) |
 | [TASKS/TASK-006G-SOURCE-CHANGE-DETECTION-ENGINE-CONTRACT.md](TASKS/TASK-006G-SOURCE-CHANGE-DETECTION-ENGINE-CONTRACT.md) | TASK-006G contract record |
+| `backend/app/services/fetch/` | TASK-006H controlled fetch implementation (dry-run + local fixture mode only) |
 
 ## Governance
 

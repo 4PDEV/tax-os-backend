@@ -15,7 +15,7 @@ For detailed historical sections, see [PROJECT_STATE.md](PROJECT_STATE.md). For 
 
 The platform is materially beyond early foundation. Core registry, processing queue, extraction/parser **contracts**, legal-object **persistence**, citation **governance**, temporal **governance**, and ingestion **artifact persistence** are in place on `main`.
 
-**Active gate:** source change detection governance is contract-defined (TASK-006G); live detection engines remain prohibited pending future bounded implementation tasks.
+**Active gate:** controlled fetch implementation is now limited to dry-run/local-fixture execution (TASK-006H); live external fetching and live change-detection engines remain prohibited.
 
 **Environments:** development and internal staging only. No public production deployment.
 
@@ -36,6 +36,7 @@ The platform is materially beyond early foundation. Core registry, processing qu
 | Monitoring governance | Source monitoring agent contract and boundary controls | TASK-006C |
 | Fetch governance | Controlled source fetch contract and boundary controls | TASK-006F |
 | Change-detection governance | Source change detection engine contract boundaries | TASK-006G |
+| Controlled fetch implementation | Dry-run/local-fixture fetchers with safety guards and fixture tests | TASK-006H |
 
 **Checkpoint tags (selected):** `checkpoint-task-003e` … `checkpoint-task-005a-spec`
 
@@ -97,7 +98,7 @@ The platform is materially beyond early foundation. Core registry, processing qu
 
 | Task | Title | Why now |
 |------|-------|---------|
-| **TASK-006G** | Source Change Detection Engine Contract | **Completed (contract-only)** — bounded detection governance defined; no detection engine implementation |
+| **TASK-006H** | Controlled Fetch Implementation (Dry-Run + Local Fixture Mode) | **Completed (bounded implementation)** — safe local/dry-run fetch execution without external network access |
 
 See [IMPLEMENTATION_ROADMAP.md](IMPLEMENTATION_ROADMAP.md) for full sequencing.
 
@@ -127,6 +128,13 @@ TASK-006G is governance-only:
 
 - allowed: change-detection request/result contracts, status/change/confidence taxonomy, checksum/metadata/structural diff doctrine, review-required policy
 - prohibited: diff engine implementation, legal amendment inference, temporal inference, automatic source version creation
+
+### TASK-006H boundary
+
+TASK-006H implements bounded fetch execution only:
+
+- allowed: `DryRunFetcher`, `LocalFixtureFetcher`, local fixture path safety, checksum/content-type utilities, max-size guard, dry-run/local-mode guard
+- prohibited: live HTTP/HTTPS fetching, crawling/scraping, source discovery, source-version creation, legal-object creation, ingestion approval automation
 
 ---
 
@@ -197,7 +205,7 @@ Ingestion workers, live monitoring agents, live fetchers, change-detection engin
 
 ## Next Major Architectural Goal
 
-After TASK-006G change-detection governance formalization: future bounded tasks may implement controlled fetch and detection mechanics with strict provenance and safety gates.
+After TASK-006H controlled fetch local execution: future bounded tasks may implement additional controlled acquisition mechanics while preserving strict provenance and safety gates.
 
 Longer horizon (not approved for immediate implementation): agent layer → retrieval layer → answer assembly. See [ARCHITECTURE_PHASE_MAP.md](ARCHITECTURE_PHASE_MAP.md).
 
@@ -210,4 +218,4 @@ FOUNDATION → EXTRACTION CONTRACTS → LEGAL OBJECT GOVERNANCE → CITATION GOV
 → TEMPORAL GOVERNANCE → INGESTION PERSISTENCE → [TEST HARDENING] → AGENT LAYER → …
 ```
 
-**You are here:** ingestion persistence complete, test hardening complete, monitoring governance + persistence + dry-run worker skeleton + fetch governance + detection governance complete (TASK-006C/006D/006E/006F/006G).
+**You are here:** ingestion persistence complete, test hardening complete, monitoring governance + persistence + dry-run worker skeleton + fetch governance + detection governance + controlled local fetch execution complete (TASK-006C/006D/006E/006F/006G/006H).

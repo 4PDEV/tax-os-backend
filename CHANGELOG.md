@@ -570,6 +570,31 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Version
 
 - TASK-006G introduces no change-detection engine implementation, no live fetching, and no legal amendment/temporal interpretation.
 
+## [task-006h-controlled-fetch-implementation] - 2026-06-02
+
+### Added
+
+- TASK-006H: controlled fetch implementation (dry-run + local fixture mode only).
+  - New bounded fetch package: `backend/app/services/fetch/`
+    - `contract.py` (`FetchRequest`, `ControlledFetcher`)
+    - `result.py` (`FetchResult`)
+    - `dry_run_fetcher.py` (`DryRunFetcher`)
+    - `local_fixture_fetcher.py` (`LocalFixtureFetcher`)
+    - `safety.py` (scheme guards, mode guard, fixture-root/path traversal protection, max-size guard)
+    - `checksum.py` (`sha256_bytes`)
+    - `content_type.py` (approved content-type mapping/detection)
+    - `fetcher.py` (`execute_fetch`)
+  - New fixture files under `backend/tests/fixtures/fetch/` (`sample.txt`, `sample.html`, `sample.json`, `sample.xml`, `sample.bin`).
+  - New targeted tests: `backend/tests/test_fetch_controlled_local_dry_run.py`.
+
+### Validation
+
+- `backend/tests/test_fetch_controlled_local_dry_run.py`: **13 passed**.
+
+### Notes
+
+- TASK-006H introduces no live HTTP/HTTPS fetching, no crawling/scraping, no source-version creation, and no legal-object creation.
+
 ## [checkpoint-task-005a-spec] - 2026-06-01
 
 ### Merged
