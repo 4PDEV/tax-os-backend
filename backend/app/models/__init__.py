@@ -7,6 +7,8 @@ from app.models.monitoring_event import MonitoringEvent
 from app.models.source_allowlist_entry import SourceAllowlistEntry
 from app.models.fetch_request import FetchRequest
 from app.models.fetch_result import FetchResult
+from app.models.change_detection_request import ChangeDetectionRequest
+from app.models.change_detection_result import ChangeDetectionResult
 from app.models.extracted_text import ExtractedText
 from app.models.extraction_run import ExtractionRun
 from app.models.ingestion_state_transition import IngestionStateTransition
@@ -32,6 +34,8 @@ __all__ = [
     "SourceAllowlistEntry",
     "FetchRequest",
     "FetchResult",
+    "ChangeDetectionRequest",
+    "ChangeDetectionResult",
     "ExtractedText",
     "ExtractionRun",
     "IngestionStateTransition",

@@ -25,6 +25,8 @@ from app.models import (  # noqa: F401
     SourceAllowlistEntry,
     FetchRequest,
     FetchResult,
+    ChangeDetectionRequest,
+    ChangeDetectionResult,
     ExtractedText,
     ExtractionRun,
     IngestionStateTransition,

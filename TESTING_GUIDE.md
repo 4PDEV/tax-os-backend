@@ -28,7 +28,7 @@ export REQUIRE_TEST_DATABASE_URL=0
 Expected Alembic head:
 
 ```text
-e2f4a1b9c8d7
+f4c3b2a190de
 ```
 
 Session fixture behavior (`backend/tests/conftest.py`):
@@ -72,6 +72,13 @@ TEST_DATABASE_URL='postgresql://taxos:P%405sw0rd%21234@localhost:5432/taxos_test
 ```bash
 TEST_DATABASE_URL='postgresql://taxos:P%405sw0rd%21234@localhost:5432/taxos_test' \
 .venv/bin/pytest backend/tests/test_fetch_persistence.py backend/tests/test_fetch_alembic_migration.py -q --tb=short
+```
+
+### TASK-006J change detection persistence tests
+
+```bash
+TEST_DATABASE_URL='postgresql://taxos:P%405sw0rd%21234@localhost:5432/taxos_test' \
+.venv/bin/pytest backend/tests/test_change_detection_persistence.py backend/tests/test_change_detection_alembic_migration.py -q --tb=short
 ```
 
 ## 5) Prohibited practices

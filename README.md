@@ -62,8 +62,8 @@ tax-os-backend/
 | Area | Status |
 |------|--------|
 | Platform phase | Legal memory + temporal governance + ingestion persistence (see [CURRENT_STATUS.md](CURRENT_STATUS.md)) |
-| Alembic migrations | Head `e2f4a1b9c8d7` |
-| Approved next task | **Awaiting next bounded task after TASK-006I** (fetch persistence complete; no live acquisition) |
+| Alembic migrations | Head `f4c3b2a190de` |
+| Approved next task | **Awaiting next bounded task after TASK-006J** (change detection persistence complete; no engine/live acquisition) |
 | Admin CRUD APIs | Operational |
 | Legal object / citation contracts | Merged on `main` (003A–004D) |
 | Temporal governance | Merged (005A–005C); tag `checkpoint-task-005a-spec` |
@@ -130,6 +130,7 @@ Initial jurisdiction focus: **Rwanda**. Initial tax domains: VAT, PAYE/PIT, WHT,
 | [TASKS/TASK-006G-SOURCE-CHANGE-DETECTION-ENGINE-CONTRACT.md](TASKS/TASK-006G-SOURCE-CHANGE-DETECTION-ENGINE-CONTRACT.md) | TASK-006G contract record |
 | `backend/app/services/fetch/` | TASK-006H controlled fetch implementation (dry-run + local fixture mode only) |
 | `backend/app/services/fetch/persistence.py` | TASK-006I controlled fetch request/result persistence (append-only artifacts) |
+| `backend/app/services/change_detection/` | TASK-006J change detection request/result persistence (append-only artifacts; no engine) |
 
 ## Governance
 

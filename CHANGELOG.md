@@ -624,6 +624,39 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Version
 
 - TASK-006I introduces no live HTTP/HTTPS fetching, no source-version/extracted-text/legal-object creation, and no monitoring candidate auto-transition/auto-approval.
 
+## [task-006j-change-detection-persistence] - 2026-06-02
+
+### Added
+
+- TASK-006J: source change detection persistence (append-only).
+  - New models:
+    - `backend/app/models/change_detection_request.py` (`change_detection_requests`)
+    - `backend/app/models/change_detection_result.py` (`change_detection_results`)
+  - New Alembic revision:
+    - `backend/migrations/versions/f4c3b2a190de_create_change_detection_persistence_tables.py`
+  - New persistence service package:
+    - `backend/app/services/change_detection/persistence.py`
+    - `backend/app/services/change_detection/__init__.py`
+    - API: `create_change_detection_request()`, `persist_change_detection_result()`, `get_change_detection_request()`, `list_change_detection_results_for_request()`, `get_latest_change_detection_result_for_request()`
+  - New tests:
+    - `backend/tests/test_change_detection_persistence.py`
+    - `backend/tests/test_change_detection_alembic_migration.py`
+
+### Governance
+
+- Review-required doctrine enforced in persistence validation:
+  - `checksum_changed`, `metadata_changed`, `content_changed`, `structure_changed`, `removed_or_unavailable`, `new_artifact`, `unknown` **must** set `review_required=True`.
+  - `no_change` and `duplicate_detected` may set `review_required=False`.
+  - Invalid `review_required=False` for review-required types is **rejected**.
+
+### Validation
+
+- `backend/tests/test_change_detection_persistence.py backend/tests/test_change_detection_alembic_migration.py`: **14 passed**.
+
+### Notes
+
+- TASK-006J introduces no change-detection engine, no amendment/legal/temporal inference, no source-version creation, and no candidate auto-transition/auto-approval.
+
 ## [checkpoint-task-005a-spec] - 2026-06-01
 
 ### Merged

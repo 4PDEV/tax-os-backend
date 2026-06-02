@@ -203,7 +203,19 @@ FOUNDATION
 
 ---
 
-### 15. AGENT LAYER — **FUTURE**
+### 15. SOURCE CHANGE DETECTION PERSISTENCE — **COMPLETE**
+
+**Intent:** Persist change-detection comparison requests/results as append-only evidence records before any detection engine implementation.
+
+**Representative task:** TASK-006J
+
+**Key artifacts:** `change_detection_requests` and `change_detection_results` tables, persistence services in `backend/app/services/change_detection/`, and migration/integration tests.
+
+**Boundaries:** no diff engine, no amendment/legal/temporal inference, no source-version creation, no candidate auto-transition, no live external fetching.
+
+---
+
+### 16. AGENT LAYER — **FUTURE**
 
 **Intent:** Autonomous or semi-autonomous ingestion/monitoring agents operating on governed contracts and persistence.
 
@@ -213,7 +225,7 @@ FOUNDATION
 
 ---
 
-### 16. RETRIEVAL LAYER — **FUTURE**
+### 17. RETRIEVAL LAYER — **FUTURE**
 
 **Intent:** Research-grade retrieval beyond 004A contract (ranking, multi-source assembly, operational APIs as governed).
 
@@ -221,7 +233,7 @@ FOUNDATION
 
 ---
 
-### 17. ANSWER ASSEMBLY — **FUTURE**
+### 18. ANSWER ASSEMBLY — **FUTURE**
 
 **Intent:** Source-referenced answers with mandatory disclosure, ambiguity surfacing, no silent legal inference.
 
@@ -233,7 +245,7 @@ FOUNDATION
 
 ## Current position (one line)
 
-**Phases 1–14 complete on `main`; next implementation work remains bounded expansion from local fetch execution/persistence toward controlled acquisition under governance.**
+**Phases 1–15 complete on `main`; next implementation work remains bounded expansion from local fetch/change-detection persistence toward controlled acquisition under governance.**
 
 ---
 

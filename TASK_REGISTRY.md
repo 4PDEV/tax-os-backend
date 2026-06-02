@@ -52,6 +52,7 @@ Bounded task tracking for `tax-os-backend`. Authoritative specs remain in `tax-o
 | TASK-006G | Source Change Detection Engine Contract | Complete | Change-detection governance contract only; no diff engine/amendment inference implementation |
 | TASK-006H | Controlled Fetch Implementation (Dry-Run + Local Fixture Mode) | Complete | Bounded fetch implementation using dry-run and local fixtures only; no live external fetching |
 | TASK-006I | Controlled Fetch Result Persistence | Complete | Append-only fetch request/result persistence with enum/FK governance; no live external fetching or ingestion side effects |
+| TASK-006J | Source Change Detection Persistence | Complete | Append-only change-detection request/result persistence with review doctrine validation; no engine implementation |
 | TASK-DOC-001 | Master Status Document Realignment | Complete | CURRENT_STATUS, IMPLEMENTATION_ROADMAP, ARCHITECTURE_PHASE_MAP |
 
 ## Status Legend

@@ -5,7 +5,7 @@ For detailed historical sections, see [PROJECT_STATE.md](PROJECT_STATE.md). For 
 
 **Last realigned:** 2026-06-02  
 **Branch:** `main`  
-**Alembic head:** `e2f4a1b9c8d7` (fetch persistence tables)
+**Alembic head:** `f4c3b2a190de` (change detection persistence tables)
 
 ---
 
@@ -15,7 +15,7 @@ For detailed historical sections, see [PROJECT_STATE.md](PROJECT_STATE.md). For 
 
 The platform is materially beyond early foundation. Core registry, processing queue, extraction/parser **contracts**, legal-object **persistence**, citation **governance**, temporal **governance**, and ingestion **artifact persistence** are in place on `main`.
 
-**Active gate:** controlled fetch persistence is now implemented for dry-run/local-fixture execution artifacts (TASK-006I); live external fetching and live change-detection engines remain prohibited.
+**Active gate:** change detection persistence is now implemented as append-only records (TASK-006J); live external fetching and live change-detection engine execution remain prohibited.
 
 **Environments:** development and internal staging only. No public production deployment.
 
@@ -38,6 +38,7 @@ The platform is materially beyond early foundation. Core registry, processing qu
 | Change-detection governance | Source change detection engine contract boundaries | TASK-006G |
 | Controlled fetch implementation | Dry-run/local-fixture fetchers with safety guards and fixture tests | TASK-006H |
 | Controlled fetch persistence | Append-only fetch requests/results with lifecycle metadata persistence | TASK-006I |
+| Change-detection persistence | Append-only change-detection requests/results with review doctrine enforcement | TASK-006J |
 
 **Checkpoint tags (selected):** `checkpoint-task-003e` … `checkpoint-task-005a-spec`
 
@@ -99,7 +100,7 @@ The platform is materially beyond early foundation. Core registry, processing qu
 
 | Task | Title | Why now |
 |------|-------|---------|
-| **TASK-006I** | Controlled Fetch Result Persistence | **Completed (bounded implementation)** — append-only fetch request/result persistence without external network access |
+| **TASK-006J** | Source Change Detection Persistence | **Completed (bounded implementation)** — append-only change-detection request/result persistence without engine implementation |
 
 See [IMPLEMENTATION_ROADMAP.md](IMPLEMENTATION_ROADMAP.md) for full sequencing.
 
@@ -143,6 +144,13 @@ TASK-006I implements bounded fetch persistence only:
 
 - allowed: append-only `fetch_requests`/`fetch_results` persistence, enum validation, FK integrity to monitoring candidate/allowlist, latest-result retrieval
 - prohibited: source version creation, extracted text creation, legal object creation, monitoring candidate auto-approval/state transition, live external fetching
+
+### TASK-006J boundary
+
+TASK-006J implements bounded change-detection persistence only:
+
+- allowed: append-only `change_detection_requests`/`change_detection_results` persistence, enum validation, FK integrity to candidate/fetch/source entities, review-required doctrine validation
+- prohibited: change-detection engine algorithms, amendment/legal/temporal inference, source-version creation, candidate auto-transition/approval, live external fetching
 
 ---
 
@@ -213,7 +221,7 @@ Ingestion workers, live monitoring agents, live fetchers, change-detection engin
 
 ## Next Major Architectural Goal
 
-After TASK-006I controlled fetch persistence: future bounded tasks may implement additional controlled acquisition mechanics while preserving strict provenance and safety gates.
+After TASK-006J change-detection persistence: future bounded tasks may implement additional controlled acquisition mechanics while preserving strict provenance and safety gates.
 
 Longer horizon (not approved for immediate implementation): agent layer → retrieval layer → answer assembly. See [ARCHITECTURE_PHASE_MAP.md](ARCHITECTURE_PHASE_MAP.md).
 
@@ -226,4 +234,4 @@ FOUNDATION → EXTRACTION CONTRACTS → LEGAL OBJECT GOVERNANCE → CITATION GOV
 → TEMPORAL GOVERNANCE → INGESTION PERSISTENCE → [TEST HARDENING] → AGENT LAYER → …
 ```
 
-**You are here:** ingestion persistence complete, test hardening complete, monitoring governance + persistence + dry-run worker skeleton + fetch governance + detection governance + controlled local fetch execution + fetch persistence complete (TASK-006C/006D/006E/006F/006G/006H/006I).
+**You are here:** ingestion persistence complete, test hardening complete, monitoring governance + persistence + dry-run worker skeleton + fetch governance + detection governance + controlled local fetch execution + fetch persistence + change-detection persistence complete (TASK-006C/006D/006E/006F/006G/006H/006I/006J).

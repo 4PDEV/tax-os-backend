@@ -54,13 +54,15 @@ Controlled fetch implementation (TASK-006H): dry-run/local-fixture fetch executi
 
 Controlled fetch persistence (TASK-006I): append-only fetch request/result persistence with actor/reason metadata, status/error taxonomy validation, and no external network access.
 
+Source change detection persistence (TASK-006J): append-only change-detection request/result persistence with review-required doctrine enforcement and no engine implementation.
+
 ---
 
 ## ACTIVE
 
 | Task | Title | Notes |
 |------|-------|-------|
-| — | *(none in implementation)* | TASK-006I implementation complete; awaiting next bounded approval |
+| — | *(none in implementation)* | TASK-006J implementation complete; awaiting next bounded approval |
 
 ---
 
