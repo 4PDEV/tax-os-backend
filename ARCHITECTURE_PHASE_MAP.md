@@ -191,7 +191,19 @@ FOUNDATION
 
 ---
 
-### 14. AGENT LAYER — **FUTURE**
+### 14. CONTROLLED FETCH PERSISTENCE — **COMPLETE**
+
+**Intent:** Persist controlled fetch lifecycle artifacts as append-only records without introducing external acquisition behavior.
+
+**Representative task:** TASK-006I
+
+**Key artifacts:** `fetch_requests` and `fetch_results` tables, fetch persistence service (`backend/app/services/fetch/persistence.py`), and migration/integration tests.
+
+**Boundaries:** no source version creation, no extracted text/legal-object creation, no candidate auto-approval/state transition, no live external fetching.
+
+---
+
+### 15. AGENT LAYER — **FUTURE**
 
 **Intent:** Autonomous or semi-autonomous ingestion/monitoring agents operating on governed contracts and persistence.
 
@@ -201,7 +213,7 @@ FOUNDATION
 
 ---
 
-### 15. RETRIEVAL LAYER — **FUTURE**
+### 16. RETRIEVAL LAYER — **FUTURE**
 
 **Intent:** Research-grade retrieval beyond 004A contract (ranking, multi-source assembly, operational APIs as governed).
 
@@ -209,7 +221,7 @@ FOUNDATION
 
 ---
 
-### 16. ANSWER ASSEMBLY — **FUTURE**
+### 17. ANSWER ASSEMBLY — **FUTURE**
 
 **Intent:** Source-referenced answers with mandatory disclosure, ambiguity surfacing, no silent legal inference.
 
@@ -221,7 +233,7 @@ FOUNDATION
 
 ## Current position (one line)
 
-**Phases 1–13 complete on `main`; next implementation work remains bounded expansion from local fetch execution toward controlled acquisition under governance.**
+**Phases 1–14 complete on `main`; next implementation work remains bounded expansion from local fetch execution/persistence toward controlled acquisition under governance.**
 
 ---
 

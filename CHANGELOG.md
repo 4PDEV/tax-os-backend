@@ -595,6 +595,35 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Version
 
 - TASK-006H introduces no live HTTP/HTTPS fetching, no crawling/scraping, no source-version creation, and no legal-object creation.
 
+## [task-006i-controlled-fetch-persistence] - 2026-06-02
+
+### Added
+
+- TASK-006I: controlled fetch result persistence (append-only).
+  - New models:
+    - `backend/app/models/fetch_request.py` (`fetch_requests`)
+    - `backend/app/models/fetch_result.py` (`fetch_results`)
+  - New Alembic revision:
+    - `backend/migrations/versions/e2f4a1b9c8d7_create_fetch_persistence_tables.py`
+  - New persistence service:
+    - `backend/app/services/fetch/persistence.py`
+    - `create_fetch_request()`, `persist_fetch_result()`, `get_fetch_request()`, `list_fetch_results_for_request()`, `get_latest_fetch_result_for_request()`
+    - contract mappers: `create_persisted_fetch_request_from_contract()`, `persist_result_from_contract()`
+  - Integrated model metadata:
+    - `backend/app/models/__init__.py`
+    - `backend/migrations/env.py`
+  - New tests:
+    - `backend/tests/test_fetch_persistence.py`
+    - `backend/tests/test_fetch_alembic_migration.py`
+
+### Validation
+
+- `backend/tests/test_fetch_persistence.py backend/tests/test_fetch_alembic_migration.py`: **16 passed**.
+
+### Notes
+
+- TASK-006I introduces no live HTTP/HTTPS fetching, no source-version/extracted-text/legal-object creation, and no monitoring candidate auto-transition/auto-approval.
+
 ## [checkpoint-task-005a-spec] - 2026-06-01
 
 ### Merged

@@ -5,7 +5,7 @@ For detailed historical sections, see [PROJECT_STATE.md](PROJECT_STATE.md). For 
 
 **Last realigned:** 2026-06-02  
 **Branch:** `main`  
-**Alembic head:** `c9a2f3b81d06` (ingestion persistence tables)
+**Alembic head:** `e2f4a1b9c8d7` (fetch persistence tables)
 
 ---
 
@@ -15,7 +15,7 @@ For detailed historical sections, see [PROJECT_STATE.md](PROJECT_STATE.md). For 
 
 The platform is materially beyond early foundation. Core registry, processing queue, extraction/parser **contracts**, legal-object **persistence**, citation **governance**, temporal **governance**, and ingestion **artifact persistence** are in place on `main`.
 
-**Active gate:** controlled fetch implementation is now limited to dry-run/local-fixture execution (TASK-006H); live external fetching and live change-detection engines remain prohibited.
+**Active gate:** controlled fetch persistence is now implemented for dry-run/local-fixture execution artifacts (TASK-006I); live external fetching and live change-detection engines remain prohibited.
 
 **Environments:** development and internal staging only. No public production deployment.
 
@@ -37,6 +37,7 @@ The platform is materially beyond early foundation. Core registry, processing qu
 | Fetch governance | Controlled source fetch contract and boundary controls | TASK-006F |
 | Change-detection governance | Source change detection engine contract boundaries | TASK-006G |
 | Controlled fetch implementation | Dry-run/local-fixture fetchers with safety guards and fixture tests | TASK-006H |
+| Controlled fetch persistence | Append-only fetch requests/results with lifecycle metadata persistence | TASK-006I |
 
 **Checkpoint tags (selected):** `checkpoint-task-003e` … `checkpoint-task-005a-spec`
 
@@ -98,7 +99,7 @@ The platform is materially beyond early foundation. Core registry, processing qu
 
 | Task | Title | Why now |
 |------|-------|---------|
-| **TASK-006H** | Controlled Fetch Implementation (Dry-Run + Local Fixture Mode) | **Completed (bounded implementation)** — safe local/dry-run fetch execution without external network access |
+| **TASK-006I** | Controlled Fetch Result Persistence | **Completed (bounded implementation)** — append-only fetch request/result persistence without external network access |
 
 See [IMPLEMENTATION_ROADMAP.md](IMPLEMENTATION_ROADMAP.md) for full sequencing.
 
@@ -135,6 +136,13 @@ TASK-006H implements bounded fetch execution only:
 
 - allowed: `DryRunFetcher`, `LocalFixtureFetcher`, local fixture path safety, checksum/content-type utilities, max-size guard, dry-run/local-mode guard
 - prohibited: live HTTP/HTTPS fetching, crawling/scraping, source discovery, source-version creation, legal-object creation, ingestion approval automation
+
+### TASK-006I boundary
+
+TASK-006I implements bounded fetch persistence only:
+
+- allowed: append-only `fetch_requests`/`fetch_results` persistence, enum validation, FK integrity to monitoring candidate/allowlist, latest-result retrieval
+- prohibited: source version creation, extracted text creation, legal object creation, monitoring candidate auto-approval/state transition, live external fetching
 
 ---
 
@@ -205,7 +213,7 @@ Ingestion workers, live monitoring agents, live fetchers, change-detection engin
 
 ## Next Major Architectural Goal
 
-After TASK-006H controlled fetch local execution: future bounded tasks may implement additional controlled acquisition mechanics while preserving strict provenance and safety gates.
+After TASK-006I controlled fetch persistence: future bounded tasks may implement additional controlled acquisition mechanics while preserving strict provenance and safety gates.
 
 Longer horizon (not approved for immediate implementation): agent layer → retrieval layer → answer assembly. See [ARCHITECTURE_PHASE_MAP.md](ARCHITECTURE_PHASE_MAP.md).
 
@@ -218,4 +226,4 @@ FOUNDATION → EXTRACTION CONTRACTS → LEGAL OBJECT GOVERNANCE → CITATION GOV
 → TEMPORAL GOVERNANCE → INGESTION PERSISTENCE → [TEST HARDENING] → AGENT LAYER → …
 ```
 
-**You are here:** ingestion persistence complete, test hardening complete, monitoring governance + persistence + dry-run worker skeleton + fetch governance + detection governance + controlled local fetch execution complete (TASK-006C/006D/006E/006F/006G/006H).
+**You are here:** ingestion persistence complete, test hardening complete, monitoring governance + persistence + dry-run worker skeleton + fetch governance + detection governance + controlled local fetch execution + fetch persistence complete (TASK-006C/006D/006E/006F/006G/006H/006I).

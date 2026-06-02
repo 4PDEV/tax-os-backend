@@ -5,6 +5,8 @@ from app.models.monitoring_candidate import MonitoringCandidate
 from app.models.monitoring_candidate_state_transition import MonitoringCandidateStateTransition
 from app.models.monitoring_event import MonitoringEvent
 from app.models.source_allowlist_entry import SourceAllowlistEntry
+from app.models.fetch_request import FetchRequest
+from app.models.fetch_result import FetchResult
 from app.models.extracted_text import ExtractedText
 from app.models.extraction_run import ExtractionRun
 from app.models.ingestion_state_transition import IngestionStateTransition
@@ -28,6 +30,8 @@ __all__ = [
     "MonitoringCandidateStateTransition",
     "MonitoringEvent",
     "SourceAllowlistEntry",
+    "FetchRequest",
+    "FetchResult",
     "ExtractedText",
     "ExtractionRun",
     "IngestionStateTransition",

@@ -23,6 +23,8 @@ from app.models import (  # noqa: F401
     MonitoringCandidateStateTransition,
     MonitoringEvent,
     SourceAllowlistEntry,
+    FetchRequest,
+    FetchResult,
     ExtractedText,
     ExtractionRun,
     IngestionStateTransition,

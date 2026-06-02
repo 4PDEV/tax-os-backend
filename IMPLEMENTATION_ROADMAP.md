@@ -52,13 +52,15 @@ Source change detection contract (TASK-006G): bounded detection governance and c
 
 Controlled fetch implementation (TASK-006H): dry-run/local-fixture fetch execution, fixture safety boundaries, checksum/content-type validation, and no external network access.
 
+Controlled fetch persistence (TASK-006I): append-only fetch request/result persistence with actor/reason metadata, status/error taxonomy validation, and no external network access.
+
 ---
 
 ## ACTIVE
 
 | Task | Title | Notes |
 |------|-------|-------|
-| — | *(none in implementation)* | TASK-006H implementation complete; awaiting next bounded approval |
+| — | *(none in implementation)* | TASK-006I implementation complete; awaiting next bounded approval |
 
 ---
 
