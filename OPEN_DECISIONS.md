@@ -41,7 +41,9 @@ Pending architectural or operational decisions. Resolve via `tax-os-architecture
 | OD-020 | Trigger `completed` vs text-ready semantics | `trigger_status=completed` on dry-run does not imply `extracted_text` exists; consumers must join `extracted_text` / check extractor identity | Documented — non-blocking |
 | OD-021 | Multi-worker ingestion race (extraction + parsing) | Extraction: app + worker + DB idempotency (006P1). Parsing: creation-time DB idempotency (006R); execution-time race mitigation deferred to parser worker tasks. LOW now, MEDIUM under concurrency | Open — worker execution-time mitigation deferred |
 
-**Parsing pipeline:** TASK-006Q–006T complete (contract, persistence, dry-run worker, controlled structural execution). Legal-object/citation/answer automation not implemented.
+**Parsing pipeline:** TASK-006Q–006T complete at `checkpoint-task-006t-controlled-parsing-execution`. Claude review pending: [`CLAUDE_REVIEW_PARSING_PIPELINE_006Q-T.md`](CLAUDE_REVIEW_PARSING_PIPELINE_006Q-T.md).
+
+**Legal-object promotion gate:** **BLOCKED** until 006Q–006T architecture review is acknowledged. Do not promote `parsed_structure` to legal objects before sign-off.
 
 ## Test gaps (QA)
 

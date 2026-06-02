@@ -253,7 +253,7 @@ Ingestion workers, live monitoring agents, live fetchers, change-detection engin
 
 ## Next Major Architectural Goal
 
-Parsing layer: contract → persistence → worker → **controlled structural execution** complete (006Q–006T). Doctrine: `parsed_structure` ≠ legal meaning. OD-021: mitigate before concurrent parsing workers.
+Parsing layer: contract → persistence → worker → controlled structural execution complete (006Q–006T) at `checkpoint-task-006t-controlled-parsing-execution`. **Claude review 006Q–006T pending** — legal-object promotion blocked until acknowledgment. Doctrine: `parsed_structure` ≠ legal meaning.
 
 Longer horizon (not approved for immediate implementation): agent layer → retrieval layer → answer assembly. See [ARCHITECTURE_PHASE_MAP.md](ARCHITECTURE_PHASE_MAP.md).
 
