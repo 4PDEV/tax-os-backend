@@ -70,13 +70,15 @@ Controlled extraction execution (TASK-006P): controlled local text extraction fr
 
 Extraction replay idempotency hardening (TASK-006P1): canonical source_version_id idempotency, DB partial unique index, worker replay guard; EXT-01/OD-019 remediated.
 
+Parsing trigger contract (TASK-006Q): governance-only parsing initiation from `extracted_text`; canonical `extracted_text_id` idempotency doctrine; `parsed_structure` ≠ legal meaning; no parsing execution.
+
 ---
 
 ## ACTIVE
 
 | Task | Title | Notes |
 |------|-------|-------|
-| — | *(none in implementation)* | Await TASK-006Q implementation authorization |
+| — | *(none in implementation)* | Await next bounded task authorization (e.g. parsing trigger persistence) |
 
 ---
 
@@ -84,7 +86,7 @@ Extraction replay idempotency hardening (TASK-006P1): canonical source_version_i
 
 | Task | Title | Prerequisite | Acceptance focus |
 |------|-------|--------------|------------------|
-| TASK-006Q | Parsing trigger contract | TASK-006P1 verified; `extracted_text` canonical | Governance-only parsing initiation boundary; `parsed_structure` ≠ legal meaning; no interpretation or tax-effect inference |
+| — | *(none currently approved in this file)* | — | Await explicit next-task approval |
 
 **Blocked until explicit next-task approval:** live monitoring agents, ingestion automation expansion.
 

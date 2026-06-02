@@ -287,7 +287,19 @@ FOUNDATION
 
 ---
 
-### 22. AGENT LAYER — **FUTURE**
+### 22. PARSING TRIGGER CONTRACT — **COMPLETE**
+
+**Intent:** Define governed parsing-trigger boundary between canonical `extracted_text` evidence and structural parsing requests.
+
+**Representative task:** TASK-006Q (contract-only)
+
+**Key artifacts:** `PARSING_TRIGGER_CONTRACT.md` and task contract record in `TASKS/`.
+
+**Boundaries:** no parsing execution, no parser worker/queue implementation, no `parsed_structure`/legal-object/citation/answer creation, no legal/temporal/amendment inference. `parsed_structure` ≠ legal meaning.
+
+---
+
+### 23. AGENT LAYER — **FUTURE**
 
 **Intent:** Autonomous or semi-autonomous ingestion/monitoring agents operating on governed contracts and persistence.
 
@@ -297,7 +309,7 @@ FOUNDATION
 
 ---
 
-### 23. RETRIEVAL LAYER — **FUTURE**
+### 24. RETRIEVAL LAYER — **FUTURE**
 
 **Intent:** Research-grade retrieval beyond 004A contract (ranking, multi-source assembly, operational APIs as governed).
 
@@ -305,7 +317,7 @@ FOUNDATION
 
 ---
 
-### 24. ANSWER ASSEMBLY — **FUTURE**
+### 25. ANSWER ASSEMBLY — **FUTURE**
 
 **Intent:** Source-referenced answers with mandatory disclosure, ambiguity surfacing, no silent legal inference.
 

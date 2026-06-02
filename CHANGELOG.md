@@ -4,6 +4,19 @@ All notable changes to `tax-os-backend` are documented here.
 
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versions align with git tags where applicable.
 
+## [task-006q-parsing-trigger-contract] - 2026-06-02
+
+### Added
+
+- TASK-006Q: parsing trigger governance contract (contract-only).
+  - `PARSING_TRIGGER_CONTRACT.md` — eligibility, request/result shapes, status/error taxonomy, idempotency on `extracted_text_id`, rerun/force-reparse doctrine, handoff to `parser_run`, temporal alignment, OD-021 concurrency doctrine.
+  - `TASKS/TASK-006Q-PARSING-TRIGGER-CONTRACT.md` — task record and acceptance checklist.
+
+### Notes
+
+- No parsing execution, parser worker, `parsed_structure` creation, legal-object/citation/answer generation, or temporal/legal interpretation.
+- Doctrine: `parsed_structure` ≠ legal meaning.
+
 ## [task-006b-stability] - 2026-06-02
 
 ### Changed

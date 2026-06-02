@@ -831,7 +831,9 @@ Legal memory stack on `main`:
 
 # NEXT APPROVED TASKS
 
-TASK-006P1 — Extraction Replay & Idempotency Hardening (**verified**; EXT-01/OD-019 remediated). **TASK-006Q gate open** — parsing trigger contract approved next.
+TASK-006P1 — Extraction Replay & Idempotency Hardening (**verified**; EXT-01/OD-019 remediated).
+
+TASK-006Q — Parsing Trigger Contract (**complete**; governance-only; no parsing execution).
 
 TASK-006P — Controlled Extraction Execution (**completed; controlled local text extraction into extraction_runs/extracted_texts; no PDF/network/parsing/legal automation**).
 

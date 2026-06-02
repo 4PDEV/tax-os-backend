@@ -63,7 +63,7 @@ tax-os-backend/
 |------|--------|
 | Platform phase | Legal memory + temporal governance + ingestion persistence (see [CURRENT_STATUS.md](CURRENT_STATUS.md)) |
 | Alembic migrations | Head `e8c1d4f92a17` |
-| Approved next task | **TASK-006Q** — parsing trigger contract (gate open; 006P1 verified) |
+| Approved next task | *(await explicit authorization)* — TASK-006Q contract complete; parsing execution not implemented |
 | Admin CRUD APIs | Operational |
 | Legal object / citation contracts | Merged on `main` (003A–004D) |
 | Temporal governance | Merged (005A–005C); tag `checkpoint-task-005a-spec` |
@@ -130,6 +130,8 @@ Initial jurisdiction focus: **Rwanda**. Initial tax domains: VAT, PAYE/PIT, WHT,
 | [TASKS/TASK-006G-SOURCE-CHANGE-DETECTION-ENGINE-CONTRACT.md](TASKS/TASK-006G-SOURCE-CHANGE-DETECTION-ENGINE-CONTRACT.md) | TASK-006G contract record |
 | [SOURCE_VERSION_EXTRACTION_TRIGGER_CONTRACT.md](SOURCE_VERSION_EXTRACTION_TRIGGER_CONTRACT.md) | Source-version extraction trigger governance contract (TASK-006M; contract-only) |
 | [TASKS/TASK-006M-SOURCE-VERSION-EXTRACTION-TRIGGER-CONTRACT.md](TASKS/TASK-006M-SOURCE-VERSION-EXTRACTION-TRIGGER-CONTRACT.md) | TASK-006M contract record |
+| [PARSING_TRIGGER_CONTRACT.md](PARSING_TRIGGER_CONTRACT.md) | Parsing trigger governance contract from `extracted_text` (TASK-006Q; contract-only) |
+| [TASKS/TASK-006Q-PARSING-TRIGGER-CONTRACT.md](TASKS/TASK-006Q-PARSING-TRIGGER-CONTRACT.md) | TASK-006Q contract record |
 | `backend/app/services/extraction_trigger/` | TASK-006N extraction trigger persistence service (append-only requests/results, trigger hash, idempotency checks) |
 | `backend/app/workers/extraction/` | TASK-006O/006P extraction worker (dry-run orchestration + controlled local text extraction) |
 | [CLAUDE_REVIEW_EXTRACTION_PIPELINE_006M-P.md](CLAUDE_REVIEW_EXTRACTION_PIPELINE_006M-P.md) | Architecture review — extraction pipeline 006M–006P |
