@@ -63,7 +63,7 @@ tax-os-backend/
 |------|--------|
 | Platform phase | Legal memory + temporal governance + ingestion persistence (see [CURRENT_STATUS.md](CURRENT_STATUS.md)) |
 | Alembic migrations | Head `f3b9c2e81a25` |
-| Approved next task | *(await explicit authorization)* — TASK-006S complete; no real parsing execution |
+| Approved next task | **TASK-006T** — controlled parsing execution (006S at `checkpoint-task-006s-parsing-worker-skeleton`) |
 | Admin CRUD APIs | Operational |
 | Legal object / citation contracts | Merged on `main` (003A–004D) |
 | Temporal governance | Merged (005A–005C); tag `checkpoint-task-005a-spec` |

@@ -62,7 +62,8 @@ Bounded task tracking for `tax-os-backend`. Authoritative specs remain in `tax-o
 | TASK-006P1 | Extraction Replay & Idempotency Hardening | Complete | Verified 2026-06-02; EXT-01/OD-019 remediated; TASK-006Q gate open |
 | TASK-006Q | Parsing Trigger Contract | Complete | Governance-only parsing initiation from `extracted_text`; idempotency on `extracted_text_id`; no parsing execution |
 | TASK-006R | Parsing Trigger Persistence | Complete | Append-only requests/results, `extracted_text_id` idempotency, DB partial unique index; no parser execution |
-| TASK-006S | Parsing Worker Skeleton | Complete | Dry-run orchestration to `parser_run` lifecycle; `extracted_text_id` replay guard; no `parsed_structure`/legal object/citation/answer |
+| TASK-006S | Parsing Worker Skeleton | Complete | Accepted at `checkpoint-task-006s-parsing-worker-skeleton`; dry-run orchestration only |
+| TASK-006T | Controlled Parsing Execution | Planned | Approved next; controlled local structural parsing; `parsed_structure` ≠ legal meaning |
 | TASK-DOC-001 | Master Status Document Realignment | Complete | CURRENT_STATUS, IMPLEMENTATION_ROADMAP, ARCHITECTURE_PHASE_MAP |
 
 ## Status Legend

@@ -50,7 +50,7 @@ The platform is materially beyond early foundation. Core registry, processing qu
 | Parsing trigger persistence | Append-only parsing trigger requests/results, DB partial unique index, `extracted_text_id` idempotency | TASK-006R |
 | Parsing worker skeleton | Dry-run orchestration from parsing triggers to `parser_run` lifecycle; no `parsed_structure` | TASK-006S |
 
-**Checkpoint tags (selected):** `checkpoint-task-003e` … `checkpoint-task-006r-parsing-trigger-persistence`
+**Checkpoint tags (selected):** `checkpoint-task-003e` … `checkpoint-task-006s-parsing-worker-skeleton`
 
 ---
 

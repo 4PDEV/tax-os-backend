@@ -82,7 +82,7 @@ Parsing worker skeleton (TASK-006S): dry-run-only orchestration from parsing tri
 
 | Task | Title | Notes |
 |------|-------|-------|
-| — | *(none in implementation)* | Await next bounded task authorization |
+| — | *(none in implementation)* | Await TASK-006T implementation authorization |
 
 ---
 
@@ -90,7 +90,7 @@ Parsing worker skeleton (TASK-006S): dry-run-only orchestration from parsing tri
 
 | Task | Title | Prerequisite | Acceptance focus |
 |------|-------|--------------|------------------|
-| — | *(none currently approved in this file)* | — | Await explicit next-task approval |
+| TASK-006T | Controlled parsing execution | TASK-006S dry-run worker | Controlled local structural parsing into `parsed_structures`; `parsed_structure` ≠ legal meaning; no legal object/citation/answer |
 
 **Blocked until explicit next-task approval:** live monitoring agents, ingestion automation expansion.
 
