@@ -164,7 +164,22 @@ FOUNDATION
 
 ---
 
-### 12. AGENT LAYER — **FUTURE**
+### 12. SOURCE CHANGE DETECTION CONTRACT — **COMPLETE**
+
+**Intent:** Define safe change-classification governance before any diff engine implementation.
+
+**Representative task:** TASK-006G (contract-only)
+
+**Key artifacts:**
+
+* [SOURCE_CHANGE_DETECTION_ENGINE_CONTRACT.md](SOURCE_CHANGE_DETECTION_ENGINE_CONTRACT.md)
+* [TASKS/TASK-006G-SOURCE-CHANGE-DETECTION-ENGINE-CONTRACT.md](TASKS/TASK-006G-SOURCE-CHANGE-DETECTION-ENGINE-CONTRACT.md)
+
+**Boundaries:** no diff engine implementation, no amendment inference, no legal/temporal interpretation, no automatic source-version creation.
+
+---
+
+### 13. AGENT LAYER — **FUTURE**
 
 **Intent:** Autonomous or semi-autonomous ingestion/monitoring agents operating on governed contracts and persistence.
 
@@ -174,7 +189,7 @@ FOUNDATION
 
 ---
 
-### 13. RETRIEVAL LAYER — **FUTURE**
+### 14. RETRIEVAL LAYER — **FUTURE**
 
 **Intent:** Research-grade retrieval beyond 004A contract (ranking, multi-source assembly, operational APIs as governed).
 
@@ -182,7 +197,7 @@ FOUNDATION
 
 ---
 
-### 14. ANSWER ASSEMBLY — **FUTURE**
+### 15. ANSWER ASSEMBLY — **FUTURE**
 
 **Intent:** Source-referenced answers with mandatory disclosure, ambiguity surfacing, no silent legal inference.
 
@@ -194,7 +209,7 @@ FOUNDATION
 
 ## Current position (one line)
 
-**Phases 1–11 complete on `main`; next implementation work is controlled fetch implementation and change detection under bounded governance.**
+**Phases 1–12 complete on `main`; next implementation work is controlled fetch and change-detection implementation under bounded governance.**
 
 ---
 

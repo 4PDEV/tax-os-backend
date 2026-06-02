@@ -48,6 +48,8 @@ Monitoring worker skeleton (TASK-006E): dry-run worker lifecycle orchestration u
 
 Controlled source fetch contract (TASK-006F): bounded fetch governance, taxonomy, and safety doctrine without live implementation.
 
+Source change detection contract (TASK-006G): bounded detection governance and classification doctrine without engine implementation.
+
 ---
 
 ## ACTIVE
@@ -86,7 +88,7 @@ Not approved for immediate implementation. Order is indicative only; each requir
 |-------|---------------------|------------|
 | Ingestion automation | Wire workers to TASK-006A persistence; processing → extract → parse | TASK-006B |
 | Controlled source fetch implementation | Implement fetch mechanics under 006F governance constraints | TASK-006F |
-| Change detection engine | Deterministic diff/checksum change classification | Controlled fetch contract |
+| Change detection engine implementation | Deterministic diff/checksum change classification under 006G doctrine | TASK-006G + controlled fetch implementation |
 | Agent layer | Implement monitoring agents from 006C/006D/006E boundaries | Stable tests + fetch discipline + ingestion wiring |
 | Cross-reference persistence | OD-007, OD-008 | Governance decisions |
 | Retrieval layer expansion | Beyond 004A contract scope | Temporal + citation baseline |
