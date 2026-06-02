@@ -41,7 +41,7 @@ Pending architectural or operational decisions. Resolve via `tax-os-architecture
 | OD-020 | Trigger `completed` vs text-ready semantics | `trigger_status=completed` on dry-run does not imply `extracted_text` exists; consumers must join `extracted_text` / check extractor identity | Documented — non-blocking |
 | OD-021 | Multi-worker ingestion race (extraction + parsing) | Extraction: app + worker + DB idempotency (006P1). Parsing: creation-time DB idempotency (006R); execution-time race mitigation deferred to parser worker tasks. LOW now, MEDIUM under concurrency | Open — worker execution-time mitigation deferred |
 
-**Parsing pipeline:** TASK-006Q–006S complete (contract, persistence, dry-run worker); real parsing execution not yet implemented.
+**Parsing pipeline:** TASK-006Q–006T complete (contract, persistence, dry-run worker, controlled structural execution). Legal-object/citation/answer automation not implemented.
 
 ## Test gaps (QA)
 

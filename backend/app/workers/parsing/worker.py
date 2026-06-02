@@ -6,7 +6,7 @@ from app.models.extracted_text import ExtractedText
 from app.models.extraction_run import ExtractionRun
 from app.models.parsing_trigger_request import ParsingTriggerRequest
 from app.services.ingestion.enums import ParserRunStatus
-from app.services.ingestion.parser_persistence import create_parser_run
+from app.services.ingestion.parser_persistence import create_parser_run, persist_parsed_structure
 from app.services.parsing_trigger.persistence import (
     extracted_text_has_completed_parsing,
     get_latest_trigger_result_for_request,
@@ -18,12 +18,19 @@ from app.services.parsing_trigger.validation import (
 )
 from app.workers.parsing.dry_run_provider import ParsingProvider
 from app.workers.parsing.result import ParsingRunSummary
+from app.workers.parsing.structural import (
+    CONTROLLED_STRUCTURAL_PARSER_NAME,
+    CONTROLLED_STRUCTURAL_PARSER_VERSION,
+)
 
 DRY_RUN_PARSER_NAME = "dry_run_parsing_provider"
 DRY_RUN_PARSER_VERSION = "0.1.0"
 
 EXECUTION_MODE_DRY_RUN = "dry_run"
-ALLOWED_EXECUTION_MODES = frozenset({EXECUTION_MODE_DRY_RUN})
+EXECUTION_MODE_CONTROLLED_STRUCTURAL = "controlled_structural"
+ALLOWED_EXECUTION_MODES = frozenset(
+    {EXECUTION_MODE_DRY_RUN, EXECUTION_MODE_CONTROLLED_STRUCTURAL}
+)
 
 NON_ELIGIBLE_LATEST_STATUSES = frozenset({"duplicate_rejected", "rejected"})
 TERMINAL_SKIP_STATUSES = frozenset({"completed", "failed", "skipped"})
@@ -84,6 +91,21 @@ class ParsingWorker:
 
         return True
 
+    def _default_parser(self) -> tuple[str, str]:
+        if self._mode == EXECUTION_MODE_CONTROLLED_STRUCTURAL:
+            return CONTROLLED_STRUCTURAL_PARSER_NAME, CONTROLLED_STRUCTURAL_PARSER_VERSION
+        return DRY_RUN_PARSER_NAME, DRY_RUN_PARSER_VERSION
+
+    def _queue_note(self) -> str:
+        if self._mode == EXECUTION_MODE_CONTROLLED_STRUCTURAL:
+            return "controlled structural queue"
+        return "dry-run queue"
+
+    def _start_note(self) -> str:
+        if self._mode == EXECUTION_MODE_CONTROLLED_STRUCTURAL:
+            return "controlled structural start"
+        return "dry-run start"
+
     def run(
         self,
         db: Session,
@@ -91,7 +113,8 @@ class ParsingWorker:
         worker_name: str = "parsing-worker",
         worker_version: str | None = None,
     ) -> ParsingRunSummary:
-        resolved_version = worker_version or DRY_RUN_PARSER_VERSION
+        default_name, default_version = self._default_parser()
+        resolved_version = worker_version or default_version
 
         triggers_seen = processed = skipped = runs_created = results_created = failures = 0
 
@@ -121,7 +144,7 @@ class ParsingWorker:
                     parsing_trigger_request_id=request.id,
                     trigger_status="queued",
                     queued_at=now,
-                    notes="dry-run queue",
+                    notes=self._queue_note(),
                 )
                 results_created += 1
 
@@ -130,12 +153,12 @@ class ParsingWorker:
                     parsing_trigger_request_id=request.id,
                     trigger_status="started",
                     started_at=now,
-                    notes="dry-run start",
+                    notes=self._start_note(),
                 )
                 results_created += 1
 
                 provider_result = self._provider.run_parsing(extracted_text, request)
-                parser_name = provider_result.parser_name or DRY_RUN_PARSER_NAME
+                parser_name = provider_result.parser_name or default_name
                 parser_version = provider_result.parser_version or resolved_version
 
                 if not provider_result.success:
@@ -180,13 +203,24 @@ class ParsingWorker:
                 )
                 runs_created += 1
 
+                if (
+                    self._mode == EXECUTION_MODE_CONTROLLED_STRUCTURAL
+                    and provider_result.structure_units is not None
+                ):
+                    persist_parsed_structure(
+                        db,
+                        parser_run_id=run.id,
+                        structure_units=provider_result.structure_units,
+                        structure_json_extra=provider_result.structure_envelope,
+                    )
+
                 completed = persist_parsing_trigger_result(
                     db,
                     parsing_trigger_request_id=request.id,
                     trigger_status="completed",
                     parser_run_id=run.id,
                     completed_at=utc_now(),
-                    notes=provider_result.notes or "parsing lifecycle completed (dry-run)",
+                    notes=provider_result.notes or "parsing lifecycle completed",
                 )
                 results_created += 1
                 _ = accepted, queued, started, completed
@@ -196,7 +230,7 @@ class ParsingWorker:
                     failed_run = create_parser_run(
                         db,
                         extraction_run_id=extracted_text.extraction_run_id,
-                        parser_name=DRY_RUN_PARSER_NAME,
+                        parser_name=default_name,
                         parser_version=resolved_version,
                         parser_status=ParserRunStatus.FAILED.value,
                         started_at=now,

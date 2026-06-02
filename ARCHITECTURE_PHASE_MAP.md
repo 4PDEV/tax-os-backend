@@ -323,7 +323,19 @@ FOUNDATION
 
 ---
 
-### 25. AGENT LAYER — **FUTURE**
+### 25. CONTROLLED PARSING EXECUTION — **COMPLETE**
+
+**Intent:** Execute bounded structural parsing from `extracted_text` into `parsed_structures` without legal interpretation.
+
+**Representative task:** TASK-006T
+
+**Key artifacts:** `ControlledStructuralParsingProvider`, `structural.py`, `run_controlled_structural_parsing()`.
+
+**Boundaries:** structural evidence only; `parsed_structure` ≠ legal meaning; no legal-object/citation/answer automation.
+
+---
+
+### 26. AGENT LAYER — **FUTURE**
 
 **Intent:** Autonomous or semi-autonomous ingestion/monitoring agents operating on governed contracts and persistence.
 
@@ -333,7 +345,7 @@ FOUNDATION
 
 ---
 
-### 26. RETRIEVAL LAYER — **FUTURE**
+### 27. RETRIEVAL LAYER — **FUTURE**
 
 **Intent:** Research-grade retrieval beyond 004A contract (ranking, multi-source assembly, operational APIs as governed).
 
@@ -341,7 +353,7 @@ FOUNDATION
 
 ---
 
-### 27. ANSWER ASSEMBLY — **FUTURE**
+### 28. ANSWER ASSEMBLY — **FUTURE**
 
 **Intent:** Source-referenced answers with mandatory disclosure, ambiguity surfacing, no silent legal inference.
 

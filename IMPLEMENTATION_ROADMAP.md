@@ -76,13 +76,15 @@ Parsing trigger persistence (TASK-006R): append-only `parsing_trigger_requests` 
 
 Parsing worker skeleton (TASK-006S): dry-run-only orchestration from parsing triggers to `parser_run` lifecycle; no `parsed_structure`/legal object/citation/answer.
 
+Controlled parsing execution (TASK-006T): structural segmentation from `extracted_text` into `parsed_structures`; deterministic structure hash; no legal interpretation.
+
 ---
 
 ## ACTIVE
 
 | Task | Title | Notes |
 |------|-------|-------|
-| — | *(none in implementation)* | Await TASK-006T implementation authorization |
+| — | *(none in implementation)* | Await next bounded task authorization |
 
 ---
 
@@ -90,7 +92,7 @@ Parsing worker skeleton (TASK-006S): dry-run-only orchestration from parsing tri
 
 | Task | Title | Prerequisite | Acceptance focus |
 |------|-------|--------------|------------------|
-| TASK-006T | Controlled parsing execution | TASK-006S dry-run worker | Controlled local structural parsing into `parsed_structures`; `parsed_structure` ≠ legal meaning; no legal object/citation/answer |
+| — | *(none currently approved in this file)* | — | Await explicit next-task approval |
 
 **Blocked until explicit next-task approval:** live monitoring agents, ingestion automation expansion.
 

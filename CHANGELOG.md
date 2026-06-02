@@ -4,6 +4,21 @@ All notable changes to `tax-os-backend` are documented here.
 
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versions align with git tags where applicable.
 
+## [task-006t-controlled-parsing-execution] - 2026-06-02
+
+### Added
+
+- TASK-006T: controlled structural parsing execution.
+  - `ControlledStructuralParsingProvider`, `structural.py` deterministic segmentation
+  - `run_controlled_structural_parsing()` with explicit `controlled_structural=True` guard
+  - Persists `parsed_structure` on success via existing ingestion persistence
+  - Tests: `backend/tests/test_controlled_parsing_execution.py`
+
+### Notes
+
+- Structural evidence only; `parsed_structure` ≠ legal meaning.
+- No legal object, citation, or answer side effects.
+
 ## [task-006s-parsing-worker-skeleton] - 2026-06-02
 
 ### Added

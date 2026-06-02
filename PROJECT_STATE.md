@@ -839,6 +839,8 @@ TASK-006R — Parsing Trigger Persistence (**complete**; append-only requests/re
 
 TASK-006S — Parsing Worker Skeleton (**complete**; dry-run orchestration only; no real parsing).
 
+TASK-006T — Controlled Parsing Execution (**complete**; structural `parsed_structures` only; no legal interpretation).
+
 TASK-006P — Controlled Extraction Execution (**completed; controlled local text extraction into extraction_runs/extracted_texts; no PDF/network/parsing/legal automation**).
 
 TASK-006O — Extraction Worker Skeleton (**completed; dry-run-only trigger-to-extraction_run orchestration; no real extraction execution**).

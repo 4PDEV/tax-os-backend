@@ -77,6 +77,7 @@ def persist_parsed_structure(
     parser_run_id: UUID,
     structure_units: list[dict[str, Any]],
     structure_type: str = STRUCTURE_TYPE_STRUCTURAL_UNITS,
+    structure_json_extra: dict[str, Any] | None = None,
 ) -> ParsedStructure:
     run = session.get(ParserRun, parser_run_id)
     if run is None:
@@ -103,10 +104,12 @@ def persist_parsed_structure(
         raise IngestionPersistenceError(f"extraction_run not found: {run.extraction_run_id}")
 
     structure_hash = sha256_structure(structure_units)
-    structure_json = {
+    structure_json: dict[str, Any] = {
         "structure_type": structure_type,
         "units": structure_units,
     }
+    if structure_json_extra:
+        structure_json = {**structure_json_extra, **structure_json}
 
     record = ParsedStructure(
         parser_run_id=parser_run_id,

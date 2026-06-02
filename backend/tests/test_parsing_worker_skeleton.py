@@ -263,7 +263,7 @@ def test_summary_counts_with_multiple_eligible_triggers(db_session):
     source_doc = None
     for idx in range(3):
         extracted = _seed_extracted_text(
-            db_session, source_doc=source_doc, checksum_suffix=f"p{idx}"
+            db_session, source_doc=source_doc, checksum_suffix=str(idx)
         )
         if source_doc is None:
             version = db_session.get(SourceVersion, extracted.source_version_id)

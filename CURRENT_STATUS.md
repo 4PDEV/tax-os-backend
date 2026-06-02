@@ -15,7 +15,7 @@ For detailed historical sections, see [PROJECT_STATE.md](PROJECT_STATE.md). For 
 
 The platform is materially beyond early foundation. Core registry, processing queue, extraction/parser **contracts**, legal-object **persistence**, citation **governance**, temporal **governance**, and ingestion **artifact persistence** are in place on `main`.
 
-**Active gate:** controlled parsing execution (not yet approved); parsing worker skeleton complete (006S, dry-run only). No real parsing / `parsed_structure` automation. PDF/network parsing, legal-object automation, and answer generation remain prohibited until respective tasks approve.
+**Active gate:** parsing pipeline structural execution complete through controlled parsing (006T); legal-object automation and answer generation remain prohibited until respective tasks approve.
 
 **Environments:** development and internal staging only. No public production deployment.
 
@@ -48,7 +48,8 @@ The platform is materially beyond early foundation. Core registry, processing qu
 | Extraction replay idempotency | Canonical `source_version_id` idempotency, DB partial unique index, worker replay guard; EXT-01/OD-019 closed | TASK-006P1 |
 | Parsing trigger governance | Governed parsing initiation from `extracted_text`; idempotency on `extracted_text_id`; `parsed_structure` ≠ legal meaning | TASK-006Q |
 | Parsing trigger persistence | Append-only parsing trigger requests/results, DB partial unique index, `extracted_text_id` idempotency | TASK-006R |
-| Parsing worker skeleton | Dry-run orchestration from parsing triggers to `parser_run` lifecycle; no `parsed_structure` | TASK-006S |
+| Parsing worker skeleton | Dry-run orchestration from parsing triggers to `parser_run` lifecycle | TASK-006S |
+| Controlled parsing execution | Structural `parsed_structures` from `extracted_text`; non-interpretive segmentation only | TASK-006T |
 
 **Checkpoint tags (selected):** `checkpoint-task-003e` … `checkpoint-task-006s-parsing-worker-skeleton`
 
@@ -252,9 +253,7 @@ Ingestion workers, live monitoring agents, live fetchers, change-detection engin
 
 ## Next Major Architectural Goal
 
-**Controlled parsing execution** (next in parsing layer). Contract → persistence → worker skeleton (006S) → controlled execution. No real parsing yet.
-
-Doctrine: `parsed_structure` ≠ legal meaning. Residual concurrency: OD-021 (mitigate in 006R+ persistence/worker hardening).
+Parsing layer: contract → persistence → worker → **controlled structural execution** complete (006Q–006T). Doctrine: `parsed_structure` ≠ legal meaning. OD-021: mitigate before concurrent parsing workers.
 
 Longer horizon (not approved for immediate implementation): agent layer → retrieval layer → answer assembly. See [ARCHITECTURE_PHASE_MAP.md](ARCHITECTURE_PHASE_MAP.md).
 

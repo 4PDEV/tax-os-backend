@@ -137,6 +137,13 @@ TEST_DATABASE_URL='postgresql://taxos:P%405sw0rd%21234@localhost:5432/taxos_test
 .venv/bin/pytest backend/tests/test_parsing_worker_skeleton.py -q --tb=short
 ```
 
+### TASK-006T controlled parsing execution tests
+
+```bash
+TEST_DATABASE_URL='postgresql://taxos:P%405sw0rd%21234@localhost:5432/taxos_test' \
+.venv/bin/pytest backend/tests/test_controlled_parsing_execution.py -q --tb=short
+```
+
 ## 5) Prohibited practices
 
 - Running integration tests without an explicit `TEST_DATABASE_URL`
