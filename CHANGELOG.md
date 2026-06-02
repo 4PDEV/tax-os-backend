@@ -657,6 +657,37 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Version
 
 - TASK-006J introduces no change-detection engine, no amendment/legal/temporal inference, no source-version creation, and no candidate auto-transition/auto-approval.
 
+## [task-006k-change-detection-engine-skeleton] - 2026-06-02
+
+### Added
+
+- TASK-006K: source change detection engine skeleton (checksum-only).
+  - New engine files in `backend/app/services/change_detection/`:
+    - `engine.py` (`ChangeDetectionEngine` interface)
+    - `checksum_engine.py` (`ChecksumChangeDetectionEngine`)
+    - `result.py` (`ChecksumChangeDetectionRequest`, `ChangeDetectionEngineResult`)
+  - Engine behavior:
+    - compares persisted fetch-result checksums only
+    - persists request/result using TASK-006J persistence service
+    - bounded outcomes: `new_artifact`, `no_change`, `checksum_changed`, `unknown`
+    - deterministic confidence: high/medium/low by checksum availability path
+  - New tests:
+    - `backend/tests/test_change_detection_engine_skeleton.py`
+
+### Governance
+
+- Checksum difference is acquisition-level change only; no legal interpretation.
+- No textual/metadata/structural diff engine implemented.
+- No source-version/extracted-text/legal-object/citation/answer creation side effects.
+
+### Validation
+
+- `backend/tests/test_change_detection_engine_skeleton.py`: **14 passed**.
+
+### Notes
+
+- TASK-006K introduces no live fetching/crawling/scraping and no amendment or temporal inference.
+
 ## [checkpoint-task-005a-spec] - 2026-06-01
 
 ### Merged

@@ -831,11 +831,11 @@ Legal memory stack on `main`:
 
 # NEXT APPROVED TASKS
 
-TASK-006J — Source Change Detection Persistence (**completed; append-only request/result artifacts only; no engine implementation**).
+TASK-006K — Source Change Detection Engine Skeleton (**completed; checksum-only comparison over persisted fetch results; no legal interpretation**).
 
 TASK-004E — Citation Temporal Compliance Remediation (planned — align `CitationAssembler` with Addendum V6; defer unless blocking).
 
-Post-006J implementation tasks must remain bounded and align with monitoring/fetch/detection governance constraints.
+Post-006K implementation tasks must remain bounded and align with monitoring/fetch/detection governance constraints.
 
 **VM snapshot:** run full-suite verification before migration-heavy work.
 

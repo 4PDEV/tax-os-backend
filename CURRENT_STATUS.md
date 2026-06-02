@@ -15,7 +15,7 @@ For detailed historical sections, see [PROJECT_STATE.md](PROJECT_STATE.md). For 
 
 The platform is materially beyond early foundation. Core registry, processing queue, extraction/parser **contracts**, legal-object **persistence**, citation **governance**, temporal **governance**, and ingestion **artifact persistence** are in place on `main`.
 
-**Active gate:** change detection persistence is now implemented as append-only records (TASK-006J); live external fetching and live change-detection engine execution remain prohibited.
+**Active gate:** checksum-only change detection engine skeleton is now implemented over persisted fetch results (TASK-006K); live external fetching and interpretation/classification engines remain prohibited.
 
 **Environments:** development and internal staging only. No public production deployment.
 
@@ -39,6 +39,7 @@ The platform is materially beyond early foundation. Core registry, processing qu
 | Controlled fetch implementation | Dry-run/local-fixture fetchers with safety guards and fixture tests | TASK-006H |
 | Controlled fetch persistence | Append-only fetch requests/results with lifecycle metadata persistence | TASK-006I |
 | Change-detection persistence | Append-only change-detection requests/results with review doctrine enforcement | TASK-006J |
+| Change-detection engine skeleton | Checksum-only persisted-fetch comparison with bounded classifications | TASK-006K |
 
 **Checkpoint tags (selected):** `checkpoint-task-003e` … `checkpoint-task-005a-spec`
 
@@ -100,7 +101,7 @@ The platform is materially beyond early foundation. Core registry, processing qu
 
 | Task | Title | Why now |
 |------|-------|---------|
-| **TASK-006J** | Source Change Detection Persistence | **Completed (bounded implementation)** — append-only change-detection request/result persistence without engine implementation |
+| **TASK-006K** | Source Change Detection Engine Skeleton | **Completed (bounded implementation)** — checksum-only comparison with persisted detection records and no legal interpretation |
 
 See [IMPLEMENTATION_ROADMAP.md](IMPLEMENTATION_ROADMAP.md) for full sequencing.
 
@@ -151,6 +152,13 @@ TASK-006J implements bounded change-detection persistence only:
 
 - allowed: append-only `change_detection_requests`/`change_detection_results` persistence, enum validation, FK integrity to candidate/fetch/source entities, review-required doctrine validation
 - prohibited: change-detection engine algorithms, amendment/legal/temporal inference, source-version creation, candidate auto-transition/approval, live external fetching
+
+### TASK-006K boundary
+
+TASK-006K implements bounded checksum-only detection execution:
+
+- allowed: persisted `fetch_results` checksum comparison, bounded outcomes (`new_artifact`, `no_change`, `checksum_changed`, `unknown`), persistence via TASK-006J services
+- prohibited: textual/metadata/structural diff engines, amendment/legal/temporal inference, source-version creation, legal-object creation, candidate auto-transition/approval, live external fetching
 
 ---
 
@@ -221,7 +229,7 @@ Ingestion workers, live monitoring agents, live fetchers, change-detection engin
 
 ## Next Major Architectural Goal
 
-After TASK-006J change-detection persistence: future bounded tasks may implement additional controlled acquisition mechanics while preserving strict provenance and safety gates.
+After TASK-006K checksum-only detection execution: future bounded tasks may expand comparison mechanics while preserving strict provenance and safety gates.
 
 Longer horizon (not approved for immediate implementation): agent layer → retrieval layer → answer assembly. See [ARCHITECTURE_PHASE_MAP.md](ARCHITECTURE_PHASE_MAP.md).
 
@@ -234,4 +242,4 @@ FOUNDATION → EXTRACTION CONTRACTS → LEGAL OBJECT GOVERNANCE → CITATION GOV
 → TEMPORAL GOVERNANCE → INGESTION PERSISTENCE → [TEST HARDENING] → AGENT LAYER → …
 ```
 
-**You are here:** ingestion persistence complete, test hardening complete, monitoring governance + persistence + dry-run worker skeleton + fetch governance + detection governance + controlled local fetch execution + fetch persistence + change-detection persistence complete (TASK-006C/006D/006E/006F/006G/006H/006I/006J).
+**You are here:** ingestion persistence complete, test hardening complete, monitoring governance + persistence + dry-run worker skeleton + fetch governance + detection governance + controlled local fetch execution + fetch persistence + change-detection persistence + checksum-only detection engine skeleton complete (TASK-006C/006D/006E/006F/006G/006H/006I/006J/006K).

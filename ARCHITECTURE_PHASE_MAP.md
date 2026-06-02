@@ -215,7 +215,19 @@ FOUNDATION
 
 ---
 
-### 16. AGENT LAYER — **FUTURE**
+### 16. SOURCE CHANGE DETECTION ENGINE SKELETON — **COMPLETE**
+
+**Intent:** Execute bounded acquisition-level change classification using checksum-only comparison over persisted fetch results.
+
+**Representative task:** TASK-006K
+
+**Key artifacts:** `backend/app/services/change_detection/engine.py`, `checksum_engine.py`, `result.py`, and engine integration tests.
+
+**Boundaries:** no textual/metadata/structural diff engine logic, no amendment/legal/temporal inference, no source-version creation, no candidate auto-transition, no live external fetching.
+
+---
+
+### 17. AGENT LAYER — **FUTURE**
 
 **Intent:** Autonomous or semi-autonomous ingestion/monitoring agents operating on governed contracts and persistence.
 
@@ -225,7 +237,7 @@ FOUNDATION
 
 ---
 
-### 17. RETRIEVAL LAYER — **FUTURE**
+### 18. RETRIEVAL LAYER — **FUTURE**
 
 **Intent:** Research-grade retrieval beyond 004A contract (ranking, multi-source assembly, operational APIs as governed).
 
@@ -233,7 +245,7 @@ FOUNDATION
 
 ---
 
-### 18. ANSWER ASSEMBLY — **FUTURE**
+### 19. ANSWER ASSEMBLY — **FUTURE**
 
 **Intent:** Source-referenced answers with mandatory disclosure, ambiguity surfacing, no silent legal inference.
 
@@ -245,7 +257,7 @@ FOUNDATION
 
 ## Current position (one line)
 
-**Phases 1–15 complete on `main`; next implementation work remains bounded expansion from local fetch/change-detection persistence toward controlled acquisition under governance.**
+**Phases 1–16 complete on `main`; next implementation work remains bounded expansion from local fetch/change-detection execution toward controlled acquisition under governance.**
 
 ---
 

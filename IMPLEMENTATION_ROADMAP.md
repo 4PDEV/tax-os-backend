@@ -56,13 +56,15 @@ Controlled fetch persistence (TASK-006I): append-only fetch request/result persi
 
 Source change detection persistence (TASK-006J): append-only change-detection request/result persistence with review-required doctrine enforcement and no engine implementation.
 
+Source change detection engine skeleton (TASK-006K): checksum-only comparison over persisted fetch results with bounded outcome classification and persistence integration.
+
 ---
 
 ## ACTIVE
 
 | Task | Title | Notes |
 |------|-------|-------|
-| — | *(none in implementation)* | TASK-006J implementation complete; awaiting next bounded approval |
+| — | *(none in implementation)* | TASK-006K implementation complete; awaiting next bounded approval |
 
 ---
 

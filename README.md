@@ -63,7 +63,7 @@ tax-os-backend/
 |------|--------|
 | Platform phase | Legal memory + temporal governance + ingestion persistence (see [CURRENT_STATUS.md](CURRENT_STATUS.md)) |
 | Alembic migrations | Head `f4c3b2a190de` |
-| Approved next task | **Awaiting next bounded task after TASK-006J** (change detection persistence complete; no engine/live acquisition) |
+| Approved next task | **Awaiting next bounded task after TASK-006K** (checksum-only detection skeleton complete; no interpretation/live acquisition) |
 | Admin CRUD APIs | Operational |
 | Legal object / citation contracts | Merged on `main` (003A–004D) |
 | Temporal governance | Merged (005A–005C); tag `checkpoint-task-005a-spec` |
@@ -131,6 +131,7 @@ Initial jurisdiction focus: **Rwanda**. Initial tax domains: VAT, PAYE/PIT, WHT,
 | `backend/app/services/fetch/` | TASK-006H controlled fetch implementation (dry-run + local fixture mode only) |
 | `backend/app/services/fetch/persistence.py` | TASK-006I controlled fetch request/result persistence (append-only artifacts) |
 | `backend/app/services/change_detection/` | TASK-006J change detection request/result persistence (append-only artifacts; no engine) |
+| `backend/app/services/change_detection/checksum_engine.py` | TASK-006K checksum-only change detection engine skeleton (persisted fetch results only) |
 
 ## Governance
 
