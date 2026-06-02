@@ -133,6 +133,7 @@ Initial jurisdiction focus: **Rwanda**. Initial tax domains: VAT, PAYE/PIT, WHT,
 | `backend/app/services/extraction_trigger/` | TASK-006N extraction trigger persistence service (append-only requests/results, trigger hash, idempotency checks) |
 | `backend/app/workers/extraction/` | TASK-006O/006P extraction worker (dry-run orchestration + controlled local text extraction) |
 | [CLAUDE_REVIEW_EXTRACTION_PIPELINE_006M-P.md](CLAUDE_REVIEW_EXTRACTION_PIPELINE_006M-P.md) | Architecture review — extraction pipeline 006M–006P |
+| [CLAUDE_VERIFICATION_EXTRACTION_REPLAY_006P1.md](CLAUDE_VERIFICATION_EXTRACTION_REPLAY_006P1.md) | Verification only — 006P1 idempotency remediation (EXT-01 / OD-019) |
 | [TASKS/TASK-006M-P-EXTRACTION-PIPELINE-REVIEWER-PACKAGE.md](TASKS/TASK-006M-P-EXTRACTION-PIPELINE-REVIEWER-PACKAGE.md) | Reviewer package index for 006M–006P |
 | `backend/app/services/fetch/` | TASK-006H controlled fetch implementation (dry-run + local fixture mode only) |
 | `backend/app/services/fetch/persistence.py` | TASK-006I controlled fetch request/result persistence (append-only artifacts) |

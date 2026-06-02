@@ -104,6 +104,7 @@
 | Document | Path |
 |----------|------|
 | **Architecture review (this cycle)** | [`CLAUDE_REVIEW_EXTRACTION_PIPELINE_006M-P.md`](../CLAUDE_REVIEW_EXTRACTION_PIPELINE_006M-P.md) |
+| **006P1 verification (EXT-01 / OD-019)** | [`CLAUDE_VERIFICATION_EXTRACTION_REPLAY_006P1.md`](../CLAUDE_VERIFICATION_EXTRACTION_REPLAY_006P1.md) |
 
 ---
 
