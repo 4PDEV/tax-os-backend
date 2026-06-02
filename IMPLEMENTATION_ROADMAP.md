@@ -72,13 +72,15 @@ Extraction replay idempotency hardening (TASK-006P1): canonical source_version_i
 
 Parsing trigger contract (TASK-006Q): governance-only parsing initiation from `extracted_text`; canonical `extracted_text_id` idempotency doctrine; `parsed_structure` ≠ legal meaning; no parsing execution.
 
+Parsing trigger persistence (TASK-006R): append-only `parsing_trigger_requests` / `parsing_trigger_results`, deterministic trigger hash, partial unique DB index on `extracted_text_id` WHERE `force_reparse = false`; no parser execution.
+
 ---
 
 ## ACTIVE
 
 | Task | Title | Notes |
 |------|-------|-------|
-| — | *(none in implementation)* | Await TASK-006R implementation authorization |
+| — | *(none in implementation)* | Await next bounded task authorization (e.g. parser worker skeleton) |
 
 ---
 
@@ -86,7 +88,7 @@ Parsing trigger contract (TASK-006Q): governance-only parsing initiation from `e
 
 | Task | Title | Prerequisite | Acceptance focus |
 |------|-------|--------------|------------------|
-| TASK-006R | Parsing trigger persistence | TASK-006Q contract; `extracted_text` canonical | Append-only parsing trigger requests/results, trigger hash, idempotency; no parser execution or `parsed_structure` creation |
+| — | *(none currently approved in this file)* | — | Await explicit next-task approval |
 
 **Blocked until explicit next-task approval:** live monitoring agents, ingestion automation expansion.
 

@@ -5,7 +5,7 @@ For detailed historical sections, see [PROJECT_STATE.md](PROJECT_STATE.md). For 
 
 **Last realigned:** 2026-06-02  
 **Branch:** `main`  
-**Alembic head:** `e8c1d4f92a17` (extraction replay idempotency hardening)
+**Alembic head:** `f3b9c2e81a25` (parsing trigger persistence)
 
 ---
 
@@ -15,7 +15,7 @@ For detailed historical sections, see [PROJECT_STATE.md](PROJECT_STATE.md). For 
 
 The platform is materially beyond early foundation. Core registry, processing queue, extraction/parser **contracts**, legal-object **persistence**, citation **governance**, temporal **governance**, and ingestion **artifact persistence** are in place on `main`.
 
-**Active gate:** parsing trigger persistence / parser worker tasks (not yet approved); extraction and parsing **trigger contracts** defined (006M, 006Q). PDF/network parsing automation, legal-object automation, and answer generation remain prohibited until respective tasks approve.
+**Active gate:** parser worker skeleton / controlled parsing execution (not yet approved); parsing trigger **persistence** complete (006R). No parsing execution. PDF/network parsing automation, legal-object automation, and answer generation remain prohibited until respective tasks approve.
 
 **Environments:** development and internal staging only. No public production deployment.
 
@@ -47,6 +47,7 @@ The platform is materially beyond early foundation. Core registry, processing qu
 | Controlled extraction execution | Local controlled text extraction into extraction_runs and extracted_texts | TASK-006P |
 | Extraction replay idempotency | Canonical `source_version_id` idempotency, DB partial unique index, worker replay guard; EXT-01/OD-019 closed | TASK-006P1 |
 | Parsing trigger governance | Governed parsing initiation from `extracted_text`; idempotency on `extracted_text_id`; `parsed_structure` ≠ legal meaning | TASK-006Q |
+| Parsing trigger persistence | Append-only parsing trigger requests/results, DB partial unique index, `extracted_text_id` idempotency | TASK-006R |
 
 **Checkpoint tags (selected):** `checkpoint-task-003e` … `checkpoint-task-006q-parsing-trigger-contract`
 
@@ -250,7 +251,7 @@ Ingestion workers, live monitoring agents, live fetchers, change-detection engin
 
 ## Next Major Architectural Goal
 
-**TASK-006R — Parsing trigger persistence** (approved next). Contract → persistence → worker → controlled execution for the parsing layer. TASK-006Q complete at `checkpoint-task-006q-parsing-trigger-contract`; no parsing execution yet.
+**Parser worker skeleton** (next in parsing layer sequencing). Contract → persistence (006Q/006R) → worker → controlled execution. No parsing execution yet.
 
 Doctrine: `parsed_structure` ≠ legal meaning. Residual concurrency: OD-021 (mitigate in 006R+ persistence/worker hardening).
 

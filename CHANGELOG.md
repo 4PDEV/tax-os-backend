@@ -4,6 +4,22 @@ All notable changes to `tax-os-backend` are documented here.
 
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versions align with git tags where applicable.
 
+## [task-006r-parsing-trigger-persistence] - 2026-06-02
+
+### Added
+
+- TASK-006R: parsing trigger persistence.
+  - Tables: `parsing_trigger_requests`, `parsing_trigger_results`
+  - Migration `f3b9c2e81a25` with partial unique index on `extracted_text_id` WHERE `force_reparse = false`
+  - Service: `backend/app/services/parsing_trigger/` (hashing, validation, persistence)
+  - Default `trigger_hash` from `extracted_text_id` only; `force_reparse` replay nonce pattern
+  - Tests: `test_parsing_trigger_persistence.py`, `test_parsing_trigger_alembic_migration.py`
+
+### Notes
+
+- No parsing execution, parser worker, `parsed_structure`, legal object, citation, or answer side effects.
+- `rerun_allowed` is policy metadata only; does not bypass idempotency.
+
 ## [task-006q-parsing-trigger-contract] - 2026-06-02
 
 ### Added

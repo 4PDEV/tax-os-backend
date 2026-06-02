@@ -123,6 +123,13 @@ TEST_DATABASE_URL='postgresql://taxos:P%405sw0rd%21234@localhost:5432/taxos_test
 .venv/bin/pytest backend/tests/test_extraction_replay_idempotency_hardening.py backend/tests/test_extraction_replay_idempotency_alembic_migration.py -q --tb=short
 ```
 
+### TASK-006R parsing trigger persistence tests
+
+```bash
+TEST_DATABASE_URL='postgresql://taxos:P%405sw0rd%21234@localhost:5432/taxos_test' \
+.venv/bin/pytest backend/tests/test_parsing_trigger_persistence.py backend/tests/test_parsing_trigger_alembic_migration.py -q --tb=short
+```
+
 ## 5) Prohibited practices
 
 - Running integration tests without an explicit `TEST_DATABASE_URL`

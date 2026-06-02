@@ -835,6 +835,8 @@ TASK-006P1 — Extraction Replay & Idempotency Hardening (**verified**; EXT-01/O
 
 TASK-006Q — Parsing Trigger Contract (**complete**; governance-only; no parsing execution).
 
+TASK-006R — Parsing Trigger Persistence (**complete**; append-only requests/results; no parsing execution).
+
 TASK-006P — Controlled Extraction Execution (**completed; controlled local text extraction into extraction_runs/extracted_texts; no PDF/network/parsing/legal automation**).
 
 TASK-006O — Extraction Worker Skeleton (**completed; dry-run-only trigger-to-extraction_run orchestration; no real extraction execution**).

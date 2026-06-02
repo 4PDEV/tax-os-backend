@@ -61,7 +61,7 @@ Bounded task tracking for `tax-os-backend`. Authoritative specs remain in `tax-o
 | TASK-006P | Controlled Extraction Execution | Complete | Controlled local text extraction from approved artifacts into extraction_runs and extracted_texts; no PDF/OCR/network/parsing/legal-object/citation side effects |
 | TASK-006P1 | Extraction Replay & Idempotency Hardening | Complete | Verified 2026-06-02; EXT-01/OD-019 remediated; TASK-006Q gate open |
 | TASK-006Q | Parsing Trigger Contract | Complete | Governance-only parsing initiation from `extracted_text`; idempotency on `extracted_text_id`; no parsing execution |
-| TASK-006R | Parsing Trigger Persistence | Planned | Approved next; append-only requests/results, trigger hash, idempotency; no parser execution |
+| TASK-006R | Parsing Trigger Persistence | Complete | Append-only requests/results, `extracted_text_id` idempotency, DB partial unique index; no parser execution |
 | TASK-DOC-001 | Master Status Document Realignment | Complete | CURRENT_STATUS, IMPLEMENTATION_ROADMAP, ARCHITECTURE_PHASE_MAP |
 
 ## Status Legend

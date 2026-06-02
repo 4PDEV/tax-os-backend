@@ -20,6 +20,8 @@ from app.models.legal_object_lineage import LegalObjectLineage
 from app.models.legal_object_version import LegalObjectVersion
 from app.models.parsed_structure import ParsedStructure
 from app.models.parser_run import ParserRun
+from app.models.parsing_trigger_request import ParsingTriggerRequest
+from app.models.parsing_trigger_result import ParsingTriggerResult
 from app.models.source_document import SourceDocument
 from app.models.source_processing_job import SourceProcessingJob
 from app.models.source_retrieval_log import SourceRetrievalLog
@@ -50,6 +52,8 @@ __all__ = [
     "LegalObjectVersion",
     "ParsedStructure",
     "ParserRun",
+    "ParsingTriggerRequest",
+    "ParsingTriggerResult",
     "SourceDocument",
     "SourceProcessingJob",
     "SourceRetrievalLog",

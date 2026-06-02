@@ -162,7 +162,9 @@ Optional future extension: include `parser_mode` or `parser_provider` in canonic
 
 ## Trigger hash doctrine
 
-Future `trigger_hash` is derived from stable canonical identity only.
+**Implemented (TASK-006R):** default `trigger_hash` derives from canonical target only.
+
+Future default `trigger_hash` is derived from stable canonical identity only.
 
 **Default (`force_reparse=false`):**
 

@@ -299,7 +299,19 @@ FOUNDATION
 
 ---
 
-### 23. AGENT LAYER — **FUTURE**
+### 23. PARSING TRIGGER PERSISTENCE — **COMPLETE**
+
+**Intent:** Materialize parsing-trigger governance as durable, append-only evidence records before parser worker orchestration or parsing execution.
+
+**Representative task:** TASK-006R
+
+**Key artifacts:** `parsing_trigger_requests`, `parsing_trigger_results`, and `backend/app/services/parsing_trigger/`.
+
+**Boundaries:** no parsing execution, no parser worker/queue implementation, no `parsed_structure`/legal-object/citation/answer creation.
+
+---
+
+### 24. AGENT LAYER — **FUTURE**
 
 **Intent:** Autonomous or semi-autonomous ingestion/monitoring agents operating on governed contracts and persistence.
 
@@ -309,7 +321,7 @@ FOUNDATION
 
 ---
 
-### 24. RETRIEVAL LAYER — **FUTURE**
+### 25. RETRIEVAL LAYER — **FUTURE**
 
 **Intent:** Research-grade retrieval beyond 004A contract (ranking, multi-source assembly, operational APIs as governed).
 
@@ -317,7 +329,7 @@ FOUNDATION
 
 ---
 
-### 25. ANSWER ASSEMBLY — **FUTURE**
+### 26. ANSWER ASSEMBLY — **FUTURE**
 
 **Intent:** Source-referenced answers with mandatory disclosure, ambiguity surfacing, no silent legal inference.
 
