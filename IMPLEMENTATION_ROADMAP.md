@@ -80,7 +80,7 @@ Parsing trigger persistence (TASK-006R): append-only `parsing_trigger_requests` 
 
 | Task | Title | Notes |
 |------|-------|-------|
-| — | *(none in implementation)* | Await next bounded task authorization (e.g. parser worker skeleton) |
+| — | *(none in implementation)* | Await TASK-006S implementation authorization |
 
 ---
 
@@ -88,7 +88,7 @@ Parsing trigger persistence (TASK-006R): append-only `parsing_trigger_requests` 
 
 | Task | Title | Prerequisite | Acceptance focus |
 |------|-------|--------------|------------------|
-| — | *(none currently approved in this file)* | — | Await explicit next-task approval |
+| TASK-006S | Parsing worker skeleton | TASK-006R persistence | Dry-run orchestration only; `parser_run` lifecycle; trigger result persistence; no `parsed_structure`/legal object/citation/answer |
 
 **Blocked until explicit next-task approval:** live monitoring agents, ingestion automation expansion.
 

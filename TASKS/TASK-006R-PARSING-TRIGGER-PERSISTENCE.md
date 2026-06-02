@@ -2,7 +2,7 @@
 
 ## Status
 
-**Complete**
+**Complete** — accepted at `checkpoint-task-006r-parsing-trigger-persistence`
 
 ## Objective
 
