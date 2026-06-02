@@ -64,13 +64,15 @@ Source-version extraction trigger contract (TASK-006M): governance-only extracti
 
 Extraction trigger persistence (TASK-006N): append-only extraction-trigger request/result persistence with deterministic trigger hashes, duplicate protection, and force-reprocess bypass auditability.
 
+Extraction worker skeleton (TASK-006O): dry-run-only orchestration from extraction trigger requests to extraction_run lifecycle records with idempotency and force-reprocess paths.
+
 ---
 
 ## ACTIVE
 
 | Task | Title | Notes |
 |------|-------|-------|
-| — | *(none in implementation)* | TASK-006N persistence implementation complete; awaiting next bounded approval |
+| — | *(none in implementation)* | TASK-006O worker skeleton complete; awaiting next bounded approval |
 
 ---
 

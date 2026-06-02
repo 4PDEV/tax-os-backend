@@ -263,7 +263,19 @@ FOUNDATION
 
 ---
 
-### 20. AGENT LAYER — **FUTURE**
+### 20. EXTRACTION WORKER SKELETON — **COMPLETE**
+
+**Intent:** Prove safe extraction lifecycle orchestration from trigger records to `extraction_runs` without executing real extractors.
+
+**Representative task:** TASK-006O (dry-run only)
+
+**Key artifacts:** `backend/app/workers/extraction/` with `ExtractionWorker`, `DryRunExtractionProvider`, and `run_extraction_dry_run()`.
+
+**Boundaries:** no real extraction, no source parsing, no extracted_text/legal/citation/answer creation, no network IO.
+
+---
+
+### 21. AGENT LAYER — **FUTURE**
 
 **Intent:** Autonomous or semi-autonomous ingestion/monitoring agents operating on governed contracts and persistence.
 
@@ -273,7 +285,7 @@ FOUNDATION
 
 ---
 
-### 21. RETRIEVAL LAYER — **FUTURE**
+### 22. RETRIEVAL LAYER — **FUTURE**
 
 **Intent:** Research-grade retrieval beyond 004A contract (ranking, multi-source assembly, operational APIs as governed).
 
@@ -281,7 +293,7 @@ FOUNDATION
 
 ---
 
-### 22. ANSWER ASSEMBLY — **FUTURE**
+### 23. ANSWER ASSEMBLY — **FUTURE**
 
 **Intent:** Source-referenced answers with mandatory disclosure, ambiguity surfacing, no silent legal inference.
 
@@ -293,7 +305,7 @@ FOUNDATION
 
 ## Current position (one line)
 
-**Phases 1–19 complete on `main`; next implementation work remains bounded expansion from trigger persistence into controlled extraction mechanics under governance.**
+**Phases 1–20 complete on `main`; next implementation work remains bounded expansion from dry-run extraction orchestration into controlled extraction execution under governance.**
 
 ---
 

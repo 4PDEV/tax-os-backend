@@ -750,6 +750,39 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Version
 
 - TASK-006M introduces no extraction execution, no queue/worker automation, and no parsing/legal-object/citation/answer generation.
 
+## [task-006o-extraction-worker-skeleton] - 2026-06-02
+
+### Added
+
+- TASK-006O: extraction worker skeleton (dry-run only).
+  - New worker package: `backend/app/workers/extraction/`
+    - `worker.py` (`ExtractionWorker`)
+    - `runner.py` (`run_extraction_dry_run`)
+    - `dry_run_provider.py` (`ExtractionProvider`, `DryRunExtractionProvider`)
+    - `result.py` (`ExtractionProviderResult`, `ExtractionRunSummary`)
+  - Worker behavior:
+    - processes eligible extraction trigger requests only
+    - orchestrates accepted → queued → started → completed/failed trigger results
+    - creates `extraction_runs` via ingestion persistence in dry-run mode
+    - enforces idempotency (skip completed unless `force_reprocess=True`)
+    - skips rejected/duplicate_rejected latest statuses
+  - New tests: `backend/tests/test_extraction_worker_skeleton.py`
+
+### Governance
+
+- `dry_run=True` required; non-dry-run execution rejected.
+- No network IO, OCR, PDF/HTML parsing, AI calls, or source content extraction.
+- No `extracted_text`, `parsed_structure`, `legal_object`, or citation side effects.
+
+### Validation
+
+- `backend/tests/test_extraction_worker_skeleton.py`: **9 passed**.
+- Full suite: **503 passed**.
+
+### Notes
+
+- TASK-006O introduces no real extractor execution and no ingestion automation beyond lifecycle orchestration records.
+
 ## [task-006n-extraction-trigger-persistence] - 2026-06-02
 
 ### Added

@@ -15,7 +15,7 @@ For detailed historical sections, see [PROJECT_STATE.md](PROJECT_STATE.md). For 
 
 The platform is materially beyond early foundation. Core registry, processing queue, extraction/parser **contracts**, legal-object **persistence**, citation **governance**, temporal **governance**, and ingestion **artifact persistence** are in place on `main`.
 
-**Active gate:** extraction trigger persistence is now implemented (TASK-006N); extraction execution automation remains prohibited.
+**Active gate:** extraction worker skeleton is now implemented (TASK-006O, dry-run only); real extraction execution remains prohibited.
 
 **Environments:** development and internal staging only. No public production deployment.
 
@@ -43,6 +43,7 @@ The platform is materially beyond early foundation. Core registry, processing qu
 | Controlled source promotion | Review-gated source version promotion workflow with append-only promotion history | TASK-006L |
 | Extraction trigger governance | Source-version extraction trigger contract boundaries | TASK-006M |
 | Extraction trigger persistence | Append-only trigger request/result persistence with deterministic hash and idempotency controls | TASK-006N |
+| Extraction worker skeleton | Dry-run orchestration from trigger requests to extraction_run lifecycle records | TASK-006O |
 
 **Checkpoint tags (selected):** `checkpoint-task-003e` … `checkpoint-task-005a-spec`
 
@@ -104,7 +105,7 @@ The platform is materially beyond early foundation. Core registry, processing qu
 
 | Task | Title | Why now |
 |------|-------|---------|
-| **TASK-006N** | Extraction Trigger Persistence | **Completed (persistence-only)** — append-only trigger requests/results, deterministic trigger hash, duplicate protection and force-reprocess auditability; no extraction execution |
+| **TASK-006O** | Extraction Worker Skeleton | **Completed (dry-run only)** — orchestrates eligible triggers into extraction_run lifecycle records; idempotency and force-reprocess preserved; no real extraction |
 
 See [IMPLEMENTATION_ROADMAP.md](IMPLEMENTATION_ROADMAP.md) for full sequencing.
 
@@ -170,12 +171,12 @@ TASK-006L implements bounded source-version promotion workflow:
 - allowed: explicit workflow validation, duplicate protection, canonical `source_versions` creation from reviewed artifacts, append-only `source_version_promotions` history
 - prohibited: automatic ingestion/extraction/parsing/legal-object/citation creation, amendment/legal/temporal inference, autonomous approval/publication
 
-### TASK-006N boundary
+### TASK-006O boundary
 
-TASK-006N is persistence-only:
+TASK-006O is dry-run orchestration only:
 
-- allowed: append-only extraction trigger request/result persistence, deterministic trigger hashing, duplicate-trigger protection (unless `force_reprocess=True`), status/error persistence, FK governance, retrieval helpers
-- prohibited: extraction execution, worker/queue automation, parsing/legal-object/citation/answer generation, legal/temporal inference, automatic extraction-run creation
+- allowed: eligible trigger selection, dry-run provider interface, extraction_run lifecycle creation, append-only trigger result progression, idempotency and force-reprocess handling, worker summary reporting
+- prohibited: real extraction, source content parsing, OCR/PDF/HTML extraction, network IO, AI calls, extracted_text/parsed_structure/legal_object/citation creation
 
 ---
 
@@ -246,7 +247,7 @@ Ingestion workers, live monitoring agents, live fetchers, change-detection engin
 
 ## Next Major Architectural Goal
 
-After TASK-006N extraction-trigger persistence implementation: future bounded tasks may implement worker orchestration and controlled extraction execution under explicit review and provenance safeguards.
+After TASK-006O extraction worker skeleton: future bounded tasks may implement controlled extraction execution under explicit review and provenance safeguards.
 
 Longer horizon (not approved for immediate implementation): agent layer → retrieval layer → answer assembly. See [ARCHITECTURE_PHASE_MAP.md](ARCHITECTURE_PHASE_MAP.md).
 
@@ -259,4 +260,4 @@ FOUNDATION → EXTRACTION CONTRACTS → LEGAL OBJECT GOVERNANCE → CITATION GOV
 → TEMPORAL GOVERNANCE → INGESTION PERSISTENCE → [TEST HARDENING] → AGENT LAYER → …
 ```
 
-**You are here:** ingestion persistence complete, test hardening complete, monitoring governance + persistence + dry-run worker skeleton + fetch governance + detection governance + controlled local fetch execution + fetch persistence + change-detection persistence + checksum-only detection engine skeleton + controlled source-version promotion + extraction-trigger governance + extraction-trigger persistence complete (TASK-006C/006D/006E/006F/006G/006H/006I/006J/006K/006L/006M/006N).
+**You are here:** ingestion persistence complete, test hardening complete, monitoring governance + persistence + dry-run worker skeleton + fetch governance + detection governance + controlled local fetch execution + fetch persistence + change-detection persistence + checksum-only detection engine skeleton + controlled source-version promotion + extraction-trigger governance + extraction-trigger persistence + extraction worker skeleton complete (TASK-006C/006D/006E/006F/006G/006H/006I/006J/006K/006L/006M/006N/006O).

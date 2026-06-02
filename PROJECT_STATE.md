@@ -831,11 +831,13 @@ Legal memory stack on `main`:
 
 # NEXT APPROVED TASKS
 
+TASK-006O — Extraction Worker Skeleton (**completed; dry-run-only trigger-to-extraction_run orchestration; no real extraction execution**).
+
 TASK-006N — Extraction Trigger Persistence (**completed; append-only trigger request/result persistence with idempotency and force-reprocess auditability; no extraction execution automation**).
 
 TASK-004E — Citation Temporal Compliance Remediation (planned — align `CitationAssembler` with Addendum V6; defer unless blocking).
 
-Post-006N implementation tasks must remain bounded and align with monitoring/fetch/detection/promotion/trigger governance constraints.
+Post-006O implementation tasks must remain bounded and align with monitoring/fetch/detection/promotion/trigger/worker governance constraints.
 
 **VM snapshot:** run full-suite verification before migration-heavy work.
 
