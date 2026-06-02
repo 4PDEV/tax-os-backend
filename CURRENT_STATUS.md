@@ -15,7 +15,7 @@ For detailed historical sections, see [PROJECT_STATE.md](PROJECT_STATE.md). For 
 
 The platform is materially beyond early foundation. Core registry, processing queue, extraction/parser **contracts**, legal-object **persistence**, citation **governance**, temporal **governance**, and ingestion **artifact persistence** are in place on `main`.
 
-**Active gate:** controlled local extraction is now implemented (TASK-006P); PDF/network parsing, legal-object automation, and answer generation remain prohibited.
+**Active gate:** TASK-006Q parsing trigger contract (approved next); extraction replay idempotency verified (TASK-006P1). PDF/network parsing automation, legal-object automation, and answer generation remain prohibited until respective tasks approve.
 
 **Environments:** development and internal staging only. No public production deployment.
 
@@ -45,8 +45,9 @@ The platform is materially beyond early foundation. Core registry, processing qu
 | Extraction trigger persistence | Append-only trigger request/result persistence with deterministic hash and idempotency controls | TASK-006N |
 | Extraction worker skeleton | Dry-run orchestration from trigger requests to extraction_run lifecycle records | TASK-006O |
 | Controlled extraction execution | Local controlled text extraction into extraction_runs and extracted_texts | TASK-006P |
+| Extraction replay idempotency | Canonical `source_version_id` idempotency, DB partial unique index, worker replay guard; EXT-01/OD-019 closed | TASK-006P1 |
 
-**Checkpoint tags (selected):** `checkpoint-task-003e` … `checkpoint-task-005a-spec`
+**Checkpoint tags (selected):** `checkpoint-task-003e` … `checkpoint-task-006p1-extraction-replay-idempotency`
 
 ---
 
@@ -248,7 +249,9 @@ Ingestion workers, live monitoring agents, live fetchers, change-detection engin
 
 ## Next Major Architectural Goal
 
-After TASK-006P1 replay/idempotency hardening: EXT-01 / OD-019 remediated; TASK-006Q may proceed after merge acceptance. See [`TASKS/TASK-006P1-EXTRACTION-REPLAY-IDEMPOTENCY-HARDENING.md`](TASKS/TASK-006P1-EXTRACTION-REPLAY-IDEMPOTENCY-HARDENING.md).
+**TASK-006Q — Parsing trigger contract** (gate open). Governed initiation from canonical `extracted_text` toward structural parsing; `parsed_structure` ≠ legal meaning (no interpretation, tax effect, applicability, or legal consequence).
+
+Verification: [`CLAUDE_VERIFICATION_EXTRACTION_REPLAY_006P1.md`](CLAUDE_VERIFICATION_EXTRACTION_REPLAY_006P1.md). Residual concurrency: OD-021 (address in 006Q/006R design).
 
 Longer horizon (not approved for immediate implementation): agent layer → retrieval layer → answer assembly. See [ARCHITECTURE_PHASE_MAP.md](ARCHITECTURE_PHASE_MAP.md).
 

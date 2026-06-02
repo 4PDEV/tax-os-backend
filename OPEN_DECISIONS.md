@@ -39,8 +39,9 @@ Pending architectural or operational decisions. Resolve via `tax-os-architecture
 |----|-------|---------|--------|
 | OD-019 | Extraction replay / idempotency hardening | EXT-01 / F-05 remediated in TASK-006P1: canonical idempotency on `source_version_id`, partial unique DB index, source_version-level worker skip; `rerun_allowed` records policy only and does not bypass; `force_reprocess=True` is explicit bypass | **Resolved (TASK-006P1)** |
 | OD-020 | Trigger `completed` vs text-ready semantics | `trigger_status=completed` on dry-run does not imply `extracted_text` exists; consumers must join `extracted_text` / check extractor identity | Documented — non-blocking |
+| OD-021 | Multi-worker extraction race | Default idempotency is app + worker + DB enforced; concurrent workers may still race at execution time (read-check-then-act). Not a blocker for single-worker orchestration; design mitigation in TASK-006Q/006R | Open — LOW now, MEDIUM under concurrency |
 
-**TASK-006Q gate:** Unblock after TASK-006P1 merge acceptance and review acknowledgment.
+**TASK-006Q gate:** **OPEN** (TASK-006P1 verified 2026-06-02; see [`CLAUDE_VERIFICATION_EXTRACTION_REPLAY_006P1.md`](CLAUDE_VERIFICATION_EXTRACTION_REPLAY_006P1.md)).
 
 ## Test gaps (QA)
 

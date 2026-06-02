@@ -61,17 +61,27 @@ Confirm EXT-01 / F-05 and OD-019 are remediated. Acknowledge TASK-006Q gate may 
 |----------|-------|
 | EXT-01 / F-05 | **REMEDIATED** |
 | OD-019 | **RESOLVED** |
-| TASK-006Q gate | **MAY OPEN** after reviewer acknowledgment of this verification |
+| TASK-006Q gate | **OPEN** (acknowledged 2026-06-02) |
 | Full 006M–006P re-review | **NOT REQUIRED** |
 
 ---
 
-## Sign-off template
+## Residual (non-blocking)
+
+| ID | Risk | Severity now | Severity with concurrent workers | Disposition |
+|----|------|--------------|--------------------------------|-------------|
+| R-05 | Multi-worker execution-time race (read-check-then-act between workers) | LOW | MEDIUM | Address in TASK-006Q/006R design; not a blocker for parsing trigger contract |
+
+Idempotency is enforced at application, worker, and database layers for default triggers. Concurrent workers may still race before DB constraint or worker skip applies; bounded orchestration today.
+
+---
+
+## Sign-off
 
 | Role | Decision | Date |
 |------|----------|------|
-| Remediation verification | PENDING ACK | — |
-| TASK-006Q | Blocked until row above signed | — |
+| Remediation verification | **VERIFIED** | 2026-06-02 |
+| TASK-006Q gate | **OPEN** | 2026-06-02 |
 
 ---
 

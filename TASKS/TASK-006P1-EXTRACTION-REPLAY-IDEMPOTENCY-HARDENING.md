@@ -1,8 +1,8 @@
 # TASK-006P1 — Extraction Replay & Idempotency Hardening
 
-**Status:** Complete  
+**Status:** Complete — **verified** 2026-06-02  
 **Resolves:** Claude review EXT-01 / F-05, OD-019  
-**Blocks cleared:** TASK-006Q (after merge acceptance)
+**Blocks cleared:** TASK-006Q gate **open**
 
 ## Issue summary
 

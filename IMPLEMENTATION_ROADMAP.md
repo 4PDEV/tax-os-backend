@@ -76,7 +76,7 @@ Extraction replay idempotency hardening (TASK-006P1): canonical source_version_i
 
 | Task | Title | Notes |
 |------|-------|-------|
-| — | *(none in implementation)* | TASK-006P1 complete; TASK-006Q unblocked after merge acceptance |
+| — | *(none in implementation)* | Await TASK-006Q implementation authorization |
 
 ---
 
@@ -84,7 +84,7 @@ Extraction replay idempotency hardening (TASK-006P1): canonical source_version_i
 
 | Task | Title | Prerequisite | Acceptance focus |
 |------|-------|--------------|------------------|
-| — | *(none currently approved for implementation in this file)* | — | Await next bounded implementation authorization |
+| TASK-006Q | Parsing trigger contract | TASK-006P1 verified; `extracted_text` canonical | Governance-only parsing initiation boundary; `parsed_structure` ≠ legal meaning; no interpretation or tax-effect inference |
 
 **Blocked until explicit next-task approval:** live monitoring agents, ingestion automation expansion.
 

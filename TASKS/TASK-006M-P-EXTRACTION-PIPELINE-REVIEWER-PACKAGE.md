@@ -10,7 +10,7 @@
 
 **Review type:** Implementation + governance alignment (006M contract through 006P execution).
 
-**Do not start TASK-006Q until this review is accepted.**
+**TASK-006Q gate:** OPEN after TASK-006P1 verification ([`CLAUDE_VERIFICATION_EXTRACTION_REPLAY_006P1.md`](../CLAUDE_VERIFICATION_EXTRACTION_REPLAY_006P1.md)).
 
 ---
 
