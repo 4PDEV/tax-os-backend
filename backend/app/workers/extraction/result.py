@@ -4,9 +4,15 @@ from dataclasses import dataclass
 @dataclass(frozen=True)
 class ExtractionProviderResult:
     success: bool
+    raw_text: str | None = None
+    extraction_status: str | None = None
+    content_hash: str | None = None
+    raw_text_length: int | None = None
     error_category: str | None = None
     error_message: str | None = None
     notes: str | None = None
+    extractor_name: str | None = None
+    extractor_version: str | None = None
 
 
 @dataclass(frozen=True)

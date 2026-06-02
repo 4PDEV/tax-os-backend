@@ -63,7 +63,7 @@ tax-os-backend/
 |------|--------|
 | Platform phase | Legal memory + temporal governance + ingestion persistence (see [CURRENT_STATUS.md](CURRENT_STATUS.md)) |
 | Alembic migrations | Head `b3d7a9f1c204` |
-| Approved next task | **Awaiting next bounded task after TASK-006O** (extraction worker skeleton implemented; real extraction execution still not implemented) |
+| Approved next task | **Awaiting next bounded task after TASK-006P** (controlled local extraction implemented; PDF/network/parsing/legal automation still out of scope) |
 | Admin CRUD APIs | Operational |
 | Legal object / citation contracts | Merged on `main` (003A–004D) |
 | Temporal governance | Merged (005A–005C); tag `checkpoint-task-005a-spec` |
@@ -131,7 +131,7 @@ Initial jurisdiction focus: **Rwanda**. Initial tax domains: VAT, PAYE/PIT, WHT,
 | [SOURCE_VERSION_EXTRACTION_TRIGGER_CONTRACT.md](SOURCE_VERSION_EXTRACTION_TRIGGER_CONTRACT.md) | Source-version extraction trigger governance contract (TASK-006M; contract-only) |
 | [TASKS/TASK-006M-SOURCE-VERSION-EXTRACTION-TRIGGER-CONTRACT.md](TASKS/TASK-006M-SOURCE-VERSION-EXTRACTION-TRIGGER-CONTRACT.md) | TASK-006M contract record |
 | `backend/app/services/extraction_trigger/` | TASK-006N extraction trigger persistence service (append-only requests/results, trigger hash, idempotency checks) |
-| `backend/app/workers/extraction/` | TASK-006O extraction worker skeleton (dry-run orchestration only; no real extraction) |
+| `backend/app/workers/extraction/` | TASK-006O/006P extraction worker (dry-run orchestration + controlled local text extraction) |
 | `backend/app/services/fetch/` | TASK-006H controlled fetch implementation (dry-run + local fixture mode only) |
 | `backend/app/services/fetch/persistence.py` | TASK-006I controlled fetch request/result persistence (append-only artifacts) |
 | `backend/app/services/change_detection/` | TASK-006J change detection request/result persistence (append-only artifacts; no engine) |

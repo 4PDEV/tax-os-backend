@@ -750,6 +750,35 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Version
 
 - TASK-006M introduces no extraction execution, no queue/worker automation, and no parsing/legal-object/citation/answer generation.
 
+## [task-006p-controlled-extraction-execution] - 2026-06-02
+
+### Added
+
+- TASK-006P: controlled local extraction execution.
+  - `ControlledLocalExtractionProvider` in `backend/app/workers/extraction/`
+  - `safety.py` — artifact-root path resolution, traversal blocking, content-type validation, max-size guard
+  - `content.py` — text/html/json/xml controlled text extraction (no PDF/OCR/browser)
+  - `run_controlled_local_extraction()` runner with explicit `controlled_local=True` guard
+  - Worker mode support: `dry_run` and `controlled_local`
+  - On success: `extraction_run` + `extracted_text` persistence with checksum/provenance
+  - On failure: failed `extraction_run` + failed trigger result, no `extracted_text`
+  - New tests: `backend/tests/test_controlled_extraction_execution.py`
+
+### Governance
+
+- Supported types only: `text/plain`, `text/html`, `application/json`, `application/xml`.
+- No external network access, PDF extraction, OCR, browser automation, or AI calls.
+- No parsed_structure, legal_object, citation, or answer side effects.
+
+### Validation
+
+- `backend/tests/test_controlled_extraction_execution.py`: **16 passed** (including parametrized format cases).
+- Full suite: **519 passed**.
+
+### Notes
+
+- TASK-006P produces raw text evidence only; it does not interpret legal meaning.
+
 ## [task-006o-extraction-worker-skeleton] - 2026-06-02
 
 ### Added

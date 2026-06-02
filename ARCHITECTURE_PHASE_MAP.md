@@ -275,7 +275,19 @@ FOUNDATION
 
 ---
 
-### 21. AGENT LAYER — **FUTURE**
+### 21. CONTROLLED EXTRACTION EXECUTION — **COMPLETE**
+
+**Intent:** Execute bounded local text extraction from approved artifacts into raw `extracted_text` evidence without legal interpretation.
+
+**Representative task:** TASK-006P
+
+**Key artifacts:** `ControlledLocalExtractionProvider`, `run_controlled_local_extraction()`, extraction safety/content helpers.
+
+**Boundaries:** supported text formats only; no PDF/OCR/network/browser/AI; no parsed_structure/legal_object/citation/answer automation.
+
+---
+
+### 22. AGENT LAYER — **FUTURE**
 
 **Intent:** Autonomous or semi-autonomous ingestion/monitoring agents operating on governed contracts and persistence.
 
@@ -285,7 +297,7 @@ FOUNDATION
 
 ---
 
-### 22. RETRIEVAL LAYER — **FUTURE**
+### 23. RETRIEVAL LAYER — **FUTURE**
 
 **Intent:** Research-grade retrieval beyond 004A contract (ranking, multi-source assembly, operational APIs as governed).
 
@@ -293,7 +305,7 @@ FOUNDATION
 
 ---
 
-### 23. ANSWER ASSEMBLY — **FUTURE**
+### 24. ANSWER ASSEMBLY — **FUTURE**
 
 **Intent:** Source-referenced answers with mandatory disclosure, ambiguity surfacing, no silent legal inference.
 
@@ -305,7 +317,7 @@ FOUNDATION
 
 ## Current position (one line)
 
-**Phases 1–20 complete on `main`; next implementation work remains bounded expansion from dry-run extraction orchestration into controlled extraction execution under governance.**
+**Phases 1–21 complete on `main`; next work should proceed only after Claude architecture review of extraction replay/idempotency and provenance guarantees.**
 
 ---
 

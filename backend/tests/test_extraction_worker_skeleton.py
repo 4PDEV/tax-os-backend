@@ -58,9 +58,14 @@ def _seed_source_version(db_session, *, status: str = "active") -> SourceVersion
     return version
 
 
-def test_non_dry_run_rejected():
+def test_invalid_execution_mode_rejected():
     with pytest.raises(ExtractionWorkerError):
-        ExtractionWorker(provider=FailingExtractionProvider(), dry_run=False)
+        ExtractionWorker(provider=FailingExtractionProvider(), mode="live")
+
+
+def test_non_dry_run_runner_rejected():
+    with pytest.raises(ExtractionWorkerError):
+        run_extraction_dry_run(None, dry_run=False)  # type: ignore[arg-type]
 
 
 def test_dry_run_worker_processes_eligible_trigger(db_session):
@@ -201,12 +206,12 @@ def test_provider_failure_records_failed_trigger_result(db_session):
         trigger_reason="provider failure path",
     )
 
-    worker = ExtractionWorker(provider=FailingExtractionProvider(), dry_run=True)
+    worker = ExtractionWorker(provider=FailingExtractionProvider(), mode="dry_run")
     summary = worker.run(db_session)
 
     assert summary.triggers_processed == 1
     assert summary.failures == 1
-    assert summary.extraction_runs_created == 0
+    assert summary.extraction_runs_created == 1
 
     latest = (
         db_session.execute(
@@ -218,6 +223,8 @@ def test_provider_failure_records_failed_trigger_result(db_session):
     assert latest is not None
     assert latest.trigger_status == "failed"
     assert latest.error_category == "extraction_pipeline_unavailable"
+    run = db_session.execute(select(ExtractionRun)).scalar_one()
+    assert run.extraction_status == "failed"
 
 
 def test_summary_counts_with_multiple_eligible_triggers(db_session):

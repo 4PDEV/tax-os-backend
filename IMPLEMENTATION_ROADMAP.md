@@ -66,13 +66,15 @@ Extraction trigger persistence (TASK-006N): append-only extraction-trigger reque
 
 Extraction worker skeleton (TASK-006O): dry-run-only orchestration from extraction trigger requests to extraction_run lifecycle records with idempotency and force-reprocess paths.
 
+Controlled extraction execution (TASK-006P): controlled local text extraction from approved artifacts into extraction_runs and extracted_texts with safety guards and no downstream legal-memory automation.
+
 ---
 
 ## ACTIVE
 
 | Task | Title | Notes |
 |------|-------|-------|
-| — | *(none in implementation)* | TASK-006O worker skeleton complete; awaiting next bounded approval |
+| — | *(none in implementation)* | TASK-006P controlled extraction complete; awaiting next bounded approval |
 
 ---
 
