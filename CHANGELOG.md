@@ -688,6 +688,45 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Version
 
 - TASK-006K introduces no live fetching/crawling/scraping and no amendment or temporal inference.
 
+## [task-006l-controlled-source-version-promotion] - 2026-06-02
+
+### Added
+
+- TASK-006L: controlled source version promotion workflow.
+  - New append-only model/table:
+    - `backend/app/models/source_version_promotion.py` (`source_version_promotions`)
+    - migration: `backend/migrations/versions/a7e6c9b4d201_create_source_version_promotions_table.py`
+  - New promotion workflow package:
+    - `backend/app/services/source_promotion/request.py`
+    - `backend/app/services/source_promotion/result.py`
+    - `backend/app/services/source_promotion/validation.py`
+    - `backend/app/services/source_promotion/workflow.py`
+    - `backend/app/services/source_promotion/errors.py`
+    - `backend/app/services/source_promotion/__init__.py`
+  - Workflow capabilities:
+    - explicit review-gated promotion request handling
+    - validation of fetch/source/provenance prerequisites
+    - deterministic duplicate protection (`source_document_id + checksum_sha256`)
+    - canonical `source_versions` creation only when validations pass
+    - append-only promotion-history preservation for approved/rejected/duplicate paths (where FK-valid)
+  - New tests:
+    - `backend/tests/test_source_promotion_workflow.py`
+    - `backend/tests/test_source_promotion_alembic_migration.py`
+
+### Governance
+
+- Promotion creates canonical source memory only; no automatic extraction, parsing, legal-object, or citation creation.
+- Temporal no-inference preserved: no silent effective-date inference; absent dates remain null.
+- Provenance references preserved in promotion history and source-version promotion notes.
+
+### Validation
+
+- `backend/tests/test_source_promotion_workflow.py backend/tests/test_source_promotion_alembic_migration.py`: **14 passed**.
+
+### Notes
+
+- TASK-006L introduces no live fetching, no autonomous approval/publication, and no legal interpretation.
+
 ## [checkpoint-task-005a-spec] - 2026-06-01
 
 ### Merged

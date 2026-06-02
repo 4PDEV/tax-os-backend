@@ -40,6 +40,7 @@ from app.models import (  # noqa: F401
     SourceProcessingJob,
     SourceRetrievalLog,
     SourceVersion,
+    SourceVersionPromotion,
     TaxType,
 )
 

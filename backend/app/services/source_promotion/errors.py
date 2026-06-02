@@ -1,0 +1,2 @@
+class SourcePromotionError(Exception):
+    pass

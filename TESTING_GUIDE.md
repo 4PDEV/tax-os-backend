@@ -28,7 +28,7 @@ export REQUIRE_TEST_DATABASE_URL=0
 Expected Alembic head:
 
 ```text
-f4c3b2a190de
+a7e6c9b4d201
 ```
 
 Session fixture behavior (`backend/tests/conftest.py`):
@@ -86,6 +86,13 @@ TEST_DATABASE_URL='postgresql://taxos:P%405sw0rd%21234@localhost:5432/taxos_test
 ```bash
 TEST_DATABASE_URL='postgresql://taxos:P%405sw0rd%21234@localhost:5432/taxos_test' \
 .venv/bin/pytest backend/tests/test_change_detection_engine_skeleton.py -q --tb=short
+```
+
+### TASK-006L source promotion workflow tests
+
+```bash
+TEST_DATABASE_URL='postgresql://taxos:P%405sw0rd%21234@localhost:5432/taxos_test' \
+.venv/bin/pytest backend/tests/test_source_promotion_workflow.py backend/tests/test_source_promotion_alembic_migration.py -q --tb=short
 ```
 
 ## 5) Prohibited practices

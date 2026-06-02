@@ -227,7 +227,19 @@ FOUNDATION
 
 ---
 
-### 17. AGENT LAYER — **FUTURE**
+### 17. CONTROLLED SOURCE VERSION PROMOTION WORKFLOW — **COMPLETE**
+
+**Intent:** Establish the first governed bridge from reviewed acquisition artifacts into canonical source memory.
+
+**Representative task:** TASK-006L
+
+**Key artifacts:** `backend/app/services/source_promotion/` workflow/request/result/validation modules and append-only `source_version_promotions` persistence.
+
+**Boundaries:** promotion is explicit and review-gated only; no automatic ingestion/extraction/parsing/legal-object/citation creation and no legal/temporal inference.
+
+---
+
+### 18. AGENT LAYER — **FUTURE**
 
 **Intent:** Autonomous or semi-autonomous ingestion/monitoring agents operating on governed contracts and persistence.
 
@@ -237,7 +249,7 @@ FOUNDATION
 
 ---
 
-### 18. RETRIEVAL LAYER — **FUTURE**
+### 19. RETRIEVAL LAYER — **FUTURE**
 
 **Intent:** Research-grade retrieval beyond 004A contract (ranking, multi-source assembly, operational APIs as governed).
 
@@ -245,7 +257,7 @@ FOUNDATION
 
 ---
 
-### 19. ANSWER ASSEMBLY — **FUTURE**
+### 20. ANSWER ASSEMBLY — **FUTURE**
 
 **Intent:** Source-referenced answers with mandatory disclosure, ambiguity surfacing, no silent legal inference.
 
@@ -257,7 +269,7 @@ FOUNDATION
 
 ## Current position (one line)
 
-**Phases 1–16 complete on `main`; next implementation work remains bounded expansion from local fetch/change-detection execution toward controlled acquisition under governance.**
+**Phases 1–17 complete on `main`; next implementation work remains bounded expansion from reviewed promotion into controlled ingestion mechanics under governance.**
 
 ---
 

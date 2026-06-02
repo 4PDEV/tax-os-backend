@@ -58,13 +58,15 @@ Source change detection persistence (TASK-006J): append-only change-detection re
 
 Source change detection engine skeleton (TASK-006K): checksum-only comparison over persisted fetch results with bounded outcome classification and persistence integration.
 
+Controlled source version promotion workflow (TASK-006L): explicit review-gated promotion from reviewed acquisition artifacts into canonical `source_versions` with append-only promotion history.
+
 ---
 
 ## ACTIVE
 
 | Task | Title | Notes |
 |------|-------|-------|
-| — | *(none in implementation)* | TASK-006K implementation complete; awaiting next bounded approval |
+| — | *(none in implementation)* | TASK-006L implementation complete; awaiting next bounded approval |
 
 ---
 
