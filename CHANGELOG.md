@@ -500,6 +500,32 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Version
 - Monitoring targeted tests: 9 passed
 - Full suite regression: 399 passed
 
+## [task-006e-monitoring-worker-skeleton] - 2026-06-02
+
+### Added
+
+- TASK-006E: source monitoring worker skeleton (dry-run only).
+  - `backend/app/workers/monitoring/`:
+    - `worker.py` (`SourceMonitoringWorker`)
+    - `runner.py` (`run_monitoring_dry_run`)
+    - `dry_run_provider.py` (`MonitoringProvider`, `DryRunMonitoringProvider`)
+    - `result.py` summary/result dataclasses
+    - `__init__.py`
+
+### Governance
+
+- Dry-run safety guard enforced (`dry_run=True` required).
+- Non-dry-run execution is rejected.
+- Worker orchestrates persistence lifecycle only:
+  - allowlist entry -> monitoring attempt -> synthetic event -> candidate
+- No auto-approval to `approved_for_ingestion`.
+- No external HTTP libraries/crawler/scraper logic introduced.
+
+### Validation
+
+- Monitoring worker + persistence targeted tests: 15 passed
+- Full suite regression: 405 passed
+
 ## [checkpoint-task-005a-spec] - 2026-06-01
 
 ### Merged

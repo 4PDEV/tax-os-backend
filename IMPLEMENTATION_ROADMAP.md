@@ -44,6 +44,8 @@ Monitoring governance contract (TASK-006C): bounded source monitoring contract w
 
 Monitoring candidate persistence (TASK-006D): durable allowlist/attempt/event/candidate/state-transition records; no live monitoring automation.
 
+Monitoring worker skeleton (TASK-006E): dry-run worker lifecycle orchestration using synthetic provider output only.
+
 ---
 
 ## ACTIVE
@@ -81,7 +83,9 @@ Not approved for immediate implementation. Order is indicative only; each requir
 | Phase | Representative work | Depends on |
 |-------|---------------------|------------|
 | Ingestion automation | Wire workers to TASK-006A persistence; processing → extract → parse | TASK-006B |
-| Agent layer | Implement monitoring agents from 006C/006D governance and persistence boundaries | TASK-006C + TASK-006D + stable tests + ingestion wiring |
+| Controlled source fetch | Define safe fetch contract (no broad scraping) | TASK-006C + TASK-006D + TASK-006E |
+| Change detection engine | Deterministic diff/checksum change classification | Controlled fetch contract |
+| Agent layer | Implement monitoring agents from 006C/006D/006E boundaries | Stable tests + fetch discipline + ingestion wiring |
 | Cross-reference persistence | OD-007, OD-008 | Governance decisions |
 | Retrieval layer expansion | Beyond 004A contract scope | Temporal + citation baseline |
 | Answer assembly | Answer engine, disclosure, ranking | Retrieval + temporal + citation compliance |

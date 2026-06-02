@@ -1,4 +1,14 @@
 from app.workers.contract import ProcessingResult, SourceJobProcessor
+from app.workers.monitoring import (
+    DryRunMonitoringProvider,
+    MonitoringDetectedItem,
+    MonitoringProvider,
+    MonitoringProviderResult,
+    MonitoringRunSummary,
+    MonitoringWorkerError,
+    SourceMonitoringWorker,
+    run_monitoring_dry_run,
+)
 from app.workers.noop_processor import NoopProcessor
 from app.workers.runner import (
     OUTCOME_COMPLETED,
@@ -11,6 +21,12 @@ from app.workers.runner import (
 
 __all__ = [
     "NoopProcessor",
+    "DryRunMonitoringProvider",
+    "MonitoringDetectedItem",
+    "MonitoringProvider",
+    "MonitoringProviderResult",
+    "MonitoringRunSummary",
+    "MonitoringWorkerError",
     "OUTCOME_COMPLETED",
     "OUTCOME_FAILED",
     "OUTCOME_NO_JOB",
@@ -18,5 +34,7 @@ __all__ = [
     "SourceJobProcessor",
     "WorkerRunResult",
     "WorkerRunnerError",
+    "SourceMonitoringWorker",
+    "run_monitoring_dry_run",
     "run_next_job_once",
 ]

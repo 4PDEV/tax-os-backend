@@ -137,7 +137,19 @@ FOUNDATION
 
 ---
 
-### 10. AGENT LAYER — **FUTURE**
+### 10. MONITORING WORKER SKELETON — **COMPLETE**
+
+**Intent:** Validate monitoring execution lifecycle safely before any real-world acquisition.
+
+**Representative task:** TASK-006E (dry-run only)
+
+**Key artifacts:** `workers/monitoring/` with dry-run provider, worker orchestration, and runner summary.
+
+**Boundaries:** no live external HTTP, crawling, scraping, scheduling, or automatic ingestion.
+
+---
+
+### 11. AGENT LAYER — **FUTURE**
 
 **Intent:** Autonomous or semi-autonomous ingestion/monitoring agents operating on governed contracts and persistence.
 
@@ -147,7 +159,7 @@ FOUNDATION
 
 ---
 
-### 11. RETRIEVAL LAYER — **FUTURE**
+### 12. RETRIEVAL LAYER — **FUTURE**
 
 **Intent:** Research-grade retrieval beyond 004A contract (ranking, multi-source assembly, operational APIs as governed).
 
@@ -155,7 +167,7 @@ FOUNDATION
 
 ---
 
-### 12. ANSWER ASSEMBLY — **FUTURE**
+### 13. ANSWER ASSEMBLY — **FUTURE**
 
 **Intent:** Source-referenced answers with mandatory disclosure, ambiguity surfacing, no silent legal inference.
 
@@ -167,7 +179,7 @@ FOUNDATION
 
 ## Current position (one line)
 
-**Phases 1–9 complete on `main`; next implementation work is controlled automation expansion under bounded governance.**
+**Phases 1–10 complete on `main`; next implementation work is controlled fetch and detection expansion under bounded governance.**
 
 ---
 

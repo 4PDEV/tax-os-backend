@@ -95,7 +95,7 @@ The platform is materially beyond early foundation. Core registry, processing qu
 
 | Task | Title | Why now |
 |------|-------|---------|
-| **TASK-006D** | Source Monitoring Candidate Persistence | **Completed (persistence-only)** — durable monitoring artifacts with governed state transitions |
+| **TASK-006E** | Source Monitoring Worker Skeleton | **Completed (dry-run-only)** — lifecycle orchestration without live acquisition |
 
 See [IMPLEMENTATION_ROADMAP.md](IMPLEMENTATION_ROADMAP.md) for full sequencing.
 
@@ -134,6 +134,16 @@ Do not implement TASK-004E unless it blocks active work.
 
 Ingestion workers, live monitoring agents, scraping, embeddings, answer engine, public ingestion APIs: **not started** (by design).
 
+## Monitoring Worker Skeleton Milestone (TASK-006E)
+
+**Status:** IMPLEMENTED (dry-run mode only)
+
+* Worker modules: `backend/app/workers/monitoring/`
+* Components: `SourceMonitoringWorker`, `MonitoringProvider` interface, `DryRunMonitoringProvider`, `run_monitoring_dry_run()`
+* Lifecycle path: allowlist -> attempt -> synthetic event -> candidate -> transition history
+* Safety guard: non-dry-run execution is rejected
+* No external HTTP/crawler/scraper behavior introduced
+
 ---
 
 ## Governance Status
@@ -171,7 +181,7 @@ Ingestion workers, live monitoring agents, scraping, embeddings, answer engine, 
 
 ## Next Major Architectural Goal
 
-After TASK-006D persistence foundation: future bounded tasks may add controlled automation loops, still governed by 006C contract boundaries.
+After TASK-006E dry-run lifecycle validation: future bounded tasks may add controlled fetch and detection capabilities, still governed by 006C boundaries.
 
 Longer horizon (not approved for immediate implementation): agent layer → retrieval layer → answer assembly. See [ARCHITECTURE_PHASE_MAP.md](ARCHITECTURE_PHASE_MAP.md).
 
@@ -184,4 +194,4 @@ FOUNDATION → EXTRACTION CONTRACTS → LEGAL OBJECT GOVERNANCE → CITATION GOV
 → TEMPORAL GOVERNANCE → INGESTION PERSISTENCE → [TEST HARDENING] → AGENT LAYER → …
 ```
 
-**You are here:** ingestion persistence complete, test hardening complete, monitoring governance and candidate persistence complete (TASK-006C/006D).
+**You are here:** ingestion persistence complete, test hardening complete, monitoring governance + persistence + dry-run worker skeleton complete (TASK-006C/006D/006E).

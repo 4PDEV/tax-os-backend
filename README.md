@@ -63,7 +63,7 @@ tax-os-backend/
 |------|--------|
 | Platform phase | Legal memory + temporal governance + ingestion persistence (see [CURRENT_STATUS.md](CURRENT_STATUS.md)) |
 | Alembic migrations | Head `c9a2f3b81d06` |
-| Approved next task | **Post-006D bounded automation planning** (no live monitoring without explicit approval) |
+| Approved next task | **Post-006E bounded fetch/detection planning** (still no live monitoring without explicit approval) |
 | Admin CRUD APIs | Operational |
 | Legal object / citation contracts | Merged on `main` (003A–004D) |
 | Temporal governance | Merged (005A–005C); tag `checkpoint-task-005a-spec` |
