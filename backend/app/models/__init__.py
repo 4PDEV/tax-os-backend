@@ -9,6 +9,8 @@ from app.models.fetch_request import FetchRequest
 from app.models.fetch_result import FetchResult
 from app.models.change_detection_request import ChangeDetectionRequest
 from app.models.change_detection_result import ChangeDetectionResult
+from app.models.extraction_trigger_request import ExtractionTriggerRequest
+from app.models.extraction_trigger_result import ExtractionTriggerResult
 from app.models.extracted_text import ExtractedText
 from app.models.extraction_run import ExtractionRun
 from app.models.ingestion_state_transition import IngestionStateTransition
@@ -37,6 +39,8 @@ __all__ = [
     "FetchResult",
     "ChangeDetectionRequest",
     "ChangeDetectionResult",
+    "ExtractionTriggerRequest",
+    "ExtractionTriggerResult",
     "ExtractedText",
     "ExtractionRun",
     "IngestionStateTransition",

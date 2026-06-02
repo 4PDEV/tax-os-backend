@@ -750,6 +750,37 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Version
 
 - TASK-006M introduces no extraction execution, no queue/worker automation, and no parsing/legal-object/citation/answer generation.
 
+## [task-006n-extraction-trigger-persistence] - 2026-06-02
+
+### Added
+
+- TASK-006N: extraction trigger persistence (append-only).
+  - New models:
+    - `backend/app/models/extraction_trigger_request.py` (`extraction_trigger_requests`)
+    - `backend/app/models/extraction_trigger_result.py` (`extraction_trigger_results`)
+  - New Alembic revision:
+    - `backend/migrations/versions/b3d7a9f1c204_create_extraction_trigger_persistence_tables.py`
+  - New persistence service package:
+    - `backend/app/services/extraction_trigger/hashing.py`
+    - `backend/app/services/extraction_trigger/validation.py`
+    - `backend/app/services/extraction_trigger/persistence.py`
+    - `backend/app/services/extraction_trigger/__init__.py`
+    - API: `create_extraction_trigger_request()`, `persist_extraction_trigger_result()`, `get_extraction_trigger_request()`, `list_trigger_results_for_request()`, `get_latest_trigger_result_for_request()`, `find_existing_trigger_by_hash()`
+  - New tests:
+    - `backend/tests/test_extraction_trigger_persistence.py`
+    - `backend/tests/test_extraction_trigger_alembic_migration.py`
+
+### Governance
+
+- Deterministic trigger hash uses only stable fields (`source_version_id`, `trigger_reason`, `requested_by_actor_type`, `rerun_allowed`, `force_reprocess`).
+- Duplicate request protection enforced by trigger hash when `force_reprocess=False`.
+- `force_reprocess=True` explicitly bypasses duplicate prevention while preserving append-only audit history.
+- No extraction execution or downstream artifact creation side effects.
+
+### Notes
+
+- TASK-006N introduces no worker/queue orchestration, no auto creation of `extraction_runs`, and no parsed/legal/citation/answer artifact generation.
+
 ## [checkpoint-task-005a-spec] - 2026-06-01
 
 ### Merged

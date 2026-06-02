@@ -62,13 +62,15 @@ Controlled source version promotion workflow (TASK-006L): explicit review-gated 
 
 Source-version extraction trigger contract (TASK-006M): governance-only extraction-trigger boundary for eligibility, idempotency, rerun/force doctrine, and audited handoff semantics.
 
+Extraction trigger persistence (TASK-006N): append-only extraction-trigger request/result persistence with deterministic trigger hashes, duplicate protection, and force-reprocess bypass auditability.
+
 ---
 
 ## ACTIVE
 
 | Task | Title | Notes |
 |------|-------|-------|
-| — | *(none in implementation)* | TASK-006M contract-only implementation complete; awaiting next bounded approval |
+| — | *(none in implementation)* | TASK-006N persistence implementation complete; awaiting next bounded approval |
 
 ---
 

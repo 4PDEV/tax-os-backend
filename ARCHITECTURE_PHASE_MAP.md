@@ -251,7 +251,19 @@ FOUNDATION
 
 ---
 
-### 19. AGENT LAYER — **FUTURE**
+### 19. EXTRACTION TRIGGER PERSISTENCE — **COMPLETE**
+
+**Intent:** Materialize extraction-trigger governance as durable, append-only evidence records before worker orchestration or extraction execution.
+
+**Representative task:** TASK-006N
+
+**Key artifacts:** `extraction_trigger_requests`, `extraction_trigger_results`, and `backend/app/services/extraction_trigger/`.
+
+**Boundaries:** no extraction execution, no worker/queue implementation, no parsed/legal/citation/answer artifact creation.
+
+---
+
+### 20. AGENT LAYER — **FUTURE**
 
 **Intent:** Autonomous or semi-autonomous ingestion/monitoring agents operating on governed contracts and persistence.
 
@@ -261,7 +273,7 @@ FOUNDATION
 
 ---
 
-### 20. RETRIEVAL LAYER — **FUTURE**
+### 21. RETRIEVAL LAYER — **FUTURE**
 
 **Intent:** Research-grade retrieval beyond 004A contract (ranking, multi-source assembly, operational APIs as governed).
 
@@ -269,7 +281,7 @@ FOUNDATION
 
 ---
 
-### 21. ANSWER ASSEMBLY — **FUTURE**
+### 22. ANSWER ASSEMBLY — **FUTURE**
 
 **Intent:** Source-referenced answers with mandatory disclosure, ambiguity surfacing, no silent legal inference.
 
@@ -281,7 +293,7 @@ FOUNDATION
 
 ## Current position (one line)
 
-**Phases 1–18 complete on `main`; next implementation work remains bounded expansion from trigger governance into controlled extraction mechanics under governance.**
+**Phases 1–19 complete on `main`; next implementation work remains bounded expansion from trigger persistence into controlled extraction mechanics under governance.**
 
 ---
 

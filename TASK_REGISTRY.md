@@ -56,6 +56,7 @@ Bounded task tracking for `tax-os-backend`. Authoritative specs remain in `tax-o
 | TASK-006K | Source Change Detection Engine Skeleton | Complete | Checksum-only detection execution over persisted fetch results; no legal interpretation or source-version creation |
 | TASK-006L | Controlled Source Version Promotion Workflow | Complete | Explicit review-gated promotion into canonical source versions with append-only promotion history and duplicate protection |
 | TASK-006M | Source Version Extraction Trigger Contract | Complete | Governance-only trigger boundary between canonical source versions and extraction requests; no extraction execution |
+| TASK-006N | Extraction Trigger Persistence | Complete | Append-only extraction trigger request/result persistence with deterministic trigger hashes, duplicate protection, and force-reprocess auditability |
 | TASK-DOC-001 | Master Status Document Realignment | Complete | CURRENT_STATUS, IMPLEMENTATION_ROADMAP, ARCHITECTURE_PHASE_MAP |
 
 ## Status Legend

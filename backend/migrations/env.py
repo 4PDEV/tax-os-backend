@@ -27,6 +27,8 @@ from app.models import (  # noqa: F401
     FetchResult,
     ChangeDetectionRequest,
     ChangeDetectionResult,
+    ExtractionTriggerRequest,
+    ExtractionTriggerResult,
     ExtractedText,
     ExtractionRun,
     IngestionStateTransition,
