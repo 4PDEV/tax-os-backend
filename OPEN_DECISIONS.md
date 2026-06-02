@@ -45,7 +45,7 @@ Pending architectural or operational decisions. Resolve via `tax-os-architecture
 
 **Parsing pipeline:** TASK-006Q–006T complete at `checkpoint-task-006t-controlled-parsing-execution`. P-01 remediated in TASK-006T1A. Claude review: [`CLAUDE_REVIEW_PARSING_PIPELINE_006Q-T.md`](CLAUDE_REVIEW_PARSING_PIPELINE_006Q-T.md).
 
-**Legal-object promotion gate:** **BLOCKED** until 006Q–006T review acknowledgment and post-006T1A targeted verification. Do not promote `parsed_structure` to legal objects before sign-off.
+**Legal-object promotion gate:** P-01 remediated at `checkpoint-task-006t1a-parsed-structure-identity`. **May open** after [`CLAUDE_VERIFICATION_PARSED_STRUCTURE_IDENTITY_006T1A.md`](CLAUDE_VERIFICATION_PARSED_STRUCTURE_IDENTITY_006T1A.md) acknowledgment and 006Q–006T review sign-off.
 
 ## Test gaps (QA)
 
