@@ -6,7 +6,7 @@ Statuses are **mutually exclusive** — each task appears in exactly one section
 For high-level status, see [CURRENT_STATUS.md](CURRENT_STATUS.md).  
 For phase context, see [ARCHITECTURE_PHASE_MAP.md](ARCHITECTURE_PHASE_MAP.md).
 
-**Last realigned:** 2026-06-01
+**Last realigned:** 2026-06-02
 
 ---
 
@@ -38,6 +38,10 @@ Ingestion persistence (TASK-006A): `extraction_runs`, `extracted_texts`, `parser
 
 Documentation merge (TASK-005A merge governance): `MERGE_SUMMARY_TASK-005A.md`, checkpoint `checkpoint-task-005a-spec`.
 
+Test hardening (TASK-006B): fixture isolation hardening, test DB safety guards, full-suite repeatability restored.
+
+Monitoring governance contract (TASK-006C): bounded source monitoring contract with explicit no-live-agent boundaries.
+
 ---
 
 ## ACTIVE
@@ -52,11 +56,9 @@ Documentation merge (TASK-005A merge governance): `MERGE_SUMMARY_TASK-005A.md`, 
 
 | Task | Title | Prerequisite | Acceptance focus |
 |------|-------|--------------|------------------|
-| **TASK-006B** | Test Isolation & Full-Suite Stability | TEST-GAP-001 recorded | Full PostgreSQL suite reliable; integrity/retrieval tests isolated |
+| — | *(none currently approved for implementation in this file)* | — | Await next bounded implementation authorization |
 
-**Do not start** until TASK-006B is scoped/approved in a task spec (if required by governance).
-
-**Blocked until 006B completes:** ingestion worker wiring, source monitoring agents, migration-heavy features without stable tests.
+**Blocked until explicit next-task approval:** live monitoring agents, ingestion automation expansion.
 
 ---
 
@@ -77,7 +79,7 @@ Not approved for immediate implementation. Order is indicative only; each requir
 | Phase | Representative work | Depends on |
 |-------|---------------------|------------|
 | Ingestion automation | Wire workers to TASK-006A persistence; processing → extract → parse | TASK-006B |
-| Agent layer | Source monitoring / ingestion agents (formerly mislabeled as “006B”) | Stable tests + ingestion wiring |
+| Agent layer | Implement monitoring agents from 006C contract boundaries | TASK-006C contract + stable tests + ingestion wiring |
 | Cross-reference persistence | OD-007, OD-008 | Governance decisions |
 | Retrieval layer expansion | Beyond 004A contract scope | Temporal + citation baseline |
 | Answer assembly | Answer engine, disclosure, ranking | Retrieval + temporal + citation compliance |
@@ -96,7 +98,8 @@ flowchart LR
   C --> T[005 Temporal]
   T --> I[006A Ingestion DB]
   I --> B[006B Test stability]
-  B --> W[Future: Workers]
+  B --> C6[006C Monitoring contract]
+  C6 --> W[Future: Workers]
   W --> A[Future: Agents]
   C -.->|deferred| E4[TASK-004E]
 ```

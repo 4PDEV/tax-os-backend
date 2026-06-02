@@ -3,7 +3,7 @@
 **High-level architecture evolution** for onboarding (TASK-DOC-001).  
 Describes **phase order and intent**, not every task ID. Historical tasks remain in [PROJECT_STATE.md](PROJECT_STATE.md) and [TASK_REGISTRY.md](TASK_REGISTRY.md).
 
-**Last realigned:** 2026-06-01
+**Last realigned:** 2026-06-02
 
 ---
 
@@ -100,27 +100,42 @@ FOUNDATION
 
 ---
 
-### 7. TEST HARDENING — **APPROVED NEXT**
+### 7. TEST HARDENING — **COMPLETE**
 
 **Intent:** Restore trustworthy full-suite execution on PostgreSQL VM before expanding pipeline or agents.
 
 **Representative task:** TASK-006B (replaces superseded “Source Monitoring Agent” draft for id 006B)
 
-**Driver:** TEST-GAP-001 — ingestion tests 12/12; integrity/retrieval intermittent in full suite.
+**Driver:** TEST-GAP-001 — resolved in TASK-006B with full-suite repeatability.
 
 ---
 
-### 8. AGENT LAYER — **FUTURE**
+### 8. AGENT GOVERNANCE CONTRACT — **COMPLETE**
+
+**Intent:** Define safe monitoring boundaries before live automation.
+
+**Representative task:** TASK-006C (contract-only)
+
+**Key artifacts:**
+
+* [SOURCE_MONITORING_AGENT_CONTRACT.md](SOURCE_MONITORING_AGENT_CONTRACT.md)
+* [TASKS/TASK-006C-SOURCE-MONITORING-AGENT-CONTRACT.md](TASKS/TASK-006C-SOURCE-MONITORING-AGENT-CONTRACT.md)
+
+**Boundaries:** no live scraping, no schedulers, no crawlers, no direct production publishing, no temporal/legal inference by monitoring agents.
+
+---
+
+### 9. AGENT LAYER — **FUTURE**
 
 **Intent:** Autonomous or semi-autonomous ingestion/monitoring agents operating on governed contracts and persistence.
 
-**Prerequisites:** TASK-006B; ingestion worker wiring; stable CI/VM tests.
+**Prerequisites:** TASK-006B, TASK-006C contract boundaries, ingestion worker wiring, stable CI/VM tests.
 
 **Note:** Former draft “TASK-006B Source Monitoring Agent” belongs here, **not** in current 006B slot.
 
 ---
 
-### 9. RETRIEVAL LAYER — **FUTURE**
+### 10. RETRIEVAL LAYER — **FUTURE**
 
 **Intent:** Research-grade retrieval beyond 004A contract (ranking, multi-source assembly, operational APIs as governed).
 
@@ -128,7 +143,7 @@ FOUNDATION
 
 ---
 
-### 10. ANSWER ASSEMBLY — **FUTURE**
+### 11. ANSWER ASSEMBLY — **FUTURE**
 
 **Intent:** Source-referenced answers with mandatory disclosure, ambiguity surfacing, no silent legal inference.
 
@@ -140,7 +155,7 @@ FOUNDATION
 
 ## Current position (one line)
 
-**Phases 1–6 complete on `main`; phase 7 (TEST HARDENING / TASK-006B) is the approved next step.**
+**Phases 1–8 complete on `main`; next implementation work is post-contract agent/workflow execution under bounded governance.**
 
 ---
 

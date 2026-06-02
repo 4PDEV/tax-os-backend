@@ -763,7 +763,7 @@ GitHub
 
 ## MAIN BRANCH
 
-main (TASK-006A implemented `acc32e4`; TEST-GAP-001 recorded; push after governance note)
+main (TASK-006B stabilized `45214c8`; checkpoint `checkpoint-task-006b-test-stability`)
 
 Legal memory stack on `main`:
 
@@ -831,9 +831,11 @@ Legal memory stack on `main`:
 
 # NEXT APPROVED TASKS
 
+TASK-006C — Source Monitoring Agent Contract (**approved / contract-only governance**; no live monitoring implementation).
+
 TASK-004E — Citation Temporal Compliance Remediation (planned — align `CitationAssembler` with Addendum V6; defer unless blocking).
 
-Next bounded implementation after 006B should focus on ingestion automation only after test foundation remains stable.
+Post-006C implementation tasks must remain bounded and align with monitoring governance constraints.
 
 **VM snapshot:** run full-suite verification before migration-heavy work.
 

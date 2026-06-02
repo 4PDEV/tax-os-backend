@@ -3,7 +3,7 @@
 **Canonical high-level platform status** (TASK-DOC-001).  
 For detailed historical sections, see [PROJECT_STATE.md](PROJECT_STATE.md). For task-level tracking, see [TASK_REGISTRY.md](TASK_REGISTRY.md).
 
-**Last realigned:** 2026-06-01  
+**Last realigned:** 2026-06-02  
 **Branch:** `main`  
 **Alembic head:** `c9a2f3b81d06` (ingestion persistence tables)
 
@@ -11,11 +11,11 @@ For detailed historical sections, see [PROJECT_STATE.md](PROJECT_STATE.md). For 
 
 ## Current Architecture Phase
 
-**Legal memory, temporal governance, and ingestion persistence — test hardening gate**
+**Governed engineering platform — monitoring agent contract gated**
 
 The platform is materially beyond early foundation. Core registry, processing queue, extraction/parser **contracts**, legal-object **persistence**, citation **governance**, temporal **governance**, and ingestion **artifact persistence** are in place on `main`.
 
-**Active gate:** full-suite test stability (**TEST-GAP-001**) must be resolved before workers, agent expansion, or further migration-heavy work.
+**Active gate:** monitoring-agent governance is contract-defined (TASK-006C); live monitoring remains prohibited pending future bounded implementation tasks.
 
 **Environments:** development and internal staging only. No public production deployment.
 
@@ -32,6 +32,8 @@ The platform is materially beyond early foundation. Core registry, processing qu
 | Citation governance | Retrieval, effective-date resolver, candidates, assembly + identity hardening | TASK-004A–D, 004D-AMENDMENT-A |
 | Temporal governance | Architecture spec, resolution amendments, pre-merge cleanup | TASK-005A-SPEC, 005B, 005C |
 | Ingestion persistence | Append-only extraction/parser tables and services | TASK-006A |
+| Test hardening | Full-suite stability and fixture isolation discipline | TASK-006B |
+| Monitoring governance | Source monitoring agent contract and boundary controls | TASK-006C |
 
 **Checkpoint tags (selected):** `checkpoint-task-003e` … `checkpoint-task-005a-spec`
 
@@ -80,15 +82,22 @@ The platform is materially beyond early foundation. Core registry, processing qu
 
 | Task | Title | Why now |
 |------|-------|---------|
-| **TASK-006B** | Test Isolation & Full-Suite Stability | **Completed** — TEST-GAP-001 resolved; suite stable |
+| **TASK-006C** | Source Monitoring Agent Contract | **Completed (contract-only)** — bounded monitoring governance defined; no live automation |
 
 See [IMPLEMENTATION_ROADMAP.md](IMPLEMENTATION_ROADMAP.md) for full sequencing.
 
-### TASK-006B resequencing (mandatory)
+### TASK-006B resequencing (completed)
 
 An earlier roadmap draft labeled **TASK-006B** as *Source Monitoring Agent Contract*. That sequencing is **superseded**.
 
-After TASK-006A, migration and persistence complexity exposed **test instability risk**. **Test stabilization now correctly precedes agent expansion.** The approved **TASK-006B** is **Test Isolation & Full-Suite Stability** only.
+After TASK-006A, migration and persistence complexity exposed **test instability risk**. **Test stabilization now correctly precedes agent expansion.** TASK-006B is completed and closes TEST-GAP-001.
+
+### TASK-006C boundary
+
+TASK-006C is governance-only:
+
+- allowed: source boundary definitions, allowlist contract, monitoring event contract, candidate-state model, failure model, temporal no-inference alignment
+- prohibited: live agents, crawlers, schedulers, scraping, external traffic, automatic production updates
 
 ---
 
@@ -110,7 +119,7 @@ Do not implement TASK-004E unless it blocks active work.
 | **OD-016** | Citation assembler temporal code vs governance | Citation output may not match Addendum V6 until TASK-004E | TASK-004E (deferred) |
 | **OD-017 / OD-018** | 003E reconciliation, overlap disclosure | Non-blocking governance follow-ups | Future review |
 
-Ingestion workers, embeddings, answer engine, public ingestion APIs: **not started** (by design).
+Ingestion workers, live monitoring agents, embeddings, answer engine, public ingestion APIs: **not started** (by design).
 
 ---
 
@@ -149,7 +158,7 @@ Ingestion workers, embeddings, answer engine, public ingestion APIs: **not start
 
 ## Next Major Architectural Goal
 
-After test hardening: connect ingestion persistence to processing workers in a **bounded** task (no agent/AI scope creep), preserving append-only discipline and temporal governance.
+After TASK-006C governance formalization: connect ingestion persistence to processing workers and monitored acquisition in separate **bounded** implementation tasks.
 
 Longer horizon (not approved for immediate implementation): agent layer → retrieval layer → answer assembly. See [ARCHITECTURE_PHASE_MAP.md](ARCHITECTURE_PHASE_MAP.md).
 
@@ -162,4 +171,4 @@ FOUNDATION → EXTRACTION CONTRACTS → LEGAL OBJECT GOVERNANCE → CITATION GOV
 → TEMPORAL GOVERNANCE → INGESTION PERSISTENCE → [TEST HARDENING] → AGENT LAYER → …
 ```
 
-**You are here:** ingestion persistence complete; **test hardening completed in TASK-006B**.
+**You are here:** ingestion persistence complete, test hardening complete, monitoring governance contract active (TASK-006C).

@@ -63,7 +63,7 @@ tax-os-backend/
 |------|--------|
 | Platform phase | Legal memory + temporal governance + ingestion persistence (see [CURRENT_STATUS.md](CURRENT_STATUS.md)) |
 | Alembic migrations | Head `c9a2f3b81d06` |
-| Approved next task | **TASK-006B** — Test Isolation & Full-Suite Stability (TEST-GAP-001) |
+| Approved next task | **TASK-006C** — Source Monitoring Agent Contract (governance-only; no live monitoring) |
 | Admin CRUD APIs | Operational |
 | Legal object / citation contracts | Merged on `main` (003A–004D) |
 | Temporal governance | Merged (005A–005C); tag `checkpoint-task-005a-spec` |
@@ -122,6 +122,7 @@ Initial jurisdiction focus: **Rwanda**. Initial tax domains: VAT, PAYE/PIT, WHT,
 | [CITATION_CANDIDATE_CONTRACT.md](backend/app/services/citation_candidate/CITATION_CANDIDATE_CONTRACT.md) | Citation candidate contract — citation-ready DTO preparation (TASK-004C) |
 | [CITATION_ASSEMBLY_CONTRACT.md](backend/app/services/citation/CITATION_ASSEMBLY_CONTRACT.md) | Citation assembly contract — deterministic source-backed citations (TASK-004D) |
 | [TEMPORAL_VERSIONING_ARCHITECTURE.md](TEMPORAL_VERSIONING_ARCHITECTURE.md) | Temporal & versioning architecture — authoritative time/version spec (TASK-005A-SPEC) |
+| [SOURCE_MONITORING_AGENT_CONTRACT.md](SOURCE_MONITORING_AGENT_CONTRACT.md) | Monitoring-agent governance contract (TASK-006C; contract-only) |
 
 ## Governance
 

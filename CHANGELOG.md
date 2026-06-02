@@ -446,6 +446,29 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Version
 
 - **TEST-GAP-001:** full-suite instability in legal-object integrity / retrieval tests during validation — see `OPEN_DECISIONS.md`. Next: **TASK-006B**.
 
+## [task-006c-contract] - 2026-06-02
+
+### Added
+
+- TASK-006C: Source Monitoring Agent Contract (governance-only).
+  - `SOURCE_MONITORING_AGENT_CONTRACT.md` — canonical monitoring boundary contract.
+  - `TASKS/TASK-006C-SOURCE-MONITORING-AGENT-CONTRACT.md` — task-governance contract record.
+  - Allowed/prohibited monitoring behavior, source allowlist contract shape, monitoring event contract, candidate-state model, confidence model, failure taxonomy.
+  - Temporal no-inference alignment and explicit workflow boundary (`monitoring event` must not directly mutate production source truth).
+
+### Changed
+
+- Status/roadmap/phase docs aligned for TASK-006C:
+  - `CURRENT_STATUS.md`
+  - `IMPLEMENTATION_ROADMAP.md`
+  - `ARCHITECTURE_PHASE_MAP.md`
+  - `TASK_REGISTRY.md`
+  - `PROJECT_STATE.md`
+
+### Notes
+
+- TASK-006C introduces no live agents, schedulers, crawlers, scraping, queues, persistence tables, or external traffic.
+
 ## [checkpoint-task-005a-spec] - 2026-06-01
 
 ### Merged
