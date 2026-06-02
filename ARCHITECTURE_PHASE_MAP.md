@@ -125,7 +125,19 @@ FOUNDATION
 
 ---
 
-### 9. AGENT LAYER — **FUTURE**
+### 9. MONITORING CANDIDATE PERSISTENCE — **COMPLETE**
+
+**Intent:** Persist monitoring contract artifacts deterministically before any live automation.
+
+**Representative task:** TASK-006D (persistence-only)
+
+**Key artifacts:** allowlist entries, monitoring attempts/events/candidates, candidate state transition history.
+
+**Boundaries:** no live monitoring, no scraping, no scheduler, no worker loop, no source publication.
+
+---
+
+### 10. AGENT LAYER — **FUTURE**
 
 **Intent:** Autonomous or semi-autonomous ingestion/monitoring agents operating on governed contracts and persistence.
 
@@ -135,7 +147,7 @@ FOUNDATION
 
 ---
 
-### 10. RETRIEVAL LAYER — **FUTURE**
+### 11. RETRIEVAL LAYER — **FUTURE**
 
 **Intent:** Research-grade retrieval beyond 004A contract (ranking, multi-source assembly, operational APIs as governed).
 
@@ -143,7 +155,7 @@ FOUNDATION
 
 ---
 
-### 11. ANSWER ASSEMBLY — **FUTURE**
+### 12. ANSWER ASSEMBLY — **FUTURE**
 
 **Intent:** Source-referenced answers with mandatory disclosure, ambiguity surfacing, no silent legal inference.
 
@@ -155,7 +167,7 @@ FOUNDATION
 
 ## Current position (one line)
 
-**Phases 1–8 complete on `main`; next implementation work is post-contract agent/workflow execution under bounded governance.**
+**Phases 1–9 complete on `main`; next implementation work is controlled automation expansion under bounded governance.**
 
 ---
 

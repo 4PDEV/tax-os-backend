@@ -46,6 +46,7 @@ Bounded task tracking for `tax-os-backend`. Authoritative specs remain in `tax-o
 | TASK-006A | Source Ingestion Persistence Layer | Complete (main) | Append-only extraction/parser persistence — commit `acc32e4`; TEST-GAP-001 |
 | TASK-006B | Test Isolation & Full-Suite Stability | Complete (merged) | TEST-GAP-001 resolved; 3 consecutive full-suite passes; test DB safety guard + fixture hardening |
 | TASK-006C | Source Monitoring Agent Contract | Complete | Governance and contract boundaries only; no live monitoring/scraping/schedulers |
+| TASK-006D | Source Monitoring Candidate Persistence | Complete | Monitoring persistence tables/services; append-only candidate transitions; no live monitoring |
 | TASK-DOC-001 | Master Status Document Realignment | Complete | CURRENT_STATUS, IMPLEMENTATION_ROADMAP, ARCHITECTURE_PHASE_MAP |
 
 ## Status Legend

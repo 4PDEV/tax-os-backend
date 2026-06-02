@@ -78,11 +78,24 @@ The platform is materially beyond early foundation. Core registry, processing qu
 
 ---
 
+## Monitoring Candidate Persistence Milestone (TASK-006D)
+
+**Status:** IMPLEMENTED (commit pending merge on `main`)
+
+* Tables: `source_allowlist_entries`, `monitoring_attempts`, `monitoring_events`, `monitoring_candidates`, `monitoring_candidate_state_transitions`
+* Services: `backend/app/services/monitoring/`
+* Enforced contracts: allowlist status, attempt status, change type, candidate state, confidence, error categories
+* Candidate-state history is append-only with actor/timestamp metadata
+
+**Not implemented:** live monitoring, scraping, schedulers, workers, external traffic, ingestion auto-approval.
+
+---
+
 ## Current Approved Task
 
 | Task | Title | Why now |
 |------|-------|---------|
-| **TASK-006C** | Source Monitoring Agent Contract | **Completed (contract-only)** — bounded monitoring governance defined; no live automation |
+| **TASK-006D** | Source Monitoring Candidate Persistence | **Completed (persistence-only)** — durable monitoring artifacts with governed state transitions |
 
 See [IMPLEMENTATION_ROADMAP.md](IMPLEMENTATION_ROADMAP.md) for full sequencing.
 
@@ -119,7 +132,7 @@ Do not implement TASK-004E unless it blocks active work.
 | **OD-016** | Citation assembler temporal code vs governance | Citation output may not match Addendum V6 until TASK-004E | TASK-004E (deferred) |
 | **OD-017 / OD-018** | 003E reconciliation, overlap disclosure | Non-blocking governance follow-ups | Future review |
 
-Ingestion workers, live monitoring agents, embeddings, answer engine, public ingestion APIs: **not started** (by design).
+Ingestion workers, live monitoring agents, scraping, embeddings, answer engine, public ingestion APIs: **not started** (by design).
 
 ---
 
@@ -158,7 +171,7 @@ Ingestion workers, live monitoring agents, embeddings, answer engine, public ing
 
 ## Next Major Architectural Goal
 
-After TASK-006C governance formalization: connect ingestion persistence to processing workers and monitored acquisition in separate **bounded** implementation tasks.
+After TASK-006D persistence foundation: future bounded tasks may add controlled automation loops, still governed by 006C contract boundaries.
 
 Longer horizon (not approved for immediate implementation): agent layer → retrieval layer → answer assembly. See [ARCHITECTURE_PHASE_MAP.md](ARCHITECTURE_PHASE_MAP.md).
 
@@ -171,4 +184,4 @@ FOUNDATION → EXTRACTION CONTRACTS → LEGAL OBJECT GOVERNANCE → CITATION GOV
 → TEMPORAL GOVERNANCE → INGESTION PERSISTENCE → [TEST HARDENING] → AGENT LAYER → …
 ```
 
-**You are here:** ingestion persistence complete, test hardening complete, monitoring governance contract active (TASK-006C).
+**You are here:** ingestion persistence complete, test hardening complete, monitoring governance and candidate persistence complete (TASK-006C/006D).

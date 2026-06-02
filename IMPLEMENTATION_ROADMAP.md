@@ -42,6 +42,8 @@ Test hardening (TASK-006B): fixture isolation hardening, test DB safety guards, 
 
 Monitoring governance contract (TASK-006C): bounded source monitoring contract with explicit no-live-agent boundaries.
 
+Monitoring candidate persistence (TASK-006D): durable allowlist/attempt/event/candidate/state-transition records; no live monitoring automation.
+
 ---
 
 ## ACTIVE
@@ -79,7 +81,7 @@ Not approved for immediate implementation. Order is indicative only; each requir
 | Phase | Representative work | Depends on |
 |-------|---------------------|------------|
 | Ingestion automation | Wire workers to TASK-006A persistence; processing → extract → parse | TASK-006B |
-| Agent layer | Implement monitoring agents from 006C contract boundaries | TASK-006C contract + stable tests + ingestion wiring |
+| Agent layer | Implement monitoring agents from 006C/006D governance and persistence boundaries | TASK-006C + TASK-006D + stable tests + ingestion wiring |
 | Cross-reference persistence | OD-007, OD-008 | Governance decisions |
 | Retrieval layer expansion | Beyond 004A contract scope | Temporal + citation baseline |
 | Answer assembly | Answer engine, disclosure, ranking | Retrieval + temporal + citation compliance |

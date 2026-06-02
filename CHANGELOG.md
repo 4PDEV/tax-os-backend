@@ -469,6 +469,37 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Version
 
 - TASK-006C introduces no live agents, schedulers, crawlers, scraping, queues, persistence tables, or external traffic.
 
+## [task-006d-monitoring-persistence] - 2026-06-02
+
+### Added
+
+- TASK-006D: source monitoring candidate persistence (no live monitoring).
+  - Models/tables for:
+    - `source_allowlist_entries`
+    - `monitoring_attempts`
+    - `monitoring_events`
+    - `monitoring_candidates`
+    - `monitoring_candidate_state_transitions`
+  - Alembic migration: `d4b7f91e62a1` (revises `c9a2f3b81d06`)
+  - Services: `backend/app/services/monitoring/`
+    - `create_allowlist_entry()`
+    - `create_monitoring_attempt()` / `complete_monitoring_attempt()` / `fail_monitoring_attempt()`
+    - `create_monitoring_event()`
+    - `create_monitoring_candidate()`
+    - `transition_candidate_state()` / `get_candidate_current_state()`
+
+### Governance
+
+- Enforced explicit enum/status contracts from TASK-006C.
+- Candidate transitions are append-only with actor/time/reason metadata.
+- FK chain enforced: allowlist -> attempt -> event -> candidate -> transitions.
+- No live monitoring, scraping, scheduling, external traffic, or ingestion auto-approval.
+
+### Validation
+
+- Monitoring targeted tests: 9 passed
+- Full suite regression: 399 passed
+
 ## [checkpoint-task-005a-spec] - 2026-06-01
 
 ### Merged

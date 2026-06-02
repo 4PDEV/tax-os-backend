@@ -831,11 +831,11 @@ Legal memory stack on `main`:
 
 # NEXT APPROVED TASKS
 
-TASK-006C — Source Monitoring Agent Contract (**approved / contract-only governance**; no live monitoring implementation).
+TASK-006D — Source Monitoring Candidate Persistence (**approved / persistence-only**; no live monitoring implementation).
 
 TASK-004E — Citation Temporal Compliance Remediation (planned — align `CitationAssembler` with Addendum V6; defer unless blocking).
 
-Post-006C implementation tasks must remain bounded and align with monitoring governance constraints.
+Post-006D implementation tasks must remain bounded and align with monitoring governance constraints.
 
 **VM snapshot:** run full-suite verification before migration-heavy work.
 
