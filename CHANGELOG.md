@@ -750,6 +750,23 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Version
 
 - TASK-006M introduces no extraction execution, no queue/worker automation, and no parsing/legal-object/citation/answer generation.
 
+## [task-006p1-extraction-replay-idempotency-hardening] - 2026-06-02
+
+### Changed
+
+- TASK-006P1: extraction replay and idempotency hardening (EXT-01 / OD-019).
+  - `trigger_hash` for default triggers uses `source_version_id` only (not `trigger_reason`, actor, or `rerun_allowed`).
+  - Partial unique DB index prevents duplicate default triggers per `source_version`.
+  - Worker skips re-extraction when `source_version` already has a completed trigger result unless `force_reprocess=True`.
+  - `rerun_allowed` documented/enforced as policy-only; does not bypass idempotency.
+  - Optional DB hardening: unique `extracted_texts.extraction_run_id`, status CHECK constraints.
+
+### Added
+
+- Migration `e8c1d4f92a17`
+- Tests: `test_extraction_replay_idempotency_hardening.py`, `test_extraction_replay_idempotency_alembic_migration.py`
+- Task record: `TASKS/TASK-006P1-EXTRACTION-REPLAY-IDEMPOTENCY-HARDENING.md`
+
 ## [task-006p-controlled-extraction-execution] - 2026-06-02
 
 ### Added

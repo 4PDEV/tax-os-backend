@@ -8,6 +8,7 @@ from app.services.extraction.enums import ExtractionStatus
 from app.services.extraction_trigger.persistence import (
     get_latest_trigger_result_for_request,
     persist_extraction_trigger_result,
+    source_version_has_completed_extraction,
 )
 from app.services.extraction_trigger.validation import validate_actor_type
 from app.services.ingestion.extraction_persistence import (
@@ -73,7 +74,15 @@ class ExtractionWorker:
         if latest is not None and latest.trigger_status in NON_ELIGIBLE_LATEST_STATUSES:
             return False
         if latest is not None and latest.trigger_status in TERMINAL_SKIP_STATUSES:
-            return request.force_reprocess
+            if request.force_reprocess:
+                return True
+            return False
+
+        if not request.force_reprocess and source_version_has_completed_extraction(
+            db, source_version_id=request.source_version_id
+        ):
+            return False
+
         return True
 
     def _default_extractor(self) -> tuple[str, str]:

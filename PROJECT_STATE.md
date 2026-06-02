@@ -831,6 +831,8 @@ Legal memory stack on `main`:
 
 # NEXT APPROVED TASKS
 
+TASK-006P1 — Extraction Replay & Idempotency Hardening (**completed; EXT-01/OD-019 remediated; TASK-006Q gate cleared after acceptance**).
+
 TASK-006P — Controlled Extraction Execution (**completed; controlled local text extraction into extraction_runs/extracted_texts; no PDF/network/parsing/legal automation**).
 
 TASK-006O — Extraction Worker Skeleton (**completed; dry-run-only trigger-to-extraction_run orchestration; no real extraction execution**).

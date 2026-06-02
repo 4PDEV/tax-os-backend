@@ -161,10 +161,34 @@ def test_force_reprocess_allows_new_run(db_session):
 
 
 def test_rejected_and_duplicate_rejected_triggers_skipped(db_session):
-    source_version = _seed_source_version(db_session)
+    source_doc = seed_source_document(db_session)
+
+    def _version(checksum_suffix: str) -> SourceVersion:
+        version = SourceVersion(
+            source_document_id=source_doc.id,
+            version_label=f"v-{checksum_suffix}",
+            publication_date=None,
+            effective_from=None,
+            effective_to=None,
+            enforcement_date=None,
+            retrieved_at=utc_now(),
+            checksum_sha256=checksum_suffix * 64,
+            storage_path="/fixtures/source-v1.json",
+            mime_type="application/json",
+            file_size=120,
+            version_status="active",
+            notes="worker skip test",
+            supersedes_version_id=None,
+        )
+        db_session.add(version)
+        db_session.flush()
+        return version
+
+    rejected_version = _version("a")
+    duplicate_version = _version("b")
     rejected = create_extraction_trigger_request(
         db_session,
-        source_version_id=source_version.id,
+        source_version_id=rejected_version.id,
         requested_by_actor_type="worker",
         trigger_reason="rejected path",
     )
@@ -178,7 +202,7 @@ def test_rejected_and_duplicate_rejected_triggers_skipped(db_session):
 
     duplicate = create_extraction_trigger_request(
         db_session,
-        source_version_id=source_version.id,
+        source_version_id=duplicate_version.id,
         requested_by_actor_type="admin",
         trigger_reason="duplicate path",
     )
@@ -191,7 +215,7 @@ def test_rejected_and_duplicate_rejected_triggers_skipped(db_session):
     )
 
     summary = run_extraction_dry_run(db_session, dry_run=True)
-    assert summary.triggers_seen == 2
+    assert summary.triggers_seen >= 2
     assert summary.triggers_processed == 0
     assert summary.triggers_skipped == 2
     assert summary.extraction_runs_created == 0

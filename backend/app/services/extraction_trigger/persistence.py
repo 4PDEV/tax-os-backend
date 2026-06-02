@@ -34,6 +34,39 @@ def find_existing_trigger_by_hash(
     ).scalar_one_or_none()
 
 
+def find_default_trigger_for_source_version(
+    session: Session,
+    *,
+    source_version_id: UUID,
+) -> ExtractionTriggerRequest | None:
+    return session.execute(
+        select(ExtractionTriggerRequest)
+        .where(
+            ExtractionTriggerRequest.source_version_id == source_version_id,
+            ExtractionTriggerRequest.force_reprocess.is_(False),
+        )
+        .order_by(ExtractionTriggerRequest.created_at.desc())
+        .limit(1)
+    ).scalar_one_or_none()
+
+
+def source_version_has_completed_extraction(
+    session: Session,
+    *,
+    source_version_id: UUID,
+) -> bool:
+    """True when any trigger result for this source_version reached completed status."""
+    completed = session.execute(
+        select(ExtractionTriggerResult.id)
+        .where(
+            ExtractionTriggerResult.source_version_id == source_version_id,
+            ExtractionTriggerResult.trigger_status == "completed",
+        )
+        .limit(1)
+    ).scalar_one_or_none()
+    return completed is not None
+
+
 def create_extraction_trigger_request(
     session: Session,
     *,
@@ -58,16 +91,19 @@ def create_extraction_trigger_request(
     except ValueError as exc:
         raise ExtractionTriggerPersistenceError(str(exc)) from exc
 
+    if not force_reprocess:
+        existing_default = find_default_trigger_for_source_version(
+            session, source_version_id=source_version_id
+        )
+        if existing_default is not None:
+            raise ExtractionTriggerPersistenceError(
+                "duplicate_default_trigger_for_source_version"
+            )
+
     trigger_hash = compute_trigger_hash(
         source_version_id=source_version_id,
-        trigger_reason=trigger_reason,
-        requested_by_actor_type=requested_by_actor_type,
-        rerun_allowed=rerun_allowed,
         force_reprocess=force_reprocess,
     )
-    existing = find_existing_trigger_by_hash(session, trigger_hash=trigger_hash)
-    if existing is not None and not force_reprocess:
-        raise ExtractionTriggerPersistenceError("duplicate_trigger_hash")
 
     request = ExtractionTriggerRequest(
         source_version_id=source_version_id,

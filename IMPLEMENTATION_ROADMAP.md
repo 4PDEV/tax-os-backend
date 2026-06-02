@@ -68,13 +68,15 @@ Extraction worker skeleton (TASK-006O): dry-run-only orchestration from extracti
 
 Controlled extraction execution (TASK-006P): controlled local text extraction from approved artifacts into extraction_runs and extracted_texts with safety guards and no downstream legal-memory automation.
 
+Extraction replay idempotency hardening (TASK-006P1): canonical source_version_id idempotency, DB partial unique index, worker replay guard; EXT-01/OD-019 remediated.
+
 ---
 
 ## ACTIVE
 
 | Task | Title | Notes |
 |------|-------|-------|
-| — | *(none in implementation)* | TASK-006P controlled extraction complete; awaiting next bounded approval |
+| — | *(none in implementation)* | TASK-006P1 complete; TASK-006Q unblocked after merge acceptance |
 
 ---
 

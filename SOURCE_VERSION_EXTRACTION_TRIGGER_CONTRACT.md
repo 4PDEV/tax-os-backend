@@ -119,18 +119,21 @@ If extraction already completed, reject or skip unless `rerun_allowed=true` or `
 
 ## Trigger Hash Doctrine
 
-Future `trigger_hash` should derive from stable fields:
+**Implemented (TASK-006P1):** default `trigger_hash` derives from canonical target only:
 
 - `source_version_id`
+
+Do not include in default hash:
+
 - `trigger_reason`
 - `requested_by_actor_type`
 - `rerun_allowed`
-- `force_reprocess`
-
-Do not include volatile fields:
-
 - `requested_at`
 - database IDs/timestamps generated at write time
+
+`force_reprocess=True` rows use a unique replay hash per request to preserve append-only audit history while allowing governed replays.
+
+`rerun_allowed` records governance permission only; it does **not** bypass idempotency. `force_reprocess=True` is the explicit bypass.
 
 ## Handoff Boundary
 

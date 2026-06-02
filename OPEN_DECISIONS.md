@@ -37,8 +37,10 @@ Pending architectural or operational decisions. Resolve via `tax-os-architecture
 
 | ID | Topic | Context | Status |
 |----|-------|---------|--------|
-| OD-019 | `rerun_allowed` worker enforcement | TASK-006M contract requires governed rerun when extraction already completed; worker currently honors `force_reprocess` only for terminal skip (see `CLAUDE_REVIEW_EXTRACTION_PIPELINE_006M-P.md` R-02). Implement in micro-task or before TASK-006Q automation. | Open — gate for 006Q disposition |
+| OD-019 | Extraction replay / idempotency hardening | EXT-01 / F-05 remediated in TASK-006P1: canonical idempotency on `source_version_id`, partial unique DB index, source_version-level worker skip; `rerun_allowed` records policy only and does not bypass; `force_reprocess=True` is explicit bypass | **Resolved (TASK-006P1)** |
 | OD-020 | Trigger `completed` vs text-ready semantics | `trigger_status=completed` on dry-run does not imply `extracted_text` exists; consumers must join `extracted_text` / check extractor identity | Documented — non-blocking |
+
+**TASK-006Q gate:** Unblock after TASK-006P1 merge acceptance and review acknowledgment.
 
 ## Test gaps (QA)
 

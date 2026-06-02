@@ -28,7 +28,7 @@ export REQUIRE_TEST_DATABASE_URL=0
 Expected Alembic head:
 
 ```text
-b3d7a9f1c204
+e8c1d4f92a17
 ```
 
 Session fixture behavior (`backend/tests/conftest.py`):
@@ -114,6 +114,13 @@ TEST_DATABASE_URL='postgresql://taxos:P%405sw0rd%21234@localhost:5432/taxos_test
 ```bash
 TEST_DATABASE_URL='postgresql://taxos:P%405sw0rd%21234@localhost:5432/taxos_test' \
 .venv/bin/pytest backend/tests/test_controlled_extraction_execution.py -q --tb=short
+```
+
+### TASK-006P1 extraction replay idempotency tests
+
+```bash
+TEST_DATABASE_URL='postgresql://taxos:P%405sw0rd%21234@localhost:5432/taxos_test' \
+.venv/bin/pytest backend/tests/test_extraction_replay_idempotency_hardening.py backend/tests/test_extraction_replay_idempotency_alembic_migration.py -q --tb=short
 ```
 
 ## 5) Prohibited practices

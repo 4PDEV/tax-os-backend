@@ -66,22 +66,10 @@ def test_trigger_request_creation(db_session):
     assert request.force_reprocess is False
 
 
-def test_trigger_hash_deterministic_and_ignores_timestamp(db_session):
+def test_trigger_hash_deterministic_for_source_version_only(db_session):
     source_version = _seed_source_version(db_session)
-    hash_one = compute_trigger_hash(
-        source_version_id=source_version.id,
-        trigger_reason="same reason",
-        requested_by_actor_type="worker",
-        rerun_allowed=False,
-        force_reprocess=False,
-    )
-    hash_two = compute_trigger_hash(
-        source_version_id=source_version.id,
-        trigger_reason="same reason",
-        requested_by_actor_type="worker",
-        rerun_allowed=False,
-        force_reprocess=False,
-    )
+    hash_one = compute_trigger_hash(source_version_id=source_version.id, force_reprocess=False)
+    hash_two = compute_trigger_hash(source_version_id=source_version.id, force_reprocess=False)
     assert hash_one == hash_two
 
 
@@ -98,8 +86,9 @@ def test_duplicate_trigger_rejected_when_force_reprocess_false(db_session):
         create_extraction_trigger_request(
             db_session,
             source_version_id=source_version.id,
-            requested_by_actor_type="worker",
-            trigger_reason="duplicate test",
+            requested_by_actor_type="admin",
+            trigger_reason="different reason still duplicate",
+            rerun_allowed=True,
             force_reprocess=False,
         )
 
