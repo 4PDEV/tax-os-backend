@@ -248,7 +248,7 @@ Ingestion workers, live monitoring agents, live fetchers, change-detection engin
 
 ## Next Major Architectural Goal
 
-After TASK-006P controlled extraction execution: Claude architecture review checkpoint is now appropriate before further canonical-ingestion expansion.
+After TASK-006P controlled extraction execution: **Claude architecture review complete** — see [`CLAUDE_REVIEW_EXTRACTION_PIPELINE_006M-P.md`](CLAUDE_REVIEW_EXTRACTION_PIPELINE_006M-P.md) (**APPROVED FOR CONTINUE**; disposition OD-019 before TASK-006Q automation).
 
 Longer horizon (not approved for immediate implementation): agent layer → retrieval layer → answer assembly. See [ARCHITECTURE_PHASE_MAP.md](ARCHITECTURE_PHASE_MAP.md).
 

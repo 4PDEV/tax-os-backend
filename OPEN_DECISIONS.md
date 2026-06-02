@@ -33,6 +33,13 @@ Pending architectural or operational decisions. Resolve via `tax-os-architecture
 | OD-017 | 003E enforcement reconciliation (IMP-4) | Align documented immutability rules with all read/update paths; post-merge review | Deferred / future review |
 | OD-018 | Overlap ambiguity disclosure (IMP-6) | Enrich `AMBIGUOUS_OVERLAP` results with conflicting version identifiers for operators | Deferred / future review |
 
+## Extraction pipeline (post–TASK-006P review)
+
+| ID | Topic | Context | Status |
+|----|-------|---------|--------|
+| OD-019 | `rerun_allowed` worker enforcement | TASK-006M contract requires governed rerun when extraction already completed; worker currently honors `force_reprocess` only for terminal skip (see `CLAUDE_REVIEW_EXTRACTION_PIPELINE_006M-P.md` R-02). Implement in micro-task or before TASK-006Q automation. | Open — gate for 006Q disposition |
+| OD-020 | Trigger `completed` vs text-ready semantics | `trigger_status=completed` on dry-run does not imply `extracted_text` exists; consumers must join `extracted_text` / check extractor identity | Documented — non-blocking |
+
 ## Test gaps (QA)
 
 | ID | Topic | Context | Status |
