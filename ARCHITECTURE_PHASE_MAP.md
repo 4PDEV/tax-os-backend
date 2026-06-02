@@ -239,7 +239,19 @@ FOUNDATION
 
 ---
 
-### 18. AGENT LAYER — **FUTURE**
+### 18. SOURCE VERSION EXTRACTION TRIGGER CONTRACT — **COMPLETE**
+
+**Intent:** Define governed extraction-trigger boundary between canonical source memory and extraction execution requests.
+
+**Representative task:** TASK-006M (contract-only)
+
+**Key artifacts:** `SOURCE_VERSION_EXTRACTION_TRIGGER_CONTRACT.md` and task contract record in `TASKS/`.
+
+**Boundaries:** no extraction execution, no worker/queue implementation, no parsing/legal-object/citation/answer creation, no legal/temporal inference.
+
+---
+
+### 19. AGENT LAYER — **FUTURE**
 
 **Intent:** Autonomous or semi-autonomous ingestion/monitoring agents operating on governed contracts and persistence.
 
@@ -249,7 +261,7 @@ FOUNDATION
 
 ---
 
-### 19. RETRIEVAL LAYER — **FUTURE**
+### 20. RETRIEVAL LAYER — **FUTURE**
 
 **Intent:** Research-grade retrieval beyond 004A contract (ranking, multi-source assembly, operational APIs as governed).
 
@@ -257,7 +269,7 @@ FOUNDATION
 
 ---
 
-### 20. ANSWER ASSEMBLY — **FUTURE**
+### 21. ANSWER ASSEMBLY — **FUTURE**
 
 **Intent:** Source-referenced answers with mandatory disclosure, ambiguity surfacing, no silent legal inference.
 
@@ -269,7 +281,7 @@ FOUNDATION
 
 ## Current position (one line)
 
-**Phases 1–17 complete on `main`; next implementation work remains bounded expansion from reviewed promotion into controlled ingestion mechanics under governance.**
+**Phases 1–18 complete on `main`; next implementation work remains bounded expansion from trigger governance into controlled extraction mechanics under governance.**
 
 ---
 

@@ -60,13 +60,15 @@ Source change detection engine skeleton (TASK-006K): checksum-only comparison ov
 
 Controlled source version promotion workflow (TASK-006L): explicit review-gated promotion from reviewed acquisition artifacts into canonical `source_versions` with append-only promotion history.
 
+Source-version extraction trigger contract (TASK-006M): governance-only extraction-trigger boundary for eligibility, idempotency, rerun/force doctrine, and audited handoff semantics.
+
 ---
 
 ## ACTIVE
 
 | Task | Title | Notes |
 |------|-------|-------|
-| — | *(none in implementation)* | TASK-006L implementation complete; awaiting next bounded approval |
+| — | *(none in implementation)* | TASK-006M contract-only implementation complete; awaiting next bounded approval |
 
 ---
 

@@ -727,6 +727,29 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Version
 
 - TASK-006L introduces no live fetching, no autonomous approval/publication, and no legal interpretation.
 
+## [task-006m-source-version-extraction-trigger-contract] - 2026-06-02
+
+### Added
+
+- TASK-006M: source-version extraction trigger contract (governance-only).
+  - `SOURCE_VERSION_EXTRACTION_TRIGGER_CONTRACT.md` — canonical extraction-trigger governance contract.
+  - `TASKS/TASK-006M-SOURCE-VERSION-EXTRACTION-TRIGGER-CONTRACT.md` — task governance record.
+  - Trigger role definition, eligibility rules, request/result contracts, trigger statuses, error taxonomy, idempotency doctrine, rerun/force-reprocess doctrine, trigger-hash doctrine, handoff boundary, temporal no-inference alignment, and auditability/failure handling expectations.
+
+### Changed
+
+- Status/roadmap/phase docs aligned for TASK-006M:
+  - `CURRENT_STATUS.md`
+  - `IMPLEMENTATION_ROADMAP.md`
+  - `ARCHITECTURE_PHASE_MAP.md`
+  - `TASK_REGISTRY.md`
+  - `PROJECT_STATE.md`
+  - `README.md`
+
+### Notes
+
+- TASK-006M introduces no extraction execution, no queue/worker automation, and no parsing/legal-object/citation/answer generation.
+
 ## [checkpoint-task-005a-spec] - 2026-06-01
 
 ### Merged

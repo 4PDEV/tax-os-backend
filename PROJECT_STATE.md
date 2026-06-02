@@ -831,11 +831,11 @@ Legal memory stack on `main`:
 
 # NEXT APPROVED TASKS
 
-TASK-006L — Controlled Source Version Promotion Workflow (**completed; explicit review-gated source_version promotion; no automatic ingestion**).
+TASK-006M — Source Version Extraction Trigger Contract (**completed; governance-only trigger boundary; no extraction execution automation**).
 
 TASK-004E — Citation Temporal Compliance Remediation (planned — align `CitationAssembler` with Addendum V6; defer unless blocking).
 
-Post-006L implementation tasks must remain bounded and align with monitoring/fetch/detection/promotion governance constraints.
+Post-006M implementation tasks must remain bounded and align with monitoring/fetch/detection/promotion/trigger governance constraints.
 
 **VM snapshot:** run full-suite verification before migration-heavy work.
 
