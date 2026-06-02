@@ -311,7 +311,19 @@ FOUNDATION
 
 ---
 
-### 24. AGENT LAYER — **FUTURE**
+### 24. PARSING WORKER SKELETON — **COMPLETE**
+
+**Intent:** Prove safe parsing lifecycle orchestration from trigger records to `parser_runs` without executing real parsers.
+
+**Representative task:** TASK-006S (dry-run only)
+
+**Key artifacts:** `backend/app/workers/parsing/` with `ParsingWorker`, `DryRunParsingProvider`, and `run_parsing_dry_run()`.
+
+**Boundaries:** no real parsing, no `parsed_structure`/legal-object/citation/answer creation.
+
+---
+
+### 25. AGENT LAYER — **FUTURE**
 
 **Intent:** Autonomous or semi-autonomous ingestion/monitoring agents operating on governed contracts and persistence.
 
@@ -321,7 +333,7 @@ FOUNDATION
 
 ---
 
-### 25. RETRIEVAL LAYER — **FUTURE**
+### 26. RETRIEVAL LAYER — **FUTURE**
 
 **Intent:** Research-grade retrieval beyond 004A contract (ranking, multi-source assembly, operational APIs as governed).
 
@@ -329,7 +341,7 @@ FOUNDATION
 
 ---
 
-### 26. ANSWER ASSEMBLY — **FUTURE**
+### 27. ANSWER ASSEMBLY — **FUTURE**
 
 **Intent:** Source-referenced answers with mandatory disclosure, ambiguity surfacing, no silent legal inference.
 

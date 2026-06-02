@@ -74,13 +74,15 @@ Parsing trigger contract (TASK-006Q): governance-only parsing initiation from `e
 
 Parsing trigger persistence (TASK-006R): append-only `parsing_trigger_requests` / `parsing_trigger_results`, deterministic trigger hash, partial unique DB index on `extracted_text_id` WHERE `force_reparse = false`; no parser execution.
 
+Parsing worker skeleton (TASK-006S): dry-run-only orchestration from parsing triggers to `parser_run` lifecycle; no `parsed_structure`/legal object/citation/answer.
+
 ---
 
 ## ACTIVE
 
 | Task | Title | Notes |
 |------|-------|-------|
-| — | *(none in implementation)* | Await TASK-006S implementation authorization |
+| — | *(none in implementation)* | Await next bounded task authorization |
 
 ---
 
@@ -88,7 +90,7 @@ Parsing trigger persistence (TASK-006R): append-only `parsing_trigger_requests` 
 
 | Task | Title | Prerequisite | Acceptance focus |
 |------|-------|--------------|------------------|
-| TASK-006S | Parsing worker skeleton | TASK-006R persistence | Dry-run orchestration only; `parser_run` lifecycle; trigger result persistence; no `parsed_structure`/legal object/citation/answer |
+| — | *(none currently approved in this file)* | — | Await explicit next-task approval |
 
 **Blocked until explicit next-task approval:** live monitoring agents, ingestion automation expansion.
 

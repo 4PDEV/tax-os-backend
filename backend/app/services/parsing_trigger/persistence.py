@@ -23,6 +23,23 @@ class ParsingTriggerPersistenceError(Exception):
     pass
 
 
+def extracted_text_has_completed_parsing(
+    session: Session,
+    *,
+    extracted_text_id: UUID,
+) -> bool:
+    """True when any trigger result for this extracted_text reached completed status."""
+    completed = session.execute(
+        select(ParsingTriggerResult.id)
+        .where(
+            ParsingTriggerResult.extracted_text_id == extracted_text_id,
+            ParsingTriggerResult.trigger_status == "completed",
+        )
+        .limit(1)
+    ).scalar_one_or_none()
+    return completed is not None
+
+
 def find_existing_default_trigger_for_extracted_text(
     session: Session,
     *,

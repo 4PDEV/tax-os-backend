@@ -4,6 +4,21 @@ All notable changes to `tax-os-backend` are documented here.
 
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versions align with git tags where applicable.
 
+## [task-006s-parsing-worker-skeleton] - 2026-06-02
+
+### Added
+
+- TASK-006S: parsing worker skeleton (dry-run only).
+  - `backend/app/workers/parsing/` — `ParsingWorker`, `DryRunParsingProvider`, `run_parsing_dry_run()`
+  - Orchestrates parsing trigger → `parser_run` lifecycle + append-only trigger results
+  - `extracted_text_has_completed_parsing()` replay guard unless `force_reparse=True`
+  - Tests: `backend/tests/test_parsing_worker_skeleton.py`
+
+### Notes
+
+- No real parsing, `parsed_structure`, legal object, citation, or answer side effects.
+- `dry_run=True` required for runner entrypoint.
+
 ## [task-006r-parsing-trigger-persistence] - 2026-06-02
 
 ### Added

@@ -63,7 +63,7 @@ tax-os-backend/
 |------|--------|
 | Platform phase | Legal memory + temporal governance + ingestion persistence (see [CURRENT_STATUS.md](CURRENT_STATUS.md)) |
 | Alembic migrations | Head `f3b9c2e81a25` |
-| Approved next task | **TASK-006S** — parsing worker skeleton (dry-run; 006R at `checkpoint-task-006r-parsing-trigger-persistence`) |
+| Approved next task | *(await explicit authorization)* — TASK-006S complete; no real parsing execution |
 | Admin CRUD APIs | Operational |
 | Legal object / citation contracts | Merged on `main` (003A–004D) |
 | Temporal governance | Merged (005A–005C); tag `checkpoint-task-005a-spec` |
@@ -134,6 +134,8 @@ Initial jurisdiction focus: **Rwanda**. Initial tax domains: VAT, PAYE/PIT, WHT,
 | [TASKS/TASK-006Q-PARSING-TRIGGER-CONTRACT.md](TASKS/TASK-006Q-PARSING-TRIGGER-CONTRACT.md) | TASK-006Q contract record |
 | `backend/app/services/parsing_trigger/` | TASK-006R parsing trigger persistence (append-only requests/results, trigger hash, idempotency) |
 | [TASKS/TASK-006R-PARSING-TRIGGER-PERSISTENCE.md](TASKS/TASK-006R-PARSING-TRIGGER-PERSISTENCE.md) | TASK-006R task record |
+| `backend/app/workers/parsing/` | TASK-006S parsing worker skeleton (dry-run orchestration to `parser_run`) |
+| [TASKS/TASK-006S-PARSING-WORKER-SKELETON.md](TASKS/TASK-006S-PARSING-WORKER-SKELETON.md) | TASK-006S task record |
 | `backend/app/services/extraction_trigger/` | TASK-006N extraction trigger persistence service (append-only requests/results, trigger hash, idempotency checks) |
 | `backend/app/workers/extraction/` | TASK-006O/006P extraction worker (dry-run orchestration + controlled local text extraction) |
 | [CLAUDE_REVIEW_EXTRACTION_PIPELINE_006M-P.md](CLAUDE_REVIEW_EXTRACTION_PIPELINE_006M-P.md) | Architecture review — extraction pipeline 006M–006P |
