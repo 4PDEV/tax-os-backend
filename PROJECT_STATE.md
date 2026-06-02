@@ -831,11 +831,11 @@ Legal memory stack on `main`:
 
 # NEXT APPROVED TASKS
 
-TASK-006E — Source Monitoring Worker Skeleton (**approved / dry-run-only**; no live monitoring implementation).
+TASK-006F — Controlled Source Fetch Contract (**approved / governance-only**; no live fetch implementation).
 
 TASK-004E — Citation Temporal Compliance Remediation (planned — align `CitationAssembler` with Addendum V6; defer unless blocking).
 
-Post-006E implementation tasks must remain bounded and align with monitoring governance constraints.
+Post-006F implementation tasks must remain bounded and align with monitoring/fetch governance constraints.
 
 **VM snapshot:** run full-suite verification before migration-heavy work.
 

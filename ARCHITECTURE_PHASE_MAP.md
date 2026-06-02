@@ -149,7 +149,22 @@ FOUNDATION
 
 ---
 
-### 11. AGENT LAYER — **FUTURE**
+### 11. CONTROLLED SOURCE FETCH CONTRACT — **COMPLETE**
+
+**Intent:** Define fetch governance boundaries before real external acquisition.
+
+**Representative task:** TASK-006F (contract-only)
+
+**Key artifacts:**
+
+* [CONTROLLED_SOURCE_FETCH_CONTRACT.md](CONTROLLED_SOURCE_FETCH_CONTRACT.md)
+* [TASKS/TASK-006F-CONTROLLED-SOURCE-FETCH-CONTRACT.md](TASKS/TASK-006F-CONTROLLED-SOURCE-FETCH-CONTRACT.md)
+
+**Boundaries:** no live fetch implementation, no HTTP requests, no crawling/scraping, no automated ingestion.
+
+---
+
+### 12. AGENT LAYER — **FUTURE**
 
 **Intent:** Autonomous or semi-autonomous ingestion/monitoring agents operating on governed contracts and persistence.
 
@@ -159,7 +174,7 @@ FOUNDATION
 
 ---
 
-### 12. RETRIEVAL LAYER — **FUTURE**
+### 13. RETRIEVAL LAYER — **FUTURE**
 
 **Intent:** Research-grade retrieval beyond 004A contract (ranking, multi-source assembly, operational APIs as governed).
 
@@ -167,7 +182,7 @@ FOUNDATION
 
 ---
 
-### 13. ANSWER ASSEMBLY — **FUTURE**
+### 14. ANSWER ASSEMBLY — **FUTURE**
 
 **Intent:** Source-referenced answers with mandatory disclosure, ambiguity surfacing, no silent legal inference.
 
@@ -179,7 +194,7 @@ FOUNDATION
 
 ## Current position (one line)
 
-**Phases 1–10 complete on `main`; next implementation work is controlled fetch and detection expansion under bounded governance.**
+**Phases 1–11 complete on `main`; next implementation work is controlled fetch implementation and change detection under bounded governance.**
 
 ---
 

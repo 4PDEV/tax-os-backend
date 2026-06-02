@@ -526,6 +526,28 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Version
 - Monitoring worker + persistence targeted tests: 15 passed
 - Full suite regression: 405 passed
 
+## [task-006f-controlled-source-fetch-contract] - 2026-06-02
+
+### Added
+
+- TASK-006F: controlled source fetch contract (governance-only).
+  - `CONTROLLED_SOURCE_FETCH_CONTRACT.md` — canonical fetch governance contract.
+  - `TASKS/TASK-006F-CONTROLLED-SOURCE-FETCH-CONTRACT.md` — task governance record.
+  - Fetch request/result contract fields, fetch statuses, error taxonomy, content-type policy, checksum doctrine, redirect governance, robots/terms discipline, security constraints, and review-before-ingestion workflow.
+
+### Changed
+
+- Status/roadmap/phase docs aligned for TASK-006F:
+  - `CURRENT_STATUS.md`
+  - `IMPLEMENTATION_ROADMAP.md`
+  - `ARCHITECTURE_PHASE_MAP.md`
+  - `TASK_REGISTRY.md`
+  - `PROJECT_STATE.md`
+
+### Notes
+
+- TASK-006F introduces no live fetching, no external HTTP calls, no crawler/scraper/scheduler, and no ingestion automation.
+
 ## [checkpoint-task-005a-spec] - 2026-06-01
 
 ### Merged

@@ -48,6 +48,7 @@ Bounded task tracking for `tax-os-backend`. Authoritative specs remain in `tax-o
 | TASK-006C | Source Monitoring Agent Contract | Complete | Governance and contract boundaries only; no live monitoring/scraping/schedulers |
 | TASK-006D | Source Monitoring Candidate Persistence | Complete | Monitoring persistence tables/services; append-only candidate transitions; no live monitoring |
 | TASK-006E | Source Monitoring Worker Skeleton | Complete | Dry-run-only worker lifecycle; synthetic provider; non-dry-run rejected |
+| TASK-006F | Controlled Source Fetch Contract | Complete | Fetch governance contract only; no live HTTP/fetch/crawl/scrape implementation |
 | TASK-DOC-001 | Master Status Document Realignment | Complete | CURRENT_STATUS, IMPLEMENTATION_ROADMAP, ARCHITECTURE_PHASE_MAP |
 
 ## Status Legend

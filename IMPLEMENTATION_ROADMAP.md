@@ -46,6 +46,8 @@ Monitoring candidate persistence (TASK-006D): durable allowlist/attempt/event/ca
 
 Monitoring worker skeleton (TASK-006E): dry-run worker lifecycle orchestration using synthetic provider output only.
 
+Controlled source fetch contract (TASK-006F): bounded fetch governance, taxonomy, and safety doctrine without live implementation.
+
 ---
 
 ## ACTIVE
@@ -83,7 +85,7 @@ Not approved for immediate implementation. Order is indicative only; each requir
 | Phase | Representative work | Depends on |
 |-------|---------------------|------------|
 | Ingestion automation | Wire workers to TASK-006A persistence; processing → extract → parse | TASK-006B |
-| Controlled source fetch | Define safe fetch contract (no broad scraping) | TASK-006C + TASK-006D + TASK-006E |
+| Controlled source fetch implementation | Implement fetch mechanics under 006F governance constraints | TASK-006F |
 | Change detection engine | Deterministic diff/checksum change classification | Controlled fetch contract |
 | Agent layer | Implement monitoring agents from 006C/006D/006E boundaries | Stable tests + fetch discipline + ingestion wiring |
 | Cross-reference persistence | OD-007, OD-008 | Governance decisions |

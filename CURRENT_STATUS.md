@@ -15,7 +15,7 @@ For detailed historical sections, see [PROJECT_STATE.md](PROJECT_STATE.md). For 
 
 The platform is materially beyond early foundation. Core registry, processing queue, extraction/parser **contracts**, legal-object **persistence**, citation **governance**, temporal **governance**, and ingestion **artifact persistence** are in place on `main`.
 
-**Active gate:** monitoring-agent governance is contract-defined (TASK-006C); live monitoring remains prohibited pending future bounded implementation tasks.
+**Active gate:** controlled source fetch governance is contract-defined (TASK-006F); live fetching remains prohibited pending future bounded implementation tasks.
 
 **Environments:** development and internal staging only. No public production deployment.
 
@@ -34,6 +34,7 @@ The platform is materially beyond early foundation. Core registry, processing qu
 | Ingestion persistence | Append-only extraction/parser tables and services | TASK-006A |
 | Test hardening | Full-suite stability and fixture isolation discipline | TASK-006B |
 | Monitoring governance | Source monitoring agent contract and boundary controls | TASK-006C |
+| Fetch governance | Controlled source fetch contract and boundary controls | TASK-006F |
 
 **Checkpoint tags (selected):** `checkpoint-task-003e` … `checkpoint-task-005a-spec`
 
@@ -95,7 +96,7 @@ The platform is materially beyond early foundation. Core registry, processing qu
 
 | Task | Title | Why now |
 |------|-------|---------|
-| **TASK-006E** | Source Monitoring Worker Skeleton | **Completed (dry-run-only)** — lifecycle orchestration without live acquisition |
+| **TASK-006F** | Controlled Source Fetch Contract | **Completed (contract-only)** — bounded fetch governance defined; no live fetching |
 
 See [IMPLEMENTATION_ROADMAP.md](IMPLEMENTATION_ROADMAP.md) for full sequencing.
 
@@ -111,6 +112,13 @@ TASK-006C is governance-only:
 
 - allowed: source boundary definitions, allowlist contract, monitoring event contract, candidate-state model, failure model, temporal no-inference alignment
 - prohibited: live agents, crawlers, schedulers, scraping, external traffic, automatic production updates
+
+### TASK-006F boundary
+
+TASK-006F is governance-only:
+
+- allowed: fetch request/result contract definitions, status/error taxonomy, content-type/checksum/redirect/security discipline, robots/terms doctrine
+- prohibited: live HTTP requests, crawler/scraper implementation, storage implementation, automated source version creation, ingestion automation
 
 ---
 
@@ -132,7 +140,7 @@ Do not implement TASK-004E unless it blocks active work.
 | **OD-016** | Citation assembler temporal code vs governance | Citation output may not match Addendum V6 until TASK-004E | TASK-004E (deferred) |
 | **OD-017 / OD-018** | 003E reconciliation, overlap disclosure | Non-blocking governance follow-ups | Future review |
 
-Ingestion workers, live monitoring agents, scraping, embeddings, answer engine, public ingestion APIs: **not started** (by design).
+Ingestion workers, live monitoring agents, live fetchers, scraping, embeddings, answer engine, public ingestion APIs: **not started** (by design).
 
 ## Monitoring Worker Skeleton Milestone (TASK-006E)
 
@@ -181,7 +189,7 @@ Ingestion workers, live monitoring agents, scraping, embeddings, answer engine, 
 
 ## Next Major Architectural Goal
 
-After TASK-006E dry-run lifecycle validation: future bounded tasks may add controlled fetch and detection capabilities, still governed by 006C boundaries.
+After TASK-006F fetch governance formalization: future bounded tasks may implement controlled source fetch mechanics with strict provenance and safety gates.
 
 Longer horizon (not approved for immediate implementation): agent layer → retrieval layer → answer assembly. See [ARCHITECTURE_PHASE_MAP.md](ARCHITECTURE_PHASE_MAP.md).
 
@@ -194,4 +202,4 @@ FOUNDATION → EXTRACTION CONTRACTS → LEGAL OBJECT GOVERNANCE → CITATION GOV
 → TEMPORAL GOVERNANCE → INGESTION PERSISTENCE → [TEST HARDENING] → AGENT LAYER → …
 ```
 
-**You are here:** ingestion persistence complete, test hardening complete, monitoring governance + persistence + dry-run worker skeleton complete (TASK-006C/006D/006E).
+**You are here:** ingestion persistence complete, test hardening complete, monitoring governance + persistence + dry-run worker skeleton + fetch governance complete (TASK-006C/006D/006E/006F).
