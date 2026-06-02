@@ -78,7 +78,7 @@ Parsing trigger contract (TASK-006Q): governance-only parsing initiation from `e
 
 | Task | Title | Notes |
 |------|-------|-------|
-| — | *(none in implementation)* | Await next bounded task authorization (e.g. parsing trigger persistence) |
+| — | *(none in implementation)* | Await TASK-006R implementation authorization |
 
 ---
 
@@ -86,7 +86,7 @@ Parsing trigger contract (TASK-006Q): governance-only parsing initiation from `e
 
 | Task | Title | Prerequisite | Acceptance focus |
 |------|-------|--------------|------------------|
-| — | *(none currently approved in this file)* | — | Await explicit next-task approval |
+| TASK-006R | Parsing trigger persistence | TASK-006Q contract; `extracted_text` canonical | Append-only parsing trigger requests/results, trigger hash, idempotency; no parser execution or `parsed_structure` creation |
 
 **Blocked until explicit next-task approval:** live monitoring agents, ingestion automation expansion.
 

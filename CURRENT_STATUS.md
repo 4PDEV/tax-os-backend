@@ -48,7 +48,7 @@ The platform is materially beyond early foundation. Core registry, processing qu
 | Extraction replay idempotency | Canonical `source_version_id` idempotency, DB partial unique index, worker replay guard; EXT-01/OD-019 closed | TASK-006P1 |
 | Parsing trigger governance | Governed parsing initiation from `extracted_text`; idempotency on `extracted_text_id`; `parsed_structure` ≠ legal meaning | TASK-006Q |
 
-**Checkpoint tags (selected):** `checkpoint-task-003e` … `checkpoint-task-006p1-extraction-replay-idempotency`
+**Checkpoint tags (selected):** `checkpoint-task-003e` … `checkpoint-task-006q-parsing-trigger-contract`
 
 ---
 
@@ -250,9 +250,9 @@ Ingestion workers, live monitoring agents, live fetchers, change-detection engin
 
 ## Next Major Architectural Goal
 
-**Parsing trigger persistence and parser pipeline** (not yet approved for implementation). TASK-006Q defines governance only — no parsing execution exists yet.
+**TASK-006R — Parsing trigger persistence** (approved next). Contract → persistence → worker → controlled execution for the parsing layer. TASK-006Q complete at `checkpoint-task-006q-parsing-trigger-contract`; no parsing execution yet.
 
-Doctrine: `parsed_structure` ≠ legal meaning. Residual concurrency: OD-021 (mitigate in persistence/worker hardening tasks).
+Doctrine: `parsed_structure` ≠ legal meaning. Residual concurrency: OD-021 (mitigate in 006R+ persistence/worker hardening).
 
 Longer horizon (not approved for immediate implementation): agent layer → retrieval layer → answer assembly. See [ARCHITECTURE_PHASE_MAP.md](ARCHITECTURE_PHASE_MAP.md).
 
