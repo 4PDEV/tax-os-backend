@@ -61,7 +61,9 @@ Pending architectural or operational decisions. Resolve via `tax-os-architecture
 
 **TASK-006ZA acceptance:** **CLOSED** ([`CITATION_PERSISTENCE_006ZA_ACCEPTANCE_REVIEW.md`](CITATION_PERSISTENCE_006ZA_ACCEPTANCE_REVIEW.md)).
 
-**TASK-006Z:** **COMPLETE** — append-only `citation_assembly_governance_requests` / `results` on `main`. No workers, execution, answer generation, or retrieval runtime until future gates.
+**TASK-006Z:** **COMPLETE** — accepted `checkpoint-task-006z-citation-persistence`. Citation execution / worker / retrieval / answers **NOT AUTHORIZED**.
+
+**Next gate:** **TASK-006AA** — citation worker skeleton pre-authorization review (no execution).
 
 Doctrine: `parsed_structure` ≠ legal object; `legal_object` ≠ legal meaning; `legal_object` ≠ citation ≠ answer.
 

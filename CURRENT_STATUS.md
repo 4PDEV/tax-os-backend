@@ -15,9 +15,16 @@ For detailed historical sections, see [PROJECT_STATE.md](PROJECT_STATE.md). For 
 
 The platform is materially beyond early foundation. Core registry, processing queue, extraction/parser **contracts**, legal-object **persistence**, citation **governance**, temporal **governance**, and ingestion **artifact persistence** are in place on `main`.
 
-**Citation governance layer:** **COMPLETE** (006Y). **Citation persistence:** **COMPLETE** (TASK-006Z — append-only governance requests/results).
+**Citation governance layer:** **COMPLETE** (006Y). **Citation persistence:** **COMPLETE** — accepted at `checkpoint-task-006z-citation-persistence` (667 tests).
 
-**Not authorized:** citation execution, workers, rendering, retrieval runtime, answer runtime, legal advice, tax/applicability inference.
+| Capability | Status |
+|------------|--------|
+| Citation persistence | **COMPLETE** |
+| Citation execution | **NOT AUTHORIZED** |
+| Citation worker | **NOT AUTHORIZED** |
+| Retrieval / answer runtime | **NOT AUTHORIZED** |
+
+**Next gate:** **TASK-006AA** — Citation Worker Skeleton Pre-Authorization Review (do not jump to execution).
 
 **Environments:** development and internal staging only. No public production deployment.
 
@@ -286,8 +293,9 @@ Claude review **CLOSED** — [CLAUDE_REVIEW_LEGAL_OBJECT_PROMOTION_006U-X.md](CL
 **Governed pipeline (current end state):**
 
 ```text
-source_version → extraction → extracted_text → parsing → parsed_structure
-  → legal_object → legal_object_version → citation governance
+source_version → … → legal_object_version
+  → citation_assembly_governance_request
+  → citation_assembly_governance_result
 ```
 
 **Doctrine chain (canonical):** `parsed_structure` ≠ legal object · `legal_object` ≠ legal meaning · `legal_object` ≠ citation · `citation` ≠ answer.

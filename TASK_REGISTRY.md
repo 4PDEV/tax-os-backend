@@ -72,8 +72,9 @@ Bounded task tracking for `tax-os-backend`. Authoritative specs remain in `tax-o
 | TASK-006X1 | Legal Object Version Identity Hardening | Complete | L-02b verified — `uq_legal_object_versions_object_hash`; no new migration |
 | TASK-006Y | Citation Assembly Contract | Complete | Citation governance layer **established**; [`CITATION_ASSEMBLY_CONTRACT.md`](CITATION_ASSEMBLY_CONTRACT.md); complements TASK-004D assembler path |
 | TASK-006ZA | Citation Persistence Remediation Package | Complete | Acceptance review **CLOSED**; Z-01–Z-14 remediated; 006Z authorized |
-| TASK-006Z | Citation Persistence | Complete | Append-only `citation_assembly_governance_*` tables; Alembic `c6d4f0b15e58`; 667 tests |
-| TASK-007A+ | Retrieval & Query Runtime | Planned | After citation persistence; governed query path |
+| TASK-006Z | Citation Persistence | Complete | Accepted `checkpoint-task-006z-citation-persistence`; 667 tests |
+| TASK-006AA | Citation Worker Skeleton Pre-Auth Review | Planned | **Next gate** — review before worker skeleton; no execution |
+| TASK-007A+ | Retrieval & Query Runtime | Planned | After citation worker/execution gates; governed query path |
 | TASK-DOC-001 | Master Status Document Realignment | Complete | CURRENT_STATUS, IMPLEMENTATION_ROADMAP, ARCHITECTURE_PHASE_MAP |
 
 ## Status Legend

@@ -865,9 +865,11 @@ TASK-006ZA — Citation Persistence Remediation Package (**complete**; [`CITATIO
 
 TASK-006ZA — Acceptance review **CLOSED** (2026-06-03).
 
-TASK-006Z — Citation Persistence (**complete**; append-only governance tables; no execution).
+TASK-006Z — Citation Persistence (**complete**; accepted `checkpoint-task-006z-citation-persistence`; 667 tests).
 
-**Not authorized:** citation execution, workers, retrieval, answers, legal advice.
+**Next gate:** TASK-006AA — Citation Worker Skeleton Pre-Authorization Review.
+
+**Not authorized:** citation worker, citation execution, retrieval, answers, legal advice.
 
 TASK-006P — Controlled Extraction Execution (**completed; controlled local text extraction into extraction_runs/extracted_texts; no PDF/network/parsing/legal automation**).
 

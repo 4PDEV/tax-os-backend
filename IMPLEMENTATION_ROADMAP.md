@@ -88,7 +88,7 @@ Legal object promotion (TASK-006U–006X): contract through controlled execution
 
 | Task | Title | Notes |
 |------|-------|-------|
-| — | — | Citation persistence complete; execution requires new review gate |
+| TASK-006AA | Citation worker skeleton pre-auth review | TASK-006Z accepted | **Next gate** — governance review only |
 
 ---
 

@@ -4,6 +4,13 @@ All notable changes to `tax-os-backend` are documented here.
 
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versions align with git tags where applicable.
 
+## [checkpoint-task-006z-citation-persistence] - 2026-06-03
+
+### Changed
+
+- TASK-006Z accepted at checkpoint; citation persistence governance complete on `main`.
+- Next gate: TASK-006AA citation worker skeleton pre-authorization review.
+
 ## [task-006z-citation-persistence] - 2026-06-03
 
 ### Added
