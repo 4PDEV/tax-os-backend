@@ -35,7 +35,7 @@
 
 **TASK-006Q–006T gate:** **CLOSED** (2026-06-02). **Legal-object promotion gate OPEN** after [`CLAUDE_VERIFICATION_PARSED_STRUCTURE_IDENTITY_006T1A.md`](../CLAUDE_VERIFICATION_PARSED_STRUCTURE_IDENTITY_006T1A.md).
 
-**Approved next:** TASK-006U — Legal Object Promotion Contract.
+**Approved next:** TASK-006V — Legal Object Promotion Persistence (TASK-006U contract complete).
 
 ## Task records
 

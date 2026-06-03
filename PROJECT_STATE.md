@@ -845,7 +845,9 @@ TASK-006T1A — Parsed Structure Identity Hardening (**verified**; P-01/P-02 clo
 
 **Parsing phase (006Q–006T):** Claude review **closed**. **Legal-object promotion gate OPEN** (2026-06-02).
 
-**Next:** TASK-006U Legal Object Promotion Contract (`parsed_structure` ≠ legal object).
+TASK-006U — Legal Object Promotion Contract (**complete**; governance-only).
+
+**Next:** TASK-006V Legal Object Promotion Persistence.
 
 TASK-006P — Controlled Extraction Execution (**completed; controlled local text extraction into extraction_runs/extracted_texts; no PDF/network/parsing/legal automation**).
 

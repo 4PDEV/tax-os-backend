@@ -15,7 +15,7 @@ For detailed historical sections, see [PROJECT_STATE.md](PROJECT_STATE.md). For 
 
 The platform is materially beyond early foundation. Core registry, processing queue, extraction/parser **contracts**, legal-object **persistence**, citation **governance**, temporal **governance**, and ingestion **artifact persistence** are in place on `main`.
 
-**Active gate:** **Canonical legal memory phase** — legal-object promotion contract (TASK-006U) approved next. Acquisition → extraction → parsing phase **complete and externally verified**. Citation/answer automation remains prohibited until governed tasks approve.
+**Active gate:** **Canonical legal memory phase** — legal-object promotion persistence (TASK-006V) approved next. TASK-006U contract complete. Acquisition → extraction → parsing **verified**. Citation/answer automation prohibited until governed tasks approve.
 
 **Environments:** development and internal staging only. No public production deployment.
 
@@ -51,6 +51,7 @@ The platform is materially beyond early foundation. Core registry, processing qu
 | Parsing worker skeleton | Dry-run orchestration from parsing triggers to `parser_run` lifecycle | TASK-006S |
 | Controlled parsing execution | Structural `parsed_structures` from `extracted_text`; non-interpretive segmentation only | TASK-006T |
 | Parsed structure identity hardening | `UNIQUE(parsed_structures.parser_run_id)`; P-01 remediated | TASK-006T1A |
+| Legal object promotion governance | Governed `parsed_structure` → `legal_object` boundary; `parsed_structure` ≠ legal object | TASK-006U |
 
 **Checkpoint tags (selected):** `checkpoint-task-003e` … `checkpoint-task-006t1a-parsed-structure-identity`
 
@@ -262,9 +263,11 @@ source_version → extraction → extracted_text → parsing trigger → parser_
 
 Claude reviews **closed** (006Q–006T) and **verified** (006T1A). **Legal-object promotion gate OPEN.**
 
-**Approved next:** TASK-006U — Legal Object Promotion Contract. Governing doctrine: `parsed_structure` ≠ legal object (as `parsed_structure` ≠ legal meaning in 006Q–006T).
+**Approved next:** TASK-006V — Legal Object Promotion Persistence.
 
-**Planned sequence:** 006U contract → 006V persistence → 006W worker skeleton → 006X controlled execution → Claude review before citation assembly expansion.
+**Planned sequence:** 006V persistence → 006W worker skeleton → 006X controlled execution → Claude review before citation assembly expansion.
+
+**Doctrine:** `parsed_structure` ≠ legal meaning (006Q–006T); `parsed_structure` ≠ legal object (006U+).
 
 ---
 

@@ -335,7 +335,27 @@ FOUNDATION
 
 ---
 
-### 26. AGENT LAYER — **FUTURE**
+### 26. PARSED STRUCTURE IDENTITY HARDENING — **COMPLETE**
+
+**Representative task:** TASK-006T1A
+
+**Key artifacts:** `UNIQUE(parsed_structures.parser_run_id)`; P-01/P-02 closed.
+
+---
+
+### 27. LEGAL OBJECT PROMOTION CONTRACT — **COMPLETE**
+
+**Intent:** Define governed promotion boundary from structural evidence to canonical legal memory.
+
+**Representative task:** TASK-006U (contract-only)
+
+**Key artifacts:** `LEGAL_OBJECT_PROMOTION_CONTRACT.md` and task record in `TASKS/`.
+
+**Boundaries:** `parsed_structure` ≠ legal object; no promotion persistence/execution; no citation/answer automation.
+
+---
+
+### 28. AGENT LAYER — **FUTURE**
 
 **Intent:** Autonomous or semi-autonomous ingestion/monitoring agents operating on governed contracts and persistence.
 
@@ -345,7 +365,7 @@ FOUNDATION
 
 ---
 
-### 27. RETRIEVAL LAYER — **FUTURE**
+### 29. RETRIEVAL LAYER — **FUTURE**
 
 **Intent:** Research-grade retrieval beyond 004A contract (ranking, multi-source assembly, operational APIs as governed).
 
@@ -353,7 +373,7 @@ FOUNDATION
 
 ---
 
-### 28. ANSWER ASSEMBLY — **FUTURE**
+### 30. ANSWER ASSEMBLY — **FUTURE**
 
 **Intent:** Source-referenced answers with mandatory disclosure, ambiguity surfacing, no silent legal inference.
 

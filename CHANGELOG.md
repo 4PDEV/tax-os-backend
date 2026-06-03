@@ -4,6 +4,19 @@ All notable changes to `tax-os-backend` are documented here.
 
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versions align with git tags where applicable.
 
+## [task-006u-legal-object-promotion-contract] - 2026-06-02
+
+### Added
+
+- TASK-006U: legal object promotion governance contract (contract-only).
+  - `LEGAL_OBJECT_PROMOTION_CONTRACT.md` — eligibility, request/result shapes, status/error taxonomy, idempotency on `parsed_structure_id`, `force_repromotion`, provenance, temporal alignment, citation boundary.
+  - `TASKS/TASK-006U-LEGAL-OBJECT-PROMOTION-CONTRACT.md` — task record.
+
+### Notes
+
+- Doctrine: `parsed_structure` ≠ legal object; promotion is governed, not automatic parsing output.
+- No persistence, workers, citations, or answers in this task.
+
 ## [governance-parsing-phase-closed-legal-memory-open] - 2026-06-02
 
 ### Changed

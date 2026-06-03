@@ -80,13 +80,15 @@ Controlled parsing execution (TASK-006T): structural segmentation from `extracte
 
 Parsed structure identity hardening (TASK-006T1A): `UNIQUE(parsed_structures.parser_run_id)`; P-01/P-02 closed; legal-object promotion gate opened after Claude verification.
 
+Legal object promotion contract (TASK-006U): governance-only boundary from `parsed_structure` to canonical `legal_object`; `parsed_structure` ≠ legal object; no persistence/execution.
+
 ---
 
 ## ACTIVE
 
 | Task | Title | Notes |
 |------|-------|-------|
-| — | *(none in implementation)* | Await TASK-006U implementation authorization |
+| — | *(none in implementation)* | Await TASK-006V implementation authorization |
 
 ---
 
@@ -94,9 +96,9 @@ Parsed structure identity hardening (TASK-006T1A): `UNIQUE(parsed_structures.par
 
 | Task | Title | Prerequisite | Acceptance focus |
 |------|-------|--------------|------------------|
-| TASK-006U | Legal object promotion contract | 006Q–006T + 006T1A verified; promotion gate open | `parsed_structure` ≠ legal object; governance-only; no persistence/execution |
+| TASK-006V | Legal object promotion persistence | TASK-006U contract | Append-only promotion requests/results; `parsed_structure_id` idempotency; no promotion execution |
 
-**Planned sequence (not yet approved for implementation):** TASK-006V persistence → 006W worker skeleton → 006X controlled execution → Claude review before citation assembly.
+**Planned sequence (not yet approved for implementation):** TASK-006W worker skeleton → 006X controlled execution → Claude review before citation assembly.
 
 **Blocked until explicit next-task approval:** live monitoring agents, ingestion automation expansion.
 
