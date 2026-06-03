@@ -110,9 +110,9 @@ Legal object promotion (TASK-006U–006X): contract through controlled execution
 
 **TASK-006AA:** Pre-auth review **complete** — dry-run worker skeleton approved ([`ARCHITECTURE_REVIEW_CITATION_WORKER_SKELETON_006AA-PREAUTH.md`](ARCHITECTURE_REVIEW_CITATION_WORKER_SKELETON_006AA-PREAUTH.md)).
 
-**Approved next:** **TASK-006AB** — dry-run `CitationAssemblyGovernanceWorker` only.
+**TASK-006AB:** **Complete** — dry-run worker ([`TASKS/TASK-006AB-CITATION-WORKER-SKELETON.md`](TASKS/TASK-006AB-CITATION-WORKER-SKELETON.md)).
 
-**Not authorized:** citation execution/rendering, retrieval, answers.
+**Not authorized:** controlled citation execution/rendering, retrieval, answers.
 
 **Blocked until governed approval:** citation execution, answer runtime, retrieval runtime, live monitoring agents, ingestion automation expansion.
 

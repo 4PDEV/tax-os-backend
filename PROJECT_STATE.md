@@ -869,9 +869,9 @@ TASK-006Z — Citation Persistence (**complete**; accepted `checkpoint-task-006z
 
 TASK-006AA — Citation Worker Skeleton Pre-Auth Review (**complete**; APPROVED FOR 006AB dry-run skeleton).
 
-**Next:** TASK-006AB — implement dry-run worker per review envelope.
+TASK-006AB — Citation Worker Skeleton (**complete**; dry-run; terminal `skipped`).
 
-**Not authorized:** citation worker, citation execution, retrieval, answers, legal advice.
+**Not authorized:** citation execution, retrieval, answers, legal advice.
 
 TASK-006P — Controlled Extraction Execution (**completed; controlled local text extraction into extraction_runs/extracted_texts; no PDF/network/parsing/legal automation**).
 

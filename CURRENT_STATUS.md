@@ -315,4 +315,4 @@ FOUNDATION → EXTRACTION CONTRACTS → LEGAL OBJECT GOVERNANCE → CITATION GOV
 → TEMPORAL GOVERNANCE → INGESTION PERSISTENCE → [TEST HARDENING] → AGENT LAYER → …
 ```
 
-**You are here:** TASK-006AA pre-auth complete; TASK-006AB dry-run worker authorized pending acceptance — no execution.
+**You are here:** Dry-run citation worker skeleton complete (006AB); citation execution not authorized.
