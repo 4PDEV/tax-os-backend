@@ -18,3 +18,13 @@ class CitationAssemblyGovernanceRunSummary:
     requests_skipped: int = 0
     results_created: int = 0
     failures: int = 0
+    requests_replayed: int = 0
+
+    @property
+    def requests_failed(self) -> int:
+        return self.failures
+
+
+# TASK-006AB spec aliases (governance-prefixed types remain canonical).
+CitationAssemblyWorkerResult = CitationAssemblyGovernanceProviderResult
+CitationAssemblyWorkerSummary = CitationAssemblyGovernanceRunSummary

@@ -40,7 +40,7 @@ citation_assembly_governance_request
 
 ## Tests
 
-`backend/tests/test_citation_assembly_governance_worker_skeleton.py`
+`backend/tests/test_citation_worker_skeleton.py`
 
 ## Prerequisites
 

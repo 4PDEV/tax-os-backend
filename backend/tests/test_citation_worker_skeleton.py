@@ -151,6 +151,49 @@ def test_non_dry_run_runner_rejected():
         run_citation_assembly_governance_dry_run(None, dry_run=False)  # type: ignore[arg-type]
 
 
+def test_run_citation_assembly_dry_run_alias(db_session):
+    from app.workers.citation_assembly_governance import run_citation_assembly_dry_run
+
+    version, extracted = _seed_legal_object_version(db_session)
+    create_citation_assembly_request(
+        db_session,
+        legal_object_id=version.legal_object_id,
+        legal_object_version_id=version.legal_object_version_id,
+        source_version_id=extracted.source_version_id,
+        requested_by_actor_type="worker",
+        citation_reason="runner alias",
+    )
+    summary = run_citation_assembly_dry_run(db_session, dry_run=True)
+    assert summary.requests_processed == 1
+
+
+def test_lineage_preserved_on_results(db_session):
+    version, extracted = _seed_legal_object_version(db_session)
+    request = create_citation_assembly_request(
+        db_session,
+        legal_object_id=version.legal_object_id,
+        legal_object_version_id=version.legal_object_version_id,
+        source_version_id=extracted.source_version_id,
+        requested_by_actor_type="worker",
+        citation_reason="lineage check",
+    )
+    _ = run_citation_assembly_governance_dry_run(db_session, dry_run=True)
+    results = (
+        db_session.execute(
+            select(CitationAssemblyGovernanceResult).where(
+                CitationAssemblyGovernanceResult.citation_assembly_governance_request_id
+                == request.id
+            )
+        )
+        .scalars()
+        .all()
+    )
+    assert len(results) == 2
+    for row in results:
+        assert row.legal_object_id == version.legal_object_id
+        assert row.legal_object_version_id == version.legal_object_version_id
+
+
 def test_dry_run_worker_processes_eligible_request(db_session):
     version, extracted = _seed_legal_object_version(db_session)
     request = create_citation_assembly_request(
@@ -245,6 +288,7 @@ def test_force_reassembly_allows_replay(db_session):
     second = run_citation_assembly_governance_dry_run(db_session, dry_run=True)
     assert second.requests_processed == 1
     assert second.results_created == 2
+    assert second.requests_replayed == 1
 
     replay_results = (
         db_session.execute(

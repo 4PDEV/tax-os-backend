@@ -10,7 +10,7 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Version
 
 - TASK-006AB: dry-run `CitationAssemblyGovernanceWorker` — `accepted` → `skipped`; no 004D assembler.
 - Module: `backend/app/workers/citation_assembly_governance/`
-- Tests: `test_citation_assembly_governance_worker_skeleton.py`
+- Tests: `test_citation_worker_skeleton.py`
 
 ### Notes
 

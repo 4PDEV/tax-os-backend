@@ -11,6 +11,7 @@ DRY_RUN_CITATION_ASSEMBLY_PROVIDER_VERSION = "0.1.0"
 
 
 class CitationAssemblyGovernanceProvider(Protocol):
+    """Governance assembly provider protocol (spec alias: ``CitationAssemblyProvider``)."""
     def run_assembly(
         self,
         db: Session,
@@ -18,6 +19,10 @@ class CitationAssemblyGovernanceProvider(Protocol):
         legal_object_version: LegalObjectVersion,
     ) -> CitationAssemblyGovernanceProviderResult:
         """Return deterministic assembly lifecycle outcome for one governance request."""
+
+
+# Spec alias — distinct from TASK-004D ``CitationAssemblyRequest``.
+CitationAssemblyProvider = CitationAssemblyGovernanceProvider
 
 
 class DryRunCitationAssemblyGovernanceProvider:

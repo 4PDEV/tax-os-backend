@@ -130,13 +130,16 @@ class CitationAssemblyGovernanceWorker:
     ) -> CitationAssemblyGovernanceRunSummary:
         resolved_version = worker_version or DRY_RUN_CITATION_ASSEMBLY_PROVIDER_VERSION
 
-        requests_seen = processed = skipped = results_created = failures = 0
+        requests_seen = processed = skipped = results_created = failures = replayed = 0
 
         for request in self.load_requests(db):
             requests_seen += 1
             if not self.is_eligible(db, request):
                 skipped += 1
                 continue
+
+            if request.force_reassembly:
+                replayed += 1
 
             legal_object_version = db.get(LegalObjectVersion, request.legal_object_version_id)
             if legal_object_version is None:
@@ -206,4 +209,5 @@ class CitationAssemblyGovernanceWorker:
             requests_skipped=skipped,
             results_created=results_created,
             failures=failures,
+            requests_replayed=replayed,
         )
