@@ -130,6 +130,13 @@ TEST_DATABASE_URL='postgresql://taxos:P%405sw0rd%21234@localhost:5432/taxos_test
 .venv/bin/pytest backend/tests/test_parsing_trigger_persistence.py backend/tests/test_parsing_trigger_alembic_migration.py -q --tb=short
 ```
 
+### TASK-006X1 legal object version identity hardening tests
+
+```bash
+TEST_DATABASE_URL='postgresql://taxos:P%405sw0rd%21234@localhost:5432/taxos_test' \
+.venv/bin/pytest backend/tests/test_legal_object_version_identity_hardening.py backend/tests/test_legal_object_version_identity_alembic_migration.py -q --tb=short
+```
+
 ### TASK-006X controlled legal object promotion execution tests
 
 ```bash

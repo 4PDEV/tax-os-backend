@@ -853,7 +853,9 @@ TASK-006W — Legal Object Promotion Worker Skeleton (**complete**; dry-run orch
 
 TASK-006X — Controlled Legal Object Promotion Execution (**complete**).
 
-**Next:** Complete Claude review 006U–006X. TASK-006Y on HOLD until review closes.
+TASK-006X1 — Legal Object Version Identity Hardening (**complete**; L-02b verified).
+
+**Next:** Claude targeted verification 006X1 + formal 006U–006X review closure. TASK-006Y on HOLD.
 
 TASK-006P — Controlled Extraction Execution (**completed; controlled local text extraction into extraction_runs/extracted_texts; no PDF/network/parsing/legal automation**).
 

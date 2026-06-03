@@ -75,6 +75,7 @@ No lineage break observed in implementation. Future citation assembly (006Y+) ma
 | ID | Finding | Severity | Status |
 |----|---------|----------|--------|
 | — | No interpretive fields introduced in 006X materialization | — | Verified |
+| L-02b | `UNIQUE(legal_object_id, text_hash)` on `legal_object_versions` | Blocker (pre-006X1) | **VERIFIED** — see [CLAUDE_VERIFICATION_LEGAL_OBJECT_VERSION_IDENTITY_006X1.md](CLAUDE_VERIFICATION_LEGAL_OBJECT_VERSION_IDENTITY_006X1.md) (TASK-006X1) |
 | OD-021 | Execution-time replay race under concurrent workers | LOW / MEDIUM | Deferred to citation/retrieval concurrency design |
 
 ---

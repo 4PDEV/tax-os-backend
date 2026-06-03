@@ -4,6 +4,20 @@ All notable changes to `tax-os-backend` are documented here.
 
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versions align with git tags where applicable.
 
+## [task-006x1-legal-object-version-identity-hardening] - 2026-06-03
+
+### Changed
+
+- TASK-006X1: Claude review blocker L-02b — verified existing `UNIQUE(legal_object_id, text_hash)` as `uq_legal_object_versions_object_hash` (`b8d4e1a92c05`).
+- Added tests: `test_legal_object_version_identity_hardening.py`, `test_legal_object_version_identity_alembic_migration.py`.
+- Artifacts: `CLAUDE_VERIFICATION_LEGAL_OBJECT_VERSION_IDENTITY_006X1.md`, `TASKS/TASK-006X1-LEGAL-OBJECT-VERSION-IDENTITY-HARDENING.md`.
+
+### Notes
+
+- No new Alembic migration (constraint pre-existing).
+- Full suite: **639 passed** (PostgreSQL `taxos_test`).
+- Claude review 006U–006X remains **PENDING**; citation layer **NOT OPEN**; TASK-006Y **HOLD**.
+
 ## [task-006x-controlled-legal-object-promotion-execution] - 2026-06-03
 
 ### Added

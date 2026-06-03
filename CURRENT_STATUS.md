@@ -15,7 +15,7 @@ For detailed historical sections, see [PROJECT_STATE.md](PROJECT_STATE.md). For 
 
 The platform is materially beyond early foundation. Core registry, processing queue, extraction/parser **contracts**, legal-object **persistence**, citation **governance**, temporal **governance**, and ingestion **artifact persistence** are in place on `main`.
 
-**Active gate:** **Claude review (006U–006X) — PENDING / NOT CLOSED.** TASK-006X implemented and checkpointed. Canonical Legal Memory phase implementation complete; **phase not closed** until review signs off. Citation layer **NOT OPEN**. TASK-006Y **HOLD**.
+**Active gate:** **Claude review (006U–006X) — PENDING / NOT CLOSED.** TASK-006X implemented and checkpointed. **L-02b remediated** (TASK-006X1 — `uq_legal_object_versions_object_hash` verified). Await targeted Claude verification + formal sign-off. Citation layer **NOT OPEN**. TASK-006Y **HOLD**.
 
 **Environments:** development and internal staging only. No public production deployment.
 
