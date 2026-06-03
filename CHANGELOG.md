@@ -4,6 +4,22 @@ All notable changes to `tax-os-backend` are documented here.
 
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versions align with git tags where applicable.
 
+## [task-006w-legal-object-promotion-worker-skeleton] - 2026-06-03
+
+### Added
+
+- TASK-006W: legal object promotion worker skeleton (dry-run only).
+  - `backend/app/workers/legal_object_promotion/` — worker, runner, dry-run provider, result types.
+  - `run_legal_object_promotion_dry_run()` requires `dry_run=True`; non-dry-run rejected.
+  - Dry-run terminal lifecycle: `accepted` → `skipped` with `legal_object_id` null (never `promoted`).
+  - Tests: `test_legal_object_promotion_worker_skeleton.py`.
+
+### Notes
+
+- Full suite: **622 passed** (PostgreSQL `taxos_test`).
+- OD-021: execution-time multi-worker race remains deferred to TASK-006X+.
+- No legal objects, versions, citations, or answers created.
+
 ## [task-006v-legal-object-promotion-persistence] - 2026-06-02
 
 ### Added

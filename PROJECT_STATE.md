@@ -849,7 +849,9 @@ TASK-006U — Legal Object Promotion Contract (**complete**; governance-only).
 
 TASK-006V — Legal Object Promotion Persistence (**complete**; append-only requests/results; no execution).
 
-**Next:** TASK-006W Legal Object Promotion Worker Skeleton.
+TASK-006W — Legal Object Promotion Worker Skeleton (**complete**; dry-run orchestration only).
+
+**Next:** TASK-006X Controlled Legal Object Promotion Execution.
 
 TASK-006P — Controlled Extraction Execution (**completed; controlled local text extraction into extraction_runs/extracted_texts; no PDF/network/parsing/legal automation**).
 

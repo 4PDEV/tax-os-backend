@@ -385,7 +385,7 @@ FOUNDATION
 
 ## Current position (one line)
 
-**Phases 1–28 complete on `main` through legal-object promotion persistence; next: TASK-006W promotion worker skeleton.**
+**Phases 1–29 complete on `main` through legal-object promotion worker skeleton; next: TASK-006X controlled promotion execution.**
 
 ---
 
