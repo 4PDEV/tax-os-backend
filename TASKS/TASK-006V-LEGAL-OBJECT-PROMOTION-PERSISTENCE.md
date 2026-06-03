@@ -1,6 +1,6 @@
 # TASK-006V — Legal Object Promotion Persistence
 
-**Status:** Complete  
+**Status:** Complete — accepted at `checkpoint-task-006v-legal-object-promotion-persistence`  
 **Depends on:** TASK-006U (contract)  
 **Migration:** `b5c3e9a04d47`
 

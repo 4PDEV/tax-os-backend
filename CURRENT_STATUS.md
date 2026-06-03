@@ -54,7 +54,7 @@ The platform is materially beyond early foundation. Core registry, processing qu
 | Legal object promotion governance | Governed `parsed_structure` → `legal_object` boundary; `parsed_structure` ≠ legal object | TASK-006U |
 | Legal object promotion persistence | Append-only promotion requests/results; `parsed_structure_id` idempotency; no promotion execution | TASK-006V |
 
-**Checkpoint tags (selected):** `checkpoint-task-003e` … `checkpoint-task-006u-legal-object-promotion-contract`
+**Checkpoint tags (selected):** `checkpoint-task-003e` … `checkpoint-task-006v-legal-object-promotion-persistence`
 
 ---
 
