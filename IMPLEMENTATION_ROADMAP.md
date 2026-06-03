@@ -106,9 +106,11 @@ Legal object promotion (TASK-006U–006X): contract through controlled execution
 
 **006Z pre-auth:** Complete — remediation in [`CITATION_PERSISTENCE_REMEDIATION_006ZA.md`](CITATION_PERSISTENCE_REMEDIATION_006ZA.md) (TASK-006ZA).
 
-**TASK-006Z:** **Complete** — citation assembly governance persistence ([`TASKS/TASK-006Z-CITATION-PERSISTENCE.md`](TASKS/TASK-006Z-CITATION-PERSISTENCE.md)).
+**TASK-006Z:** **Complete** — accepted at `checkpoint-task-006z-citation-persistence`.
 
-**Planned next (not authorized):** citation worker skeleton / execution (review gate) → 007A+ retrieval/query runtime.
+**Next gate:** **TASK-006AA** — citation worker skeleton pre-authorization review (do not implement execution).
+
+**Not authorized:** citation worker, citation execution, retrieval, answers.
 
 **Blocked until governed approval:** citation execution, answer runtime, retrieval runtime, live monitoring agents, ingestion automation expansion.
 

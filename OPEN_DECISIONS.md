@@ -90,7 +90,7 @@ Doctrine: `parsed_structure` ≠ legal object; `legal_object` ≠ legal meaning;
 | TASK-006Y | Citation assembly contract (ingestion pipeline) | Complete — governance only | 2026-06-03 |
 | 006Z-PREAUTH | Citation persistence architecture review | APPROVED WITH REQUIRED REMEDIATION | 2026-06-03 |
 | TASK-006ZA | Citation persistence remediation package | Complete — acceptance CLOSED; 006Z authorized | 2026-06-03 |
-| TASK-006Z | Citation persistence implementation | Complete — persistence only | 2026-06-03 |
+| TASK-006Z | Citation persistence implementation | Complete — checkpoint accepted | 2026-06-03 |
 
 When closing a decision, move row to Decision Log and reference approving task.
 

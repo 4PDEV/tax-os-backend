@@ -385,7 +385,7 @@ FOUNDATION
 
 ## Current position (one line)
 
-**Phases 1–31 complete on `main`.** Canonical Source, Structural, Canonical Legal Memory, and Citation governance persistence **complete** (006Z). No citation execution, retrieval, or answer runtime.
+**Phases 1–31 complete on `main` (`checkpoint-task-006z-citation-persistence`).** Citation governance persistence **complete**. Next: **TASK-006AA** worker skeleton pre-auth review. Citation execution / retrieval / answers **not authorized**.
 
 ---
 

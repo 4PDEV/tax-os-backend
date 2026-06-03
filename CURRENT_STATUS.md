@@ -302,9 +302,9 @@ source_version → … → legal_object_version
 
 **TASK-006ZA acceptance:** **CLOSED** — [`CITATION_PERSISTENCE_006ZA_ACCEPTANCE_REVIEW.md`](CITATION_PERSISTENCE_006ZA_ACCEPTANCE_REVIEW.md). Findings Z-01–Z-05, Z-07, Z-14 closed.
 
-**Approved next:** Citation worker skeleton / execution task (not yet authorized — requires review gate).
+**Approved next gate:** **TASK-006AA** — citation worker skeleton pre-authorization review (governance only; no execution).
 
-**Blocked until governed approval:** citation execution/workers, retrieval runtime, answer runtime.
+**Blocked until governed approval:** citation worker implementation, citation execution, retrieval runtime, answer runtime.
 
 ---
 
@@ -315,4 +315,4 @@ FOUNDATION → EXTRACTION CONTRACTS → LEGAL OBJECT GOVERNANCE → CITATION GOV
 → TEMPORAL GOVERNANCE → INGESTION PERSISTENCE → [TEST HARDENING] → AGENT LAYER → …
 ```
 
-**You are here:** Citation governance persistence complete (006Z); citation execution not authorized.
+**You are here:** TASK-006Z accepted; await TASK-006AA pre-auth review before any citation worker skeleton.
