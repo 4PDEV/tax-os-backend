@@ -385,7 +385,7 @@ FOUNDATION
 
 ## Current position (one line)
 
-**Phases 1–30 complete on `main`; Canonical Legal Memory phase closed; citation layer open — TASK-006Y contract complete; 006Z persistence planned.**
+**Phases 1–30 complete on `main`.** Canonical Source Memory, Structural Memory, and Canonical Legal Memory **complete**. **Citation governance layer established** (TASK-006Y). Citation persistence **not started**; TASK-006Z **planned — not yet authorized**. No retrieval or answer runtime.
 
 ---
 

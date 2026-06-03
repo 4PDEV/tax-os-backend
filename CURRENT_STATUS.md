@@ -15,7 +15,9 @@ For detailed historical sections, see [PROJECT_STATE.md](PROJECT_STATE.md). For 
 
 The platform is materially beyond early foundation. Core registry, processing queue, extraction/parser **contracts**, legal-object **persistence**, citation **governance**, temporal **governance**, and ingestion **artifact persistence** are in place on `main`.
 
-**Active gate:** **Citation layer** — TASK-006Y **complete** (citation assembly contract, governance-only). No citation persistence, workers, execution, answers, or retrieval runtime until 006Z+ explicitly approved.
+**Citation governance layer:** **ESTABLISHED** (TASK-006Y complete; governance-only). **Persistence not started.** TASK-006Z planned — **not yet authorized**. No citation workers, execution, retrieval runtime, answer runtime, or legal advice generation.
+
+**Next expected gate:** Short architecture review of planned citation persistence shape (identity + provenance) before authorizing 006Z.
 
 **Environments:** development and internal staging only. No public production deployment.
 
@@ -269,11 +271,28 @@ source_version → extraction → extracted_text → parsing → parsed_structur
 
 Claude review **CLOSED** — [CLAUDE_REVIEW_LEGAL_OBJECT_PROMOTION_006U-X.md](CLAUDE_REVIEW_LEGAL_OBJECT_PROMOTION_006U-X.md) (**APPROVED FOR CONTINUE**). **639 tests passing.**
 
-**Approved next:** **TASK-006Z** — Citation Persistence (planned; not authorized until explicit approval).
+**Memory layers (ingestion path):**
 
-**Planned sequence (not all authorized):** 006Z persistence → citation worker/execution tasks → 007A+ retrieval/query runtime.
+| Layer | Status |
+|-------|--------|
+| Canonical Source Memory | Complete |
+| Structural Memory (`parsed_structure`) | Complete |
+| Canonical Legal Memory (`legal_object` / version) | Complete |
+| Citation Governance | Complete |
+| Citation Persistence | Not started |
 
-**Governance boundaries (canonical):** `parsed_structure` ≠ legal meaning · `parsed_structure` ≠ legal object · `legal_object` ≠ legal meaning · `legal_object` ≠ citation · `legal_object` ≠ answer.
+**Governed pipeline (current end state):**
+
+```text
+source_version → extraction → extracted_text → parsing → parsed_structure
+  → legal_object → legal_object_version → citation governance
+```
+
+**Doctrine chain (canonical):** `parsed_structure` ≠ legal object · `legal_object` ≠ legal meaning · `legal_object` ≠ citation · `citation` ≠ answer.
+
+**TASK-006Z:** Planned — citation persistence — **not yet authorized** (recommend architecture review of persistence shape before authorization).
+
+**Blocked until governed approval:** citation persistence (006Z), citation workers/execution, retrieval runtime, answer runtime.
 
 ---
 
@@ -284,4 +303,4 @@ FOUNDATION → EXTRACTION CONTRACTS → LEGAL OBJECT GOVERNANCE → CITATION GOV
 → TEMPORAL GOVERNANCE → INGESTION PERSISTENCE → [TEST HARDENING] → AGENT LAYER → …
 ```
 
-**You are here:** Citation assembly contract complete (006Y); citation persistence (006Z) not yet authorized.
+**You are here:** Citation governance layer established (006Y); persistence (006Z) not authorized — pre-006Z architecture review recommended.

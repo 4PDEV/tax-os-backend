@@ -4,6 +4,13 @@ All notable changes to `tax-os-backend` are documented here.
 
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versions align with git tags where applicable.
 
+## [checkpoint-task-006y-citation-assembly-contract] - 2026-06-03
+
+### Changed
+
+- Governance status: **Citation governance layer ESTABLISHED**; persistence not started; TASK-006Z planned — not yet authorized.
+- Pre-006Z gate: recommend architecture review of citation persistence shape (identity + provenance).
+
 ## [task-006y-citation-assembly-contract] - 2026-06-03
 
 ### Added

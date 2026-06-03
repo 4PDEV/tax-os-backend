@@ -70,8 +70,8 @@ Bounded task tracking for `tax-os-backend`. Authoritative specs remain in `tax-o
 | TASK-006W | Legal Object Promotion Worker Skeleton | Complete | Dry-run orchestration; terminal `skipped`; no legal object creation |
 | TASK-006X | Controlled Legal Object Promotion Execution | Complete | Checkpoint `checkpoint-task-006x-controlled-legal-object-promotion-execution`; 633 tests |
 | TASK-006X1 | Legal Object Version Identity Hardening | Complete | L-02b verified — `uq_legal_object_versions_object_hash`; no new migration |
-| TASK-006Y | Citation Assembly Contract | Complete | Governance-only `legal_object` → citation; [`CITATION_ASSEMBLY_CONTRACT.md`](CITATION_ASSEMBLY_CONTRACT.md); no persistence/execution |
-| TASK-006Z | Citation Persistence | Planned | After TASK-006Y; not authorized until explicit approval |
+| TASK-006Y | Citation Assembly Contract | Complete | Citation governance layer **established**; [`CITATION_ASSEMBLY_CONTRACT.md`](CITATION_ASSEMBLY_CONTRACT.md); complements TASK-004D assembler path |
+| TASK-006Z | Citation Persistence | Planned | **Not yet authorized** — recommend architecture review of persistence shape before enablement |
 | TASK-007A+ | Retrieval & Query Runtime | Planned | After citation persistence; governed query path |
 | TASK-DOC-001 | Master Status Document Realignment | Complete | CURRENT_STATUS, IMPLEMENTATION_ROADMAP, ARCHITECTURE_PHASE_MAP |
 

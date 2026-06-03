@@ -55,7 +55,7 @@ Pending architectural or operational decisions. Resolve via `tax-os-architecture
 
 **Legal-object promotion gate:** **CLOSED** (Claude review 006U–006X, 2026-06-03 — **APPROVED FOR CONTINUE**). L-01, L-02, L-02b **CLOSED**.
 
-**Citation layer:** **OPEN** — TASK-006Y **COMPLETE** ([`CITATION_ASSEMBLY_CONTRACT.md`](CITATION_ASSEMBLY_CONTRACT.md); governance-only). No citation persistence (006Z), workers, execution, answer generation, or retrieval runtime until explicitly approved.
+**Citation governance layer:** **ESTABLISHED** — TASK-006Y **COMPLETE** ([`CITATION_ASSEMBLY_CONTRACT.md`](CITATION_ASSEMBLY_CONTRACT.md)). **Persistence not started.** TASK-006Z **planned — not yet authorized** (recommend architecture review of persistence shape before authorization). No workers, execution, answer generation, or retrieval runtime.
 
 Doctrine: `parsed_structure` ≠ legal object; `legal_object` ≠ legal meaning; `legal_object` ≠ citation ≠ answer.
 

@@ -88,7 +88,7 @@ Legal object promotion (TASK-006U–006X): contract through controlled execution
 
 | Task | Title | Notes |
 |------|-------|-------|
-| — | — | Citation contract complete; awaiting 006Z authorization |
+| — | — | Awaiting TASK-006Z authorization after recommended pre-persistence architecture review |
 
 ---
 
@@ -96,17 +96,19 @@ Legal object promotion (TASK-006U–006X): contract through controlled execution
 
 | Task | Title | Prerequisite | Acceptance focus |
 |------|-------|--------------|------------------|
-| TASK-006Z | Citation persistence | TASK-006Y contract | **Planned** — not authorized until explicit approval |
+| TASK-006Z | Citation persistence | TASK-006Y + architecture review | **Planned — not yet authorized** |
 
-Recent citation/promotion completions: TASK-006Y (contract) · TASK-006V–006X (promotion persistence/worker/execution).
+**Ingestion memory layers:** Canonical Source · Structural · Canonical Legal Memory — **complete**. **Citation governance** — **established** (006Y). **Citation persistence** — not started.
 
 **Canonical Legal Memory (006U–006X + 006X1):** **CLOSED** — Claude review **APPROVED FOR CONTINUE** (2026-06-03).
 
-**Citation layer:** **OPEN**. **TASK-006Y complete** (ingestion-pipeline citation assembly contract).
+**Citation governance (006Y):** **ESTABLISHED** — trust boundary `legal_object` → citation; idempotency on `legal_object_version_id`; complements TASK-004D deterministic assembler path (implementation vs governance).
 
-**Planned:** 006Z citation persistence → worker/execution → 007A+ retrieval/query runtime (each requires explicit authorization).
+**Next gate:** Architecture review of citation persistence shape (identity, provenance, append-only requests/results) before authorizing 006Z.
 
-**Blocked until governed approval:** citation persistence (006Z), answer runtime, retrieval runtime, live monitoring agents, ingestion automation expansion.
+**Planned after authorization:** 006Z persistence → citation worker/execution → 007A+ retrieval/query runtime.
+
+**Blocked until governed approval:** citation persistence (006Z), citation execution, answer runtime, retrieval runtime, live monitoring agents, ingestion automation expansion.
 
 ---
 
