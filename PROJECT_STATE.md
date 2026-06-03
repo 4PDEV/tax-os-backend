@@ -845,7 +845,7 @@ TASK-006T1A — Parsed Structure Identity Hardening (**verified**; P-01/P-02 clo
 
 **Parsing phase (006Q–006T):** Claude review **closed**. **Legal-object promotion (006U–006X):** Claude review **CLOSED** — **APPROVED FOR CONTINUE** (2026-06-03). L-01, L-02, L-02b closed. Canonical Legal Memory phase **CLOSED**.
 
-**Citation governance layer:** **COMPLETE** (006Y). **Citation persistence design:** **COMPLETE** (006ZA). **TASK-006Z:** **AUTHORIZED** — implementation not started.
+**Citation governance layer:** **COMPLETE** (006Y). **Citation persistence:** **COMPLETE** (TASK-006Z).
 
 TASK-006U — Legal Object Promotion Contract (**complete**; governance-only).
 
@@ -863,7 +863,9 @@ TASK-006Y — Citation Assembly Contract (**complete**; governance-only).
 
 TASK-006ZA — Citation Persistence Remediation Package (**complete**; [`CITATION_PERSISTENCE_REMEDIATION_006ZA.md`](CITATION_PERSISTENCE_REMEDIATION_006ZA.md)).
 
-TASK-006ZA — Acceptance review **CLOSED** (2026-06-03). TASK-006Z — Citation Persistence **AUTHORIZED FOR IMPLEMENTATION** (append-only; no execution).
+TASK-006ZA — Acceptance review **CLOSED** (2026-06-03).
+
+TASK-006Z — Citation Persistence (**complete**; append-only governance tables; no execution).
 
 **Not authorized:** citation execution, workers, retrieval, answers, legal advice.
 

@@ -61,7 +61,7 @@ Pending architectural or operational decisions. Resolve via `tax-os-architecture
 
 **TASK-006ZA acceptance:** **CLOSED** ([`CITATION_PERSISTENCE_006ZA_ACCEPTANCE_REVIEW.md`](CITATION_PERSISTENCE_006ZA_ACCEPTANCE_REVIEW.md)).
 
-**TASK-006Z:** **AUTHORIZED FOR IMPLEMENTATION** — append-only citation assembly request/result persistence only. No workers, execution, answer generation, or retrieval runtime until future gates.
+**TASK-006Z:** **COMPLETE** — append-only `citation_assembly_governance_requests` / `results` on `main`. No workers, execution, answer generation, or retrieval runtime until future gates.
 
 Doctrine: `parsed_structure` ≠ legal object; `legal_object` ≠ legal meaning; `legal_object` ≠ citation ≠ answer.
 
@@ -88,7 +88,7 @@ Doctrine: `parsed_structure` ≠ legal object; `legal_object` ≠ legal meaning;
 | TASK-006Y | Citation assembly contract (ingestion pipeline) | Complete — governance only | 2026-06-03 |
 | 006Z-PREAUTH | Citation persistence architecture review | APPROVED WITH REQUIRED REMEDIATION | 2026-06-03 |
 | TASK-006ZA | Citation persistence remediation package | Complete — acceptance CLOSED; 006Z authorized | 2026-06-03 |
-| TASK-006Z | Citation persistence implementation | **AUTHORIZED** (persistence only) | 2026-06-03 |
+| TASK-006Z | Citation persistence implementation | Complete — persistence only | 2026-06-03 |
 
 When closing a decision, move row to Decision Log and reference approving task.
 

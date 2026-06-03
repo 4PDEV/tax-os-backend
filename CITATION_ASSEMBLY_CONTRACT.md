@@ -221,7 +221,7 @@ Rendered citation content hashes (TASK-004D assembler) remain governed separatel
 
 Citation assembly may hand off to citation materialization by creating or referencing governed `citation` records (future persistence — TASK-006Z and successors).
 
-**Planned persistence shape (006ZA):** See [`CITATION_PERSISTENCE_REMEDIATION_006ZA.md`](CITATION_PERSISTENCE_REMEDIATION_006ZA.md). Governance ORM: `CitationAssemblyGovernanceRequest` / `Result`; `request_hash` idempotency. **TASK-006Z authorized** for append-only persistence implementation ([`CITATION_PERSISTENCE_006ZA_ACCEPTANCE_REVIEW.md`](CITATION_PERSISTENCE_006ZA_ACCEPTANCE_REVIEW.md)). Citation execution not authorized.
+**Persistence (TASK-006Z):** Implemented — `citation_assembly_governance_requests` / `results`; service `app.services.citation_assembly_governance`; `request_hash` idempotency. Citation execution not authorized.
 
 This contract does **not** implement (by itself):
 

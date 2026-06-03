@@ -385,7 +385,7 @@ FOUNDATION
 
 ## Current position (one line)
 
-**Phases 1–30 complete on `main`.** Canonical Source, Structural, and Canonical Legal Memory **complete**. Citation governance **complete** (006Y); persistence design **complete** (006ZA). **TASK-006Z authorized** — append-only citation assembly persistence; not yet implemented. No citation execution, retrieval, or answer runtime.
+**Phases 1–31 complete on `main`.** Canonical Source, Structural, Canonical Legal Memory, and Citation governance persistence **complete** (006Z). No citation execution, retrieval, or answer runtime.
 
 ---
 

@@ -5,7 +5,7 @@ For detailed historical sections, see [PROJECT_STATE.md](PROJECT_STATE.md). For 
 
 **Last realigned:** 2026-06-03  
 **Branch:** `main`  
-**Alembic head:** `b5c3e9a04d47` (legal object promotion persistence)
+**Alembic head:** `c6d4f0b15e58` (citation assembly governance persistence)
 
 ---
 
@@ -15,7 +15,7 @@ For detailed historical sections, see [PROJECT_STATE.md](PROJECT_STATE.md). For 
 
 The platform is materially beyond early foundation. Core registry, processing queue, extraction/parser **contracts**, legal-object **persistence**, citation **governance**, temporal **governance**, and ingestion **artifact persistence** are in place on `main`.
 
-**Citation governance layer:** **COMPLETE** (TASK-006Y). **Citation persistence design:** **COMPLETE** (006ZA acceptance **CLOSED**). **TASK-006Z:** **AUTHORIZED FOR IMPLEMENTATION** — append-only `citation_assembly_requests` / `citation_assembly_results` only; not yet implemented.
+**Citation governance layer:** **COMPLETE** (006Y). **Citation persistence:** **COMPLETE** (TASK-006Z — append-only governance requests/results).
 
 **Not authorized:** citation execution, workers, rendering, retrieval runtime, answer runtime, legal advice, tax/applicability inference.
 
@@ -60,6 +60,7 @@ The platform is materially beyond early foundation. Core registry, processing qu
 | Legal object version identity hardening | L-02b verified — `uq_legal_object_versions_object_hash` at DB layer | TASK-006X1 |
 | Citation assembly governance | Governed `legal_object` → citation boundary; `legal_object` ≠ citation ≠ answer | TASK-006Y |
 | Citation persistence remediation | Planned 006Z shape per pre-auth review (Z-01–Z-14); governance naming; dual-hash doctrine | TASK-006ZA |
+| Citation assembly governance persistence | Append-only requests/results; `request_hash` on `legal_object_version_id`; partial unique index | TASK-006Z |
 
 **Checkpoint tags (selected):** `checkpoint-task-003e` … `checkpoint-task-006x-controlled-legal-object-promotion-execution`
 
@@ -280,7 +281,7 @@ Claude review **CLOSED** — [CLAUDE_REVIEW_LEGAL_OBJECT_PROMOTION_006U-X.md](CL
 | Structural Memory (`parsed_structure`) | Complete |
 | Canonical Legal Memory (`legal_object` / version) | Complete |
 | Citation Governance | Complete |
-| Citation Persistence | **Authorized** (006Z) — not started |
+| Citation Persistence | **Complete** (006Z) |
 
 **Governed pipeline (current end state):**
 
@@ -293,7 +294,7 @@ source_version → extraction → extracted_text → parsing → parsed_structur
 
 **TASK-006ZA acceptance:** **CLOSED** — [`CITATION_PERSISTENCE_006ZA_ACCEPTANCE_REVIEW.md`](CITATION_PERSISTENCE_006ZA_ACCEPTANCE_REVIEW.md). Findings Z-01–Z-05, Z-07, Z-14 closed.
 
-**Approved next:** **TASK-006Z** — Citation Persistence (authorized; append-only tables + service layer only).
+**Approved next:** Citation worker skeleton / execution task (not yet authorized — requires review gate).
 
 **Blocked until governed approval:** citation execution/workers, retrieval runtime, answer runtime.
 
@@ -306,4 +307,4 @@ FOUNDATION → EXTRACTION CONTRACTS → LEGAL OBJECT GOVERNANCE → CITATION GOV
 → TEMPORAL GOVERNANCE → INGESTION PERSISTENCE → [TEST HARDENING] → AGENT LAYER → …
 ```
 
-**You are here:** TASK-006Z citation persistence **authorized** — implement append-only request/result tables per [`CITATION_PERSISTENCE_REMEDIATION_006ZA.md`](CITATION_PERSISTENCE_REMEDIATION_006ZA.md).
+**You are here:** Citation governance persistence complete (006Z); citation execution not authorized.

@@ -261,7 +261,12 @@ def test_no_citation_or_answer_tables(db_session, engine):
     )
     run_controlled_legal_object_promotion(db_session, controlled_promotion=True)
     tables = set(inspect(engine).get_table_names())
-    assert not any("citation" in name for name in tables)
+    citation_tables = {name for name in tables if "citation" in name}
+    assert citation_tables <= {
+        "citation_assembly_governance_requests",
+        "citation_assembly_governance_results",
+    }
+    assert "citations" not in tables
     assert not any("answer" in name for name in tables)
 
 

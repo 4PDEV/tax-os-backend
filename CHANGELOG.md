@@ -4,6 +4,23 @@ All notable changes to `tax-os-backend` are documented here.
 
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versions align with git tags where applicable.
 
+## [task-006z-citation-persistence] - 2026-06-03
+
+### Added
+
+- TASK-006Z: citation assembly governance persistence.
+  - Tables: `citation_assembly_governance_requests`, `citation_assembly_governance_results`
+  - Migration `c6d4f0b15e58`; partial unique on `legal_object_version_id` WHERE `force_reassembly = false`
+  - Service: `backend/app/services/citation_assembly_governance/` (`request_hash`, validation, append-only results)
+  - ORM: `CitationAssemblyGovernanceRequest` / `Result` (namespace separate from TASK-004D)
+  - Tests: persistence + Alembic migration
+
+### Notes
+
+- **667 tests passed** (PostgreSQL `taxos_test`).
+- No citation execution, 004D assembler calls, retrieval, or answers.
+- Citation worker/execution remains behind future review gate.
+
 ## [governance-006za-acceptance-006z-authorized] - 2026-06-03
 
 ### Changed

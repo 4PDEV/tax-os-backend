@@ -9,6 +9,8 @@ from app.models.fetch_request import FetchRequest
 from app.models.fetch_result import FetchResult
 from app.models.change_detection_request import ChangeDetectionRequest
 from app.models.change_detection_result import ChangeDetectionResult
+from app.models.citation_assembly_governance_request import CitationAssemblyGovernanceRequest
+from app.models.citation_assembly_governance_result import CitationAssemblyGovernanceResult
 from app.models.extraction_trigger_request import ExtractionTriggerRequest
 from app.models.extraction_trigger_result import ExtractionTriggerResult
 from app.models.extracted_text import ExtractedText
@@ -43,6 +45,8 @@ __all__ = [
     "FetchResult",
     "ChangeDetectionRequest",
     "ChangeDetectionResult",
+    "CitationAssemblyGovernanceRequest",
+    "CitationAssemblyGovernanceResult",
     "ExtractionTriggerRequest",
     "ExtractionTriggerResult",
     "ExtractedText",
