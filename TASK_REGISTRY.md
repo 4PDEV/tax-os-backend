@@ -74,8 +74,9 @@ Bounded task tracking for `tax-os-backend`. Authoritative specs remain in `tax-o
 | TASK-006ZA | Citation Persistence Remediation Package | Complete | Acceptance review **CLOSED**; Z-01–Z-14 remediated; 006Z authorized |
 | TASK-006Z | Citation Persistence | Complete | Accepted `checkpoint-task-006z-citation-persistence`; 667 tests |
 | TASK-006AA | Citation Worker Skeleton Pre-Auth Review | Complete | Verdict: APPROVED FOR IMPLEMENTATION (006AB dry-run only) |
-| TASK-006AB | Citation Worker Skeleton | Complete | Dry-run; terminal `skipped`; `citation_id` null; 680 tests |
-| TASK-007A+ | Retrieval & Query Runtime | Planned | After citation worker/execution gates; governed query path |
+| TASK-006AB | Citation Worker Skeleton | Complete | Accepted `checkpoint-task-006ab-citation-worker-skeleton`; 680 tests |
+| TASK-006AC | Controlled Citation Execution Pre-Auth Review | Planned | **Next gate** — review only; no execution |
+| TASK-007A+ | Retrieval & Query Runtime | Planned | After citation execution gates; governed query path |
 | TASK-DOC-001 | Master Status Document Realignment | Complete | CURRENT_STATUS, IMPLEMENTATION_ROADMAP, ARCHITECTURE_PHASE_MAP |
 
 ## Status Legend

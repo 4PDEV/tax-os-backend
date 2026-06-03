@@ -4,6 +4,13 @@ All notable changes to `tax-os-backend` are documented here.
 
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versions align with git tags where applicable.
 
+## [checkpoint-task-006ab-citation-worker-skeleton] - 2026-06-03
+
+### Changed
+
+- TASK-006AB accepted at checkpoint; dry-run citation worker skeleton complete.
+- Next gate: TASK-006AC controlled citation execution pre-authorization review.
+
 ## [task-006ab-citation-worker-skeleton] - 2026-06-03
 
 ### Added

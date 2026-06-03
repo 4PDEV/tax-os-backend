@@ -869,7 +869,9 @@ TASK-006Z — Citation Persistence (**complete**; accepted `checkpoint-task-006z
 
 TASK-006AA — Citation Worker Skeleton Pre-Auth Review (**complete**; APPROVED FOR 006AB dry-run skeleton).
 
-TASK-006AB — Citation Worker Skeleton (**complete**; dry-run; terminal `skipped`).
+TASK-006AB — Citation Worker Skeleton (**complete**; accepted `checkpoint-task-006ab-citation-worker-skeleton`).
+
+**Next gate:** TASK-006AC — Controlled Citation Execution Pre-Authorization Review.
 
 **Not authorized:** citation execution, retrieval, answers, legal advice.
 

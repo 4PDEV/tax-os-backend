@@ -21,7 +21,7 @@ The platform is materially beyond early foundation. Core registry, processing qu
 |------------|--------|
 | Citation persistence | **COMPLETE** |
 | Citation execution | **NOT AUTHORIZED** |
-| Citation worker (dry-run skeleton) | **COMPLETE** (006AB) |
+| Citation worker (dry-run skeleton) | **COMPLETE** — accepted `checkpoint-task-006ab-citation-worker-skeleton` |
 | Retrieval / answer runtime | **NOT AUTHORIZED** |
 
 **006AA pre-auth:** Complete — [`ARCHITECTURE_REVIEW_CITATION_WORKER_SKELETON_006AA-PREAUTH.md`](ARCHITECTURE_REVIEW_CITATION_WORKER_SKELETON_006AA-PREAUTH.md) — dry-run worker skeleton **APPROVED FOR IMPLEMENTATION** (TASK-006AB). Citation execution **not authorized**.
@@ -302,9 +302,9 @@ source_version → … → legal_object_version
 
 **TASK-006ZA acceptance:** **CLOSED** — [`CITATION_PERSISTENCE_006ZA_ACCEPTANCE_REVIEW.md`](CITATION_PERSISTENCE_006ZA_ACCEPTANCE_REVIEW.md). Findings Z-01–Z-05, Z-07, Z-14 closed.
 
-**Approved next gate:** Controlled citation execution (not authorized — separate pre-auth review required).
+**Next gate:** **TASK-006AC** — Controlled Citation Execution Pre-Authorization Review (review only; do not implement execution).
 
-**Blocked until governed approval:** citation execution/rendering, retrieval runtime, answer runtime.
+**Blocked until governed approval:** controlled citation execution/rendering, retrieval runtime, answer runtime.
 
 ---
 
