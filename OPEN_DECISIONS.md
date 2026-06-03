@@ -39,7 +39,7 @@ Pending architectural or operational decisions. Resolve via `tax-os-architecture
 |----|-------|---------|--------|
 | OD-019 | Extraction replay / idempotency hardening | EXT-01 / F-05 remediated in TASK-006P1: canonical idempotency on `source_version_id`, partial unique DB index, source_version-level worker skip; `rerun_allowed` records policy only and does not bypass; `force_reprocess=True` is explicit bypass | **Resolved (TASK-006P1)** |
 | OD-020 | Trigger `completed` vs text-ready semantics | `trigger_status=completed` on dry-run does not imply `extracted_text` exists; consumers must join `extracted_text` / check extractor identity | Documented — non-blocking |
-| OD-021 | Multi-worker ingestion race (extraction + parsing + promotion) | Single-worker orchestration acceptable through TASK-006W. TASK-006V closes **creation-time** duplicate promotion via DB partial unique index; **execution-time** replay race mitigation required before concurrent promotion workers (006X+). LOW now, MEDIUM under concurrency | Open — deferred |
+| OD-021 | Multi-worker ingestion race (extraction + parsing + promotion + citation) | **OPEN / INFORMATIONAL** — single-worker operating constraint remains acceptable on `main`. Concurrent promotion or citation workers require execution-time replay race mitigation before enablement. Creation-time idempotency closed (006P1, 006R, 006V, L-02b). LOW now, MEDIUM under concurrency | Open — deferred |
 | OD-022 | Parsed structure identity (P-01) | `UNIQUE(parsed_structures.parser_run_id)` in TASK-006T1A; verified at `checkpoint-task-006t1a-parsed-structure-identity` | **Closed (TASK-006T1A)** |
 
 ## Parsing pipeline — review closed (006Q–006T, 006T1A)
@@ -53,7 +53,11 @@ Pending architectural or operational decisions. Resolve via `tax-os-architecture
 
 **Reviews:** [`CLAUDE_REVIEW_PARSING_PIPELINE_006Q-T.md`](CLAUDE_REVIEW_PARSING_PIPELINE_006Q-T.md) **CLOSED** · [`CLAUDE_VERIFICATION_PARSED_STRUCTURE_IDENTITY_006T1A.md`](CLAUDE_VERIFICATION_PARSED_STRUCTURE_IDENTITY_006T1A.md) **VERIFIED** (2026-06-02).
 
-**Legal-object promotion gate:** **OPEN for Claude review** — TASK-006X implemented + checkpointed; review **PENDING / NOT CLOSED**. **L-02b** (version identity DB uniqueness): **VERIFIED** (TASK-006X1; `uq_legal_object_versions_object_hash`). Citation layer **NOT OPEN**. TASK-006Y **HOLD**. Doctrine: `parsed_structure` ≠ legal object; `legal_object` ≠ legal meaning; `legal_object` ≠ citation ≠ answer.
+**Legal-object promotion gate:** **CLOSED** (Claude review 006U–006X, 2026-06-03 — **APPROVED FOR CONTINUE**). L-01, L-02, L-02b **CLOSED**.
+
+**Citation layer:** **OPEN** — TASK-006Y **AUTHORIZED** (citation assembly contract, governance-only). No citation persistence (006Z), answer generation, or retrieval runtime until explicitly approved.
+
+Doctrine: `parsed_structure` ≠ legal object; `legal_object` ≠ legal meaning; `legal_object` ≠ citation ≠ answer.
 
 ## Test gaps (QA)
 
@@ -71,6 +75,10 @@ Pending architectural or operational decisions. Resolve via `tax-os-architecture
 | P-01 | Parsed structure one-per-parser_run | TASK-006T1A | 2026-06-02 |
 | P-02 | Parser persistence/hash verification | 006T1A verification | 2026-06-02 |
 | 006Q–006T | Parsing pipeline architecture review | Claude sign-off | 2026-06-02 |
+| L-01 | LegalObjectType vocabulary structural-only | 006U–006X review | 2026-06-03 |
+| L-02 | Canonical legal-memory write path append-only | 006U–006X review | 2026-06-03 |
+| L-02b | `UNIQUE(legal_object_id, text_hash)` on `legal_object_versions` | TASK-006X1 | 2026-06-03 |
+| 006U–006X | Legal object promotion pipeline review | **APPROVED FOR CONTINUE** | 2026-06-03 |
 
 When closing a decision, move row to Decision Log and reference approving task.
 

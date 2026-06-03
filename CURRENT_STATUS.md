@@ -15,7 +15,7 @@ For detailed historical sections, see [PROJECT_STATE.md](PROJECT_STATE.md). For 
 
 The platform is materially beyond early foundation. Core registry, processing queue, extraction/parser **contracts**, legal-object **persistence**, citation **governance**, temporal **governance**, and ingestion **artifact persistence** are in place on `main`.
 
-**Active gate:** **Claude review (006U–006X) — PENDING / NOT CLOSED.** TASK-006X implemented and checkpointed. **L-02b remediated** (TASK-006X1 — `uq_legal_object_versions_object_hash` verified). Await targeted Claude verification + formal sign-off. Citation layer **NOT OPEN**. TASK-006Y **HOLD**.
+**Active gate:** **Citation layer** — Claude review 006U–006X **CLOSED** (**APPROVED FOR CONTINUE**, 2026-06-03). Canonical Legal Memory phase **CLOSED**. **TASK-006Y authorized** (citation assembly contract, governance-only). No citation persistence, answers, or retrieval runtime until 006Z+ explicitly approved.
 
 **Environments:** development and internal staging only. No public production deployment.
 
@@ -55,6 +55,7 @@ The platform is materially beyond early foundation. Core registry, processing qu
 | Legal object promotion persistence | Append-only promotion requests/results; `parsed_structure_id` idempotency; no promotion execution | TASK-006V |
 | Legal object promotion worker skeleton | Dry-run orchestration from promotion requests to lifecycle results; terminal `skipped`; no legal object creation | TASK-006W |
 | Controlled legal object promotion execution | First canonical `legal_object` / `legal_object_version` from `parsed_structure`; non-interpretive; no citations/answers | TASK-006X |
+| Legal object version identity hardening | L-02b verified — `uq_legal_object_versions_object_hash` at DB layer | TASK-006X1 |
 
 **Checkpoint tags (selected):** `checkpoint-task-003e` … `checkpoint-task-006x-controlled-legal-object-promotion-execution`
 
@@ -258,24 +259,18 @@ Ingestion workers, live monitoring agents, live fetchers, change-detection engin
 
 ## Next Major Architectural Goal
 
-**Canonical Legal Memory — implementation complete, review pending** (006U–006X). Full governed pipeline:
+**Canonical Legal Memory phase — CLOSED** (006U–006X + 006X1). Full governed pipeline:
 
 ```text
 source_version → extraction → extracted_text → parsing → parsed_structure
-  → promotion persistence → promotion worker → legal_object (+ version on 006X)
+  → promotion persistence → promotion worker → legal_object (+ version)
 ```
 
-Parsing reviews **closed** (006Q–006T) and **verified** (006T1A). Promotion implementation at `checkpoint-task-006x-controlled-legal-object-promotion-execution`. **633 tests passing.**
+Claude review **CLOSED** — [CLAUDE_REVIEW_LEGAL_OBJECT_PROMOTION_006U-X.md](CLAUDE_REVIEW_LEGAL_OBJECT_PROMOTION_006U-X.md) (**APPROVED FOR CONTINUE**). **639 tests passing.**
 
-**Claude review:** **PENDING** — [CLAUDE_REVIEW_LEGAL_OBJECT_PROMOTION_006U-X.md](CLAUDE_REVIEW_LEGAL_OBJECT_PROMOTION_006U-X.md) · [reviewer package](TASKS/TASK-006U-X-LEGAL-OBJECT-PROMOTION-REVIEWER-PACKAGE.md). Required before any citation work.
+**Approved next:** **TASK-006Y** — Citation Assembly Contract (`legal_object` → citation assembly governance only).
 
-**After review closes only (not authorized yet):**
-
-| Task | Scope |
-|------|--------|
-| TASK-006Y | Citation assembly contract |
-| TASK-006Z | Citation persistence |
-| TASK-007A+ | Retrieval and query runtime |
+**Planned sequence (not all authorized):** 006Y contract → 006Z persistence → 007A+ retrieval/query runtime.
 
 **Governance boundaries (canonical):** `parsed_structure` ≠ legal meaning · `parsed_structure` ≠ legal object · `legal_object` ≠ legal meaning · `legal_object` ≠ citation · `legal_object` ≠ answer.
 
@@ -288,4 +283,4 @@ FOUNDATION → EXTRACTION CONTRACTS → LEGAL OBJECT GOVERNANCE → CITATION GOV
 → TEMPORAL GOVERNANCE → INGESTION PERSISTENCE → [TEST HARDENING] → AGENT LAYER → …
 ```
 
-**You are here:** full pipeline through controlled legal object promotion (006U–006X); Claude review gate before citation expansion.
+**You are here:** Canonical Legal Memory complete; citation layer open — TASK-006Y citation assembly contract authorized next.

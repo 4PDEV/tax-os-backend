@@ -4,6 +4,21 @@ All notable changes to `tax-os-backend` are documented here.
 
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versions align with git tags where applicable.
 
+## [governance-legal-object-promotion-review-closed-citation-open] - 2026-06-03
+
+### Changed
+
+- Claude review TASK-006U–006X: **CLOSED** — verdict **APPROVED FOR CONTINUE**.
+- Findings L-01, L-02, L-02b: **CLOSED** (L-02b via TASK-006X1).
+- Canonical Legal Memory phase: **CLOSED**.
+- Citation layer: **OPEN**.
+- TASK-006Y: **AUTHORIZED** (citation assembly contract; governance-only).
+
+### Notes
+
+- OD-021 remains open/informational (concurrent worker race; single-worker acceptable).
+- No citation persistence, answer generation, or retrieval runtime authorized.
+
 ## [task-006x1-legal-object-version-identity-hardening] - 2026-06-03
 
 ### Changed

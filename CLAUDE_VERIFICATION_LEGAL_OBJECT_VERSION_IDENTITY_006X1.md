@@ -73,9 +73,7 @@ Full suite run at task completion (see CHANGELOG).
 
 ## Gate impact
 
-- **Does not** close full Claude review 006U–006X by itself
-- **Does** satisfy L-02b prerequisite for targeted Claude verification
-- **Citation layer:** remains **NOT OPEN**
-- **TASK-006Y:** **HOLD**
-
-**Next:** Claude targeted verification of 006X1 artifact, then formal `APPROVED FOR CONTINUE` on 006U–006X review if no other blockers remain.
+- L-02b **CLOSED** as part of full 006U–006X review closure (2026-06-03)
+- Full Claude review: **CLOSED** — **APPROVED FOR CONTINUE**
+- **Citation layer:** **OPEN**
+- **TASK-006Y:** **AUTHORIZED**

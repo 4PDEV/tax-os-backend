@@ -88,7 +88,7 @@ Legal object promotion (TASK-006U–006X): contract through controlled execution
 
 | Task | Title | Notes |
 |------|-------|-------|
-| — | *(none in implementation)* | Complete Claude review 006U–006X first |
+| TASK-006Y | Citation assembly contract | 006U–006X review closed | **Authorized** — governance-only; no persistence/answers/retrieval |
 
 ---
 
@@ -100,13 +100,13 @@ Legal object promotion (TASK-006U–006X): contract through controlled execution
 | TASK-006W | Legal object promotion worker skeleton | TASK-006V | **Complete** — dry-run orchestration; terminal `skipped` |
 | TASK-006X | Controlled legal object promotion execution | TASK-006W | **Complete** — `ps-{parsed_structure_id}` identity; append-only versions on replay |
 
-**Canonical Legal Memory (006U–006X):** implementation **complete** on `main`; Claude review **PENDING / NOT CLOSED**.
+**Canonical Legal Memory (006U–006X + 006X1):** **CLOSED** — Claude review **APPROVED FOR CONTINUE** (2026-06-03).
 
-**Immediate next:** Formal Claude review checkpoint (006U–006X) — required before citation layer.
+**Citation layer:** **OPEN**. **TASK-006Y authorized** (contract only).
 
-**HOLD:** TASK-006Y, TASK-006Z, TASK-007A+ until review closes with explicit approval.
+**Planned:** 006Z citation persistence → 007A+ retrieval/query runtime (each requires explicit authorization).
 
-**Blocked:** citation layer, answer runtime, live monitoring agents, ingestion automation expansion.
+**Blocked until governed approval:** citation persistence (006Z), answer runtime, retrieval runtime, live monitoring agents, ingestion automation expansion.
 
 ---
 

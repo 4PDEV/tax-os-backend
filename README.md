@@ -63,7 +63,7 @@ tax-os-backend/
 |------|--------|
 | Platform phase | Legal memory + temporal governance + ingestion persistence (see [CURRENT_STATUS.md](CURRENT_STATUS.md)) |
 | Alembic migrations | Head `a4d2e8f93b36` |
-| Approved next task | **Claude review 006U–006X** (PENDING) — TASK-006Y on HOLD until review closes |
+| Approved next task | **TASK-006Y** — citation assembly contract (006U–006X review closed; citation layer open) |
 | Admin CRUD APIs | Operational |
 | Legal object / citation contracts | Merged on `main` (003A–004D) |
 | Temporal governance | Merged (005A–005C); tag `checkpoint-task-005a-spec` |
@@ -137,7 +137,7 @@ Initial jurisdiction focus: **Rwanda**. Initial tax domains: VAT, PAYE/PIT, WHT,
 | [TASKS/TASK-006W-LEGAL-OBJECT-PROMOTION-WORKER-SKELETON.md](TASKS/TASK-006W-LEGAL-OBJECT-PROMOTION-WORKER-SKELETON.md) | TASK-006W worker skeleton record |
 | [TASKS/TASK-006X-CONTROLLED-LEGAL-OBJECT-PROMOTION-EXECUTION.md](TASKS/TASK-006X-CONTROLLED-LEGAL-OBJECT-PROMOTION-EXECUTION.md) | TASK-006X controlled promotion execution record |
 | [TASKS/TASK-006U-X-LEGAL-OBJECT-PROMOTION-REVIEWER-PACKAGE.md](TASKS/TASK-006U-X-LEGAL-OBJECT-PROMOTION-REVIEWER-PACKAGE.md) | Claude review package (006U–006X) |
-| [CLAUDE_REVIEW_LEGAL_OBJECT_PROMOTION_006U-X.md](CLAUDE_REVIEW_LEGAL_OBJECT_PROMOTION_006U-X.md) | Claude review record — **PENDING** |
+| [CLAUDE_REVIEW_LEGAL_OBJECT_PROMOTION_006U-X.md](CLAUDE_REVIEW_LEGAL_OBJECT_PROMOTION_006U-X.md) | Claude review record — **CLOSED** (APPROVED FOR CONTINUE) |
 | [CLAUDE_VERIFICATION_LEGAL_OBJECT_VERSION_IDENTITY_006X1.md](CLAUDE_VERIFICATION_LEGAL_OBJECT_VERSION_IDENTITY_006X1.md) | L-02b verification (TASK-006X1) |
 | [TASKS/TASK-006X1-LEGAL-OBJECT-VERSION-IDENTITY-HARDENING.md](TASKS/TASK-006X1-LEGAL-OBJECT-VERSION-IDENTITY-HARDENING.md) | TASK-006X1 record |
 | [TASKS/TASK-006Q-PARSING-TRIGGER-CONTRACT.md](TASKS/TASK-006Q-PARSING-TRIGGER-CONTRACT.md) | TASK-006Q contract record |

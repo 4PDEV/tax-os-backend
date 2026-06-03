@@ -2,7 +2,7 @@
 
 **Purpose:** Claude review checkpoint before citation layer (006Y+).
 
-**Status:** Review **PENDING / NOT CLOSED** — see [CLAUDE_REVIEW_LEGAL_OBJECT_PROMOTION_006U-X.md](../CLAUDE_REVIEW_LEGAL_OBJECT_PROMOTION_006U-X.md)
+**Status:** Review **CLOSED** (2026-06-03) — **APPROVED FOR CONTINUE** — see [CLAUDE_REVIEW_LEGAL_OBJECT_PROMOTION_006U-X.md](../CLAUDE_REVIEW_LEGAL_OBJECT_PROMOTION_006U-X.md)
 
 **Checkpoint tag:** `checkpoint-task-006x-controlled-legal-object-promotion-execution`
 
@@ -51,12 +51,8 @@ Creation-time idempotency closed (006V). Execution-time multi-worker replay race
 
 | Item | Status |
 |------|--------|
-| TASK-006X | Implemented + checkpointed |
-| Claude review 006U–006X | **PENDING** |
-| Canonical Legal Memory phase | Implementation complete; **not closed** until review |
-| Citation layer | **NOT OPEN** |
-| TASK-006Y | **HOLD** |
-
-**Close review with:** explicit `APPROVED FOR CONTINUE` (or equivalent) from Claude.
-
-**After review only:** TASK-006Y → TASK-006Z → TASK-007A+.
+| TASK-006X / 006X1 | Complete |
+| Claude review 006U–006X | **CLOSED** — APPROVED FOR CONTINUE |
+| Canonical Legal Memory phase | **CLOSED** |
+| Citation layer | **OPEN** |
+| TASK-006Y | **AUTHORIZED** (contract only) |

@@ -1,9 +1,10 @@
 # Architecture Review — Legal Object Promotion (TASK-006U through TASK-006X)
 
-**Reviewer role:** Claude-style architecture review (post-checkpoint `checkpoint-task-006x-controlled-legal-object-promotion-execution`)  
+**Reviewer role:** Claude architecture review  
 **Date:** 2026-06-03  
-**Scope:** TASK-006U, 006V, 006W, 006X; upstream parsing pipeline (006Q–006T1A); `LEGAL_OBJECT_PROMOTION_CONTRACT.md`  
-**Verdict:** **PENDING** — awaiting formal Claude review sign-off (`APPROVED FOR CONTINUE` or equivalent). **Do not** open citation layer or start TASK-006Y until closed.
+**Closure date:** 2026-06-03  
+**Scope:** TASK-006U, 006V, 006W, 006X, 006X1; upstream parsing pipeline (006Q–006T1A); `LEGAL_OBJECT_PROMOTION_CONTRACT.md`  
+**Verdict:** **CLOSED** — **APPROVED FOR CONTINUE**
 
 ---
 
@@ -11,7 +12,7 @@
 
 The legal object promotion path from governed `parsed_structure` evidence through promotion persistence, dry-run orchestration, and controlled materialization is **architecturally sound and governance-bounded**.
 
-**633 tests pass** at the 006X checkpoint. Dry-run and controlled-promotion modes are explicitly gated. Controlled promotion reads **only** `parsed_structure` (and resolvable provenance rows) — no network, AI, citation, or answer generation.
+**639 tests pass** at 006X1 verification. Dry-run and controlled-promotion modes are explicitly gated. Controlled promotion reads **only** `parsed_structure` (and resolvable provenance rows) — no network, AI, citation, or answer generation.
 
 **Mandatory doctrines enforced:**
 
@@ -24,75 +25,37 @@ The legal object promotion path from governed `parsed_structure` evidence throug
 
 **Identity:** `legal_object_id = ps-{parsed_structure_id}`; `force_repromotion` appends new `legal_object_version` (append-only).
 
-**Review focus:** Confirm legal-object creation has **not** crossed into legal interpretation, applicability inference, or taxpayer-effect determination.
+Legal-object creation has **not** crossed into legal interpretation, applicability inference, or taxpayer-effect determination.
 
 ---
 
-## 1. Promotion idempotency (006V / 006P1 / 006R parity)
+## Findings (closed)
 
-| Mechanism | Behavior |
-|-----------|----------|
-| Default `promotion_hash` | SHA-256(`parsed_structure_id`) only |
-| DB uniqueness | Partial unique index WHERE `force_repromotion = false` |
-| Worker skip | Terminal `promoted` / `skipped` / `failed`; global `promoted` guard per structure |
-| Force replay | Unique hash per force row; append-only `legal_object_version` on 006X |
-
-Creation-time duplicate promotion is closed at persistence layer. **OD-021** execution-time race under concurrent promotion workers remains deferred (LOW single-worker; MEDIUM under concurrency).
-
----
-
-## 2. Controlled materialization (006X)
-
-| Check | Result |
-|-------|--------|
-| Input scope | `parsed_structure` only |
-| Object identity | `ps-{parsed_structure_id}` |
-| Version hash | Default: `structure_hash`; replay: `sha256(structure_hash:request_id)` |
-| Temporal | `effective_from` / `effective_to` copied from `source_version` — not inferred |
-| Provenance | `object_title` records structural IDs/hashes only |
-| Pipeline state | `extracted` → `parsed` → `legal_objects_created` when applicable |
+| ID | Finding | Status |
+|----|---------|--------|
+| L-01 | LegalObjectType vocabulary structural-only | **CLOSED** |
+| L-02 | Canonical legal-memory write path append-only | **CLOSED** |
+| L-02b | `UNIQUE(legal_object_id, text_hash)` at DB layer | **CLOSED** — [CLAUDE_VERIFICATION_LEGAL_OBJECT_VERSION_IDENTITY_006X1.md](CLAUDE_VERIFICATION_LEGAL_OBJECT_VERSION_IDENTITY_006X1.md) (TASK-006X1) |
+| — | No interpretive fields in 006X materialization | Verified |
+| OD-021 | Execution-time replay race under concurrent workers | **OPEN / INFORMATIONAL** — see [OPEN_DECISIONS.md](OPEN_DECISIONS.md) |
 
 ---
 
-## 3. Dry-run semantics (006W)
-
-`skipped` on a result row means **dry-run orchestration completed without promotion execution** — not that the request was ignored. Worker `requests_skipped` counts ineligible/terminal requests that never entered processing.
-
----
-
-## 4. Provenance chain (citation-ready lineage)
-
-```text
-source_version → extraction_run → extracted_text → parser_run → parsed_structure → legal_object
-```
-
-No lineage break observed in implementation. Future citation assembly (006Y+) may depend on this chain.
-
----
-
-## 5. Findings
-
-| ID | Finding | Severity | Status |
-|----|---------|----------|--------|
-| — | No interpretive fields introduced in 006X materialization | — | Verified |
-| L-02b | `UNIQUE(legal_object_id, text_hash)` on `legal_object_versions` | Blocker (pre-006X1) | **VERIFIED** — see [CLAUDE_VERIFICATION_LEGAL_OBJECT_VERSION_IDENTITY_006X1.md](CLAUDE_VERIFICATION_LEGAL_OBJECT_VERSION_IDENTITY_006X1.md) (TASK-006X1) |
-| OD-021 | Execution-time replay race under concurrent workers | LOW / MEDIUM | Deferred to citation/retrieval concurrency design |
-
----
-
-## 6. Approval record
+## Gate closure record
 
 | Item | Status |
 |------|--------|
-| TASK-006X implementation | **Complete** — checkpoint `checkpoint-task-006x-controlled-legal-object-promotion-execution` |
-| Claude review (this document) | **PENDING / NOT CLOSED** |
-| Canonical Legal Memory phase | **Implementation complete** — phase gate **not closed** until review closes |
-| Citation layer | **NOT OPEN** |
-| TASK-006Y | **HOLD** until review closes |
+| TASK-006U–006X Claude review | **CLOSED** |
+| Verdict | **APPROVED FOR CONTINUE** |
+| Canonical Legal Memory phase | **CLOSED** |
+| Citation layer | **OPEN** |
+| TASK-006Y | **AUTHORIZED** (governance-only citation assembly contract) |
+| TASK-006Z | Planned after 006Y — not authorized until explicit approval |
+| TASK-007A+ | Planned after citation persistence — not authorized until explicit approval |
 
-**Required to close review:** explicit Claude confirmation (e.g. `APPROVED FOR CONTINUE`).
+**006Y scope boundary:** `legal_object` → citation assembly **contract** only. Still **no** citation persistence, answer generation, retrieval runtime, legal advice, or tax/applicability inference.
 
-**After review closes only:** TASK-006Y → TASK-006Z → TASK-007A+ per governance sequence.
+**Blocked until governed task approval:** citation persistence (006Z), answer runtime, retrieval runtime.
 
 ---
 
@@ -100,4 +63,5 @@ No lineage break observed in implementation. Future citation assembly (006Y+) ma
 
 - [LEGAL_OBJECT_PROMOTION_CONTRACT.md](LEGAL_OBJECT_PROMOTION_CONTRACT.md)
 - [TASKS/TASK-006U-X-LEGAL-OBJECT-PROMOTION-REVIEWER-PACKAGE.md](TASKS/TASK-006U-X-LEGAL-OBJECT-PROMOTION-REVIEWER-PACKAGE.md)
+- [CLAUDE_VERIFICATION_LEGAL_OBJECT_VERSION_IDENTITY_006X1.md](CLAUDE_VERIFICATION_LEGAL_OBJECT_VERSION_IDENTITY_006X1.md)
 - [CLAUDE_REVIEW_PARSING_PIPELINE_006Q-T.md](CLAUDE_REVIEW_PARSING_PIPELINE_006Q-T.md) (upstream, closed)
