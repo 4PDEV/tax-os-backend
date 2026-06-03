@@ -88,7 +88,7 @@ Legal object promotion (TASK-006U–006X): contract through controlled execution
 
 | Task | Title | Notes |
 |------|-------|-------|
-| TASK-006AB | Citation worker skeleton (dry-run) | TASK-006AA pre-auth | **Authorized** — implement per review envelope |
+| — | — | Citation dry-run worker complete; execution requires new review gate |
 
 ---
 

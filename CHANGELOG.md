@@ -4,6 +4,18 @@ All notable changes to `tax-os-backend` are documented here.
 
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versions align with git tags where applicable.
 
+## [task-006ab-citation-worker-skeleton] - 2026-06-03
+
+### Added
+
+- TASK-006AB: dry-run `CitationAssemblyGovernanceWorker` — `accepted` → `skipped`; no 004D assembler.
+- Module: `backend/app/workers/citation_assembly_governance/`
+- Tests: `test_citation_assembly_governance_worker_skeleton.py`
+
+### Notes
+
+- **678 tests passed**. Citation execution not authorized.
+
 ## [task-006aa-citation-worker-skeleton-preauth-review] - 2026-06-03
 
 ### Added

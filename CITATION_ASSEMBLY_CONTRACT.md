@@ -147,7 +147,7 @@ Allowed `citation_status` values only:
 
 `assembled` means the citation assembly lifecycle reached a terminal success handoff for the request. It does **not** imply legal meaning is correct, tax effect is known, applicability is determined, or answers are ready.
 
-**Dry-run worker (future skeleton task):** successful orchestration may record `accepted` then `skipped` with `citation_id` null. Here `skipped` means **orchestration completed without citation execution** — not that the request was ignored.
+**Dry-run worker (TASK-006AB):** successful orchestration records `accepted` then `skipped` with `citation_id` null. Here `skipped` means **orchestration completed without citation execution** — not that the request was ignored.
 
 ## Citation error categories
 
