@@ -53,7 +53,7 @@ Pending architectural or operational decisions. Resolve via `tax-os-architecture
 
 **Reviews:** [`CLAUDE_REVIEW_PARSING_PIPELINE_006Q-T.md`](CLAUDE_REVIEW_PARSING_PIPELINE_006Q-T.md) **CLOSED** · [`CLAUDE_VERIFICATION_PARSED_STRUCTURE_IDENTITY_006T1A.md`](CLAUDE_VERIFICATION_PARSED_STRUCTURE_IDENTITY_006T1A.md) **VERIFIED** (2026-06-02).
 
-**Legal-object promotion gate:** **CLOSED** (Claude review 006U–006X, 2026-06-03). Citation gate **OPEN** via TASK-006Y+ when approved. Doctrine: `parsed_structure` ≠ legal object; `legal_object` ≠ legal meaning; `legal_object` ≠ citation ≠ answer.
+**Legal-object promotion gate:** **OPEN for Claude review** — TASK-006X implemented + checkpointed; review **PENDING / NOT CLOSED**. Citation layer **NOT OPEN**. TASK-006Y **HOLD**. Doctrine: `parsed_structure` ≠ legal object; `legal_object` ≠ legal meaning; `legal_object` ≠ citation ≠ answer.
 
 ## Test gaps (QA)
 

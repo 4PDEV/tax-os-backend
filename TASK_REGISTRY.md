@@ -69,7 +69,7 @@ Bounded task tracking for `tax-os-backend`. Authoritative specs remain in `tax-o
 | TASK-006V | Legal Object Promotion Persistence | Complete | Append-only requests/results; `parsed_structure_id` idempotency; no promotion execution |
 | TASK-006W | Legal Object Promotion Worker Skeleton | Complete | Dry-run orchestration; terminal `skipped`; no legal object creation |
 | TASK-006X | Controlled Legal Object Promotion Execution | Complete | Checkpoint `checkpoint-task-006x-controlled-legal-object-promotion-execution`; 633 tests |
-| TASK-006Y | Citation Assembly Contract | Planned | After 006U–006X Claude review; governance-only |
+| TASK-006Y | Citation Assembly Contract | Hold | After 006U–006X Claude review closes; not authorized until then |
 | TASK-006Z | Citation Persistence | Planned | After TASK-006Y |
 | TASK-007A+ | Retrieval & Query Runtime | Planned | After citation persistence; governed query path |
 | TASK-DOC-001 | Master Status Document Realignment | Complete | CURRENT_STATUS, IMPLEMENTATION_ROADMAP, ARCHITECTURE_PHASE_MAP |
@@ -79,6 +79,7 @@ Bounded task tracking for `tax-os-backend`. Authoritative specs remain in `tax-o
 | Status | Meaning |
 |--------|---------|
 | Planned | Approved, not started |
+| Hold | Blocked until prerequisite gate closes (e.g. Claude review) |
 | In progress | Active implementation |
 | Pending VM acceptance | Code complete; VM verification required |
 | Complete | Accepted per task governance |

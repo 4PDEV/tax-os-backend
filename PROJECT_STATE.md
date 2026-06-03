@@ -843,7 +843,7 @@ TASK-006T — Controlled Parsing Execution (**complete**; structural `parsed_str
 
 TASK-006T1A — Parsed Structure Identity Hardening (**verified**; P-01/P-02 closed).
 
-**Parsing phase (006Q–006T):** Claude review **closed**. **Legal-object promotion (006U–006X):** Claude review **closed** (2026-06-03). Citation gate open via TASK-006Y when authorized.
+**Parsing phase (006Q–006T):** Claude review **closed**. **Legal-object promotion (006U–006X):** TASK-006X implemented + checkpointed; Claude review **PENDING**. Citation layer **NOT OPEN**. TASK-006Y **HOLD**.
 
 TASK-006U — Legal Object Promotion Contract (**complete**; governance-only).
 
@@ -853,7 +853,7 @@ TASK-006W — Legal Object Promotion Worker Skeleton (**complete**; dry-run orch
 
 TASK-006X — Controlled Legal Object Promotion Execution (**complete**).
 
-**Next:** TASK-006Y Citation Assembly Contract (006U–006X review closed).
+**Next:** Complete Claude review 006U–006X. TASK-006Y on HOLD until review closes.
 
 TASK-006P — Controlled Extraction Execution (**completed; controlled local text extraction into extraction_runs/extracted_texts; no PDF/network/parsing/legal automation**).
 

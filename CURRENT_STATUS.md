@@ -15,7 +15,7 @@ For detailed historical sections, see [PROJECT_STATE.md](PROJECT_STATE.md). For 
 
 The platform is materially beyond early foundation. Core registry, processing queue, extraction/parser **contracts**, legal-object **persistence**, citation **governance**, temporal **governance**, and ingestion **artifact persistence** are in place on `main`.
 
-**Active gate:** **Citation layer** — Claude review **CLOSED** (006U–006X, 2026-06-03). Canonical Legal Memory phase **complete**. TASK-006Y citation assembly contract approved next when implementation authorized. No citation persistence or answer runtime until 006Y+ governance tasks approve.
+**Active gate:** **Claude review (006U–006X) — PENDING / NOT CLOSED.** TASK-006X implemented and checkpointed. Canonical Legal Memory phase implementation complete; **phase not closed** until review signs off. Citation layer **NOT OPEN**. TASK-006Y **HOLD**.
 
 **Environments:** development and internal staging only. No public production deployment.
 
@@ -258,7 +258,7 @@ Ingestion workers, live monitoring agents, live fetchers, change-detection engin
 
 ## Next Major Architectural Goal
 
-**Canonical Legal Memory phase — implementation complete** (006U–006X). Full governed pipeline:
+**Canonical Legal Memory — implementation complete, review pending** (006U–006X). Full governed pipeline:
 
 ```text
 source_version → extraction → extracted_text → parsing → parsed_structure
@@ -267,9 +267,9 @@ source_version → extraction → extracted_text → parsing → parsed_structur
 
 Parsing reviews **closed** (006Q–006T) and **verified** (006T1A). Promotion implementation at `checkpoint-task-006x-controlled-legal-object-promotion-execution`. **633 tests passing.**
 
-**Claude review:** **CLOSED** — [CLAUDE_REVIEW_LEGAL_OBJECT_PROMOTION_006U-X.md](CLAUDE_REVIEW_LEGAL_OBJECT_PROMOTION_006U-X.md). Legal-object creation verified non-interpretive.
+**Claude review:** **PENDING** — [CLAUDE_REVIEW_LEGAL_OBJECT_PROMOTION_006U-X.md](CLAUDE_REVIEW_LEGAL_OBJECT_PROMOTION_006U-X.md) · [reviewer package](TASKS/TASK-006U-X-LEGAL-OBJECT-PROMOTION-REVIEWER-PACKAGE.md). Required before any citation work.
 
-**Approved next (governance sequence; implement only when explicitly authorized):**
+**After review closes only (not authorized yet):**
 
 | Task | Scope |
 |------|--------|

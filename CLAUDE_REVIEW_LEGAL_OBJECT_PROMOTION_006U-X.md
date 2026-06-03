@@ -3,7 +3,7 @@
 **Reviewer role:** Claude-style architecture review (post-checkpoint `checkpoint-task-006x-controlled-legal-object-promotion-execution`)  
 **Date:** 2026-06-03  
 **Scope:** TASK-006U, 006V, 006W, 006X; upstream parsing pipeline (006Q–006T1A); `LEGAL_OBJECT_PROMOTION_CONTRACT.md`  
-**Verdict:** **CLOSED** (2026-06-03) — citation assembly gate may open via TASK-006Y when explicitly approved
+**Verdict:** **PENDING** — awaiting formal Claude review sign-off (`APPROVED FOR CONTINUE` or equivalent). **Do not** open citation layer or start TASK-006Y until closed.
 
 ---
 
@@ -24,7 +24,7 @@ The legal object promotion path from governed `parsed_structure` evidence throug
 
 **Identity:** `legal_object_id = ps-{parsed_structure_id}`; `force_repromotion` appends new `legal_object_version` (append-only).
 
-**Gate satisfied:** Legal-object creation has **not** crossed into legal interpretation, applicability inference, or taxpayer-effect determination.
+**Review focus:** Confirm legal-object creation has **not** crossed into legal interpretation, applicability inference, or taxpayer-effect determination.
 
 ---
 
@@ -81,15 +81,17 @@ No lineage break observed in implementation. Future citation assembly (006Y+) ma
 
 ## 6. Approval record
 
-**TASK-006X COMPLETE — CONTROLLED LEGAL OBJECT PROMOTION EXECUTION ACCEPTED**
+| Item | Status |
+|------|--------|
+| TASK-006X implementation | **Complete** — checkpoint `checkpoint-task-006x-controlled-legal-object-promotion-execution` |
+| Claude review (this document) | **PENDING / NOT CLOSED** |
+| Canonical Legal Memory phase | **Implementation complete** — phase gate **not closed** until review closes |
+| Citation layer | **NOT OPEN** |
+| TASK-006Y | **HOLD** until review closes |
 
-**Canonical Legal Memory phase — CLOSED** on `main` at `checkpoint-task-006x-controlled-legal-object-promotion-execution`.
+**Required to close review:** explicit Claude confirmation (e.g. `APPROVED FOR CONTINUE`).
 
-**Do not proceed to citation persistence or answer runtime without governed tasks.** Approved sequence after explicit task approval:
-
-1. TASK-006Y — Citation Assembly Contract  
-2. TASK-006Z — Citation Persistence  
-3. TASK-007A+ — Retrieval & Query Runtime  
+**After review closes only:** TASK-006Y → TASK-006Z → TASK-007A+ per governance sequence.
 
 ---
 

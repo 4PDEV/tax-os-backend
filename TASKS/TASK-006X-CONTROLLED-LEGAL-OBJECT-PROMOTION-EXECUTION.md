@@ -1,6 +1,6 @@
 # TASK-006X — Controlled Legal Object Promotion Execution
 
-**Status:** Complete — accepted at `checkpoint-task-006x-controlled-legal-object-promotion-execution` (Claude review CLOSED 2026-06-03)  
+**Status:** Complete — checkpointed at `checkpoint-task-006x-controlled-legal-object-promotion-execution`. Claude review 006U–006X **PENDING** (not acceptance of review closure).  
 **Depends on:** TASK-006W
 
 ## Scope delivered

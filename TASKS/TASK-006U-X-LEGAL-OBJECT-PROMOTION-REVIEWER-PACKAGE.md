@@ -2,7 +2,7 @@
 
 **Purpose:** Claude review checkpoint before citation layer (006Y+).
 
-**Status:** Review **CLOSED** (2026-06-03) — see [CLAUDE_REVIEW_LEGAL_OBJECT_PROMOTION_006U-X.md](../CLAUDE_REVIEW_LEGAL_OBJECT_PROMOTION_006U-X.md)
+**Status:** Review **PENDING / NOT CLOSED** — see [CLAUDE_REVIEW_LEGAL_OBJECT_PROMOTION_006U-X.md](../CLAUDE_REVIEW_LEGAL_OBJECT_PROMOTION_006U-X.md)
 
 **Checkpoint tag:** `checkpoint-task-006x-controlled-legal-object-promotion-execution`
 
@@ -47,12 +47,16 @@ source_version
 
 Creation-time idempotency closed (006V). Execution-time multi-worker replay race deferred to citation/retrieval concurrency design.
 
-## Expected next phase (after review sign-off)
+## Gate status
 
-| Task | Scope |
+| Item | Status |
 |------|--------|
-| TASK-006Y | Citation assembly contract |
-| TASK-006Z | Citation persistence |
-| TASK-007A+ | Retrieval and query runtime |
+| TASK-006X | Implemented + checkpointed |
+| Claude review 006U–006X | **PENDING** |
+| Canonical Legal Memory phase | Implementation complete; **not closed** until review |
+| Citation layer | **NOT OPEN** |
+| TASK-006Y | **HOLD** |
 
-**Gate:** No citation/answer automation until 006U–006X review confirms legal-object creation has not crossed into legal interpretation.
+**Close review with:** explicit `APPROVED FOR CONTINUE` (or equivalent) from Claude.
+
+**After review only:** TASK-006Y → TASK-006Z → TASK-007A+.
