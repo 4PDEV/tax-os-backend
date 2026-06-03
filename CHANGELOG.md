@@ -4,6 +4,14 @@ All notable changes to `tax-os-backend` are documented here.
 
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versions align with git tags where applicable.
 
+## [governance-canonical-legal-memory-phase-closed] - 2026-06-03
+
+### Changed
+
+- Claude review TASK-006U–006X: **CLOSED** — `CLAUDE_REVIEW_LEGAL_OBJECT_PROMOTION_006U-X.md`.
+- Canonical Legal Memory phase complete; citation gate open via TASK-006Y when authorized.
+- TASK-006X accepted at `checkpoint-task-006x-controlled-legal-object-promotion-execution`.
+
 ## [task-006x-controlled-legal-object-promotion-execution] - 2026-06-03
 
 ### Added

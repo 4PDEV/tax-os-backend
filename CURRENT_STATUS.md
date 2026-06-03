@@ -15,7 +15,7 @@ For detailed historical sections, see [PROJECT_STATE.md](PROJECT_STATE.md). For 
 
 The platform is materially beyond early foundation. Core registry, processing queue, extraction/parser **contracts**, legal-object **persistence**, citation **governance**, temporal **governance**, and ingestion **artifact persistence** are in place on `main`.
 
-**Active gate:** **Claude review (006U–006X)** — Canonical Legal Memory phase **implementation complete**; sign-off required before citation layer. Citation/answer automation prohibited until review approves 006Y+.
+**Active gate:** **Citation layer** — Claude review **CLOSED** (006U–006X, 2026-06-03). Canonical Legal Memory phase **complete**. TASK-006Y citation assembly contract approved next when implementation authorized. No citation persistence or answer runtime until 006Y+ governance tasks approve.
 
 **Environments:** development and internal staging only. No public production deployment.
 
@@ -267,9 +267,9 @@ source_version → extraction → extracted_text → parsing → parsed_structur
 
 Parsing reviews **closed** (006Q–006T) and **verified** (006T1A). Promotion implementation at `checkpoint-task-006x-controlled-legal-object-promotion-execution`. **633 tests passing.**
 
-**Active gate:** Claude review ([TASK-006U-X reviewer package](TASKS/TASK-006U-X-LEGAL-OBJECT-PROMOTION-REVIEWER-PACKAGE.md)) — confirm 006X has not crossed into legal interpretation.
+**Claude review:** **CLOSED** — [CLAUDE_REVIEW_LEGAL_OBJECT_PROMOTION_006U-X.md](CLAUDE_REVIEW_LEGAL_OBJECT_PROMOTION_006U-X.md). Legal-object creation verified non-interpretive.
 
-**After review sign-off (planned, not authorized until review closes):**
+**Approved next (governance sequence; implement only when explicitly authorized):**
 
 | Task | Scope |
 |------|--------|

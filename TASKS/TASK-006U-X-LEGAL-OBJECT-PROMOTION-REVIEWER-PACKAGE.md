@@ -2,6 +2,8 @@
 
 **Purpose:** Claude review checkpoint before citation layer (006Y+).
 
+**Status:** Review **CLOSED** (2026-06-03) — see [CLAUDE_REVIEW_LEGAL_OBJECT_PROMOTION_006U-X.md](../CLAUDE_REVIEW_LEGAL_OBJECT_PROMOTION_006U-X.md)
+
 **Checkpoint tag:** `checkpoint-task-006x-controlled-legal-object-promotion-execution`
 
 ## Pipeline delivered
