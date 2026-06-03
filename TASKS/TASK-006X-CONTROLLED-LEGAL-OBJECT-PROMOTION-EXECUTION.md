@@ -1,6 +1,6 @@
 # TASK-006X — Controlled Legal Object Promotion Execution
 
-**Status:** Complete  
+**Status:** Complete — checkpoint `checkpoint-task-006x-controlled-legal-object-promotion-execution`  
 **Depends on:** TASK-006W
 
 ## Scope delivered

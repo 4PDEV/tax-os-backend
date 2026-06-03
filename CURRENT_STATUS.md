@@ -3,7 +3,7 @@
 **Canonical high-level platform status** (TASK-DOC-001).  
 For detailed historical sections, see [PROJECT_STATE.md](PROJECT_STATE.md). For task-level tracking, see [TASK_REGISTRY.md](TASK_REGISTRY.md).
 
-**Last realigned:** 2026-06-02  
+**Last realigned:** 2026-06-03  
 **Branch:** `main`  
 **Alembic head:** `b5c3e9a04d47` (legal object promotion persistence)
 
@@ -15,7 +15,7 @@ For detailed historical sections, see [PROJECT_STATE.md](PROJECT_STATE.md). For 
 
 The platform is materially beyond early foundation. Core registry, processing queue, extraction/parser **contracts**, legal-object **persistence**, citation **governance**, temporal **governance**, and ingestion **artifact persistence** are in place on `main`.
 
-**Active gate:** **Canonical legal memory phase** — Claude review before citation layer expansion. TASK-006X controlled promotion execution complete. Acquisition → extraction → parsing **verified**. Citation/answer automation prohibited until governed tasks approve.
+**Active gate:** **Claude review (006U–006X)** — Canonical Legal Memory phase **implementation complete**; sign-off required before citation layer. Citation/answer automation prohibited until review approves 006Y+.
 
 **Environments:** development and internal staging only. No public production deployment.
 
@@ -56,7 +56,7 @@ The platform is materially beyond early foundation. Core registry, processing qu
 | Legal object promotion worker skeleton | Dry-run orchestration from promotion requests to lifecycle results; terminal `skipped`; no legal object creation | TASK-006W |
 | Controlled legal object promotion execution | First canonical `legal_object` / `legal_object_version` from `parsed_structure`; non-interpretive; no citations/answers | TASK-006X |
 
-**Checkpoint tags (selected):** `checkpoint-task-003e` … `checkpoint-task-006w-legal-object-promotion-worker-skeleton`
+**Checkpoint tags (selected):** `checkpoint-task-003e` … `checkpoint-task-006x-controlled-legal-object-promotion-execution`
 
 ---
 
@@ -258,21 +258,26 @@ Ingestion workers, live monitoring agents, live fetchers, change-detection engin
 
 ## Next Major Architectural Goal
 
-**Acquisition → extraction → parsing phase complete.** Trusted structural evidence layer:
+**Canonical Legal Memory phase — implementation complete** (006U–006X). Full governed pipeline:
 
 ```text
-source_version → extraction → extracted_text → parsing trigger → parser_run → parsed_structure
+source_version → extraction → extracted_text → parsing → parsed_structure
+  → promotion persistence → promotion worker → legal_object (+ version on 006X)
 ```
 
-Claude reviews **closed** (006Q–006T) and **verified** (006T1A). **Legal-object promotion gate OPEN.**
+Parsing reviews **closed** (006Q–006T) and **verified** (006T1A). Promotion implementation at `checkpoint-task-006x-controlled-legal-object-promotion-execution`. **633 tests passing.**
 
-**Approved next:** Claude review checkpoint (promotion pipeline 006U–006X) before citation assembly expansion.
+**Active gate:** Claude review ([TASK-006U-X reviewer package](TASKS/TASK-006U-X-LEGAL-OBJECT-PROMOTION-REVIEWER-PACKAGE.md)) — confirm 006X has not crossed into legal interpretation.
 
-**Planned sequence:** Claude review → governed citation layer tasks when approved.
+**After review sign-off (planned, not authorized until review closes):**
 
-**Governance boundaries (canonical):** `parsed_structure` ≠ legal meaning · `parsed_structure` ≠ legal object · `legal_object` ≠ citation.
+| Task | Scope |
+|------|--------|
+| TASK-006Y | Citation assembly contract |
+| TASK-006Z | Citation persistence |
+| TASK-007A+ | Retrieval and query runtime |
 
-**Doctrine:** Canonical legal memory creation active (006X); `legal_object` ≠ citation ≠ answer.
+**Governance boundaries (canonical):** `parsed_structure` ≠ legal meaning · `parsed_structure` ≠ legal object · `legal_object` ≠ legal meaning · `legal_object` ≠ citation · `legal_object` ≠ answer.
 
 ---
 
