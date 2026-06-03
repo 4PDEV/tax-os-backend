@@ -2,7 +2,7 @@
 
 ## Status
 
-**Complete** (contract-only; governance-only)
+**Complete** — accepted at `checkpoint-task-006u-legal-object-promotion-contract`
 
 ## Objective
 

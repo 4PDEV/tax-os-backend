@@ -53,7 +53,7 @@ The platform is materially beyond early foundation. Core registry, processing qu
 | Parsed structure identity hardening | `UNIQUE(parsed_structures.parser_run_id)`; P-01 remediated | TASK-006T1A |
 | Legal object promotion governance | Governed `parsed_structure` → `legal_object` boundary; `parsed_structure` ≠ legal object | TASK-006U |
 
-**Checkpoint tags (selected):** `checkpoint-task-003e` … `checkpoint-task-006t1a-parsed-structure-identity`
+**Checkpoint tags (selected):** `checkpoint-task-003e` … `checkpoint-task-006u-legal-object-promotion-contract`
 
 ---
 
@@ -267,7 +267,9 @@ Claude reviews **closed** (006Q–006T) and **verified** (006T1A). **Legal-objec
 
 **Planned sequence:** 006V persistence → 006W worker skeleton → 006X controlled execution → Claude review before citation assembly expansion.
 
-**Doctrine:** `parsed_structure` ≠ legal meaning (006Q–006T); `parsed_structure` ≠ legal object (006U+).
+**Governance boundaries (canonical):** `parsed_structure` ≠ legal meaning · `parsed_structure` ≠ legal object · `legal_object` ≠ citation.
+
+**Doctrine:** Canonical Legal Memory phase begun (006U contract); persistence via TASK-006V.
 
 ---
 
