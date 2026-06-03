@@ -55,7 +55,7 @@ Pending architectural or operational decisions. Resolve via `tax-os-architecture
 
 **Legal-object promotion gate:** **CLOSED** (Claude review 006U–006X, 2026-06-03 — **APPROVED FOR CONTINUE**). L-01, L-02, L-02b **CLOSED**.
 
-**Citation layer:** **OPEN** — TASK-006Y **AUTHORIZED** (citation assembly contract, governance-only). No citation persistence (006Z), answer generation, or retrieval runtime until explicitly approved.
+**Citation layer:** **OPEN** — TASK-006Y **COMPLETE** ([`CITATION_ASSEMBLY_CONTRACT.md`](CITATION_ASSEMBLY_CONTRACT.md); governance-only). No citation persistence (006Z), workers, execution, answer generation, or retrieval runtime until explicitly approved.
 
 Doctrine: `parsed_structure` ≠ legal object; `legal_object` ≠ legal meaning; `legal_object` ≠ citation ≠ answer.
 
@@ -79,6 +79,7 @@ Doctrine: `parsed_structure` ≠ legal object; `legal_object` ≠ legal meaning;
 | L-02 | Canonical legal-memory write path append-only | 006U–006X review | 2026-06-03 |
 | L-02b | `UNIQUE(legal_object_id, text_hash)` on `legal_object_versions` | TASK-006X1 | 2026-06-03 |
 | 006U–006X | Legal object promotion pipeline review | **APPROVED FOR CONTINUE** | 2026-06-03 |
+| TASK-006Y | Citation assembly contract (ingestion pipeline) | Complete — governance only | 2026-06-03 |
 
 When closing a decision, move row to Decision Log and reference approving task.
 

@@ -63,7 +63,7 @@ tax-os-backend/
 |------|--------|
 | Platform phase | Legal memory + temporal governance + ingestion persistence (see [CURRENT_STATUS.md](CURRENT_STATUS.md)) |
 | Alembic migrations | Head `a4d2e8f93b36` |
-| Approved next task | **TASK-006Y** — citation assembly contract (006U–006X review closed; citation layer open) |
+| Approved next task | **TASK-006Z** — citation persistence (planned; not authorized until explicit approval) |
 | Admin CRUD APIs | Operational |
 | Legal object / citation contracts | Merged on `main` (003A–004D) |
 | Temporal governance | Merged (005A–005C); tag `checkpoint-task-005a-spec` |
@@ -120,7 +120,7 @@ Initial jurisdiction focus: **Rwanda**. Initial tax domains: VAT, PAYE/PIT, WHT,
 | [LEGAL_OBJECT_RETRIEVAL_CONTRACT.md](backend/app/services/retrieval/LEGAL_OBJECT_RETRIEVAL_CONTRACT.md) | Legal object retrieval contract — deterministic retrieval (TASK-004A) |
 | [EFFECTIVE_DATE_RESOLVER_CONTRACT.md](backend/app/services/effective_date/EFFECTIVE_DATE_RESOLVER_CONTRACT.md) | Effective-date resolver contract — time-aware version resolution (TASK-004B) |
 | [CITATION_CANDIDATE_CONTRACT.md](backend/app/services/citation_candidate/CITATION_CANDIDATE_CONTRACT.md) | Citation candidate contract — citation-ready DTO preparation (TASK-004C) |
-| [CITATION_ASSEMBLY_CONTRACT.md](backend/app/services/citation/CITATION_ASSEMBLY_CONTRACT.md) | Citation assembly contract — deterministic source-backed citations (TASK-004D) |
+| [backend/app/services/citation/CITATION_ASSEMBLY_CONTRACT.md](backend/app/services/citation/CITATION_ASSEMBLY_CONTRACT.md) | Citation assembler contract — deterministic source-backed citations (TASK-004D) |
 | [TEMPORAL_VERSIONING_ARCHITECTURE.md](TEMPORAL_VERSIONING_ARCHITECTURE.md) | Temporal & versioning architecture — authoritative time/version spec (TASK-005A-SPEC) |
 | [SOURCE_MONITORING_AGENT_CONTRACT.md](SOURCE_MONITORING_AGENT_CONTRACT.md) | Monitoring-agent governance contract (TASK-006C; contract-only) |
 | [TASKS/TASK-006C-SOURCE-MONITORING-AGENT-CONTRACT.md](TASKS/TASK-006C-SOURCE-MONITORING-AGENT-CONTRACT.md) | TASK-006C contract record |
@@ -131,6 +131,8 @@ Initial jurisdiction focus: **Rwanda**. Initial tax domains: VAT, PAYE/PIT, WHT,
 | [SOURCE_VERSION_EXTRACTION_TRIGGER_CONTRACT.md](SOURCE_VERSION_EXTRACTION_TRIGGER_CONTRACT.md) | Source-version extraction trigger governance contract (TASK-006M; contract-only) |
 | [TASKS/TASK-006M-SOURCE-VERSION-EXTRACTION-TRIGGER-CONTRACT.md](TASKS/TASK-006M-SOURCE-VERSION-EXTRACTION-TRIGGER-CONTRACT.md) | TASK-006M contract record |
 | [PARSING_TRIGGER_CONTRACT.md](PARSING_TRIGGER_CONTRACT.md) | Parsing trigger governance contract from `extracted_text` (TASK-006Q; contract-only) |
+| [CITATION_ASSEMBLY_CONTRACT.md](CITATION_ASSEMBLY_CONTRACT.md) | Ingestion-pipeline citation assembly governance from `legal_object` (TASK-006Y; contract-only) |
+| [TASKS/TASK-006Y-CITATION-ASSEMBLY-CONTRACT.md](TASKS/TASK-006Y-CITATION-ASSEMBLY-CONTRACT.md) | TASK-006Y contract record |
 | [LEGAL_OBJECT_PROMOTION_CONTRACT.md](LEGAL_OBJECT_PROMOTION_CONTRACT.md) | Legal object promotion governance from `parsed_structure` (TASK-006U; contract-only) |
 | [TASKS/TASK-006U-LEGAL-OBJECT-PROMOTION-CONTRACT.md](TASKS/TASK-006U-LEGAL-OBJECT-PROMOTION-CONTRACT.md) | TASK-006U contract record |
 | [TASKS/TASK-006V-LEGAL-OBJECT-PROMOTION-PERSISTENCE.md](TASKS/TASK-006V-LEGAL-OBJECT-PROMOTION-PERSISTENCE.md) | TASK-006V persistence record |

@@ -88,7 +88,7 @@ Legal object promotion (TASK-006U–006X): contract through controlled execution
 
 | Task | Title | Notes |
 |------|-------|-------|
-| TASK-006Y | Citation assembly contract | 006U–006X review closed | **Authorized** — governance-only; no persistence/answers/retrieval |
+| — | — | Citation contract complete; awaiting 006Z authorization |
 
 ---
 
@@ -96,15 +96,15 @@ Legal object promotion (TASK-006U–006X): contract through controlled execution
 
 | Task | Title | Prerequisite | Acceptance focus |
 |------|-------|--------------|------------------|
-| TASK-006V | Legal object promotion persistence | TASK-006U contract | **Complete** — append-only promotion requests/results; DB partial unique index |
-| TASK-006W | Legal object promotion worker skeleton | TASK-006V | **Complete** — dry-run orchestration; terminal `skipped` |
-| TASK-006X | Controlled legal object promotion execution | TASK-006W | **Complete** — `ps-{parsed_structure_id}` identity; append-only versions on replay |
+| TASK-006Z | Citation persistence | TASK-006Y contract | **Planned** — not authorized until explicit approval |
+
+Recent citation/promotion completions: TASK-006Y (contract) · TASK-006V–006X (promotion persistence/worker/execution).
 
 **Canonical Legal Memory (006U–006X + 006X1):** **CLOSED** — Claude review **APPROVED FOR CONTINUE** (2026-06-03).
 
-**Citation layer:** **OPEN**. **TASK-006Y authorized** (contract only).
+**Citation layer:** **OPEN**. **TASK-006Y complete** (ingestion-pipeline citation assembly contract).
 
-**Planned:** 006Z citation persistence → 007A+ retrieval/query runtime (each requires explicit authorization).
+**Planned:** 006Z citation persistence → worker/execution → 007A+ retrieval/query runtime (each requires explicit authorization).
 
 **Blocked until governed approval:** citation persistence (006Z), answer runtime, retrieval runtime, live monitoring agents, ingestion automation expansion.
 

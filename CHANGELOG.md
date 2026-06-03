@@ -4,6 +4,20 @@ All notable changes to `tax-os-backend` are documented here.
 
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versions align with git tags where applicable.
 
+## [task-006y-citation-assembly-contract] - 2026-06-03
+
+### Added
+
+- TASK-006Y: ingestion-pipeline citation assembly governance contract.
+  - `CITATION_ASSEMBLY_CONTRACT.md` — `legal_object` → citation boundary; request/result/status/error taxonomies; idempotency on `legal_object_version_id`; `force_reassembly`; provenance through citation; answer/retrieval boundaries.
+  - `TASKS/TASK-006Y-CITATION-ASSEMBLY-CONTRACT.md` — task record.
+
+### Notes
+
+- Governance-only: no citation tables, workers, execution, retrieval, or answers.
+- Complements TASK-004D assembler contract at `backend/app/services/citation/CITATION_ASSEMBLY_CONTRACT.md`.
+- TASK-006Z (persistence) remains planned, not authorized.
+
 ## [governance-legal-object-promotion-review-closed-citation-open] - 2026-06-03
 
 ### Changed

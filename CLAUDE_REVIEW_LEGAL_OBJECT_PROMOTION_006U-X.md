@@ -49,7 +49,7 @@ Legal-object creation has **not** crossed into legal interpretation, applicabili
 | Verdict | **APPROVED FOR CONTINUE** |
 | Canonical Legal Memory phase | **CLOSED** |
 | Citation layer | **OPEN** |
-| TASK-006Y | **AUTHORIZED** (governance-only citation assembly contract) |
+| TASK-006Y | **COMPLETE** (governance-only citation assembly contract — see [`CITATION_ASSEMBLY_CONTRACT.md`](CITATION_ASSEMBLY_CONTRACT.md)) |
 | TASK-006Z | Planned after 006Y — not authorized until explicit approval |
 | TASK-007A+ | Planned after citation persistence — not authorized until explicit approval |
 
