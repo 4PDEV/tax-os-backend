@@ -385,7 +385,7 @@ FOUNDATION
 
 ## Current position (one line)
 
-**Phases 1–21 complete on `main`; next work should proceed only after Claude architecture review of extraction replay/idempotency and provenance guarantees.**
+**Phases 1–28 complete on `main` through legal-object promotion persistence; next: TASK-006W promotion worker skeleton.**
 
 ---
 

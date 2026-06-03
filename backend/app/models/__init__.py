@@ -15,6 +15,8 @@ from app.models.extracted_text import ExtractedText
 from app.models.extraction_run import ExtractionRun
 from app.models.ingestion_state_transition import IngestionStateTransition
 from app.models.legal_object import LegalObject
+from app.models.legal_object_promotion_request import LegalObjectPromotionRequest
+from app.models.legal_object_promotion_result import LegalObjectPromotionResult
 from app.models.legal_object_duplicate import LegalObjectDuplicate
 from app.models.legal_object_lineage import LegalObjectLineage
 from app.models.legal_object_version import LegalObjectVersion
@@ -47,6 +49,8 @@ __all__ = [
     "ExtractionRun",
     "IngestionStateTransition",
     "LegalObject",
+    "LegalObjectPromotionRequest",
+    "LegalObjectPromotionResult",
     "LegalObjectDuplicate",
     "LegalObjectLineage",
     "LegalObjectVersion",

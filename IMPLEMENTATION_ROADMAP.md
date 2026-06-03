@@ -80,7 +80,7 @@ Controlled parsing execution (TASK-006T): structural segmentation from `extracte
 
 Parsed structure identity hardening (TASK-006T1A): `UNIQUE(parsed_structures.parser_run_id)`; P-01/P-02 closed; legal-object promotion gate opened after Claude verification.
 
-Legal object promotion contract (TASK-006U): governance-only boundary from `parsed_structure` to canonical `legal_object`; `parsed_structure` ≠ legal object; no persistence/execution.
+Legal object promotion contract (TASK-006U) and persistence (TASK-006V): governed boundary and append-only promotion requests/results; `parsed_structure` ≠ legal object; no promotion execution yet.
 
 ---
 
@@ -88,7 +88,7 @@ Legal object promotion contract (TASK-006U): governance-only boundary from `pars
 
 | Task | Title | Notes |
 |------|-------|-------|
-| — | *(none in implementation)* | Await TASK-006V implementation authorization |
+| — | *(none in implementation)* | Await TASK-006W implementation authorization |
 
 ---
 
@@ -96,7 +96,8 @@ Legal object promotion contract (TASK-006U): governance-only boundary from `pars
 
 | Task | Title | Prerequisite | Acceptance focus |
 |------|-------|--------------|------------------|
-| TASK-006V | Legal object promotion persistence | TASK-006U contract | Append-only promotion requests/results; `parsed_structure_id` idempotency; no promotion execution |
+| TASK-006V | Legal object promotion persistence | TASK-006U contract | **Complete** — append-only promotion requests/results; DB partial unique index |
+| TASK-006W | Legal object promotion worker skeleton | TASK-006V | Dry-run orchestration; no promotion execution |
 
 **Planned sequence (not yet approved for implementation):** TASK-006W worker skeleton → 006X controlled execution → Claude review before citation assembly.
 

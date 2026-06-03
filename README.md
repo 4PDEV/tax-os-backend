@@ -63,7 +63,7 @@ tax-os-backend/
 |------|--------|
 | Platform phase | Legal memory + temporal governance + ingestion persistence (see [CURRENT_STATUS.md](CURRENT_STATUS.md)) |
 | Alembic migrations | Head `a4d2e8f93b36` |
-| Approved next task | **TASK-006V** — legal object promotion persistence (006U contract complete) |
+| Approved next task | **TASK-006W** — legal object promotion worker skeleton (006V persistence complete) |
 | Admin CRUD APIs | Operational |
 | Legal object / citation contracts | Merged on `main` (003A–004D) |
 | Temporal governance | Merged (005A–005C); tag `checkpoint-task-005a-spec` |
@@ -133,6 +133,7 @@ Initial jurisdiction focus: **Rwanda**. Initial tax domains: VAT, PAYE/PIT, WHT,
 | [PARSING_TRIGGER_CONTRACT.md](PARSING_TRIGGER_CONTRACT.md) | Parsing trigger governance contract from `extracted_text` (TASK-006Q; contract-only) |
 | [LEGAL_OBJECT_PROMOTION_CONTRACT.md](LEGAL_OBJECT_PROMOTION_CONTRACT.md) | Legal object promotion governance from `parsed_structure` (TASK-006U; contract-only) |
 | [TASKS/TASK-006U-LEGAL-OBJECT-PROMOTION-CONTRACT.md](TASKS/TASK-006U-LEGAL-OBJECT-PROMOTION-CONTRACT.md) | TASK-006U contract record |
+| [TASKS/TASK-006V-LEGAL-OBJECT-PROMOTION-PERSISTENCE.md](TASKS/TASK-006V-LEGAL-OBJECT-PROMOTION-PERSISTENCE.md) | TASK-006V persistence record |
 | [TASKS/TASK-006Q-PARSING-TRIGGER-CONTRACT.md](TASKS/TASK-006Q-PARSING-TRIGGER-CONTRACT.md) | TASK-006Q contract record |
 | `backend/app/services/parsing_trigger/` | TASK-006R parsing trigger persistence (append-only requests/results, trigger hash, idempotency) |
 | [TASKS/TASK-006R-PARSING-TRIGGER-PERSISTENCE.md](TASKS/TASK-006R-PARSING-TRIGGER-PERSISTENCE.md) | TASK-006R task record |

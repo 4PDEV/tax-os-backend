@@ -5,7 +5,7 @@ For detailed historical sections, see [PROJECT_STATE.md](PROJECT_STATE.md). For 
 
 **Last realigned:** 2026-06-02  
 **Branch:** `main`  
-**Alembic head:** `a4d2e8f93b36` (parsed structure identity hardening)
+**Alembic head:** `b5c3e9a04d47` (legal object promotion persistence)
 
 ---
 
@@ -15,7 +15,7 @@ For detailed historical sections, see [PROJECT_STATE.md](PROJECT_STATE.md). For 
 
 The platform is materially beyond early foundation. Core registry, processing queue, extraction/parser **contracts**, legal-object **persistence**, citation **governance**, temporal **governance**, and ingestion **artifact persistence** are in place on `main`.
 
-**Active gate:** **Canonical legal memory phase** — legal-object promotion persistence (TASK-006V) approved next. TASK-006U contract complete. Acquisition → extraction → parsing **verified**. Citation/answer automation prohibited until governed tasks approve.
+**Active gate:** **Canonical legal memory phase** — promotion worker skeleton (TASK-006W) approved next. TASK-006V persistence complete. Acquisition → extraction → parsing **verified**. Citation/answer automation prohibited until governed tasks approve.
 
 **Environments:** development and internal staging only. No public production deployment.
 
@@ -52,6 +52,7 @@ The platform is materially beyond early foundation. Core registry, processing qu
 | Controlled parsing execution | Structural `parsed_structures` from `extracted_text`; non-interpretive segmentation only | TASK-006T |
 | Parsed structure identity hardening | `UNIQUE(parsed_structures.parser_run_id)`; P-01 remediated | TASK-006T1A |
 | Legal object promotion governance | Governed `parsed_structure` → `legal_object` boundary; `parsed_structure` ≠ legal object | TASK-006U |
+| Legal object promotion persistence | Append-only promotion requests/results; `parsed_structure_id` idempotency; no promotion execution | TASK-006V |
 
 **Checkpoint tags (selected):** `checkpoint-task-003e` … `checkpoint-task-006u-legal-object-promotion-contract`
 
@@ -263,13 +264,13 @@ source_version → extraction → extracted_text → parsing trigger → parser_
 
 Claude reviews **closed** (006Q–006T) and **verified** (006T1A). **Legal-object promotion gate OPEN.**
 
-**Approved next:** TASK-006V — Legal Object Promotion Persistence.
+**Approved next:** TASK-006W — Legal Object Promotion Worker Skeleton.
 
-**Planned sequence:** 006V persistence → 006W worker skeleton → 006X controlled execution → Claude review before citation assembly expansion.
+**Planned sequence:** 006W worker skeleton → 006X controlled execution → Claude review before citation assembly expansion.
 
 **Governance boundaries (canonical):** `parsed_structure` ≠ legal meaning · `parsed_structure` ≠ legal object · `legal_object` ≠ citation.
 
-**Doctrine:** Canonical Legal Memory phase begun (006U contract); persistence via TASK-006V.
+**Doctrine:** Canonical Legal Memory phase active (006U contract + 006V persistence); execution via TASK-006W+.
 
 ---
 
@@ -280,4 +281,4 @@ FOUNDATION → EXTRACTION CONTRACTS → LEGAL OBJECT GOVERNANCE → CITATION GOV
 → TEMPORAL GOVERNANCE → INGESTION PERSISTENCE → [TEST HARDENING] → AGENT LAYER → …
 ```
 
-**You are here:** full ingestion pipeline through controlled parsing complete (TASK-006C–006T, 006P1, 006T1A); entering canonical legal memory phase (TASK-006U+).
+**You are here:** full ingestion pipeline through controlled parsing complete (TASK-006C–006T, 006P1, 006T1A); canonical legal memory promotion persistence complete (006V); worker/execution next (006W–006X).

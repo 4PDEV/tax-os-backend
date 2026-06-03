@@ -190,12 +190,13 @@ Optional future extension: include promotion policy version or legal-object sche
 
 Promotion may hand off to legal-object materialization by creating or referencing `legal_object` records (per existing 003x governance where applicable).
 
-This contract does **not** implement:
+This contract does **not** implement (by itself):
 
-- promotion persistence tables
 - promotion workers
 - legal-object write execution
 - citation or answer generation
+
+Promotion persistence tables are implemented in **TASK-006V** (`legal_object_promotion_requests`, `legal_object_promotion_results`).
 
 ## Legal meaning boundary
 

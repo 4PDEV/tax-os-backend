@@ -28,7 +28,7 @@ export REQUIRE_TEST_DATABASE_URL=0
 Expected Alembic head:
 
 ```text
-e8c1d4f92a17
+b5c3e9a04d47
 ```
 
 Session fixture behavior (`backend/tests/conftest.py`):
@@ -128,6 +128,13 @@ TEST_DATABASE_URL='postgresql://taxos:P%405sw0rd%21234@localhost:5432/taxos_test
 ```bash
 TEST_DATABASE_URL='postgresql://taxos:P%405sw0rd%21234@localhost:5432/taxos_test' \
 .venv/bin/pytest backend/tests/test_parsing_trigger_persistence.py backend/tests/test_parsing_trigger_alembic_migration.py -q --tb=short
+```
+
+### TASK-006V legal object promotion persistence tests
+
+```bash
+TEST_DATABASE_URL='postgresql://taxos:P%405sw0rd%21234@localhost:5432/taxos_test' \
+.venv/bin/pytest backend/tests/test_legal_object_promotion_persistence.py backend/tests/test_legal_object_promotion_alembic_migration.py -q --tb=short
 ```
 
 ### TASK-006S parsing worker skeleton tests

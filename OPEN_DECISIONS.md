@@ -39,7 +39,7 @@ Pending architectural or operational decisions. Resolve via `tax-os-architecture
 |----|-------|---------|--------|
 | OD-019 | Extraction replay / idempotency hardening | EXT-01 / F-05 remediated in TASK-006P1: canonical idempotency on `source_version_id`, partial unique DB index, source_version-level worker skip; `rerun_allowed` records policy only and does not bypass; `force_reprocess=True` is explicit bypass | **Resolved (TASK-006P1)** |
 | OD-020 | Trigger `completed` vs text-ready semantics | `trigger_status=completed` on dry-run does not imply `extracted_text` exists; consumers must join `extracted_text` / check extractor identity | Documented — non-blocking |
-| OD-021 | Multi-worker ingestion race (extraction + parsing) | Single-worker orchestration acceptable today; execution-time race mitigation deferred. Carry forward into legal-object worker design (006V+). LOW now, MEDIUM under concurrency | Open — deferred |
+| OD-021 | Multi-worker ingestion race (extraction + parsing + promotion) | Single-worker orchestration acceptable today. TASK-006V closes **creation-time** duplicate promotion via DB partial unique index; **execution-time** replay race mitigation deferred to promotion workers (006W+). LOW now, MEDIUM under concurrency | Open — deferred |
 | OD-022 | Parsed structure identity (P-01) | `UNIQUE(parsed_structures.parser_run_id)` in TASK-006T1A; verified at `checkpoint-task-006t1a-parsed-structure-identity` | **Closed (TASK-006T1A)** |
 
 ## Parsing pipeline — review closed (006Q–006T, 006T1A)
@@ -53,7 +53,7 @@ Pending architectural or operational decisions. Resolve via `tax-os-architecture
 
 **Reviews:** [`CLAUDE_REVIEW_PARSING_PIPELINE_006Q-T.md`](CLAUDE_REVIEW_PARSING_PIPELINE_006Q-T.md) **CLOSED** · [`CLAUDE_VERIFICATION_PARSED_STRUCTURE_IDENTITY_006T1A.md`](CLAUDE_VERIFICATION_PARSED_STRUCTURE_IDENTITY_006T1A.md) **VERIFIED** (2026-06-02).
 
-**Legal-object promotion gate:** **OPEN** — TASK-006U contract complete; persistence/execution via TASK-006V+. Doctrine: `parsed_structure` ≠ legal object.
+**Legal-object promotion gate:** **OPEN** — TASK-006V persistence complete; worker/execution via TASK-006W+. Doctrine: `parsed_structure` ≠ legal object.
 
 ## Test gaps (QA)
 

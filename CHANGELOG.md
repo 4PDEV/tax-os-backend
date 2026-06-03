@@ -4,6 +4,21 @@ All notable changes to `tax-os-backend` are documented here.
 
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versions align with git tags where applicable.
 
+## [task-006v-legal-object-promotion-persistence] - 2026-06-02
+
+### Added
+
+- TASK-006V: legal object promotion persistence (governance records only; no execution).
+  - Migration `b5c3e9a04d47`: `legal_object_promotion_requests`, `legal_object_promotion_results`, partial unique index on `parsed_structure_id` WHERE `force_repromotion = false`.
+  - Service `backend/app/services/legal_object_promotion/`: deterministic `promotion_hash`, eligibility validation, append-only result history.
+  - Tests: `test_legal_object_promotion_persistence.py`, `test_legal_object_promotion_alembic_migration.py`.
+
+### Notes
+
+- `legal_object_id` on results is nullable `String(64)` FK to `legal_objects.legal_object_id` (future handoff only).
+- Full suite: **611 passed** (PostgreSQL `taxos_test`).
+- No legal objects, citations, or answers created by this task.
+
 ## [task-006u-legal-object-promotion-contract] - 2026-06-02
 
 ### Added
