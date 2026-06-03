@@ -30,6 +30,10 @@ NON_ELIGIBLE_LATEST_STATUSES = frozenset({"duplicate_rejected", "rejected"})
 TERMINAL_SKIP_STATUSES = frozenset({"promoted", "failed", "skipped"})
 
 # Dry-run successful lifecycle ends in ``skipped`` (not ``promoted``) because no legal object exists.
+#
+# ``skipped`` here means *dry-run orchestration completed without promotion execution* — the worker
+# ran the full accepted → provider → result path. It does NOT mean the request was ignored or
+# deemed ineligible (those requests never enter ``run()`` processing and increment requests_skipped).
 DRY_RUN_TERMINAL_STATUS = "skipped"
 
 

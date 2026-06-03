@@ -120,6 +120,8 @@ Allowed `promotion_status` values only:
 
 `promoted` means the promotion lifecycle reached a terminal success handoff for the request. It does **not** imply legal meaning is correct, tax effect is known, or citations/answers are ready.
 
+**Dry-run worker (TASK-006W):** successful orchestration records `accepted` then `skipped` with `legal_object_id` null. Here `skipped` means **orchestration completed without promotion execution** — not that the request was ignored. Ignored/ineligible requests are skipped at the worker layer without appending this terminal result.
+
 ## Promotion error categories
 
 Allowed `error_category` values only:

@@ -55,7 +55,7 @@ The platform is materially beyond early foundation. Core registry, processing qu
 | Legal object promotion persistence | Append-only promotion requests/results; `parsed_structure_id` idempotency; no promotion execution | TASK-006V |
 | Legal object promotion worker skeleton | Dry-run orchestration from promotion requests to lifecycle results; terminal `skipped`; no legal object creation | TASK-006W |
 
-**Checkpoint tags (selected):** `checkpoint-task-003e` … `checkpoint-task-006v-legal-object-promotion-persistence`
+**Checkpoint tags (selected):** `checkpoint-task-003e` … `checkpoint-task-006w-legal-object-promotion-worker-skeleton`
 
 ---
 
