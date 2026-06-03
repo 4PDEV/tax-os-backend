@@ -867,7 +867,9 @@ TASK-006ZA — Acceptance review **CLOSED** (2026-06-03).
 
 TASK-006Z — Citation Persistence (**complete**; accepted `checkpoint-task-006z-citation-persistence`; 667 tests).
 
-**Next gate:** TASK-006AA — Citation Worker Skeleton Pre-Authorization Review.
+TASK-006AA — Citation Worker Skeleton Pre-Auth Review (**complete**; APPROVED FOR 006AB dry-run skeleton).
+
+**Next:** TASK-006AB — implement dry-run worker per review envelope.
 
 **Not authorized:** citation worker, citation execution, retrieval, answers, legal advice.
 

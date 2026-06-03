@@ -63,7 +63,9 @@ Pending architectural or operational decisions. Resolve via `tax-os-architecture
 
 **TASK-006Z:** **COMPLETE** — accepted `checkpoint-task-006z-citation-persistence`. Citation execution / worker / retrieval / answers **NOT AUTHORIZED**.
 
-**Next gate:** **TASK-006AA** — citation worker skeleton pre-authorization review (no execution).
+**TASK-006AA:** Pre-auth review **complete** — TASK-006AB dry-run worker skeleton **approved for implementation** (not execution).
+
+**Not authorized:** controlled citation assembly, retrieval, answers.
 
 Doctrine: `parsed_structure` ≠ legal object; `legal_object` ≠ legal meaning; `legal_object` ≠ citation ≠ answer.
 

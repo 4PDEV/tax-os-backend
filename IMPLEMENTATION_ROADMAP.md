@@ -88,7 +88,7 @@ Legal object promotion (TASK-006U–006X): contract through controlled execution
 
 | Task | Title | Notes |
 |------|-------|-------|
-| TASK-006AA | Citation worker skeleton pre-auth review | TASK-006Z accepted | **Next gate** — governance review only |
+| TASK-006AB | Citation worker skeleton (dry-run) | TASK-006AA pre-auth | **Authorized** — implement per review envelope |
 
 ---
 
@@ -108,9 +108,11 @@ Legal object promotion (TASK-006U–006X): contract through controlled execution
 
 **TASK-006Z:** **Complete** — accepted at `checkpoint-task-006z-citation-persistence`.
 
-**Next gate:** **TASK-006AA** — citation worker skeleton pre-authorization review (do not implement execution).
+**TASK-006AA:** Pre-auth review **complete** — dry-run worker skeleton approved ([`ARCHITECTURE_REVIEW_CITATION_WORKER_SKELETON_006AA-PREAUTH.md`](ARCHITECTURE_REVIEW_CITATION_WORKER_SKELETON_006AA-PREAUTH.md)).
 
-**Not authorized:** citation worker, citation execution, retrieval, answers.
+**Approved next:** **TASK-006AB** — dry-run `CitationAssemblyGovernanceWorker` only.
+
+**Not authorized:** citation execution/rendering, retrieval, answers.
 
 **Blocked until governed approval:** citation execution, answer runtime, retrieval runtime, live monitoring agents, ingestion automation expansion.
 

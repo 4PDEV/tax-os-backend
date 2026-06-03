@@ -4,6 +4,19 @@ All notable changes to `tax-os-backend` are documented here.
 
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versions align with git tags where applicable.
 
+## [task-006aa-citation-worker-skeleton-preauth-review] - 2026-06-03
+
+### Added
+
+- TASK-006AA: citation worker skeleton pre-authorization architecture review.
+  - `ARCHITECTURE_REVIEW_CITATION_WORKER_SKELETON_006AA-PREAUTH.md`
+  - Verdict: **APPROVED FOR IMPLEMENTATION** of dry-run worker skeleton (TASK-006AB).
+  - Preserves: governance result ≠ rendered citation; citation ≠ retrieval ≠ answer.
+
+### Notes
+
+- Review-only; no worker code. Citation execution not authorized.
+
 ## [checkpoint-task-006z-citation-persistence] - 2026-06-03
 
 ### Changed

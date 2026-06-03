@@ -63,7 +63,7 @@ tax-os-backend/
 |------|--------|
 | Platform phase | Legal memory + temporal governance + ingestion persistence (see [CURRENT_STATUS.md](CURRENT_STATUS.md)) |
 | Alembic migrations | Head `a4d2e8f93b36` |
-| Approved next gate | **TASK-006AA** — citation worker skeleton pre-auth review (not authorized to implement yet) |
+| Approved next | **TASK-006AB** — citation worker skeleton dry-run (006AA pre-auth complete) |
 | Admin CRUD APIs | Operational |
 | Legal object / citation contracts | Merged on `main` (003A–004D) |
 | Temporal governance | Merged (005A–005C); tag `checkpoint-task-005a-spec` |
@@ -138,6 +138,8 @@ Initial jurisdiction focus: **Rwanda**. Initial tax domains: VAT, PAYE/PIT, WHT,
 | [CITATION_PERSISTENCE_006ZA_ACCEPTANCE_REVIEW.md](CITATION_PERSISTENCE_006ZA_ACCEPTANCE_REVIEW.md) | 006ZA acceptance **CLOSED** |
 | [TASKS/TASK-006Z-CITATION-PERSISTENCE.md](TASKS/TASK-006Z-CITATION-PERSISTENCE.md) | TASK-006Z persistence record |
 | `backend/app/services/citation_assembly_governance/` | TASK-006Z citation assembly governance persistence |
+| [ARCHITECTURE_REVIEW_CITATION_WORKER_SKELETON_006AA-PREAUTH.md](ARCHITECTURE_REVIEW_CITATION_WORKER_SKELETON_006AA-PREAUTH.md) | TASK-006AA worker skeleton pre-auth review |
+| [TASKS/TASK-006AA-CITATION-WORKER-SKELETON-PREAUTH-REVIEW.md](TASKS/TASK-006AA-CITATION-WORKER-SKELETON-PREAUTH-REVIEW.md) | TASK-006AA record |
 | [TASKS/TASK-006ZA-CITATION-PERSISTENCE-REMEDIATION-PACKAGE.md](TASKS/TASK-006ZA-CITATION-PERSISTENCE-REMEDIATION-PACKAGE.md) | TASK-006ZA task record |
 | [LEGAL_OBJECT_PROMOTION_CONTRACT.md](LEGAL_OBJECT_PROMOTION_CONTRACT.md) | Legal object promotion governance from `parsed_structure` (TASK-006U; contract-only) |
 | [TASKS/TASK-006U-LEGAL-OBJECT-PROMOTION-CONTRACT.md](TASKS/TASK-006U-LEGAL-OBJECT-PROMOTION-CONTRACT.md) | TASK-006U contract record |
