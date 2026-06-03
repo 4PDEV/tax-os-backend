@@ -78,13 +78,15 @@ Parsing worker skeleton (TASK-006S): dry-run-only orchestration from parsing tri
 
 Controlled parsing execution (TASK-006T): structural segmentation from `extracted_text` into `parsed_structures`; deterministic structure hash; no legal interpretation.
 
+Parsed structure identity hardening (TASK-006T1A): `UNIQUE(parsed_structures.parser_run_id)`; P-01/P-02 closed; legal-object promotion gate opened after Claude verification.
+
 ---
 
 ## ACTIVE
 
 | Task | Title | Notes |
 |------|-------|-------|
-| — | *(none in implementation)* | Await next bounded task authorization |
+| — | *(none in implementation)* | Await TASK-006U implementation authorization |
 
 ---
 
@@ -92,7 +94,9 @@ Controlled parsing execution (TASK-006T): structural segmentation from `extracte
 
 | Task | Title | Prerequisite | Acceptance focus |
 |------|-------|--------------|------------------|
-| — | *(none currently approved in this file)* | — | Await explicit next-task approval |
+| TASK-006U | Legal object promotion contract | 006Q–006T + 006T1A verified; promotion gate open | `parsed_structure` ≠ legal object; governance-only; no persistence/execution |
+
+**Planned sequence (not yet approved for implementation):** TASK-006V persistence → 006W worker skeleton → 006X controlled execution → Claude review before citation assembly.
 
 **Blocked until explicit next-task approval:** live monitoring agents, ingestion automation expansion.
 

@@ -3,7 +3,7 @@
 **Reviewer role:** Claude-style architecture review (post-checkpoint `checkpoint-task-006t-controlled-parsing-execution`)  
 **Date:** 2026-06-02  
 **Scope:** TASK-006Q, 006R, 006S, 006T; upstream TASK-006P/P1 (extraction); TASK-006A (`parsed_structures`); `PARSING_TRIGGER_CONTRACT.md`  
-**Verdict:** **PENDING ACKNOWLEDGMENT** — submit for reviewer sign-off before legal-object promotion or parsing automation expansion
+**Verdict:** **CLOSED** (2026-06-02) — legal-object promotion gate opened after TASK-006T1A verification
 
 ---
 
@@ -166,20 +166,21 @@ source_version → extraction_run → extracted_text
 | CRITICAL | 0 | — |
 | HIGH | 0 | — |
 | MEDIUM | 0 | — (OD-021 deferred; not blocking single-worker) |
-| LOW | 4 | P-01, P-02, A-01, A-02 |
+| LOW | 2 | A-01, P-02 (satisfied) |
 | INFO | 3 | P-03, B-01, PR-02 |
 
 ---
 
 ## 9. Verdict and gate
 
-### Recommended verdict: **APPROVED FOR CONTINUE** (pending acknowledgment)
+### Verdict: **CLOSED — APPROVED FOR CONTINUE**
 
-The parsing pipeline is suitable to proceed **past the 006Q–006T review gate** for continued ingestion work, subject to:
+The parsing pipeline passed the 006Q–006T review gate. P-01 remediated in TASK-006T1A. Legal-object promotion gate **opened** 2026-06-02.
 
-1. **Do not** start legal-object promotion from `parsed_structure` until this review is acknowledged.
-2. Record any new follow-ups in `OPEN_DECISIONS.md` (e.g. optional `UNIQUE(parsed_structures.parser_run_id)` if desired).
-3. Keep consumer rule: `trigger_status=completed` ≠ legal meaning known; require `parsed_structure` join for structural evidence.
+Consumer rules remain:
+- `trigger_status=completed` ≠ legal meaning known
+- `parsed_structure` ≠ legal meaning
+- `parsed_structure` ≠ legal object (governed in TASK-006U+)
 
 ### Test confidence
 
@@ -192,8 +193,8 @@ The parsing pipeline is suitable to proceed **past the 006Q–006T review gate**
 
 | Role | Decision | Date |
 |------|----------|------|
-| Architecture review (006Q–006T) | PENDING ACK | — |
-| Legal-object promotion gate | **BLOCKED** until row above signed | — |
+| Architecture review (006Q–006T) | **CLOSED** | 2026-06-02 |
+| Legal-object promotion gate | **OPEN** (post-006T1A) | 2026-06-02 |
 
 ---
 

@@ -64,7 +64,8 @@ Bounded task tracking for `tax-os-backend`. Authoritative specs remain in `tax-o
 | TASK-006R | Parsing Trigger Persistence | Complete | Append-only requests/results, `extracted_text_id` idempotency, DB partial unique index; no parser execution |
 | TASK-006S | Parsing Worker Skeleton | Complete | Accepted at `checkpoint-task-006s-parsing-worker-skeleton`; dry-run orchestration only |
 | TASK-006T | Controlled Parsing Execution | Complete | Controlled structural parsing into `parsed_structures`; non-interpretive; no legal object/citation/answer |
-| TASK-006T1A | Parsed Structure Identity Hardening | Complete | `UNIQUE(parsed_structures.parser_run_id)`; P-01 remediated |
+| TASK-006T1A | Parsed Structure Identity Hardening | Complete | Verified at `checkpoint-task-006t1a-parsed-structure-identity`; P-01/P-02 closed |
+| TASK-006U | Legal Object Promotion Contract | Planned | Approved next; `parsed_structure` ≠ legal object; governance before persistence/execution |
 | TASK-DOC-001 | Master Status Document Realignment | Complete | CURRENT_STATUS, IMPLEMENTATION_ROADMAP, ARCHITECTURE_PHASE_MAP |
 
 ## Status Legend

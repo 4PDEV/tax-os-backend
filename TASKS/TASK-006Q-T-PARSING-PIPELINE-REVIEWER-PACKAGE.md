@@ -33,7 +33,9 @@
 
 ## Gate
 
-**TASK-006Q–006T gate:** OPEN for review. **Legal-object promotion BLOCKED** until Claude acknowledges [`CLAUDE_REVIEW_PARSING_PIPELINE_006Q-T.md`](../CLAUDE_REVIEW_PARSING_PIPELINE_006Q-T.md).
+**TASK-006Q–006T gate:** **CLOSED** (2026-06-02). **Legal-object promotion gate OPEN** after [`CLAUDE_VERIFICATION_PARSED_STRUCTURE_IDENTITY_006T1A.md`](../CLAUDE_VERIFICATION_PARSED_STRUCTURE_IDENTITY_006T1A.md).
+
+**Approved next:** TASK-006U — Legal Object Promotion Contract.
 
 ## Task records
 

@@ -39,13 +39,21 @@ Pending architectural or operational decisions. Resolve via `tax-os-architecture
 |----|-------|---------|--------|
 | OD-019 | Extraction replay / idempotency hardening | EXT-01 / F-05 remediated in TASK-006P1: canonical idempotency on `source_version_id`, partial unique DB index, source_version-level worker skip; `rerun_allowed` records policy only and does not bypass; `force_reprocess=True` is explicit bypass | **Resolved (TASK-006P1)** |
 | OD-020 | Trigger `completed` vs text-ready semantics | `trigger_status=completed` on dry-run does not imply `extracted_text` exists; consumers must join `extracted_text` / check extractor identity | Documented — non-blocking |
-| OD-021 | Multi-worker ingestion race (extraction + parsing) | Extraction: app + worker + DB idempotency (006P1). Parsing: creation-time DB idempotency (006R); execution-time race mitigation deferred to parser worker tasks. LOW now, MEDIUM under concurrency | Open — worker execution-time mitigation deferred |
+| OD-021 | Multi-worker ingestion race (extraction + parsing) | Single-worker orchestration acceptable today; execution-time race mitigation deferred. Carry forward into legal-object worker design (006V+). LOW now, MEDIUM under concurrency | Open — deferred |
+| OD-022 | Parsed structure identity (P-01) | `UNIQUE(parsed_structures.parser_run_id)` in TASK-006T1A; verified at `checkpoint-task-006t1a-parsed-structure-identity` | **Closed (TASK-006T1A)** |
 
-| OD-022 | Parsed structure identity (P-01) | `UNIQUE(parsed_structures.parser_run_id)` enforced in TASK-006T1A; one canonical structure per `parser_run` at DB + service layers | **Resolved (TASK-006T1A)** |
+## Parsing pipeline — review closed (006Q–006T, 006T1A)
 
-**Parsing pipeline:** TASK-006Q–006T complete at `checkpoint-task-006t-controlled-parsing-execution`. P-01 remediated in TASK-006T1A. Claude review: [`CLAUDE_REVIEW_PARSING_PIPELINE_006Q-T.md`](CLAUDE_REVIEW_PARSING_PIPELINE_006Q-T.md).
+| ID | Topic | Context | Status |
+|----|-------|---------|--------|
+| P-01 | `parsed_structure` identity | One structure per `parser_run` at DB + service | **Closed (006T1A)** |
+| P-02 | Parser persistence / hash verification | Eligibility/status-trust LOW; `sha256_structure()` deterministic | **Closed (006T1A verification)** |
+| V-1 | Migration test visibility gap | Informational; non-blocking | Deferred / maintenance |
+| V-2 | Hash sort-key hardening | Informational; optional future maintenance | Deferred / maintenance |
 
-**Legal-object promotion gate:** P-01 remediated at `checkpoint-task-006t1a-parsed-structure-identity`. **May open** after [`CLAUDE_VERIFICATION_PARSED_STRUCTURE_IDENTITY_006T1A.md`](CLAUDE_VERIFICATION_PARSED_STRUCTURE_IDENTITY_006T1A.md) acknowledgment and 006Q–006T review sign-off.
+**Reviews:** [`CLAUDE_REVIEW_PARSING_PIPELINE_006Q-T.md`](CLAUDE_REVIEW_PARSING_PIPELINE_006Q-T.md) **CLOSED** · [`CLAUDE_VERIFICATION_PARSED_STRUCTURE_IDENTITY_006T1A.md`](CLAUDE_VERIFICATION_PARSED_STRUCTURE_IDENTITY_006T1A.md) **VERIFIED** (2026-06-02).
+
+**Legal-object promotion gate:** **OPEN** — following Claude verification of TASK-006T1A. Doctrine: `parsed_structure` ≠ legal object (next: TASK-006U contract).
 
 ## Test gaps (QA)
 
@@ -58,6 +66,11 @@ Pending architectural or operational decisions. Resolve via `tax-os-architecture
 | ID | Decision | Date |
 |----|----------|------|
 | TEST-GAP-001 | Full-suite instability resolved in TASK-006B | 2026-06-02 |
+| OD-019 | Extraction replay / idempotency (EXT-01 / F-05) | TASK-006P1 | 2026-06-02 |
+| OD-022 | Parsed structure identity (P-01) | TASK-006T1A | 2026-06-02 |
+| P-01 | Parsed structure one-per-parser_run | TASK-006T1A | 2026-06-02 |
+| P-02 | Parser persistence/hash verification | 006T1A verification | 2026-06-02 |
+| 006Q–006T | Parsing pipeline architecture review | Claude sign-off | 2026-06-02 |
 
 When closing a decision, move row to Decision Log and reference approving task.
 

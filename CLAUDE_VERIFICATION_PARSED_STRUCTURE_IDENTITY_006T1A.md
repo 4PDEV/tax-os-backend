@@ -55,9 +55,10 @@ Verify P-01 remediated and structural identity rules hold. Confirm whether legal
 
 | Decision | Value |
 |----------|-------|
-| P-01 remediation | **VERIFIED** (pending acknowledgment) |
+| P-01 remediation | **VERIFIED** |
+| P-02 (parser persistence/hash) | **SATISFIED** |
 | Required remediation before promotion | **COMPLETE** (006T1A) |
-| Legal-object promotion gate | **MAY OPEN** after this verification + prior 006Q–006T review acknowledgment |
+| Legal-object promotion gate | **OPEN** (2026-06-02) |
 
 **Reminder:** Promotion must still treat `parsed_structure` as structural evidence only (`parsed_structure` ≠ legal meaning).
 
@@ -67,8 +68,9 @@ Verify P-01 remediated and structural identity rules hold. Confirm whether legal
 
 | Role | Decision | Date |
 |------|----------|------|
-| 006T1A remediation verification | PENDING ACK | — |
-| Legal-object promotion gate | Blocked until row above + 006Q–006T review ack | — |
+| 006T1A remediation verification | **VERIFIED** | 2026-06-02 |
+| 006Q–006T architecture review | **CLOSED** | 2026-06-02 |
+| Legal-object promotion gate | **OPEN** | 2026-06-02 |
 
 ---
 

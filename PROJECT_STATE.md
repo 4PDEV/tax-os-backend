@@ -841,7 +841,11 @@ TASK-006S — Parsing Worker Skeleton (**complete**; dry-run orchestration only;
 
 TASK-006T — Controlled Parsing Execution (**complete**; structural `parsed_structures` only; no legal interpretation).
 
-TASK-006T1A — Parsed Structure Identity Hardening (**complete**; P-01 remediated; one `parsed_structure` per `parser_run` at DB layer).
+TASK-006T1A — Parsed Structure Identity Hardening (**verified**; P-01/P-02 closed).
+
+**Parsing phase (006Q–006T):** Claude review **closed**. **Legal-object promotion gate OPEN** (2026-06-02).
+
+**Next:** TASK-006U Legal Object Promotion Contract (`parsed_structure` ≠ legal object).
 
 TASK-006P — Controlled Extraction Execution (**completed; controlled local text extraction into extraction_runs/extracted_texts; no PDF/network/parsing/legal automation**).
 

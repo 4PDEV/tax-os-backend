@@ -2,7 +2,7 @@
 
 ## Status
 
-**Complete**
+**Complete — verified** at `checkpoint-task-006t1a-parsed-structure-identity` (2026-06-02)
 
 ## Issue summary (Claude P-01)
 
@@ -32,7 +32,7 @@ Migration: `a4d2e8f93b36`
 ## Remaining deferred
 
 - OD-021 execution-time worker race (unchanged)
-- Legal-object promotion still gated pending 006Q–006T review acknowledgment + targeted verification
+- Legal-object promotion gate **open**; TASK-006U contract approved next
 
 ## Final principle
 

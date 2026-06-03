@@ -15,7 +15,7 @@ For detailed historical sections, see [PROJECT_STATE.md](PROJECT_STATE.md). For 
 
 The platform is materially beyond early foundation. Core registry, processing queue, extraction/parser **contracts**, legal-object **persistence**, citation **governance**, temporal **governance**, and ingestion **artifact persistence** are in place on `main`.
 
-**Active gate:** parsing pipeline structural execution complete through controlled parsing (006T); legal-object automation and answer generation remain prohibited until respective tasks approve.
+**Active gate:** **Canonical legal memory phase** — legal-object promotion contract (TASK-006U) approved next. Acquisition → extraction → parsing phase **complete and externally verified**. Citation/answer automation remains prohibited until governed tasks approve.
 
 **Environments:** development and internal staging only. No public production deployment.
 
@@ -52,7 +52,7 @@ The platform is materially beyond early foundation. Core registry, processing qu
 | Controlled parsing execution | Structural `parsed_structures` from `extracted_text`; non-interpretive segmentation only | TASK-006T |
 | Parsed structure identity hardening | `UNIQUE(parsed_structures.parser_run_id)`; P-01 remediated | TASK-006T1A |
 
-**Checkpoint tags (selected):** `checkpoint-task-003e` … `checkpoint-task-006t-controlled-parsing-execution`
+**Checkpoint tags (selected):** `checkpoint-task-003e` … `checkpoint-task-006t1a-parsed-structure-identity`
 
 ---
 
@@ -254,9 +254,17 @@ Ingestion workers, live monitoring agents, live fetchers, change-detection engin
 
 ## Next Major Architectural Goal
 
-Parsing layer: 006Q–006T complete; P-01 remediated (006T1A). **Claude review 006Q–006T pending acknowledgment** — legal-object promotion blocked until sign-off + targeted verification. Doctrine: `parsed_structure` ≠ legal meaning.
+**Acquisition → extraction → parsing phase complete.** Trusted structural evidence layer:
 
-Longer horizon (not approved for immediate implementation): agent layer → retrieval layer → answer assembly. See [ARCHITECTURE_PHASE_MAP.md](ARCHITECTURE_PHASE_MAP.md).
+```text
+source_version → extraction → extracted_text → parsing trigger → parser_run → parsed_structure
+```
+
+Claude reviews **closed** (006Q–006T) and **verified** (006T1A). **Legal-object promotion gate OPEN.**
+
+**Approved next:** TASK-006U — Legal Object Promotion Contract. Governing doctrine: `parsed_structure` ≠ legal object (as `parsed_structure` ≠ legal meaning in 006Q–006T).
+
+**Planned sequence:** 006U contract → 006V persistence → 006W worker skeleton → 006X controlled execution → Claude review before citation assembly expansion.
 
 ---
 
@@ -267,4 +275,4 @@ FOUNDATION → EXTRACTION CONTRACTS → LEGAL OBJECT GOVERNANCE → CITATION GOV
 → TEMPORAL GOVERNANCE → INGESTION PERSISTENCE → [TEST HARDENING] → AGENT LAYER → …
 ```
 
-**You are here:** ingestion persistence complete, test hardening complete, monitoring governance + persistence + dry-run worker skeleton + fetch governance + detection governance + controlled local fetch execution + fetch persistence + change-detection persistence + checksum-only detection engine skeleton + controlled source-version promotion + extraction-trigger governance + extraction-trigger persistence + extraction worker skeleton + controlled local extraction execution complete (TASK-006C–006P).
+**You are here:** full ingestion pipeline through controlled parsing complete (TASK-006C–006T, 006P1, 006T1A); entering canonical legal memory phase (TASK-006U+).

@@ -4,6 +4,20 @@ All notable changes to `tax-os-backend` are documented here.
 
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versions align with git tags where applicable.
 
+## [governance-parsing-phase-closed-legal-memory-open] - 2026-06-02
+
+### Changed
+
+- Claude review TASK-006Q–006T: **CLOSED**.
+- Claude verification TASK-006T1A: **VERIFIED**; P-01 and P-02 closed.
+- **Legal-object promotion gate OPEN** after 006T1A verification.
+- **TASK-006U** recorded as approved next — Legal Object Promotion Contract.
+- Informational findings V-1, V-2 deferred; OD-021 carry-forward documented.
+
+### Governance
+
+- Doctrine: `parsed_structure` ≠ legal object (next phase); `parsed_structure` ≠ legal meaning (parsing phase).
+
 ## [task-006t1a-parsed-structure-identity-hardening] - 2026-06-02
 
 ### Changed
