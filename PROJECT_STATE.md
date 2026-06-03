@@ -851,7 +851,9 @@ TASK-006V — Legal Object Promotion Persistence (**complete**; append-only requ
 
 TASK-006W — Legal Object Promotion Worker Skeleton (**complete**; dry-run orchestration only).
 
-**Next:** TASK-006X Controlled Legal Object Promotion Execution.
+TASK-006X — Controlled Legal Object Promotion Execution (**complete**).
+
+**Next:** Claude review checkpoint (006U–006X); citation layer when approved.
 
 TASK-006P — Controlled Extraction Execution (**completed; controlled local text extraction into extraction_runs/extracted_texts; no PDF/network/parsing/legal automation**).
 

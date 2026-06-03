@@ -1,5 +1,7 @@
 from typing import Protocol
 
+from sqlalchemy.orm import Session
+
 from app.models.legal_object_promotion_request import LegalObjectPromotionRequest
 from app.models.parsed_structure import ParsedStructure
 from app.workers.legal_object_promotion.result import LegalObjectPromotionProviderResult
@@ -11,6 +13,7 @@ DRY_RUN_PROMOTION_PROVIDER_VERSION = "0.1.0"
 class LegalObjectPromotionProvider(Protocol):
     def run_promotion(
         self,
+        db: Session,
         parsed_structure: ParsedStructure,
         promotion_request: LegalObjectPromotionRequest,
     ) -> LegalObjectPromotionProviderResult:
@@ -25,10 +28,11 @@ class DryRunLegalObjectPromotionProvider:
 
     def run_promotion(
         self,
+        db: Session,
         parsed_structure: ParsedStructure,
         promotion_request: LegalObjectPromotionRequest,
     ) -> LegalObjectPromotionProviderResult:
-        _ = parsed_structure
+        _ = db, parsed_structure
         return LegalObjectPromotionProviderResult(
             success=True,
             notes=(

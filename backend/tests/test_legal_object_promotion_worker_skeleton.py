@@ -100,8 +100,8 @@ def _seed_parsed_structure_for_doc(
 
 
 class FailingLegalObjectPromotionProvider(LegalObjectPromotionProvider):
-    def run_promotion(self, parsed_structure, promotion_request):
-        _ = parsed_structure, promotion_request
+    def run_promotion(self, db, parsed_structure, promotion_request):
+        _ = db, parsed_structure, promotion_request
         return LegalObjectPromotionProviderResult(
             success=False,
             error_category="promotion_pipeline_unavailable",

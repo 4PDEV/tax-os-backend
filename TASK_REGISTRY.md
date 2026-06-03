@@ -68,7 +68,7 @@ Bounded task tracking for `tax-os-backend`. Authoritative specs remain in `tax-o
 | TASK-006U | Legal Object Promotion Contract | Complete | Governance-only `parsed_structure` → `legal_object`; idempotency on `parsed_structure_id` |
 | TASK-006V | Legal Object Promotion Persistence | Complete | Append-only requests/results; `parsed_structure_id` idempotency; no promotion execution |
 | TASK-006W | Legal Object Promotion Worker Skeleton | Complete | Dry-run orchestration; terminal `skipped`; no legal object creation |
-| TASK-006X | Controlled Legal Object Promotion Execution | Planned | Approved next; governed materialization when approved |
+| TASK-006X | Controlled Legal Object Promotion Execution | Complete | First canonical legal memory from `parsed_structure`; non-interpretive |
 | TASK-DOC-001 | Master Status Document Realignment | Complete | CURRENT_STATUS, IMPLEMENTATION_ROADMAP, ARCHITECTURE_PHASE_MAP |
 
 ## Status Legend

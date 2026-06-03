@@ -200,6 +200,8 @@ This contract does **not** implement (by itself):
 
 Promotion persistence tables are implemented in **TASK-006V** (`legal_object_promotion_requests`, `legal_object_promotion_results`).
 
+Controlled promotion execution is implemented in **TASK-006X** (`ControlledLegalObjectPromotionProvider`). Default legal object identity: `ps-{parsed_structure_id}`. Force replay appends a new `legal_object_version` only (append-only).
+
 ## Legal meaning boundary
 
 Legal object creation (when implemented) may:

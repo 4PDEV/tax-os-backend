@@ -1,4 +1,8 @@
 from app.services.legal_object_promotion.hashing import compute_promotion_hash
+from app.services.legal_object_promotion.materialization import (
+    legal_object_id_for_parsed_structure,
+    materialize_legal_object_from_parsed_structure,
+)
 from app.services.legal_object_promotion.persistence import (
     LegalObjectPromotionPersistenceError,
     create_promotion_request,
@@ -18,4 +22,6 @@ __all__ = [
     "list_results_for_request",
     "get_latest_result_for_request",
     "find_existing_default_promotion",
+    "legal_object_id_for_parsed_structure",
+    "materialize_legal_object_from_parsed_structure",
 ]

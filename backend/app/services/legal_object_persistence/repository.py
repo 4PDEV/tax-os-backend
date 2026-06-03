@@ -130,6 +130,8 @@ class LegalObjectPersistenceRepository:
         text_hash: str,
         version_status: str,
         extraction_status: str,
+        effective_from=None,
+        effective_to=None,
     ) -> LegalObjectVersion:
         validate_version_status(version_status)
         record = LegalObjectVersion(
@@ -144,8 +146,8 @@ class LegalObjectPersistenceRepository:
             end_offset=end_offset,
             raw_text=raw_text,
             text_hash=text_hash,
-            effective_from=None,
-            effective_to=None,
+            effective_from=effective_from,
+            effective_to=effective_to,
             version_status=version_status,
             extraction_status=extraction_status,
             created_at=utc_now(),

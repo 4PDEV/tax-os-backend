@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+from uuid import UUID
 
 
 @dataclass(frozen=True)
@@ -9,6 +10,10 @@ class LegalObjectPromotionProviderResult:
     notes: str | None = None
     provider_name: str | None = None
     provider_version: str | None = None
+    legal_object_id: str | None = None
+    legal_object_version_id: UUID | None = None
+    created_legal_object: bool = False
+    created_version: bool = False
 
 
 @dataclass(frozen=True)

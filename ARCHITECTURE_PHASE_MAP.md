@@ -385,7 +385,7 @@ FOUNDATION
 
 ## Current position (one line)
 
-**Phases 1–29 complete on `main` through legal-object promotion worker skeleton; next: TASK-006X controlled promotion execution.**
+**Phases 1–30 complete on `main` through controlled legal-object promotion execution; next: Claude review before citation layer.**
 
 ---
 

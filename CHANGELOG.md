@@ -4,6 +4,22 @@ All notable changes to `tax-os-backend` are documented here.
 
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versions align with git tags where applicable.
 
+## [task-006x-controlled-legal-object-promotion-execution] - 2026-06-03
+
+### Added
+
+- TASK-006X: controlled legal object promotion execution — first canonical legal memory from `parsed_structure`.
+  - `ControlledLegalObjectPromotionProvider`, `materialize_legal_object_from_parsed_structure()`.
+  - `run_controlled_legal_object_promotion()` requires `controlled_promotion=True`.
+  - Identity `ps-{parsed_structure_id}`; replay appends `legal_object_version` with deterministic replay hash.
+  - Tests: `test_controlled_legal_object_promotion_execution.py`.
+
+### Notes
+
+- Full suite: **633 passed** (PostgreSQL `taxos_test`).
+- No citations, answers, AI, or legal interpretation.
+- Dry-run worker (006W) regression preserved.
+
 ## [task-006w-legal-object-promotion-worker-skeleton] - 2026-06-03
 
 ### Added

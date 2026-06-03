@@ -63,7 +63,7 @@ tax-os-backend/
 |------|--------|
 | Platform phase | Legal memory + temporal governance + ingestion persistence (see [CURRENT_STATUS.md](CURRENT_STATUS.md)) |
 | Alembic migrations | Head `a4d2e8f93b36` |
-| Approved next task | **TASK-006X** — controlled legal object promotion execution (006W skeleton complete) |
+| Approved next task | **Claude review** — legal object promotion pipeline (006U–006X complete) |
 | Admin CRUD APIs | Operational |
 | Legal object / citation contracts | Merged on `main` (003A–004D) |
 | Temporal governance | Merged (005A–005C); tag `checkpoint-task-005a-spec` |
@@ -135,6 +135,7 @@ Initial jurisdiction focus: **Rwanda**. Initial tax domains: VAT, PAYE/PIT, WHT,
 | [TASKS/TASK-006U-LEGAL-OBJECT-PROMOTION-CONTRACT.md](TASKS/TASK-006U-LEGAL-OBJECT-PROMOTION-CONTRACT.md) | TASK-006U contract record |
 | [TASKS/TASK-006V-LEGAL-OBJECT-PROMOTION-PERSISTENCE.md](TASKS/TASK-006V-LEGAL-OBJECT-PROMOTION-PERSISTENCE.md) | TASK-006V persistence record |
 | [TASKS/TASK-006W-LEGAL-OBJECT-PROMOTION-WORKER-SKELETON.md](TASKS/TASK-006W-LEGAL-OBJECT-PROMOTION-WORKER-SKELETON.md) | TASK-006W worker skeleton record |
+| [TASKS/TASK-006X-CONTROLLED-LEGAL-OBJECT-PROMOTION-EXECUTION.md](TASKS/TASK-006X-CONTROLLED-LEGAL-OBJECT-PROMOTION-EXECUTION.md) | TASK-006X controlled promotion execution record |
 | [TASKS/TASK-006Q-PARSING-TRIGGER-CONTRACT.md](TASKS/TASK-006Q-PARSING-TRIGGER-CONTRACT.md) | TASK-006Q contract record |
 | `backend/app/services/parsing_trigger/` | TASK-006R parsing trigger persistence (append-only requests/results, trigger hash, idempotency) |
 | [TASKS/TASK-006R-PARSING-TRIGGER-PERSISTENCE.md](TASKS/TASK-006R-PARSING-TRIGGER-PERSISTENCE.md) | TASK-006R task record |

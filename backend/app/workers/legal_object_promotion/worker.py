@@ -3,9 +3,11 @@ from uuid import UUID
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
+from app.core.datetime_utils import utc_now
 from app.models.extraction_run import ExtractionRun
 from app.models.legal_object_promotion_request import LegalObjectPromotionRequest
 from app.models.parsed_structure import ParsedStructure
+from app.models.parser_run import ParserRun
 from app.models.source_version import SourceVersion
 from app.services.legal_object_promotion.persistence import (
     get_latest_result_for_request,
@@ -15,7 +17,10 @@ from app.services.legal_object_promotion.validation import (
     validate_actor_type,
     validate_parsed_structure_eligibility,
 )
-from app.models.parser_run import ParserRun
+from app.workers.legal_object_promotion.controlled_provider import (
+    CONTROLLED_LEGAL_OBJECT_PROMOTION_PROVIDER_NAME,
+    CONTROLLED_LEGAL_OBJECT_PROMOTION_PROVIDER_VERSION,
+)
 from app.workers.legal_object_promotion.dry_run_provider import (
     DRY_RUN_PROMOTION_PROVIDER_NAME,
     DRY_RUN_PROMOTION_PROVIDER_VERSION,
@@ -24,7 +29,10 @@ from app.workers.legal_object_promotion.dry_run_provider import (
 from app.workers.legal_object_promotion.result import LegalObjectPromotionRunSummary
 
 EXECUTION_MODE_DRY_RUN = "dry_run"
-ALLOWED_EXECUTION_MODES = frozenset({EXECUTION_MODE_DRY_RUN})
+EXECUTION_MODE_CONTROLLED_PROMOTION = "controlled_promotion"
+ALLOWED_EXECUTION_MODES = frozenset(
+    {EXECUTION_MODE_DRY_RUN, EXECUTION_MODE_CONTROLLED_PROMOTION}
+)
 
 NON_ELIGIBLE_LATEST_STATUSES = frozenset({"duplicate_rejected", "rejected"})
 TERMINAL_SKIP_STATUSES = frozenset({"promoted", "failed", "skipped"})
@@ -35,6 +43,7 @@ TERMINAL_SKIP_STATUSES = frozenset({"promoted", "failed", "skipped"})
 # ran the full accepted → provider → result path. It does NOT mean the request was ignored or
 # deemed ineligible (those requests never enter ``run()`` processing and increment requests_skipped).
 DRY_RUN_TERMINAL_STATUS = "skipped"
+CONTROLLED_TERMINAL_STATUS = "promoted"
 
 
 class LegalObjectPromotionWorkerError(Exception):
@@ -122,6 +131,14 @@ class LegalObjectPromotionWorker:
 
         return True
 
+    def _default_provider_identity(self) -> tuple[str, str]:
+        if self._mode == EXECUTION_MODE_CONTROLLED_PROMOTION:
+            return (
+                CONTROLLED_LEGAL_OBJECT_PROMOTION_PROVIDER_NAME,
+                CONTROLLED_LEGAL_OBJECT_PROMOTION_PROVIDER_VERSION,
+            )
+        return DRY_RUN_PROMOTION_PROVIDER_NAME, DRY_RUN_PROMOTION_PROVIDER_VERSION
+
     def run(
         self,
         db: Session,
@@ -129,7 +146,8 @@ class LegalObjectPromotionWorker:
         worker_name: str = "legal-object-promotion-worker",
         worker_version: str | None = None,
     ) -> LegalObjectPromotionRunSummary:
-        resolved_version = worker_version or DRY_RUN_PROMOTION_PROVIDER_VERSION
+        default_name, default_version = self._default_provider_identity()
+        resolved_version = worker_version or default_version
 
         requests_seen = processed = skipped = results_created = failures = 0
 
@@ -153,8 +171,8 @@ class LegalObjectPromotionWorker:
                 )
                 results_created += 1
 
-                provider_result = self._provider.run_promotion(parsed_structure, request)
-                provider_name = provider_result.provider_name or DRY_RUN_PROMOTION_PROVIDER_NAME
+                provider_result = self._provider.run_promotion(db, parsed_structure, request)
+                provider_name = provider_result.provider_name or default_name
                 provider_version = provider_result.provider_version or resolved_version
 
                 if not provider_result.success:
@@ -172,18 +190,29 @@ class LegalObjectPromotionWorker:
                     processed += 1
                     continue
 
-                persist_promotion_result(
-                    db,
-                    legal_object_promotion_request_id=request.id,
-                    promotion_status=DRY_RUN_TERMINAL_STATUS,
-                    legal_object_id=None,
-                    promoted_at=None,
-                    notes=provider_result.notes
-                    or (
-                        f"dry-run promotion lifecycle completed by {worker_name}; "
-                        "legal_object_id intentionally null"
-                    ),
-                )
+                if self._mode == EXECUTION_MODE_CONTROLLED_PROMOTION:
+                    persist_promotion_result(
+                        db,
+                        legal_object_promotion_request_id=request.id,
+                        promotion_status=CONTROLLED_TERMINAL_STATUS,
+                        legal_object_id=provider_result.legal_object_id,
+                        promoted_at=utc_now(),
+                        notes=provider_result.notes
+                        or f"controlled promotion completed by {worker_name}",
+                    )
+                else:
+                    persist_promotion_result(
+                        db,
+                        legal_object_promotion_request_id=request.id,
+                        promotion_status=DRY_RUN_TERMINAL_STATUS,
+                        legal_object_id=None,
+                        promoted_at=None,
+                        notes=provider_result.notes
+                        or (
+                            f"dry-run promotion lifecycle completed by {worker_name}; "
+                            "legal_object_id intentionally null"
+                        ),
+                    )
                 results_created += 1
                 processed += 1
             except Exception as exc:
