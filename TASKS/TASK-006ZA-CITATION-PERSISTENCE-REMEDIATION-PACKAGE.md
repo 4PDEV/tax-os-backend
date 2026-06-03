@@ -2,7 +2,7 @@
 
 ## Status
 
-**Complete** — governance and planning only
+**Complete** — acceptance review **CLOSED** (2026-06-03) — TASK-006Z **AUTHORIZED FOR IMPLEMENTATION** (persistence only)
 
 ## Important
 
@@ -67,10 +67,15 @@ See full column-level spec in [`CITATION_PERSISTENCE_REMEDIATION_006ZA.md`](../C
 | No implementation introduced | Yes |
 | TASK-006Z not authorized | Yes |
 
+## Acceptance review
+
+**CLOSED** — [`CITATION_PERSISTENCE_006ZA_ACCEPTANCE_REVIEW.md`](../CITATION_PERSISTENCE_006ZA_ACCEPTANCE_REVIEW.md)
+
+**TASK-006Z:** **AUTHORIZED FOR IMPLEMENTATION** (append-only `citation_assembly_requests` / `citation_assembly_results` only).
+
 ## Next gate
 
-1. **Remediation acceptance** — confirm 006ZA spec satisfies pre-auth review checklist.
-2. **Separate authorization** — explicit approval to implement TASK-006Z (tables + service layer only; still no execution).
+Implement TASK-006Z per remediation spec. Before citation execution, retrieval, or answers — new architecture review checkpoint required.
 
 ## Final principle
 

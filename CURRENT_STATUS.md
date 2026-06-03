@@ -15,9 +15,9 @@ For detailed historical sections, see [PROJECT_STATE.md](PROJECT_STATE.md). For 
 
 The platform is materially beyond early foundation. Core registry, processing queue, extraction/parser **contracts**, legal-object **persistence**, citation **governance**, temporal **governance**, and ingestion **artifact persistence** are in place on `main`.
 
-**Citation governance layer:** **ESTABLISHED** (TASK-006Y complete; governance-only). **Persistence not started.** TASK-006Z planned — **not yet authorized**. No citation workers, execution, retrieval runtime, answer runtime, or legal advice generation.
+**Citation governance layer:** **COMPLETE** (TASK-006Y). **Citation persistence design:** **COMPLETE** (006ZA acceptance **CLOSED**). **TASK-006Z:** **AUTHORIZED FOR IMPLEMENTATION** — append-only `citation_assembly_requests` / `citation_assembly_results` only; not yet implemented.
 
-**006Z pre-auth:** Architecture review **complete** — APPROVED WITH REQUIRED REMEDIATION. **TASK-006ZA** remediation package **complete**. TASK-006Z **still NOT AUTHORIZED** — requires remediation acceptance + explicit implementation authorization.
+**Not authorized:** citation execution, workers, rendering, retrieval runtime, answer runtime, legal advice, tax/applicability inference.
 
 **Environments:** development and internal staging only. No public production deployment.
 
@@ -280,7 +280,7 @@ Claude review **CLOSED** — [CLAUDE_REVIEW_LEGAL_OBJECT_PROMOTION_006U-X.md](CL
 | Structural Memory (`parsed_structure`) | Complete |
 | Canonical Legal Memory (`legal_object` / version) | Complete |
 | Citation Governance | Complete |
-| Citation Persistence | Not started |
+| Citation Persistence | **Authorized** (006Z) — not started |
 
 **Governed pipeline (current end state):**
 
@@ -291,11 +291,11 @@ source_version → extraction → extracted_text → parsing → parsed_structur
 
 **Doctrine chain (canonical):** `parsed_structure` ≠ legal object · `legal_object` ≠ legal meaning · `legal_object` ≠ citation · `citation` ≠ answer.
 
-**TASK-006ZA:** Complete — citation persistence remediation spec ([`CITATION_PERSISTENCE_REMEDIATION_006ZA.md`](CITATION_PERSISTENCE_REMEDIATION_006ZA.md)).
+**TASK-006ZA acceptance:** **CLOSED** — [`CITATION_PERSISTENCE_006ZA_ACCEPTANCE_REVIEW.md`](CITATION_PERSISTENCE_006ZA_ACCEPTANCE_REVIEW.md). Findings Z-01–Z-05, Z-07, Z-14 closed.
 
-**TASK-006Z:** Planned — citation persistence — **NOT AUTHORIZED** (remediation acceptance + explicit authorization required).
+**Approved next:** **TASK-006Z** — Citation Persistence (authorized; append-only tables + service layer only).
 
-**Blocked until governed approval:** citation persistence (006Z), citation workers/execution, retrieval runtime, answer runtime.
+**Blocked until governed approval:** citation execution/workers, retrieval runtime, answer runtime.
 
 ---
 
@@ -306,4 +306,4 @@ FOUNDATION → EXTRACTION CONTRACTS → LEGAL OBJECT GOVERNANCE → CITATION GOV
 → TEMPORAL GOVERNANCE → INGESTION PERSISTENCE → [TEST HARDENING] → AGENT LAYER → …
 ```
 
-**You are here:** Citation governance established (006Y); 006Z pre-auth + 006ZA remediation complete; 006Z implementation not authorized.
+**You are here:** TASK-006Z citation persistence **authorized** — implement append-only request/result tables per [`CITATION_PERSISTENCE_REMEDIATION_006ZA.md`](CITATION_PERSISTENCE_REMEDIATION_006ZA.md).

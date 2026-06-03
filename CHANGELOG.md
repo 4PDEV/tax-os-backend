@@ -4,6 +4,19 @@ All notable changes to `tax-os-backend` are documented here.
 
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versions align with git tags where applicable.
 
+## [governance-006za-acceptance-006z-authorized] - 2026-06-03
+
+### Changed
+
+- TASK-006ZA acceptance review: **CLOSED** — findings Z-01–Z-05, Z-07, Z-14 closed.
+- TASK-006Z: **AUTHORIZED FOR IMPLEMENTATION** (append-only `citation_assembly_requests` / `citation_assembly_results` only).
+- `CITATION_PERSISTENCE_006ZA_ACCEPTANCE_REVIEW.md` — authorization envelope recorded.
+
+### Notes
+
+- Citation execution, workers, retrieval, answers, legal advice — **not authorized**.
+- Doctrine chain unchanged: `parsed_structure` ≠ legal object · `legal_object` ≠ citation · `citation` ≠ answer.
+
 ## [task-006za-citation-persistence-remediation-package] - 2026-06-03
 
 ### Added

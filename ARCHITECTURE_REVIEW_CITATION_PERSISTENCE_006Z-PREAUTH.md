@@ -350,7 +350,9 @@ This review **does not** authorize:
 
 **Remediation package:** TASK-006ZA complete — [`CITATION_PERSISTENCE_REMEDIATION_006ZA.md`](CITATION_PERSISTENCE_REMEDIATION_006ZA.md). Findings Z-01–Z-05, Z-07, Z-14 addressed in planned shape.
 
-**Next step:** Formal **remediation acceptance**, then separate explicit **AUTHORIZED FOR IMPLEMENTATION** for TASK-006Z. TASK-006Z remains **NOT AUTHORIZED** after 006ZA alone.
+**Remediation acceptance:** **CLOSED** (2026-06-03) — [`CITATION_PERSISTENCE_006ZA_ACCEPTANCE_REVIEW.md`](CITATION_PERSISTENCE_006ZA_ACCEPTANCE_REVIEW.md).
+
+**TASK-006Z:** **AUTHORIZED FOR IMPLEMENTATION** (persistence-only scope). Citation execution, retrieval, and answers remain not authorized.
 
 ---
 

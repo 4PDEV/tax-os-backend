@@ -10,7 +10,8 @@ Authoritative remediation specification for planned TASK-006Z citation persisten
 |------|--------|
 | 006Z pre-auth review | **Complete** — APPROVED WITH REQUIRED REMEDIATION |
 | TASK-006ZA remediation package | **Complete** |
-| TASK-006Z implementation | **NOT AUTHORIZED** — requires explicit remediation acceptance + authorization gate |
+| TASK-006ZA acceptance review | **CLOSED** — see [`CITATION_PERSISTENCE_006ZA_ACCEPTANCE_REVIEW.md`](CITATION_PERSISTENCE_006ZA_ACCEPTANCE_REVIEW.md) |
+| TASK-006Z implementation | **AUTHORIZED** — append-only persistence only (not yet implemented) |
 
 ---
 
@@ -266,12 +267,10 @@ No concurrency implementation in TASK-006ZA or TASK-006Z persistence-only scope.
 
 ## Authorization gate (TASK-006Z)
 
-TASK-006Z remains **NOT AUTHORIZED** until:
+1. Remediation package **accepted** — TASK-006ZA acceptance review **CLOSED** (2026-06-03).
+2. **TASK-006Z AUTHORIZED FOR IMPLEMENTATION** — persistence-only scope per authorization envelope in [`CITATION_PERSISTENCE_006ZA_ACCEPTANCE_REVIEW.md`](CITATION_PERSISTENCE_006ZA_ACCEPTANCE_REVIEW.md).
 
-1. This remediation package is **accepted** by governance (006ZA complete).
-2. A separate explicit **AUTHORIZED FOR IMPLEMENTATION** instruction is issued for TASK-006Z.
-
-006ZA does not substitute for step 2.
+Citation execution, workers, retrieval, and answers remain **not authorized**.
 
 ---
 

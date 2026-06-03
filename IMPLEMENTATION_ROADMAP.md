@@ -88,7 +88,7 @@ Legal object promotion (TASK-006U–006X): contract through controlled execution
 
 | Task | Title | Notes |
 |------|-------|-------|
-| — | — | 006Z-PREAUTH + 006ZA complete; awaiting remediation acceptance + 006Z authorization |
+| TASK-006Z | Citation persistence | 006ZA acceptance closed | **Authorized** — append-only requests/results; implement next |
 
 ---
 
@@ -96,7 +96,7 @@ Legal object promotion (TASK-006U–006X): contract through controlled execution
 
 | Task | Title | Prerequisite | Acceptance focus |
 |------|-------|--------------|------------------|
-| TASK-006Z | Citation persistence | TASK-006Y + architecture review | **Planned — not yet authorized** |
+| — | — | Citation execution/retrieval/answers remain behind future review gates |
 
 **Ingestion memory layers:** Canonical Source · Structural · Canonical Legal Memory — **complete**. **Citation governance** — **established** (006Y). **Citation persistence** — not started.
 
@@ -106,11 +106,13 @@ Legal object promotion (TASK-006U–006X): contract through controlled execution
 
 **006Z pre-auth:** Complete — remediation in [`CITATION_PERSISTENCE_REMEDIATION_006ZA.md`](CITATION_PERSISTENCE_REMEDIATION_006ZA.md) (TASK-006ZA).
 
-**Next gate:** Remediation acceptance → explicit TASK-006Z **AUTHORIZED FOR IMPLEMENTATION** (persistence only; no execution).
+**006ZA acceptance:** **CLOSED** — TASK-006Z **AUTHORIZED** (persistence only).
 
-**Planned after authorization:** 006Z persistence → citation worker/execution → 007A+ retrieval/query runtime.
+**Approved next:** Implement TASK-006Z per [`CITATION_PERSISTENCE_REMEDIATION_006ZA.md`](CITATION_PERSISTENCE_REMEDIATION_006ZA.md).
 
-**Blocked until governed approval:** citation persistence (006Z), citation execution, answer runtime, retrieval runtime, live monitoring agents, ingestion automation expansion.
+**Planned after 006Z:** citation worker/execution (review gate) → 007A+ retrieval/query runtime.
+
+**Blocked until governed approval:** citation execution, answer runtime, retrieval runtime, live monitoring agents, ingestion automation expansion.
 
 ---
 
