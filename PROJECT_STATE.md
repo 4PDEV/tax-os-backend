@@ -859,9 +859,11 @@ TASK-006X1 — Legal Object Version Identity Hardening (**complete**; L-02b veri
 
 TASK-006Y — Citation Assembly Contract (**complete**; governance-only).
 
-**Next gate:** Architecture review of planned citation persistence shape (identity + provenance) before TASK-006Z authorization.
+**006Z pre-auth review:** Complete — APPROVED WITH REQUIRED REMEDIATION ([`ARCHITECTURE_REVIEW_CITATION_PERSISTENCE_006Z-PREAUTH.md`](ARCHITECTURE_REVIEW_CITATION_PERSISTENCE_006Z-PREAUTH.md)).
 
-**TASK-006Z:** Citation Persistence — **planned, not yet authorized**.
+TASK-006ZA — Citation Persistence Remediation Package (**complete**; [`CITATION_PERSISTENCE_REMEDIATION_006ZA.md`](CITATION_PERSISTENCE_REMEDIATION_006ZA.md)).
+
+**TASK-006Z:** Citation Persistence — **NOT AUTHORIZED** (remediation acceptance + explicit authorization required).
 
 TASK-006P — Controlled Extraction Execution (**completed; controlled local text extraction into extraction_runs/extracted_texts; no PDF/network/parsing/legal automation**).
 

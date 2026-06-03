@@ -4,6 +4,20 @@ All notable changes to `tax-os-backend` are documented here.
 
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versions align with git tags where applicable.
 
+## [task-006za-citation-persistence-remediation-package] - 2026-06-03
+
+### Added
+
+- TASK-006ZA: citation persistence pre-auth remediation package.
+  - `CITATION_PERSISTENCE_REMEDIATION_006ZA.md` — planned 006Z shape (Z-01–Z-05, Z-07, Z-14).
+  - `TASKS/TASK-006ZA-CITATION-PERSISTENCE-REMEDIATION-PACKAGE.md` — task record.
+  - Governance naming: `CitationAssemblyGovernanceRequest` / `Result`; `request_hash` vs 004D rendered hash.
+
+### Notes
+
+- 006Z pre-auth review remediated; TASK-006Z remains **NOT AUTHORIZED**.
+- No tables, migrations, or implementation.
+
 ## [checkpoint-task-006y-citation-assembly-contract] - 2026-06-03
 
 ### Changed

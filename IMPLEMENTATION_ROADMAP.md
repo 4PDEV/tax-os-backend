@@ -88,7 +88,7 @@ Legal object promotion (TASK-006U–006X): contract through controlled execution
 
 | Task | Title | Notes |
 |------|-------|-------|
-| — | — | Awaiting TASK-006Z authorization after recommended pre-persistence architecture review |
+| — | — | 006Z-PREAUTH + 006ZA complete; awaiting remediation acceptance + 006Z authorization |
 
 ---
 
@@ -104,7 +104,9 @@ Legal object promotion (TASK-006U–006X): contract through controlled execution
 
 **Citation governance (006Y):** **ESTABLISHED** — trust boundary `legal_object` → citation; idempotency on `legal_object_version_id`; complements TASK-004D deterministic assembler path (implementation vs governance).
 
-**Next gate:** Architecture review of citation persistence shape (identity, provenance, append-only requests/results) before authorizing 006Z.
+**006Z pre-auth:** Complete — remediation in [`CITATION_PERSISTENCE_REMEDIATION_006ZA.md`](CITATION_PERSISTENCE_REMEDIATION_006ZA.md) (TASK-006ZA).
+
+**Next gate:** Remediation acceptance → explicit TASK-006Z **AUTHORIZED FOR IMPLEMENTATION** (persistence only; no execution).
 
 **Planned after authorization:** 006Z persistence → citation worker/execution → 007A+ retrieval/query runtime.
 

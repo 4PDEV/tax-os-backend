@@ -55,7 +55,11 @@ Pending architectural or operational decisions. Resolve via `tax-os-architecture
 
 **Legal-object promotion gate:** **CLOSED** (Claude review 006U–006X, 2026-06-03 — **APPROVED FOR CONTINUE**). L-01, L-02, L-02b **CLOSED**.
 
-**Citation governance layer:** **ESTABLISHED** — TASK-006Y **COMPLETE** ([`CITATION_ASSEMBLY_CONTRACT.md`](CITATION_ASSEMBLY_CONTRACT.md)). **Persistence not started.** TASK-006Z **planned — not yet authorized** (recommend architecture review of persistence shape before authorization). No workers, execution, answer generation, or retrieval runtime.
+**Citation governance layer:** **ESTABLISHED** — TASK-006Y **COMPLETE** ([`CITATION_ASSEMBLY_CONTRACT.md`](CITATION_ASSEMBLY_CONTRACT.md)). **Persistence not started.**
+
+**006Z pre-auth:** [`ARCHITECTURE_REVIEW_CITATION_PERSISTENCE_006Z-PREAUTH.md`](ARCHITECTURE_REVIEW_CITATION_PERSISTENCE_006Z-PREAUTH.md) — APPROVED WITH REQUIRED REMEDIATION. **TASK-006ZA** remediation package complete ([`CITATION_PERSISTENCE_REMEDIATION_006ZA.md`](CITATION_PERSISTENCE_REMEDIATION_006ZA.md)).
+
+**TASK-006Z:** **NOT AUTHORIZED** — requires remediation acceptance + explicit implementation authorization. No workers, execution, answer generation, or retrieval runtime.
 
 Doctrine: `parsed_structure` ≠ legal object; `legal_object` ≠ legal meaning; `legal_object` ≠ citation ≠ answer.
 
@@ -80,6 +84,8 @@ Doctrine: `parsed_structure` ≠ legal object; `legal_object` ≠ legal meaning;
 | L-02b | `UNIQUE(legal_object_id, text_hash)` on `legal_object_versions` | TASK-006X1 | 2026-06-03 |
 | 006U–006X | Legal object promotion pipeline review | **APPROVED FOR CONTINUE** | 2026-06-03 |
 | TASK-006Y | Citation assembly contract (ingestion pipeline) | Complete — governance only | 2026-06-03 |
+| 006Z-PREAUTH | Citation persistence architecture review | APPROVED WITH REQUIRED REMEDIATION | 2026-06-03 |
+| TASK-006ZA | Citation persistence remediation package | Complete — planned shape updated | 2026-06-03 |
 
 When closing a decision, move row to Decision Log and reference approving task.
 

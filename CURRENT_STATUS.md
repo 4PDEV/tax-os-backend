@@ -17,7 +17,7 @@ The platform is materially beyond early foundation. Core registry, processing qu
 
 **Citation governance layer:** **ESTABLISHED** (TASK-006Y complete; governance-only). **Persistence not started.** TASK-006Z planned — **not yet authorized**. No citation workers, execution, retrieval runtime, answer runtime, or legal advice generation.
 
-**Next expected gate:** Short architecture review of planned citation persistence shape (identity + provenance) before authorizing 006Z.
+**006Z pre-auth:** Architecture review **complete** — APPROVED WITH REQUIRED REMEDIATION. **TASK-006ZA** remediation package **complete**. TASK-006Z **still NOT AUTHORIZED** — requires remediation acceptance + explicit implementation authorization.
 
 **Environments:** development and internal staging only. No public production deployment.
 
@@ -59,6 +59,7 @@ The platform is materially beyond early foundation. Core registry, processing qu
 | Controlled legal object promotion execution | First canonical `legal_object` / `legal_object_version` from `parsed_structure`; non-interpretive; no citations/answers | TASK-006X |
 | Legal object version identity hardening | L-02b verified — `uq_legal_object_versions_object_hash` at DB layer | TASK-006X1 |
 | Citation assembly governance | Governed `legal_object` → citation boundary; `legal_object` ≠ citation ≠ answer | TASK-006Y |
+| Citation persistence remediation | Planned 006Z shape per pre-auth review (Z-01–Z-14); governance naming; dual-hash doctrine | TASK-006ZA |
 
 **Checkpoint tags (selected):** `checkpoint-task-003e` … `checkpoint-task-006x-controlled-legal-object-promotion-execution`
 
@@ -290,7 +291,9 @@ source_version → extraction → extracted_text → parsing → parsed_structur
 
 **Doctrine chain (canonical):** `parsed_structure` ≠ legal object · `legal_object` ≠ legal meaning · `legal_object` ≠ citation · `citation` ≠ answer.
 
-**TASK-006Z:** Planned — citation persistence — **not yet authorized** (recommend architecture review of persistence shape before authorization).
+**TASK-006ZA:** Complete — citation persistence remediation spec ([`CITATION_PERSISTENCE_REMEDIATION_006ZA.md`](CITATION_PERSISTENCE_REMEDIATION_006ZA.md)).
+
+**TASK-006Z:** Planned — citation persistence — **NOT AUTHORIZED** (remediation acceptance + explicit authorization required).
 
 **Blocked until governed approval:** citation persistence (006Z), citation workers/execution, retrieval runtime, answer runtime.
 
@@ -303,4 +306,4 @@ FOUNDATION → EXTRACTION CONTRACTS → LEGAL OBJECT GOVERNANCE → CITATION GOV
 → TEMPORAL GOVERNANCE → INGESTION PERSISTENCE → [TEST HARDENING] → AGENT LAYER → …
 ```
 
-**You are here:** Citation governance layer established (006Y); persistence (006Z) not authorized — pre-006Z architecture review recommended.
+**You are here:** Citation governance established (006Y); 006Z pre-auth + 006ZA remediation complete; 006Z implementation not authorized.

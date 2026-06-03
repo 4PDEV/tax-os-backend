@@ -63,7 +63,7 @@ tax-os-backend/
 |------|--------|
 | Platform phase | Legal memory + temporal governance + ingestion persistence (see [CURRENT_STATUS.md](CURRENT_STATUS.md)) |
 | Alembic migrations | Head `a4d2e8f93b36` |
-| Platform gate | Citation governance **established** (006Y); 006Z persistence **not yet authorized** |
+| Platform gate | 006Y governance complete · 006ZA remediation complete · **006Z NOT AUTHORIZED** |
 | Admin CRUD APIs | Operational |
 | Legal object / citation contracts | Merged on `main` (003A–004D) |
 | Temporal governance | Merged (005A–005C); tag `checkpoint-task-005a-spec` |
@@ -133,6 +133,9 @@ Initial jurisdiction focus: **Rwanda**. Initial tax domains: VAT, PAYE/PIT, WHT,
 | [PARSING_TRIGGER_CONTRACT.md](PARSING_TRIGGER_CONTRACT.md) | Parsing trigger governance contract from `extracted_text` (TASK-006Q; contract-only) |
 | [CITATION_ASSEMBLY_CONTRACT.md](CITATION_ASSEMBLY_CONTRACT.md) | Ingestion-pipeline citation assembly governance from `legal_object` (TASK-006Y; contract-only) |
 | [TASKS/TASK-006Y-CITATION-ASSEMBLY-CONTRACT.md](TASKS/TASK-006Y-CITATION-ASSEMBLY-CONTRACT.md) | TASK-006Y contract record |
+| [ARCHITECTURE_REVIEW_CITATION_PERSISTENCE_006Z-PREAUTH.md](ARCHITECTURE_REVIEW_CITATION_PERSISTENCE_006Z-PREAUTH.md) | 006Z pre-auth review — APPROVED WITH REQUIRED REMEDIATION |
+| [CITATION_PERSISTENCE_REMEDIATION_006ZA.md](CITATION_PERSISTENCE_REMEDIATION_006ZA.md) | TASK-006ZA planned persistence remediation (006Z not authorized) |
+| [TASKS/TASK-006ZA-CITATION-PERSISTENCE-REMEDIATION-PACKAGE.md](TASKS/TASK-006ZA-CITATION-PERSISTENCE-REMEDIATION-PACKAGE.md) | TASK-006ZA task record |
 | [LEGAL_OBJECT_PROMOTION_CONTRACT.md](LEGAL_OBJECT_PROMOTION_CONTRACT.md) | Legal object promotion governance from `parsed_structure` (TASK-006U; contract-only) |
 | [TASKS/TASK-006U-LEGAL-OBJECT-PROMOTION-CONTRACT.md](TASKS/TASK-006U-LEGAL-OBJECT-PROMOTION-CONTRACT.md) | TASK-006U contract record |
 | [TASKS/TASK-006V-LEGAL-OBJECT-PROMOTION-PERSISTENCE.md](TASKS/TASK-006V-LEGAL-OBJECT-PROMOTION-PERSISTENCE.md) | TASK-006V persistence record |
