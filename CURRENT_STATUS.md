@@ -209,7 +209,8 @@ TASK-006P is controlled local extraction only:
 | Task | Title | Status | Notes |
 |------|-------|--------|-------|
 | **TASK-004E** | Citation Temporal Compliance Remediation | **COMPLETE** | AC-01 closed — no silent `source_version` date fallback; Addendum V6 aligned. OD-016 resolved. |
-| **TASK-006AC1** | Controlled Citation Execution Remediation Package | **COMPLETE** | AC-02/AC-03 remediated at spec level. Spec: [CITATION_EXECUTION_REMEDIATION_006AC1.md](CITATION_EXECUTION_REMEDIATION_006AC1.md). Await acceptance review. |
+| **TASK-006AC** | Controlled Citation Execution Pre-Auth Review | **CLOSED** | Review record: [TASKS/TASK-006AC-CONTROLLED-CITATION-EXECUTION-PREAUTH-REVIEW.md](TASKS/TASK-006AC-CONTROLLED-CITATION-EXECUTION-PREAUTH-REVIEW.md). |
+| **TASK-006AC1** | Controlled Citation Execution Remediation Package | **COMPLETE** | AC-02/AC-03 remediated; acceptance complete. Spec: [CITATION_EXECUTION_REMEDIATION_006AC1.md](CITATION_EXECUTION_REMEDIATION_006AC1.md). |
 
 ---
 
@@ -303,11 +304,11 @@ source_version → … → legal_object_version
 
 **TASK-004E:** **COMPLETE** — **AC-01 closed** (temporal fallback removed).
 
-**TASK-006AC1:** **COMPLETE** — remediation package delivered ([`CITATION_EXECUTION_REMEDIATION_006AC1.md`](CITATION_EXECUTION_REMEDIATION_006AC1.md)); **AC-02 / AC-03 remediated at spec level**.
+**TASK-006AC:** **CLOSED** — pre-auth review recorded ([`TASKS/TASK-006AC-CONTROLLED-CITATION-EXECUTION-PREAUTH-REVIEW.md`](TASKS/TASK-006AC-CONTROLLED-CITATION-EXECUTION-PREAUTH-REVIEW.md)).
 
-**Next gate:** **Remediation acceptance review** for 006AC1 — then bounded TASK-006AD authorization (not yet granted).
+**TASK-006AD:** **Authorized with conditions** — bounded implementation **not yet started**.
 
-**Blocked until governed approval:** controlled citation execution (006AD), retrieval runtime, answer runtime.
+**Blocked until governed approval:** retrieval runtime, answer runtime, concurrent citation workers.
 
 ---
 
@@ -318,4 +319,4 @@ FOUNDATION → EXTRACTION CONTRACTS → LEGAL OBJECT GOVERNANCE → CITATION GOV
 → TEMPORAL GOVERNANCE → INGESTION PERSISTENCE → [TEST HARDENING] → AGENT LAYER → …
 ```
 
-**You are here:** TASK-006AC1 remediation package complete; await acceptance review before TASK-006AD authorization. Citation execution / retrieval / answers **not authorized**.
+**You are here:** TASK-006AC review chain closed; TASK-006AD **authorized with conditions** (implementation not yet started). Retrieval / answers **not authorized**.

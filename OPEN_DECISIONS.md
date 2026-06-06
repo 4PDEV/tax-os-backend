@@ -67,11 +67,13 @@ Pending architectural or operational decisions. Resolve via `tax-os-architecture
 
 **TASK-004E:** **COMPLETE** — citation temporal compliance remediation; **AC-01 closed**.
 
-**TASK-006AC1:** **COMPLETE** — controlled citation execution remediation package; **AC-02 / AC-03 remediated at spec level** ([`CITATION_EXECUTION_REMEDIATION_006AC1.md`](CITATION_EXECUTION_REMEDIATION_006AC1.md)). Awaiting acceptance review.
+**TASK-006AC:** **CLOSED** — pre-auth review recorded ([`TASKS/TASK-006AC-CONTROLLED-CITATION-EXECUTION-PREAUTH-REVIEW.md`](TASKS/TASK-006AC-CONTROLLED-CITATION-EXECUTION-PREAUTH-REVIEW.md)).
 
-**Next gate:** **Remediation acceptance review** for 006AC1 package — then bounded TASK-006AD authorization (not yet granted).
+**TASK-006AC1:** **COMPLETE** — remediation package + acceptance review complete ([`CITATION_EXECUTION_REMEDIATION_006AC1.md`](CITATION_EXECUTION_REMEDIATION_006AC1.md)).
 
-**Not authorized:** controlled citation execution (006AD), retrieval, answers.
+**TASK-006AD:** **Authorized with conditions** — bounded implementation **not yet started**.
+
+**Not authorized:** retrieval, answers, concurrent citation workers (OD-021).
 
 Doctrine: `parsed_structure` ≠ legal object; `legal_object` ≠ legal meaning; `legal_object` ≠ citation ≠ answer.
 

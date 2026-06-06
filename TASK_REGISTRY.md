@@ -75,9 +75,9 @@ Bounded task tracking for `tax-os-backend`. Authoritative specs remain in `tax-o
 | TASK-006Z | Citation Persistence | Complete | Accepted `checkpoint-task-006z-citation-persistence`; 667 tests |
 | TASK-006AA | Citation Worker Skeleton Pre-Auth Review | Complete | Verdict: APPROVED FOR IMPLEMENTATION (006AB dry-run only) |
 | TASK-006AB | Citation Worker Skeleton | Complete | Accepted `checkpoint-task-006ab-citation-worker-skeleton`; 680 tests |
-| TASK-006AC | Controlled Citation Execution Pre-Auth Review | Complete | APPROVED WITH REQUIRED REMEDIATION BEFORE 006AD |
-| TASK-006AC1 | Controlled Citation Execution Remediation Package | Complete | AC-02/AC-03 remediated at spec level; await acceptance review |
-| TASK-006AD | Controlled Citation Execution | Hold | **NOT AUTHORIZED** — requires 006AC1 acceptance + bounded spec |
+| TASK-006AC | Controlled Citation Execution Pre-Auth Review | Complete | CLOSED — APPROVED WITH REQUIRED REMEDIATION BEFORE 006AD; [`TASKS/TASK-006AC-CONTROLLED-CITATION-EXECUTION-PREAUTH-REVIEW.md`](TASKS/TASK-006AC-CONTROLLED-CITATION-EXECUTION-PREAUTH-REVIEW.md) |
+| TASK-006AC1 | Controlled Citation Execution Remediation Package | Complete | AC-02/AC-03 remediated; acceptance review complete |
+| TASK-006AD | Controlled Citation Execution | Authorized | **Authorized with conditions** — bounded implementation not yet started |
 | TASK-007A+ | Retrieval & Query Runtime | Planned | After citation execution gates; governed query path |
 | TASK-DOC-001 | Master Status Document Realignment | Complete | CURRENT_STATUS, IMPLEMENTATION_ROADMAP, ARCHITECTURE_PHASE_MAP |
 

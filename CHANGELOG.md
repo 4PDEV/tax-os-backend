@@ -4,6 +4,23 @@ All notable changes to `tax-os-backend` are documented here.
 
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versions align with git tags where applicable.
 
+## [task-006ac-controlled-citation-execution-preauth-review] - 2026-06-02
+
+### Added
+
+- TASK-006AC-GOV: permanent pre-authorization review record (governance documentation repair).
+  - [`TASKS/TASK-006AC-CONTROLLED-CITATION-EXECUTION-PREAUTH-REVIEW.md`](TASKS/TASK-006AC-CONTROLLED-CITATION-EXECUTION-PREAUTH-REVIEW.md)
+
+### Changed
+
+- References updated from missing `ARCHITECTURE_REVIEW_CONTROLLED_CITATION_EXECUTION_006AC.md` to canonical review record.
+- Decision chain documented: 006AC → 004E → 006AC1 → 006AC1 acceptance → 006AD authorized with conditions.
+- Governance docs aligned: TASK-006AD authorized with conditions; implementation not yet started; retrieval/answers not authorized.
+
+### Notes
+
+- No code changes. Review record reconstructs AC-01 through AC-07 for auditability.
+
 ## [task-006ac1-citation-execution-remediation] - 2026-06-02
 
 ### Added
@@ -20,7 +37,7 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Version
 
 ### Notes
 
-- AC-01 closed by TASK-004E. TASK-006AD remains **NOT AUTHORIZED** — awaits remediation acceptance review.
+- AC-01 closed by TASK-004E. TASK-006AD authorized with conditions following 006AC1 acceptance (implementation not yet started).
 
 ## [task-004e-citation-temporal-compliance] - 2026-06-02
 

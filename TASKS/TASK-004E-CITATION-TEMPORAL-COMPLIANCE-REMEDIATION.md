@@ -58,7 +58,7 @@ TASK-005B resolved C1 at **governance** level only. Code alignment is explicitly
 | **AC-02** (citation identity / 004D provenance tuple) | **Remediated at spec level (TASK-006AC1)** — see [`CITATION_EXECUTION_REMEDIATION_006AC1.md`](../CITATION_EXECUTION_REMEDIATION_006AC1.md) |
 | **AC-03** (DB UNIQUE on citation_hash) | **Remediated at spec level (TASK-006AC1)** — see [`CITATION_EXECUTION_REMEDIATION_006AC1.md`](../CITATION_EXECUTION_REMEDIATION_006AC1.md) |
 
-TASK-006AD remains **NOT AUTHORIZED** until 006AC1 remediation package is accepted and bounded 006AD spec is approved.
+TASK-006AD is **authorized with conditions** following TASK-006AC1 acceptance review — bounded implementation **not yet started**. See [`TASK-006AC-CONTROLLED-CITATION-EXECUTION-PREAUTH-REVIEW.md`](TASK-006AC-CONTROLLED-CITATION-EXECUTION-PREAUTH-REVIEW.md).
 
 ---
 

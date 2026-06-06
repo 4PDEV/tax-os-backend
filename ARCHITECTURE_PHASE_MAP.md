@@ -377,7 +377,7 @@ FOUNDATION
 
 **Intent:** Source-referenced answers with mandatory disclosure, ambiguity surfacing, no silent legal inference.
 
-**Prerequisites:** Retrieval layer, temporal compliance (TASK-004E complete), citation integrity (AC-02/AC-03 remediated in TASK-006AC1 spec — await acceptance review).
+**Prerequisites:** Retrieval layer, temporal compliance (TASK-004E complete), citation integrity (AC-02/AC-03 remediated; 006AC chain closed). TASK-006AD authorized with conditions.
 
 **Explicitly excluded from near-term roadmap:** probabilistic/AI answer generation without governance tasks.
 
@@ -385,7 +385,7 @@ FOUNDATION
 
 ## Current position (one line)
 
-**Phases 1–31 complete on `main`.** Citation persistence + dry-run worker **complete** (`checkpoint-task-006z` / `checkpoint-task-006ab`). TASK-006AC1 remediation package **complete**. **Next:** remediation acceptance review → bounded 006AD. Citation execution / retrieval / answers **not authorized**.
+**Phases 1–31 complete on `main`.** Citation persistence + dry-run worker **complete** (`checkpoint-task-006z` / `checkpoint-task-006ab`). TASK-006AC review chain **closed**. TASK-006AD **authorized with conditions** (implementation not yet started). Retrieval / answers **not authorized**.
 
 ---
 

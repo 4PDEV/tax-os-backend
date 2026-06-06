@@ -2,12 +2,12 @@
 
 ## Status
 
-**Complete** — governance-only remediation package delivered; **awaiting acceptance review** before TASK-006AD authorization.
+**Complete** — governance-only remediation package delivered; **acceptance review complete** — TASK-006AD **authorized with conditions** (implementation not yet started).
 
 ## Important
 
 - **Does NOT implement TASK-006AD**
-- **TASK-006AD remains NOT AUTHORIZED**
+- **TASK-006AD authorized with conditions** — bounded implementation not yet started
 - No citation entity, migrations, workers, rendering execution, retrieval, ranking, or answers
 - No modifications to existing citation persistence or governance worker code
 
@@ -17,7 +17,7 @@ Close remaining **006AC** blockers **AC-02** and **AC-03** at the architecture/g
 
 ## Source review
 
-Findings from [`ARCHITECTURE_REVIEW_CONTROLLED_CITATION_EXECUTION_006AC.md`](../ARCHITECTURE_REVIEW_CONTROLLED_CITATION_EXECUTION_006AC.md):
+Findings from [`TASK-006AC-CONTROLLED-CITATION-EXECUTION-PREAUTH-REVIEW.md`](TASK-006AC-CONTROLLED-CITATION-EXECUTION-PREAUTH-REVIEW.md):
 
 | Finding | Status before 006AC1 | Status after 006AC1 |
 |---------|----------------------|---------------------|
@@ -30,7 +30,7 @@ Findings from [`ARCHITECTURE_REVIEW_CONTROLLED_CITATION_EXECUTION_006AC.md`](../
 | Artifact | Path |
 |----------|------|
 | Remediation specification | [`CITATION_EXECUTION_REMEDIATION_006AC1.md`](../CITATION_EXECUTION_REMEDIATION_006AC1.md) |
-| Pre-auth review | [`ARCHITECTURE_REVIEW_CONTROLLED_CITATION_EXECUTION_006AC.md`](../ARCHITECTURE_REVIEW_CONTROLLED_CITATION_EXECUTION_006AC.md) |
+| Pre-auth review | [`TASK-006AC-CONTROLLED-CITATION-EXECUTION-PREAUTH-REVIEW.md`](TASK-006AC-CONTROLLED-CITATION-EXECUTION-PREAUTH-REVIEW.md) |
 | 004D assembler contract | [`backend/app/services/citation/CITATION_ASSEMBLY_CONTRACT.md`](../backend/app/services/citation/CITATION_ASSEMBLY_CONTRACT.md) |
 | Temporal remediation | [`TASKS/TASK-004E-CITATION-TEMPORAL-COMPLIANCE-REMEDIATION.md`](TASK-004E-CITATION-TEMPORAL-COMPLIANCE-REMEDIATION.md) |
 | Task record | `TASKS/TASK-006AC1-CONTROLLED-CITATION-EXECUTION-REMEDIATION.md` |
@@ -81,7 +81,7 @@ Findings from [`ARCHITECTURE_REVIEW_CONTROLLED_CITATION_EXECUTION_006AC.md`](../
 
 ## Next gate
 
-**Remediation acceptance review** — explicit approval of this package required before TASK-006AD bounded implementation may be authorized.
+**TASK-006AD bounded implementation** — authorized with conditions per 006AC1 acceptance review; implementation **not yet started**. See [`TASK-006AC-CONTROLLED-CITATION-EXECUTION-PREAUTH-REVIEW.md`](TASK-006AC-CONTROLLED-CITATION-EXECUTION-PREAUTH-REVIEW.md) for full chain.
 
 ---
 

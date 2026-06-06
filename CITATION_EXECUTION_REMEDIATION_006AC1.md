@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Authoritative remediation specification for future **TASK-006AD** controlled citation execution, addressing remaining findings from [`ARCHITECTURE_REVIEW_CONTROLLED_CITATION_EXECUTION_006AC.md`](ARCHITECTURE_REVIEW_CONTROLLED_CITATION_EXECUTION_006AC.md).
+Authoritative remediation specification for **TASK-006AD** controlled citation execution, addressing remaining findings from [`TASKS/TASK-006AC-CONTROLLED-CITATION-EXECUTION-PREAUTH-REVIEW.md`](TASKS/TASK-006AC-CONTROLLED-CITATION-EXECUTION-PREAUTH-REVIEW.md).
 
 **This document modifies planned architecture only.** It does not implement execution, rendering, citation entity tables, migrations, workers, retrieval, ranking, or answers.
 
@@ -11,8 +11,9 @@ Authoritative remediation specification for future **TASK-006AD** controlled cit
 | 006AC pre-auth review | **Complete** — APPROVED WITH REQUIRED REMEDIATION BEFORE 006AD |
 | TASK-004E (AC-01) | **Closed** — temporal fallback removed |
 | TASK-006AC1 remediation package | **Complete** — AC-02 / AC-03 addressed at governance level |
-| TASK-006AD implementation | **NOT AUTHORIZED** — requires remediation acceptance review |
-| Citation execution / retrieval / answers | **NOT AUTHORIZED** |
+| TASK-006AC1 acceptance review | **Complete** — TASK-006AD authorized with conditions |
+| TASK-006AD implementation | **Authorized with conditions** — bounded implementation **not yet started** |
+| Retrieval / answers | **NOT AUTHORIZED** |
 
 ---
 
@@ -280,12 +281,12 @@ legal_object_version
 
 ### Authorization gate for TASK-006AD
 
-TASK-006AD may be authorized only after:
+TASK-006AD authorization chain (complete):
 
 1. TASK-004E accepted (AC-01 closed) — **done**
-2. TASK-006AC1 remediation package accepted (AC-02 / AC-03 closed at spec level) — **pending acceptance review**
-3. Bounded TASK-006AD implementation spec derived from this document
-4. Explicit governance approval — separate gate
+2. TASK-006AC1 remediation package accepted (AC-02 / AC-03 closed at spec level) — **done**
+3. TASK-006AC1 acceptance review — **done** — TASK-006AD **authorized with conditions**
+4. Bounded TASK-006AD implementation — **not yet started**
 
 ---
 
@@ -293,7 +294,7 @@ TASK-006AD may be authorized only after:
 
 | Document | Role |
 |----------|------|
-| [`ARCHITECTURE_REVIEW_CONTROLLED_CITATION_EXECUTION_006AC.md`](ARCHITECTURE_REVIEW_CONTROLLED_CITATION_EXECUTION_006AC.md) | Pre-auth review — source findings |
+| [`TASKS/TASK-006AC-CONTROLLED-CITATION-EXECUTION-PREAUTH-REVIEW.md`](TASKS/TASK-006AC-CONTROLLED-CITATION-EXECUTION-PREAUTH-REVIEW.md) | Pre-auth review — source findings (AC-01–AC-07) |
 | [`backend/app/services/citation/CITATION_ASSEMBLY_CONTRACT.md`](backend/app/services/citation/CITATION_ASSEMBLY_CONTRACT.md) | 004D assembler contract — hash formula |
 | [`CITATION_ASSEMBLY_CONTRACT.md`](CITATION_ASSEMBLY_CONTRACT.md) | 006Y governance layer — request/result lifecycle |
 | [`CITATION_PERSISTENCE_REMEDIATION_006ZA.md`](CITATION_PERSISTENCE_REMEDIATION_006ZA.md) | 006Z persistence — `request_hash` vs rendered hash |
@@ -311,7 +312,7 @@ TASK-006AD may be authorized only after:
 - [x] OD-021 carry-forward documented (`citation_hash`-keyed execution locks)
 - [x] Planned 006AD architecture documented
 - [x] No implementation introduced
-- [x] TASK-006AD remains NOT AUTHORIZED
+- [x] TASK-006AD authorized with conditions — implementation not yet started
 
 ---
 
