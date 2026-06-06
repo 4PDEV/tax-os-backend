@@ -66,11 +66,13 @@ Pending architectural or operational decisions. Resolve via `tax-os-architecture
 
 **TASK-007A:** **CLOSED** — retrieval pre-auth review APPROVED WITH REQUIRED REMEDIATION BEFORE TASK-007B ([`ARCHITECTURE_REVIEW_RETRIEVAL_RUNTIME_007A-PREAUTH.md`](ARCHITECTURE_REVIEW_RETRIEVAL_RUNTIME_007A-PREAUTH.md)).
 
-**TASK-007A1:** **COMPLETE** — retrieval runtime remediation package ([`RETRIEVAL_RUNTIME_REMEDIATION_007A1.md`](RETRIEVAL_RUNTIME_REMEDIATION_007A1.md)); R-01–R-06 remediated at spec level.
+**TASK-007A1 acceptance:** **CLOSED** — TASK-007B **authorized with conditions** ([`RETRIEVAL_RUNTIME_007A1_ACCEPTANCE_REVIEW.md`](RETRIEVAL_RUNTIME_007A1_ACCEPTANCE_REVIEW.md)).
 
-**Next gate:** **Remediation acceptance review** for 007A1 — then bounded TASK-007B authorization (not yet granted).
+**TASK-007B:** **COMPLETE** — [`RETRIEVAL_RUNTIME_CONTRACT.md`](RETRIEVAL_RUNTIME_CONTRACT.md). Retrieval runtime contract established.
 
-**Not authorized:** retrieval runtime (007B), ranking, answers, AI retrieval, concurrent workers (OD-021).
+**Next gate:** **TASK-007C** — retrieval persistence (not authorized).
+
+**Not authorized:** 007C/007D implementation, ranking, answers, AI retrieval, concurrent workers (OD-021).
 
 Doctrine: `parsed_structure` ≠ legal object; `legal_object` ≠ legal meaning; `legal_object` ≠ citation; `citation` ≠ retrieval; `citation` ≠ answer.
 

@@ -2,7 +2,7 @@
 
 ## Status
 
-**Complete** — governance-only remediation package delivered; **awaiting acceptance review** before TASK-007B authorization.
+**Complete** — remediation package delivered; acceptance review **CLOSED** — TASK-007B contract **authorized with conditions**.
 
 ## Important
 
@@ -99,7 +99,7 @@ Findings from [`ARCHITECTURE_REVIEW_RETRIEVAL_RUNTIME_007A-PREAUTH.md`](../ARCHI
 
 ## Next gate
 
-**Remediation acceptance review** for 007A1 package — then bounded TASK-007B authorization (not yet granted).
+**TASK-007B** — **COMPLETE** — [`RETRIEVAL_RUNTIME_CONTRACT.md`](../RETRIEVAL_RUNTIME_CONTRACT.md). **TASK-007C** persistence — not authorized.
 
 ---
 

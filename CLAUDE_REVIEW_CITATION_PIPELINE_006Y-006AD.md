@@ -87,7 +87,7 @@ legal_object_version
 
 ## Next valid gate (post-citation)
 
-**TASK-007A1 — Retrieval Runtime Remediation Package** — **COMPLETE** — [`RETRIEVAL_RUNTIME_REMEDIATION_007A1.md`](RETRIEVAL_RUNTIME_REMEDIATION_007A1.md). Await acceptance review before TASK-007B.
+**Retrieval layer:** TASK-007B contract **COMPLETE** — [`RETRIEVAL_RUNTIME_CONTRACT.md`](RETRIEVAL_RUNTIME_CONTRACT.md). Next: TASK-007C persistence (not authorized).
 
 ---
 

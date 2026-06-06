@@ -4,6 +4,25 @@ All notable changes to `tax-os-backend` are documented here.
 
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versions align with git tags where applicable.
 
+## [task-007b-retrieval-runtime-contract] - 2026-06-02
+
+### Added
+
+- TASK-007A1 acceptance review — **CLOSED**; TASK-007B authorized with conditions.
+  - [`RETRIEVAL_RUNTIME_007A1_ACCEPTANCE_REVIEW.md`](RETRIEVAL_RUNTIME_007A1_ACCEPTANCE_REVIEW.md)
+- TASK-007B: retrieval runtime governance contract.
+  - [`RETRIEVAL_RUNTIME_CONTRACT.md`](RETRIEVAL_RUNTIME_CONTRACT.md)
+  - [`TASKS/TASK-007B-RETRIEVAL-RUNTIME-CONTRACT.md`](TASKS/TASK-007B-RETRIEVAL-RUNTIME-CONTRACT.md)
+
+### Changed
+
+- R-01 through R-06 findings **CLOSED** at acceptance
+- Governed pipeline registered: 007B → 007C → 007D → retrieval layer review
+
+### Notes
+
+- Contract only — no persistence, workers, or execution. 007C/007D **not authorized**.
+
 ## [task-007a1-retrieval-runtime-remediation] - 2026-06-02
 
 ### Added

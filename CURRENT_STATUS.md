@@ -23,14 +23,16 @@ The platform is materially beyond early foundation. Core registry, processing qu
 | Citation persistence | **COMPLETE** (006Z) |
 | Citation worker skeleton | **COMPLETE** (006AB) |
 | Controlled citation execution | **COMPLETE** (006AD) — 703 tests |
-| Retrieval / ranking / answers | **NOT AUTHORIZED** |
+| Retrieval runtime contract (007B) | **COMPLETE** |
+| Retrieval persistence / execution (007C/007D) | **NOT AUTHORIZED** |
+| Ranking / answers / AI retrieval | **NOT AUTHORIZED** |
 | Concurrent citation workers | **NOT AUTHORIZED** (OD-021) |
 
 **TASK-007A:** **CLOSED** — APPROVED WITH REQUIRED REMEDIATION BEFORE TASK-007B ([`ARCHITECTURE_REVIEW_RETRIEVAL_RUNTIME_007A-PREAUTH.md`](ARCHITECTURE_REVIEW_RETRIEVAL_RUNTIME_007A-PREAUTH.md)).
 
-**TASK-007A1:** **COMPLETE** — remediation package delivered ([`RETRIEVAL_RUNTIME_REMEDIATION_007A1.md`](RETRIEVAL_RUNTIME_REMEDIATION_007A1.md)); R-01–R-06 remediated at spec level.
+**TASK-007A1 acceptance:** **CLOSED** — R-01–R-06 closed ([`RETRIEVAL_RUNTIME_007A1_ACCEPTANCE_REVIEW.md`](RETRIEVAL_RUNTIME_007A1_ACCEPTANCE_REVIEW.md)).
 
-**Next gate:** **Remediation acceptance review** for 007A1 — then bounded TASK-007B authorization (not yet granted).
+**TASK-007B:** **COMPLETE** — retrieval runtime contract ([`RETRIEVAL_RUNTIME_CONTRACT.md`](RETRIEVAL_RUNTIME_CONTRACT.md)). Retrieval runtime **authorized with conditions** (contract phase; 007C/007D not authorized).
 
 **Environments:** development and internal staging only. No public production deployment.
 
@@ -327,4 +329,4 @@ FOUNDATION → EXTRACTION CONTRACTS → LEGAL OBJECT GOVERNANCE → CITATION GOV
 → TEMPORAL GOVERNANCE → INGESTION PERSISTENCE → [TEST HARDENING] → AGENT LAYER → …
 ```
 
-**You are here:** TASK-007A1 remediation package **complete**; await acceptance review. TASK-007B **not authorized**. Ranking / answers **not authorized**.
+**You are here:** TASK-007B contract **complete**; retrieval layer governed pipeline active. **Next:** TASK-007C persistence (not authorized). Ranking / answers **not authorized**.

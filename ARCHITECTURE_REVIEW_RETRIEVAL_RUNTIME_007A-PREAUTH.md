@@ -247,8 +247,9 @@ Retrieval runtime must **not** introduce: answer generation, legal reasoning, le
 ```text
 TASK-007A Review (this document) — APPROVED WITH REQUIRED REMEDIATION — **done**
   → TASK-007A1 — retrieval runtime remediation package — **complete** ([`RETRIEVAL_RUNTIME_REMEDIATION_007A1.md`](RETRIEVAL_RUNTIME_REMEDIATION_007A1.md))
-  → TASK-007A1 acceptance review — **pending**
-  → TASK-007B — bounded retrieval runtime implementation — **not authorized**
+  → TASK-007A1 acceptance review — **closed**
+  → TASK-007B — retrieval runtime contract — **complete**
+  → TASK-007C / 007D — **not authorized**
 ```
 
 ---

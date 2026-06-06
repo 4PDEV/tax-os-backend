@@ -10,8 +10,9 @@ Authoritative remediation specification for future **TASK-007B** retrieval runti
 |------|--------|
 | TASK-007A pre-auth review | **Complete** — APPROVED WITH REQUIRED REMEDIATION BEFORE 007B |
 | TASK-007A1 remediation package | **Complete** — R-01 through R-06 addressed at governance level |
-| TASK-007A1 acceptance review | **Pending** — required before TASK-007B authorization |
-| TASK-007B implementation | **NOT AUTHORIZED** |
+| TASK-007A1 acceptance review | **Closed** — [`RETRIEVAL_RUNTIME_007A1_ACCEPTANCE_REVIEW.md`](RETRIEVAL_RUNTIME_007A1_ACCEPTANCE_REVIEW.md) |
+| TASK-007B contract | **Complete** — [`RETRIEVAL_RUNTIME_CONTRACT.md`](RETRIEVAL_RUNTIME_CONTRACT.md) |
+| TASK-007C / 007D | **NOT AUTHORIZED** |
 | Ranking / answers / AI retrieval | **NOT AUTHORIZED** |
 
 ---
