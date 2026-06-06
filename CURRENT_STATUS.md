@@ -26,7 +26,7 @@ The platform is materially beyond early foundation. Core registry, processing qu
 | Retrieval runtime contract (007B) | **COMPLETE** |
 | Retrieval persistence (007C) | **COMPLETE** — 744 tests |
 | Retrieval worker skeleton (007D) | **COMPLETE** — dry-run only; 759 tests |
-| Controlled retrieval execution (007E) | **AUTHORIZED FOR IMPLEMENTATION** |
+| Controlled retrieval execution (007E) | **COMPLETE** — 777 tests |
 | Ranking / answers / AI retrieval | **NOT AUTHORIZED** |
 | Concurrent citation workers | **NOT AUTHORIZED** (OD-021) |
 
@@ -48,7 +48,9 @@ The platform is materially beyond early foundation. Core registry, processing qu
 
 **TASK-007D1 acceptance:** **CLOSED** — TASK-007E **AUTHORIZED WITH CONDITIONS** ([`RETRIEVAL_EXECUTION_007D1_ACCEPTANCE_REVIEW.md`](RETRIEVAL_EXECUTION_007D1_ACCEPTANCE_REVIEW.md)).
 
-**Next gate:** **TASK-007E** — controlled retrieval execution. Ranking, answers, AI **not authorized**.
+**TASK-007E:** **COMPLETE** — controlled retrieval execution ([`TASKS/TASK-007E-CONTROLLED-RETRIEVAL-EXECUTION.md`](TASKS/TASK-007E-CONTROLLED-RETRIEVAL-EXECUTION.md)).
+
+**Next gate:** retrieval layer review. Ranking, answers, AI **not authorized**.
 
 **Environments:** development and internal staging only. No public production deployment.
 
@@ -345,4 +347,4 @@ FOUNDATION → EXTRACTION CONTRACTS → LEGAL OBJECT GOVERNANCE → CITATION GOV
 → TEMPORAL GOVERNANCE → INGESTION PERSISTENCE → [TEST HARDENING] → AGENT LAYER → …
 ```
 
-**You are here:** TASK-007E **authorized for implementation**; retrieval stack at citation-pre-006AD maturity. **Next:** TASK-007E controlled execution delivery. Ranking / answers **not authorized**.
+**You are here:** TASK-007E **complete**; controlled retrieval execution selects evidence references only. **Next:** retrieval layer review. Ranking / answers / AI **not authorized**.

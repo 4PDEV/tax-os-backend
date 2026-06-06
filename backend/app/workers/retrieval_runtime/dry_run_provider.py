@@ -1,4 +1,5 @@
 from typing import Protocol
+from uuid import UUID
 
 from sqlalchemy.orm import Session
 
@@ -14,6 +15,8 @@ class RetrievalRuntimeProvider(Protocol):
         self,
         db: Session,
         request: RetrievalRequest,
+        *,
+        retrieval_result_id: UUID | None = None,
     ) -> RetrievalRuntimeProviderResult:
         """Return deterministic retrieval lifecycle outcome for one governance request."""
 
@@ -29,8 +32,10 @@ class DryRunRetrievalRuntimeProvider:
         self,
         db: Session,
         request: RetrievalRequest,
+        *,
+        retrieval_result_id: UUID | None = None,
     ) -> RetrievalRuntimeProviderResult:
-        _ = db
+        _ = db, request, retrieval_result_id
         return RetrievalRuntimeProviderResult(
             success=True,
             notes=(

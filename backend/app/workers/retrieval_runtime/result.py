@@ -9,6 +9,7 @@ class RetrievalRuntimeProviderResult:
     notes: str | None = None
     provider_name: str | None = None
     provider_version: str | None = None
+    result_count: int | None = None
 
 
 @dataclass(frozen=True)

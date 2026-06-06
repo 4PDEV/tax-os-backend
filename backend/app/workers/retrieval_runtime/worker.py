@@ -1,4 +1,4 @@
-"""Retrieval runtime worker (TASK-007D dry-run skeleton).
+"""Retrieval runtime worker (TASK-007D dry-run / TASK-007E controlled execution).
 
 OD-021: single-worker assumption is acceptable. Concurrent retrieval workers require
 execution-time advisory locks or row locks keyed by request_hash (future task).
@@ -21,6 +21,10 @@ from app.services.retrieval_persistence.validation import (
     RETRIEVAL_MODES,
     validate_actor_type,
 )
+from app.workers.retrieval_runtime.controlled_provider import (
+    CONTROLLED_RETRIEVAL_RUNTIME_PROVIDER_NAME,
+    CONTROLLED_RETRIEVAL_RUNTIME_PROVIDER_VERSION,
+)
 from app.workers.retrieval_runtime.dry_run_provider import (
     DRY_RUN_RETRIEVAL_RUNTIME_PROVIDER_NAME,
     DRY_RUN_RETRIEVAL_RUNTIME_PROVIDER_VERSION,
@@ -29,10 +33,14 @@ from app.workers.retrieval_runtime.dry_run_provider import (
 from app.workers.retrieval_runtime.result import RetrievalRuntimeRunSummary
 
 EXECUTION_MODE_DRY_RUN = "dry_run"
-ALLOWED_EXECUTION_MODES = frozenset({EXECUTION_MODE_DRY_RUN})
+EXECUTION_MODE_CONTROLLED_EXECUTION = "controlled_execution"
+ALLOWED_EXECUTION_MODES = frozenset(
+    {EXECUTION_MODE_DRY_RUN, EXECUTION_MODE_CONTROLLED_EXECUTION}
+)
 
 TERMINAL_SKIP_STATUSES = frozenset({"completed", "failed", "skipped", "duplicate_rejected"})
 DRY_RUN_TERMINAL_STATUS = "skipped"
+CONTROLLED_TERMINAL_STATUS = "completed"
 
 
 class RetrievalRuntimeWorkerError(Exception):
@@ -49,6 +57,14 @@ class RetrievalRuntimeWorker:
             )
         self._provider = provider
         self._mode = mode
+
+    def _default_provider_identity(self) -> tuple[str, str]:
+        if self._mode == EXECUTION_MODE_CONTROLLED_EXECUTION:
+            return (
+                CONTROLLED_RETRIEVAL_RUNTIME_PROVIDER_NAME,
+                CONTROLLED_RETRIEVAL_RUNTIME_PROVIDER_VERSION,
+            )
+        return DRY_RUN_RETRIEVAL_RUNTIME_PROVIDER_NAME, DRY_RUN_RETRIEVAL_RUNTIME_PROVIDER_VERSION
 
     def load_requests(self, db: Session) -> list[RetrievalRequest]:
         stmt = select(RetrievalRequest).order_by(
@@ -79,7 +95,8 @@ class RetrievalRuntimeWorker:
         worker_name: str = "retrieval-runtime-worker",
         worker_version: str | None = None,
     ) -> RetrievalRuntimeRunSummary:
-        resolved_version = worker_version or DRY_RUN_RETRIEVAL_RUNTIME_PROVIDER_VERSION
+        default_name, default_version = self._default_provider_identity()
+        resolved_version = worker_version or default_version
 
         requests_seen = processed = skipped = results_created = failures = replayed = 0
 
@@ -93,7 +110,7 @@ class RetrievalRuntimeWorker:
                 replayed += 1
 
             try:
-                create_retrieval_result(
+                accepted = create_retrieval_result(
                     db,
                     retrieval_request_id=request.id,
                     retrieval_status="accepted",
@@ -101,8 +118,10 @@ class RetrievalRuntimeWorker:
                 )
                 results_created += 1
 
-                provider_result = self._provider.run_retrieval(db, request)
-                provider_name = provider_result.provider_name or DRY_RUN_RETRIEVAL_RUNTIME_PROVIDER_NAME
+                provider_result = self._provider.run_retrieval(
+                    db, request, retrieval_result_id=accepted.id
+                )
+                provider_name = provider_result.provider_name or default_name
                 provider_version = provider_result.provider_version or resolved_version
 
                 if not provider_result.success:
@@ -121,18 +140,32 @@ class RetrievalRuntimeWorker:
                     processed += 1
                     continue
 
-                create_retrieval_result(
-                    db,
-                    retrieval_request_id=request.id,
-                    retrieval_status=DRY_RUN_TERMINAL_STATUS,
-                    result_count=0,
-                    completed_at=utc_now(),
-                    notes=provider_result.notes
-                    or (
-                        f"dry-run retrieval lifecycle completed by {worker_name}; "
-                        "no evidence references; no retrieval execution"
-                    ),
-                )
+                if self._mode == EXECUTION_MODE_CONTROLLED_EXECUTION:
+                    create_retrieval_result(
+                        db,
+                        retrieval_request_id=request.id,
+                        retrieval_status=CONTROLLED_TERMINAL_STATUS,
+                        result_count=provider_result.result_count or 0,
+                        completed_at=utc_now(),
+                        notes=provider_result.notes
+                        or (
+                            f"controlled retrieval execution completed by {worker_name}; "
+                            f"evidence_count={provider_result.result_count or 0}"
+                        ),
+                    )
+                else:
+                    create_retrieval_result(
+                        db,
+                        retrieval_request_id=request.id,
+                        retrieval_status=DRY_RUN_TERMINAL_STATUS,
+                        result_count=0,
+                        completed_at=utc_now(),
+                        notes=provider_result.notes
+                        or (
+                            f"dry-run retrieval lifecycle completed by {worker_name}; "
+                            "no evidence references; no retrieval execution"
+                        ),
+                    )
                 results_created += 1
                 processed += 1
             except Exception as exc:

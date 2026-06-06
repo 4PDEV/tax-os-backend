@@ -109,11 +109,11 @@ Claude review **CLOSED** — **APPROVED FOR CONTINUE** ([`CLAUDE_REVIEW_CITATION
 | **TASK-007C** | Retrieval Persistence | 007C1 acceptance | **Complete** — append-only; 744 tests |
 | **TASK-007D** | Retrieval Worker Skeleton | TASK-007C | **Complete** — dry-run only; 759 tests |
 | **TASK-007D1** | Retrieval Execution Remediation | TASK-007D accepted | **Complete** — acceptance closed |
-| **TASK-007E** | Controlled Retrieval Execution | 007D1 acceptance | **AUTHORIZED FOR IMPLEMENTATION** |
+| **TASK-007E** | Controlled Retrieval Execution | 007D1 acceptance | **Complete** — evidence selection; 777 tests |
 
-**Retrieval layer pipeline:** 007A → 007A1 → 007B contract → 007C persistence → 007D dry-run skeleton → 007D1 remediation → 007D1 acceptance → **007E** (active) → layer review.
+**Retrieval layer pipeline:** 007A → 007A1 → 007B contract → 007C persistence → 007D dry-run skeleton → 007D1 remediation → 007D1 acceptance → **007E** (complete) → layer review.
 
-**Next gate:** **TASK-007E** — controlled retrieval execution.
+**Next gate:** retrieval layer review.
 
 **Not authorized:** ranking, answers, AI retrieval, concurrent workers.
 

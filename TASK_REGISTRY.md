@@ -85,8 +85,8 @@ Bounded task tracking for `tax-os-backend`. Authoritative specs remain in `tax-o
 | TASK-007C | Retrieval Persistence | Complete | Append-only requests/results/evidence refs; 744 tests — [`TASKS/TASK-007C-RETRIEVAL-PERSISTENCE.md`](TASKS/TASK-007C-RETRIEVAL-PERSISTENCE.md) |
 | TASK-007D | Retrieval Worker Skeleton | Complete | **ACCEPTED** — dry-run only; 759 tests — [`TASKS/TASK-007D-RETRIEVAL-WORKER-SKELETON.md`](TASKS/TASK-007D-RETRIEVAL-WORKER-SKELETON.md) |
 | TASK-007D1 | Retrieval Execution Remediation | Complete | Acceptance **CLOSED**; RW-01–RW-06 closed; 007E authorized — [`RETRIEVAL_EXECUTION_REMEDIATION_007D1.md`](RETRIEVAL_EXECUTION_REMEDIATION_007D1.md) |
-| TASK-007E | Controlled Retrieval Execution | Authorized | **AUTHORIZED FOR IMPLEMENTATION** — [`TASKS/TASK-007E-CONTROLLED-RETRIEVAL-EXECUTION.md`](TASKS/TASK-007E-CONTROLLED-RETRIEVAL-EXECUTION.md) |
-| TASK-007A+ | Retrieval Layer Review (umbrella) | Planned | After 007E |
+| TASK-007E | Controlled Retrieval Execution | Complete | Evidence selection + `retrieval_evidence_references`; 777 tests — [`TASKS/TASK-007E-CONTROLLED-RETRIEVAL-EXECUTION.md`](TASKS/TASK-007E-CONTROLLED-RETRIEVAL-EXECUTION.md) |
+| TASK-007A+ | Retrieval Layer Review (umbrella) | Planned | After 007E acceptance |
 | TASK-DOC-001 | Master Status Document Realignment | Complete | CURRENT_STATUS, IMPLEMENTATION_ROADMAP, ARCHITECTURE_PHASE_MAP |
 
 ## Status Legend

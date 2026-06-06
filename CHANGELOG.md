@@ -4,6 +4,26 @@ All notable changes to `tax-os-backend` are documented here.
 
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versions align with git tags where applicable.
 
+## [task-007e-controlled-retrieval-execution] - 2026-06-02
+
+### Added
+
+- TASK-007E: controlled retrieval execution.
+  - `backend/app/services/retrieval_execution/` — selection, ordering, citation lookup, execution
+  - `ControlledRetrievalRuntimeProvider` — `backend/app/workers/retrieval_runtime/controlled_provider.py`
+  - `run_controlled_retrieval_execution(controlled_execution=True)` — mandatory flag
+  - [`TASKS/TASK-007E-CONTROLLED-RETRIEVAL-EXECUTION.md`](TASKS/TASK-007E-CONTROLLED-RETRIEVAL-EXECUTION.md)
+  - Tests: `test_controlled_retrieval_execution.py`
+
+### Changed
+
+- Retrieval worker: controlled execution mode (`accepted` → `completed` / `failed`); dry-run unchanged (`accepted` → `skipped`)
+- Full suite: 777 tests passing
+
+### Notes
+
+- First authorized evidence selection and `retrieval_evidence_references` creation. Citation read-only attach only; no `CitationAssembler`. Ranking / answers / AI / concurrent workers **not authorized**.
+
 ## [task-007d1-acceptance-retrieval-execution-authorized] - 2026-06-02
 
 ### Added

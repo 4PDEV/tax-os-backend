@@ -82,7 +82,9 @@ Pending architectural or operational decisions. Resolve via `tax-os-architecture
 
 **TASK-007D1 acceptance:** **CLOSED** — TASK-007E **AUTHORIZED WITH CONDITIONS** ([`RETRIEVAL_EXECUTION_007D1_ACCEPTANCE_REVIEW.md`](RETRIEVAL_EXECUTION_007D1_ACCEPTANCE_REVIEW.md)).
 
-**Next gate:** **TASK-007E** — controlled retrieval execution ([`TASKS/TASK-007E-CONTROLLED-RETRIEVAL-EXECUTION.md`](TASKS/TASK-007E-CONTROLLED-RETRIEVAL-EXECUTION.md)).
+**TASK-007E:** **COMPLETE** — controlled retrieval execution ([`TASKS/TASK-007E-CONTROLLED-RETRIEVAL-EXECUTION.md`](TASKS/TASK-007E-CONTROLLED-RETRIEVAL-EXECUTION.md)).
+
+**Next gate:** retrieval layer review.
 
 **Not authorized:** ranking, answers, AI retrieval, concurrent workers (OD-021).
 

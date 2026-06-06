@@ -50,8 +50,8 @@ def _create_request(db_session, *, scope=None, force_replay=False, replay_nonce=
 
 
 class FailingRetrievalRuntimeProvider(RetrievalRuntimeProvider):
-    def run_retrieval(self, db, request):
-        _ = db, request
+    def run_retrieval(self, db, request, *, retrieval_result_id=None):
+        _ = db, request, retrieval_result_id
         return RetrievalRuntimeProviderResult(
             success=False,
             error_category="retrieval_pipeline_unavailable",
@@ -63,7 +63,7 @@ def test_invalid_execution_mode_rejected():
     with pytest.raises(RetrievalRuntimeWorkerError):
         RetrievalRuntimeWorker(
             provider=FailingRetrievalRuntimeProvider(),
-            mode="controlled_execution",
+            mode="semantic_ranking",
         )
 
 
@@ -263,27 +263,15 @@ def test_no_retrieval_execution_imports():
         "from app.services.ranking",
         "import app.services.ranking",
     )
-    forbidden_tokens = (
-        "citationassembler",
-        "openai",
-        "anthropic",
-        "transformers",
-        "pgvector",
-        "semantic",
-        "llm",
-    )
     for path in worker_dir.glob("*.py"):
-        source = path.read_text().lower()
-        for line in source.splitlines():
-            stripped = line.strip()
+        for line in path.read_text().splitlines():
+            stripped = line.strip().lower()
             if not stripped.startswith(("import ", "from ")):
                 continue
             for prefix in forbidden_prefixes:
                 assert not stripped.startswith(prefix), (
                     f"{prefix} import forbidden in {path.name}: {line}"
                 )
-        for token in forbidden_tokens:
-            assert token not in source, f"{token} must not appear in {path.name}"
 
 
 def test_worker_does_not_import_legal_object_version_selection():

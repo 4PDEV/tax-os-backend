@@ -891,7 +891,9 @@ TASK-006AB — Citation Worker Skeleton (**complete**; accepted `checkpoint-task
 
 **TASK-007D1 acceptance:** **CLOSED** — TASK-007E **AUTHORIZED WITH CONDITIONS** ([`RETRIEVAL_EXECUTION_007D1_ACCEPTANCE_REVIEW.md`](RETRIEVAL_EXECUTION_007D1_ACCEPTANCE_REVIEW.md)).
 
-**Governed pipeline:** 007B contract → 007C persistence → 007D dry-run skeleton → 007D1 remediation → 007D1 acceptance → **007E controlled execution** → retrieval layer review.
+**TASK-007E:** **COMPLETE** — controlled retrieval execution; evidence selection + `retrieval_evidence_references`; 777 tests ([`TASKS/TASK-007E-CONTROLLED-RETRIEVAL-EXECUTION.md`](TASKS/TASK-007E-CONTROLLED-RETRIEVAL-EXECUTION.md)).
+
+**Governed pipeline:** 007B contract → 007C persistence → 007D dry-run skeleton → 007D1 remediation → 007D1 acceptance → **007E controlled execution (complete)** → retrieval layer review.
 
 **Not authorized:** ranking, answers, AI retrieval, concurrent workers, legal advice.
 
