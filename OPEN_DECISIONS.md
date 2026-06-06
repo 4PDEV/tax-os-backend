@@ -84,13 +84,21 @@ Pending architectural or operational decisions. Resolve via `tax-os-architecture
 
 **TASK-007E:** **COMPLETE** — **ACCEPTED** — controlled retrieval execution ([`TASKS/TASK-007E-CONTROLLED-RETRIEVAL-EXECUTION.md`](TASKS/TASK-007E-CONTROLLED-RETRIEVAL-EXECUTION.md)).
 
-**Retrieval layer (007A–007E):** **CLOSED** — **ACCEPTED** ([`CLAUDE_REVIEW_RETRIEVAL_PIPELINE_007A-007E.md`](CLAUDE_REVIEW_RETRIEVAL_PIPELINE_007A-007E.md)).
+**Retrieval layer (007A–007E):** **COMPLETE** — Claude review **APPROVED FOR CONTINUE** ([`CLAUDE_REVIEW_RETRIEVAL_PIPELINE_007A-007E.md`](CLAUDE_REVIEW_RETRIEVAL_PIPELINE_007A-007E.md)).
 
-**Next gate:** **TASK-008A** — Ranking Runtime Pre-Authorization Review (**NOT AUTHORIZED**).
+**TASK-008A1 acceptance:** **CLOSED** — **ACCEPTED** — TASK-008B **AUTHORIZED WITH CONDITIONS** ([`RANKING_RUNTIME_008A1_ACCEPTANCE_REVIEW.md`](RANKING_RUNTIME_008A1_ACCEPTANCE_REVIEW.md)).
 
-**Not authorized:** ranking implementation, answers, AI retrieval, concurrent workers (OD-021).
+**TASK-008B:** **COMPLETE** — [`RANKING_RUNTIME_CONTRACT.md`](RANKING_RUNTIME_CONTRACT.md). Ranking runtime contract established.
 
-Doctrine: `parsed_structure` ≠ legal object; `legal_object` ≠ legal meaning; `legal_object` ≠ citation; `citation` ≠ retrieval; `retrieval result` ≠ answer; `retrieval evidence` ≠ ranking; `retrieval reference` ≠ legal conclusion; `citation` ≠ answer.
+**Next gate:** **TASK-008C** ranking persistence. **008D / 009A not authorized.**
+
+**Recommended sequence:** 008A → 008A1 → 008A1 acceptance → 008B → 008C → 008D → Ranking Layer Review → **then** 009A Answer Assembly Pre-Authorization Review.
+
+**Not authorized:** ranking implementation, answer runtime (009A), AI retrieval, concurrent workers (OD-021).
+
+**Architecture chain:** Evidence → Ranking → Answer Assembly → Response Runtime.
+
+Doctrine: `parsed_structure` ≠ legal object; `legal_object` ≠ legal meaning; `legal_object` ≠ citation; `citation` ≠ retrieval; `retrieval result` ≠ ranking; `retrieval evidence` ≠ ranking; `retrieval reference` ≠ legal conclusion; `ranking` ≠ answer; `retrieval result` ≠ answer; `answer` ≠ legal conclusion; `citation` ≠ answer.
 
 ## Test gaps (QA)
 

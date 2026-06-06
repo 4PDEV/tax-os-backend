@@ -4,13 +4,13 @@
 **Date:** 2026-06-02  
 **Closure date:** 2026-06-02  
 **Scope:** TASK-007A, 007A1, 007B, 007C, 007C1, 007D, 007D1, 007E; upstream citation layer (006Y–006AD); upstream legal-object memory (006U–006X1)  
-**Verdict:** **CLOSED** — **ACCEPTED**
+**Verdict:** **CLOSED** — **APPROVED FOR CONTINUE**
 
 ---
 
 ## Executive summary
 
-The retrieval pipeline from governed pre-authorization through runtime contract, append-only persistence, dry-run orchestration, execution remediation, and controlled retrieval execution is **architecturally sound and governance-bounded**.
+The retrieval layer (007A–007E) is **accepted as a governed platform layer**. The pipeline from pre-authorization through runtime contract, append-only persistence, dry-run orchestration, execution remediation, and controlled retrieval execution is **architecturally sound and governance-bounded**.
 
 **777 tests pass** at TASK-007E verification. Dry-run and controlled-execution modes are explicitly gated. Controlled execution selects version-pinned evidence, persists `retrieval_evidence_references`, and completes `retrieval_result` lifecycle — no ranking, answers, legal inference, or citation creation.
 
@@ -26,6 +26,24 @@ The retrieval pipeline from governed pre-authorization through runtime contract,
 | Retrieval execution ≠ legal reasoning | Selection only; no tax or legal advice |
 
 Controlled retrieval execution has **not** crossed into ranking, answer generation, semantic/vector search, applicability inference, or citation assembly.
+
+**Verified:**
+
+- Deterministic request identity
+- Append-only persistence
+- Version-pinned evidence references
+- Read-only citation attachment
+- Full provenance chain validation
+- Temporal integrity (legal-object dates only)
+- No silent overlap winner
+- No silent latest fallback
+- Deterministic ordering distinct from ranking
+- No ranking, scoring, semantic search, AI, answer generation, legal conclusions, or applicability inference
+- OD-021 single-worker constraint preserved
+
+**Result:** Retrieval layer **COMPLETE**.
+
+**Not authorized:** ranking, answer runtime, AI/semantic retrieval, concurrent retrieval workers.
 
 ---
 
@@ -57,7 +75,7 @@ retrieval_request (request_hash idempotency)
 | Retrieval worker skeleton | 007D | **COMPLETE** — **ACCEPTED** |
 | Retrieval execution remediation | 007D1 | **COMPLETE** — acceptance closed |
 | Controlled retrieval execution | 007E | **COMPLETE** — **ACCEPTED** |
-| **Retrieval layer (007A–007E)** | Pipeline review | **CLOSED** — **ACCEPTED** |
+| **Retrieval layer (007A–007E)** | Pipeline review | **CLOSED** — **APPROVED FOR CONTINUE** |
 
 ---
 
@@ -84,8 +102,8 @@ retrieval_request (request_hash idempotency)
 | Item | Status |
 |------|--------|
 | TASK-007E implementation acceptance | **CLOSED** — **ACCEPTED** |
-| TASK-007A–007E retrieval layer review | **CLOSED** — **ACCEPTED** |
-| Retrieval layer phase | **CLOSED** |
+| TASK-007A–007E retrieval layer review | **CLOSED** — **APPROVED FOR CONTINUE** |
+| Retrieval layer phase | **COMPLETE** |
 | Ranking runtime (008A+) | **NOT AUTHORIZED** |
 | Answer runtime | **NOT AUTHORIZED** |
 | AI / semantic retrieval | **NOT AUTHORIZED** |

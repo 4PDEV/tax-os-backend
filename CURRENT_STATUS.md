@@ -17,7 +17,7 @@ The platform is materially beyond early foundation. Core registry, processing qu
 
 **Citation layer (006Y–006AD):** **CLOSED** — Claude review **APPROVED FOR CONTINUE** ([`CLAUDE_REVIEW_CITATION_PIPELINE_006Y-006AD.md`](CLAUDE_REVIEW_CITATION_PIPELINE_006Y-006AD.md)). Checkpoint: `checkpoint-task-006y-006ad-citation-pipeline-review`.
 
-**Retrieval layer (007A–007E):** **CLOSED** — Claude review **ACCEPTED** ([`CLAUDE_REVIEW_RETRIEVAL_PIPELINE_007A-007E.md`](CLAUDE_REVIEW_RETRIEVAL_PIPELINE_007A-007E.md)). Checkpoint: `checkpoint-task-007a-007e-retrieval-pipeline-review`.
+**Retrieval layer (007A–007E):** **COMPLETE** — Claude review **APPROVED FOR CONTINUE** ([`CLAUDE_REVIEW_RETRIEVAL_PIPELINE_007A-007E.md`](CLAUDE_REVIEW_RETRIEVAL_PIPELINE_007A-007E.md)). Checkpoint: `checkpoint-task-007a-007e-retrieval-pipeline-review`.
 
 | Capability | Status |
 |------------|--------|
@@ -29,8 +29,10 @@ The platform is materially beyond early foundation. Core registry, processing qu
 | Retrieval persistence (007C) | **COMPLETE** — 744 tests |
 | Retrieval worker skeleton (007D) | **COMPLETE** — dry-run only; 759 tests |
 | Controlled retrieval execution (007E) | **COMPLETE** — **ACCEPTED** — 777 tests |
-| Retrieval layer (007A–007E) | **CLOSED** |
-| Ranking / answers / AI retrieval | **NOT AUTHORIZED** |
+| Retrieval layer (007A–007E) | **COMPLETE** |
+| Ranking runtime contract (008B) | **COMPLETE** — governance only |
+| Ranking persistence / execution (008C+) | **NOT AUTHORIZED** |
+| Answer / AI retrieval | **NOT AUTHORIZED** |
 | Concurrent workers | **NOT AUTHORIZED** (OD-021) |
 
 **TASK-007A:** **CLOSED** — APPROVED WITH REQUIRED REMEDIATION BEFORE TASK-007B ([`ARCHITECTURE_REVIEW_RETRIEVAL_RUNTIME_007A-PREAUTH.md`](ARCHITECTURE_REVIEW_RETRIEVAL_RUNTIME_007A-PREAUTH.md)).
@@ -53,9 +55,17 @@ The platform is materially beyond early foundation. Core registry, processing qu
 
 **TASK-007E:** **COMPLETE** — **ACCEPTED** — controlled retrieval execution ([`TASKS/TASK-007E-CONTROLLED-RETRIEVAL-EXECUTION.md`](TASKS/TASK-007E-CONTROLLED-RETRIEVAL-EXECUTION.md)).
 
-**Retrieval layer review (007A–007E):** **CLOSED** — **ACCEPTED** — RET-01–RET-09 verified ([`CLAUDE_REVIEW_RETRIEVAL_PIPELINE_007A-007E.md`](CLAUDE_REVIEW_RETRIEVAL_PIPELINE_007A-007E.md)).
+**Retrieval layer review (007A–007E):** **CLOSED** — **APPROVED FOR CONTINUE** — RET-01–RET-09 verified ([`CLAUDE_REVIEW_RETRIEVAL_PIPELINE_007A-007E.md`](CLAUDE_REVIEW_RETRIEVAL_PIPELINE_007A-007E.md)).
 
-**Next gate:** **TASK-008A** — Ranking Runtime Pre-Authorization Review. Ranking, answers, AI **not authorized**.
+**TASK-008A1 acceptance:** **CLOSED** — **ACCEPTED** — TASK-008B **AUTHORIZED WITH CONDITIONS** ([`RANKING_RUNTIME_008A1_ACCEPTANCE_REVIEW.md`](RANKING_RUNTIME_008A1_ACCEPTANCE_REVIEW.md)). RK-01–RK-11 closed; Option A selected.
+
+**TASK-008B:** **COMPLETE** — ranking runtime contract ([`RANKING_RUNTIME_CONTRACT.md`](RANKING_RUNTIME_CONTRACT.md)).
+
+**Next gate:** **TASK-008C** ranking persistence pre-authorization or remediation gate. **008C+ not authorized.** Answer runtime (**009A**) follows only after ranking layer review closes.
+
+**Architecture chain:** Evidence → Ranking → Answer Assembly → Response Runtime. Doctrine: `retrieval result` ≠ ranking · `ranking` ≠ answer · `answer` ≠ legal conclusion.
+
+Ranking, answers, AI **not authorized**.
 
 **Environments:** development and internal staging only. No public production deployment.
 
@@ -244,7 +254,7 @@ TASK-006P is controlled local extraction only:
 | **TASK-006AC1** | Controlled Citation Execution Remediation Package | **COMPLETE** | AC-02/AC-03 remediated; acceptance complete. Spec: [CITATION_EXECUTION_REMEDIATION_006AC1.md](CITATION_EXECUTION_REMEDIATION_006AC1.md). |
 | **TASK-006AD** | Controlled Citation Execution | **COMPLETE** | Citation entity + `run_controlled_citation_execution()`; dry-run unchanged. |
 | **006Y–006AD review** | Citation Pipeline Review Closure | **CLOSED** | APPROVED FOR CONTINUE — [`CLAUDE_REVIEW_CITATION_PIPELINE_006Y-006AD.md`](CLAUDE_REVIEW_CITATION_PIPELINE_006Y-006AD.md) |
-| **007A–007E review** | Retrieval Pipeline Review Closure | **CLOSED** | ACCEPTED — [`CLAUDE_REVIEW_RETRIEVAL_PIPELINE_007A-007E.md`](CLAUDE_REVIEW_RETRIEVAL_PIPELINE_007A-007E.md) |
+| **007A–007E review** | Retrieval Pipeline Review Closure | **CLOSED** | APPROVED FOR CONTINUE — [`CLAUDE_REVIEW_RETRIEVAL_PIPELINE_007A-007E.md`](CLAUDE_REVIEW_RETRIEVAL_PIPELINE_007A-007E.md) |
 
 ---
 
@@ -353,4 +363,4 @@ FOUNDATION → EXTRACTION CONTRACTS → LEGAL OBJECT GOVERNANCE → CITATION GOV
 → TEMPORAL GOVERNANCE → INGESTION PERSISTENCE → [TEST HARDENING] → AGENT LAYER → …
 ```
 
-**You are here:** Retrieval layer **CLOSED** (007A–007E); evidence selection without ranking or answers. **Next:** TASK-008A ranking pre-auth review (not authorized). Ranking / answers / AI **not authorized**.
+**You are here:** TASK-008B ranking contract **COMPLETE**. **Next:** TASK-008C persistence gate. **Not authorized:** 008D execution, answer runtime (009A), AI ranking.

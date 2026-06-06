@@ -86,8 +86,14 @@ Bounded task tracking for `tax-os-backend`. Authoritative specs remain in `tax-o
 | TASK-007D | Retrieval Worker Skeleton | Complete | **ACCEPTED** — dry-run only; 759 tests — [`TASKS/TASK-007D-RETRIEVAL-WORKER-SKELETON.md`](TASKS/TASK-007D-RETRIEVAL-WORKER-SKELETON.md) |
 | TASK-007D1 | Retrieval Execution Remediation | Complete | Acceptance **CLOSED**; RW-01–RW-06 closed; 007E authorized — [`RETRIEVAL_EXECUTION_REMEDIATION_007D1.md`](RETRIEVAL_EXECUTION_REMEDIATION_007D1.md) |
 | TASK-007E | Controlled Retrieval Execution | Complete | **ACCEPTED** — evidence selection + `retrieval_evidence_references`; 777 tests — [`TASKS/TASK-007E-CONTROLLED-RETRIEVAL-EXECUTION.md`](TASKS/TASK-007E-CONTROLLED-RETRIEVAL-EXECUTION.md) |
-| TASK-007A–007E | Retrieval Pipeline Review | Complete | **CLOSED** — ACCEPTED — [`CLAUDE_REVIEW_RETRIEVAL_PIPELINE_007A-007E.md`](CLAUDE_REVIEW_RETRIEVAL_PIPELINE_007A-007E.md) |
-| TASK-008A | Ranking Runtime Pre-Authorization Review | Hold | **NOT AUTHORIZED** — after retrieval layer closed |
+| TASK-007A–007E | Retrieval Pipeline Review | Complete | **CLOSED** — APPROVED FOR CONTINUE — [`CLAUDE_REVIEW_RETRIEVAL_PIPELINE_007A-007E.md`](CLAUDE_REVIEW_RETRIEVAL_PIPELINE_007A-007E.md) |
+| TASK-008A | Ranking Runtime Pre-Authorization Review | Complete | APPROVED WITH REQUIRED REMEDIATION BEFORE 008B |
+| TASK-008A1 | Ranking Remediation Package | Complete | Acceptance **CLOSED**; RK-01–RK-11 closed — [`RANKING_RUNTIME_REMEDIATION_008A1.md`](RANKING_RUNTIME_REMEDIATION_008A1.md) |
+| TASK-008B | Ranking Runtime Contract | Complete | Governance contract — [`RANKING_RUNTIME_CONTRACT.md`](RANKING_RUNTIME_CONTRACT.md); 008C not authorized |
+| TASK-008C | Ranking Persistence | Planned | After 008B — not authorized |
+| TASK-008D | Ranking Execution | Planned | After 008C — not authorized |
+| TASK-008A+ | Ranking Layer Review (umbrella) | Planned | After 008D |
+| TASK-009A | Answer Assembly Pre-Authorization Review | Planned | After ranking layer review — **not authorized** |
 | TASK-DOC-001 | Master Status Document Realignment | Complete | CURRENT_STATUS, IMPLEMENTATION_ROADMAP, ARCHITECTURE_PHASE_MAP |
 
 ## Status Legend

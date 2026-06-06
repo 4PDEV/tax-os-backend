@@ -100,7 +100,7 @@ Claude review **CLOSED** — **APPROVED FOR CONTINUE** ([`CLAUDE_REVIEW_CITATION
 
 ## RETRIEVAL LAYER — CLOSED
 
-Claude review **CLOSED** — **ACCEPTED** ([`CLAUDE_REVIEW_RETRIEVAL_PIPELINE_007A-007E.md`](CLAUDE_REVIEW_RETRIEVAL_PIPELINE_007A-007E.md)). Checkpoint: `checkpoint-task-007a-007e-retrieval-pipeline-review`.
+Claude review **CLOSED** — **APPROVED FOR CONTINUE** ([`CLAUDE_REVIEW_RETRIEVAL_PIPELINE_007A-007E.md`](CLAUDE_REVIEW_RETRIEVAL_PIPELINE_007A-007E.md)). Checkpoint: `checkpoint-task-007a-007e-retrieval-pipeline-review`.
 
 | Task | Title | Status |
 |------|-------|--------|
@@ -114,13 +114,44 @@ Claude review **CLOSED** — **ACCEPTED** ([`CLAUDE_REVIEW_RETRIEVAL_PIPELINE_00
 
 ## APPROVED NEXT
 
-| Task | Title | Prerequisite | Acceptance focus |
-|------|-------|--------------|------------------|
-| **TASK-008A** | Ranking Runtime Pre-Authorization Review | Retrieval layer closed | **NOT AUTHORIZED** — governance review only |
+**Position:** Equivalent to post–citation-layer review — retrieval layer **COMPLETE**; ranking layer **not yet opened**.
 
-**Next gate:** **TASK-008A** — Ranking Runtime Pre-Authorization Review.
+**Architecture chain (governed sequence):**
 
-**Not authorized:** ranking implementation, answers, AI retrieval, concurrent workers.
+```text
+Evidence → Ranking → Answer Assembly → Response Runtime
+```
+
+**Doctrine:** `retrieval result` ≠ ranking · `ranking` ≠ answer · `answer` ≠ legal conclusion
+
+| Task | Title | Prerequisite | Status |
+|------|-------|--------------|--------|
+| **TASK-008A** | Ranking Runtime Pre-Authorization Review | Retrieval layer complete | **Complete** — remediation required |
+| **TASK-008A1** | Ranking Remediation Package | TASK-008A | **Complete** — acceptance closed |
+| **TASK-008B** | Ranking Runtime Contract | 008A1 acceptance | **Complete** — governance only |
+| **TASK-008C** | Ranking Persistence | TASK-008B | **NOT AUTHORIZED** |
+
+**Recommended ranking pipeline (after 008A authorization):**
+
+```text
+008A  Ranking Runtime Pre-Authorization Review
+  → 008A1  Ranking Remediation
+  → 008A1 Acceptance
+  → 008B  Ranking Contract
+  → 008C  Ranking Persistence
+  → 008D  Ranking Execution
+  → Ranking Layer Review
+```
+
+**Then (not before ranking layer review closes):**
+
+```text
+009A  Answer Assembly Pre-Authorization Review
+```
+
+**Next gate:** **TASK-008C** — Ranking Persistence. **008D / 009A not authorized.**
+
+**Not authorized:** ranking implementation, answer runtime, AI retrieval, concurrent workers.
 
 **Blocked until governed approval:** ranking runtime, answer runtime, live monitoring agents, ingestion automation expansion.
 

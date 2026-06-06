@@ -893,11 +893,15 @@ TASK-006AB — Citation Worker Skeleton (**complete**; accepted `checkpoint-task
 
 **TASK-007E:** **COMPLETE** — **ACCEPTED** — controlled retrieval execution; evidence selection + `retrieval_evidence_references`; 777 tests ([`TASKS/TASK-007E-CONTROLLED-RETRIEVAL-EXECUTION.md`](TASKS/TASK-007E-CONTROLLED-RETRIEVAL-EXECUTION.md)).
 
-**Retrieval layer review (007A–007E):** **CLOSED** — **ACCEPTED** — RET-01–RET-09 verified ([`CLAUDE_REVIEW_RETRIEVAL_PIPELINE_007A-007E.md`](CLAUDE_REVIEW_RETRIEVAL_PIPELINE_007A-007E.md)). Checkpoint: `checkpoint-task-007a-007e-retrieval-pipeline-review`.
+**Retrieval layer review (007A–007E):** **CLOSED** — **APPROVED FOR CONTINUE** — RET-01–RET-09 verified ([`CLAUDE_REVIEW_RETRIEVAL_PIPELINE_007A-007E.md`](CLAUDE_REVIEW_RETRIEVAL_PIPELINE_007A-007E.md)). Checkpoint: `checkpoint-task-007a-007e-retrieval-pipeline-review`.
 
-**Governed pipeline:** 007B contract → 007C persistence → 007D dry-run skeleton → 007D1 remediation → 007D1 acceptance → **007E controlled execution (accepted)** → **retrieval layer review (closed)**.
+**Governed pipeline:** 007B contract → 007C persistence → 007D dry-run skeleton → 007D1 remediation → 007D1 acceptance → **007E controlled execution (accepted)** → **retrieval layer (complete)**.
 
-**Not authorized:** ranking, answers, AI retrieval, concurrent workers, legal advice.
+**TASK-008A1 acceptance:** **CLOSED** — **ACCEPTED** — TASK-008B **AUTHORIZED WITH CONDITIONS** ([`RANKING_RUNTIME_008A1_ACCEPTANCE_REVIEW.md`](RANKING_RUNTIME_008A1_ACCEPTANCE_REVIEW.md)). Option A selected; RK-01–RK-11 closed.
+
+**TASK-008B:** **COMPLETE** — ranking runtime contract ([`RANKING_RUNTIME_CONTRACT.md`](RANKING_RUNTIME_CONTRACT.md)). 008A1 forward conditions resolved. Persistence/execution **not authorized**.
+
+**Not authorized:** ranking persistence/execution (008C+), answers (009A), AI/semantic ranking, concurrent workers, legal advice.
 
 TASK-006P — Controlled Extraction Execution (**completed; controlled local text extraction into extraction_runs/extracted_texts; no PDF/network/parsing/legal automation**).
 

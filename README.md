@@ -76,9 +76,12 @@ tax-os-backend/
 | Retrieval worker skeleton (007D) | **COMPLETE** — dry-run only — [`TASKS/TASK-007D-RETRIEVAL-WORKER-SKELETON.md`](TASKS/TASK-007D-RETRIEVAL-WORKER-SKELETON.md) |
 | Retrieval execution remediation (007D1) | **COMPLETE** — [`RETRIEVAL_EXECUTION_REMEDIATION_007D1.md`](RETRIEVAL_EXECUTION_REMEDIATION_007D1.md) |
 | Controlled retrieval execution (007E) | **COMPLETE** — **ACCEPTED** — [`TASKS/TASK-007E-CONTROLLED-RETRIEVAL-EXECUTION.md`](TASKS/TASK-007E-CONTROLLED-RETRIEVAL-EXECUTION.md) |
-| Retrieval layer (007A–007E) | **CLOSED** — review ACCEPTED; tag `checkpoint-task-007a-007e-retrieval-pipeline-review` |
-| Approved next gate | **TASK-008A** — Ranking Runtime Pre-Authorization Review (**NOT AUTHORIZED**) |
-| Ranking / answers / AI retrieval | **NOT AUTHORIZED** |
+| Retrieval layer (007A–007E) | **COMPLETE** — review APPROVED FOR CONTINUE; tag `checkpoint-task-007a-007e-retrieval-pipeline-review` |
+| Ranking remediation (008A1) | **COMPLETE** — acceptance **CLOSED** — [`RANKING_RUNTIME_008A1_ACCEPTANCE_REVIEW.md`](RANKING_RUNTIME_008A1_ACCEPTANCE_REVIEW.md) |
+| Ranking contract (008B) | **COMPLETE** — [`RANKING_RUNTIME_CONTRACT.md`](RANKING_RUNTIME_CONTRACT.md) |
+| Approved next gate | **TASK-008C** — Ranking Persistence (**NOT AUTHORIZED**) |
+| Answer assembly (009A) | **NOT AUTHORIZED** — after ranking layer review |
+| Ranking persistence/execution (008C+) | **NOT AUTHORIZED** |
 | Admin CRUD APIs | Operational |
 | Legal object / citation contracts | Merged on `main` (003A–004D) |
 | Temporal governance | Merged (005A–005C); tag `checkpoint-task-005a-spec` |

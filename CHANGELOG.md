@@ -4,6 +4,57 @@ All notable changes to `tax-os-backend` are documented here.
 
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versions align with git tags where applicable.
 
+## [task-008b-ranking-runtime-contract] - 2026-06-02
+
+### Added
+
+- TASK-008B: ranking runtime contract (governance only).
+  - [`RANKING_RUNTIME_CONTRACT.md`](RANKING_RUNTIME_CONTRACT.md)
+  - [`TASKS/TASK-008B-RANKING-RUNTIME-CONTRACT.md`](TASKS/TASK-008B-RANKING-RUNTIME-CONTRACT.md)
+
+### Changed
+
+- 008A1 forward conditions resolved: inter-group ordering, 008C binding constraints, `EFFECTIVE_DATE_DESC` sort-only, `presentation_order_index`
+- Platform state: ranking contract **complete**; TASK-008C **not authorized**
+
+### Notes
+
+- Contract only — no persistence, workers, answers, or AI ranking
+
+## [task-008a1-acceptance-ranking-runtime-authorized] - 2026-06-02
+
+### Added
+
+- TASK-008A1 acceptance review — **CLOSED** — **ACCEPTED**; TASK-008B **authorized with conditions**.
+  - [`RANKING_RUNTIME_008A1_ACCEPTANCE_REVIEW.md`](RANKING_RUNTIME_008A1_ACCEPTANCE_REVIEW.md)
+  - [`TASKS/TASK-008A1-ACCEPTANCE-REVIEW.md`](TASKS/TASK-008A1-ACCEPTANCE-REVIEW.md)
+
+### Changed
+
+- RK-01 through RK-11 findings **CLOSED** at acceptance
+- Option A (separate ranking layer) **selected**; Option B rejected
+- Platform state: TASK-008B ranking contract **authorized with conditions**; 008C+ **not authorized**
+
+### Notes
+
+- Acceptance only — no ranking persistence, workers, execution, answers, or AI. Forward conditions bind 008B deliverable.
+
+## [task-008a1-ranking-runtime-remediation] - 2026-06-02
+
+### Added
+
+- TASK-008A1: ranking runtime remediation package (governance only).
+  - [`RANKING_RUNTIME_REMEDIATION_008A1.md`](RANKING_RUNTIME_REMEDIATION_008A1.md)
+  - [`TASKS/TASK-008A1-RANKING-RUNTIME-REMEDIATION.md`](TASKS/TASK-008A1-RANKING-RUNTIME-REMEDIATION.md)
+
+### Changed
+
+- RK-01 resolved: **Option A** (separate ranking layer) recommended; Option B rejected
+
+### Notes
+
+- Governance only — TASK-008B **not authorized** until 008A1 acceptance (superseded by acceptance entry above).
+
 ## [checkpoint-task-007a-007e-retrieval-pipeline-review] - 2026-06-02
 
 ### Added
@@ -14,9 +65,9 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Version
 
 ### Changed
 
-- Verdict: **CLOSED** — **ACCEPTED**; RET-01–RET-09 verified; no remediation required
+- Verdict: **CLOSED** — **APPROVED FOR CONTINUE**; RET-01–RET-09 verified; no remediation required
 - TASK-007E implementation acceptance **CLOSED**
-- Retrieval layer phase marked **CLOSED**; next gate **TASK-008A** ranking pre-auth (**NOT AUTHORIZED**)
+- Retrieval layer phase marked **COMPLETE**; next gate **TASK-008A** ranking pre-auth (**NOT AUTHORIZED**)
 
 ### Notes
 
