@@ -2,7 +2,7 @@
 
 ## Status
 
-**Complete** — dry-run orchestration only
+**Complete** — accepted at `checkpoint-task-006ab-citation-worker-skeleton`
 
 ## Objective
 
