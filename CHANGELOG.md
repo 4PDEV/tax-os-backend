@@ -4,6 +4,23 @@ All notable changes to `tax-os-backend` are documented here.
 
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versions align with git tags where applicable.
 
+## [task-007a1-retrieval-runtime-remediation] - 2026-06-02
+
+### Added
+
+- TASK-007A1: retrieval runtime remediation package (governance only).
+  - [`RETRIEVAL_RUNTIME_REMEDIATION_007A1.md`](RETRIEVAL_RUNTIME_REMEDIATION_007A1.md)
+  - [`TASKS/TASK-007A1-RETRIEVAL-RUNTIME-REMEDIATION.md`](TASKS/TASK-007A1-RETRIEVAL-RUNTIME-REMEDIATION.md)
+
+### Changed
+
+- R-01 through R-06 remediated at spec level — temporal modes, version pins, evidence references, persistence, citation lookup, deterministic ordering
+- Ranking boundary and OD-021 carry-forward documented
+
+### Notes
+
+- TASK-007B remains **NOT AUTHORIZED** — awaits remediation acceptance review. No 004A code changes.
+
 ## [task-007a-retrieval-runtime-preauth-review] - 2026-06-02
 
 ### Added

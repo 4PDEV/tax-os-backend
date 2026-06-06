@@ -103,10 +103,10 @@ Claude review **CLOSED** — **APPROVED FOR CONTINUE** ([`CLAUDE_REVIEW_CITATION
 | Task | Title | Prerequisite | Acceptance focus |
 |------|-------|--------------|------------------|
 | **TASK-007A** | Retrieval Runtime Pre-Authorization Review | Citation layer closed | **Complete** — APPROVED WITH REQUIRED REMEDIATION BEFORE 007B |
-| **TASK-007A1** | Retrieval Runtime Remediation Package | TASK-007A | **Next gate** — governance spec; findings R-01–R-06 |
+| **TASK-007A1** | Retrieval Runtime Remediation Package | TASK-007A | **Complete** — await acceptance review |
 | **TASK-007B** | Retrieval Runtime Implementation | 007A1 acceptance | **NOT AUTHORIZED** |
 
-**Next gate:** **TASK-007A1** — remediation package. **Do not** implement retrieval runtime until 007A1 accepted.
+**Next gate:** **Remediation acceptance review** for 007A1. **Do not** implement retrieval runtime until accepted.
 
 **Not authorized:** retrieval runtime (007B), ranking, answers, concurrent citation workers.
 

@@ -53,9 +53,9 @@ Determine whether a retrieval runtime may safely be introduced after citation la
 
 ## Next gate
 
-**TASK-007A1** — Retrieval Runtime Remediation Package (governance spec addressing R-01–R-06 minimum).
+**TASK-007A1** — **COMPLETE** — see [`RETRIEVAL_RUNTIME_REMEDIATION_007A1.md`](../RETRIEVAL_RUNTIME_REMEDIATION_007A1.md).
 
-TASK-007B remains **NOT AUTHORIZED** until 007A1 is accepted.
+**Remediation acceptance review** — then bounded TASK-007B authorization (not yet granted).
 
 ---
 

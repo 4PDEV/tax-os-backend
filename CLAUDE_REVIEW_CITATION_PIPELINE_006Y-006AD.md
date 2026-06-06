@@ -87,9 +87,7 @@ legal_object_version
 
 ## Next valid gate (post-citation)
 
-**TASK-007A1 — Retrieval Runtime Remediation Package** — see [`ARCHITECTURE_REVIEW_RETRIEVAL_RUNTIME_007A-PREAUTH.md`](ARCHITECTURE_REVIEW_RETRIEVAL_RUNTIME_007A-PREAUTH.md).
-
-TASK-007A pre-auth review **CLOSED** — APPROVED WITH REQUIRED REMEDIATION BEFORE TASK-007B.
+**TASK-007A1 — Retrieval Runtime Remediation Package** — **COMPLETE** — [`RETRIEVAL_RUNTIME_REMEDIATION_007A1.md`](RETRIEVAL_RUNTIME_REMEDIATION_007A1.md). Await acceptance review before TASK-007B.
 
 ---
 

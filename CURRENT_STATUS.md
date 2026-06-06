@@ -28,7 +28,9 @@ The platform is materially beyond early foundation. Core registry, processing qu
 
 **TASK-007A:** **CLOSED** — APPROVED WITH REQUIRED REMEDIATION BEFORE TASK-007B ([`ARCHITECTURE_REVIEW_RETRIEVAL_RUNTIME_007A-PREAUTH.md`](ARCHITECTURE_REVIEW_RETRIEVAL_RUNTIME_007A-PREAUTH.md)).
 
-**Next gate:** **TASK-007A1** — Retrieval Runtime Remediation Package (governance only).
+**TASK-007A1:** **COMPLETE** — remediation package delivered ([`RETRIEVAL_RUNTIME_REMEDIATION_007A1.md`](RETRIEVAL_RUNTIME_REMEDIATION_007A1.md)); R-01–R-06 remediated at spec level.
+
+**Next gate:** **Remediation acceptance review** for 007A1 — then bounded TASK-007B authorization (not yet granted).
 
 **Environments:** development and internal staging only. No public production deployment.
 
@@ -325,4 +327,4 @@ FOUNDATION → EXTRACTION CONTRACTS → LEGAL OBJECT GOVERNANCE → CITATION GOV
 → TEMPORAL GOVERNANCE → INGESTION PERSISTENCE → [TEST HARDENING] → AGENT LAYER → …
 ```
 
-**You are here:** TASK-007A **CLOSED** — await **TASK-007A1** remediation package. TASK-007B / retrieval runtime **not authorized**. Ranking / answers **not authorized**.
+**You are here:** TASK-007A1 remediation package **complete**; await acceptance review. TASK-007B **not authorized**. Ranking / answers **not authorized**.

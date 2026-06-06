@@ -233,7 +233,7 @@ Retrieval runtime must **not** introduce: answer generation, legal reasoning, le
 
 | Capability | Authorized? |
 |------------|-------------|
-| TASK-007B retrieval runtime implementation | **No** — remediation required |
+| TASK-007B retrieval runtime implementation | **No** — 007A1 spec delivered; acceptance review pending |
 | Ranking / relevance scoring | **No** |
 | Answer runtime | **No** |
 | Legal interpretation / tax advice | **No** |
@@ -245,10 +245,10 @@ Retrieval runtime must **not** introduce: answer generation, legal reasoning, le
 ## Required sequence before TASK-007B
 
 ```text
-TASK-007A Review (this document) — APPROVED WITH REQUIRED REMEDIATION
-  → TASK-007A1 — retrieval runtime remediation package (governance spec)
-  → TASK-007A1 acceptance review
-  → TASK-007B — bounded retrieval runtime implementation (future authorization)
+TASK-007A Review (this document) — APPROVED WITH REQUIRED REMEDIATION — **done**
+  → TASK-007A1 — retrieval runtime remediation package — **complete** ([`RETRIEVAL_RUNTIME_REMEDIATION_007A1.md`](RETRIEVAL_RUNTIME_REMEDIATION_007A1.md))
+  → TASK-007A1 acceptance review — **pending**
+  → TASK-007B — bounded retrieval runtime implementation — **not authorized**
 ```
 
 ---
