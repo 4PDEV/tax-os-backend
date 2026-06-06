@@ -5,7 +5,7 @@ For detailed historical sections, see [PROJECT_STATE.md](PROJECT_STATE.md). For 
 
 **Last realigned:** 2026-06-02  
 **Branch:** `main`  
-**Alembic head:** `d8f2c4a19b63` (citations table — TASK-006AD)
+**Alembic head:** `f9e4d2a87c10` (retrieval persistence — TASK-007C)
 
 ---
 
@@ -22,9 +22,9 @@ The platform is materially beyond early foundation. Core registry, processing qu
 | Citation governance | **COMPLETE** (006Y) |
 | Citation persistence | **COMPLETE** (006Z) |
 | Citation worker skeleton | **COMPLETE** (006AB) |
-| Controlled citation execution | **COMPLETE** (006AD) — 703 tests |
+| Controlled citation execution | **COMPLETE** (006AD) |
 | Retrieval runtime contract (007B) | **COMPLETE** |
-| Retrieval persistence (007C) | **AUTHORIZED FOR IMPLEMENTATION** |
+| Retrieval persistence (007C) | **COMPLETE** — 744 tests |
 | Retrieval execution (007D) | **NOT AUTHORIZED** |
 | Ranking / answers / AI retrieval | **NOT AUTHORIZED** |
 | Concurrent citation workers | **NOT AUTHORIZED** (OD-021) |
@@ -40,6 +40,8 @@ The platform is materially beyond early foundation. Core registry, processing qu
 **TASK-007C1:** **COMPLETE** — retrieval persistence remediation package ([`RETRIEVAL_PERSISTENCE_REMEDIATION_007C1.md`](RETRIEVAL_PERSISTENCE_REMEDIATION_007C1.md)). RP-01 through RP-08 addressed at spec level.
 
 **TASK-007C1 acceptance:** **CLOSED** — TASK-007C **AUTHORIZED WITH CONDITIONS** ([`RETRIEVAL_PERSISTENCE_007C1_ACCEPTANCE_REVIEW.md`](RETRIEVAL_PERSISTENCE_007C1_ACCEPTANCE_REVIEW.md)).
+
+**TASK-007C:** **COMPLETE** — append-only retrieval persistence ([`TASKS/TASK-007C-RETRIEVAL-PERSISTENCE.md`](TASKS/TASK-007C-RETRIEVAL-PERSISTENCE.md)). Retrieval execution (007D), ranking, answers, AI **not authorized**.
 
 **Environments:** development and internal staging only. No public production deployment.
 
@@ -336,4 +338,4 @@ FOUNDATION → EXTRACTION CONTRACTS → LEGAL OBJECT GOVERNANCE → CITATION GOV
 → TEMPORAL GOVERNANCE → INGESTION PERSISTENCE → [TEST HARDENING] → AGENT LAYER → …
 ```
 
-**You are here:** TASK-007C **authorized for implementation**; retrieval persistence gate open. **Next:** TASK-007C persistence delivery. 007D / ranking / answers **not authorized**.
+**You are here:** TASK-007C persistence **complete**; retrieval evidence reference storage active. **Next:** TASK-007D execution gate (not authorized). Ranking / answers **not authorized**.

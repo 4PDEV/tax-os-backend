@@ -106,12 +106,12 @@ Claude review **CLOSED** — **APPROVED FOR CONTINUE** ([`CLAUDE_REVIEW_CITATION
 | **TASK-007A1** | Retrieval Runtime Remediation Package | TASK-007A | **Complete** — acceptance closed |
 | **TASK-007B** | Retrieval Runtime Contract | 007A1 acceptance | **Complete** — governance only |
 | **TASK-007C1** | Retrieval Persistence Remediation Package | TASK-007B + 007C pre-auth | **Complete** — acceptance closed |
-| **TASK-007C** | Retrieval Persistence | 007C1 acceptance | **AUTHORIZED FOR IMPLEMENTATION** |
+| **TASK-007C** | Retrieval Persistence | 007C1 acceptance | **Complete** — append-only; 744 tests |
 | **TASK-007D** | Retrieval Worker / Execution | TASK-007C | **NOT AUTHORIZED** |
 
-**Retrieval layer pipeline:** 007A → 007A1 → 007B contract → 007C pre-auth → 007C1 remediation → 007C1 acceptance → **007C** (active) → 007D → layer review.
+**Retrieval layer pipeline:** 007A → 007A1 → 007B contract → 007C pre-auth → 007C1 remediation → 007C1 acceptance → 007C persistence → **007D** (next gate) → layer review.
 
-**Next gate:** **TASK-007C** — retrieval persistence implementation.
+**Next gate:** **TASK-007D** — retrieval worker/execution (not authorized).
 
 **Not authorized:** 007D execution, ranking, answers, AI retrieval, concurrent workers.
 

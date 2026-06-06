@@ -885,7 +885,9 @@ TASK-006AB — Citation Worker Skeleton (**complete**; accepted `checkpoint-task
 
 **TASK-007C1 acceptance:** **CLOSED** — TASK-007C **AUTHORIZED WITH CONDITIONS** ([`RETRIEVAL_PERSISTENCE_007C1_ACCEPTANCE_REVIEW.md`](RETRIEVAL_PERSISTENCE_007C1_ACCEPTANCE_REVIEW.md)).
 
-**Governed pipeline:** 007B contract → 007C1 remediation → 007C1 acceptance → **007C persistence** → 007D worker/execution → retrieval layer review.
+**TASK-007C:** **COMPLETE** — append-only retrieval persistence (`retrieval_requests`, `retrieval_results`, `retrieval_evidence_references`); 744 tests.
+
+**Governed pipeline:** 007B contract → 007C1 remediation → 007C1 acceptance → 007C persistence → **007D worker/execution** → retrieval layer review.
 
 **Not authorized:** 007D execution, ranking, answers, AI retrieval, concurrent workers, legal advice.
 

@@ -27,6 +27,9 @@ from app.models.parsed_structure import ParsedStructure
 from app.models.parser_run import ParserRun
 from app.models.parsing_trigger_request import ParsingTriggerRequest
 from app.models.parsing_trigger_result import ParsingTriggerResult
+from app.models.retrieval_evidence_reference import RetrievalEvidenceReference
+from app.models.retrieval_request import RetrievalRequest
+from app.models.retrieval_result import RetrievalResult
 from app.models.source_document import SourceDocument
 from app.models.source_processing_job import SourceProcessingJob
 from app.models.source_retrieval_log import SourceRetrievalLog
@@ -64,6 +67,9 @@ __all__ = [
     "ParserRun",
     "ParsingTriggerRequest",
     "ParsingTriggerResult",
+    "RetrievalEvidenceReference",
+    "RetrievalRequest",
+    "RetrievalResult",
     "SourceDocument",
     "SourceProcessingJob",
     "SourceRetrievalLog",

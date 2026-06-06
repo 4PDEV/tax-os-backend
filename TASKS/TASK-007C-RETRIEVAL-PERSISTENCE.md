@@ -2,7 +2,7 @@
 
 ## Status
 
-**Authorized for implementation** — persistence-only scope per [`RETRIEVAL_PERSISTENCE_007C1_ACCEPTANCE_REVIEW.md`](../RETRIEVAL_PERSISTENCE_007C1_ACCEPTANCE_REVIEW.md).
+**Complete** — append-only retrieval persistence only; 744 tests.
 
 ## Prerequisite chain
 
@@ -16,15 +16,14 @@
 
 Implement durable append-only persistence for retrieval governance requests, results, and evidence references per [`RETRIEVAL_PERSISTENCE_REMEDIATION_007C1.md`](../RETRIEVAL_PERSISTENCE_REMEDIATION_007C1.md).
 
-## Authorized scope
+## Delivered
 
-| Area | Requirement |
-|------|-------------|
-| Tables | `retrieval_requests`, `retrieval_results`, `retrieval_evidence_references` |
-| Migration | Alembic — FKs, CHECK constraints, partial unique, order uniqueness |
+| Area | Artifact |
+|------|----------|
+| Migration | `f9e4d2a87c10` — `retrieval_requests` / `retrieval_results` / `retrieval_evidence_references` |
 | Models | `RetrievalRequest`, `RetrievalResult`, `RetrievalEvidenceReference` |
-| Service | Request hash canonicalization, metadata whitelist validator, citation consistency validation |
-| Tests | Migration tests, persistence tests, RP-08 prohibited-field guards |
+| Service | `backend/app/services/retrieval_persistence/` — hashing, validation, persistence |
+| Tests | `test_retrieval_persistence.py`, `test_retrieval_persistence_alembic_migration.py` |
 
 ## Mandatory constraints
 

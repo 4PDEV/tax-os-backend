@@ -76,7 +76,9 @@ Pending architectural or operational decisions. Resolve via `tax-os-architecture
 
 **TASK-007C1 acceptance:** **CLOSED** — TASK-007C **AUTHORIZED WITH CONDITIONS** ([`RETRIEVAL_PERSISTENCE_007C1_ACCEPTANCE_REVIEW.md`](RETRIEVAL_PERSISTENCE_007C1_ACCEPTANCE_REVIEW.md)).
 
-**Next gate:** **TASK-007C** — retrieval persistence implementation.
+**TASK-007C:** **COMPLETE** — append-only retrieval persistence ([`TASKS/TASK-007C-RETRIEVAL-PERSISTENCE.md`](TASKS/TASK-007C-RETRIEVAL-PERSISTENCE.md)).
+
+**Next gate:** **TASK-007D** — retrieval worker/execution (not authorized).
 
 **Not authorized:** 007D execution, ranking, answers, AI retrieval, concurrent workers (OD-021).
 

@@ -4,6 +4,25 @@ All notable changes to `tax-os-backend` are documented here.
 
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versions align with git tags where applicable.
 
+## [task-007c-retrieval-persistence] - 2026-06-02
+
+### Added
+
+- TASK-007C: append-only retrieval persistence.
+  - Migration `f9e4d2a87c10` — `retrieval_requests`, `retrieval_results`, `retrieval_evidence_references`
+  - Models: `RetrievalRequest`, `RetrievalResult`, `RetrievalEvidenceReference`
+  - Service: `backend/app/services/retrieval_persistence/` (hashing, validation, persistence)
+  - Tests: `test_retrieval_persistence.py`, `test_retrieval_persistence_alembic_migration.py`
+
+### Changed
+
+- RP-01 through RP-08 implemented — request hash canonicalization, FK constraints, citation consistency, CHECK constraints, metadata whitelist, order index, zero-result semantics, prohibited-field guards
+- Full suite: 744 tests passing
+
+### Notes
+
+- Persistence only — no retrieval execution, workers, ranking, answers, or AI. TASK-007D **not authorized**.
+
 ## [task-007c1-acceptance-retrieval-persistence-authorized] - 2026-06-02
 
 ### Added
