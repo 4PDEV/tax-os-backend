@@ -782,7 +782,7 @@ Legal memory stack on `main`:
 006A → Source Ingestion Persistence (extraction/parser artifacts)
 ```
 
-**Current boundary:** persistence, integrity, retrieval, effective-date resolution, citation candidates, deterministic citation assembly, **canonical temporal/versioning governance**, and **ingestion artifact persistence** active on `main`. Citation identity is version-pinned; `CitationAssembler` temporal compliance deferred to TASK-004E. Ingestion workers/API wiring not started. No answer generation, no citation persistence, no public API routes for ingestion artifacts.
+**Current boundary:** persistence, integrity, retrieval, effective-date resolution, citation candidates, deterministic citation assembly, **canonical temporal/versioning governance**, and **ingestion artifact persistence** active on `main`. Citation identity is version-pinned; `CitationAssembler` temporal compliance aligned with Addendum V6 (**TASK-004E complete**; AC-01 closed). Ingestion workers/API wiring not started. No answer generation, no citation entity persistence, no public API routes for ingestion artifacts. Controlled citation execution (006AD) **not authorized**.
 
 **VM snapshot:** not required before next task unless schema or persistence behavior changes.
 
@@ -881,7 +881,7 @@ TASK-006O — Extraction Worker Skeleton (**completed; dry-run-only trigger-to-e
 
 TASK-006N — Extraction Trigger Persistence (**completed; append-only trigger request/result persistence with idempotency and force-reprocess auditability; no extraction execution automation**).
 
-TASK-004E — Citation Temporal Compliance Remediation (planned — align `CitationAssembler` with Addendum V6; defer unless blocking).
+TASK-004E — Citation Temporal Compliance Remediation (**complete** — AC-01 closed; no silent source-version date fallback).
 
 Post-006P implementation tasks must remain bounded and align with monitoring/fetch/detection/promotion/trigger/worker/extraction governance constraints.
 

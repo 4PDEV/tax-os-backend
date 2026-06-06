@@ -110,7 +110,9 @@ Legal object promotion (TASK-006U–006X): contract through controlled execution
 
 **TASK-006AA:** Pre-auth review **complete** — dry-run worker skeleton approved ([`ARCHITECTURE_REVIEW_CITATION_WORKER_SKELETON_006AA-PREAUTH.md`](ARCHITECTURE_REVIEW_CITATION_WORKER_SKELETON_006AA-PREAUTH.md)).
 
-**TASK-006AB:** **Complete** — dry-run worker ([`TASKS/TASK-006AB-CITATION-WORKER-SKELETON.md`](TASKS/TASK-006AB-CITATION-WORKER-SKELETON.md)).
+**TASK-006AB:** **Complete** — accepted `checkpoint-task-006ab-citation-worker-skeleton`.
+
+**Next gate:** **TASK-006AC** — controlled citation execution pre-authorization review (no implementation).
 
 **Not authorized:** controlled citation execution/rendering, retrieval, answers.
 
@@ -118,11 +120,11 @@ Legal object promotion (TASK-006U–006X): contract through controlled execution
 
 ---
 
-## DEFERRED
+## RECENTLY COMPLETED (remediation)
 
-| Task | Title | Tracking | Trigger to un-defer |
-|------|-------|----------|---------------------|
-| **TASK-004E** | Citation Temporal Compliance Remediation | OD-016; [TASK-004E spec](TASKS/TASK-004E-CITATION-TEMPORAL-COMPLIANCE-REMEDIATION.md) | Blocks citation/temporal compliance work or explicit approval |
+| Task | Title | Notes |
+|------|-------|-------|
+| **TASK-004E** | Citation Temporal Compliance Remediation | AC-01 closed; OD-016 resolved; [spec](TASKS/TASK-004E-CITATION-TEMPORAL-COMPLIANCE-REMEDIATION.md) |
 
 Non-task deferred items: OD-017 (003E reconciliation), OD-018 (overlap disclosure) — governance review, not implementation queue.
 
@@ -159,7 +161,7 @@ flowchart LR
   B --> C6[006C Monitoring contract]
   C6 --> W[Future: Workers]
   W --> A[Future: Agents]
-  C -.->|deferred| E4[TASK-004E]
+  C --> E4[TASK-004E complete]
 ```
 
 ---

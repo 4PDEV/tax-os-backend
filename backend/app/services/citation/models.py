@@ -59,8 +59,22 @@ class CitationResult(BaseModel):
     source_title: str
     official_reference: str | None = None
     publication_date: date | None = None
-    effective_from: date | None = None
-    effective_to: date | None = None
+    effective_from: date | None = Field(
+        default=None,
+        description="Legal-object applicability — from legal_object_version only.",
+    )
+    effective_to: date | None = Field(
+        default=None,
+        description="Legal-object applicability — from legal_object_version only.",
+    )
+    source_version_effective_from: date | None = Field(
+        default=None,
+        description="Source-version temporal metadata — not legal-object applicability.",
+    )
+    source_version_effective_to: date | None = Field(
+        default=None,
+        description="Source-version temporal metadata — not legal-object applicability.",
+    )
     location_reference: str
     citation_text: str
     citation_hash: str

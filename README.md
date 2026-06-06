@@ -63,7 +63,8 @@ tax-os-backend/
 |------|--------|
 | Platform phase | Legal memory + temporal governance + ingestion persistence (see [CURRENT_STATUS.md](CURRENT_STATUS.md)) |
 | Alembic migrations | Head `a4d2e8f93b36` |
-| Approved next gate | Controlled citation execution (not authorized) |
+| Citation temporal compliance | **TASK-004E complete** — AC-01 closed; no silent source-version date fallback |
+| Approved next gate | **TASK-006AC** — controlled citation execution pre-auth review (006AD not authorized) |
 | Admin CRUD APIs | Operational |
 | Legal object / citation contracts | Merged on `main` (003A–004D) |
 | Temporal governance | Merged (005A–005C); tag `checkpoint-task-005a-spec` |

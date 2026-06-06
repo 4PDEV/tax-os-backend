@@ -4,6 +4,21 @@ All notable changes to `tax-os-backend` are documented here.
 
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versions align with git tags where applicable.
 
+## [task-004e-citation-temporal-compliance] - 2026-06-02
+
+### Changed
+
+- TASK-004E: citation temporal compliance remediation — AC-01 closed.
+- `CitationAssembler`: removed silent `source_version.effective_*` fallback for legal-object applicability.
+- `CitationResult`: added `source_version_effective_from` / `source_version_effective_to` as explicitly labeled source metadata only.
+- `CitationFormatter`: source-version dates render as "Source version metadata:" lines — never as legal-object applicability.
+- Contract: `backend/app/services/citation/CITATION_ASSEMBLY_CONTRACT.md` updated for Addendum V6 compliance.
+
+### Notes
+
+- AC-02 (citation identity tuple) and AC-03 (DB UNIQUE on `citation_hash`) remain TASK-006AD spec requirements — not implemented.
+- TASK-006AD controlled citation execution remains **NOT AUTHORIZED**.
+
 ## [checkpoint-task-006ab-citation-worker-skeleton] - 2026-06-03
 
 ### Changed

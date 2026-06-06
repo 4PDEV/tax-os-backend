@@ -20,6 +20,8 @@ class CitationFormatter:
         authority_type: AuthorityType,
         version_label: str | None = None,
         effective_from: date | None = None,
+        source_version_effective_from: date | None = None,
+        source_version_effective_to: date | None = None,
         official_reference: str | None = None,
     ) -> str:
         lines: list[str] = [source_title.rstrip(".") + ",", location_reference + ","]
@@ -33,7 +35,33 @@ class CitationFormatter:
         if version_line:
             lines.append(version_line)
 
+        lines.extend(
+            self._source_metadata_lines(
+                source_version_effective_from=source_version_effective_from,
+                source_version_effective_to=source_version_effective_to,
+            )
+        )
+
         return "\n".join(lines)
+
+    def _source_metadata_lines(
+        self,
+        *,
+        source_version_effective_from: date | None,
+        source_version_effective_to: date | None,
+    ) -> list[str]:
+        lines: list[str] = []
+        if source_version_effective_from is not None:
+            lines.append(
+                "Source version metadata: effective from "
+                f"{_format_date(source_version_effective_from)}."
+            )
+        if source_version_effective_to is not None:
+            lines.append(
+                "Source version metadata: effective to "
+                f"{_format_date(source_version_effective_to)}."
+            )
+        return lines
 
     def _version_line(
         self,

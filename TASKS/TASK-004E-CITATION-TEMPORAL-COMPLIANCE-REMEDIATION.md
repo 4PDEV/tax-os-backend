@@ -2,7 +2,7 @@
 
 ## STATUS
 
-**PLANNED** (registered pre-merge TASK-005A; not yet approved for implementation)
+**COMPLETE** — AC-01 remediated (TASK-006AC blocker closed for temporal inference).
 
 ## OBJECTIVE
 
@@ -43,13 +43,23 @@ TASK-005B resolved C1 at **governance** level only. Code alignment is explicitly
 | TASK-004D / AMENDMENT-A | Citation assembly baseline |
 | TASK-005A / 005B | Temporal architecture |
 
-## ACCEPTANCE CRITERIA (DRAFT)
+## ACCEPTANCE CRITERIA
 
-- `CitationAssembler` compliant with Addendum V6
-- No silent `or source_version.effective_*` fallback without provenance
-- Contract tests updated
-- Documented in `CITATION_ASSEMBLY_CONTRACT.md` implementation section
+- `CitationAssembler` compliant with Addendum V6 — **met**
+- No silent `or source_version.effective_*` fallback — **met**
+- Contract tests updated — **met**
+- Documented in `CITATION_ASSEMBLY_CONTRACT.md` implementation section — **met**
+
+## CARRY-FORWARD (TASK-006AD — not implemented here)
+
+| Finding | Status |
+|---------|--------|
+| **AC-01** (temporal fallback) | **Closed** by TASK-004E |
+| **AC-02** (citation identity / 004D provenance tuple) | Remains 006AD spec requirement: `citation_hash = SHA256(source_version_id \| legal_object_id \| legal_object_version_id \| location_reference)` |
+| **AC-03** (DB UNIQUE on citation_hash) | Remains 006AD spec requirement when citation entity exists |
+
+TASK-006AD remains **NOT AUTHORIZED** until AC-02 / AC-03 are reflected in 006AD spec and accepted.
 
 ---
 
-END OF TASK-004E (PLANNED)
+END OF TASK-004E (COMPLETE)

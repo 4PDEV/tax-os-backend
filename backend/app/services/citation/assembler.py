@@ -139,8 +139,10 @@ class CitationAssembler:
             location_reference=location_reference,
         )
 
-        effective_from = version.effective_from or source_version.effective_from
-        effective_to = version.effective_to or source_version.effective_to
+        effective_from = version.effective_from
+        effective_to = version.effective_to
+        source_version_effective_from = source_version.effective_from
+        source_version_effective_to = source_version.effective_to
         publication_date = source_version.publication_date
 
         citation_text = self._formatter.format(
@@ -149,6 +151,8 @@ class CitationAssembler:
             authority_type=authority_type,
             version_label=source_version.version_label,
             effective_from=effective_from,
+            source_version_effective_from=source_version_effective_from,
+            source_version_effective_to=source_version_effective_to,
             official_reference=document.official_reference,
         )
 
@@ -165,6 +169,8 @@ class CitationAssembler:
             publication_date=publication_date,
             effective_from=effective_from,
             effective_to=effective_to,
+            source_version_effective_from=source_version_effective_from,
+            source_version_effective_to=source_version_effective_to,
             location_reference=location_reference,
             citation_text=citation_text,
             citation_hash=citation_hash,

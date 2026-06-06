@@ -66,7 +66,7 @@ FOUNDATION
 
 **Key packages:** `retrieval/`, `effective_date/`, `citation_candidate/`, `citation/`
 
-**Known deferred code gap:** TASK-004E (assembler temporal compliance vs Addendum V6).
+**Temporal compliance:** TASK-004E complete — assembler aligned with Addendum V6 (AC-01 closed).
 
 ---
 
@@ -377,7 +377,7 @@ FOUNDATION
 
 **Intent:** Source-referenced answers with mandatory disclosure, ambiguity surfacing, no silent legal inference.
 
-**Prerequisites:** Retrieval layer, temporal compliance (incl. TASK-004E when required), citation integrity.
+**Prerequisites:** Retrieval layer, temporal compliance (TASK-004E complete), citation integrity (AC-02/AC-03 remain 006AD spec).
 
 **Explicitly excluded from near-term roadmap:** probabilistic/AI answer generation without governance tasks.
 

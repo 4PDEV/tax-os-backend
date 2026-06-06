@@ -50,3 +50,16 @@ def test_formatting_consistency():
         "version_label": "v1",
     }
     assert formatter.format(**kwargs) == formatter.format(**kwargs)
+
+
+def test_format_source_version_metadata_explicit_label():
+    text = CitationFormatter().format(
+        source_title="Value Added Tax Act",
+        location_reference="Section 15",
+        authority_type=AuthorityType.STATUTE,
+        source_version_effective_from=date(2023, 1, 1),
+        source_version_effective_to=date(2023, 12, 31),
+    )
+    assert "Version effective" not in text
+    assert "Source version metadata: effective from 1 January 2023." in text
+    assert "Source version metadata: effective to 31 December 2023." in text

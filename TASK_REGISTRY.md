@@ -42,7 +42,7 @@ Bounded task tracking for `tax-os-backend`. Authoritative specs remain in `tax-o
 | TASK-004D-AMENDMENT-A | Citation Identity Hardening | Complete (merged) | Version-pinned citation identity + lineage enforcement — merged with 004D |
 | TASK-005A-SPEC | Temporal & Versioning Architecture | Complete (merged) | Governance spec — tag `checkpoint-task-005a-spec`; merge `43c6ad0` |
 | TASK-005B | Temporal Resolution Governance Amendment | Complete (merged) | Addendum V6 + doc amendments — merged with 005A-SPEC |
-| TASK-004E | Citation Temporal Compliance Remediation | Planned | Align `CitationAssembler` with Addendum V6 — code task; defer unless blocking |
+| TASK-004E | Citation Temporal Compliance Remediation | Complete | AC-01 closed — no silent `source_version` date fallback; Addendum V6 aligned |
 | TASK-006A | Source Ingestion Persistence Layer | Complete (main) | Append-only extraction/parser persistence — commit `acc32e4`; TEST-GAP-001 |
 | TASK-006B | Test Isolation & Full-Suite Stability | Complete (merged) | TEST-GAP-001 resolved; 3 consecutive full-suite passes; test DB safety guard + fixture hardening |
 | TASK-006C | Source Monitoring Agent Contract | Complete | Governance and contract boundaries only; no live monitoring/scraping/schedulers |

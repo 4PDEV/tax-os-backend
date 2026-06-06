@@ -29,7 +29,7 @@ Pending architectural or operational decisions. Resolve via `tax-os-architecture
 
 | ID | Topic | Context | Status |
 |----|-------|---------|--------|
-| OD-016 | **TASK-004E** — Citation temporal compliance | Remediate `CitationAssembler` silent `source_version` date fallback (Addendum V6 C1); spec in `TASKS/TASK-004E-CITATION-TEMPORAL-COMPLIANCE-REMEDIATION.md` | Planned |
+| OD-016 | **TASK-004E** — Citation temporal compliance | `CitationAssembler` silent `source_version` date fallback removed; Addendum V6 C1 aligned; AC-01 closed | **Resolved (TASK-004E)** |
 | OD-017 | 003E enforcement reconciliation (IMP-4) | Align documented immutability rules with all read/update paths; post-merge review | Deferred / future review |
 | OD-018 | Overlap ambiguity disclosure (IMP-6) | Enrich `AMBIGUOUS_OVERLAP` results with conflicting version identifiers for operators | Deferred / future review |
 
@@ -65,9 +65,11 @@ Pending architectural or operational decisions. Resolve via `tax-os-architecture
 
 **TASK-006AB:** dry-run worker skeleton **complete** (`checkpoint-task-006ab-citation-worker-skeleton`).
 
-**Next gate:** **TASK-006AC** — controlled citation execution pre-auth review (no implementation).
+**TASK-004E:** **COMPLETE** — citation temporal compliance remediation; AC-01 closed. AC-02 / AC-03 remain 006AD spec requirements (not implemented).
 
-**Not authorized:** controlled citation execution, retrieval, answers.
+**Next gate:** **TASK-006AC** — controlled citation execution pre-auth review (no implementation). 006AC remediation prerequisite (AC-01) satisfied.
+
+**Not authorized:** controlled citation execution (006AD), retrieval, answers.
 
 Doctrine: `parsed_structure` ≠ legal object; `legal_object` ≠ legal meaning; `legal_object` ≠ citation ≠ answer.
 

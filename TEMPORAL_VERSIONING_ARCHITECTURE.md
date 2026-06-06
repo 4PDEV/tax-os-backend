@@ -429,7 +429,7 @@ This specification does **not** implement:
 
 ### Known implementation alignment (post–TASK-005B)
 
-`CitationAssembler` currently uses `version.effective_from or source_version.effective_from` as a display fallback. This **conflicts with Addendum V6 (C1)**. Alignment is **TASK-004E** (planned; registered in `TASK_REGISTRY` and `OPEN_DECISIONS.md`).
+`CitationAssembler` no longer inherits `source_version.effective_*` into legal-object applicability fields. **TASK-004E** aligned implementation with Addendum V6 (C1); source-version dates appear only as explicitly labeled metadata (`source_version_effective_from` / `source_version_effective_to`).
 
 ---
 

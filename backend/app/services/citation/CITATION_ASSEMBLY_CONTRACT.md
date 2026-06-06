@@ -65,16 +65,21 @@ Citation assembly must distinguish three classes of temporal information:
 | **Legal object temporal applicability** | `legal_object_versions.effective_from` / `effective_to` | Primary dates for provision applicability in citation output |
 | **Citation assembly timestamp** | `CitationResult.assembled_at` | When the citation DTO was built — not legal effective date |
 
-### Rules (governance)
+### Rules (governance + implementation — TASK-004E)
 
-1. Citations may display effective dates **only when** those dates come from the legal object version or from **explicitly provenance-marked** inherited/derived metadata.
+1. `CitationResult.effective_from` / `effective_to` are populated **only** from `legal_object_versions.effective_from` / `effective_to`.
 2. Citations must **not** silently treat `source_version.effective_from` / `effective_to` as legal-object applicability dates.
-3. If the legal object version has **no** effective dates, citation output must **not** imply applicability dates by falling back to source-version dates without provenance disclosure.
-4. Missing dates remain **unknown** — not inferred.
+3. If the legal object version has **no** effective dates, `CitationResult` leaves applicability fields **null** — unknown, not inferred.
+4. Source-version effective dates may appear only on `CitationResult.source_version_effective_from` / `source_version_effective_to` and in `citation_text` lines prefixed with **"Source version metadata:"** — never as legal-object applicability.
+5. `publication_date` remains source-version metadata (`CitationResult.publication_date`); it is not legal-object applicability.
+6. Missing legal-object dates remain **unknown** — not inferred from source metadata, latest version, or assembly timestamp.
 
-### Implementation note
+### Addendum V6 compliance (TASK-004E)
 
-Current `CitationAssembler` uses `version.effective_from or source_version.effective_from` for `CitationResult` and formatter input. This pattern is **non-compliant with Addendum V6** and must be remediated in a future bounded implementation task. TASK-005B updates governance only.
+- No silent `source_version` → legal_object date inheritance.
+- No assumption that latest version equals applicable law.
+- No silent temporal inference in assembly or formatter output.
+- Unknown temporal state preserved when legal-object dates are absent.
 
 ## Immutability
 

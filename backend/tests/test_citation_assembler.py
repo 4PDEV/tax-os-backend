@@ -381,3 +381,150 @@ def test_no_citation_persistence(db_session):
 
 def test_formatter_separate_from_assembler():
     assert CitationFormatter is not CitationAssembler
+
+
+@pytest.mark.integration
+def test_legal_object_effective_from_rendered_when_present(db_session):
+    _, _, _, version = seed_source_version(db_session)
+    version.version_label = ""
+    version.effective_from = date(2020, 1, 1)
+    version.effective_to = date(2020, 12, 31)
+    db_session.flush()
+
+    candidate = persist_candidate(
+        db_session,
+        make_candidate(source_version_id=str(version.id)),
+    )
+    set_version_effective_dates(
+        db_session,
+        candidate.legal_object_id,
+        effective_from=date(2024, 7, 1),
+        effective_to=date(2024, 12, 31),
+    )
+    legal_object = db_session.query(LegalObject).filter_by(
+        legal_object_id=candidate.legal_object_id
+    ).one()
+    legal_object_version = db_session.query(LegalObjectVersion).filter_by(
+        legal_object_id=candidate.legal_object_id
+    ).one()
+
+    result = CitationAssembler().assemble(
+        db_session,
+        legal_object,
+        legal_object_version_id=legal_object_version.legal_object_version_id,
+    )
+
+    assert result.effective_from == date(2024, 7, 1)
+    assert result.effective_to == date(2024, 12, 31)
+    assert result.source_version_effective_from == date(2020, 1, 1)
+    assert result.source_version_effective_to == date(2020, 12, 31)
+    assert "Version effective 1 July 2024." in result.citation_text
+    assert "Source version metadata: effective from 1 January 2020." in result.citation_text
+
+
+@pytest.mark.integration
+def test_no_source_version_fallback_when_legal_object_dates_missing(db_session):
+    _, _, _, version = seed_source_version(db_session)
+    version.version_label = ""
+    version.effective_from = date(2023, 1, 1)
+    version.effective_to = date(2023, 12, 31)
+    db_session.flush()
+
+    candidate = persist_candidate(
+        db_session,
+        make_candidate(source_version_id=str(version.id)),
+    )
+    legal_object = db_session.query(LegalObject).filter_by(
+        legal_object_id=candidate.legal_object_id
+    ).one()
+    legal_object_version = db_session.query(LegalObjectVersion).filter_by(
+        legal_object_id=candidate.legal_object_id
+    ).one()
+    assert legal_object_version.effective_from is None
+    assert legal_object_version.effective_to is None
+
+    result = CitationAssembler().assemble(
+        db_session,
+        legal_object,
+        legal_object_version_id=legal_object_version.legal_object_version_id,
+    )
+
+    assert result.effective_from is None
+    assert result.effective_to is None
+    assert result.source_version_effective_from == date(2023, 1, 1)
+    assert result.source_version_effective_to == date(2023, 12, 31)
+    assert "Version effective 1 January 2023." not in result.citation_text
+    assert "Source version metadata: effective from 1 January 2023." in result.citation_text
+
+
+@pytest.mark.integration
+def test_missing_legal_object_dates_remain_unknown_without_version_label(db_session):
+    _, _, document, version = seed_source_version(db_session)
+    version.version_label = ""
+    version.effective_from = None
+    version.effective_to = None
+    document.official_reference = None
+    db_session.flush()
+
+    candidate = persist_candidate(
+        db_session,
+        make_candidate(source_version_id=str(version.id)),
+    )
+    legal_object = db_session.query(LegalObject).filter_by(
+        legal_object_id=candidate.legal_object_id
+    ).one()
+    legal_object_version = db_session.query(LegalObjectVersion).filter_by(
+        legal_object_id=candidate.legal_object_id
+    ).one()
+
+    result = CitationAssembler().assemble(
+        db_session,
+        legal_object,
+        legal_object_version_id=legal_object_version.legal_object_version_id,
+    )
+
+    assert result.effective_from is None
+    assert result.effective_to is None
+    assert result.source_version_effective_from is None
+    assert result.source_version_effective_to is None
+    assert "Version effective" not in result.citation_text
+    assert "Source version metadata:" not in result.citation_text
+    assert result.citation_text.endswith("Statute.")
+
+
+@pytest.mark.integration
+def test_citation_hash_unaffected_by_temporal_metadata(db_session):
+    _, _, _, version = seed_source_version(db_session)
+    version.effective_from = date(2021, 6, 1)
+    db_session.flush()
+
+    candidate = persist_candidate(
+        db_session,
+        make_candidate(source_version_id=str(version.id)),
+    )
+    legal_object = db_session.query(LegalObject).filter_by(
+        legal_object_id=candidate.legal_object_id
+    ).one()
+    legal_object_version = db_session.query(LegalObjectVersion).filter_by(
+        legal_object_id=candidate.legal_object_id
+    ).one()
+
+    without_legal_dates = CitationAssembler().assemble(
+        db_session,
+        legal_object,
+        legal_object_version_id=legal_object_version.legal_object_version_id,
+    )
+    set_version_effective_dates(
+        db_session,
+        candidate.legal_object_id,
+        effective_from=date(2025, 3, 1),
+        effective_to=date(2025, 9, 30),
+    )
+    with_legal_dates = CitationAssembler().assemble(
+        db_session,
+        legal_object,
+        legal_object_version_id=legal_object_version.legal_object_version_id,
+    )
+
+    assert without_legal_dates.citation_hash == with_legal_dates.citation_hash
+    assert without_legal_dates.citation_id == with_legal_dates.citation_id

@@ -204,13 +204,11 @@ TASK-006P is controlled local extraction only:
 
 ---
 
-## Deferred Tasks
+## Recent Completion
 
-| Task | Title | Status | Reason |
-|------|-------|--------|--------|
-| **TASK-004E** | Citation Temporal Compliance Remediation | **DEFERRED / TRACKED** | Known bounded gap: `CitationAssembler` date fallback vs Addendum V6. Not blocking ingestion pipeline. Spec: [TASKS/TASK-004E-CITATION-TEMPORAL-COMPLIANCE-REMEDIATION.md](TASKS/TASK-004E-CITATION-TEMPORAL-COMPLIANCE-REMEDIATION.md). Tracked as OD-016. |
-
-Do not implement TASK-004E unless it blocks active work.
+| Task | Title | Status | Notes |
+|------|-------|--------|-------|
+| **TASK-004E** | Citation Temporal Compliance Remediation | **COMPLETE** | AC-01 closed — no silent `source_version` date fallback; Addendum V6 aligned. Spec: [TASKS/TASK-004E-CITATION-TEMPORAL-COMPLIANCE-REMEDIATION.md](TASKS/TASK-004E-CITATION-TEMPORAL-COMPLIANCE-REMEDIATION.md). OD-016 resolved. |
 
 ---
 
@@ -219,7 +217,7 @@ Do not implement TASK-004E unless it blocks active work.
 | ID | Gap | Impact | Owner task |
 |----|-----|--------|------------|
 | **TEST-GAP-001** | Full-suite instability in legal-object integrity / retrieval tests during 006A validation | **Resolved in TASK-006B** (root-cause isolated and fixed) | Closed |
-| **OD-016** | Citation assembler temporal code vs governance | Citation output may not match Addendum V6 until TASK-004E | TASK-004E (deferred) |
+| **OD-016** | Citation assembler temporal code vs governance | **Resolved (TASK-004E)** | Closed |
 | **OD-017 / OD-018** | 003E reconciliation, overlap disclosure | Non-blocking governance follow-ups | Future review |
 
 Ingestion workers, live monitoring agents, live fetchers, change-detection engines, scraping, embeddings, answer engine, public ingestion APIs: **not started** (by design).
@@ -302,9 +300,11 @@ source_version → … → legal_object_version
 
 **TASK-006ZA acceptance:** **CLOSED** — [`CITATION_PERSISTENCE_006ZA_ACCEPTANCE_REVIEW.md`](CITATION_PERSISTENCE_006ZA_ACCEPTANCE_REVIEW.md). Findings Z-01–Z-05, Z-07, Z-14 closed.
 
-**Next gate:** **TASK-006AC** — Controlled Citation Execution Pre-Authorization Review (review only; do not implement execution).
+**TASK-004E:** **COMPLETE** — AC-01 (temporal fallback) remediated. AC-02 / AC-03 remain TASK-006AD spec requirements.
 
-**Blocked until governed approval:** controlled citation execution/rendering, retrieval runtime, answer runtime.
+**Next gate:** **TASK-006AC** — Controlled Citation Execution Pre-Authorization Review (review only; do not implement execution). AC-01 remediation prerequisite satisfied.
+
+**Blocked until governed approval:** controlled citation execution (006AD), retrieval runtime, answer runtime.
 
 ---
 
@@ -315,4 +315,4 @@ FOUNDATION → EXTRACTION CONTRACTS → LEGAL OBJECT GOVERNANCE → CITATION GOV
 → TEMPORAL GOVERNANCE → INGESTION PERSISTENCE → [TEST HARDENING] → AGENT LAYER → …
 ```
 
-**You are here:** Dry-run citation worker skeleton complete (006AB); citation execution not authorized.
+**You are here:** TASK-004E complete (AC-01 closed); TASK-006AB accepted; await TASK-006AC pre-auth review before any controlled citation execution (006AD).
