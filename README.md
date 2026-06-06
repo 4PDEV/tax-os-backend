@@ -70,8 +70,10 @@ tax-os-backend/
 | Controlled citation execution | **COMPLETE** (006AD) |
 | Retrieval pre-auth (007A) | **CLOSED** — APPROVED WITH REQUIRED REMEDIATION BEFORE 007B |
 | Retrieval contract (007B) | **COMPLETE** — [`RETRIEVAL_RUNTIME_CONTRACT.md`](RETRIEVAL_RUNTIME_CONTRACT.md) |
+| Retrieval persistence pre-auth (007C) | **CLOSED** — APPROVED WITH REQUIRED REMEDIATION BEFORE 007C |
+| Retrieval persistence remediation (007C1) | **COMPLETE** — [`RETRIEVAL_PERSISTENCE_REMEDIATION_007C1.md`](RETRIEVAL_PERSISTENCE_REMEDIATION_007C1.md) |
 | Retrieval runtime | **Authorized with conditions** (contract phase; 007C/007D not authorized) |
-| Approved next gate | **TASK-007C** — retrieval persistence (not authorized) |
+| Approved next gate | **007C1 acceptance review** → TASK-007C (not authorized) |
 | Ranking / answers / AI retrieval | **NOT AUTHORIZED** |
 | Admin CRUD APIs | Operational |
 | Legal object / citation contracts | Merged on `main` (003A–004D) |

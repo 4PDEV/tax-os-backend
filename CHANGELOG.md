@@ -4,6 +4,25 @@ All notable changes to `tax-os-backend` are documented here.
 
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versions align with git tags where applicable.
 
+## [task-007c1-retrieval-persistence-remediation] - 2026-06-02
+
+### Added
+
+- TASK-007C pre-authorization review — APPROVED WITH REQUIRED REMEDIATION BEFORE TASK-007C.
+  - [`ARCHITECTURE_REVIEW_RETRIEVAL_PERSISTENCE_007C-PREAUTH.md`](ARCHITECTURE_REVIEW_RETRIEVAL_PERSISTENCE_007C-PREAUTH.md)
+- TASK-007C1: retrieval persistence remediation package (governance only).
+  - [`RETRIEVAL_PERSISTENCE_REMEDIATION_007C1.md`](RETRIEVAL_PERSISTENCE_REMEDIATION_007C1.md)
+  - [`TASKS/TASK-007C1-RETRIEVAL-PERSISTENCE-REMEDIATION.md`](TASKS/TASK-007C1-RETRIEVAL-PERSISTENCE-REMEDIATION.md)
+
+### Changed
+
+- RP-01 through RP-08 remediated at spec level — request_hash canonicalization, FK constraints, citation consistency, CHECK constraints, metadata whitelist, order index, zero-result semantics, prohibited-field tests
+- Planned TASK-007C schema documented (`retrieval_requests`, `retrieval_results`, `retrieval_evidence_references`)
+
+### Notes
+
+- Governance only — no migrations, models, services, workers, or APIs. TASK-007C **not authorized** until 007C1 acceptance review.
+
 ## [task-007b-retrieval-runtime-contract] - 2026-06-02
 
 ### Added

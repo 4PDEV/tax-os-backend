@@ -70,7 +70,11 @@ Pending architectural or operational decisions. Resolve via `tax-os-architecture
 
 **TASK-007B:** **COMPLETE** — [`RETRIEVAL_RUNTIME_CONTRACT.md`](RETRIEVAL_RUNTIME_CONTRACT.md). Retrieval runtime contract established.
 
-**Next gate:** **TASK-007C** — retrieval persistence (not authorized).
+**TASK-007C pre-auth:** **CLOSED** — APPROVED WITH REQUIRED REMEDIATION BEFORE TASK-007C ([`ARCHITECTURE_REVIEW_RETRIEVAL_PERSISTENCE_007C-PREAUTH.md`](ARCHITECTURE_REVIEW_RETRIEVAL_PERSISTENCE_007C-PREAUTH.md)).
+
+**TASK-007C1:** **COMPLETE** — [`RETRIEVAL_PERSISTENCE_REMEDIATION_007C1.md`](RETRIEVAL_PERSISTENCE_REMEDIATION_007C1.md). RP-01 through RP-08 remediated at spec level.
+
+**Next gate:** **007C1 acceptance review** — then TASK-007C authorization. **TASK-007C remains NOT AUTHORIZED.**
 
 **Not authorized:** 007C/007D implementation, ranking, answers, AI retrieval, concurrent workers (OD-021).
 

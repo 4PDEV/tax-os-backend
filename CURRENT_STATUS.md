@@ -34,6 +34,10 @@ The platform is materially beyond early foundation. Core registry, processing qu
 
 **TASK-007B:** **COMPLETE** — retrieval runtime contract ([`RETRIEVAL_RUNTIME_CONTRACT.md`](RETRIEVAL_RUNTIME_CONTRACT.md)). Retrieval runtime **authorized with conditions** (contract phase; 007C/007D not authorized).
 
+**TASK-007C pre-auth:** **CLOSED** — APPROVED WITH REQUIRED REMEDIATION BEFORE TASK-007C ([`ARCHITECTURE_REVIEW_RETRIEVAL_PERSISTENCE_007C-PREAUTH.md`](ARCHITECTURE_REVIEW_RETRIEVAL_PERSISTENCE_007C-PREAUTH.md)).
+
+**TASK-007C1:** **COMPLETE** — retrieval persistence remediation package ([`RETRIEVAL_PERSISTENCE_REMEDIATION_007C1.md`](RETRIEVAL_PERSISTENCE_REMEDIATION_007C1.md)). RP-01 through RP-08 addressed at spec level. **TASK-007C remains NOT AUTHORIZED** — requires 007C1 acceptance review.
+
 **Environments:** development and internal staging only. No public production deployment.
 
 ---
@@ -329,4 +333,4 @@ FOUNDATION → EXTRACTION CONTRACTS → LEGAL OBJECT GOVERNANCE → CITATION GOV
 → TEMPORAL GOVERNANCE → INGESTION PERSISTENCE → [TEST HARDENING] → AGENT LAYER → …
 ```
 
-**You are here:** TASK-007B contract **complete**; retrieval layer governed pipeline active. **Next:** TASK-007C persistence (not authorized). Ranking / answers **not authorized**.
+**You are here:** TASK-007C1 remediation **complete**; retrieval persistence spec remediated. **Next:** 007C1 acceptance review → TASK-007C authorization. 007C/007D **not authorized**. Ranking / answers **not authorized**.

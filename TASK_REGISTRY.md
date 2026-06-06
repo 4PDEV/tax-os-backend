@@ -81,7 +81,8 @@ Bounded task tracking for `tax-os-backend`. Authoritative specs remain in `tax-o
 | TASK-007A | Retrieval Runtime Pre-Authorization Review | Complete | CLOSED — APPROVED WITH REQUIRED REMEDIATION BEFORE 007B; [`ARCHITECTURE_REVIEW_RETRIEVAL_RUNTIME_007A-PREAUTH.md`](ARCHITECTURE_REVIEW_RETRIEVAL_RUNTIME_007A-PREAUTH.md) |
 | TASK-007A1 | Retrieval Runtime Remediation Package | Complete | Acceptance **CLOSED**; [`RETRIEVAL_RUNTIME_REMEDIATION_007A1.md`](RETRIEVAL_RUNTIME_REMEDIATION_007A1.md) |
 | TASK-007B | Retrieval Runtime Contract | Complete | Governance contract — [`RETRIEVAL_RUNTIME_CONTRACT.md`](RETRIEVAL_RUNTIME_CONTRACT.md); no implementation |
-| TASK-007C | Retrieval Persistence | Hold | **NOT AUTHORIZED** — append-only requests/results |
+| TASK-007C1 | Retrieval Persistence Remediation Package | Complete | Pre-auth CLOSED ([`ARCHITECTURE_REVIEW_RETRIEVAL_PERSISTENCE_007C-PREAUTH.md`](ARCHITECTURE_REVIEW_RETRIEVAL_PERSISTENCE_007C-PREAUTH.md)); RP-01–RP-08 remediated; acceptance pending — [`RETRIEVAL_PERSISTENCE_REMEDIATION_007C1.md`](RETRIEVAL_PERSISTENCE_REMEDIATION_007C1.md) |
+| TASK-007C | Retrieval Persistence | Hold | **NOT AUTHORIZED** — append-only requests/results; requires 007C1 acceptance |
 | TASK-007D | Retrieval Worker / Execution | Hold | **NOT AUTHORIZED** — after 007C |
 | TASK-007A+ | Retrieval Layer Review (umbrella) | Planned | After 007D |
 | TASK-DOC-001 | Master Status Document Realignment | Complete | CURRENT_STATUS, IMPLEMENTATION_ROADMAP, ARCHITECTURE_PHASE_MAP |
