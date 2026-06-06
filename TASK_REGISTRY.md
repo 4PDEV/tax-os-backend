@@ -78,7 +78,8 @@ Bounded task tracking for `tax-os-backend`. Authoritative specs remain in `tax-o
 | TASK-006AC | Controlled Citation Execution Pre-Auth Review | Complete | CLOSED — APPROVED WITH REQUIRED REMEDIATION BEFORE 006AD; [`TASKS/TASK-006AC-CONTROLLED-CITATION-EXECUTION-PREAUTH-REVIEW.md`](TASKS/TASK-006AC-CONTROLLED-CITATION-EXECUTION-PREAUTH-REVIEW.md) |
 | TASK-006AC1 | Controlled Citation Execution Remediation Package | Complete | AC-02/AC-03 remediated; acceptance review complete |
 | TASK-006AD | Controlled Citation Execution | Complete | Citation entity + controlled worker mode; 703 tests |
-| TASK-007A+ | Retrieval & Query Runtime | Planned | After citation execution gates; governed query path |
+| TASK-007A | Retrieval Runtime Pre-Authorization Review | Planned | **Next gate** — governance/architecture review only; no implementation |
+| TASK-007A+ | Retrieval & Query Runtime | Hold | After TASK-007A review closure |
 | TASK-DOC-001 | Master Status Document Realignment | Complete | CURRENT_STATUS, IMPLEMENTATION_ROADMAP, ARCHITECTURE_PHASE_MAP |
 
 ## Status Legend

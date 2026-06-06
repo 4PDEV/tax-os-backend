@@ -3,9 +3,9 @@
 **Canonical high-level platform status** (TASK-DOC-001).  
 For detailed historical sections, see [PROJECT_STATE.md](PROJECT_STATE.md). For task-level tracking, see [TASK_REGISTRY.md](TASK_REGISTRY.md).
 
-**Last realigned:** 2026-06-03  
+**Last realigned:** 2026-06-02  
 **Branch:** `main`  
-**Alembic head:** `c6d4f0b15e58` (citation assembly governance persistence)
+**Alembic head:** `d8f2c4a19b63` (citations table — TASK-006AD)
 
 ---
 
@@ -15,16 +15,18 @@ For detailed historical sections, see [PROJECT_STATE.md](PROJECT_STATE.md). For 
 
 The platform is materially beyond early foundation. Core registry, processing queue, extraction/parser **contracts**, legal-object **persistence**, citation **governance**, temporal **governance**, and ingestion **artifact persistence** are in place on `main`.
 
-**Citation governance layer:** **COMPLETE** (006Y). **Citation persistence:** **COMPLETE** — accepted at `checkpoint-task-006z-citation-persistence` (667 tests).
+**Citation layer (006Y–006AD):** **CLOSED** — Claude review **APPROVED FOR CONTINUE** ([`CLAUDE_REVIEW_CITATION_PIPELINE_006Y-006AD.md`](CLAUDE_REVIEW_CITATION_PIPELINE_006Y-006AD.md)). Checkpoint: `checkpoint-task-006y-006ad-citation-pipeline-review`.
 
 | Capability | Status |
 |------------|--------|
-| Citation persistence | **COMPLETE** |
-| Citation execution | **NOT AUTHORIZED** |
-| Citation worker (dry-run skeleton) | **COMPLETE** — accepted `checkpoint-task-006ab-citation-worker-skeleton` |
-| Retrieval / answer runtime | **NOT AUTHORIZED** |
+| Citation governance | **COMPLETE** (006Y) |
+| Citation persistence | **COMPLETE** (006Z) |
+| Citation worker skeleton | **COMPLETE** (006AB) |
+| Controlled citation execution | **COMPLETE** (006AD) — 703 tests |
+| Retrieval / ranking / answers | **NOT AUTHORIZED** |
+| Concurrent citation workers | **NOT AUTHORIZED** (OD-021) |
 
-**006AA pre-auth:** Complete — [`ARCHITECTURE_REVIEW_CITATION_WORKER_SKELETON_006AA-PREAUTH.md`](ARCHITECTURE_REVIEW_CITATION_WORKER_SKELETON_006AA-PREAUTH.md) — dry-run worker skeleton **APPROVED FOR IMPLEMENTATION** (TASK-006AB). Citation execution **not authorized**.
+**Next gate:** **TASK-007A** — Retrieval Runtime Pre-Authorization Review (governance only; no implementation).
 
 **Environments:** development and internal staging only. No public production deployment.
 
@@ -212,6 +214,7 @@ TASK-006P is controlled local extraction only:
 | **TASK-006AC** | Controlled Citation Execution Pre-Auth Review | **CLOSED** | Review record: [TASKS/TASK-006AC-CONTROLLED-CITATION-EXECUTION-PREAUTH-REVIEW.md](TASKS/TASK-006AC-CONTROLLED-CITATION-EXECUTION-PREAUTH-REVIEW.md). |
 | **TASK-006AC1** | Controlled Citation Execution Remediation Package | **COMPLETE** | AC-02/AC-03 remediated; acceptance complete. Spec: [CITATION_EXECUTION_REMEDIATION_006AC1.md](CITATION_EXECUTION_REMEDIATION_006AC1.md). |
 | **TASK-006AD** | Controlled Citation Execution | **COMPLETE** | Citation entity + `run_controlled_citation_execution()`; dry-run unchanged. |
+| **006Y–006AD review** | Citation Pipeline Review Closure | **CLOSED** | APPROVED FOR CONTINUE — [`CLAUDE_REVIEW_CITATION_PIPELINE_006Y-006AD.md`](CLAUDE_REVIEW_CITATION_PIPELINE_006Y-006AD.md) |
 
 ---
 
@@ -320,4 +323,4 @@ FOUNDATION → EXTRACTION CONTRACTS → LEGAL OBJECT GOVERNANCE → CITATION GOV
 → TEMPORAL GOVERNANCE → INGESTION PERSISTENCE → [TEST HARDENING] → AGENT LAYER → …
 ```
 
-**You are here:** TASK-006AD complete — controlled citation execution active. Retrieval / answers **not authorized**.
+**You are here:** Citation layer **CLOSED** (006Y–006AD review). Await **TASK-007A** retrieval pre-auth review. Retrieval / ranking / answers **not authorized**.

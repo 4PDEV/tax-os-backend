@@ -4,6 +4,23 @@ All notable changes to `tax-os-backend` are documented here.
 
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versions align with git tags where applicable.
 
+## [checkpoint-task-006y-006ad-citation-pipeline-review] - 2026-06-02
+
+### Added
+
+- Citation pipeline review closure (TASK-006Y through TASK-006AD).
+  - [`CLAUDE_REVIEW_CITATION_PIPELINE_006Y-006AD.md`](CLAUDE_REVIEW_CITATION_PIPELINE_006Y-006AD.md)
+  - [`TASKS/TASK-006Y-006AD-CITATION-PIPELINE-REVIEWER-PACKAGE.md`](TASKS/TASK-006Y-006AD-CITATION-PIPELINE-REVIEWER-PACKAGE.md)
+
+### Changed
+
+- Verdict: **CLOSED** — **APPROVED FOR CONTINUE**
+- Citation layer phase marked complete; next gate **TASK-007A** retrieval pre-auth review
+
+### Notes
+
+- Retrieval, ranking, answers, concurrent citation workers **not authorized**
+
 ## [task-006ad-controlled-citation-execution] - 2026-06-02
 
 ### Added

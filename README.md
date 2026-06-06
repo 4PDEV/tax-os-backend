@@ -66,8 +66,10 @@ tax-os-backend/
 | Citation temporal compliance | **TASK-004E complete** — AC-01 closed |
 | Citation execution pre-auth | **TASK-006AC closed** — review record in `TASKS/TASK-006AC-CONTROLLED-CITATION-EXECUTION-PREAUTH-REVIEW.md` |
 | Citation execution remediation | **TASK-006AC1 complete** — acceptance review complete |
-| Controlled citation execution | **TASK-006AD complete** — citation entity + controlled worker mode |
-| Retrieval / answers | **NOT AUTHORIZED** |
+| Citation layer (006Y–006AD) | **CLOSED** — review APPROVED FOR CONTINUE; tag `checkpoint-task-006y-006ad-citation-pipeline-review` |
+| Controlled citation execution | **COMPLETE** (006AD) |
+| Approved next gate | **TASK-007A** — retrieval pre-auth review (not authorized to implement) |
+| Retrieval / ranking / answers | **NOT AUTHORIZED** |
 | Admin CRUD APIs | Operational |
 | Legal object / citation contracts | Merged on `main` (003A–004D) |
 | Temporal governance | Merged (005A–005C); tag `checkpoint-task-005a-spec` |

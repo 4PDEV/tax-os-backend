@@ -84,13 +84,17 @@ Legal object promotion (TASK-006U–006X): contract through controlled execution
 
 ---
 
-## ACTIVE
+## CITATION LAYER — CLOSED
 
-| Task | Title | Notes |
-|------|-------|-------|
-| TASK-006AC | Controlled citation execution pre-auth | TASK-006AB accepted | Complete — APPROVED WITH REQUIRED REMEDIATION |
-| TASK-006AC1 | Citation execution remediation package | TASK-006AC + TASK-004E | Complete — acceptance review complete |
-| TASK-006AD | Controlled citation execution | 006AC chain closed | **Complete** — 703 tests |
+Claude review **CLOSED** — **APPROVED FOR CONTINUE** ([`CLAUDE_REVIEW_CITATION_PIPELINE_006Y-006AD.md`](CLAUDE_REVIEW_CITATION_PIPELINE_006Y-006AD.md)). Checkpoint: `checkpoint-task-006y-006ad-citation-pipeline-review`.
+
+| Task | Title | Status |
+|------|-------|--------|
+| TASK-006Y | Citation governance contract | Complete |
+| TASK-006Z / 006ZA | Citation persistence | Complete |
+| TASK-006AB | Citation worker skeleton | Complete |
+| TASK-004E / 006AC / 006AC1 | Temporal + execution remediation | Complete |
+| TASK-006AD | Controlled citation execution | Complete — 703 tests |
 
 ---
 
@@ -98,27 +102,13 @@ Legal object promotion (TASK-006U–006X): contract through controlled execution
 
 | Task | Title | Prerequisite | Acceptance focus |
 |------|-------|--------------|------------------|
-| — | — | Citation execution/retrieval/answers remain behind future review gates |
+| **TASK-007A** | Retrieval Runtime Pre-Authorization Review | Citation layer closed | Identity, query scope, provenance, temporal filtering, no-answer boundary, citation-only evidence |
 
-**Ingestion memory layers:** Canonical Source · Structural · Canonical Legal Memory — **complete**. **Citation governance** — **established** (006Y). **Citation persistence** — not started.
+**Next gate:** **TASK-007A** — governance/architecture review only. **Do not** implement retrieval until review closes.
 
-**Canonical Legal Memory (006U–006X + 006X1):** **CLOSED** — Claude review **APPROVED FOR CONTINUE** (2026-06-03).
+**Not authorized:** retrieval runtime, ranking, answers, concurrent citation workers.
 
-**Citation governance (006Y):** **ESTABLISHED** — trust boundary `legal_object` → citation; idempotency on `legal_object_version_id`; complements TASK-004D deterministic assembler path (implementation vs governance).
-
-**006Z pre-auth:** Complete — remediation in [`CITATION_PERSISTENCE_REMEDIATION_006ZA.md`](CITATION_PERSISTENCE_REMEDIATION_006ZA.md) (TASK-006ZA).
-
-**TASK-006Z:** **Complete** — accepted at `checkpoint-task-006z-citation-persistence`.
-
-**TASK-006AA:** Pre-auth review **complete** — dry-run worker skeleton approved ([`ARCHITECTURE_REVIEW_CITATION_WORKER_SKELETON_006AA-PREAUTH.md`](ARCHITECTURE_REVIEW_CITATION_WORKER_SKELETON_006AA-PREAUTH.md)).
-
-**TASK-006AB:** **Complete** — accepted `checkpoint-task-006ab-citation-worker-skeleton`.
-
-**Next gate:** **TASK-007A+** retrieval / query runtime (not authorized).
-
-**Not authorized:** controlled citation execution/rendering, retrieval, answers.
-
-**Blocked until governed approval:** citation execution, answer runtime, retrieval runtime, live monitoring agents, ingestion automation expansion.
+**Blocked until governed approval:** retrieval implementation, answer runtime, live monitoring agents, ingestion automation expansion.
 
 ---
 

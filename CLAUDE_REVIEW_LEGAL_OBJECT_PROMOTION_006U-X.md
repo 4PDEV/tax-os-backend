@@ -48,10 +48,9 @@ Legal-object creation has **not** crossed into legal interpretation, applicabili
 | TASK-006U–006X Claude review | **CLOSED** |
 | Verdict | **APPROVED FOR CONTINUE** |
 | Canonical Legal Memory phase | **CLOSED** |
-| Citation layer | **OPEN** |
-| TASK-006Y | **COMPLETE** (governance-only citation assembly contract — see [`CITATION_ASSEMBLY_CONTRACT.md`](CITATION_ASSEMBLY_CONTRACT.md)) |
-| TASK-006Z | Planned after 006Y — not authorized until explicit approval |
-| TASK-007A+ | Planned after citation persistence — not authorized until explicit approval |
+| Citation layer | **CLOSED** — see [`CLAUDE_REVIEW_CITATION_PIPELINE_006Y-006AD.md`](CLAUDE_REVIEW_CITATION_PIPELINE_006Y-006AD.md) |
+| TASK-006Y–006AD | **COMPLETE** — citation governance through controlled execution |
+| TASK-007A | **Next gate** — retrieval pre-auth review (not authorized to implement) |
 
 **006Y scope boundary:** `legal_object` → citation assembly **contract** only. Still **no** citation persistence, answer generation, retrieval runtime, legal advice, or tax/applicability inference.
 

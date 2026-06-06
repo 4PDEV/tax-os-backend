@@ -871,9 +871,11 @@ TASK-006AA — Citation Worker Skeleton Pre-Auth Review (**complete**; APPROVED 
 
 TASK-006AB — Citation Worker Skeleton (**complete**; accepted `checkpoint-task-006ab-citation-worker-skeleton`).
 
-**Next gate:** TASK-007A+ retrieval / query runtime (not authorized).
+**Citation pipeline review (006Y–006AD):** **CLOSED** — APPROVED FOR CONTINUE ([`CLAUDE_REVIEW_CITATION_PIPELINE_006Y-006AD.md`](CLAUDE_REVIEW_CITATION_PIPELINE_006Y-006AD.md)). Checkpoint: `checkpoint-task-006y-006ad-citation-pipeline-review`.
 
-**Not authorized:** citation execution, retrieval, answers, legal advice.
+**Next gate:** **TASK-007A** — Retrieval Runtime Pre-Authorization Review (no implementation).
+
+**Not authorized:** retrieval, ranking, answers, concurrent citation workers, legal advice.
 
 TASK-006P — Controlled Extraction Execution (**completed; controlled local text extraction into extraction_runs/extracted_texts; no PDF/network/parsing/legal automation**).
 

@@ -55,27 +55,20 @@ Pending architectural or operational decisions. Resolve via `tax-os-architecture
 
 **Legal-object promotion gate:** **CLOSED** (Claude review 006U–006X, 2026-06-03 — **APPROVED FOR CONTINUE**). L-01, L-02, L-02b **CLOSED**.
 
-**Citation governance layer:** **ESTABLISHED** — TASK-006Y **COMPLETE** ([`CITATION_ASSEMBLY_CONTRACT.md`](CITATION_ASSEMBLY_CONTRACT.md)). **Persistence not started.**
+**Citation layer (006Y–006AD):** **CLOSED** — Claude review **APPROVED FOR CONTINUE** ([`CLAUDE_REVIEW_CITATION_PIPELINE_006Y-006AD.md`](CLAUDE_REVIEW_CITATION_PIPELINE_006Y-006AD.md)). Checkpoint: `checkpoint-task-006y-006ad-citation-pipeline-review`.
 
-**006Z pre-auth:** [`ARCHITECTURE_REVIEW_CITATION_PERSISTENCE_006Z-PREAUTH.md`](ARCHITECTURE_REVIEW_CITATION_PERSISTENCE_006Z-PREAUTH.md) — APPROVED WITH REQUIRED REMEDIATION. **TASK-006ZA** remediation package complete ([`CITATION_PERSISTENCE_REMEDIATION_006ZA.md`](CITATION_PERSISTENCE_REMEDIATION_006ZA.md)).
+| Capability | Status |
+|------------|--------|
+| Citation governance (006Y) | **COMPLETE** |
+| Citation persistence (006Z) | **COMPLETE** |
+| Citation worker skeleton (006AB) | **COMPLETE** |
+| Controlled citation execution (006AD) | **COMPLETE** |
 
-**TASK-006ZA acceptance:** **CLOSED** ([`CITATION_PERSISTENCE_006ZA_ACCEPTANCE_REVIEW.md`](CITATION_PERSISTENCE_006ZA_ACCEPTANCE_REVIEW.md)).
+**Next gate:** **TASK-007A** — Retrieval Runtime Pre-Authorization Review (governance only).
 
-**TASK-006Z:** **COMPLETE** — accepted `checkpoint-task-006z-citation-persistence`. Citation execution / worker / retrieval / answers **NOT AUTHORIZED**.
+**Not authorized:** retrieval, ranking, answers, concurrent citation workers (OD-021).
 
-**TASK-006AB:** dry-run worker skeleton **complete** (`checkpoint-task-006ab-citation-worker-skeleton`).
-
-**TASK-004E:** **COMPLETE** — citation temporal compliance remediation; **AC-01 closed**.
-
-**TASK-006AC:** **CLOSED** — pre-auth review recorded ([`TASKS/TASK-006AC-CONTROLLED-CITATION-EXECUTION-PREAUTH-REVIEW.md`](TASKS/TASK-006AC-CONTROLLED-CITATION-EXECUTION-PREAUTH-REVIEW.md)).
-
-**TASK-006AC1:** **COMPLETE** — remediation package + acceptance review complete ([`CITATION_EXECUTION_REMEDIATION_006AC1.md`](CITATION_EXECUTION_REMEDIATION_006AC1.md)).
-
-**TASK-006AD:** **COMPLETE** — controlled citation execution implemented (`citations` table, `citation_execution` service, controlled worker mode).
-
-**Not authorized:** retrieval, answers, concurrent citation workers (OD-021).
-
-Doctrine: `parsed_structure` ≠ legal object; `legal_object` ≠ legal meaning; `legal_object` ≠ citation ≠ answer.
+Doctrine: `parsed_structure` ≠ legal object; `legal_object` ≠ legal meaning; `legal_object` ≠ citation; `citation` ≠ retrieval; `citation` ≠ answer.
 
 ## Test gaps (QA)
 
