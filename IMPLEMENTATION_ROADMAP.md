@@ -108,13 +108,14 @@ Claude review **CLOSED** — **APPROVED FOR CONTINUE** ([`CLAUDE_REVIEW_CITATION
 | **TASK-007C1** | Retrieval Persistence Remediation Package | TASK-007B + 007C pre-auth | **Complete** — acceptance closed |
 | **TASK-007C** | Retrieval Persistence | 007C1 acceptance | **Complete** — append-only; 744 tests |
 | **TASK-007D** | Retrieval Worker Skeleton | TASK-007C | **Complete** — dry-run only; 759 tests |
-| **TASK-007D1** | Retrieval Execution Remediation | TASK-007D | **Planned** — before controlled execution |
+| **TASK-007D1** | Retrieval Execution Remediation | TASK-007D accepted | **Complete** — acceptance review pending |
+| **TASK-007E** | Controlled Retrieval Execution | 007D1 acceptance | **NOT AUTHORIZED** |
 
-**Retrieval layer pipeline:** 007A → 007A1 → 007B contract → 007C persistence → 007D dry-run skeleton → **007D1** → controlled execution → layer review.
+**Retrieval layer pipeline:** 007A → 007A1 → 007B contract → 007C persistence → 007D dry-run skeleton → 007D1 remediation → **007D1 acceptance** → 007E → layer review.
 
-**Next gate:** **TASK-007D1** — retrieval execution remediation (controlled execution not authorized).
+**Next gate:** **007D1 acceptance review** — then TASK-007E authorization.
 
-**Not authorized:** controlled retrieval execution, ranking, answers, AI retrieval, concurrent workers.
+**Not authorized:** TASK-007E, ranking, answers, AI retrieval, concurrent workers.
 
 **Blocked until governed approval:** retrieval implementation, answer runtime, live monitoring agents, ingestion automation expansion.
 

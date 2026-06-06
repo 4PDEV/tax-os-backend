@@ -2,7 +2,7 @@
 
 ## Status
 
-**Complete** — dry-run worker skeleton only; controlled execution **not authorized**.
+**Complete** — **ACCEPTED** — dry-run worker skeleton only; controlled execution **not authorized**.
 
 ## Authorization
 
@@ -46,7 +46,9 @@ Failure path: `accepted` → `failed`
 
 ## Next gate
 
-**TASK-007D1** — retrieval execution remediation package (future) before controlled execution.
+**TASK-007D1** — **COMPLETE** — [`RETRIEVAL_EXECUTION_REMEDIATION_007D1.md`](../RETRIEVAL_EXECUTION_REMEDIATION_007D1.md).
+
+After 007D1 acceptance: **TASK-007E** — controlled retrieval execution (not authorized).
 
 ---
 

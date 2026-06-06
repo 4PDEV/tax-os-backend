@@ -4,6 +4,25 @@ All notable changes to `tax-os-backend` are documented here.
 
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versions align with git tags where applicable.
 
+## [task-007d1-retrieval-execution-remediation] - 2026-06-02
+
+### Added
+
+- TASK-007D execution pre-authorization review — APPROVED WITH REQUIRED REMEDIATION BEFORE CONTROLLED EXECUTION.
+  - [`ARCHITECTURE_REVIEW_RETRIEVAL_EXECUTION_007D-PREAUTH.md`](ARCHITECTURE_REVIEW_RETRIEVAL_EXECUTION_007D-PREAUTH.md)
+- TASK-007D1: retrieval execution remediation package (governance only).
+  - [`RETRIEVAL_EXECUTION_REMEDIATION_007D1.md`](RETRIEVAL_EXECUTION_REMEDIATION_007D1.md)
+  - [`TASKS/TASK-007D1-RETRIEVAL-EXECUTION-REMEDIATION.md`](TASKS/TASK-007D1-RETRIEVAL-EXECUTION-REMEDIATION.md)
+
+### Changed
+
+- RW-01 through RW-06 remediated at spec level — AS_OF_DATE ambiguity, no silent latest fallback, citation behavior, deterministic ordering, execution leakage guards, staging sequence
+- Planned TASK-007E controlled execution flow documented
+
+### Notes
+
+- Governance only — no execution implementation, no worker changes. TASK-007E **not authorized** until 007D1 acceptance review.
+
 ## [task-007d-retrieval-worker-skeleton] - 2026-06-02
 
 ### Added

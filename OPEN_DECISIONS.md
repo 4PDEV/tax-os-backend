@@ -78,9 +78,11 @@ Pending architectural or operational decisions. Resolve via `tax-os-architecture
 
 **TASK-007C:** **COMPLETE** — append-only retrieval persistence ([`TASKS/TASK-007C-RETRIEVAL-PERSISTENCE.md`](TASKS/TASK-007C-RETRIEVAL-PERSISTENCE.md)).
 
-**TASK-007D:** **COMPLETE** — dry-run retrieval worker skeleton only ([`TASKS/TASK-007D-RETRIEVAL-WORKER-SKELETON.md`](TASKS/TASK-007D-RETRIEVAL-WORKER-SKELETON.md)).
+**TASK-007D:** **COMPLETE** — **ACCEPTED** — dry-run retrieval worker skeleton ([`TASKS/TASK-007D-RETRIEVAL-WORKER-SKELETON.md`](TASKS/TASK-007D-RETRIEVAL-WORKER-SKELETON.md)).
 
-**Next gate:** **TASK-007D1** — retrieval execution remediation (controlled execution not authorized).
+**TASK-007D1:** **COMPLETE** — [`RETRIEVAL_EXECUTION_REMEDIATION_007D1.md`](RETRIEVAL_EXECUTION_REMEDIATION_007D1.md). RW-01 through RW-06 remediated at spec level.
+
+**Next gate:** **007D1 acceptance review** — then TASK-007E authorization. **TASK-007E remains NOT AUTHORIZED.**
 
 **Not authorized:** controlled retrieval execution, ranking, answers, AI retrieval, concurrent workers (OD-021).
 
