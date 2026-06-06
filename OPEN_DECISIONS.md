@@ -74,9 +74,11 @@ Pending architectural or operational decisions. Resolve via `tax-os-architecture
 
 **TASK-007C1:** **COMPLETE** — [`RETRIEVAL_PERSISTENCE_REMEDIATION_007C1.md`](RETRIEVAL_PERSISTENCE_REMEDIATION_007C1.md). RP-01 through RP-08 remediated at spec level.
 
-**Next gate:** **007C1 acceptance review** — then TASK-007C authorization. **TASK-007C remains NOT AUTHORIZED.**
+**TASK-007C1 acceptance:** **CLOSED** — TASK-007C **AUTHORIZED WITH CONDITIONS** ([`RETRIEVAL_PERSISTENCE_007C1_ACCEPTANCE_REVIEW.md`](RETRIEVAL_PERSISTENCE_007C1_ACCEPTANCE_REVIEW.md)).
 
-**Not authorized:** 007C/007D implementation, ranking, answers, AI retrieval, concurrent workers (OD-021).
+**Next gate:** **TASK-007C** — retrieval persistence implementation.
+
+**Not authorized:** 007D execution, ranking, answers, AI retrieval, concurrent workers (OD-021).
 
 Doctrine: `parsed_structure` ≠ legal object; `legal_object` ≠ legal meaning; `legal_object` ≠ citation; `citation` ≠ retrieval; `citation` ≠ answer.
 

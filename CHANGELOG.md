@@ -4,6 +4,23 @@ All notable changes to `tax-os-backend` are documented here.
 
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versions align with git tags where applicable.
 
+## [task-007c1-acceptance-retrieval-persistence-authorized] - 2026-06-02
+
+### Added
+
+- TASK-007C1 acceptance review — **CLOSED**; TASK-007C **authorized with conditions**.
+  - [`RETRIEVAL_PERSISTENCE_007C1_ACCEPTANCE_REVIEW.md`](RETRIEVAL_PERSISTENCE_007C1_ACCEPTANCE_REVIEW.md)
+  - [`TASKS/TASK-007C-RETRIEVAL-PERSISTENCE.md`](TASKS/TASK-007C-RETRIEVAL-PERSISTENCE.md)
+
+### Changed
+
+- RP-01 through RP-08 findings **CLOSED** at acceptance
+- Platform state: retrieval persistence **authorized for implementation**; 007D / ranking / answers / AI **not authorized**
+
+### Notes
+
+- Persistence-only authorization envelope — no workers, execution, or APIs in 007C scope.
+
 ## [task-007c1-retrieval-persistence-remediation] - 2026-06-02
 
 ### Added

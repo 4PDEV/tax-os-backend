@@ -24,7 +24,8 @@ The platform is materially beyond early foundation. Core registry, processing qu
 | Citation worker skeleton | **COMPLETE** (006AB) |
 | Controlled citation execution | **COMPLETE** (006AD) — 703 tests |
 | Retrieval runtime contract (007B) | **COMPLETE** |
-| Retrieval persistence / execution (007C/007D) | **NOT AUTHORIZED** |
+| Retrieval persistence (007C) | **AUTHORIZED FOR IMPLEMENTATION** |
+| Retrieval execution (007D) | **NOT AUTHORIZED** |
 | Ranking / answers / AI retrieval | **NOT AUTHORIZED** |
 | Concurrent citation workers | **NOT AUTHORIZED** (OD-021) |
 
@@ -36,7 +37,9 @@ The platform is materially beyond early foundation. Core registry, processing qu
 
 **TASK-007C pre-auth:** **CLOSED** — APPROVED WITH REQUIRED REMEDIATION BEFORE TASK-007C ([`ARCHITECTURE_REVIEW_RETRIEVAL_PERSISTENCE_007C-PREAUTH.md`](ARCHITECTURE_REVIEW_RETRIEVAL_PERSISTENCE_007C-PREAUTH.md)).
 
-**TASK-007C1:** **COMPLETE** — retrieval persistence remediation package ([`RETRIEVAL_PERSISTENCE_REMEDIATION_007C1.md`](RETRIEVAL_PERSISTENCE_REMEDIATION_007C1.md)). RP-01 through RP-08 addressed at spec level. **TASK-007C remains NOT AUTHORIZED** — requires 007C1 acceptance review.
+**TASK-007C1:** **COMPLETE** — retrieval persistence remediation package ([`RETRIEVAL_PERSISTENCE_REMEDIATION_007C1.md`](RETRIEVAL_PERSISTENCE_REMEDIATION_007C1.md)). RP-01 through RP-08 addressed at spec level.
+
+**TASK-007C1 acceptance:** **CLOSED** — TASK-007C **AUTHORIZED WITH CONDITIONS** ([`RETRIEVAL_PERSISTENCE_007C1_ACCEPTANCE_REVIEW.md`](RETRIEVAL_PERSISTENCE_007C1_ACCEPTANCE_REVIEW.md)).
 
 **Environments:** development and internal staging only. No public production deployment.
 
@@ -333,4 +336,4 @@ FOUNDATION → EXTRACTION CONTRACTS → LEGAL OBJECT GOVERNANCE → CITATION GOV
 → TEMPORAL GOVERNANCE → INGESTION PERSISTENCE → [TEST HARDENING] → AGENT LAYER → …
 ```
 
-**You are here:** TASK-007C1 remediation **complete**; retrieval persistence spec remediated. **Next:** 007C1 acceptance review → TASK-007C authorization. 007C/007D **not authorized**. Ranking / answers **not authorized**.
+**You are here:** TASK-007C **authorized for implementation**; retrieval persistence gate open. **Next:** TASK-007C persistence delivery. 007D / ranking / answers **not authorized**.

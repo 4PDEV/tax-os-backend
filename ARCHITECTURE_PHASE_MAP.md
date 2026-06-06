@@ -385,7 +385,7 @@ FOUNDATION
 
 ## Current position (one line)
 
-**Phases 1–31 complete on `main`.** **Citation layer CLOSED** (006Y–006AD). **TASK-007B COMPLETE** — retrieval runtime contract. **TASK-007C1 COMPLETE** — persistence remediation spec. **Next:** 007C1 acceptance → TASK-007C. Ranking / answers / AI retrieval **not authorized**.
+**Phases 1–31 complete on `main`.** **Citation layer CLOSED** (006Y–006AD). **TASK-007B COMPLETE** — retrieval runtime contract. **TASK-007C AUTHORIZED** — retrieval persistence implementation. **Next:** TASK-007C delivery. 007D / ranking / answers / AI retrieval **not authorized**.
 
 ---
 

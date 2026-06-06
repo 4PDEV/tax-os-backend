@@ -10,8 +10,8 @@ Authoritative remediation specification for future **TASK-007C** retrieval persi
 |------|--------|
 | TASK-007C pre-auth review | **Complete** — APPROVED WITH REQUIRED REMEDIATION BEFORE 007C |
 | TASK-007C1 remediation package | **Complete** — RP-01 through RP-08 addressed at governance level |
-| TASK-007C1 acceptance review | **Pending** — required before TASK-007C authorization |
-| TASK-007C implementation | **NOT AUTHORIZED** |
+| TASK-007C1 acceptance review | **CLOSED** — [`RETRIEVAL_PERSISTENCE_007C1_ACCEPTANCE_REVIEW.md`](RETRIEVAL_PERSISTENCE_007C1_ACCEPTANCE_REVIEW.md) |
+| TASK-007C implementation | **AUTHORIZED WITH CONDITIONS** |
 
 ---
 
@@ -367,11 +367,9 @@ Distinct from `source_retrieval_log` (ingestion monitoring).
 
 ## Authorization gate (TASK-007C)
 
-TASK-007C may be authorized only after:
-
 1. TASK-007C pre-auth review accepted — **done**
-2. TASK-007C1 remediation package accepted — **pending acceptance review**
-3. Bounded TASK-007C implementation spec derived from this document
+2. TASK-007C1 remediation package accepted — **done**
+3. TASK-007C1 acceptance review **CLOSED** — **TASK-007C AUTHORIZED WITH CONDITIONS** ([`RETRIEVAL_PERSISTENCE_007C1_ACCEPTANCE_REVIEW.md`](RETRIEVAL_PERSISTENCE_007C1_ACCEPTANCE_REVIEW.md))
 
 Retrieval execution (007D), ranking, answers, and AI remain **not authorized**.
 
@@ -391,7 +389,7 @@ Retrieval execution (007D), ranking, answers, and AI remain **not authorized**.
 - [x] RP-05, RP-07, RP-08 included
 - [x] Planned TASK-007C schema documented
 - [x] No implementation introduced
-- [x] TASK-007C remains NOT AUTHORIZED
+- [x] TASK-007C1 acceptance review **CLOSED** — TASK-007C authorized with conditions
 
 ---
 

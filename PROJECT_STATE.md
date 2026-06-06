@@ -881,11 +881,13 @@ TASK-006AB — Citation Worker Skeleton (**complete**; accepted `checkpoint-task
 
 **TASK-007C pre-auth:** **CLOSED** — APPROVED WITH REQUIRED REMEDIATION BEFORE TASK-007C ([`ARCHITECTURE_REVIEW_RETRIEVAL_PERSISTENCE_007C-PREAUTH.md`](ARCHITECTURE_REVIEW_RETRIEVAL_PERSISTENCE_007C-PREAUTH.md)).
 
-**TASK-007C1:** **COMPLETE** — [`RETRIEVAL_PERSISTENCE_REMEDIATION_007C1.md`](RETRIEVAL_PERSISTENCE_REMEDIATION_007C1.md). RP-01 through RP-08 remediated. **TASK-007C remains NOT AUTHORIZED** — requires 007C1 acceptance review.
+**TASK-007C1:** **COMPLETE** — [`RETRIEVAL_PERSISTENCE_REMEDIATION_007C1.md`](RETRIEVAL_PERSISTENCE_REMEDIATION_007C1.md). RP-01 through RP-08 remediated.
 
-**Governed pipeline:** 007B contract → 007C1 remediation → 007C persistence → 007D worker/execution → retrieval layer review.
+**TASK-007C1 acceptance:** **CLOSED** — TASK-007C **AUTHORIZED WITH CONDITIONS** ([`RETRIEVAL_PERSISTENCE_007C1_ACCEPTANCE_REVIEW.md`](RETRIEVAL_PERSISTENCE_007C1_ACCEPTANCE_REVIEW.md)).
 
-**Not authorized:** 007C/007D, ranking, answers, AI retrieval, concurrent workers, legal advice.
+**Governed pipeline:** 007B contract → 007C1 remediation → 007C1 acceptance → **007C persistence** → 007D worker/execution → retrieval layer review.
+
+**Not authorized:** 007D execution, ranking, answers, AI retrieval, concurrent workers, legal advice.
 
 TASK-006P — Controlled Extraction Execution (**completed; controlled local text extraction into extraction_runs/extracted_texts; no PDF/network/parsing/legal automation**).
 

@@ -105,15 +105,15 @@ Claude review **CLOSED** — **APPROVED FOR CONTINUE** ([`CLAUDE_REVIEW_CITATION
 | **TASK-007A** | Retrieval Runtime Pre-Authorization Review | Citation layer closed | **Complete** — APPROVED WITH REQUIRED REMEDIATION BEFORE 007B |
 | **TASK-007A1** | Retrieval Runtime Remediation Package | TASK-007A | **Complete** — acceptance closed |
 | **TASK-007B** | Retrieval Runtime Contract | 007A1 acceptance | **Complete** — governance only |
-| **TASK-007C1** | Retrieval Persistence Remediation Package | TASK-007B + 007C pre-auth | **Complete** — acceptance review pending |
-| **TASK-007C** | Retrieval Persistence | 007C1 acceptance | **NOT AUTHORIZED** |
+| **TASK-007C1** | Retrieval Persistence Remediation Package | TASK-007B + 007C pre-auth | **Complete** — acceptance closed |
+| **TASK-007C** | Retrieval Persistence | 007C1 acceptance | **AUTHORIZED FOR IMPLEMENTATION** |
 | **TASK-007D** | Retrieval Worker / Execution | TASK-007C | **NOT AUTHORIZED** |
 
-**Retrieval layer pipeline:** 007A → 007A1 → 007B contract → 007C pre-auth → 007C1 remediation → **007C1 acceptance** → 007C → 007D → layer review.
+**Retrieval layer pipeline:** 007A → 007A1 → 007B contract → 007C pre-auth → 007C1 remediation → 007C1 acceptance → **007C** (active) → 007D → layer review.
 
-**Next gate:** **007C1 acceptance review** — then TASK-007C authorization (not authorized).
+**Next gate:** **TASK-007C** — retrieval persistence implementation.
 
-**Not authorized:** 007C/007D implementation, ranking, answers, AI retrieval, concurrent workers.
+**Not authorized:** 007D execution, ranking, answers, AI retrieval, concurrent workers.
 
 **Blocked until governed approval:** retrieval implementation, answer runtime, live monitoring agents, ingestion automation expansion.
 

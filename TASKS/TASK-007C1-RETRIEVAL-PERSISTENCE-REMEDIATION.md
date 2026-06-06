@@ -2,12 +2,12 @@
 
 ## Status
 
-**Complete** — governance-only remediation package delivered; **awaiting acceptance review** before TASK-007C authorization.
+**Complete** — governance-only remediation package delivered; acceptance review **CLOSED** — TASK-007C **authorized with conditions**.
 
 ## Important
 
 - **Does NOT implement TASK-007C**
-- **TASK-007C remains NOT AUTHORIZED**
+- **TASK-007C authorized with conditions** — implementation gate open
 - No tables, migrations, models, services, workers, or APIs
 
 ## Objective
@@ -58,7 +58,7 @@ Close blocking **007C** pre-auth findings **RP-01 through RP-06** (and recommend
 
 ## Next gate
 
-**Remediation acceptance review** for 007C1 — then bounded TASK-007C authorization.
+**TASK-007C** — retrieval persistence implementation ([`TASKS/TASK-007C-RETRIEVAL-PERSISTENCE.md`](TASK-007C-RETRIEVAL-PERSISTENCE.md)).
 
 ---
 
