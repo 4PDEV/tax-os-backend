@@ -83,7 +83,7 @@ Citation assembly must distinguish three classes of temporal information:
 
 ## Immutability
 
-Assembled citations are in-memory DTOs only — **no persistence** in TASK-004D.
+TASK-004D assembles in-memory `CitationResult` DTOs. Controlled persistence is governed separately (TASK-006AD `citations` entity keyed by `citation_hash`).
 
 ## Prohibited
 

@@ -26,6 +26,10 @@ from app.services.citation_assembly_governance.validation import (
     validate_actor_type,
     validate_legal_memory_lineage,
 )
+from app.workers.citation_assembly_governance.controlled_provider import (
+    CONTROLLED_CITATION_ASSEMBLY_PROVIDER_NAME,
+    CONTROLLED_CITATION_ASSEMBLY_PROVIDER_VERSION,
+)
 from app.workers.citation_assembly_governance.dry_run_provider import (
     DRY_RUN_CITATION_ASSEMBLY_PROVIDER_NAME,
     DRY_RUN_CITATION_ASSEMBLY_PROVIDER_VERSION,
@@ -34,12 +38,16 @@ from app.workers.citation_assembly_governance.dry_run_provider import (
 from app.workers.citation_assembly_governance.result import CitationAssemblyGovernanceRunSummary
 
 EXECUTION_MODE_DRY_RUN = "dry_run"
-ALLOWED_EXECUTION_MODES = frozenset({EXECUTION_MODE_DRY_RUN})
+EXECUTION_MODE_CONTROLLED_EXECUTION = "controlled_execution"
+ALLOWED_EXECUTION_MODES = frozenset(
+    {EXECUTION_MODE_DRY_RUN, EXECUTION_MODE_CONTROLLED_EXECUTION}
+)
 
 NON_ELIGIBLE_LATEST_STATUSES = frozenset({"duplicate_rejected", "rejected"})
 TERMINAL_SKIP_STATUSES = frozenset({"assembled", "failed", "skipped"})
 
 DRY_RUN_TERMINAL_STATUS = "skipped"
+CONTROLLED_TERMINAL_STATUS = "assembled"
 
 
 class CitationAssemblyGovernanceWorkerError(Exception):
@@ -73,6 +81,14 @@ class CitationAssemblyGovernanceWorker:
             )
         self._provider = provider
         self._mode = mode
+
+    def _default_provider_identity(self) -> tuple[str, str]:
+        if self._mode == EXECUTION_MODE_CONTROLLED_EXECUTION:
+            return (
+                CONTROLLED_CITATION_ASSEMBLY_PROVIDER_NAME,
+                CONTROLLED_CITATION_ASSEMBLY_PROVIDER_VERSION,
+            )
+        return DRY_RUN_CITATION_ASSEMBLY_PROVIDER_NAME, DRY_RUN_CITATION_ASSEMBLY_PROVIDER_VERSION
 
     def load_requests(self, db: Session) -> list[CitationAssemblyGovernanceRequest]:
         stmt = select(CitationAssemblyGovernanceRequest).order_by(
@@ -128,7 +144,8 @@ class CitationAssemblyGovernanceWorker:
         worker_name: str = "citation-assembly-governance-worker",
         worker_version: str | None = None,
     ) -> CitationAssemblyGovernanceRunSummary:
-        resolved_version = worker_version or DRY_RUN_CITATION_ASSEMBLY_PROVIDER_VERSION
+        default_name, default_version = self._default_provider_identity()
+        resolved_version = worker_version or default_version
 
         requests_seen = processed = skipped = results_created = failures = replayed = 0
 
@@ -158,7 +175,7 @@ class CitationAssemblyGovernanceWorker:
                 provider_result = self._provider.run_assembly(
                     db, request, legal_object_version
                 )
-                provider_name = provider_result.provider_name or DRY_RUN_CITATION_ASSEMBLY_PROVIDER_NAME
+                provider_name = provider_result.provider_name or default_name
                 provider_version = provider_result.provider_version or resolved_version
 
                 if not provider_result.success:
@@ -176,18 +193,29 @@ class CitationAssemblyGovernanceWorker:
                     processed += 1
                     continue
 
-                persist_citation_assembly_result(
-                    db,
-                    citation_assembly_governance_request_id=request.id,
-                    citation_status=DRY_RUN_TERMINAL_STATUS,
-                    citation_id=None,
-                    assembled_at=None,
-                    notes=provider_result.notes
-                    or (
-                        f"dry-run citation assembly lifecycle completed by {worker_name}; "
-                        "citation_id intentionally null; no rendering"
-                    ),
-                )
+                if self._mode == EXECUTION_MODE_CONTROLLED_EXECUTION:
+                    persist_citation_assembly_result(
+                        db,
+                        citation_assembly_governance_request_id=request.id,
+                        citation_status=CONTROLLED_TERMINAL_STATUS,
+                        citation_id=provider_result.citation_id,
+                        assembled_at=provider_result.assembled_at,
+                        notes=provider_result.notes
+                        or f"controlled citation execution completed by {worker_name}",
+                    )
+                else:
+                    persist_citation_assembly_result(
+                        db,
+                        citation_assembly_governance_request_id=request.id,
+                        citation_status=DRY_RUN_TERMINAL_STATUS,
+                        citation_id=None,
+                        assembled_at=None,
+                        notes=provider_result.notes
+                        or (
+                            f"dry-run citation assembly lifecycle completed by {worker_name}; "
+                            "citation_id intentionally null; no rendering"
+                        ),
+                    )
                 results_created += 1
                 processed += 1
             except Exception as exc:

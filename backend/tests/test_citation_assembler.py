@@ -375,8 +375,9 @@ def test_no_citation_persistence(db_session):
     )
 
     assert db_session.query(LegalObjectVersion).count() == version_count_before
-    table_names = db_session.bind.dialect.get_table_names(db_session.connection())  # type: ignore[union-attr]
-    assert "citations" not in table_names
+    from app.models.citation import Citation
+
+    assert db_session.query(Citation).count() == 0
 
 
 def test_formatter_separate_from_assembler():

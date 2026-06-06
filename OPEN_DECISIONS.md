@@ -71,7 +71,7 @@ Pending architectural or operational decisions. Resolve via `tax-os-architecture
 
 **TASK-006AC1:** **COMPLETE** — remediation package + acceptance review complete ([`CITATION_EXECUTION_REMEDIATION_006AC1.md`](CITATION_EXECUTION_REMEDIATION_006AC1.md)).
 
-**TASK-006AD:** **Authorized with conditions** — bounded implementation **not yet started**.
+**TASK-006AD:** **COMPLETE** — controlled citation execution implemented (`citations` table, `citation_execution` service, controlled worker mode).
 
 **Not authorized:** retrieval, answers, concurrent citation workers (OD-021).
 

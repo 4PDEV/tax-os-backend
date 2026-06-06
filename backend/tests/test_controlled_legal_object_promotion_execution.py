@@ -265,8 +265,11 @@ def test_no_citation_or_answer_tables(db_session, engine):
     assert citation_tables <= {
         "citation_assembly_governance_requests",
         "citation_assembly_governance_results",
+        "citations",
     }
-    assert "citations" not in tables
+    from app.models.citation import Citation
+
+    assert db_session.query(Citation).count() == 0
     assert not any("answer" in name for name in tables)
 
 

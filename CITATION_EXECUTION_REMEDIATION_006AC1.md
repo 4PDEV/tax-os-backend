@@ -12,7 +12,7 @@ Authoritative remediation specification for **TASK-006AD** controlled citation e
 | TASK-004E (AC-01) | **Closed** — temporal fallback removed |
 | TASK-006AC1 remediation package | **Complete** — AC-02 / AC-03 addressed at governance level |
 | TASK-006AC1 acceptance review | **Complete** — TASK-006AD authorized with conditions |
-| TASK-006AD implementation | **Authorized with conditions** — bounded implementation **not yet started** |
+| TASK-006AD implementation | **Complete** — see TASK-006AD controlled citation execution |
 | Retrieval / answers | **NOT AUTHORIZED** |
 
 ---
@@ -286,7 +286,7 @@ TASK-006AD authorization chain (complete):
 1. TASK-004E accepted (AC-01 closed) — **done**
 2. TASK-006AC1 remediation package accepted (AC-02 / AC-03 closed at spec level) — **done**
 3. TASK-006AC1 acceptance review — **done** — TASK-006AD **authorized with conditions**
-4. Bounded TASK-006AD implementation — **not yet started**
+4. Bounded TASK-006AD implementation — **complete**
 
 ---
 

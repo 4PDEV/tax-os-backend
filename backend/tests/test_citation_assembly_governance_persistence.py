@@ -497,7 +497,9 @@ def test_governance_tables_only_no_final_citation_entity(db_session, engine):
     tables = set(sa_inspect(engine).get_table_names())
     assert "citation_assembly_governance_requests" in tables
     assert "citation_assembly_governance_results" in tables
-    assert "citations" not in tables
+    from app.models.citation import Citation
+
+    assert db_session.query(Citation).count() == 0
     assert not any(name == "citation_assembly_requests" for name in tables)
     assert not any("answer" in name for name in tables)
 

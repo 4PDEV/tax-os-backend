@@ -385,7 +385,7 @@ FOUNDATION
 
 ## Current position (one line)
 
-**Phases 1–31 complete on `main`.** Citation persistence + dry-run worker **complete** (`checkpoint-task-006z` / `checkpoint-task-006ab`). TASK-006AC review chain **closed**. TASK-006AD **authorized with conditions** (implementation not yet started). Retrieval / answers **not authorized**.
+**Phases 1–31 complete on `main`.** Citation governance + controlled execution **complete** (006Z / 006AB / 006AD). Retrieval / answers **not authorized**.
 
 ---
 

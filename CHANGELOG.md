@@ -4,6 +4,25 @@ All notable changes to `tax-os-backend` are documented here.
 
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versions align with git tags where applicable.
 
+## [task-006ad-controlled-citation-execution] - 2026-06-02
+
+### Added
+
+- TASK-006AD: controlled citation execution.
+  - `citations` table with `UNIQUE(citation_hash)` (migration `d8f2c4a19b63`)
+  - `backend/app/services/citation_execution/` — hashing, validation, persistence, renderer, execution
+  - `ControlledCitationAssemblyGovernanceProvider` + `run_controlled_citation_execution()`
+  - Tests: `test_controlled_citation_execution.py`, `test_citations_alembic_migration.py`
+
+### Changed
+
+- Governance worker: dry-run unchanged (`skipped`); controlled mode terminal `assembled` with `citation_id`
+- Boundary tests updated for `citations` schema at head
+
+### Notes
+
+- **703 tests passed**. Retrieval / answers **not authorized**. OD-021 concurrent workers not implemented.
+
 ## [task-006ac-controlled-citation-execution-preauth-review] - 2026-06-02
 
 ### Added

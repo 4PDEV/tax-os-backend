@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+from datetime import datetime
 
 
 @dataclass(frozen=True)
@@ -9,6 +10,8 @@ class CitationAssemblyGovernanceProviderResult:
     notes: str | None = None
     provider_name: str | None = None
     provider_version: str | None = None
+    citation_id: str | None = None
+    assembled_at: datetime | None = None
 
 
 @dataclass(frozen=True)

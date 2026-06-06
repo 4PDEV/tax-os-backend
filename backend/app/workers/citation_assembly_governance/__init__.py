@@ -14,8 +14,10 @@ from app.workers.citation_assembly_governance.result import (
 from app.workers.citation_assembly_governance.runner import (
     run_citation_assembly_dry_run,
     run_citation_assembly_governance_dry_run,
+    run_controlled_citation_execution,
 )
 from app.workers.citation_assembly_governance.worker import (
+    CONTROLLED_TERMINAL_STATUS,
     DRY_RUN_TERMINAL_STATUS,
     CitationAssemblyGovernanceWorker,
     CitationAssemblyGovernanceWorkerError,
@@ -32,8 +34,10 @@ __all__ = [
     "CitationAssemblyWorkerSummary",
     "DRY_RUN_CITATION_ASSEMBLY_PROVIDER_NAME",
     "DRY_RUN_CITATION_ASSEMBLY_PROVIDER_VERSION",
+    "CONTROLLED_TERMINAL_STATUS",
     "DRY_RUN_TERMINAL_STATUS",
     "DryRunCitationAssemblyGovernanceProvider",
     "run_citation_assembly_dry_run",
     "run_citation_assembly_governance_dry_run",
+    "run_controlled_citation_execution",
 ]

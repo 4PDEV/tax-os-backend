@@ -211,6 +211,7 @@ TASK-006P is controlled local extraction only:
 | **TASK-004E** | Citation Temporal Compliance Remediation | **COMPLETE** | AC-01 closed — no silent `source_version` date fallback; Addendum V6 aligned. OD-016 resolved. |
 | **TASK-006AC** | Controlled Citation Execution Pre-Auth Review | **CLOSED** | Review record: [TASKS/TASK-006AC-CONTROLLED-CITATION-EXECUTION-PREAUTH-REVIEW.md](TASKS/TASK-006AC-CONTROLLED-CITATION-EXECUTION-PREAUTH-REVIEW.md). |
 | **TASK-006AC1** | Controlled Citation Execution Remediation Package | **COMPLETE** | AC-02/AC-03 remediated; acceptance complete. Spec: [CITATION_EXECUTION_REMEDIATION_006AC1.md](CITATION_EXECUTION_REMEDIATION_006AC1.md). |
+| **TASK-006AD** | Controlled Citation Execution | **COMPLETE** | Citation entity + `run_controlled_citation_execution()`; dry-run unchanged. |
 
 ---
 
@@ -306,9 +307,9 @@ source_version → … → legal_object_version
 
 **TASK-006AC:** **CLOSED** — pre-auth review recorded ([`TASKS/TASK-006AC-CONTROLLED-CITATION-EXECUTION-PREAUTH-REVIEW.md`](TASKS/TASK-006AC-CONTROLLED-CITATION-EXECUTION-PREAUTH-REVIEW.md)).
 
-**TASK-006AD:** **Authorized with conditions** — bounded implementation **not yet started**.
+**TASK-006AD:** **COMPLETE** — controlled citation execution implemented (citation entity, deterministic renderer, governance worker controlled mode).
 
-**Blocked until governed approval:** retrieval runtime, answer runtime, concurrent citation workers.
+**Not authorized:** retrieval runtime, answer runtime, concurrent citation workers (OD-021).
 
 ---
 
@@ -319,4 +320,4 @@ FOUNDATION → EXTRACTION CONTRACTS → LEGAL OBJECT GOVERNANCE → CITATION GOV
 → TEMPORAL GOVERNANCE → INGESTION PERSISTENCE → [TEST HARDENING] → AGENT LAYER → …
 ```
 
-**You are here:** TASK-006AC review chain closed; TASK-006AD **authorized with conditions** (implementation not yet started). Retrieval / answers **not authorized**.
+**You are here:** TASK-006AD complete — controlled citation execution active. Retrieval / answers **not authorized**.

@@ -782,7 +782,7 @@ Legal memory stack on `main`:
 006A → Source Ingestion Persistence (extraction/parser artifacts)
 ```
 
-**Current boundary:** persistence, integrity, retrieval, effective-date resolution, citation candidates, deterministic citation assembly, **canonical temporal/versioning governance**, and **ingestion artifact persistence** active on `main`. Citation identity is version-pinned per 004D provenance tuple (**TASK-006AC1** spec); `CitationAssembler` temporal compliance aligned with Addendum V6 (**TASK-004E**; AC-01 closed). TASK-006AC pre-auth review **closed** ([`TASKS/TASK-006AC-CONTROLLED-CITATION-EXECUTION-PREAUTH-REVIEW.md`](TASKS/TASK-006AC-CONTROLLED-CITATION-EXECUTION-PREAUTH-REVIEW.md)). TASK-006AD **authorized with conditions** — bounded implementation **not yet started**. No citation entity persistence yet. Retrieval / answers **not authorized**.
+**Current boundary:** persistence, integrity, retrieval, effective-date resolution, citation candidates, deterministic citation assembly, **controlled citation execution** (TASK-006AD), **canonical temporal/versioning governance**, and **ingestion artifact persistence** active on `main`. Citation identity is version-pinned per 004D provenance tuple (`UNIQUE(citation_hash)`). `CitationAssembler` temporal compliance aligned with Addendum V6 (**TASK-004E**). Dry-run governance worker unchanged. Retrieval / answers **not authorized**.
 
 **VM snapshot:** not required before next task unless schema or persistence behavior changes.
 
@@ -871,7 +871,7 @@ TASK-006AA — Citation Worker Skeleton Pre-Auth Review (**complete**; APPROVED 
 
 TASK-006AB — Citation Worker Skeleton (**complete**; accepted `checkpoint-task-006ab-citation-worker-skeleton`).
 
-**Next gate:** TASK-006AD bounded implementation (authorized with conditions; not yet started).
+**Next gate:** TASK-007A+ retrieval / query runtime (not authorized).
 
 **Not authorized:** citation execution, retrieval, answers, legal advice.
 
