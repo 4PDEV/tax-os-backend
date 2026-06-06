@@ -82,13 +82,15 @@ Pending architectural or operational decisions. Resolve via `tax-os-architecture
 
 **TASK-007D1 acceptance:** **CLOSED** — TASK-007E **AUTHORIZED WITH CONDITIONS** ([`RETRIEVAL_EXECUTION_007D1_ACCEPTANCE_REVIEW.md`](RETRIEVAL_EXECUTION_007D1_ACCEPTANCE_REVIEW.md)).
 
-**TASK-007E:** **COMPLETE** — controlled retrieval execution ([`TASKS/TASK-007E-CONTROLLED-RETRIEVAL-EXECUTION.md`](TASKS/TASK-007E-CONTROLLED-RETRIEVAL-EXECUTION.md)).
+**TASK-007E:** **COMPLETE** — **ACCEPTED** — controlled retrieval execution ([`TASKS/TASK-007E-CONTROLLED-RETRIEVAL-EXECUTION.md`](TASKS/TASK-007E-CONTROLLED-RETRIEVAL-EXECUTION.md)).
 
-**Next gate:** retrieval layer review.
+**Retrieval layer (007A–007E):** **CLOSED** — **ACCEPTED** ([`CLAUDE_REVIEW_RETRIEVAL_PIPELINE_007A-007E.md`](CLAUDE_REVIEW_RETRIEVAL_PIPELINE_007A-007E.md)).
 
-**Not authorized:** ranking, answers, AI retrieval, concurrent workers (OD-021).
+**Next gate:** **TASK-008A** — Ranking Runtime Pre-Authorization Review (**NOT AUTHORIZED**).
 
-Doctrine: `parsed_structure` ≠ legal object; `legal_object` ≠ legal meaning; `legal_object` ≠ citation; `citation` ≠ retrieval; `citation` ≠ answer.
+**Not authorized:** ranking implementation, answers, AI retrieval, concurrent workers (OD-021).
+
+Doctrine: `parsed_structure` ≠ legal object; `legal_object` ≠ legal meaning; `legal_object` ≠ citation; `citation` ≠ retrieval; `retrieval result` ≠ answer; `retrieval evidence` ≠ ranking; `retrieval reference` ≠ legal conclusion; `citation` ≠ answer.
 
 ## Test gaps (QA)
 

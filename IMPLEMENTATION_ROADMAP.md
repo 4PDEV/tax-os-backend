@@ -98,26 +98,31 @@ Claude review **CLOSED** — **APPROVED FOR CONTINUE** ([`CLAUDE_REVIEW_CITATION
 
 ---
 
+## RETRIEVAL LAYER — CLOSED
+
+Claude review **CLOSED** — **ACCEPTED** ([`CLAUDE_REVIEW_RETRIEVAL_PIPELINE_007A-007E.md`](CLAUDE_REVIEW_RETRIEVAL_PIPELINE_007A-007E.md)). Checkpoint: `checkpoint-task-007a-007e-retrieval-pipeline-review`.
+
+| Task | Title | Status |
+|------|-------|--------|
+| TASK-007A / 007A1 | Retrieval pre-auth + remediation | Complete |
+| TASK-007B | Retrieval runtime contract | Complete |
+| TASK-007C / 007C1 | Retrieval persistence | Complete |
+| TASK-007D / 007D1 | Worker skeleton + execution remediation | Complete |
+| TASK-007E | Controlled retrieval execution | Complete — **ACCEPTED** — 777 tests |
+
+---
+
 ## APPROVED NEXT
 
 | Task | Title | Prerequisite | Acceptance focus |
 |------|-------|--------------|------------------|
-| **TASK-007A** | Retrieval Runtime Pre-Authorization Review | Citation layer closed | **Complete** — APPROVED WITH REQUIRED REMEDIATION BEFORE 007B |
-| **TASK-007A1** | Retrieval Runtime Remediation Package | TASK-007A | **Complete** — acceptance closed |
-| **TASK-007B** | Retrieval Runtime Contract | 007A1 acceptance | **Complete** — governance only |
-| **TASK-007C1** | Retrieval Persistence Remediation Package | TASK-007B + 007C pre-auth | **Complete** — acceptance closed |
-| **TASK-007C** | Retrieval Persistence | 007C1 acceptance | **Complete** — append-only; 744 tests |
-| **TASK-007D** | Retrieval Worker Skeleton | TASK-007C | **Complete** — dry-run only; 759 tests |
-| **TASK-007D1** | Retrieval Execution Remediation | TASK-007D accepted | **Complete** — acceptance closed |
-| **TASK-007E** | Controlled Retrieval Execution | 007D1 acceptance | **Complete** — evidence selection; 777 tests |
+| **TASK-008A** | Ranking Runtime Pre-Authorization Review | Retrieval layer closed | **NOT AUTHORIZED** — governance review only |
 
-**Retrieval layer pipeline:** 007A → 007A1 → 007B contract → 007C persistence → 007D dry-run skeleton → 007D1 remediation → 007D1 acceptance → **007E** (complete) → layer review.
+**Next gate:** **TASK-008A** — Ranking Runtime Pre-Authorization Review.
 
-**Next gate:** retrieval layer review.
+**Not authorized:** ranking implementation, answers, AI retrieval, concurrent workers.
 
-**Not authorized:** ranking, answers, AI retrieval, concurrent workers.
-
-**Blocked until governed approval:** retrieval implementation, answer runtime, live monitoring agents, ingestion automation expansion.
+**Blocked until governed approval:** ranking runtime, answer runtime, live monitoring agents, ingestion automation expansion.
 
 ---
 

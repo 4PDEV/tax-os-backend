@@ -2,7 +2,7 @@
 
 ## Status
 
-**Complete** — controlled retrieval execution implemented per [`RETRIEVAL_EXECUTION_007D1_ACCEPTANCE_REVIEW.md`](../RETRIEVAL_EXECUTION_007D1_ACCEPTANCE_REVIEW.md).
+**Complete** — **ACCEPTED** — controlled retrieval execution implemented and accepted per [`RETRIEVAL_EXECUTION_007D1_ACCEPTANCE_REVIEW.md`](../RETRIEVAL_EXECUTION_007D1_ACCEPTANCE_REVIEW.md) and [`CLAUDE_REVIEW_RETRIEVAL_PIPELINE_007A-007E.md`](../CLAUDE_REVIEW_RETRIEVAL_PIPELINE_007A-007E.md).
 
 ## Prerequisite chain
 
@@ -81,7 +81,7 @@ Zero-result: `completed`, `result_count=0`. Failure: `accepted` → `failed`.
 
 ## Next
 
-Retrieval layer review — after 007E acceptance.
+Retrieval layer review **CLOSED** — see [`TASK-007A-007E-RETRIEVAL-PIPELINE-REVIEWER-PACKAGE.md`](TASK-007A-007E-RETRIEVAL-PIPELINE-REVIEWER-PACKAGE.md). Next gate: **TASK-008A** ranking pre-auth (not authorized).
 
 ---
 

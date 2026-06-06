@@ -4,6 +4,24 @@ All notable changes to `tax-os-backend` are documented here.
 
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versions align with git tags where applicable.
 
+## [checkpoint-task-007a-007e-retrieval-pipeline-review] - 2026-06-02
+
+### Added
+
+- Retrieval pipeline review closure (TASK-007A through TASK-007E).
+  - [`CLAUDE_REVIEW_RETRIEVAL_PIPELINE_007A-007E.md`](CLAUDE_REVIEW_RETRIEVAL_PIPELINE_007A-007E.md)
+  - [`TASKS/TASK-007A-007E-RETRIEVAL-PIPELINE-REVIEWER-PACKAGE.md`](TASKS/TASK-007A-007E-RETRIEVAL-PIPELINE-REVIEWER-PACKAGE.md)
+
+### Changed
+
+- Verdict: **CLOSED** — **ACCEPTED**; RET-01–RET-09 verified; no remediation required
+- TASK-007E implementation acceptance **CLOSED**
+- Retrieval layer phase marked **CLOSED**; next gate **TASK-008A** ranking pre-auth (**NOT AUTHORIZED**)
+
+### Notes
+
+- Ranking, answers, AI retrieval, concurrent workers **not authorized**
+
 ## [task-007e-controlled-retrieval-execution] - 2026-06-02
 
 ### Added

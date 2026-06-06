@@ -75,8 +75,9 @@ tax-os-backend/
 | Retrieval persistence (007C) | **COMPLETE** — [`TASKS/TASK-007C-RETRIEVAL-PERSISTENCE.md`](TASKS/TASK-007C-RETRIEVAL-PERSISTENCE.md) |
 | Retrieval worker skeleton (007D) | **COMPLETE** — dry-run only — [`TASKS/TASK-007D-RETRIEVAL-WORKER-SKELETON.md`](TASKS/TASK-007D-RETRIEVAL-WORKER-SKELETON.md) |
 | Retrieval execution remediation (007D1) | **COMPLETE** — [`RETRIEVAL_EXECUTION_REMEDIATION_007D1.md`](RETRIEVAL_EXECUTION_REMEDIATION_007D1.md) |
-| Controlled retrieval execution (007E) | **COMPLETE** — [`TASKS/TASK-007E-CONTROLLED-RETRIEVAL-EXECUTION.md`](TASKS/TASK-007E-CONTROLLED-RETRIEVAL-EXECUTION.md) |
-| Approved next gate | Retrieval layer review |
+| Controlled retrieval execution (007E) | **COMPLETE** — **ACCEPTED** — [`TASKS/TASK-007E-CONTROLLED-RETRIEVAL-EXECUTION.md`](TASKS/TASK-007E-CONTROLLED-RETRIEVAL-EXECUTION.md) |
+| Retrieval layer (007A–007E) | **CLOSED** — review ACCEPTED; tag `checkpoint-task-007a-007e-retrieval-pipeline-review` |
+| Approved next gate | **TASK-008A** — Ranking Runtime Pre-Authorization Review (**NOT AUTHORIZED**) |
 | Ranking / answers / AI retrieval | **NOT AUTHORIZED** |
 | Admin CRUD APIs | Operational |
 | Legal object / citation contracts | Merged on `main` (003A–004D) |

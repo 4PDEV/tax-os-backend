@@ -385,7 +385,7 @@ FOUNDATION
 
 ## Current position (one line)
 
-**Phases 1–31 complete on `main`.** **Citation layer CLOSED** (006Y–006AD). **Retrieval stack:** 007B contract, 007C persistence, 007D dry-run skeleton, **007E controlled execution COMPLETE**. **Next:** retrieval layer review. Ranking / answers / AI **not authorized**.
+**Phases 1–31 complete on `main`.** **Citation layer CLOSED** (006Y–006AD). **Retrieval layer CLOSED** (007A–007E). **Next:** TASK-008A ranking pre-auth review (**NOT AUTHORIZED**). Ranking / answers / AI **not authorized**.
 
 ---
 
