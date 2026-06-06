@@ -4,6 +4,23 @@ All notable changes to `tax-os-backend` are documented here.
 
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versions align with git tags where applicable.
 
+## [task-007d1-acceptance-retrieval-execution-authorized] - 2026-06-02
+
+### Added
+
+- TASK-007D1 acceptance review — **CLOSED**; TASK-007E **authorized with conditions**.
+  - [`RETRIEVAL_EXECUTION_007D1_ACCEPTANCE_REVIEW.md`](RETRIEVAL_EXECUTION_007D1_ACCEPTANCE_REVIEW.md)
+  - [`TASKS/TASK-007E-CONTROLLED-RETRIEVAL-EXECUTION.md`](TASKS/TASK-007E-CONTROLLED-RETRIEVAL-EXECUTION.md)
+
+### Changed
+
+- RW-01 through RW-06 findings **CLOSED** at acceptance
+- Platform state: controlled retrieval execution **authorized for implementation**
+
+### Notes
+
+- Authorization only — no 007E implementation until bounded delivery task. Ranking / answers / AI **not authorized**.
+
 ## [task-007d1-retrieval-execution-remediation] - 2026-06-02
 
 ### Added

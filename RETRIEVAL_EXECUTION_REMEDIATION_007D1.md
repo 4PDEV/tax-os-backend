@@ -10,8 +10,8 @@ Authoritative remediation specification for future **TASK-007E** controlled retr
 |------|--------|
 | TASK-007D dry-run skeleton | **Complete** — **ACCEPTED** |
 | TASK-007D1 remediation package | **Complete** — RW-01 through RW-06 addressed at governance level |
-| TASK-007D1 acceptance review | **Pending** — required before TASK-007E authorization |
-| TASK-007E controlled execution | **NOT AUTHORIZED** |
+| TASK-007D1 acceptance review | **CLOSED** — [`RETRIEVAL_EXECUTION_007D1_ACCEPTANCE_REVIEW.md`](RETRIEVAL_EXECUTION_007D1_ACCEPTANCE_REVIEW.md) |
+| TASK-007E controlled execution | **AUTHORIZED WITH CONDITIONS** |
 
 ---
 
@@ -311,8 +311,8 @@ Default 007C CHECK set unchanged until 007E migration.
 TASK-007E may be authorized only after:
 
 1. TASK-007D dry-run skeleton accepted — **done**
-2. TASK-007D1 remediation package accepted — **pending acceptance review**
-3. Bounded TASK-007E implementation spec derived from this document
+2. TASK-007D1 remediation package accepted — **done**
+3. TASK-007D1 acceptance review **CLOSED** — **TASK-007E AUTHORIZED WITH CONDITIONS** ([`RETRIEVAL_EXECUTION_007D1_ACCEPTANCE_REVIEW.md`](RETRIEVAL_EXECUTION_007D1_ACCEPTANCE_REVIEW.md))
 
 Ranking, answers, AI retrieval, and concurrent workers remain **not authorized**.
 
@@ -334,7 +334,7 @@ Ranking, answers, AI retrieval, and concurrent workers remain **not authorized**
 - [x] OD-021 carried forward
 - [x] Planned 007E flow documented
 - [x] No implementation introduced
-- [x] TASK-007E remains NOT AUTHORIZED
+- [x] TASK-007D1 acceptance review **CLOSED** — TASK-007E authorized with conditions
 
 ---
 

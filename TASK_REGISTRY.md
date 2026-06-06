@@ -84,8 +84,8 @@ Bounded task tracking for `tax-os-backend`. Authoritative specs remain in `tax-o
 | TASK-007C1 | Retrieval Persistence Remediation Package | Complete | Acceptance **CLOSED**; RP-01–RP-08 closed; 007C authorized — [`RETRIEVAL_PERSISTENCE_REMEDIATION_007C1.md`](RETRIEVAL_PERSISTENCE_REMEDIATION_007C1.md) |
 | TASK-007C | Retrieval Persistence | Complete | Append-only requests/results/evidence refs; 744 tests — [`TASKS/TASK-007C-RETRIEVAL-PERSISTENCE.md`](TASKS/TASK-007C-RETRIEVAL-PERSISTENCE.md) |
 | TASK-007D | Retrieval Worker Skeleton | Complete | **ACCEPTED** — dry-run only; 759 tests — [`TASKS/TASK-007D-RETRIEVAL-WORKER-SKELETON.md`](TASKS/TASK-007D-RETRIEVAL-WORKER-SKELETON.md) |
-| TASK-007D1 | Retrieval Execution Remediation | Complete | RW-01–RW-06 remediated; acceptance pending — [`RETRIEVAL_EXECUTION_REMEDIATION_007D1.md`](RETRIEVAL_EXECUTION_REMEDIATION_007D1.md) |
-| TASK-007E | Controlled Retrieval Execution | Hold | **NOT AUTHORIZED** — after 007D1 acceptance |
+| TASK-007D1 | Retrieval Execution Remediation | Complete | Acceptance **CLOSED**; RW-01–RW-06 closed; 007E authorized — [`RETRIEVAL_EXECUTION_REMEDIATION_007D1.md`](RETRIEVAL_EXECUTION_REMEDIATION_007D1.md) |
+| TASK-007E | Controlled Retrieval Execution | Authorized | **AUTHORIZED FOR IMPLEMENTATION** — [`TASKS/TASK-007E-CONTROLLED-RETRIEVAL-EXECUTION.md`](TASKS/TASK-007E-CONTROLLED-RETRIEVAL-EXECUTION.md) |
 | TASK-007A+ | Retrieval Layer Review (umbrella) | Planned | After 007E |
 | TASK-DOC-001 | Master Status Document Realignment | Complete | CURRENT_STATUS, IMPLEMENTATION_ROADMAP, ARCHITECTURE_PHASE_MAP |
 

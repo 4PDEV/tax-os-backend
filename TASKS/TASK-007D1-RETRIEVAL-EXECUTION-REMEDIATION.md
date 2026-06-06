@@ -2,7 +2,7 @@
 
 ## Status
 
-**Complete** — governance-only remediation package delivered; **awaiting acceptance review** before TASK-007E authorization.
+**Complete** — governance-only remediation package delivered; acceptance review **CLOSED** — TASK-007E **authorized with conditions**.
 
 ## Important
 
@@ -53,11 +53,11 @@ Close blocking **007D execution** pre-auth findings **RW-01 through RW-05** (and
 - [x] Future 007E flow documented
 - [x] Governance docs updated
 - [x] No implementation introduced
-- [x] TASK-007E remains NOT AUTHORIZED
+- [x] TASK-007D1 acceptance review **CLOSED** — TASK-007E authorized with conditions
 
 ## Next gate
 
-**Remediation acceptance review** for 007D1 — then bounded **TASK-007E** authorization.
+**TASK-007E** — controlled retrieval execution ([`TASKS/TASK-007E-CONTROLLED-RETRIEVAL-EXECUTION.md`](TASK-007E-CONTROLLED-RETRIEVAL-EXECUTION.md)).
 
 ---
 

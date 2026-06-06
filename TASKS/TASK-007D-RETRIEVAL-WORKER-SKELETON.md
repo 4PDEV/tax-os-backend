@@ -48,7 +48,7 @@ Failure path: `accepted` → `failed`
 
 **TASK-007D1** — **COMPLETE** — [`RETRIEVAL_EXECUTION_REMEDIATION_007D1.md`](../RETRIEVAL_EXECUTION_REMEDIATION_007D1.md).
 
-After 007D1 acceptance: **TASK-007E** — controlled retrieval execution (not authorized).
+After 007D1 acceptance: **TASK-007E** — controlled retrieval execution **authorized with conditions**.
 
 ---
 

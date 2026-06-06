@@ -26,7 +26,7 @@ The platform is materially beyond early foundation. Core registry, processing qu
 | Retrieval runtime contract (007B) | **COMPLETE** |
 | Retrieval persistence (007C) | **COMPLETE** — 744 tests |
 | Retrieval worker skeleton (007D) | **COMPLETE** — dry-run only; 759 tests |
-| Controlled retrieval execution (007E) | **NOT AUTHORIZED** |
+| Controlled retrieval execution (007E) | **AUTHORIZED FOR IMPLEMENTATION** |
 | Ranking / answers / AI retrieval | **NOT AUTHORIZED** |
 | Concurrent citation workers | **NOT AUTHORIZED** (OD-021) |
 
@@ -46,9 +46,9 @@ The platform is materially beyond early foundation. Core registry, processing qu
 
 **TASK-007D:** **COMPLETE** — **ACCEPTED** — dry-run retrieval worker skeleton ([`TASKS/TASK-007D-RETRIEVAL-WORKER-SKELETON.md`](TASKS/TASK-007D-RETRIEVAL-WORKER-SKELETON.md)).
 
-**TASK-007D1:** **COMPLETE** — retrieval execution remediation package ([`RETRIEVAL_EXECUTION_REMEDIATION_007D1.md`](RETRIEVAL_EXECUTION_REMEDIATION_007D1.md)). RW-01 through RW-06 addressed at spec level. **TASK-007E remains NOT AUTHORIZED** — requires 007D1 acceptance review.
+**TASK-007D1 acceptance:** **CLOSED** — TASK-007E **AUTHORIZED WITH CONDITIONS** ([`RETRIEVAL_EXECUTION_007D1_ACCEPTANCE_REVIEW.md`](RETRIEVAL_EXECUTION_007D1_ACCEPTANCE_REVIEW.md)).
 
-**Next gate:** **007D1 acceptance review** → TASK-007E authorization. Ranking, answers, AI **not authorized**.
+**Next gate:** **TASK-007E** — controlled retrieval execution. Ranking, answers, AI **not authorized**.
 
 **Environments:** development and internal staging only. No public production deployment.
 
@@ -345,4 +345,4 @@ FOUNDATION → EXTRACTION CONTRACTS → LEGAL OBJECT GOVERNANCE → CITATION GOV
 → TEMPORAL GOVERNANCE → INGESTION PERSISTENCE → [TEST HARDENING] → AGENT LAYER → …
 ```
 
-**You are here:** TASK-007D1 remediation **complete**. **Next:** 007D1 acceptance review → TASK-007E. Ranking / answers **not authorized**.
+**You are here:** TASK-007E **authorized for implementation**; retrieval stack at citation-pre-006AD maturity. **Next:** TASK-007E controlled execution delivery. Ranking / answers **not authorized**.
