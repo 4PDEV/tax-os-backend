@@ -887,9 +887,11 @@ TASK-006AB — Citation Worker Skeleton (**complete**; accepted `checkpoint-task
 
 **TASK-007C:** **COMPLETE** — append-only retrieval persistence (`retrieval_requests`, `retrieval_results`, `retrieval_evidence_references`); 744 tests.
 
-**Governed pipeline:** 007B contract → 007C1 remediation → 007C1 acceptance → 007C persistence → **007D worker/execution** → retrieval layer review.
+**TASK-007D:** **COMPLETE** — dry-run retrieval worker skeleton; 759 tests. Controlled execution **not authorized**.
 
-**Not authorized:** 007D execution, ranking, answers, AI retrieval, concurrent workers, legal advice.
+**Governed pipeline:** 007B contract → 007C persistence → 007D dry-run skeleton → **007D1 remediation** → controlled execution → retrieval layer review.
+
+**Not authorized:** controlled retrieval execution, ranking, answers, AI retrieval, concurrent workers, legal advice.
 
 TASK-006P — Controlled Extraction Execution (**completed; controlled local text extraction into extraction_runs/extracted_texts; no PDF/network/parsing/legal automation**).
 

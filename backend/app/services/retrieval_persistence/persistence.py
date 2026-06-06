@@ -245,6 +245,35 @@ def get_result(
     return session.get(RetrievalResult, retrieval_result_id)
 
 
+def list_results_for_request(
+    session: Session,
+    *,
+    retrieval_request_id: UUID,
+) -> list[RetrievalResult]:
+    return (
+        session.execute(
+            select(RetrievalResult)
+            .where(RetrievalResult.retrieval_request_id == retrieval_request_id)
+            .order_by(RetrievalResult.created_at.asc())
+        )
+        .scalars()
+        .all()
+    )
+
+
+def get_latest_result_for_request(
+    session: Session,
+    *,
+    retrieval_request_id: UUID,
+) -> RetrievalResult | None:
+    return session.execute(
+        select(RetrievalResult)
+        .where(RetrievalResult.retrieval_request_id == retrieval_request_id)
+        .order_by(RetrievalResult.created_at.desc())
+        .limit(1)
+    ).scalar_one_or_none()
+
+
 def list_evidence_references(
     session: Session,
     *,

@@ -73,8 +73,9 @@ tax-os-backend/
 | Retrieval persistence pre-auth (007C) | **CLOSED** — APPROVED WITH REQUIRED REMEDIATION BEFORE 007C |
 | Retrieval persistence remediation (007C1) | **COMPLETE** — acceptance **CLOSED** |
 | Retrieval persistence (007C) | **COMPLETE** — [`TASKS/TASK-007C-RETRIEVAL-PERSISTENCE.md`](TASKS/TASK-007C-RETRIEVAL-PERSISTENCE.md) |
-| Retrieval runtime | **Authorized with conditions** (contract phase; 007D not authorized) |
-| Approved next gate | **TASK-007D** — retrieval execution (not authorized) |
+| Retrieval worker skeleton (007D) | **COMPLETE** — dry-run only — [`TASKS/TASK-007D-RETRIEVAL-WORKER-SKELETON.md`](TASKS/TASK-007D-RETRIEVAL-WORKER-SKELETON.md) |
+| Controlled retrieval execution | **NOT AUTHORIZED** — requires 007D1 |
+| Approved next gate | **TASK-007D1** — retrieval execution remediation |
 | Ranking / answers / AI retrieval | **NOT AUTHORIZED** |
 | Admin CRUD APIs | Operational |
 | Legal object / citation contracts | Merged on `main` (003A–004D) |

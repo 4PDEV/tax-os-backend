@@ -78,9 +78,11 @@ Pending architectural or operational decisions. Resolve via `tax-os-architecture
 
 **TASK-007C:** **COMPLETE** — append-only retrieval persistence ([`TASKS/TASK-007C-RETRIEVAL-PERSISTENCE.md`](TASKS/TASK-007C-RETRIEVAL-PERSISTENCE.md)).
 
-**Next gate:** **TASK-007D** — retrieval worker/execution (not authorized).
+**TASK-007D:** **COMPLETE** — dry-run retrieval worker skeleton only ([`TASKS/TASK-007D-RETRIEVAL-WORKER-SKELETON.md`](TASKS/TASK-007D-RETRIEVAL-WORKER-SKELETON.md)).
 
-**Not authorized:** 007D execution, ranking, answers, AI retrieval, concurrent workers (OD-021).
+**Next gate:** **TASK-007D1** — retrieval execution remediation (controlled execution not authorized).
+
+**Not authorized:** controlled retrieval execution, ranking, answers, AI retrieval, concurrent workers (OD-021).
 
 Doctrine: `parsed_structure` ≠ legal object; `legal_object` ≠ legal meaning; `legal_object` ≠ citation; `citation` ≠ retrieval; `citation` ≠ answer.
 

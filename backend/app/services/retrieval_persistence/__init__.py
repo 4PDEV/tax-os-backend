@@ -10,9 +10,11 @@ from app.services.retrieval_persistence.persistence import (
     create_retrieval_request,
     create_retrieval_result,
     find_existing_default_request,
+    get_latest_result_for_request,
     get_request_by_hash,
     get_result,
     list_evidence_references,
+    list_results_for_request,
 )
 from app.services.retrieval_persistence.validation import (
     EVIDENCE_METADATA_ALLOWED_KEYS,
@@ -33,9 +35,11 @@ __all__ = [
     "create_retrieval_request",
     "create_retrieval_result",
     "find_existing_default_request",
+    "get_latest_result_for_request",
     "get_request_by_hash",
     "get_result",
     "list_evidence_references",
+    "list_results_for_request",
     "normalize_scope_envelope",
     "validate_evidence_metadata",
 ]

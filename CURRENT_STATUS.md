@@ -25,7 +25,8 @@ The platform is materially beyond early foundation. Core registry, processing qu
 | Controlled citation execution | **COMPLETE** (006AD) |
 | Retrieval runtime contract (007B) | **COMPLETE** |
 | Retrieval persistence (007C) | **COMPLETE** — 744 tests |
-| Retrieval execution (007D) | **NOT AUTHORIZED** |
+| Retrieval worker skeleton (007D) | **COMPLETE** — dry-run only; 759 tests |
+| Controlled retrieval execution (007D1) | **NOT AUTHORIZED** |
 | Ranking / answers / AI retrieval | **NOT AUTHORIZED** |
 | Concurrent citation workers | **NOT AUTHORIZED** (OD-021) |
 
@@ -41,7 +42,9 @@ The platform is materially beyond early foundation. Core registry, processing qu
 
 **TASK-007C1 acceptance:** **CLOSED** — TASK-007C **AUTHORIZED WITH CONDITIONS** ([`RETRIEVAL_PERSISTENCE_007C1_ACCEPTANCE_REVIEW.md`](RETRIEVAL_PERSISTENCE_007C1_ACCEPTANCE_REVIEW.md)).
 
-**TASK-007C:** **COMPLETE** — append-only retrieval persistence ([`TASKS/TASK-007C-RETRIEVAL-PERSISTENCE.md`](TASKS/TASK-007C-RETRIEVAL-PERSISTENCE.md)). Retrieval execution (007D), ranking, answers, AI **not authorized**.
+**TASK-007C:** **COMPLETE** — append-only retrieval persistence ([`TASKS/TASK-007C-RETRIEVAL-PERSISTENCE.md`](TASKS/TASK-007C-RETRIEVAL-PERSISTENCE.md)).
+
+**TASK-007D:** **COMPLETE** — dry-run retrieval worker skeleton ([`TASKS/TASK-007D-RETRIEVAL-WORKER-SKELETON.md`](TASKS/TASK-007D-RETRIEVAL-WORKER-SKELETON.md)). Controlled retrieval execution (007D1), ranking, answers, AI **not authorized**.
 
 **Environments:** development and internal staging only. No public production deployment.
 
@@ -338,4 +341,4 @@ FOUNDATION → EXTRACTION CONTRACTS → LEGAL OBJECT GOVERNANCE → CITATION GOV
 → TEMPORAL GOVERNANCE → INGESTION PERSISTENCE → [TEST HARDENING] → AGENT LAYER → …
 ```
 
-**You are here:** TASK-007C persistence **complete**; retrieval evidence reference storage active. **Next:** TASK-007D execution gate (not authorized). Ranking / answers **not authorized**.
+**You are here:** TASK-007D dry-run worker skeleton **complete**. **Next:** TASK-007D1 remediation → controlled execution gate. Ranking / answers **not authorized**.

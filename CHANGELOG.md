@@ -4,6 +4,25 @@ All notable changes to `tax-os-backend` are documented here.
 
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versions align with git tags where applicable.
 
+## [task-007d-retrieval-worker-skeleton] - 2026-06-02
+
+### Added
+
+- TASK-007D: dry-run retrieval worker skeleton.
+  - `backend/app/workers/retrieval_runtime/` — worker, runner, dry-run provider, result types
+  - `run_retrieval_runtime_dry_run()` — `dry_run=True` mandatory
+  - [`TASKS/TASK-007D-RETRIEVAL-WORKER-SKELETON.md`](TASKS/TASK-007D-RETRIEVAL-WORKER-SKELETON.md)
+  - Tests: `test_retrieval_worker_skeleton.py`
+
+### Changed
+
+- Retrieval persistence: `get_latest_result_for_request`, `list_results_for_request`
+- Full suite: 759 tests passing
+
+### Notes
+
+- Dry-run lifecycle only (`accepted` → `skipped`). No evidence references, execution, ranking, or answers. Controlled execution requires TASK-007D1.
+
 ## [task-007c-retrieval-persistence] - 2026-06-02
 
 ### Added
