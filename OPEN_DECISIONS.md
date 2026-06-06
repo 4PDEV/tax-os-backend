@@ -39,7 +39,7 @@ Pending architectural or operational decisions. Resolve via `tax-os-architecture
 |----|-------|---------|--------|
 | OD-019 | Extraction replay / idempotency hardening | EXT-01 / F-05 remediated in TASK-006P1: canonical idempotency on `source_version_id`, partial unique DB index, source_version-level worker skip; `rerun_allowed` records policy only and does not bypass; `force_reprocess=True` is explicit bypass | **Resolved (TASK-006P1)** |
 | OD-020 | Trigger `completed` vs text-ready semantics | `trigger_status=completed` on dry-run does not imply `extracted_text` exists; consumers must join `extracted_text` / check extractor identity | Documented — non-blocking |
-| OD-021 | Multi-worker ingestion race (extraction + parsing + promotion + citation) | **OPEN / INFORMATIONAL** — single-worker operating constraint remains acceptable on `main`. Concurrent promotion or citation workers require execution-time replay race mitigation before enablement. Creation-time idempotency closed (006P1, 006R, 006V, L-02b). LOW now, MEDIUM under concurrency | Open — deferred |
+| OD-021 | Multi-worker ingestion race (extraction + parsing + promotion + citation) | **OPEN / INFORMATIONAL** — single-worker operating constraint remains acceptable on `main`. Concurrent citation execution requires `citation_hash`-keyed advisory/row locks in addition to `UNIQUE(citation_hash)` — documented in TASK-006AC1. Creation-time idempotency closed (006P1, 006R, 006V, L-02b). LOW now, MEDIUM under concurrency | Open — deferred; 006AC1 carry-forward documented |
 | OD-022 | Parsed structure identity (P-01) | `UNIQUE(parsed_structures.parser_run_id)` in TASK-006T1A; verified at `checkpoint-task-006t1a-parsed-structure-identity` | **Closed (TASK-006T1A)** |
 
 ## Parsing pipeline — review closed (006Q–006T, 006T1A)
@@ -65,9 +65,11 @@ Pending architectural or operational decisions. Resolve via `tax-os-architecture
 
 **TASK-006AB:** dry-run worker skeleton **complete** (`checkpoint-task-006ab-citation-worker-skeleton`).
 
-**TASK-004E:** **COMPLETE** — citation temporal compliance remediation; AC-01 closed. AC-02 / AC-03 remain 006AD spec requirements (not implemented).
+**TASK-004E:** **COMPLETE** — citation temporal compliance remediation; **AC-01 closed**.
 
-**Next gate:** **TASK-006AC** — controlled citation execution pre-auth review (no implementation). 006AC remediation prerequisite (AC-01) satisfied.
+**TASK-006AC1:** **COMPLETE** — controlled citation execution remediation package; **AC-02 / AC-03 remediated at spec level** ([`CITATION_EXECUTION_REMEDIATION_006AC1.md`](CITATION_EXECUTION_REMEDIATION_006AC1.md)). Awaiting acceptance review.
+
+**Next gate:** **Remediation acceptance review** for 006AC1 package — then bounded TASK-006AD authorization (not yet granted).
 
 **Not authorized:** controlled citation execution (006AD), retrieval, answers.
 

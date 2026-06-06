@@ -88,7 +88,9 @@ Legal object promotion (TASK-006U–006X): contract through controlled execution
 
 | Task | Title | Notes |
 |------|-------|-------|
-| TASK-006AC | Controlled citation execution pre-auth | TASK-006AB accepted | **Next gate** — review only |
+| TASK-006AC | Controlled citation execution pre-auth | TASK-006AB accepted | Complete — APPROVED WITH REQUIRED REMEDIATION |
+| TASK-006AC1 | Citation execution remediation package | TASK-006AC + TASK-004E | Complete — await acceptance review |
+| TASK-006AD | Controlled citation execution | 006AC1 acceptance | **NOT AUTHORIZED** |
 
 ---
 
@@ -112,7 +114,7 @@ Legal object promotion (TASK-006U–006X): contract through controlled execution
 
 **TASK-006AB:** **Complete** — accepted `checkpoint-task-006ab-citation-worker-skeleton`.
 
-**Next gate:** **TASK-006AC** — controlled citation execution pre-authorization review (no implementation).
+**Next gate:** **Remediation acceptance review** for TASK-006AC1 package — then bounded TASK-006AD authorization (not yet granted).
 
 **Not authorized:** controlled citation execution/rendering, retrieval, answers.
 
@@ -124,7 +126,8 @@ Legal object promotion (TASK-006U–006X): contract through controlled execution
 
 | Task | Title | Notes |
 |------|-------|-------|
-| **TASK-004E** | Citation Temporal Compliance Remediation | AC-01 closed; OD-016 resolved; [spec](TASKS/TASK-004E-CITATION-TEMPORAL-COMPLIANCE-REMEDIATION.md) |
+| **TASK-004E** | Citation Temporal Compliance Remediation | AC-01 closed; OD-016 resolved |
+| **TASK-006AC1** | Citation Execution Remediation Package | AC-02/AC-03 spec remediated; [spec](CITATION_EXECUTION_REMEDIATION_006AC1.md) |
 
 Non-task deferred items: OD-017 (003E reconciliation), OD-018 (overlap disclosure) — governance review, not implementation queue.
 

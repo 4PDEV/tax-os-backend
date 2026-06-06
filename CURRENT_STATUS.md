@@ -208,7 +208,8 @@ TASK-006P is controlled local extraction only:
 
 | Task | Title | Status | Notes |
 |------|-------|--------|-------|
-| **TASK-004E** | Citation Temporal Compliance Remediation | **COMPLETE** | AC-01 closed — no silent `source_version` date fallback; Addendum V6 aligned. Spec: [TASKS/TASK-004E-CITATION-TEMPORAL-COMPLIANCE-REMEDIATION.md](TASKS/TASK-004E-CITATION-TEMPORAL-COMPLIANCE-REMEDIATION.md). OD-016 resolved. |
+| **TASK-004E** | Citation Temporal Compliance Remediation | **COMPLETE** | AC-01 closed — no silent `source_version` date fallback; Addendum V6 aligned. OD-016 resolved. |
+| **TASK-006AC1** | Controlled Citation Execution Remediation Package | **COMPLETE** | AC-02/AC-03 remediated at spec level. Spec: [CITATION_EXECUTION_REMEDIATION_006AC1.md](CITATION_EXECUTION_REMEDIATION_006AC1.md). Await acceptance review. |
 
 ---
 
@@ -300,9 +301,11 @@ source_version → … → legal_object_version
 
 **TASK-006ZA acceptance:** **CLOSED** — [`CITATION_PERSISTENCE_006ZA_ACCEPTANCE_REVIEW.md`](CITATION_PERSISTENCE_006ZA_ACCEPTANCE_REVIEW.md). Findings Z-01–Z-05, Z-07, Z-14 closed.
 
-**TASK-004E:** **COMPLETE** — AC-01 (temporal fallback) remediated. AC-02 / AC-03 remain TASK-006AD spec requirements.
+**TASK-004E:** **COMPLETE** — **AC-01 closed** (temporal fallback removed).
 
-**Next gate:** **TASK-006AC** — Controlled Citation Execution Pre-Authorization Review (review only; do not implement execution). AC-01 remediation prerequisite satisfied.
+**TASK-006AC1:** **COMPLETE** — remediation package delivered ([`CITATION_EXECUTION_REMEDIATION_006AC1.md`](CITATION_EXECUTION_REMEDIATION_006AC1.md)); **AC-02 / AC-03 remediated at spec level**.
+
+**Next gate:** **Remediation acceptance review** for 006AC1 — then bounded TASK-006AD authorization (not yet granted).
 
 **Blocked until governed approval:** controlled citation execution (006AD), retrieval runtime, answer runtime.
 
@@ -315,4 +318,4 @@ FOUNDATION → EXTRACTION CONTRACTS → LEGAL OBJECT GOVERNANCE → CITATION GOV
 → TEMPORAL GOVERNANCE → INGESTION PERSISTENCE → [TEST HARDENING] → AGENT LAYER → …
 ```
 
-**You are here:** TASK-004E complete (AC-01 closed); TASK-006AB accepted; await TASK-006AC pre-auth review before any controlled citation execution (006AD).
+**You are here:** TASK-006AC1 remediation package complete; await acceptance review before TASK-006AD authorization. Citation execution / retrieval / answers **not authorized**.

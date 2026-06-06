@@ -55,10 +55,10 @@ TASK-005B resolved C1 at **governance** level only. Code alignment is explicitly
 | Finding | Status |
 |---------|--------|
 | **AC-01** (temporal fallback) | **Closed** by TASK-004E |
-| **AC-02** (citation identity / 004D provenance tuple) | Remains 006AD spec requirement: `citation_hash = SHA256(source_version_id \| legal_object_id \| legal_object_version_id \| location_reference)` |
-| **AC-03** (DB UNIQUE on citation_hash) | Remains 006AD spec requirement when citation entity exists |
+| **AC-02** (citation identity / 004D provenance tuple) | **Remediated at spec level (TASK-006AC1)** — see [`CITATION_EXECUTION_REMEDIATION_006AC1.md`](../CITATION_EXECUTION_REMEDIATION_006AC1.md) |
+| **AC-03** (DB UNIQUE on citation_hash) | **Remediated at spec level (TASK-006AC1)** — see [`CITATION_EXECUTION_REMEDIATION_006AC1.md`](../CITATION_EXECUTION_REMEDIATION_006AC1.md) |
 
-TASK-006AD remains **NOT AUTHORIZED** until AC-02 / AC-03 are reflected in 006AD spec and accepted.
+TASK-006AD remains **NOT AUTHORIZED** until 006AC1 remediation package is accepted and bounded 006AD spec is approved.
 
 ---
 

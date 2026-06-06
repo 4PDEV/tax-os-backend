@@ -4,6 +4,24 @@ All notable changes to `tax-os-backend` are documented here.
 
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versions align with git tags where applicable.
 
+## [task-006ac1-citation-execution-remediation] - 2026-06-02
+
+### Added
+
+- TASK-006AC1: controlled citation execution remediation package (governance only).
+  - [`CITATION_EXECUTION_REMEDIATION_006AC1.md`](CITATION_EXECUTION_REMEDIATION_006AC1.md)
+  - [`TASKS/TASK-006AC1-CONTROLLED-CITATION-EXECUTION-REMEDIATION.md`](TASKS/TASK-006AC1-CONTROLLED-CITATION-EXECUTION-REMEDIATION.md)
+
+### Changed
+
+- AC-02 remediated at spec level — canonical `citation_hash` = 004D provenance tuple; identity independent of rendering.
+- AC-03 remediated at spec level — future `UNIQUE(citation_hash)` + service lookup; execution idempotency on `citation_hash`.
+- Governance result boundary, planned citation entity shape, OD-021 carry-forward, and planned 006AD flow documented.
+
+### Notes
+
+- AC-01 closed by TASK-004E. TASK-006AD remains **NOT AUTHORIZED** — awaits remediation acceptance review.
+
 ## [task-004e-citation-temporal-compliance] - 2026-06-02
 
 ### Changed
@@ -16,7 +34,7 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Version
 
 ### Notes
 
-- AC-02 (citation identity tuple) and AC-03 (DB UNIQUE on `citation_hash`) remain TASK-006AD spec requirements — not implemented.
+- AC-02/AC-03 carry-forward documented; remediated at spec level in TASK-006AC1.
 - TASK-006AD controlled citation execution remains **NOT AUTHORIZED**.
 
 ## [checkpoint-task-006ab-citation-worker-skeleton] - 2026-06-03

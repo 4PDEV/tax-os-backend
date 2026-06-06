@@ -782,7 +782,7 @@ Legal memory stack on `main`:
 006A → Source Ingestion Persistence (extraction/parser artifacts)
 ```
 
-**Current boundary:** persistence, integrity, retrieval, effective-date resolution, citation candidates, deterministic citation assembly, **canonical temporal/versioning governance**, and **ingestion artifact persistence** active on `main`. Citation identity is version-pinned; `CitationAssembler` temporal compliance aligned with Addendum V6 (**TASK-004E complete**; AC-01 closed). Ingestion workers/API wiring not started. No answer generation, no citation entity persistence, no public API routes for ingestion artifacts. Controlled citation execution (006AD) **not authorized**.
+**Current boundary:** persistence, integrity, retrieval, effective-date resolution, citation candidates, deterministic citation assembly, **canonical temporal/versioning governance**, and **ingestion artifact persistence** active on `main`. Citation identity is version-pinned per 004D provenance tuple (**TASK-006AC1** spec); `CitationAssembler` temporal compliance aligned with Addendum V6 (**TASK-004E**; AC-01 closed). Ingestion workers/API wiring not started. No answer generation, no citation entity persistence, no public API routes for ingestion artifacts. Controlled citation execution (006AD) **not authorized** — awaits 006AC1 acceptance review.
 
 **VM snapshot:** not required before next task unless schema or persistence behavior changes.
 
@@ -871,7 +871,7 @@ TASK-006AA — Citation Worker Skeleton Pre-Auth Review (**complete**; APPROVED 
 
 TASK-006AB — Citation Worker Skeleton (**complete**; accepted `checkpoint-task-006ab-citation-worker-skeleton`).
 
-**Next gate:** TASK-006AC — Controlled Citation Execution Pre-Authorization Review.
+**Next gate:** Remediation acceptance review for TASK-006AC1 — then bounded TASK-006AD authorization (not yet granted).
 
 **Not authorized:** citation execution, retrieval, answers, legal advice.
 
@@ -881,7 +881,9 @@ TASK-006O — Extraction Worker Skeleton (**completed; dry-run-only trigger-to-e
 
 TASK-006N — Extraction Trigger Persistence (**completed; append-only trigger request/result persistence with idempotency and force-reprocess auditability; no extraction execution automation**).
 
-TASK-004E — Citation Temporal Compliance Remediation (**complete** — AC-01 closed; no silent source-version date fallback).
+TASK-004E — Citation Temporal Compliance Remediation (**complete** — AC-01 closed).
+
+TASK-006AC1 — Controlled Citation Execution Remediation Package (**complete** — AC-02/AC-03 remediated at spec level; [`CITATION_EXECUTION_REMEDIATION_006AC1.md`](CITATION_EXECUTION_REMEDIATION_006AC1.md)).
 
 Post-006P implementation tasks must remain bounded and align with monitoring/fetch/detection/promotion/trigger/worker/extraction governance constraints.
 
