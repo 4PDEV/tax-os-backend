@@ -385,7 +385,7 @@ FOUNDATION
 
 ## Current position (one line)
 
-**Phases 1–31 complete on `main`.** **Citation layer CLOSED** (006Y–006AD review — APPROVED FOR CONTINUE). **Next:** TASK-007A retrieval pre-auth review. Retrieval / ranking / answers **not authorized**.
+**Phases 1–31 complete on `main`.** **Citation layer CLOSED** (006Y–006AD). **TASK-007A CLOSED** — APPROVED WITH REQUIRED REMEDIATION BEFORE 007B. **Next:** TASK-007A1 remediation package. Retrieval runtime / ranking / answers **not authorized**.
 
 ---
 

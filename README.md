@@ -68,7 +68,8 @@ tax-os-backend/
 | Citation execution remediation | **TASK-006AC1 complete** — acceptance review complete |
 | Citation layer (006Y–006AD) | **CLOSED** — review APPROVED FOR CONTINUE; tag `checkpoint-task-006y-006ad-citation-pipeline-review` |
 | Controlled citation execution | **COMPLETE** (006AD) |
-| Approved next gate | **TASK-007A** — retrieval pre-auth review (not authorized to implement) |
+| Retrieval pre-auth (007A) | **CLOSED** — APPROVED WITH REQUIRED REMEDIATION BEFORE 007B |
+| Approved next gate | **TASK-007A1** — retrieval remediation package (not authorized to implement) |
 | Retrieval / ranking / answers | **NOT AUTHORIZED** |
 | Admin CRUD APIs | Operational |
 | Legal object / citation contracts | Merged on `main` (003A–004D) |

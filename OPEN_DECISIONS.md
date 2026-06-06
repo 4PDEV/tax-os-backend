@@ -64,9 +64,11 @@ Pending architectural or operational decisions. Resolve via `tax-os-architecture
 | Citation worker skeleton (006AB) | **COMPLETE** |
 | Controlled citation execution (006AD) | **COMPLETE** |
 
-**Next gate:** **TASK-007A** — Retrieval Runtime Pre-Authorization Review (governance only).
+**TASK-007A:** **CLOSED** — retrieval pre-auth review APPROVED WITH REQUIRED REMEDIATION BEFORE TASK-007B ([`ARCHITECTURE_REVIEW_RETRIEVAL_RUNTIME_007A-PREAUTH.md`](ARCHITECTURE_REVIEW_RETRIEVAL_RUNTIME_007A-PREAUTH.md)).
 
-**Not authorized:** retrieval, ranking, answers, concurrent citation workers (OD-021).
+**Next gate:** **TASK-007A1** — retrieval runtime remediation package (governance only).
+
+**Not authorized:** retrieval runtime (007B), ranking, answers, concurrent citation workers (OD-021).
 
 Doctrine: `parsed_structure` ≠ legal object; `legal_object` ≠ legal meaning; `legal_object` ≠ citation; `citation` ≠ retrieval; `citation` ≠ answer.
 

@@ -78,8 +78,10 @@ Bounded task tracking for `tax-os-backend`. Authoritative specs remain in `tax-o
 | TASK-006AC | Controlled Citation Execution Pre-Auth Review | Complete | CLOSED — APPROVED WITH REQUIRED REMEDIATION BEFORE 006AD; [`TASKS/TASK-006AC-CONTROLLED-CITATION-EXECUTION-PREAUTH-REVIEW.md`](TASKS/TASK-006AC-CONTROLLED-CITATION-EXECUTION-PREAUTH-REVIEW.md) |
 | TASK-006AC1 | Controlled Citation Execution Remediation Package | Complete | AC-02/AC-03 remediated; acceptance review complete |
 | TASK-006AD | Controlled Citation Execution | Complete | Citation entity + controlled worker mode; 703 tests |
-| TASK-007A | Retrieval Runtime Pre-Authorization Review | Planned | **Next gate** — governance/architecture review only; no implementation |
-| TASK-007A+ | Retrieval & Query Runtime | Hold | After TASK-007A review closure |
+| TASK-007A | Retrieval Runtime Pre-Authorization Review | Complete | CLOSED — APPROVED WITH REQUIRED REMEDIATION BEFORE 007B; [`ARCHITECTURE_REVIEW_RETRIEVAL_RUNTIME_007A-PREAUTH.md`](ARCHITECTURE_REVIEW_RETRIEVAL_RUNTIME_007A-PREAUTH.md) |
+| TASK-007A1 | Retrieval Runtime Remediation Package | Planned | **Next gate** — address R-01–R-06; governance spec only |
+| TASK-007B | Retrieval Runtime Implementation | Hold | **NOT AUTHORIZED** — requires 007A1 acceptance |
+| TASK-007A+ | Retrieval & Query Runtime (umbrella) | Hold | After TASK-007B |
 | TASK-DOC-001 | Master Status Document Realignment | Complete | CURRENT_STATUS, IMPLEMENTATION_ROADMAP, ARCHITECTURE_PHASE_MAP |
 
 ## Status Legend

@@ -4,6 +4,23 @@ All notable changes to `tax-os-backend` are documented here.
 
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versions align with git tags where applicable.
 
+## [task-007a-retrieval-runtime-preauth-review] - 2026-06-02
+
+### Added
+
+- TASK-007A: retrieval runtime pre-authorization architecture review.
+  - [`ARCHITECTURE_REVIEW_RETRIEVAL_RUNTIME_007A-PREAUTH.md`](ARCHITECTURE_REVIEW_RETRIEVAL_RUNTIME_007A-PREAUTH.md)
+  - [`TASKS/TASK-007A-RETRIEVAL-RUNTIME-PREAUTH-REVIEW.md`](TASKS/TASK-007A-RETRIEVAL-RUNTIME-PREAUTH-REVIEW.md)
+
+### Changed
+
+- Verdict: **APPROVED WITH REQUIRED REMEDIATION BEFORE TASK-007B**
+- Findings R-01–R-10 documented; next gate TASK-007A1 remediation package
+
+### Notes
+
+- Review-only; no retrieval runtime implementation. Ranking / answers **not authorized**.
+
 ## [checkpoint-task-006y-006ad-citation-pipeline-review] - 2026-06-02
 
 ### Added

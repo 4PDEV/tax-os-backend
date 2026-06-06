@@ -77,27 +77,19 @@ legal_object_version
 | TASK-006Y–006AD Claude review | **CLOSED** |
 | Verdict | **APPROVED FOR CONTINUE** |
 | Citation layer phase | **CLOSED** |
-| Retrieval layer | **OPEN** — next gate TASK-007A pre-auth review |
+| Retrieval layer | **007A CLOSED** — APPROVED WITH REQUIRED REMEDIATION BEFORE 007B |
 | Answer runtime | **NOT AUTHORIZED** |
 | Concurrent citation workers | **NOT AUTHORIZED** (OD-021) |
 
-**Blocked until governed task approval:** retrieval runtime (007A+), answer runtime, ranking, concurrent citation workers.
+**Blocked until governed task approval:** retrieval runtime (007B), answer runtime, ranking, concurrent citation workers.
 
 ---
 
-## Next valid gate
+## Next valid gate (post-citation)
 
-**TASK-007A — Retrieval Runtime Pre-Authorization Review** (governance/architecture only).
+**TASK-007A1 — Retrieval Runtime Remediation Package** — see [`ARCHITECTURE_REVIEW_RETRIEVAL_RUNTIME_007A-PREAUTH.md`](ARCHITECTURE_REVIEW_RETRIEVAL_RUNTIME_007A-PREAUTH.md).
 
-Review scope (not implementation):
-
-- Retrieval identity and query scope
-- Provenance and citation-only evidence use
-- Temporal filtering doctrine
-- No-answer boundary
-- Separation from citation rendering and legal meaning
-
-Do **not** start retrieval implementation until TASK-007A review completes and any remediation is accepted.
+TASK-007A pre-auth review **CLOSED** — APPROVED WITH REQUIRED REMEDIATION BEFORE TASK-007B.
 
 ---
 
