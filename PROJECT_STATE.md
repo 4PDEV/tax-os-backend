@@ -4,7 +4,7 @@
 
 > **Also read:** [CURRENT_STATUS.md](CURRENT_STATUS.md) · [TASK_REGISTRY.md](TASK_REGISTRY.md) · [DECISION_LOG.md](DECISION_LOG.md) · [IMPLEMENTATION_ROADMAP.md](IMPLEMENTATION_ROADMAP.md) · [OPEN_DECISIONS.md](OPEN_DECISIONS.md)
 
-**Last handoff realigned:** 2026-06-02 · **Branch:** `main` · **Checkpoint:** `checkpoint-task-008b-ranking-runtime-contract`
+**Last handoff realigned:** 2026-06-02 · **Branch:** `main` · **HEAD:** `cc170aa` · **Tags:** `v0.1.2-ranking-preauth-reconciled`, `v0.1.1-ranking-contract-reconciled`, `checkpoint-task-008b-ranking-runtime-contract` · **origin/main:** up to date
 
 ---
 
@@ -108,7 +108,7 @@ Ranking stores **order only**. Provenance lives **once** in `retrieval_evidence_
 
 **Prohibited on ranked rows:** `legal_object_id`, `legal_object_version_id`, `source_version_id`, `citation_id`, `citation_hash`, `authority_weight`, `importance_flag`, `preference_score`.
 
-**TASK-008C-PREAUTH-RECONCILIATION:** **COMPLETE** — [`TASKS/TASK-008C-PREAUTH-RECONCILIATION.md`](TASKS/TASK-008C-PREAUTH-RECONCILIATION.md).
+**TASK-008C-PREAUTH-RECONCILIATION:** **COMPLETE** — **ACCEPTED** — committed `cc170aa`, pushed `origin/main`, tag `v0.1.2-ranking-preauth-reconciled` — [`TASKS/TASK-008C-PREAUTH-RECONCILIATION.md`](TASKS/TASK-008C-PREAUTH-RECONCILIATION.md).
 
 **TASK-008C migration/models:** **NOT AUTHORIZED** — next gate: Claude review or explicit TASK-008C authorization prompt.
 

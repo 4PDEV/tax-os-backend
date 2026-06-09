@@ -4,11 +4,13 @@ All notable changes to `tax-os-backend` are documented here.
 
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versions align with git tags where applicable.
 
-## [task-008c-preauth-reconciliation] - 2026-06-02
+## [v0.1.2-ranking-preauth-reconciled] - 2026-06-02
 
 ### Added
 
-- TASK-008C-PREAUTH-RECONCILIATION: ranking persistence pre-authorization reconciliation.
+- TASK-008C-PREAUTH-RECONCILIATION: ranking persistence pre-authorization reconciliation — **accepted**.
+  - Commit: `cc170aa` — `docs: accept TASK-008C preauth reconciliation`
+  - Tag: `v0.1.2-ranking-preauth-reconciled`
   - [`TASKS/TASK-008C-PREAUTH-RECONCILIATION.md`](TASKS/TASK-008C-PREAUTH-RECONCILIATION.md)
   - [`TASKS/TASK-008C-RANKING-PERSISTENCE.md`](TASKS/TASK-008C-RANKING-PERSISTENCE.md) (placeholder — not authorized)
 
@@ -18,7 +20,7 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Version
 
 ### Notes
 
-- Governance only — **TASK-008C implementation NOT AUTHORIZED**
+- Pushed `origin/main`. Governance only — **TASK-008C implementation NOT AUTHORIZED**
 
 ## [task-008c-remediation-ranking-contract-reconciliation] - 2026-06-02
 

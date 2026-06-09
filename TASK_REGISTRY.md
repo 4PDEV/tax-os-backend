@@ -91,7 +91,7 @@ Bounded task tracking for `tax-os-backend`. Authoritative specs remain in `tax-o
 | TASK-008A1 | Ranking Remediation Package | Complete | Acceptance **CLOSED**; RK-01–RK-11 closed — [`RANKING_RUNTIME_REMEDIATION_008A1.md`](RANKING_RUNTIME_REMEDIATION_008A1.md) |
 | TASK-008B | Ranking Runtime Contract | Complete | 008B-v2 — [`RANKING_RUNTIME_CONTRACT.md`](RANKING_RUNTIME_CONTRACT.md); reconciled 008C-REMEDIATION |
 | TASK-008C-REMEDIATION | Ranking Contract Reconciliation | Complete | Pure-pointer shape — [`RANKING_PERSISTENCE_REMEDIATION_008C-REMEDIATION.md`](RANKING_PERSISTENCE_REMEDIATION_008C-REMEDIATION.md) |
-| TASK-008C-PREAUTH-RECONCILIATION | Ranking Persistence Pre-Auth Reconciliation | Complete | FK/composite membership verified — [`TASKS/TASK-008C-PREAUTH-RECONCILIATION.md`](TASKS/TASK-008C-PREAUTH-RECONCILIATION.md) |
+| TASK-008C-PREAUTH-RECONCILIATION | Ranking Persistence Pre-Auth Reconciliation | Complete | Accepted `cc170aa`; tag `v0.1.2-ranking-preauth-reconciled` — [`TASKS/TASK-008C-PREAUTH-RECONCILIATION.md`](TASKS/TASK-008C-PREAUTH-RECONCILIATION.md) |
 | TASK-008C | Ranking Persistence | Hold | **NOT AUTHORIZED** — await Claude review or authorization prompt — [`TASKS/TASK-008C-RANKING-PERSISTENCE.md`](TASKS/TASK-008C-RANKING-PERSISTENCE.md) |
 | TASK-008D | Ranking Execution | Planned | After 008C — not authorized |
 | TASK-008A+ | Ranking Layer Review (umbrella) | Planned | After 008D |

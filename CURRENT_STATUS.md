@@ -61,7 +61,11 @@ The platform is materially beyond early foundation. Core registry, processing qu
 
 **TASK-008B:** **COMPLETE** — ranking runtime contract ([`RANKING_RUNTIME_CONTRACT.md`](RANKING_RUNTIME_CONTRACT.md)).
 
-**Next gate:** **TASK-008C** ranking persistence pre-authorization or remediation gate. **008C+ not authorized.** Answer runtime (**009A**) follows only after ranking layer review closes.
+**TASK-008C-REMEDIATION:** **COMPLETE** — provenance-once / pure-pointer contract reconciled — tag `v0.1.1-ranking-contract-reconciled` (`eff0699`).
+
+**TASK-008C-PREAUTH-RECONCILIATION:** **COMPLETE** — **ACCEPTED** — commit `cc170aa`, tag `v0.1.2-ranking-preauth-reconciled`, pushed `origin/main` ([`TASKS/TASK-008C-PREAUTH-RECONCILIATION.md`](TASKS/TASK-008C-PREAUTH-RECONCILIATION.md)).
+
+**Next gate:** **TASK-008C** ranking persistence — **NOT AUTHORIZED** until explicit authorization prompt. Answer runtime (**009A**) follows only after ranking layer review closes.
 
 **Architecture chain:** Evidence → Ranking → Answer Assembly → Response Runtime. Doctrine: `retrieval result` ≠ ranking · `ranking` ≠ answer · `answer` ≠ legal conclusion.
 

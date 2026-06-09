@@ -2,7 +2,13 @@
 
 ## Status
 
-**Complete** — governance reconciliation verified; **TASK-008C implementation NOT AUTHORIZED**.
+**Complete** — **ACCEPTED** — governance reconciliation verified; **TASK-008C implementation NOT AUTHORIZED**.
+
+| Delivery | Value |
+|----------|--------|
+| Commit | `cc170aa` — `docs: accept TASK-008C preauth reconciliation` |
+| Branch | `main` — pushed `origin/main` |
+| Tag | `v0.1.2-ranking-preauth-reconciled` |
 
 ## Important
 
