@@ -89,8 +89,9 @@ Bounded task tracking for `tax-os-backend`. Authoritative specs remain in `tax-o
 | TASK-007A–007E | Retrieval Pipeline Review | Complete | **CLOSED** — APPROVED FOR CONTINUE — [`CLAUDE_REVIEW_RETRIEVAL_PIPELINE_007A-007E.md`](CLAUDE_REVIEW_RETRIEVAL_PIPELINE_007A-007E.md) |
 | TASK-008A | Ranking Runtime Pre-Authorization Review | Complete | APPROVED WITH REQUIRED REMEDIATION BEFORE 008B |
 | TASK-008A1 | Ranking Remediation Package | Complete | Acceptance **CLOSED**; RK-01–RK-11 closed — [`RANKING_RUNTIME_REMEDIATION_008A1.md`](RANKING_RUNTIME_REMEDIATION_008A1.md) |
-| TASK-008B | Ranking Runtime Contract | Complete | Governance contract — [`RANKING_RUNTIME_CONTRACT.md`](RANKING_RUNTIME_CONTRACT.md); 008C not authorized |
-| TASK-008C | Ranking Persistence | Planned | After 008B — not authorized |
+| TASK-008B | Ranking Runtime Contract | Complete | 008B-v2 — [`RANKING_RUNTIME_CONTRACT.md`](RANKING_RUNTIME_CONTRACT.md); reconciled 008C-REMEDIATION |
+| TASK-008C-REMEDIATION | Ranking Contract Reconciliation | Complete | Pure-pointer shape — [`RANKING_PERSISTENCE_REMEDIATION_008C-REMEDIATION.md`](RANKING_PERSISTENCE_REMEDIATION_008C-REMEDIATION.md) |
+| TASK-008C | Ranking Persistence | Planned | **NOT AUTHORIZED** — next gate |
 | TASK-008D | Ranking Execution | Planned | After 008C — not authorized |
 | TASK-008A+ | Ranking Layer Review (umbrella) | Planned | After 008D |
 | TASK-009A | Answer Assembly Pre-Authorization Review | Planned | After ranking layer review — **not authorized** |

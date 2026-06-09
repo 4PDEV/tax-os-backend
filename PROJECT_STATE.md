@@ -1,10 +1,208 @@
 # PROJECT_STATE.md
 
-## PROJECT
+**Canonical handoff summary** for new ChatGPT chats, Cursor sessions, Claude reviews, and team onboarding.
 
-Source-Referenced Business & Tax Research Platform
+> **Also read:** [CURRENT_STATUS.md](CURRENT_STATUS.md) · [TASK_REGISTRY.md](TASK_REGISTRY.md) · [DECISION_LOG.md](DECISION_LOG.md) · [IMPLEMENTATION_ROADMAP.md](IMPLEMENTATION_ROADMAP.md) · [OPEN_DECISIONS.md](OPEN_DECISIONS.md)
 
-> **Onboarding:** Prefer [CURRENT_STATUS.md](CURRENT_STATUS.md) for canonical high-level status, [IMPLEMENTATION_ROADMAP.md](IMPLEMENTATION_ROADMAP.md) for sequencing, and [ARCHITECTURE_PHASE_MAP.md](ARCHITECTURE_PHASE_MAP.md) for phase evolution. This file retains detailed milestone history.
+**Last handoff realigned:** 2026-06-02 · **Branch:** `main` · **Checkpoint:** `checkpoint-task-008b-ranking-runtime-contract`
+
+---
+
+## 1. Project Identity
+
+| Item | Value |
+|------|--------|
+| **Platform name** | TAX-OS |
+| **Product** | Source-Referenced Business & Tax Research Platform |
+| **Positioning** | Deterministic, version-aware legal memory and evidence pipeline — not probabilistic tax advice |
+| **First jurisdiction** | Rwanda |
+| **Initial tax domains** | VAT, PAYE/PIT, WHT, corporate tax, capital gains, customs & excise (registry phase) |
+| **Long-term scope** | Multi-jurisdiction expansion; governed ingestion → legal objects → citations → retrieval → ranking → answer assembly (each layer separately authorized) |
+| **Environments** | Development and internal staging only — no public production deployment |
+
+---
+
+## 2. Core Governance Principles
+
+- **AI is not source of truth** — models may assist; canonical law lives in versioned sources and persisted legal memory.
+- **Source-referenced only** — every output must trace to `source_version` lineage.
+- **Deterministic-first** — reproducible behavior; explicit sort keys; no silent defaults.
+- **Version-aware** — `legal_object_version` pins; no inference from `legal_object_id` alone.
+- **Effective-date-aware** — temporal modes explicit; legal-object dates govern applicability.
+- **No silent overwrite** — append-only lifecycles; `force_replay` is audit-only.
+- **Ambiguity/conflict must be surfaced** — no silent winner selection; overlaps returned or failed explicitly.
+- **Ranking is not answer generation** — ranking permutes presentation order only.
+- **Answer is not legal conclusion** — answer assembly (not yet authorized) must not imply legal force.
+- **Provenance must live once only** — evidence pins authoritative in retrieval; ranking holds pointers + order.
+- **Git/docs are source of truth, not chats** — commit governance artifacts; chat history is not authoritative.
+
+---
+
+## 3. Architecture Doctrine
+
+Governed pipeline (layers close independently; downstream requires upstream review):
+
+```text
+Source Registry → Source Versions → Extraction → Parsing → Legal Objects
+  → Citations → Temporal/Versioning → Retrieval Evidence → Ranking → Answer Assembly (later)
+```
+
+| Layer | Status (summary) |
+|-------|------------------|
+| Source Registry & Versions | **COMPLETE** (TASK-001*) |
+| Extraction / Parsing contracts | **COMPLETE** (TASK-002*) |
+| Legal Object persistence | **COMPLETE** (TASK-003*) |
+| Citation governance & execution | **COMPLETE** (006Y–006AD) |
+| Temporal governance | **COMPLETE** (005A-SPEC) |
+| Retrieval layer | **COMPLETE** (007A–007E) |
+| Ranking contract | **COMPLETE** (008B-v2) — 008C-REMEDIATION **complete** |
+| Answer assembly | **NOT AUTHORIZED** (009A+) |
+
+**Foundational rule:** No AI legal reasoning in ingestion, legal-object, citation, retrieval, or ranking layers.
+
+**Evidence chain:**
+
+```text
+source_version → extracted_text → parsed_structure → legal_object → legal_object_version → citation
+  → retrieval_evidence_reference → ranked_evidence_reference (pointer only)
+```
+
+---
+
+## 4. Completed Tasks (verified subset)
+
+> **Note:** Status must be verified against Git commit history before final release tagging. See [TASK_REGISTRY.md](TASK_REGISTRY.md) for full registry.
+
+| Task | Title | Status |
+|------|-------|--------|
+| TASK-001A | Runtime foundation | Complete |
+| TASK-001D | CRUD + Internal Admin APIs | Complete |
+| TASK-001E | Alembic Migration Discipline | Complete |
+| TASK-001F | Baseline API Tests | Complete |
+| TASK-001G | Documentation + Operational Runbook | Complete |
+| TASK-002A | Source Text Extraction Contract | Complete |
+| TASK-002E | Cross-Reference Detection Contract | Complete |
+| TASK-003E | Legal Object Persistence Integrity & Immutability | Complete |
+| TASK-004D | Citation Assembly Contract | Complete |
+| TASK-005A-SPEC | Temporal & Versioning Architecture | Complete |
+
+**Also complete on `main` (not exhaustive):** ingestion persistence (006A), parsing/legal-object promotion (006Q–006X), citation pipeline (006Y–006AD), retrieval pipeline (007A–007E), ranking contract (008B). See detailed history below and [TASK_REGISTRY.md](TASK_REGISTRY.md).
+
+---
+
+## 5. Current Active Architecture Issue
+
+### TASK-008C-REMEDIATION — Ranking Contract Reconciliation
+
+**Status:** **COMPLETE** (2026-06-02) — [`RANKING_PERSISTENCE_REMEDIATION_008C-REMEDIATION.md`](RANKING_PERSISTENCE_REMEDIATION_008C-REMEDIATION.md).
+
+**Ruling (locked — provenance-once doctrine):**
+
+Ranking stores **order only**. Provenance lives **once** in `retrieval_evidence_references`.
+
+**`ranked_evidence_references` pure-pointer shape (008B-v2):**
+
+- `retrieval_result_id`
+- `retrieval_evidence_reference_id` — composite FK to scoped evidence row
+- `presentation_order_index`
+
+**Prohibited on ranked rows:** `legal_object_id`, `legal_object_version_id`, `source_version_id`, `citation_id`, `citation_hash`, `authority_weight`, `importance_flag`, `preference_score`.
+
+**TASK-008C migration/models:** **NOT AUTHORIZED** — next gate after 008C pre-auth / persistence task prompt.
+
+---
+
+## 6. Ranking Doctrine
+
+| Doctrine | Rule |
+|----------|------|
+| `retrieval result` ≠ ranking | Retrieval selects evidence; ranking permutes only |
+| `ranking` ≠ answer | No answer text at ranking boundary |
+| `answer` ≠ legal conclusion | No applicability or legal force inference |
+| Ranking stores order only | `presentation_order_index` — not relevance |
+| Provenance lives once | Retrieval evidence rows own pins; ranking joins |
+| No relevance scoring | Prohibited score columns |
+| No AI / semantic ranking | Not authorized |
+| No concurrent ranking workers | OD-021 — single-worker only |
+
+**Architecture chain:** Evidence → Ranking → Answer Assembly → Response Runtime
+
+---
+
+## 7. 008C-REMEDIATION Items (complete)
+
+All items applied in [`RANKING_RUNTIME_CONTRACT.md`](RANKING_RUNTIME_CONTRACT.md) (008B-v2):
+
+1. Pure-pointer `ranked_evidence_references` contract
+2. Composite FK structural membership (`retrieval_result_id`, `id`)
+3. Canonical error vocabulary (9 categories)
+4. `evidence_set_empty` removed
+5. Zero-result → `completed`, `rank_count=0`
+6. Prohibited interpretive fields documented
+7. **008C implementation** — still **not authorized**
+
+---
+
+## 8. Infrastructure State
+
+| Item | Value |
+|------|--------|
+| Host | `ubuntu-246` |
+| OS | Ubuntu 26.04 LTS |
+| Runtime | Docker-based development |
+| Database | PostgreSQL 16 (container) |
+| Admin UI | pgAdmin (container) |
+| Base path | `/opt/tax-os` |
+| Backend repo | `/opt/tax-os/repos/tax-os-backend` |
+| Infra repo | `/opt/tax-os/repos/tax-os-infra` |
+| GitHub remote | `git@github.com:4PDEV/tax-os-backend.git` |
+| Alembic head | `f9e4d2a87c10` (retrieval persistence — no ranking tables yet) |
+| Test DB | `taxos_test` — see [DEVELOPMENT_SETUP.md](DEVELOPMENT_SETUP.md) |
+
+---
+
+## 9. Current Operating Model
+
+| Role | Responsibility |
+|------|----------------|
+| **ChatGPT** | Architect / governance — task specs, doctrine, sequencing |
+| **Cursor** | Implementation — bounded tasks only |
+| **Claude** | Review / audit — pipeline closure, pre-auth |
+| **GitHub** | Source of truth — commits, tags, checkpoints |
+
+**Rules:**
+
+- Tasks must be **bounded** with explicit acceptance criteria.
+- **No implementation** without task specification.
+- **No architecture changes** through ad hoc code.
+- Locked decisions live in [DECISION_LOG.md](DECISION_LOG.md) and [OPEN_DECISIONS.md](OPEN_DECISIONS.md).
+
+---
+
+## 10. Next Recommended Steps
+
+1. ~~Complete TASK-008C-REMEDIATION~~ — **done**
+2. Review reconciliation with Claude (recommended).
+3. Authorize **TASK-008C** ranking persistence (separate bounded task).
+4. Start new ChatGPT chat using this document as primary context.
+
+**Not authorized:** 008C implementation, 008D worker, 008D execution, 009A answer runtime, AI ranking.
+
+---
+
+## 11. New Chat Continuation Prompt
+
+Copy into a new ChatGPT session:
+
+```text
+We are continuing TAX-OS, a Source-Referenced Business & Tax Research Platform. ChatGPT is Architect/Governance. Cursor is Developer. Claude is Reviewer. GitHub/docs are the source of truth, not chat history. Read and follow PROJECT_STATE.md, DECISION_LOG.md, TASK_REGISTRY.md, MASTER_SCOPE, and ADDENDUMS. Current active task is TASK-008C ranking persistence (not yet authorized) unless updated. Do not reopen locked decisions unless explicitly instructed.
+```
+
+---
+
+# DETAILED MILESTONE HISTORY (Archive)
+
+> The sections below retain historical milestone detail. For **current gate status**, prefer **Continuation State** above and [CURRENT_STATUS.md](CURRENT_STATUS.md).
 
 ---
 

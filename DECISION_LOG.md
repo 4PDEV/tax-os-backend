@@ -74,3 +74,13 @@ The platform shall evolve progressively:
 
 Status:
 LOCKED
+
+---
+
+## DEC-010
+Ranking stores order only. Provenance lives once in `retrieval_evidence_references`. `ranked_evidence_references` are pure pointers (`retrieval_result_id`, `retrieval_evidence_reference_id`, `presentation_order_index`) — no copied provenance fields.
+
+Authority: TASK-008C-REMEDIATION — [`RANKING_PERSISTENCE_REMEDIATION_008C-REMEDIATION.md`](RANKING_PERSISTENCE_REMEDIATION_008C-REMEDIATION.md)
+
+Status:
+LOCKED

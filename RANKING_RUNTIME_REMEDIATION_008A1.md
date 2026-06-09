@@ -187,12 +187,13 @@ Each `ranked_evidence_reference` must:
 
 | Field | Rule |
 |-------|------|
+| `retrieval_result_id` | Required — membership scope |
 | `retrieval_evidence_reference_id` | Required FK — primary lineage |
-| `legal_object_id` | Copied read-only from source evidence row |
-| `legal_object_version_id` | Copied read-only — no version re-resolution |
-| `source_version_id` | Copied read-only |
-| `citation_id` / `citation_hash` | Copied read-only when present |
 | `presentation_order_index` | Ranking-owned order only |
+
+**Prohibited on ranked rows:** copying `legal_object_id`, `legal_object_version_id`, `source_version_id`, `citation_id`, `citation_hash`, or any provenance denormalization.
+
+Provenance obtained **exclusively** via join to `retrieval_evidence_references`.
 
 **Prohibited during ranking:**
 
@@ -200,6 +201,7 @@ Each `ranked_evidence_reference` must:
 - Citation creation or `CitationAssembler`
 - Temporal re-filtering
 - Provenance “correction” or inference
+- Copying provenance fields onto ranked output rows
 
 ---
 

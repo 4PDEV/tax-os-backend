@@ -2,7 +2,7 @@
 
 ## Status
 
-**Complete** — governance-only contract delivered; persistence and execution **not authorized**.
+**Complete** — governance-only contract delivered; amended by **TASK-008C-REMEDIATION** (pure-pointer shape, 008B-v2). Persistence and execution **not authorized**.
 
 ## Authorization basis
 
@@ -26,7 +26,8 @@ Establish the governed ranking runtime contract — mechanical presentation perm
 
 | Artifact | Path |
 |----------|------|
-| Primary contract | [`RANKING_RUNTIME_CONTRACT.md`](../RANKING_RUNTIME_CONTRACT.md) |
+| Primary contract | [`RANKING_RUNTIME_CONTRACT.md`](../RANKING_RUNTIME_CONTRACT.md) (008B-v2 post-remediation) |
+| Reconciliation | [`RANKING_PERSISTENCE_REMEDIATION_008C-REMEDIATION.md`](../RANKING_PERSISTENCE_REMEDIATION_008C-REMEDIATION.md) |
 | Remediation spec | [`RANKING_RUNTIME_REMEDIATION_008A1.md`](../RANKING_RUNTIME_REMEDIATION_008A1.md) |
 | Acceptance review | [`RANKING_RUNTIME_008A1_ACCEPTANCE_REVIEW.md`](../RANKING_RUNTIME_008A1_ACCEPTANCE_REVIEW.md) |
 | Upstream retrieval contract | [`RETRIEVAL_RUNTIME_CONTRACT.md`](../RETRIEVAL_RUNTIME_CONTRACT.md) |

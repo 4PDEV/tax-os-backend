@@ -33,8 +33,12 @@ Ranking is **not**:
 | `retrieval result` ≠ ranking | Retrieval owns evidence set; ranking permutes only |
 | `ranking` ≠ answer | Ordered pointers support future answer assembly |
 | `answer` ≠ legal conclusion | No obligation or consequence inference at ranking |
+| **Ranking stores order only** | `presentation_order_index` — no scores, no authority weighting |
+| **Provenance lives once** | Pins authoritative in `retrieval_evidence_references` only |
 | `retrieval evidence` ≠ ranking | `deterministic_order_index` is retrieval-owned |
-| `presentation_order_index` ≠ relevance rank | Integer position only — no scores |
+| `presentation_order_index` ≠ relevance rank | Integer position only — not legal importance |
+
+**Locked (TASK-008C-REMEDIATION):** Ranked rows are pure pointers. Provenance is obtained exclusively through joins to `retrieval_evidence_references`.
 
 ## Ranking role
 
@@ -91,7 +95,7 @@ Same discipline as retrieval RP-01 / 007C1:
 - Compact UTF-8 serialization
 - ISO 8601 UUID strings for IDs
 - No floats in envelope
-- `contract_version` required when multiple contract generations exist; fixed string for initial contract (e.g. `"008B-v1"`)
+- `contract_version` required when multiple contract generations exist; current generation: `"008B-v2"` (post 008C-REMEDIATION pure-pointer shape)
 
 ### Excluded from hash
 
@@ -137,19 +141,22 @@ Ranking may consume **only**:
 
 | Status | Action |
 |--------|--------|
-| `accepted` | Reject — `error_category=retrieval_not_completed` |
-| `failed` | Reject — `error_category=retrieval_not_completed` |
-| `skipped` | Reject — `error_category=retrieval_not_completed` |
-| `pending` | Reject — `error_category=retrieval_not_completed` |
+| Missing `retrieval_result` row | Reject — `error_category=retrieval_result_missing` |
+| `accepted` | Reject — `error_category=retrieval_result_not_completed` |
+| `failed` | Reject — `error_category=retrieval_result_not_completed` |
+| `skipped` | Reject — `error_category=retrieval_result_not_completed` |
+| `pending` | Reject — `error_category=retrieval_result_not_completed` |
 
 **Validation:**
 
 - `retrieval_result.result_count` must equal count of `retrieval_evidence_references` for that result
-- Zero-result (`result_count=0`) is valid → ranking completes with `rank_count=0`
+- Zero-result (`result_count=0`) is **valid** → ranking `status=completed`, `rank_count=0` — **not** a failure (`evidence_set_empty` is prohibited)
 
 ---
 
-## Ranked object (input)
+## Ranked object (input and output)
+
+### Input set
 
 Input set = **all** `retrieval_evidence_references` rows for the pinned `retrieval_result_id`.
 
@@ -157,17 +164,41 @@ Input set = **all** `retrieval_evidence_references` rows for the pinned `retriev
 - No cross-result merging
 - No subset selection
 
-Fields read **read-only** from each input row (RK-05):
+### Sort-time reads (execution only — not persisted on ranked rows)
+
+During permutation, ranking may **read** fields from `retrieval_evidence_references` (and permitted joins) **only** to compute sort order:
 
 - `retrieval_evidence_reference_id`
-- `legal_object_id`, `legal_object_version_id`
-- `source_version_id`, `source_document_id`
-- `citation_id`, `citation_hash` (when present)
-- `deterministic_order_index` (for `CANONICAL` only)
-- `effective_from` (from joined version or denormalized evidence metadata when present)
+- `deterministic_order_index` (for `CANONICAL`)
+- `effective_from`, `legal_object_id`, `legal_object_version_id`, `citation_hash`, `object_identifier`, `source_version_id`, `source_document_id` — from retrieval evidence row or join
+
+These values **must not** be copied into `ranked_evidence_references`.
+
+### Output shape — pure-pointer model (RK-05 / 008C-REMEDIATION)
+
+Each `ranked_evidence_reference` persists **only**:
+
+| Field | Required | Purpose |
+|-------|----------|---------|
+| `ranked_evidence_reference_id` | Yes | Row identity |
+| `ranking_result_id` | Yes | Lifecycle parent |
+| `retrieval_result_id` | Yes | Membership scope |
+| `retrieval_evidence_reference_id` | Yes | FK to evidence row |
+| `presentation_order_index` | Yes | Ranking-owned order (1..N) |
+
+Optional: ranking lifecycle metadata on `ranking_requests` / `ranking_results` only (status, errors, notes) — not provenance duplication.
+
+**Provenance for downstream consumers:** obtain exclusively via join:
+
+```text
+ranked_evidence_reference
+  → retrieval_evidence_reference (FK)
+  → legal_object_version / citation / source_version (upstream)
+```
 
 **Prohibited during ranking:**
 
+- Copying provenance fields onto ranked rows
 - Citation lookup or creation
 - `CitationAssembler` invocation
 - Version re-resolution or temporal re-filtering
@@ -346,6 +377,23 @@ UNIQUE (ranking_request_hash) WHERE force_replay = false
 UNIQUE (ranking_result_id, presentation_order_index)
 ```
 
+**Structural membership — `retrieval_evidence_references` (008C MUST implement):**
+
+```sql
+UNIQUE (retrieval_result_id, id)
+```
+
+Enables composite FK from ranked rows to evidence scoped to the same retrieval result.
+
+**Structural membership — `ranked_evidence_references` composite FK (008C MUST implement):**
+
+```sql
+FOREIGN KEY (retrieval_result_id, retrieval_evidence_reference_id)
+  REFERENCES retrieval_evidence_references (retrieval_result_id, id)
+```
+
+Purpose: prevent cross-result contamination — ranked evidence must belong to the pinned `retrieval_result_id`.
+
 **Required CHECK — `ranking_profile`:**
 
 ```text
@@ -362,15 +410,23 @@ ranking_status IN (
 
 **Required CHECK — `error_category` (when present):**
 
+Authoritative vocabulary (TASK-008C-REMEDIATION). No competing categories.
+
 ```text
 error_category IS NULL OR error_category IN (
-  'invalid_request',
-  'retrieval_not_completed',
-  'permutation_violation',
+  'retrieval_result_missing',
+  'retrieval_result_not_completed',
+  'evidence_reference_missing',
   'provenance_incomplete',
-  'profile_not_allowed'
+  'profile_not_allowed',
+  'duplicate_ranking',
+  'permutation_mismatch',
+  'ranking_pipeline_unavailable',
+  'unknown_failure'
 )
 ```
+
+**Prohibited error categories:** `evidence_set_empty`, `invalid_request`, `retrieval_not_completed`, `permutation_violation` (superseded by canonical vocabulary above).
 
 ### `ranking_results` lifecycle fields (planned)
 
@@ -380,21 +436,19 @@ error_category IS NULL OR error_category IN (
 
 `rank_count` must equal persisted `ranked_evidence_references` count.
 
-### `ranked_evidence_references` (planned minimum)
+### `ranked_evidence_references` (planned minimum — pure-pointer shape)
 
-| Field | Required |
-|-------|----------|
-| `ranked_evidence_reference_id` | Yes |
-| `ranking_result_id` | Yes |
-| `retrieval_evidence_reference_id` | Yes — FK |
-| `presentation_order_index` | Yes |
-| `legal_object_id` | Yes — read-only copy |
-| `legal_object_version_id` | Yes — read-only copy |
-| `source_version_id` | Yes — read-only copy |
-| `citation_id` | Nullable — read-only copy |
-| `citation_hash` | Nullable — read-only copy |
+| Field | Required | Notes |
+|-------|----------|-------|
+| `ranked_evidence_reference_id` | Yes | Row identity |
+| `ranking_result_id` | Yes | Lifecycle parent |
+| `retrieval_result_id` | Yes | Membership scope; part of composite FK |
+| `retrieval_evidence_reference_id` | Yes | FK via composite to `retrieval_evidence_references` |
+| `presentation_order_index` | Yes | 1..N contiguous |
 
-No score columns. No answer fields.
+**Prohibited on this table:** `legal_object_id`, `legal_object_version_id`, `source_version_id`, `source_document_id`, `citation_id`, `citation_hash`, score columns, answer fields, `authority_weight`, `importance_flag`, `preference_score`.
+
+Provenance obtained by join only — see §Ranked object (input and output).
 
 ---
 
@@ -473,8 +527,25 @@ TASK-008B  This contract (governance)
 
 ---
 
+## 008C-REMEDIATION — reconciliation record
+
+| # | Change | Status |
+|---|--------|--------|
+| 1 | Remove copied provenance from ranked row contract | **Applied** — pure-pointer shape |
+| 2 | Pure-pointer ranking model | **Applied** |
+| 3 | Structural membership composite FK | **Applied** — §Persistence doctrine |
+| 4 | Canonical error vocabulary | **Applied** |
+| 5 | Remove `evidence_set_empty` failure | **Applied** — zero-result → `completed`, `rank_count=0` |
+| 6 | Prohibited interpretive fields | **Applied** — §Prohibited fields |
+| 7 | Doctrine update | **Applied** — §Mandatory doctrines |
+
+Contract generation: **008B-v2** (post-remediation). See [`RANKING_PERSISTENCE_REMEDIATION_008C-REMEDIATION.md`](RANKING_PERSISTENCE_REMEDIATION_008C-REMEDIATION.md).
+
+---
+
 ## References
 
+- [`RANKING_PERSISTENCE_REMEDIATION_008C-REMEDIATION.md`](RANKING_PERSISTENCE_REMEDIATION_008C-REMEDIATION.md)
 - [`RANKING_RUNTIME_REMEDIATION_008A1.md`](RANKING_RUNTIME_REMEDIATION_008A1.md)
 - [`RANKING_RUNTIME_008A1_ACCEPTANCE_REVIEW.md`](RANKING_RUNTIME_008A1_ACCEPTANCE_REVIEW.md)
 - [`RETRIEVAL_RUNTIME_CONTRACT.md`](RETRIEVAL_RUNTIME_CONTRACT.md)

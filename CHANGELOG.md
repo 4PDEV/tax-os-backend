@@ -4,6 +4,19 @@ All notable changes to `tax-os-backend` are documented here.
 
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versions align with git tags where applicable.
 
+## [task-008c-remediation-ranking-contract-reconciliation] - 2026-06-02
+
+### Changed
+
+- TASK-008C-REMEDIATION: reconcile ranking contract to provenance-once pure-pointer shape (008B-v2).
+  - [`RANKING_PERSISTENCE_REMEDIATION_008C-REMEDIATION.md`](RANKING_PERSISTENCE_REMEDIATION_008C-REMEDIATION.md)
+  - [`RANKING_RUNTIME_CONTRACT.md`](RANKING_RUNTIME_CONTRACT.md) — removed copied provenance on ranked rows; canonical error vocabulary; composite FK
+  - [`DECISION_LOG.md`](DECISION_LOG.md) — DEC-010 locked
+
+### Notes
+
+- Governance only — TASK-008C persistence **not authorized**
+
 ## [task-008b-ranking-runtime-contract] - 2026-06-02
 
 ### Added
