@@ -4,6 +4,22 @@ All notable changes to `tax-os-backend` are documented here.
 
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versions align with git tags where applicable.
 
+## [task-008c-preauth-reconciliation] - 2026-06-02
+
+### Added
+
+- TASK-008C-PREAUTH-RECONCILIATION: ranking persistence pre-authorization reconciliation.
+  - [`TASKS/TASK-008C-PREAUTH-RECONCILIATION.md`](TASKS/TASK-008C-PREAUTH-RECONCILIATION.md)
+  - [`TASKS/TASK-008C-RANKING-PERSISTENCE.md`](TASKS/TASK-008C-RANKING-PERSISTENCE.md) (placeholder — not authorized)
+
+### Changed
+
+- [`RANKING_RUNTIME_CONTRACT.md`](RANKING_RUNTIME_CONTRACT.md) — explicit FK targets (`retrieval_results.id`, `retrieval_evidence_references.id`); pure-pointer column table; preauth verification record
+
+### Notes
+
+- Governance only — **TASK-008C implementation NOT AUTHORIZED**
+
 ## [task-008c-remediation-ranking-contract-reconciliation] - 2026-06-02
 
 ### Changed

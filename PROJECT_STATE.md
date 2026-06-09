@@ -108,7 +108,9 @@ Ranking stores **order only**. Provenance lives **once** in `retrieval_evidence_
 
 **Prohibited on ranked rows:** `legal_object_id`, `legal_object_version_id`, `source_version_id`, `citation_id`, `citation_hash`, `authority_weight`, `importance_flag`, `preference_score`.
 
-**TASK-008C migration/models:** **NOT AUTHORIZED** — next gate after 008C pre-auth / persistence task prompt.
+**TASK-008C-PREAUTH-RECONCILIATION:** **COMPLETE** — [`TASKS/TASK-008C-PREAUTH-RECONCILIATION.md`](TASKS/TASK-008C-PREAUTH-RECONCILIATION.md).
+
+**TASK-008C migration/models:** **NOT AUTHORIZED** — next gate: Claude review or explicit TASK-008C authorization prompt.
 
 ---
 
@@ -182,9 +184,10 @@ All items applied in [`RANKING_RUNTIME_CONTRACT.md`](RANKING_RUNTIME_CONTRACT.md
 ## 10. Next Recommended Steps
 
 1. ~~Complete TASK-008C-REMEDIATION~~ — **done**
-2. Review reconciliation with Claude (recommended).
-3. Authorize **TASK-008C** ranking persistence (separate bounded task).
-4. Start new ChatGPT chat using this document as primary context.
+2. ~~Complete TASK-008C-PREAUTH-RECONCILIATION~~ — **done**
+3. Review with Claude (recommended).
+4. Authorize **TASK-008C** ranking persistence (separate bounded task).
+5. Start new ChatGPT chat using this document as primary context.
 
 **Not authorized:** 008C implementation, 008D worker, 008D execution, 009A answer runtime, AI ranking.
 
@@ -195,7 +198,7 @@ All items applied in [`RANKING_RUNTIME_CONTRACT.md`](RANKING_RUNTIME_CONTRACT.md
 Copy into a new ChatGPT session:
 
 ```text
-We are continuing TAX-OS, a Source-Referenced Business & Tax Research Platform. ChatGPT is Architect/Governance. Cursor is Developer. Claude is Reviewer. GitHub/docs are the source of truth, not chat history. Read and follow PROJECT_STATE.md, DECISION_LOG.md, TASK_REGISTRY.md, MASTER_SCOPE, and ADDENDUMS. Current active task is TASK-008C ranking persistence (not yet authorized) unless updated. Do not reopen locked decisions unless explicitly instructed.
+We are continuing TAX-OS, a Source-Referenced Business & Tax Research Platform. ChatGPT is Architect/Governance. Cursor is Developer. Claude is Reviewer. GitHub/docs are the source of truth, not chat history. Read and follow PROJECT_STATE.md, DECISION_LOG.md, TASK_REGISTRY.md, MASTER_SCOPE, and ADDENDUMS. Current active task is TASK-008C ranking persistence authorization (NOT AUTHORIZED) unless updated. Do not reopen locked decisions unless explicitly instructed.
 ```
 
 ---

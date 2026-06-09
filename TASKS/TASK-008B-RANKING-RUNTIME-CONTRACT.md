@@ -28,6 +28,7 @@ Establish the governed ranking runtime contract — mechanical presentation perm
 |----------|------|
 | Primary contract | [`RANKING_RUNTIME_CONTRACT.md`](../RANKING_RUNTIME_CONTRACT.md) (008B-v2 post-remediation) |
 | Reconciliation | [`RANKING_PERSISTENCE_REMEDIATION_008C-REMEDIATION.md`](../RANKING_PERSISTENCE_REMEDIATION_008C-REMEDIATION.md) |
+| Pre-auth reconciliation | [`TASKS/TASK-008C-PREAUTH-RECONCILIATION.md`](TASK-008C-PREAUTH-RECONCILIATION.md) |
 | Remediation spec | [`RANKING_RUNTIME_REMEDIATION_008A1.md`](../RANKING_RUNTIME_REMEDIATION_008A1.md) |
 | Acceptance review | [`RANKING_RUNTIME_008A1_ACCEPTANCE_REVIEW.md`](../RANKING_RUNTIME_008A1_ACCEPTANCE_REVIEW.md) |
 | Upstream retrieval contract | [`RETRIEVAL_RUNTIME_CONTRACT.md`](../RETRIEVAL_RUNTIME_CONTRACT.md) |

@@ -38,7 +38,7 @@ Ranking is **not**:
 | `retrieval evidence` ≠ ranking | `deterministic_order_index` is retrieval-owned |
 | `presentation_order_index` ≠ relevance rank | Integer position only — not legal importance |
 
-**Locked (TASK-008C-REMEDIATION):** Ranked rows are pure pointers. Provenance is obtained exclusively through joins to `retrieval_evidence_references`.
+**Locked (TASK-008C-REMEDIATION / TASK-008C-PREAUTH-RECONCILIATION):** Ranked rows are pure pointers. Provenance is obtained exclusively through joins to `retrieval_evidence_references`.
 
 ## Ranking role
 
@@ -174,17 +174,20 @@ During permutation, ranking may **read** fields from `retrieval_evidence_referen
 
 These values **must not** be copied into `ranked_evidence_references`.
 
-### Output shape — pure-pointer model (RK-05 / 008C-REMEDIATION)
+### Output shape — pure-pointer model (RK-05 / 008C-REMEDIATION / 008C-PREAUTH)
 
-Each `ranked_evidence_reference` persists **only**:
+Each `ranked_evidence_reference` row stores **only** these persisted columns (plus surrogate PK):
 
-| Field | Required | Purpose |
-|-------|----------|---------|
-| `ranked_evidence_reference_id` | Yes | Row identity |
-| `ranking_result_id` | Yes | Lifecycle parent |
-| `retrieval_result_id` | Yes | Membership scope |
-| `retrieval_evidence_reference_id` | Yes | FK to evidence row |
-| `presentation_order_index` | Yes | Ranking-owned order (1..N) |
+| Column | Maps to parent PK | Purpose |
+|--------|-------------------|---------|
+| `ranking_result_id` | `ranking_results.id` | Lifecycle parent |
+| `retrieval_result_id` | `retrieval_results.id` | Membership scope |
+| `retrieval_evidence_reference_id` | `retrieval_evidence_references.id` | Evidence pointer (composite FK member) |
+| `presentation_order_index` | — | Ranking-owned order (1..N) |
+
+Surrogate PK `ranked_evidence_reference_id` (or `id`) permitted for row identity only.
+
+**Prohibited on `ranked_evidence_references`:** `legal_object_id`, `legal_object_version_id`, `source_version_id`, `citation_id`, `citation_hash`, `source_document_id`, and all §Prohibited fields.
 
 Optional: ranking lifecycle metadata on `ranking_requests` / `ranking_results` only (status, errors, notes) — not provenance duplication.
 
@@ -394,6 +397,28 @@ FOREIGN KEY (retrieval_result_id, retrieval_evidence_reference_id)
 
 Purpose: prevent cross-result contamination — ranked evidence must belong to the pinned `retrieval_result_id`.
 
+### FK targets — live parent primary keys (008C-PREAUTH)
+
+All ranking persistence FKs must target **live** parent PK column names on `main`:
+
+| Child column | Parent table | Parent PK column |
+|--------------|--------------|------------------|
+| `ranking_requests.retrieval_result_id` | `retrieval_results` | `id` |
+| `ranking_results.ranking_request_id` | `ranking_requests` | `id` |
+| `ranking_results.retrieval_result_id` | `retrieval_results` | `id` |
+| `ranked_evidence_references.ranking_result_id` | `ranking_results` | `id` |
+| `ranked_evidence_references.retrieval_result_id` | `retrieval_results` | `id` |
+| `ranked_evidence_references.retrieval_evidence_reference_id` | `retrieval_evidence_references` | `id` |
+
+Composite membership FK (required):
+
+```sql
+FOREIGN KEY (retrieval_result_id, retrieval_evidence_reference_id)
+  REFERENCES retrieval_evidence_references (retrieval_result_id, id)
+```
+
+**Note:** `retrieval_evidence_references` already FKs `retrieval_result_id` → `retrieval_results.id` (TASK-007C). Ranking adds scoped composite reference — not a second provenance copy.
+
 **Required CHECK — `ranking_profile`:**
 
 ```text
@@ -438,17 +463,17 @@ error_category IS NULL OR error_category IN (
 
 ### `ranked_evidence_references` (planned minimum — pure-pointer shape)
 
-| Field | Required | Notes |
-|-------|----------|-------|
-| `ranked_evidence_reference_id` | Yes | Row identity |
-| `ranking_result_id` | Yes | Lifecycle parent |
-| `retrieval_result_id` | Yes | Membership scope; part of composite FK |
-| `retrieval_evidence_reference_id` | Yes | FK via composite to `retrieval_evidence_references` |
-| `presentation_order_index` | Yes | 1..N contiguous |
+| Column | Required | FK target |
+|--------|----------|-----------|
+| `id` (surrogate PK) | Yes | — |
+| `ranking_result_id` | Yes | `ranking_results.id` |
+| `retrieval_result_id` | Yes | `retrieval_results.id` + composite FK member |
+| `retrieval_evidence_reference_id` | Yes | `retrieval_evidence_references.id` + composite FK member |
+| `presentation_order_index` | Yes | — |
 
-**Prohibited on this table:** `legal_object_id`, `legal_object_version_id`, `source_version_id`, `source_document_id`, `citation_id`, `citation_hash`, score columns, answer fields, `authority_weight`, `importance_flag`, `preference_score`.
+**No other data columns permitted.** Provenance obtained by join only — see §Ranked object (input and output).
 
-Provenance obtained by join only — see §Ranked object (input and output).
+**Prohibited-field guard parity (008C tests MUST enforce):** `authority_weight`, `importance_flag`, `preference_score`, plus all §Prohibited fields on this table.
 
 ---
 
@@ -543,8 +568,28 @@ Contract generation: **008B-v2** (post-remediation). See [`RANKING_PERSISTENCE_R
 
 ---
 
+## 008C-PREAUTH-RECONCILIATION — verification record
+
+Pre-authorization reconciliation confirming 008B contract is ready for TASK-008C persistence **design** — **not implementation**.
+
+| # | Requirement | Status |
+|---|-------------|--------|
+| 1 | Pure-pointer `ranked_evidence_references` (4 columns + PK) | **Verified** |
+| 2 | Provenance via join to `retrieval_evidence_references` only | **Verified** |
+| 3 | Canonical `error_category` vocabulary; zero-result → `completed`/`rank_count=0` | **Verified** |
+| 4 | Structural membership `UNIQUE(retrieval_result_id, id)` + composite FK | **Verified** |
+| 5 | Prohibited-field guard: `authority_weight`, `importance_flag`, `preference_score` | **Verified** |
+| 6 | FK targets `retrieval_results.id`, `retrieval_evidence_references.id` | **Verified** |
+
+See [`TASKS/TASK-008C-PREAUTH-RECONCILIATION.md`](TASKS/TASK-008C-PREAUTH-RECONCILIATION.md).
+
+**TASK-008C implementation remains NOT AUTHORIZED.**
+
+---
+
 ## References
 
+- [`TASKS/TASK-008C-PREAUTH-RECONCILIATION.md`](TASKS/TASK-008C-PREAUTH-RECONCILIATION.md)
 - [`RANKING_PERSISTENCE_REMEDIATION_008C-REMEDIATION.md`](RANKING_PERSISTENCE_REMEDIATION_008C-REMEDIATION.md)
 - [`RANKING_RUNTIME_REMEDIATION_008A1.md`](RANKING_RUNTIME_REMEDIATION_008A1.md)
 - [`RANKING_RUNTIME_008A1_ACCEPTANCE_REVIEW.md`](RANKING_RUNTIME_008A1_ACCEPTANCE_REVIEW.md)

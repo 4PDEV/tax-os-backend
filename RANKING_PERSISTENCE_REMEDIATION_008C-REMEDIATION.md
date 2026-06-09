@@ -147,7 +147,8 @@ TASK-008C may be authorized only after:
 
 1. TASK-008C-REMEDIATION **accepted** — this document
 2. Amended [`RANKING_RUNTIME_CONTRACT.md`](RANKING_RUNTIME_CONTRACT.md) (008B-v2) reviewed
-3. Separate TASK-008C pre-auth / persistence remediation gate if required
+3. TASK-008C-PREAUTH-RECONCILIATION **complete** — [`TASKS/TASK-008C-PREAUTH-RECONCILIATION.md`](TASKS/TASK-008C-PREAUTH-RECONCILIATION.md)
+4. Claude review and/or explicit TASK-008C authorization prompt
 
 ---
 

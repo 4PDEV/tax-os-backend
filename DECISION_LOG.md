@@ -80,7 +80,7 @@ LOCKED
 ## DEC-010
 Ranking stores order only. Provenance lives once in `retrieval_evidence_references`. `ranked_evidence_references` are pure pointers (`retrieval_result_id`, `retrieval_evidence_reference_id`, `presentation_order_index`) — no copied provenance fields.
 
-Authority: TASK-008C-REMEDIATION — [`RANKING_PERSISTENCE_REMEDIATION_008C-REMEDIATION.md`](RANKING_PERSISTENCE_REMEDIATION_008C-REMEDIATION.md)
+Authority: TASK-008C-REMEDIATION — [`RANKING_PERSISTENCE_REMEDIATION_008C-REMEDIATION.md`](RANKING_PERSISTENCE_REMEDIATION_008C-REMEDIATION.md); verified TASK-008C-PREAUTH-RECONCILIATION — [`TASKS/TASK-008C-PREAUTH-RECONCILIATION.md`](TASKS/TASK-008C-PREAUTH-RECONCILIATION.md)
 
 Status:
 LOCKED
