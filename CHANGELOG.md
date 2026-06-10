@@ -4,6 +4,38 @@ All notable changes to `tax-os-backend` are documented here.
 
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versions align with git tags where applicable.
 
+## [task-009a-preauth] - 2026-06-02
+
+### Added
+
+- TASK-009A-PREAUTH — answer assembly governance contract:
+  - [`ANSWER_ASSEMBLY_CONTRACT.md`](ANSWER_ASSEMBLY_CONTRACT.md)
+  - [`TASKS/TASK-009A-ANSWER-ASSEMBLY.md`](TASKS/TASK-009A-ANSWER-ASSEMBLY.md)
+  - Answer layer boundary, evidence rules E-01–E-08, provenance read model (DEC-010), citation reference rules, `AnswerPackage` schema (009A-v1), answer failure vocabulary, layer separation, AI boundary, implementation readiness criteria
+  - DEC-013 locked in [`DECISION_LOG.md`](DECISION_LOG.md)
+  - Ranking result resolution rule (accepted vs terminal — closes RL-O-01)
+
+### Notes
+
+- Governance/design only — **TASK-009A implementation NOT AUTHORIZED**
+- No services, workers, APIs, persistence, models, migrations, or tests
+- Next gate: Claude review → 009A-IMPL-AUTH
+
+## [ranking-layer-review] - 2026-06-02
+
+### Added
+
+- Ranking Layer Review (TASK-008A+) — end-to-end governance review:
+  - [`TASKS/RANKING-LAYER-REVIEW.md`](TASKS/RANKING-LAYER-REVIEW.md)
+  - RL-01–RL-10 verified: retrieval boundary, DEC-010 provenance-once, permutation integrity, determinism (four profiles), DEC-011 replay, error vocabulary, OD-021, layer boundaries, forbidden capability scan
+  - Verdict: **ACCEPTED** — ranking layer **COMPLETE**
+
+### Notes
+
+- TASK-009A pre-authorization **authorized to begin** (governance only)
+- TASK-009A implementation remains **NOT AUTHORIZED**
+- Non-blocking observations RL-O-01–RL-O-04 documented; no remediation required
+
 ## [u-01-ranking-worker-skeleton] - 2026-06-02
 
 ### Added

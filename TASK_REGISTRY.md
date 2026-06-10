@@ -97,8 +97,9 @@ Bounded task tracking for `tax-os-backend`. Authoritative specs remain in `tax-o
 | TASK-008D-IMPLEMENTATION-AUTHORIZATION | Ranking Execution Implementation Authorization | Complete | **COMPLETE** — [`TASKS/TASK-008D-IMPLEMENTATION-AUTHORIZATION.md`](TASKS/TASK-008D-IMPLEMENTATION-AUTHORIZATION.md) |
 | TASK-008D | Ranking Execution | Complete | **ACCEPTED** — `f7a37ef`; tag `v0.1.4-ranking-execution` |
 | U-01 | Ranking Worker Skeleton | Complete | **ACCEPTED** — orchestration envelope — [`TASKS/U-01-RANKING-WORKER-SKELETON.md`](TASKS/U-01-RANKING-WORKER-SKELETON.md) |
-| TASK-008A+ | Ranking Layer Review (umbrella) | Planned | **Next gate** — before TASK-009A |
-| TASK-009A | Answer Assembly Pre-Authorization Review | Planned | After ranking layer review — **not authorized** |
+| TASK-008A+ | Ranking Layer Review (umbrella) | Complete | **ACCEPTED** — [`TASKS/RANKING-LAYER-REVIEW.md`](TASKS/RANKING-LAYER-REVIEW.md) |
+| TASK-009A-PREAUTH | Answer Assembly Pre-Auth Contract | Complete | **COMPLETE** — DEC-013 — [`ANSWER_ASSEMBLY_CONTRACT.md`](ANSWER_ASSEMBLY_CONTRACT.md) |
+| TASK-009A | Answer Assembly Implementation | Hold | **NOT AUTHORIZED** — await Claude review + impl auth — [`TASKS/TASK-009A-ANSWER-ASSEMBLY.md`](TASKS/TASK-009A-ANSWER-ASSEMBLY.md) |
 | TASK-DOC-001 | Master Status Document Realignment | Complete | CURRENT_STATUS, IMPLEMENTATION_ROADMAP, ARCHITECTURE_PHASE_MAP |
 
 ## Status Legend

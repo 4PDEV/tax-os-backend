@@ -145,3 +145,36 @@ Authority: TASK-008D-PREAUTH — [`RANKING_EXECUTION_CONTRACT.md`](RANKING_EXECU
 
 Status:
 LOCKED
+
+---
+
+## DEC-013 — Answer Assembly Boundary and Provenance Read Model
+
+Answer assembly constructs a **source-referenced answer package** from **completed ranking output only**.
+
+**Required:**
+
+- Consume terminal `ranking_status=completed` lifecycle and ranked evidence from the **accepted** `ranking_result` for the same `ranking_request_id` (RL-O-01)
+- Load retrieval provenance **read-only** via `ranked_evidence_reference` → `retrieval_evidence_reference` joins (DEC-010)
+- Preserve ranked evidence multiset and `presentation_order_index` order (E-01–E-07)
+- Surface ambiguity and uncertainty explicitly (DEC-005) — no silent certainty
+- Use answer-layer canonical error vocabulary — distinct from ranking errors
+- Single-worker carry-forward (OD-021) until explicit concurrency governance
+
+**Prohibited:**
+
+- Retrieval execution or evidence re-selection
+- Ranking execution or reordering
+- Evidence invention, silent omission, or retrieval bypass
+- Provenance duplication on answer-owned persistence
+- Citation creation or canonical citation mutation
+- Legal conclusions, applicability determination, or tax advice fields
+- AI / semantic / vector ranking or unconstrained LLM answer generation (DEC-001)
+- Answer runtime implementation without explicit authorization following 009A-PREAUTH acceptance
+
+Authority: TASK-009A-PREAUTH — [`ANSWER_ASSEMBLY_CONTRACT.md`](ANSWER_ASSEMBLY_CONTRACT.md); [`TASKS/TASK-009A-ANSWER-ASSEMBLY.md`](TASKS/TASK-009A-ANSWER-ASSEMBLY.md)
+
+**TASK-009A implementation remains NOT AUTHORIZED.**
+
+Status:
+LOCKED

@@ -36,6 +36,8 @@ The platform is materially beyond early foundation. Core registry, processing qu
 | Ranking execution authorization package | **COMPLETE** |
 | Ranking controlled execution (008D) | **COMPLETE** / **ACCEPTED** — tag `v0.1.4-ranking-execution` |
 | Ranking worker skeleton (U-01) | **COMPLETE** / **ACCEPTED** |
+| Ranking layer review (008A+) | **COMPLETE** / **ACCEPTED** |
+| Answer assembly pre-auth (009A-PREAUTH) | **COMPLETE** — DEC-013 |
 | Answer runtime (009A) | **NOT AUTHORIZED** |
 | AI / semantic ranking | **NOT AUTHORIZED** |
 | Ranking APIs | **NOT AUTHORIZED** |
@@ -81,16 +83,22 @@ The platform is materially beyond early foundation. Core registry, processing qu
 
 **U-01:** **COMPLETE** / **ACCEPTED** — ranking worker skeleton ([`TASKS/U-01-RANKING-WORKER-SKELETON.md`](TASKS/U-01-RANKING-WORKER-SKELETON.md)).
 
-**Current gate:** **Ranking Layer Review** — before any TASK-009A pre-authorization.
+**Ranking layer review (008A+):** **COMPLETE** / **ACCEPTED** — RL-01–RL-10 verified ([`TASKS/RANKING-LAYER-REVIEW.md`](TASKS/RANKING-LAYER-REVIEW.md)).
+
+**TASK-009A-PREAUTH:** **COMPLETE** — answer assembly contract — DEC-013 ([`ANSWER_ASSEMBLY_CONTRACT.md`](ANSWER_ASSEMBLY_CONTRACT.md), [`TASKS/TASK-009A-ANSWER-ASSEMBLY.md`](TASKS/TASK-009A-ANSWER-ASSEMBLY.md)).
+
+**Current gate:** **Claude review** of 009A-PREAUTH — then implementation authorization package.
 
 | Gate item | Status |
 |-----------|--------|
-| TASK-009A Answer Runtime | **NOT AUTHORIZED** |
+| TASK-009A Answer Runtime implementation | **NOT AUTHORIZED** |
+| TASK-009A-PREAUTH contract | **COMPLETE** |
+| 009A-IMPL-AUTH package | **NOT STARTED** |
 | AI / semantic ranking | **NOT AUTHORIZED** |
-| Ranking APIs | **NOT AUTHORIZED** |
-| Concurrent ranking workers | **NOT AUTHORIZED** |
+| Answer APIs | **NOT AUTHORIZED** |
+| Concurrent answer workers | **NOT AUTHORIZED** (OD-021) |
 
-Answer runtime (**009A**) follows only after ranking layer review closes.
+Answer runtime **implementation** remains closed until Claude acceptance of 009A-PREAUTH and explicit implementation authorization.
 
 **Architecture chain:** Evidence → Ranking → Answer Assembly → Response Runtime. Doctrine: `retrieval result` ≠ ranking · `ranking` ≠ answer · `answer` ≠ legal conclusion.
 
@@ -390,4 +398,4 @@ FOUNDATION → EXTRACTION CONTRACTS → LEGAL OBJECT GOVERNANCE → CITATION GOV
 → TEMPORAL GOVERNANCE → INGESTION PERSISTENCE → [TEST HARDENING] → AGENT LAYER → …
 ```
 
-**You are here:** U-01 **COMPLETE** / **ACCEPTED** · **Next:** Ranking Layer Review · **TASK-009A NOT AUTHORIZED**.
+**You are here:** 009A-PREAUTH **COMPLETE** · **Next:** Claude review → 009A-IMPL-AUTH · **009A implementation NOT AUTHORIZED**.
