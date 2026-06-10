@@ -4,7 +4,7 @@
 
 > **Also read:** [CURRENT_STATUS.md](CURRENT_STATUS.md) · [TASK_REGISTRY.md](TASK_REGISTRY.md) · [DECISION_LOG.md](DECISION_LOG.md) · [IMPLEMENTATION_ROADMAP.md](IMPLEMENTATION_ROADMAP.md) · [OPEN_DECISIONS.md](OPEN_DECISIONS.md)
 
-**Last handoff realigned:** 2026-06-02 · **Branch:** `main` · **HEAD:** `cc170aa` · **Tags:** `v0.1.2-ranking-preauth-reconciled`, `v0.1.1-ranking-contract-reconciled`, `checkpoint-task-008b-ranking-runtime-contract` · **origin/main:** up to date
+**Last handoff realigned:** 2026-06-02 · **Branch:** `main` · **HEAD:** `ae4e547` · **Tags:** `v0.1.3-ranking-persistence`, `v0.1.2-ranking-preauth-reconciled`, `v0.1.1-ranking-contract-reconciled` · **origin/main:** up to date
 
 ---
 
@@ -55,7 +55,7 @@ Source Registry → Source Versions → Extraction → Parsing → Legal Objects
 | Citation governance & execution | **COMPLETE** (006Y–006AD) |
 | Temporal governance | **COMPLETE** (005A-SPEC) |
 | Retrieval layer | **COMPLETE** (007A–007E) |
-| Ranking contract | **COMPLETE** (008B-v2) — 008C persistence **complete** |
+| Ranking contract | **COMPLETE** (008B-v2) — 008C persistence **complete** — 008D-PREAUTH **complete** |
 | Answer assembly | **NOT AUTHORIZED** (009A+) |
 
 **Foundational rule:** No AI legal reasoning in ingestion, legal-object, citation, retrieval, or ranking layers.
@@ -110,9 +110,11 @@ Ranking stores **order only**. Provenance lives **once** in `retrieval_evidence_
 
 **TASK-008C-PREAUTH-RECONCILIATION:** **COMPLETE** — **ACCEPTED** — committed `cc170aa`, pushed `origin/main`, tag `v0.1.2-ranking-preauth-reconciled` — [`TASKS/TASK-008C-PREAUTH-RECONCILIATION.md`](TASKS/TASK-008C-PREAUTH-RECONCILIATION.md).
 
-**TASK-008C persistence:** **COMPLETE** — append-only `ranking_requests`, `ranking_results`, `ranked_evidence_references` — Alembic `a8c1e4f92b37` — [`TASKS/TASK-008C-RANKING-PERSISTENCE.md`](TASKS/TASK-008C-RANKING-PERSISTENCE.md). Claude review **ACCEPTED**; F-10 closed — DEC-011 force replay hash interpretation.
+**TASK-008C persistence:** **COMPLETE** — append-only `ranking_requests`, `ranking_results`, `ranked_evidence_references` — Alembic `a8c1e4f92b37` — tag `v0.1.3-ranking-persistence` — [`TASKS/TASK-008C-RANKING-PERSISTENCE.md`](TASKS/TASK-008C-RANKING-PERSISTENCE.md). Claude review **ACCEPTED**; F-10 → DEC-011.
 
-**TASK-008D worker/execution:** **NOT AUTHORIZED** — next gate: ranking layer review or explicit 008D authorization.
+**TASK-008D-PREAUTH:** **COMPLETE** — [`RANKING_EXECUTION_CONTRACT.md`](RANKING_EXECUTION_CONTRACT.md); DEC-012 locked — [`TASKS/TASK-008D-RANKING-EXECUTION.md`](TASKS/TASK-008D-RANKING-EXECUTION.md).
+
+**TASK-008D worker/execution:** **NOT AUTHORIZED** — next gate: Claude review or explicit 008D implementation authorization.
 
 ---
 
@@ -189,7 +191,8 @@ All items applied in [`RANKING_RUNTIME_CONTRACT.md`](RANKING_RUNTIME_CONTRACT.md
 2. ~~Complete TASK-008C-PREAUTH-RECONCILIATION~~ — **done**
 3. Review with Claude (recommended).
 4. ~~Authorize **TASK-008C** ranking persistence~~ — **done** (limited implementation).
-5. Authorize **TASK-008D** ranking execution (separate bounded task).
+5. ~~TASK-008D-PREAUTH execution contract~~ — **done**.
+6. Authorize **TASK-008D** ranking execution implementation (separate bounded task).
 5. Start new ChatGPT chat using this document as primary context.
 
 **Not authorized:** 008D worker, 008D execution, 009A answer runtime, AI ranking.
@@ -201,7 +204,7 @@ All items applied in [`RANKING_RUNTIME_CONTRACT.md`](RANKING_RUNTIME_CONTRACT.md
 Copy into a new ChatGPT session:
 
 ```text
-We are continuing TAX-OS, a Source-Referenced Business & Tax Research Platform. ChatGPT is Architect/Governance. Cursor is Developer. Claude is Reviewer. GitHub/docs are the source of truth, not chat history. Read and follow PROJECT_STATE.md, DECISION_LOG.md, TASK_REGISTRY.md, MASTER_SCOPE, and ADDENDUMS. Current active task is TASK-008D ranking execution authorization (NOT AUTHORIZED) unless updated. Do not reopen locked decisions unless explicitly instructed.
+We are continuing TAX-OS, a Source-Referenced Business & Tax Research Platform. ChatGPT is Architect/Governance. Cursor is Developer. Claude is Reviewer. GitHub/docs are the source of truth, not chat history. Read and follow PROJECT_STATE.md, DECISION_LOG.md, TASK_REGISTRY.md, MASTER_SCOPE, and ADDENDUMS. Current active task is TASK-008D ranking execution implementation authorization (NOT AUTHORIZED) unless updated. Do not reopen locked decisions unless explicitly instructed.
 ```
 
 ---
@@ -1105,7 +1108,7 @@ TASK-006AB — Citation Worker Skeleton (**complete**; accepted `checkpoint-task
 
 **TASK-008B:** **COMPLETE** — ranking runtime contract ([`RANKING_RUNTIME_CONTRACT.md`](RANKING_RUNTIME_CONTRACT.md)). 008A1 forward conditions resolved. Persistence/execution **not authorized**.
 
-**Not authorized:** ranking persistence/execution (008C+), answers (009A), AI/semantic ranking, concurrent workers, legal advice.
+**Not authorized:** ranking execution implementation (008D), answers (009A), AI/semantic ranking, concurrent workers, legal advice.
 
 TASK-006P — Controlled Extraction Execution (**completed; controlled local text extraction into extraction_runs/extracted_texts; no PDF/network/parsing/legal automation**).
 

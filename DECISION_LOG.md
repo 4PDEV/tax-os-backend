@@ -113,3 +113,35 @@ Authority: TASK-008C ranking persistence — Claude review finding F-10 (documen
 
 Status:
 LOCKED
+
+---
+
+## DEC-012 — Ranking Execution Determinism and Boundary
+
+Ranking execution applies **mechanical permutation over completed retrieval only**.
+
+**Required:**
+
+- Same `retrieval_result` + `ranking_profile` + `contract_version` ⇒ identical ordering (`presentation_order_index` assignment)
+- Permutation integrity required — identical multiset of `retrieval_evidence_reference_id` values in and out
+- `rank_count` equals retrieval evidence count (and persisted ranked row count)
+- Zero-evidence completed retrieval ⇒ `ranking_status=completed`, `rank_count=0`, no error (`evidence_set_empty` prohibited)
+- Pure-pointer persistence remains mandatory (DEC-010)
+- Force replay behaviour governed by DEC-011
+- Single-worker only (OD-021)
+
+**Prohibited:**
+
+- Retrieval re-selection
+- AI ranking
+- Semantic / vector ranking
+- Answer generation
+- Legal conclusions
+- Citation synthesis
+
+Authority: TASK-008D-PREAUTH — [`RANKING_EXECUTION_CONTRACT.md`](RANKING_EXECUTION_CONTRACT.md); [`TASKS/TASK-008D-RANKING-EXECUTION.md`](TASKS/TASK-008D-RANKING-EXECUTION.md)
+
+**TASK-008D implementation and TASK-009A remain NOT AUTHORIZED.**
+
+Status:
+LOCKED

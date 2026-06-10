@@ -4,6 +4,20 @@ All notable changes to `tax-os-backend` are documented here.
 
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versions align with git tags where applicable.
 
+## [task-008d-preauth] - 2026-06-02
+
+### Added
+
+- TASK-008D-PREAUTH — ranking execution governance contract:
+  - [`RANKING_EXECUTION_CONTRACT.md`](RANKING_EXECUTION_CONTRACT.md)
+  - [`TASKS/TASK-008D-RANKING-EXECUTION.md`](TASKS/TASK-008D-RANKING-EXECUTION.md)
+  - DEC-012 — ranking execution determinism and boundary
+
+### Notes
+
+- Governance only — **TASK-008D implementation NOT AUTHORIZED**
+- **TASK-009A answer runtime NOT AUTHORIZED**
+
 ## [task-008c-ranking-persistence] - 2026-06-02
 
 ### Added

@@ -5,7 +5,7 @@ For detailed historical sections, see [PROJECT_STATE.md](PROJECT_STATE.md). For 
 
 **Last realigned:** 2026-06-02  
 **Branch:** `main`  
-**Alembic head:** `f9e4d2a87c10` (retrieval persistence — TASK-007C)
+**Alembic head:** `a8c1e4f92b37` (ranking persistence — TASK-008C)
 
 ---
 
@@ -31,9 +31,13 @@ The platform is materially beyond early foundation. Core registry, processing qu
 | Controlled retrieval execution (007E) | **COMPLETE** — **ACCEPTED** — 777 tests |
 | Retrieval layer (007A–007E) | **COMPLETE** |
 | Ranking runtime contract (008B) | **COMPLETE** — governance only |
-| Ranking persistence (008C) | **COMPLETE** — execution (008D+) **NOT AUTHORIZED** |
-| Answer / AI retrieval | **NOT AUTHORIZED** |
-| Concurrent workers | **NOT AUTHORIZED** (OD-021) |
+| Ranking persistence (008C) | **COMPLETE** / **ACCEPTED** — tag `v0.1.3-ranking-persistence` |
+| Ranking execution pre-auth (008D-PREAUTH) | **COMPLETE** — contract only |
+| Ranking execution (008D) | **NOT AUTHORIZED** |
+| Answer runtime (009A) | **NOT AUTHORIZED** |
+| AI / semantic ranking | **NOT AUTHORIZED** |
+| Ranking APIs | **NOT AUTHORIZED** |
+| Concurrent ranking workers | **NOT AUTHORIZED** (OD-021) |
 
 **TASK-007A:** **CLOSED** — APPROVED WITH REQUIRED REMEDIATION BEFORE TASK-007B ([`ARCHITECTURE_REVIEW_RETRIEVAL_RUNTIME_007A-PREAUTH.md`](ARCHITECTURE_REVIEW_RETRIEVAL_RUNTIME_007A-PREAUTH.md)).
 
@@ -65,13 +69,23 @@ The platform is materially beyond early foundation. Core registry, processing qu
 
 **TASK-008C-PREAUTH-RECONCILIATION:** **COMPLETE** — **ACCEPTED** — commit `cc170aa`, tag `v0.1.2-ranking-preauth-reconciled` ([`TASKS/TASK-008C-PREAUTH-RECONCILIATION.md`](TASKS/TASK-008C-PREAUTH-RECONCILIATION.md)).
 
-**TASK-008C:** **COMPLETE** — ranking persistence (pure-pointer append-only) — Alembic `a8c1e4f92b37`; Claude **ACCEPTED**; F-10 closed — DEC-011 ([`TASKS/TASK-008C-RANKING-PERSISTENCE.md`](TASKS/TASK-008C-RANKING-PERSISTENCE.md)).
+**TASK-008C:** **COMPLETE** / **ACCEPTED** — ranking persistence — Alembic `a8c1e4f92b37`; tag `v0.1.3-ranking-persistence`; DEC-011 ([`TASKS/TASK-008C-RANKING-PERSISTENCE.md`](TASKS/TASK-008C-RANKING-PERSISTENCE.md)).
 
-**Next gate:** **TASK-008D** ranking execution/worker — **NOT AUTHORIZED**. Answer runtime (**009A**) follows only after ranking layer review closes.
+**TASK-008D-PREAUTH:** **COMPLETE** — ranking execution contract — DEC-012 ([`RANKING_EXECUTION_CONTRACT.md`](RANKING_EXECUTION_CONTRACT.md), [`TASKS/TASK-008D-RANKING-EXECUTION.md`](TASKS/TASK-008D-RANKING-EXECUTION.md)).
+
+**Current gate:** **TASK-008D** — Ranking Execution.
+
+| Gate item | Status |
+|-----------|--------|
+| TASK-008D implementation | **NOT AUTHORIZED** |
+| TASK-009A Answer Runtime | **NOT AUTHORIZED** |
+| AI / semantic ranking | **NOT AUTHORIZED** |
+| Ranking APIs | **NOT AUTHORIZED** |
+| Concurrent ranking workers | **NOT AUTHORIZED** |
+
+Answer runtime (**009A**) follows only after ranking layer review closes.
 
 **Architecture chain:** Evidence → Ranking → Answer Assembly → Response Runtime. Doctrine: `retrieval result` ≠ ranking · `ranking` ≠ answer · `answer` ≠ legal conclusion.
-
-Ranking, answers, AI **not authorized**.
 
 **Environments:** development and internal staging only. No public production deployment.
 
@@ -369,4 +383,4 @@ FOUNDATION → EXTRACTION CONTRACTS → LEGAL OBJECT GOVERNANCE → CITATION GOV
 → TEMPORAL GOVERNANCE → INGESTION PERSISTENCE → [TEST HARDENING] → AGENT LAYER → …
 ```
 
-**You are here:** TASK-008C ranking persistence **COMPLETE**. **Next:** TASK-008D execution gate. **Not authorized:** 008D execution, answer runtime (009A), AI ranking.
+**You are here:** TASK-008C **COMPLETE** / **ACCEPTED** · TASK-008D-PREAUTH **COMPLETE** · **Current gate:** TASK-008D Ranking Execution (**NOT AUTHORIZED**). **Not authorized:** 008D implementation, 009A answer runtime, AI/semantic ranking, APIs, concurrent workers.
