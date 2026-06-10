@@ -32,7 +32,8 @@ The platform is materially beyond early foundation. Core registry, processing qu
 | Retrieval layer (007A–007E) | **COMPLETE** |
 | Ranking runtime contract (008B) | **COMPLETE** — governance only |
 | Ranking persistence (008C) | **COMPLETE** / **ACCEPTED** — tag `v0.1.3-ranking-persistence` |
-| Ranking execution pre-auth (008D-PREAUTH) | **COMPLETE** — contract only |
+| Ranking execution pre-auth (008D-PREAUTH) | **COMPLETE** / **ACCEPTED** |
+| Ranking execution authorization package | **COMPLETE** |
 | Ranking execution (008D) | **NOT AUTHORIZED** |
 | Answer runtime (009A) | **NOT AUTHORIZED** |
 | AI / semantic ranking | **NOT AUTHORIZED** |
@@ -71,9 +72,11 @@ The platform is materially beyond early foundation. Core registry, processing qu
 
 **TASK-008C:** **COMPLETE** / **ACCEPTED** — ranking persistence — Alembic `a8c1e4f92b37`; tag `v0.1.3-ranking-persistence`; DEC-011 ([`TASKS/TASK-008C-RANKING-PERSISTENCE.md`](TASKS/TASK-008C-RANKING-PERSISTENCE.md)).
 
-**TASK-008D-PREAUTH:** **COMPLETE** — ranking execution contract — DEC-012 ([`RANKING_EXECUTION_CONTRACT.md`](RANKING_EXECUTION_CONTRACT.md), [`TASKS/TASK-008D-RANKING-EXECUTION.md`](TASKS/TASK-008D-RANKING-EXECUTION.md)).
+**TASK-008D-PREAUTH:** **COMPLETE** / **ACCEPTED** — ranking execution contract — DEC-012 ([`RANKING_EXECUTION_CONTRACT.md`](RANKING_EXECUTION_CONTRACT.md), [`TASKS/TASK-008D-RANKING-EXECUTION.md`](TASKS/TASK-008D-RANKING-EXECUTION.md)).
 
-**Current gate:** **TASK-008D** — Ranking Execution.
+**TASK-008D-IMPLEMENTATION-AUTHORIZATION:** **COMPLETE** — implementation design package ([`TASKS/TASK-008D-IMPLEMENTATION-AUTHORIZATION.md`](TASKS/TASK-008D-IMPLEMENTATION-AUTHORIZATION.md)).
+
+**Current gate:** **TASK-008D** — Implementation Authorization Review.
 
 | Gate item | Status |
 |-----------|--------|
@@ -383,4 +386,4 @@ FOUNDATION → EXTRACTION CONTRACTS → LEGAL OBJECT GOVERNANCE → CITATION GOV
 → TEMPORAL GOVERNANCE → INGESTION PERSISTENCE → [TEST HARDENING] → AGENT LAYER → …
 ```
 
-**You are here:** TASK-008C **COMPLETE** / **ACCEPTED** · TASK-008D-PREAUTH **COMPLETE** · **Current gate:** TASK-008D Ranking Execution (**NOT AUTHORIZED**). **Not authorized:** 008D implementation, 009A answer runtime, AI/semantic ranking, APIs, concurrent workers.
+**You are here:** TASK-008C **COMPLETE** / **ACCEPTED** · TASK-008D-PREAUTH **COMPLETE** / **ACCEPTED** · TASK-008D Authorization Package **COMPLETE** · **Current gate:** TASK-008D Implementation Authorization Review · **TASK-008D NOT AUTHORIZED** · **TASK-009A NOT AUTHORIZED**.

@@ -92,9 +92,10 @@ Bounded task tracking for `tax-os-backend`. Authoritative specs remain in `tax-o
 | TASK-008B | Ranking Runtime Contract | Complete | 008B-v2 — [`RANKING_RUNTIME_CONTRACT.md`](RANKING_RUNTIME_CONTRACT.md); reconciled 008C-REMEDIATION |
 | TASK-008C-REMEDIATION | Ranking Contract Reconciliation | Complete | Pure-pointer shape — [`RANKING_PERSISTENCE_REMEDIATION_008C-REMEDIATION.md`](RANKING_PERSISTENCE_REMEDIATION_008C-REMEDIATION.md) |
 | TASK-008C-PREAUTH-RECONCILIATION | Ranking Persistence Pre-Auth Reconciliation | Complete | Accepted `cc170aa`; tag `v0.1.2-ranking-preauth-reconciled` — [`TASKS/TASK-008C-PREAUTH-RECONCILIATION.md`](TASKS/TASK-008C-PREAUTH-RECONCILIATION.md) |
-| TASK-008C | Ranking Persistence | Complete | Pure-pointer append-only — Alembic `a8c1e4f92b37`; tag `v0.1.3-ranking-persistence`; DEC-011 — [`TASKS/TASK-008C-RANKING-PERSISTENCE.md`](TASKS/TASK-008C-RANKING-PERSISTENCE.md) |
-| TASK-008D-PREAUTH | Ranking Execution Pre-Auth Contract | Complete | [`RANKING_EXECUTION_CONTRACT.md`](RANKING_EXECUTION_CONTRACT.md); DEC-012 — [`TASKS/TASK-008D-RANKING-EXECUTION.md`](TASKS/TASK-008D-RANKING-EXECUTION.md) |
-| TASK-008D | Ranking Execution | Hold | **NOT AUTHORIZED** — await explicit implementation authorization |
+| TASK-008C | Ranking Persistence | Complete | **COMPLETE** — Alembic `a8c1e4f92b37`; tag `v0.1.3-ranking-persistence` — [`TASKS/TASK-008C-RANKING-PERSISTENCE.md`](TASKS/TASK-008C-RANKING-PERSISTENCE.md) |
+| TASK-008D-PREAUTH | Ranking Execution Pre-Auth Contract | Complete | **COMPLETE** — accepted `bf201f2`; DEC-012 — [`RANKING_EXECUTION_CONTRACT.md`](RANKING_EXECUTION_CONTRACT.md) |
+| TASK-008D-IMPLEMENTATION-AUTHORIZATION | Ranking Execution Implementation Authorization | Complete | **COMPLETE** — [`TASKS/TASK-008D-IMPLEMENTATION-AUTHORIZATION.md`](TASKS/TASK-008D-IMPLEMENTATION-AUTHORIZATION.md) |
+| TASK-008D | Ranking Execution | Pending authorization | **NOT AUTHORIZED** — await implementation authorization review |
 | TASK-008A+ | Ranking Layer Review (umbrella) | Planned | After 008D |
 | TASK-009A | Answer Assembly Pre-Authorization Review | Planned | After ranking layer review — **not authorized** |
 | TASK-DOC-001 | Master Status Document Realignment | Complete | CURRENT_STATUS, IMPLEMENTATION_ROADMAP, ARCHITECTURE_PHASE_MAP |
@@ -105,6 +106,7 @@ Bounded task tracking for `tax-os-backend`. Authoritative specs remain in `tax-o
 |--------|---------|
 | Planned | Approved, not started |
 | Hold | Blocked until prerequisite gate closes (e.g. Claude review) |
+| Pending authorization | Design/contract complete; implementation not yet authorized |
 | Authorized | Approved for implementation; not yet started |
 | In progress | Active implementation |
 | Pending VM acceptance | Code complete; VM verification required |
