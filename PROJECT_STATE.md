@@ -4,7 +4,7 @@
 
 > **Also read:** [CURRENT_STATUS.md](CURRENT_STATUS.md) · [TASK_REGISTRY.md](TASK_REGISTRY.md) · [DECISION_LOG.md](DECISION_LOG.md) · [IMPLEMENTATION_ROADMAP.md](IMPLEMENTATION_ROADMAP.md) · [OPEN_DECISIONS.md](OPEN_DECISIONS.md)
 
-**Last handoff realigned:** 2026-06-02 · **Branch:** `main` · **HEAD:** `ae4e547` · **Tags:** `v0.1.3-ranking-persistence`, `v0.1.2-ranking-preauth-reconciled`, `v0.1.1-ranking-contract-reconciled` · **origin/main:** up to date
+**Last handoff realigned:** 2026-06-02 · **Branch:** `main` · **HEAD:** `bf201f2` · **Tags:** `v0.1.3-ranking-persistence`, `v0.1.2-ranking-preauth-reconciled`, `v0.1.1-ranking-contract-reconciled` · **origin/main:** up to date
 
 ---
 
@@ -112,9 +112,11 @@ Ranking stores **order only**. Provenance lives **once** in `retrieval_evidence_
 
 **TASK-008C persistence:** **COMPLETE** — append-only `ranking_requests`, `ranking_results`, `ranked_evidence_references` — Alembic `a8c1e4f92b37` — tag `v0.1.3-ranking-persistence` — [`TASKS/TASK-008C-RANKING-PERSISTENCE.md`](TASKS/TASK-008C-RANKING-PERSISTENCE.md). Claude review **ACCEPTED**; F-10 → DEC-011.
 
-**TASK-008D-PREAUTH:** **COMPLETE** — [`RANKING_EXECUTION_CONTRACT.md`](RANKING_EXECUTION_CONTRACT.md); DEC-012 locked — [`TASKS/TASK-008D-RANKING-EXECUTION.md`](TASKS/TASK-008D-RANKING-EXECUTION.md).
+**TASK-008D-PREAUTH:** **COMPLETE** / **ACCEPTED** — [`RANKING_EXECUTION_CONTRACT.md`](RANKING_EXECUTION_CONTRACT.md); DEC-012 — [`TASKS/TASK-008D-RANKING-EXECUTION.md`](TASKS/TASK-008D-RANKING-EXECUTION.md).
 
-**TASK-008D worker/execution:** **NOT AUTHORIZED** — next gate: Claude review or explicit 008D implementation authorization.
+**TASK-008D-IMPLEMENTATION-AUTHORIZATION:** **COMPLETE** — design package locked — [`TASKS/TASK-008D-IMPLEMENTATION-AUTHORIZATION.md`](TASKS/TASK-008D-IMPLEMENTATION-AUTHORIZATION.md).
+
+**TASK-008D worker/execution code:** **NOT AUTHORIZED** — next gate: accept authorization package + explicit implementation prompt.
 
 ---
 
@@ -192,7 +194,8 @@ All items applied in [`RANKING_RUNTIME_CONTRACT.md`](RANKING_RUNTIME_CONTRACT.md
 3. Review with Claude (recommended).
 4. ~~Authorize **TASK-008C** ranking persistence~~ — **done** (limited implementation).
 5. ~~TASK-008D-PREAUTH execution contract~~ — **done**.
-6. Authorize **TASK-008D** ranking execution implementation (separate bounded task).
+6. ~~TASK-008D-IMPLEMENTATION-AUTHORIZATION package~~ — **done**.
+7. Accept package and authorize **TASK-008D** ranking execution implementation (separate bounded task).
 5. Start new ChatGPT chat using this document as primary context.
 
 **Not authorized:** 008D worker, 008D execution, 009A answer runtime, AI ranking.
@@ -204,7 +207,7 @@ All items applied in [`RANKING_RUNTIME_CONTRACT.md`](RANKING_RUNTIME_CONTRACT.md
 Copy into a new ChatGPT session:
 
 ```text
-We are continuing TAX-OS, a Source-Referenced Business & Tax Research Platform. ChatGPT is Architect/Governance. Cursor is Developer. Claude is Reviewer. GitHub/docs are the source of truth, not chat history. Read and follow PROJECT_STATE.md, DECISION_LOG.md, TASK_REGISTRY.md, MASTER_SCOPE, and ADDENDUMS. Current active task is TASK-008D ranking execution implementation authorization (NOT AUTHORIZED) unless updated. Do not reopen locked decisions unless explicitly instructed.
+We are continuing TAX-OS, a Source-Referenced Business & Tax Research Platform. ChatGPT is Architect/Governance. Cursor is Developer. Claude is Reviewer. GitHub/docs are the source of truth, not chat history. Read and follow PROJECT_STATE.md, DECISION_LOG.md, TASK_REGISTRY.md, MASTER_SCOPE, and ADDENDUMS. Current active task is TASK-008D ranking execution implementation (NOT AUTHORIZED) — authorization package complete; await acceptance prompt. Do not reopen locked decisions unless explicitly instructed.
 ```
 
 ---

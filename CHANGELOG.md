@@ -4,6 +4,18 @@ All notable changes to `tax-os-backend` are documented here.
 
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versions align with git tags where applicable.
 
+## [task-008d-implementation-authorization] - 2026-06-02
+
+### Added
+
+- TASK-008D-IMPLEMENTATION-AUTHORIZATION — ranking execution implementation design package:
+  - [`TASKS/TASK-008D-IMPLEMENTATION-AUTHORIZATION.md`](TASKS/TASK-008D-IMPLEMENTATION-AUTHORIZATION.md)
+  - Locks: service boundary (`ranking_execution`), inputs, profile algorithms, permutation validation, zero-evidence path, 008C persistence integration, replay/idempotency (DEC-011), failure mapping, worker model (OD-021), test plan
+
+### Notes
+
+- Governance/design only — **TASK-008D implementation NOT AUTHORIZED**
+
 ## [task-008d-preauth] - 2026-06-02
 
 ### Added
