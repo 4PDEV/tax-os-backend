@@ -471,9 +471,13 @@ def test_no_prohibited_imports_in_ranking_execution():
                 assert not stripped.startswith(prefix), f"{prefix} forbidden in {path.name}: {line}"
 
 
-def test_execution_module_has_no_worker_or_api_paths():
-    backend_root = Path(__file__).resolve().parents[1] / "app"
-    assert not (backend_root / "workers" / "ranking_runtime").exists()
+def test_ranking_runtime_worker_has_no_duplicate_ranking_logic():
+    worker_dir = Path(__file__).resolve().parents[1] / "app" / "workers" / "ranking_runtime"
+    if not worker_dir.exists():
+        return
+    sources = "".join(path.read_text() for path in worker_dir.glob("*.py")).lower()
+    for token in ("apply_ranking_profile", "sort_canonical", "validate_permutation"):
+        assert token not in sources, f"{token} must not appear in ranking_runtime worker"
 
 
 def test_replay_hash_differs_with_nonce():

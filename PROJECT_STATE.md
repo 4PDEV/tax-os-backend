@@ -4,7 +4,7 @@
 
 > **Also read:** [CURRENT_STATUS.md](CURRENT_STATUS.md) · [TASK_REGISTRY.md](TASK_REGISTRY.md) · [DECISION_LOG.md](DECISION_LOG.md) · [IMPLEMENTATION_ROADMAP.md](IMPLEMENTATION_ROADMAP.md) · [OPEN_DECISIONS.md](OPEN_DECISIONS.md)
 
-**Last handoff realigned:** 2026-06-02 · **Branch:** `main` · **HEAD:** `bf201f2` · **Tags:** `v0.1.3-ranking-persistence`, `v0.1.2-ranking-preauth-reconciled`, `v0.1.1-ranking-contract-reconciled` · **origin/main:** up to date
+**Last handoff realigned:** 2026-06-02 · **Branch:** `main` · **HEAD:** `f7a37ef` · **Tags:** `v0.1.4-ranking-execution`, `v0.1.3-ranking-persistence`, `v0.1.2-ranking-preauth-reconciled` · **origin/main:** up to date
 
 ---
 
@@ -116,7 +116,9 @@ Ranking stores **order only**. Provenance lives **once** in `retrieval_evidence_
 
 **TASK-008D-IMPLEMENTATION-AUTHORIZATION:** **COMPLETE** — design package locked — [`TASKS/TASK-008D-IMPLEMENTATION-AUTHORIZATION.md`](TASKS/TASK-008D-IMPLEMENTATION-AUTHORIZATION.md).
 
-**TASK-008D worker/execution code:** **NOT AUTHORIZED** — next gate: accept authorization package + explicit implementation prompt.
+**TASK-008D controlled execution:** **COMPLETE** / **ACCEPTED** — tag `v0.1.4-ranking-execution` — `ranking_execution` service.
+
+**U-01 ranking worker skeleton:** **COMPLETE** / **ACCEPTED** — [`TASKS/U-01-RANKING-WORKER-SKELETON.md`](TASKS/U-01-RANKING-WORKER-SKELETON.md).
 
 ---
 
@@ -195,10 +197,12 @@ All items applied in [`RANKING_RUNTIME_CONTRACT.md`](RANKING_RUNTIME_CONTRACT.md
 4. ~~Authorize **TASK-008C** ranking persistence~~ — **done** (limited implementation).
 5. ~~TASK-008D-PREAUTH execution contract~~ — **done**.
 6. ~~TASK-008D-IMPLEMENTATION-AUTHORIZATION package~~ — **done**.
-7. Accept package and authorize **TASK-008D** ranking execution implementation (separate bounded task).
+7. ~~TASK-008D ranking execution implementation~~ — **done** (`f7a37ef`, `v0.1.4-ranking-execution`).
+8. ~~**U-01** ranking worker skeleton~~ — **done** (accepted).
+9. **Ranking Layer Review** — next gate (before TASK-009A).
 5. Start new ChatGPT chat using this document as primary context.
 
-**Not authorized:** 008D worker, 008D execution, 009A answer runtime, AI ranking.
+**Not authorized:** Ranking Layer Review, 009A answer runtime, AI ranking, queue infrastructure.
 
 ---
 
@@ -207,7 +211,7 @@ All items applied in [`RANKING_RUNTIME_CONTRACT.md`](RANKING_RUNTIME_CONTRACT.md
 Copy into a new ChatGPT session:
 
 ```text
-We are continuing TAX-OS, a Source-Referenced Business & Tax Research Platform. ChatGPT is Architect/Governance. Cursor is Developer. Claude is Reviewer. GitHub/docs are the source of truth, not chat history. Read and follow PROJECT_STATE.md, DECISION_LOG.md, TASK_REGISTRY.md, MASTER_SCOPE, and ADDENDUMS. Current active task is TASK-008D ranking execution implementation (NOT AUTHORIZED) — authorization package complete; await acceptance prompt. Do not reopen locked decisions unless explicitly instructed.
+We are continuing TAX-OS, a Source-Referenced Business & Tax Research Platform. ChatGPT is Architect/Governance. Cursor is Developer. Claude is Reviewer. GitHub/docs are the source of truth, not chat history. Read and follow PROJECT_STATE.md, DECISION_LOG.md, TASK_REGISTRY.md, MASTER_SCOPE, and ADDENDUMS. Current active task is U-01 ranking worker skeleton (in review) — TASK-009A NOT AUTHORIZED. Do not reopen locked decisions unless explicitly instructed.
 ```
 
 ---

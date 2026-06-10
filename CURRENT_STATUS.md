@@ -34,7 +34,8 @@ The platform is materially beyond early foundation. Core registry, processing qu
 | Ranking persistence (008C) | **COMPLETE** / **ACCEPTED** — tag `v0.1.3-ranking-persistence` |
 | Ranking execution pre-auth (008D-PREAUTH) | **COMPLETE** / **ACCEPTED** |
 | Ranking execution authorization package | **COMPLETE** |
-| Ranking execution (008D) | **NOT AUTHORIZED** |
+| Ranking controlled execution (008D) | **COMPLETE** / **ACCEPTED** — tag `v0.1.4-ranking-execution` |
+| Ranking worker skeleton (U-01) | **COMPLETE** / **ACCEPTED** |
 | Answer runtime (009A) | **NOT AUTHORIZED** |
 | AI / semantic ranking | **NOT AUTHORIZED** |
 | Ranking APIs | **NOT AUTHORIZED** |
@@ -76,11 +77,14 @@ The platform is materially beyond early foundation. Core registry, processing qu
 
 **TASK-008D-IMPLEMENTATION-AUTHORIZATION:** **COMPLETE** — implementation design package ([`TASKS/TASK-008D-IMPLEMENTATION-AUTHORIZATION.md`](TASKS/TASK-008D-IMPLEMENTATION-AUTHORIZATION.md)).
 
-**Current gate:** **TASK-008D** — Implementation Authorization Review.
+**TASK-008D:** **COMPLETE** / **ACCEPTED** — controlled ranking execution — tag `v0.1.4-ranking-execution`.
+
+**U-01:** **COMPLETE** / **ACCEPTED** — ranking worker skeleton ([`TASKS/U-01-RANKING-WORKER-SKELETON.md`](TASKS/U-01-RANKING-WORKER-SKELETON.md)).
+
+**Current gate:** **Ranking Layer Review** — before any TASK-009A pre-authorization.
 
 | Gate item | Status |
 |-----------|--------|
-| TASK-008D implementation | **NOT AUTHORIZED** |
 | TASK-009A Answer Runtime | **NOT AUTHORIZED** |
 | AI / semantic ranking | **NOT AUTHORIZED** |
 | Ranking APIs | **NOT AUTHORIZED** |
@@ -386,4 +390,4 @@ FOUNDATION → EXTRACTION CONTRACTS → LEGAL OBJECT GOVERNANCE → CITATION GOV
 → TEMPORAL GOVERNANCE → INGESTION PERSISTENCE → [TEST HARDENING] → AGENT LAYER → …
 ```
 
-**You are here:** TASK-008C **COMPLETE** / **ACCEPTED** · TASK-008D-PREAUTH **COMPLETE** / **ACCEPTED** · TASK-008D Authorization Package **COMPLETE** · **Current gate:** TASK-008D Implementation Authorization Review · **TASK-008D NOT AUTHORIZED** · **TASK-009A NOT AUTHORIZED**.
+**You are here:** U-01 **COMPLETE** / **ACCEPTED** · **Next:** Ranking Layer Review · **TASK-009A NOT AUTHORIZED**.

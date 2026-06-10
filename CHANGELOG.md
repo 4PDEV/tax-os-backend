@@ -4,6 +4,21 @@ All notable changes to `tax-os-backend` are documented here.
 
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versions align with git tags where applicable.
 
+## [u-01-ranking-worker-skeleton] - 2026-06-02
+
+### Added
+
+- U-01 ranking worker skeleton:
+  - `backend/app/workers/ranking_runtime/` — `run_ranking_worker`, `RankingWorkerRequest`, `RankingWorkerOutcome`
+  - Single-worker orchestration (OD-021); delegates to `execute_controlled_ranking` only
+  - Documented queue lifecycle (accepted → running → completed | failed) — no broker infrastructure
+  - [`TASKS/U-01-RANKING-WORKER-SKELETON.md`](TASKS/U-01-RANKING-WORKER-SKELETON.md)
+
+### Notes
+
+- Claude review: **ACCEPTED** (20/20)
+- Skeleton only — **TASK-009A NOT AUTHORIZED**; no queue infrastructure
+
 ## [task-008d-implementation-authorization] - 2026-06-02
 
 ### Added
