@@ -39,7 +39,9 @@ The platform is materially beyond early foundation. Core registry, processing qu
 | Ranking layer review (008A+) | **COMPLETE** / **ACCEPTED** |
 | Answer assembly pre-auth (009A-PREAUTH) | **ACCEPTED** — DEC-013 |
 | Answer impl authorization (009A-IMPL-AUTH) | **ACCEPTED** — DEC-014 — `v0.1.7-answer-impl-auth` |
-| Answer assembly (009A) | **NOT AUTHORIZED** |
+| Answer assembly (009A) | **COMPLETE** / **ACCEPTED** — `v0.1.8-answer-assembly` |
+| Answer layer review (009A+) | **COMPLETE** / **ACCEPTED** |
+| Answer persistence pre-auth (009B-PREAUTH) | **NOT STARTED** |
 | Answer persistence (009B) | **NOT AUTHORIZED** |
 | AI / semantic ranking | **NOT AUTHORIZED** |
 | Ranking APIs | **NOT AUTHORIZED** |
@@ -91,19 +93,22 @@ The platform is materially beyond early foundation. Core registry, processing qu
 
 **TASK-009A-IMPL-AUTH:** **ACCEPTED** — DEC-014 — tag `v0.1.7-answer-impl-auth`.
 
-**Current gate:** **TASK-009A** bounded implementation — requires explicit authorization prompt.
+**TASK-009A:** **COMPLETE** / **ACCEPTED** — ephemeral answer assembly — tag `v0.1.8-answer-assembly`.
+
+**Answer layer review (009A+):** **COMPLETE** / **ACCEPTED** — AL-01–AL-10 verified ([`TASKS/ANSWER-LAYER-REVIEW.md`](TASKS/ANSWER-LAYER-REVIEW.md)).
+
+**Current gate:** **TASK-009B-PREAUTH** — Answer Persistence Governance (before any 009B implementation).
 
 | Gate item | Status |
 |-----------|--------|
-| TASK-009A implementation | **NOT AUTHORIZED** (impl auth accepted — ready for bounded prompt) |
-| TASK-009A-PREAUTH | **ACCEPTED** |
-| TASK-009A-IMPL-AUTH | **ACCEPTED** |
-| TASK-009B persistence | **NOT AUTHORIZED** |
+| TASK-009B-PREAUTH | **AUTHORIZED TO BEGIN** (governance only) |
+| TASK-009B implementation | **NOT AUTHORIZED** |
+| Answer worker | **NOT AUTHORIZED** |
 | AI / semantic answer generation | **NOT AUTHORIZED** |
 | Answer APIs / response runtime | **NOT AUTHORIZED** |
 | Concurrent answer workers | **NOT AUTHORIZED** (OD-021) |
 
-009A scope when authorized: ephemeral `answer_assembly` service + tests only (Option A; no worker; no persistence).
+009B implementation remains closed until 009B-PREAUTH acceptance and explicit implementation authorization.
 
 **Architecture chain:** Evidence → Ranking → Answer Assembly → Response Runtime. Doctrine: `retrieval result` ≠ ranking · `ranking` ≠ answer · `answer` ≠ legal conclusion.
 
@@ -403,4 +408,4 @@ FOUNDATION → EXTRACTION CONTRACTS → LEGAL OBJECT GOVERNANCE → CITATION GOV
 → TEMPORAL GOVERNANCE → INGESTION PERSISTENCE → [TEST HARDENING] → AGENT LAYER → …
 ```
 
-**You are here:** 009A-IMPL-AUTH **ACCEPTED** · **Next:** TASK-009A bounded implementation (explicit prompt) · **009A code NOT AUTHORIZED until prompted**.
+**You are here:** Answer layer **COMPLETE** / **ACCEPTED** · **Next:** TASK-009B-PREAUTH · **009B implementation NOT AUTHORIZED**.

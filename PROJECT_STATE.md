@@ -58,7 +58,9 @@ Source Registry → Source Versions → Extraction → Parsing → Legal Objects
 | Ranking contract | **COMPLETE** (008B-v2) — 008C persistence **complete** — 008D-PREAUTH **complete** |
 | Answer assembly pre-auth (009A-PREAUTH) | **ACCEPTED** — DEC-013 |
 | Answer impl authorization (009A-IMPL-AUTH) | **ACCEPTED** — DEC-014 — `v0.1.7-answer-impl-auth` |
-| Answer assembly implementation (009A) | **NOT AUTHORIZED** — ephemeral only |
+| Answer assembly (009A) | **COMPLETE** / **ACCEPTED** — `v0.1.8-answer-assembly` |
+| Answer layer review (009A+) | **COMPLETE** / **ACCEPTED** |
+| Answer persistence pre-auth (009B-PREAUTH) | **Next gate** |
 | Answer persistence (009B) | **NOT AUTHORIZED** |
 
 **Foundational rule:** No AI legal reasoning in ingestion, legal-object, citation, retrieval, or ranking layers.
@@ -128,6 +130,10 @@ Ranking stores **order only**. Provenance lives **once** in `retrieval_evidence_
 **TASK-009A-PREAUTH:** **ACCEPTED** — DEC-013 — [`ANSWER_ASSEMBLY_CONTRACT.md`](ANSWER_ASSEMBLY_CONTRACT.md).
 
 **TASK-009A-IMPL-AUTH:** **ACCEPTED** — DEC-014 — tag `v0.1.7-answer-impl-auth`.
+
+**TASK-009A answer assembly:** **COMPLETE** / **ACCEPTED** — ephemeral `answer_assembly` — tag `v0.1.8-answer-assembly`.
+
+**Answer layer review (009A+):** **COMPLETE** / **ACCEPTED** — [`TASKS/ANSWER-LAYER-REVIEW.md`](TASKS/ANSWER-LAYER-REVIEW.md).
 
 ---
 
@@ -226,10 +232,12 @@ All items applied in [`RANKING_RUNTIME_CONTRACT.md`](RANKING_RUNTIME_CONTRACT.md
 10. ~~**TASK-009A-PREAUTH**~~ — **done** (DEC-013).
 11. ~~**TASK-009A-IMPL-AUTH**~~ — **done** (DEC-014).
 12. ~~**Claude review** of 009A-IMPL-AUTH~~ — **done** (accepted).
-13. **TASK-009A** bounded implementation — await explicit authorization prompt.
+13. ~~**TASK-009A** answer assembly~~ — **done** (`v0.1.8-answer-assembly`).
+14. ~~**Answer layer review**~~ — **done** (accepted).
+15. **TASK-009B-PREAUTH** — answer persistence governance — next gate.
 5. Start new ChatGPT chat using this document as primary context.
 
-**Not authorized:** 009A code, 009B persistence, answer worker, answer APIs, AI answer generation, queue infrastructure.
+**Not authorized:** 009B implementation, answer worker, answer APIs, response runtime, AI answer generation.
 
 ---
 
@@ -238,7 +246,7 @@ All items applied in [`RANKING_RUNTIME_CONTRACT.md`](RANKING_RUNTIME_CONTRACT.md
 Copy into a new ChatGPT session:
 
 ```text
-We are continuing TAX-OS, a Source-Referenced Business & Tax Research Platform. ChatGPT is Architect/Governance. Cursor is Developer. Claude is Reviewer. GitHub/docs are the source of truth, not chat history. Read and follow PROJECT_STATE.md, DECISION_LOG.md, TASK_REGISTRY.md, MASTER_SCOPE, and ADDENDUMS. Current active task is TASK-009A bounded answer assembly implementation — requires explicit authorization prompt; code NOT AUTHORIZED until prompted. Do not reopen locked decisions unless explicitly instructed.
+We are continuing TAX-OS, a Source-Referenced Business & Tax Research Platform. ChatGPT is Architect/Governance. Cursor is Developer. Claude is Reviewer. GitHub/docs are the source of truth, not chat history. Read and follow PROJECT_STATE.md, DECISION_LOG.md, TASK_REGISTRY.md, MASTER_SCOPE, and ADDENDUMS. Current active task is TASK-009B-PREAUTH answer persistence governance — 009B implementation NOT AUTHORIZED. Do not reopen locked decisions unless explicitly instructed.
 ```
 
 ---

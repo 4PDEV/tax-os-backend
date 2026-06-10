@@ -100,8 +100,10 @@ Bounded task tracking for `tax-os-backend`. Authoritative specs remain in `tax-o
 | TASK-008A+ | Ranking Layer Review (umbrella) | Complete | **ACCEPTED** — [`TASKS/RANKING-LAYER-REVIEW.md`](TASKS/RANKING-LAYER-REVIEW.md) |
 | TASK-009A-PREAUTH | Answer Assembly Pre-Auth Contract | Complete | **ACCEPTED** — DEC-013 — [`ANSWER_ASSEMBLY_CONTRACT.md`](ANSWER_ASSEMBLY_CONTRACT.md) |
 | TASK-009A-IMPL-AUTH | Answer Assembly Implementation Authorization | Complete | **ACCEPTED** — DEC-014 — tag `v0.1.7-answer-impl-auth` |
-| TASK-009A | Answer Assembly Implementation | Hold | **NOT AUTHORIZED** — await explicit implementation prompt — ephemeral service + tests only |
-| TASK-009B | Answer Persistence (Option B) | Planned | **NOT AUTHORIZED** — deferred |
+| TASK-009A | Answer Assembly Implementation | Complete | **ACCEPTED** — ephemeral `answer_assembly` — `8ddb285`, `v0.1.8-answer-assembly` |
+| TASK-009A+ | Answer Layer Review (umbrella) | Complete | **ACCEPTED** — [`TASKS/ANSWER-LAYER-REVIEW.md`](TASKS/ANSWER-LAYER-REVIEW.md) |
+| TASK-009B-PREAUTH | Answer Persistence Pre-Auth Contract | Planned | **Next gate** — governance only; implementation **not authorized** |
+| TASK-009B | Answer Persistence (Option B) | Planned | **NOT AUTHORIZED** |
 | TASK-DOC-001 | Master Status Document Realignment | Complete | CURRENT_STATUS, IMPLEMENTATION_ROADMAP, ARCHITECTURE_PHASE_MAP |
 
 ## Status Legend

@@ -4,6 +4,21 @@ All notable changes to `tax-os-backend` are documented here.
 
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versions align with git tags where applicable.
 
+## [answer-layer-review] - 2026-06-02
+
+### Added
+
+- Answer Layer Review (TASK-009A+) — end-to-end governance review:
+  - [`TASKS/ANSWER-LAYER-REVIEW.md`](TASKS/ANSWER-LAYER-REVIEW.md)
+  - AL-01–AL-10 verified: retrieval→ranking→answer boundary, RL-O-01, evidence completeness, DEC-010, citation boundary, failure model, determinism, layer boundaries, forbidden capability scan
+  - Verdict: **ACCEPTED** — answer layer **COMPLETE** (ephemeral 009A)
+
+### Notes
+
+- TASK-009B-PREAUTH **authorized to begin** (governance only)
+- TASK-009B implementation remains **NOT AUTHORIZED**
+- Non-blocking observations AL-O-01–AL-O-05 documented; no remediation required
+
 ## [task-009a-impl-auth] - 2026-06-02
 
 ### Added
