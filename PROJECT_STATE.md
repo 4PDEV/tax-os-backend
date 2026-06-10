@@ -56,8 +56,10 @@ Source Registry → Source Versions → Extraction → Parsing → Legal Objects
 | Temporal governance | **COMPLETE** (005A-SPEC) |
 | Retrieval layer | **COMPLETE** (007A–007E) |
 | Ranking contract | **COMPLETE** (008B-v2) — 008C persistence **complete** — 008D-PREAUTH **complete** |
-| Answer assembly pre-auth (009A-PREAUTH) | **COMPLETE** — DEC-013 |
-| Answer assembly implementation | **NOT AUTHORIZED** (009A) |
+| Answer assembly pre-auth (009A-PREAUTH) | **ACCEPTED** — DEC-013 |
+| Answer impl authorization (009A-IMPL-AUTH) | **ACCEPTED** — DEC-014 — `v0.1.7-answer-impl-auth` |
+| Answer assembly implementation (009A) | **NOT AUTHORIZED** — ephemeral only |
+| Answer persistence (009B) | **NOT AUTHORIZED** |
 
 **Foundational rule:** No AI legal reasoning in ingestion, legal-object, citation, retrieval, or ranking layers.
 
@@ -123,7 +125,9 @@ Ranking stores **order only**. Provenance lives **once** in `retrieval_evidence_
 
 **Ranking layer review (008A+):** **COMPLETE** / **ACCEPTED** — [`TASKS/RANKING-LAYER-REVIEW.md`](TASKS/RANKING-LAYER-REVIEW.md).
 
-**TASK-009A-PREAUTH:** **COMPLETE** — answer assembly contract — DEC-013 — [`ANSWER_ASSEMBLY_CONTRACT.md`](ANSWER_ASSEMBLY_CONTRACT.md).
+**TASK-009A-PREAUTH:** **ACCEPTED** — DEC-013 — [`ANSWER_ASSEMBLY_CONTRACT.md`](ANSWER_ASSEMBLY_CONTRACT.md).
+
+**TASK-009A-IMPL-AUTH:** **ACCEPTED** — DEC-014 — tag `v0.1.7-answer-impl-auth`.
 
 ---
 
@@ -219,12 +223,13 @@ All items applied in [`RANKING_RUNTIME_CONTRACT.md`](RANKING_RUNTIME_CONTRACT.md
 7. ~~TASK-008D ranking execution implementation~~ — **done** (`f7a37ef`, `v0.1.4-ranking-execution`).
 8. ~~**U-01** ranking worker skeleton~~ — **done** (accepted).
 9. ~~**Ranking Layer Review**~~ — **done** (accepted).
-10. ~~**TASK-009A-PREAUTH** answer assembly contract~~ — **done** (DEC-013).
-11. **Claude review** of 009A-PREAUTH — next gate.
-12. **009A-IMPL-AUTH** — not started.
+10. ~~**TASK-009A-PREAUTH**~~ — **done** (DEC-013).
+11. ~~**TASK-009A-IMPL-AUTH**~~ — **done** (DEC-014).
+12. ~~**Claude review** of 009A-IMPL-AUTH~~ — **done** (accepted).
+13. **TASK-009A** bounded implementation — await explicit authorization prompt.
 5. Start new ChatGPT chat using this document as primary context.
 
-**Not authorized:** 009A answer runtime implementation, answer persistence, answer APIs, AI answer generation, queue infrastructure.
+**Not authorized:** 009A code, 009B persistence, answer worker, answer APIs, AI answer generation, queue infrastructure.
 
 ---
 
@@ -233,7 +238,7 @@ All items applied in [`RANKING_RUNTIME_CONTRACT.md`](RANKING_RUNTIME_CONTRACT.md
 Copy into a new ChatGPT session:
 
 ```text
-We are continuing TAX-OS, a Source-Referenced Business & Tax Research Platform. ChatGPT is Architect/Governance. Cursor is Developer. Claude is Reviewer. GitHub/docs are the source of truth, not chat history. Read and follow PROJECT_STATE.md, DECISION_LOG.md, TASK_REGISTRY.md, MASTER_SCOPE, and ADDENDUMS. Current active task is Claude review of TASK-009A-PREAUTH answer assembly contract — 009A implementation NOT AUTHORIZED. Do not reopen locked decisions unless explicitly instructed.
+We are continuing TAX-OS, a Source-Referenced Business & Tax Research Platform. ChatGPT is Architect/Governance. Cursor is Developer. Claude is Reviewer. GitHub/docs are the source of truth, not chat history. Read and follow PROJECT_STATE.md, DECISION_LOG.md, TASK_REGISTRY.md, MASTER_SCOPE, and ADDENDUMS. Current active task is TASK-009A bounded answer assembly implementation — requires explicit authorization prompt; code NOT AUTHORIZED until prompted. Do not reopen locked decisions unless explicitly instructed.
 ```
 
 ---

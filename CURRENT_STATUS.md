@@ -37,8 +37,10 @@ The platform is materially beyond early foundation. Core registry, processing qu
 | Ranking controlled execution (008D) | **COMPLETE** / **ACCEPTED** — tag `v0.1.4-ranking-execution` |
 | Ranking worker skeleton (U-01) | **COMPLETE** / **ACCEPTED** |
 | Ranking layer review (008A+) | **COMPLETE** / **ACCEPTED** |
-| Answer assembly pre-auth (009A-PREAUTH) | **COMPLETE** — DEC-013 |
-| Answer runtime (009A) | **NOT AUTHORIZED** |
+| Answer assembly pre-auth (009A-PREAUTH) | **ACCEPTED** — DEC-013 |
+| Answer impl authorization (009A-IMPL-AUTH) | **ACCEPTED** — DEC-014 — `v0.1.7-answer-impl-auth` |
+| Answer assembly (009A) | **NOT AUTHORIZED** |
+| Answer persistence (009B) | **NOT AUTHORIZED** |
 | AI / semantic ranking | **NOT AUTHORIZED** |
 | Ranking APIs | **NOT AUTHORIZED** |
 | Concurrent ranking workers | **NOT AUTHORIZED** (OD-021) |
@@ -85,20 +87,23 @@ The platform is materially beyond early foundation. Core registry, processing qu
 
 **Ranking layer review (008A+):** **COMPLETE** / **ACCEPTED** — RL-01–RL-10 verified ([`TASKS/RANKING-LAYER-REVIEW.md`](TASKS/RANKING-LAYER-REVIEW.md)).
 
-**TASK-009A-PREAUTH:** **COMPLETE** — answer assembly contract — DEC-013 ([`ANSWER_ASSEMBLY_CONTRACT.md`](ANSWER_ASSEMBLY_CONTRACT.md), [`TASKS/TASK-009A-ANSWER-ASSEMBLY.md`](TASKS/TASK-009A-ANSWER-ASSEMBLY.md)).
+**TASK-009A-PREAUTH:** **ACCEPTED** — DEC-013 ([`ANSWER_ASSEMBLY_CONTRACT.md`](ANSWER_ASSEMBLY_CONTRACT.md)).
 
-**Current gate:** **Claude review** of 009A-PREAUTH — then implementation authorization package.
+**TASK-009A-IMPL-AUTH:** **ACCEPTED** — DEC-014 — tag `v0.1.7-answer-impl-auth`.
+
+**Current gate:** **TASK-009A** bounded implementation — requires explicit authorization prompt.
 
 | Gate item | Status |
 |-----------|--------|
-| TASK-009A Answer Runtime implementation | **NOT AUTHORIZED** |
-| TASK-009A-PREAUTH contract | **COMPLETE** |
-| 009A-IMPL-AUTH package | **NOT STARTED** |
-| AI / semantic ranking | **NOT AUTHORIZED** |
-| Answer APIs | **NOT AUTHORIZED** |
+| TASK-009A implementation | **NOT AUTHORIZED** (impl auth accepted — ready for bounded prompt) |
+| TASK-009A-PREAUTH | **ACCEPTED** |
+| TASK-009A-IMPL-AUTH | **ACCEPTED** |
+| TASK-009B persistence | **NOT AUTHORIZED** |
+| AI / semantic answer generation | **NOT AUTHORIZED** |
+| Answer APIs / response runtime | **NOT AUTHORIZED** |
 | Concurrent answer workers | **NOT AUTHORIZED** (OD-021) |
 
-Answer runtime **implementation** remains closed until Claude acceptance of 009A-PREAUTH and explicit implementation authorization.
+009A scope when authorized: ephemeral `answer_assembly` service + tests only (Option A; no worker; no persistence).
 
 **Architecture chain:** Evidence → Ranking → Answer Assembly → Response Runtime. Doctrine: `retrieval result` ≠ ranking · `ranking` ≠ answer · `answer` ≠ legal conclusion.
 
@@ -398,4 +403,4 @@ FOUNDATION → EXTRACTION CONTRACTS → LEGAL OBJECT GOVERNANCE → CITATION GOV
 → TEMPORAL GOVERNANCE → INGESTION PERSISTENCE → [TEST HARDENING] → AGENT LAYER → …
 ```
 
-**You are here:** 009A-PREAUTH **COMPLETE** · **Next:** Claude review → 009A-IMPL-AUTH · **009A implementation NOT AUTHORIZED**.
+**You are here:** 009A-IMPL-AUTH **ACCEPTED** · **Next:** TASK-009A bounded implementation (explicit prompt) · **009A code NOT AUTHORIZED until prompted**.

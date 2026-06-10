@@ -178,3 +178,24 @@ Authority: TASK-009A-PREAUTH — [`ANSWER_ASSEMBLY_CONTRACT.md`](ANSWER_ASSEMBLY
 
 Status:
 LOCKED
+
+---
+
+## DEC-014 — Answer Assembly Implementation Scope (009A-v1)
+
+First bounded answer assembly implementation (**TASK-009A**, when authorized) is **ephemeral only**:
+
+- Returns in-memory `AnswerPackage` — **no** `answer_requests` / `answer_results` persistence (Option A)
+- Provenance read-only via joins — DEC-010 preserved; no authoritative provenance duplication
+- Append-only persisted lifecycle for answers deferred to **TASK-009B** (Option B — not authorized)
+- **CitationFormatter** permitted read-only when `include_rendered_citation_text=true` and `citation_id` resolves
+- **CitationAssembler** prohibited in 009A-v1 answer path
+- No narrative `answer_text`, legal conclusions, recommendations, or AI generation
+- Direct service entry only — answer worker deferred; OD-021 carry-forward for future worker task
+
+Authority: TASK-009A-IMPLEMENTATION-AUTHORIZATION — [`TASKS/TASK-009A-IMPLEMENTATION-AUTHORIZATION.md`](TASKS/TASK-009A-IMPLEMENTATION-AUTHORIZATION.md)
+
+**TASK-009A implementation remains NOT AUTHORIZED** until explicit acceptance of the implementation authorization package.
+
+Status:
+LOCKED

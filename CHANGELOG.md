@@ -4,6 +4,27 @@ All notable changes to `tax-os-backend` are documented here.
 
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versions align with git tags where applicable.
 
+## [task-009a-impl-auth] - 2026-06-02
+
+### Added
+
+- TASK-009A-IMPLEMENTATION-AUTHORIZATION — answer assembly implementation design package:
+  - [`TASKS/TASK-009A-IMPLEMENTATION-AUTHORIZATION.md`](TASKS/TASK-009A-IMPLEMENTATION-AUTHORIZATION.md)
+  - OQ-01 locked: **Option A** ephemeral `AnswerPackage` only (no persistence)
+  - OQ-03 locked: **CitationFormatter** read-only permitted; **CitationAssembler** prohibited
+  - RL-O-01 mandatory tests RL-T-01–RL-T-10
+  - Service boundary: `backend/app/services/answer_assembly/` (`assembly.py`, `validation.py`, `models.py`)
+  - Ephemeral lifecycle, failure mapping, import guards, OD-021 carry-forward (direct service only)
+  - AnswerPackage construction sequence; test plan (design only)
+  - DEC-014 locked in [`DECISION_LOG.md`](DECISION_LOG.md)
+
+### Notes
+
+- Claude review: **ACCEPTED**
+- Governance/design only — **TASK-009A implementation NOT AUTHORIZED** until explicit bounded prompt
+- TASK-009B persistence (Option B) deferred
+- Tag: `v0.1.7-answer-impl-auth`
+
 ## [task-009a-preauth] - 2026-06-02
 
 ### Added

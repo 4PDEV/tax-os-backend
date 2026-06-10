@@ -7,7 +7,8 @@
 | Phase | Status |
 |-------|--------|
 | Ranking layer review (008A+) | **Complete** / **ACCEPTED** |
-| TASK-009A-PREAUTH | **Complete** — answer assembly contract envelope |
+| TASK-009A-PREAUTH | **Accepted** — DEC-013 |
+| TASK-009A-IMPL-AUTH | **Complete** — DEC-014 — [`TASKS/TASK-009A-IMPLEMENTATION-AUTHORIZATION.md`](TASK-009A-IMPLEMENTATION-AUTHORIZATION.md) |
 | TASK-009A implementation | **NOT AUTHORIZED** |
 | Answer persistence (009B+) | **NOT AUTHORIZED** |
 | Answer worker (009C+) | **NOT AUTHORIZED** |
@@ -116,9 +117,9 @@ Establish the governed answer assembly contract — source-referenced answer pac
 
 | ID | Question | Owner |
 |----|----------|-------|
-| OQ-01 | Answer persistence: ephemeral package vs append-only `answer_requests` / `answer_results`? | Governance |
-| OQ-02 | Narrative `answer_text`: separate contract generation or included in 009A-v1 extension? | Governance |
-| OQ-03 | Read-only `CitationFormatter` / `CitationAssembler` invocation: permitted in first implementation slice? | Governance |
+| OQ-01 | Answer persistence | **CLOSED** — Option A ephemeral (DEC-014); Option B → TASK-009B |
+| OQ-02 | Narrative `answer_text` | **Open** — not in 009A-v1 |
+| OQ-03 | Citation rendering | **CLOSED** — `CitationFormatter` yes; `CitationAssembler` no (DEC-014) |
 | OQ-04 | Response runtime handoff: separate pre-auth before public API? | Governance |
 | OQ-05 | Zero-evidence answer package: empty `evidence_entries` + informational `zero_evidence` uncertainty flag? | Implementation auth |
 | OQ-06 | Citation-required vs citation-optional assembly modes per jurisdiction? | Governance |
