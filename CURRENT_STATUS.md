@@ -31,7 +31,7 @@ The platform is materially beyond early foundation. Core registry, processing qu
 | Controlled retrieval execution (007E) | **COMPLETE** — **ACCEPTED** — 777 tests |
 | Retrieval layer (007A–007E) | **COMPLETE** |
 | Ranking runtime contract (008B) | **COMPLETE** — governance only |
-| Ranking persistence / execution (008C+) | **NOT AUTHORIZED** |
+| Ranking persistence (008C) | **COMPLETE** — execution (008D+) **NOT AUTHORIZED** |
 | Answer / AI retrieval | **NOT AUTHORIZED** |
 | Concurrent workers | **NOT AUTHORIZED** (OD-021) |
 
@@ -63,9 +63,11 @@ The platform is materially beyond early foundation. Core registry, processing qu
 
 **TASK-008C-REMEDIATION:** **COMPLETE** — provenance-once / pure-pointer contract reconciled — tag `v0.1.1-ranking-contract-reconciled` (`eff0699`).
 
-**TASK-008C-PREAUTH-RECONCILIATION:** **COMPLETE** — **ACCEPTED** — commit `cc170aa`, tag `v0.1.2-ranking-preauth-reconciled`, pushed `origin/main` ([`TASKS/TASK-008C-PREAUTH-RECONCILIATION.md`](TASKS/TASK-008C-PREAUTH-RECONCILIATION.md)).
+**TASK-008C-PREAUTH-RECONCILIATION:** **COMPLETE** — **ACCEPTED** — commit `cc170aa`, tag `v0.1.2-ranking-preauth-reconciled` ([`TASKS/TASK-008C-PREAUTH-RECONCILIATION.md`](TASKS/TASK-008C-PREAUTH-RECONCILIATION.md)).
 
-**Next gate:** **TASK-008C** ranking persistence — **NOT AUTHORIZED** until explicit authorization prompt. Answer runtime (**009A**) follows only after ranking layer review closes.
+**TASK-008C:** **COMPLETE** — ranking persistence (pure-pointer append-only) — Alembic `a8c1e4f92b37`; Claude **ACCEPTED**; F-10 closed — DEC-011 ([`TASKS/TASK-008C-RANKING-PERSISTENCE.md`](TASKS/TASK-008C-RANKING-PERSISTENCE.md)).
+
+**Next gate:** **TASK-008D** ranking execution/worker — **NOT AUTHORIZED**. Answer runtime (**009A**) follows only after ranking layer review closes.
 
 **Architecture chain:** Evidence → Ranking → Answer Assembly → Response Runtime. Doctrine: `retrieval result` ≠ ranking · `ranking` ≠ answer · `answer` ≠ legal conclusion.
 
@@ -367,4 +369,4 @@ FOUNDATION → EXTRACTION CONTRACTS → LEGAL OBJECT GOVERNANCE → CITATION GOV
 → TEMPORAL GOVERNANCE → INGESTION PERSISTENCE → [TEST HARDENING] → AGENT LAYER → …
 ```
 
-**You are here:** TASK-008B ranking contract **COMPLETE**. **Next:** TASK-008C persistence gate. **Not authorized:** 008D execution, answer runtime (009A), AI ranking.
+**You are here:** TASK-008C ranking persistence **COMPLETE**. **Next:** TASK-008D execution gate. **Not authorized:** 008D execution, answer runtime (009A), AI ranking.

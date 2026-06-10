@@ -84,3 +84,32 @@ Authority: TASK-008C-REMEDIATION — [`RANKING_PERSISTENCE_REMEDIATION_008C-REME
 
 Status:
 LOCKED
+
+---
+
+## DEC-011 — Force Replay Hash Interpretation
+
+For normal ranking requests (`force_replay = false`), `ranking_request_hash` remains:
+
+```text
+SHA-256(canonical_json({
+  retrieval_result_id,
+  ranking_profile,
+  contract_version
+}))
+```
+
+When `force_replay = true`, the persisted request-hash payload may include replay-specific entropy (e.g. `replay_nonce`) so an additional append-only lifecycle request can be recorded without colliding with the default de-duplication rule.
+
+This interpretation:
+
+- Exists only to allow an additional append-only lifecycle request row
+- Does **not** change ranking determinism, ranking output, permutation validation, prerequisite validation, pure-pointer persistence, or provenance-once doctrine (DEC-010)
+- Leaves the default non-replay de-duplication rule enforced by partial unique index `UNIQUE (ranking_request_hash) WHERE force_replay = false`
+
+Authority: TASK-008C ranking persistence — Claude review finding F-10 (documentation closure); implementation in [`backend/app/services/ranking_persistence/hashing.py`](backend/app/services/ranking_persistence/hashing.py)
+
+**TASK-008D and TASK-009A remain NOT AUTHORIZED.**
+
+Status:
+LOCKED

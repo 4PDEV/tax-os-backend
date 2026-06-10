@@ -27,6 +27,9 @@ from app.models.parsed_structure import ParsedStructure
 from app.models.parser_run import ParserRun
 from app.models.parsing_trigger_request import ParsingTriggerRequest
 from app.models.parsing_trigger_result import ParsingTriggerResult
+from app.models.ranked_evidence_reference import RankedEvidenceReference
+from app.models.ranking_request import RankingRequest
+from app.models.ranking_result import RankingResult
 from app.models.retrieval_evidence_reference import RetrievalEvidenceReference
 from app.models.retrieval_request import RetrievalRequest
 from app.models.retrieval_result import RetrievalResult
@@ -67,6 +70,9 @@ __all__ = [
     "ParserRun",
     "ParsingTriggerRequest",
     "ParsingTriggerResult",
+    "RankedEvidenceReference",
+    "RankingRequest",
+    "RankingResult",
     "RetrievalEvidenceReference",
     "RetrievalRequest",
     "RetrievalResult",

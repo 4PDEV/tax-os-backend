@@ -55,7 +55,7 @@ Source Registry → Source Versions → Extraction → Parsing → Legal Objects
 | Citation governance & execution | **COMPLETE** (006Y–006AD) |
 | Temporal governance | **COMPLETE** (005A-SPEC) |
 | Retrieval layer | **COMPLETE** (007A–007E) |
-| Ranking contract | **COMPLETE** (008B-v2) — 008C-REMEDIATION **complete** |
+| Ranking contract | **COMPLETE** (008B-v2) — 008C persistence **complete** |
 | Answer assembly | **NOT AUTHORIZED** (009A+) |
 
 **Foundational rule:** No AI legal reasoning in ingestion, legal-object, citation, retrieval, or ranking layers.
@@ -110,7 +110,9 @@ Ranking stores **order only**. Provenance lives **once** in `retrieval_evidence_
 
 **TASK-008C-PREAUTH-RECONCILIATION:** **COMPLETE** — **ACCEPTED** — committed `cc170aa`, pushed `origin/main`, tag `v0.1.2-ranking-preauth-reconciled` — [`TASKS/TASK-008C-PREAUTH-RECONCILIATION.md`](TASKS/TASK-008C-PREAUTH-RECONCILIATION.md).
 
-**TASK-008C migration/models:** **NOT AUTHORIZED** — next gate: Claude review or explicit TASK-008C authorization prompt.
+**TASK-008C persistence:** **COMPLETE** — append-only `ranking_requests`, `ranking_results`, `ranked_evidence_references` — Alembic `a8c1e4f92b37` — [`TASKS/TASK-008C-RANKING-PERSISTENCE.md`](TASKS/TASK-008C-RANKING-PERSISTENCE.md). Claude review **ACCEPTED**; F-10 closed — DEC-011 force replay hash interpretation.
+
+**TASK-008D worker/execution:** **NOT AUTHORIZED** — next gate: ranking layer review or explicit 008D authorization.
 
 ---
 
@@ -141,7 +143,7 @@ All items applied in [`RANKING_RUNTIME_CONTRACT.md`](RANKING_RUNTIME_CONTRACT.md
 4. `evidence_set_empty` removed
 5. Zero-result → `completed`, `rank_count=0`
 6. Prohibited interpretive fields documented
-7. **008C implementation** — still **not authorized**
+7. **008C implementation** — **complete** (limited persistence); DEC-011 force replay hash (F-10)
 
 ---
 
@@ -158,7 +160,7 @@ All items applied in [`RANKING_RUNTIME_CONTRACT.md`](RANKING_RUNTIME_CONTRACT.md
 | Backend repo | `/opt/tax-os/repos/tax-os-backend` |
 | Infra repo | `/opt/tax-os/repos/tax-os-infra` |
 | GitHub remote | `git@github.com:4PDEV/tax-os-backend.git` |
-| Alembic head | `f9e4d2a87c10` (retrieval persistence — no ranking tables yet) |
+| Alembic head | `a8c1e4f92b37` (ranking persistence — pure-pointer tables) |
 | Test DB | `taxos_test` — see [DEVELOPMENT_SETUP.md](DEVELOPMENT_SETUP.md) |
 
 ---
@@ -186,10 +188,11 @@ All items applied in [`RANKING_RUNTIME_CONTRACT.md`](RANKING_RUNTIME_CONTRACT.md
 1. ~~Complete TASK-008C-REMEDIATION~~ — **done**
 2. ~~Complete TASK-008C-PREAUTH-RECONCILIATION~~ — **done**
 3. Review with Claude (recommended).
-4. Authorize **TASK-008C** ranking persistence (separate bounded task).
+4. ~~Authorize **TASK-008C** ranking persistence~~ — **done** (limited implementation).
+5. Authorize **TASK-008D** ranking execution (separate bounded task).
 5. Start new ChatGPT chat using this document as primary context.
 
-**Not authorized:** 008C implementation, 008D worker, 008D execution, 009A answer runtime, AI ranking.
+**Not authorized:** 008D worker, 008D execution, 009A answer runtime, AI ranking.
 
 ---
 
@@ -198,7 +201,7 @@ All items applied in [`RANKING_RUNTIME_CONTRACT.md`](RANKING_RUNTIME_CONTRACT.md
 Copy into a new ChatGPT session:
 
 ```text
-We are continuing TAX-OS, a Source-Referenced Business & Tax Research Platform. ChatGPT is Architect/Governance. Cursor is Developer. Claude is Reviewer. GitHub/docs are the source of truth, not chat history. Read and follow PROJECT_STATE.md, DECISION_LOG.md, TASK_REGISTRY.md, MASTER_SCOPE, and ADDENDUMS. Current active task is TASK-008C ranking persistence authorization (NOT AUTHORIZED) unless updated. Do not reopen locked decisions unless explicitly instructed.
+We are continuing TAX-OS, a Source-Referenced Business & Tax Research Platform. ChatGPT is Architect/Governance. Cursor is Developer. Claude is Reviewer. GitHub/docs are the source of truth, not chat history. Read and follow PROJECT_STATE.md, DECISION_LOG.md, TASK_REGISTRY.md, MASTER_SCOPE, and ADDENDUMS. Current active task is TASK-008D ranking execution authorization (NOT AUTHORIZED) unless updated. Do not reopen locked decisions unless explicitly instructed.
 ```
 
 ---

@@ -79,9 +79,9 @@ tax-os-backend/
 | Retrieval layer (007A–007E) | **COMPLETE** — review APPROVED FOR CONTINUE; tag `checkpoint-task-007a-007e-retrieval-pipeline-review` |
 | Ranking remediation (008A1) | **COMPLETE** — acceptance **CLOSED** — [`RANKING_RUNTIME_008A1_ACCEPTANCE_REVIEW.md`](RANKING_RUNTIME_008A1_ACCEPTANCE_REVIEW.md) |
 | Ranking contract (008B) | **COMPLETE** — [`RANKING_RUNTIME_CONTRACT.md`](RANKING_RUNTIME_CONTRACT.md) |
-| Approved next gate | **TASK-008C** — Ranking Persistence (**NOT AUTHORIZED**) |
+| Approved next gate | **TASK-008D** — Ranking Execution (**NOT AUTHORIZED**) |
 | Answer assembly (009A) | **NOT AUTHORIZED** — after ranking layer review |
-| Ranking persistence/execution (008C+) | **NOT AUTHORIZED** |
+| Ranking persistence (008C) | **COMPLETE** — execution/worker (008D+) **NOT AUTHORIZED** |
 | Admin CRUD APIs | Operational |
 | Legal object / citation contracts | Merged on `main` (003A–004D) |
 | Temporal governance | Merged (005A–005C); tag `checkpoint-task-005a-spec` |

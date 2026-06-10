@@ -111,6 +111,20 @@ request_hash (retrieval) ≠ ranking_request_hash ≠ retrieval_evidence_referen
 
 `force_replay` appends new lifecycle rows — does not bypass permutation or prerequisite validation.
 
+### Force replay hash (DEC-011)
+
+Default requests (`force_replay = false`): hash envelope is `{retrieval_result_id, ranking_profile, contract_version}` only — see formula above.
+
+Replay requests (`force_replay = true`): the persisted hash payload may include `force_replay` and `replay_nonce` (or equivalent replay entropy) so a new append-only `ranking_requests` row is permitted without violating idempotency for default requests.
+
+Replay hash entropy:
+
+- Allows an additional append-only lifecycle request only
+- Does **not** alter ranking determinism, output, permutation validation, prerequisite validation, pure-pointer persistence, or provenance-once doctrine
+- Does **not** bypass partial unique index `UNIQUE (ranking_request_hash) WHERE force_replay = false` for default requests
+
+See [`DECISION_LOG.md`](DECISION_LOG.md) DEC-011.
+
 ---
 
 ## Ranking profiles (RK-08)
@@ -519,7 +533,7 @@ Ranking **must not** modify `retrieval_evidence_references` or `retrieval_result
 
 ```text
 TASK-008B  This contract (governance)
-  → TASK-008C  Persistence (not authorized)
+  → TASK-008C  Persistence (complete — limited implementation)
   → TASK-008D  Worker / execution (not authorized)
   → Ranking Layer Review (future)
   → TASK-009A  Answer assembly pre-auth (not authorized)
@@ -531,7 +545,8 @@ TASK-008B  This contract (governance)
 
 | Capability | Status |
 |------------|--------|
-| Ranking persistence / workers (008C / 008D) | **NOT AUTHORIZED** |
+| Ranking persistence (008C) | **COMPLETE** (limited — append-only tables/models) |
+| Ranking workers / execution (008D) | **NOT AUTHORIZED** |
 | Answer runtime (009A) | **NOT AUTHORIZED** |
 | AI / semantic / vector ranking | **NOT AUTHORIZED** |
 | Concurrent ranking workers | **NOT AUTHORIZED** |
@@ -583,7 +598,7 @@ Pre-authorization reconciliation confirming 008B contract is ready for TASK-008C
 
 See [`TASKS/TASK-008C-PREAUTH-RECONCILIATION.md`](TASKS/TASK-008C-PREAUTH-RECONCILIATION.md).
 
-**TASK-008C implementation remains NOT AUTHORIZED.**
+**TASK-008C persistence implemented** (limited scope). **TASK-008D execution remains NOT AUTHORIZED.**
 
 ---
 

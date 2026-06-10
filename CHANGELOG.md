@@ -4,6 +4,22 @@ All notable changes to `tax-os-backend` are documented here.
 
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versions align with git tags where applicable.
 
+## [task-008c-ranking-persistence] - 2026-06-02
+
+### Added
+
+- TASK-008C ranking persistence (limited implementation):
+  - Migration `a8c1e4f92b37` — `ranking_requests`, `ranking_results`, `ranked_evidence_references`
+  - Composite membership `UNIQUE(retrieval_result_id, id)` on `retrieval_evidence_references`
+  - Append-only ORM models and `ranking_persistence` service
+  - Persistence tests: pure-pointer guards, FK/composite membership, duplicate rejection, zero-result success, canonical errors
+- DEC-011 — force replay hash interpretation (Claude F-10 documentation closure)
+
+### Notes
+
+- Claude review: **ACCEPTED** (F-10 closed via DEC-011)
+- Persistence only — **TASK-008D execution and TASK-009A answer runtime NOT AUTHORIZED**
+
 ## [v0.1.2-ranking-preauth-reconciled] - 2026-06-02
 
 ### Added
