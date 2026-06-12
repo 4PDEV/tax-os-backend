@@ -64,6 +64,7 @@ Source Registry → Source Versions → Extraction → Parsing → Legal Objects
 | Answer persistence impl auth (009B-IMPL-AUTH) | **COMPLETE** — DEC-016 |
 | Answer persistence (009B) | **COMPLETE** / **ACCEPTED** — `v0.1.9-answer-persistence` |
 | Answer persistence review (009B+) | **COMPLETE** / **ACCEPTED WITH REMEDIATION** |
+| Answer worker pre-auth (009C-PREAUTH) | **COMPLETE** — DEC-017 |
 
 **Foundational rule:** No AI legal reasoning in ingestion, legal-object, citation, retrieval, or ranking layers.
 
@@ -143,7 +144,9 @@ Ranking stores **order only**. Provenance lives **once** in `retrieval_evidence_
 
 **TASK-009B:** **COMPLETE** — append-only answer persistence — tag `v0.1.9-answer-persistence`.
 
-**Answer persistence review (009B+):** **ACCEPTED WITH REMEDIATION** — [`TASKS/ANSWER-PERSISTENCE-REVIEW.md`](TASKS/ANSWER-PERSISTENCE-REVIEW.md). TASK-009C-PREAUTH authorized; 009C implementation **NOT AUTHORIZED**.
+**Answer persistence review (009B+):** **ACCEPTED WITH REMEDIATION** — [`TASKS/ANSWER-PERSISTENCE-REVIEW.md`](TASKS/ANSWER-PERSISTENCE-REVIEW.md).
+
+**TASK-009C-PREAUTH:** **COMPLETE** — answer worker contract — DEC-017 — [`ANSWER_WORKER_CONTRACT.md`](ANSWER_WORKER_CONTRACT.md).
 
 ---
 
@@ -261,8 +264,10 @@ All items applied in [`RANKING_RUNTIME_CONTRACT.md`](RANKING_RUNTIME_CONTRACT.md
 16. ~~**009B-IMPL-AUTH**~~ — **done** (DEC-016).
 17. ~~**TASK-009B**~~ — **done** (`v0.1.9-answer-persistence`).
 18. ~~**009B+ persistence review**~~ — **done** (ACCEPTED WITH REMEDIATION).
-19. **TASK-009C-PREAUTH** — next gate (governance only).
-20. **TASK-009C** answer worker implementation — not authorized.
+19. ~~**TASK-009C-PREAUTH**~~ — **done** (DEC-017).
+20. **Claude review** of 009C-PREAUTH — next gate.
+21. **009C-IMPL-AUTH** — not started.
+22. **TASK-009C** answer worker implementation — not authorized.
 5. Start new ChatGPT chat using this document as primary context.
 
 **Not authorized:** TASK-009C answer worker, response runtime, public APIs, AI answer generation, CitationAssembler, legal conclusions, recommendations, concurrent workers.
@@ -274,7 +279,7 @@ All items applied in [`RANKING_RUNTIME_CONTRACT.md`](RANKING_RUNTIME_CONTRACT.md
 Copy into a new ChatGPT session:
 
 ```text
-We are continuing TAX-OS, a Source-Referenced Business & Tax Research Platform. ChatGPT is Architect/Governance. Cursor is Developer. Claude is Reviewer. GitHub/docs are the source of truth, not chat history. Read and follow PROJECT_STATE.md, DECISION_LOG.md, TASK_REGISTRY.md, MASTER_SCOPE, and ADDENDUMS. Current active task is TASK-009C-PREAUTH answer worker governance — 009C implementation, response runtime, and public APIs remain **not authorized**. Do not reopen locked decisions unless explicitly instructed.
+We are continuing TAX-OS, a Source-Referenced Business & Tax Research Platform. ChatGPT is Architect/Governance. Cursor is Developer. Claude is Reviewer. GitHub/docs are the source of truth, not chat history. Read and follow PROJECT_STATE.md, DECISION_LOG.md, TASK_REGISTRY.md, MASTER_SCOPE, and ADDENDUMS. Current active task is Claude review of TASK-009C-PREAUTH answer worker contract — TASK-009C implementation, response runtime, and public APIs remain **not authorized**. Do not reopen locked decisions unless explicitly instructed.
 ```
 
 ---

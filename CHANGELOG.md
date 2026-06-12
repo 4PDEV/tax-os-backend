@@ -4,6 +4,25 @@ All notable changes to `tax-os-backend` are documented here.
 
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versions align with git tags where applicable.
 
+## [task-009c-preauth] - 2026-06-02
+
+### Added
+
+- TASK-009C-PREAUTH — answer worker governance contract:
+  - [`ANSWER_WORKER_CONTRACT.md`](ANSWER_WORKER_CONTRACT.md)
+  - [`TASKS/TASK-009C-ANSWER-WORKER.md`](TASKS/TASK-009C-ANSWER-WORKER.md)
+  - Worker boundary: `run_answer_worker` → `persist_answer_for_ranking_request` only
+  - DTOs: `AnswerWorkerRequest`, `AnswerWorkerOutcome`
+  - Documented lifecycle (no queue); OD-021 single-worker; failure mapping; import guards
+  - Response runtime boundary; test plan (design only)
+  - DEC-017 locked in [`DECISION_LOG.md`](DECISION_LOG.md)
+
+### Notes
+
+- Governance/design only — **TASK-009C implementation NOT AUTHORIZED**
+- No worker code, queues, migrations, APIs, or tests
+- Next gate: Claude review → 009C-IMPL-AUTH
+
 ## [answer-persistence-review] - 2026-06-02
 
 ### Added

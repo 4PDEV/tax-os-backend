@@ -269,3 +269,35 @@ Authority: TASK-009B-IMPL-AUTH — [`TASKS/TASK-009B-IMPLEMENTATION-AUTHORIZATIO
 
 Status:
 LOCKED
+
+---
+
+## DEC-017 — Answer Worker Orchestration Boundary (009C-v1)
+
+The answer worker (**TASK-009C**, when authorized) is a **single-process orchestration envelope only**.
+
+**Required:**
+
+- Package: `backend/app/workers/answer_runtime/`
+- Entry: `run_answer_worker(db, request)` → `persist_answer_for_ranking_request(...)` **only**
+- DTOs: `AnswerWorkerRequest`, `AnswerWorkerOutcome` (contract §3)
+- Documented lifecycle: `accepted` → `running` → `completed` | `failed` — **no queue infrastructure**
+- OD-021: process-local mutex; concurrent/distributed workers prohibited
+- Failure mapping: reuse 009A/009B `error_category` vocabulary — no new categories
+- Read-only `list_*` permitted for outcome count enrichment on accepted result only
+
+**Prohibited:**
+
+- Direct `assemble_answer_package`, `resolve_ranking_assembly_inputs`, or `create_answer_*` calls
+- Retrieval/ranking execution, citation creation, `CitationAssembler`
+- Response runtime, public APIs, AI/semantic/vector
+- Celery, Redis, RabbitMQ, Kafka, queue consumers
+- Narrative `answer_text`, legal conclusions, recommendations
+- Dry-run `skipped` path in v1 (recommendation — full persist only)
+
+Authority: TASK-009C-PREAUTH — [`ANSWER_WORKER_CONTRACT.md`](ANSWER_WORKER_CONTRACT.md); [`TASKS/TASK-009C-ANSWER-WORKER.md`](TASKS/TASK-009C-ANSWER-WORKER.md)
+
+**TASK-009C implementation remains NOT AUTHORIZED.**
+
+Status:
+LOCKED
