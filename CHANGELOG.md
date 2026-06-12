@@ -4,6 +4,21 @@ All notable changes to `tax-os-backend` are documented here.
 
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versions align with git tags where applicable.
 
+## [answer-persistence-review] - 2026-06-02
+
+### Added
+
+- Answer Persistence Review (TASK-009B+) — [`TASKS/ANSWER-PERSISTENCE-REVIEW.md`](TASKS/ANSWER-PERSISTENCE-REVIEW.md)
+  - AP-01 through AP-10 review areas documented
+  - 009B tests 33/33 pass; combined-suite failures traced to pre-existing test patterns (not 009B defects)
+  - Non-blocking remediation AP-R-01 through AP-R-04
+
+### Notes
+
+- **Verdict: ACCEPTED WITH REMEDIATION**
+- TASK-009C-PREAUTH authorized to begin (governance only)
+- TASK-009C implementation remains **NOT AUTHORIZED**
+
 ## [task-009b-answer-persistence] - 2026-06-02
 
 ### Added

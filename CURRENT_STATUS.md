@@ -44,6 +44,7 @@ The platform is materially beyond early foundation. Core registry, processing qu
 | Answer persistence pre-auth (009B-PREAUTH) | **ACCEPTED** — DEC-015 |
 | Answer persistence impl auth (009B-IMPL-AUTH) | **COMPLETE** — DEC-016 |
 | Answer persistence (009B) | **COMPLETE** / **ACCEPTED** — tag `v0.1.9-answer-persistence` |
+| Answer persistence review (009B+) | **ACCEPTED WITH REMEDIATION** |
 | AI / semantic ranking | **NOT AUTHORIZED** |
 | Ranking APIs | **NOT AUTHORIZED** |
 | Concurrent ranking workers | **NOT AUTHORIZED** (OD-021) |
@@ -104,13 +105,17 @@ The platform is materially beyond early foundation. Core registry, processing qu
 
 **TASK-009B:** **COMPLETE** — append-only answer persistence ([`TASKS/TASK-009B-ANSWER-PERSISTENCE.md`](TASKS/TASK-009B-ANSWER-PERSISTENCE.md)).
 
-**Current gate:** Answer layer persistence **closed** — downstream (009C worker, response runtime) **NOT AUTHORIZED**.
+**Answer persistence review (009B+):** **ACCEPTED WITH REMEDIATION** — [`TASKS/ANSWER-PERSISTENCE-REVIEW.md`](TASKS/ANSWER-PERSISTENCE-REVIEW.md).
+
+**Current gate:** **TASK-009C-PREAUTH** (answer worker governance) — 009C implementation, response runtime, public APIs **NOT AUTHORIZED**.
 
 | Gate item | Status |
 |-----------|--------|
 | TASK-009B-PREAUTH | **ACCEPTED** |
 | TASK-009B-IMPL-AUTH | **ACCEPTED** |
 | TASK-009B implementation | **COMPLETE** |
+| TASK-009B+ persistence review | **ACCEPTED WITH REMEDIATION** |
+| TASK-009C-PREAUTH | **Next gate** |
 | TASK-009C answer worker | **NOT AUTHORIZED** |
 | Response runtime | **NOT AUTHORIZED** |
 | Public APIs | **NOT AUTHORIZED** |
@@ -419,4 +424,4 @@ FOUNDATION → EXTRACTION CONTRACTS → LEGAL OBJECT GOVERNANCE → CITATION GOV
 → TEMPORAL GOVERNANCE → INGESTION PERSISTENCE → [TEST HARDENING] → AGENT LAYER → …
 ```
 
-**You are here:** TASK-009B answer persistence **COMPLETE** (`v0.1.9-answer-persistence`) · **Next gate:** 009C / response runtime (not authorized).
+**You are here:** 009B+ review **ACCEPTED WITH REMEDIATION** · **Next gate:** TASK-009C-PREAUTH · **009C code NOT AUTHORIZED**.
