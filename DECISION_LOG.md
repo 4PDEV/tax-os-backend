@@ -199,3 +199,73 @@ Authority: TASK-009A-IMPLEMENTATION-AUTHORIZATION — [`TASKS/TASK-009A-IMPLEMEN
 
 Status:
 LOCKED
+
+---
+
+## DEC-015 — Answer Persistence Pure-Pointer Doctrine
+
+Answer persistence (**TASK-009B**, when authorized) records **append-only lifecycle and pure-pointer evidence membership only**.
+
+**Required:**
+
+- Tables: `answer_requests`, `answer_results`, `answer_evidence_entries`, `answer_uncertainty_flags` (append-only)
+- `answer_request_hash` idempotency with DEC-011 replay pattern (`force_replay` + `replay_nonce`)
+- RL-O-01 preserved: `ranking_request_id` on request; `accepted_ranking_result_id` + `terminal_ranking_result_id` on results; evidence rows on **accepted** `answer_result`
+- `answer_evidence_entries` store pointers only (`ranked_evidence_reference_id`, `retrieval_evidence_reference_id`, `presentation_order_index`) — **no** provenance field copies (DEC-010)
+- Uncertainty flags persisted as child rows; `zero_evidence` required when `rank_count=0`
+- Assembly authority remains `assemble_answer_package` (009A) — persistence does not embed assembly logic
+- Citation display via read-only `CitationFormatter` at read time only — **no** persisted `rendered_citation_text`
+- Ephemeral 009A path preserved (DEC-014)
+
+**Prohibited:**
+
+- Provenance duplication (`legal_object_id`, `citation_id`, `citation_hash`, `source_version_id`, etc. on answer evidence rows)
+- Persisted citation text cache as authoritative store
+- `CitationAssembler`, citation creation/mutation
+- Narrative `answer_text`, legal conclusions, recommendations
+- Ranking/retrieval execution from persistence layer
+- Answer worker, APIs, response runtime in 009B scope
+
+Authority: TASK-009B-PREAUTH — [`ANSWER_PERSISTENCE_CONTRACT.md`](ANSWER_PERSISTENCE_CONTRACT.md); [`TASKS/TASK-009B-ANSWER-PERSISTENCE.md`](TASKS/TASK-009B-ANSWER-PERSISTENCE.md)
+
+**TASK-009B implementation remains NOT AUTHORIZED.**
+
+Status:
+LOCKED
+
+---
+
+## DEC-016 — Answer Persistence Implementation Envelope (009B-v1)
+
+TASK-009B implementation (when authorized) is bounded to **append-only persistence + orchestration hook only**.
+
+**Frozen schema:**
+
+- `answer_requests`, `answer_results`, `answer_evidence_entries`, `answer_uncertainty_flags`
+- Contract generation `009B-v1`; assembly remains `009A-v1`
+
+**Frozen lifecycle (Option A):**
+
+```text
+answer_request → answer_result(accepted) → assemble_answer_package → children → answer_result(completed|failed)
+```
+
+**Frozen integrity:**
+
+- Retrieval composite FK on `answer_evidence_entries` (DEC-010)
+- Ranked membership via FK + service validation V-B-02 (RL-O-01)
+- Single transaction per orchestration invocation
+- `answer_request_hash` + DEC-011 replay pattern
+- Pure-pointer evidence rows — prohibited-column matrix §D-09
+- No persisted citation text or provenance copies
+
+**Frozen service:** `backend/app/services/answer_persistence/` — `create_*` + read APIs + `persist_answer_for_ranking_request` only
+
+**Prohibited in 009B:** worker, APIs, response runtime, AI, `CitationAssembler`, `answer_text`, legal conclusions, concurrent workers
+
+Authority: TASK-009B-IMPL-AUTH — [`TASKS/TASK-009B-IMPLEMENTATION-AUTHORIZATION.md`](TASKS/TASK-009B-IMPLEMENTATION-AUTHORIZATION.md)
+
+**TASK-009B implementation:** **COMPLETE** — tag `v0.1.9-answer-persistence`.
+
+Status:
+LOCKED

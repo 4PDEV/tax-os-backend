@@ -60,8 +60,9 @@ Source Registry → Source Versions → Extraction → Parsing → Legal Objects
 | Answer impl authorization (009A-IMPL-AUTH) | **ACCEPTED** — DEC-014 — `v0.1.7-answer-impl-auth` |
 | Answer assembly (009A) | **COMPLETE** / **ACCEPTED** — `v0.1.8-answer-assembly` |
 | Answer layer review (009A+) | **COMPLETE** / **ACCEPTED** |
-| Answer persistence pre-auth (009B-PREAUTH) | **Next gate** |
-| Answer persistence (009B) | **NOT AUTHORIZED** |
+| Answer persistence pre-auth (009B-PREAUTH) | **ACCEPTED** — DEC-015 |
+| Answer persistence impl auth (009B-IMPL-AUTH) | **COMPLETE** — DEC-016 |
+| Answer persistence (009B) | **COMPLETE** / **ACCEPTED** — `v0.1.9-answer-persistence` |
 
 **Foundational rule:** No AI legal reasoning in ingestion, legal-object, citation, retrieval, or ranking layers.
 
@@ -135,6 +136,12 @@ Ranking stores **order only**. Provenance lives **once** in `retrieval_evidence_
 
 **Answer layer review (009A+):** **COMPLETE** / **ACCEPTED** — [`TASKS/ANSWER-LAYER-REVIEW.md`](TASKS/ANSWER-LAYER-REVIEW.md).
 
+**TASK-009B-PREAUTH:** **ACCEPTED** — DEC-015 — [`ANSWER_PERSISTENCE_CONTRACT.md`](ANSWER_PERSISTENCE_CONTRACT.md).
+
+**TASK-009B-IMPL-AUTH:** **ACCEPTED** — DEC-016 — [`TASKS/TASK-009B-IMPLEMENTATION-AUTHORIZATION.md`](TASKS/TASK-009B-IMPLEMENTATION-AUTHORIZATION.md).
+
+**TASK-009B:** **COMPLETE** — append-only answer persistence — tag `v0.1.9-answer-persistence`.
+
 ---
 
 ## 6. Ranking Doctrine
@@ -165,6 +172,19 @@ Ranking stores **order only**. Provenance lives **once** in `retrieval_evidence_
 | Source-referenced only (DEC-002) | Every entry traces to persisted provenance |
 | Deterministic assembly (009A-v1) | `deterministic` mode only — no unauthorized AI |
 | Ranking result resolution | Ranked rows on `accepted` result; terminal `completed` validates lifecycle |
+
+---
+
+## 6b. Answer Persistence Doctrine (009B-PREAUTH)
+
+| Doctrine | Rule |
+|----------|------|
+| Append-only lifecycle | `answer_requests` → `answer_results` → pure-pointer children |
+| Pure-pointer evidence rows | Pointers to ranked + retrieval evidence only — no provenance copies |
+| DEC-011 replay | `answer_request_hash` + `force_replay` / `replay_nonce` |
+| Assembly authority | `assemble_answer_package` (009A) — persistence stores only |
+| Citation display | Read-time `CitationFormatter` only — no persisted citation text |
+| Zero-evidence | `completed`, `rank_count=0`, `zero_evidence` uncertainty flag |
 
 ---
 
@@ -234,10 +254,13 @@ All items applied in [`RANKING_RUNTIME_CONTRACT.md`](RANKING_RUNTIME_CONTRACT.md
 12. ~~**Claude review** of 009A-IMPL-AUTH~~ — **done** (accepted).
 13. ~~**TASK-009A** answer assembly~~ — **done** (`v0.1.8-answer-assembly`).
 14. ~~**Answer layer review**~~ — **done** (accepted).
-15. **TASK-009B-PREAUTH** — answer persistence governance — next gate.
+15. ~~**TASK-009B-PREAUTH**~~ — **done** (DEC-015).
+16. ~~**009B-IMPL-AUTH**~~ — **done** (DEC-016).
+17. ~~**TASK-009B**~~ — **done** (`v0.1.9-answer-persistence`).
+18. **TASK-009C** answer worker — not authorized.
 5. Start new ChatGPT chat using this document as primary context.
 
-**Not authorized:** 009B implementation, answer worker, answer APIs, response runtime, AI answer generation.
+**Not authorized:** TASK-009C answer worker, response runtime, public APIs, AI answer generation, CitationAssembler, legal conclusions, recommendations, concurrent workers.
 
 ---
 
@@ -246,7 +269,7 @@ All items applied in [`RANKING_RUNTIME_CONTRACT.md`](RANKING_RUNTIME_CONTRACT.md
 Copy into a new ChatGPT session:
 
 ```text
-We are continuing TAX-OS, a Source-Referenced Business & Tax Research Platform. ChatGPT is Architect/Governance. Cursor is Developer. Claude is Reviewer. GitHub/docs are the source of truth, not chat history. Read and follow PROJECT_STATE.md, DECISION_LOG.md, TASK_REGISTRY.md, MASTER_SCOPE, and ADDENDUMS. Current active task is TASK-009B-PREAUTH answer persistence governance — 009B implementation NOT AUTHORIZED. Do not reopen locked decisions unless explicitly instructed.
+We are continuing TAX-OS, a Source-Referenced Business & Tax Research Platform. ChatGPT is Architect/Governance. Cursor is Developer. Claude is Reviewer. GitHub/docs are the source of truth, not chat history. Read and follow PROJECT_STATE.md, DECISION_LOG.md, TASK_REGISTRY.md, MASTER_SCOPE, and ADDENDUMS. Current active task is TASK-009B answer persistence **complete** — next gates (009C worker, response runtime, public APIs) remain **not authorized**. Do not reopen locked decisions unless explicitly instructed.
 ```
 
 ---

@@ -102,8 +102,10 @@ Bounded task tracking for `tax-os-backend`. Authoritative specs remain in `tax-o
 | TASK-009A-IMPL-AUTH | Answer Assembly Implementation Authorization | Complete | **ACCEPTED** — DEC-014 — tag `v0.1.7-answer-impl-auth` |
 | TASK-009A | Answer Assembly Implementation | Complete | **ACCEPTED** — ephemeral `answer_assembly` — `8ddb285`, `v0.1.8-answer-assembly` |
 | TASK-009A+ | Answer Layer Review (umbrella) | Complete | **ACCEPTED** — [`TASKS/ANSWER-LAYER-REVIEW.md`](TASKS/ANSWER-LAYER-REVIEW.md) |
-| TASK-009B-PREAUTH | Answer Persistence Pre-Auth Contract | Planned | **Next gate** — governance only; implementation **not authorized** |
-| TASK-009B | Answer Persistence (Option B) | Planned | **NOT AUTHORIZED** |
+| TASK-009B-PREAUTH | Answer Persistence Pre-Auth Contract | Complete | **ACCEPTED** — DEC-015 — [`ANSWER_PERSISTENCE_CONTRACT.md`](ANSWER_PERSISTENCE_CONTRACT.md) |
+| TASK-009B-IMPL-AUTH | Answer Persistence Implementation Authorization | Complete | **ACCEPTED** — DEC-016 — [`TASKS/TASK-009B-IMPLEMENTATION-AUTHORIZATION.md`](TASKS/TASK-009B-IMPLEMENTATION-AUTHORIZATION.md) |
+| TASK-009B | Answer Persistence (Option B) | Complete | **COMPLETE** / **ACCEPTED** — tag `v0.1.9-answer-persistence` |
+| TASK-009C | Answer Worker Skeleton | Hold | **NOT AUTHORIZED** |
 | TASK-DOC-001 | Master Status Document Realignment | Complete | CURRENT_STATUS, IMPLEMENTATION_ROADMAP, ARCHITECTURE_PHASE_MAP |
 
 ## Status Legend

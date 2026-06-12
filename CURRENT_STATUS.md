@@ -5,7 +5,7 @@ For detailed historical sections, see [PROJECT_STATE.md](PROJECT_STATE.md). For 
 
 **Last realigned:** 2026-06-02  
 **Branch:** `main`  
-**Alembic head:** `a8c1e4f92b37` (ranking persistence — TASK-008C)
+**Alembic head:** `c7e3a1f94d82` (answer persistence — TASK-009B)
 
 ---
 
@@ -41,8 +41,9 @@ The platform is materially beyond early foundation. Core registry, processing qu
 | Answer impl authorization (009A-IMPL-AUTH) | **ACCEPTED** — DEC-014 — `v0.1.7-answer-impl-auth` |
 | Answer assembly (009A) | **COMPLETE** / **ACCEPTED** — `v0.1.8-answer-assembly` |
 | Answer layer review (009A+) | **COMPLETE** / **ACCEPTED** |
-| Answer persistence pre-auth (009B-PREAUTH) | **NOT STARTED** |
-| Answer persistence (009B) | **NOT AUTHORIZED** |
+| Answer persistence pre-auth (009B-PREAUTH) | **ACCEPTED** — DEC-015 |
+| Answer persistence impl auth (009B-IMPL-AUTH) | **COMPLETE** — DEC-016 |
+| Answer persistence (009B) | **COMPLETE** / **ACCEPTED** — tag `v0.1.9-answer-persistence` |
 | AI / semantic ranking | **NOT AUTHORIZED** |
 | Ranking APIs | **NOT AUTHORIZED** |
 | Concurrent ranking workers | **NOT AUTHORIZED** (OD-021) |
@@ -97,18 +98,28 @@ The platform is materially beyond early foundation. Core registry, processing qu
 
 **Answer layer review (009A+):** **COMPLETE** / **ACCEPTED** — AL-01–AL-10 verified ([`TASKS/ANSWER-LAYER-REVIEW.md`](TASKS/ANSWER-LAYER-REVIEW.md)).
 
-**Current gate:** **TASK-009B-PREAUTH** — Answer Persistence Governance (before any 009B implementation).
+**TASK-009B-PREAUTH:** **ACCEPTED** — DEC-015 ([`ANSWER_PERSISTENCE_CONTRACT.md`](ANSWER_PERSISTENCE_CONTRACT.md)).
+
+**TASK-009B-IMPL-AUTH:** **ACCEPTED** — DEC-016 ([`TASKS/TASK-009B-IMPLEMENTATION-AUTHORIZATION.md`](TASKS/TASK-009B-IMPLEMENTATION-AUTHORIZATION.md)).
+
+**TASK-009B:** **COMPLETE** — append-only answer persistence ([`TASKS/TASK-009B-ANSWER-PERSISTENCE.md`](TASKS/TASK-009B-ANSWER-PERSISTENCE.md)).
+
+**Current gate:** Answer layer persistence **closed** — downstream (009C worker, response runtime) **NOT AUTHORIZED**.
 
 | Gate item | Status |
 |-----------|--------|
-| TASK-009B-PREAUTH | **AUTHORIZED TO BEGIN** (governance only) |
-| TASK-009B implementation | **NOT AUTHORIZED** |
+| TASK-009B-PREAUTH | **ACCEPTED** |
+| TASK-009B-IMPL-AUTH | **ACCEPTED** |
+| TASK-009B implementation | **COMPLETE** |
+| TASK-009C answer worker | **NOT AUTHORIZED** |
+| Response runtime | **NOT AUTHORIZED** |
+| Public APIs | **NOT AUTHORIZED** |
 | Answer worker | **NOT AUTHORIZED** |
 | AI / semantic answer generation | **NOT AUTHORIZED** |
 | Answer APIs / response runtime | **NOT AUTHORIZED** |
 | Concurrent answer workers | **NOT AUTHORIZED** (OD-021) |
 
-009B implementation remains closed until 009B-PREAUTH acceptance and explicit implementation authorization.
+Answer persistence (009B) is **complete**. Answer worker (009C), response runtime, and public APIs remain **not authorized**.
 
 **Architecture chain:** Evidence → Ranking → Answer Assembly → Response Runtime. Doctrine: `retrieval result` ≠ ranking · `ranking` ≠ answer · `answer` ≠ legal conclusion.
 
@@ -408,4 +419,4 @@ FOUNDATION → EXTRACTION CONTRACTS → LEGAL OBJECT GOVERNANCE → CITATION GOV
 → TEMPORAL GOVERNANCE → INGESTION PERSISTENCE → [TEST HARDENING] → AGENT LAYER → …
 ```
 
-**You are here:** Answer layer **COMPLETE** / **ACCEPTED** · **Next:** TASK-009B-PREAUTH · **009B implementation NOT AUTHORIZED**.
+**You are here:** TASK-009B answer persistence **COMPLETE** (`v0.1.9-answer-persistence`) · **Next gate:** 009C / response runtime (not authorized).

@@ -4,6 +4,61 @@ All notable changes to `tax-os-backend` are documented here.
 
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versions align with git tags where applicable.
 
+## [task-009b-answer-persistence] - 2026-06-02
+
+### Added
+
+- TASK-009B answer persistence — append-only lifecycle (DEC-015 / DEC-016):
+  - Alembic `c7e3a1f94d82` — `answer_requests`, `answer_results`, `answer_evidence_entries`, `answer_uncertainty_flags`
+  - Prerequisite `uq_ranked_evidence_result_id_pk` on `ranked_evidence_references`
+  - ORM models under `backend/app/models/answer_*.py`
+  - `backend/app/services/answer_persistence/` — `create_*`, read APIs, `persist_answer_for_ranking_request`
+  - `backend/tests/test_answer_persistence.py` — hash, replay, RL-O-01, V-B-02, in-flight guard (R-2), pure-pointer guards
+  - `backend/tests/test_answer_persistence_alembic_migration.py` — migration contract + upgrade/downgrade
+
+### Notes
+
+- Option A lifecycle: request → accepted → assemble → children → terminal
+- No answer worker, response runtime, public APIs, or AI
+- Tag: `v0.1.9-answer-persistence`
+
+## [task-009b-impl-auth] - 2026-06-02
+
+### Added
+
+- TASK-009B-IMPLEMENTATION-AUTHORIZATION — answer persistence implementation design package:
+  - [`TASKS/TASK-009B-IMPLEMENTATION-AUTHORIZATION.md`](TASKS/TASK-009B-IMPLEMENTATION-AUTHORIZATION.md)
+  - D-01 frozen schema (4 tables, constraints, indexes)
+  - D-02 composite FK: retrieval required; ranked via V-B-02 service validation
+  - D-03 single-transaction boundary; D-04 Option A lifecycle ordering
+  - D-05 `answer_persistence/` service surface; D-06 import guards; D-07 test matrix
+  - D-08 replay/hash; D-09 prohibited-column matrix; D-10 implementation scope
+  - DEC-016 locked in [`DECISION_LOG.md`](DECISION_LOG.md)
+
+### Notes
+
+- Governance/design only — **TASK-009B implementation NOT AUTHORIZED**
+- No migrations, ORM, services, workers, APIs, or tests
+- Next gate: Claude review → explicit TASK-009B implementation authorization
+
+## [task-009b-preauth] - 2026-06-02
+
+### Added
+
+- TASK-009B-PREAUTH — answer persistence governance contract:
+  - [`ANSWER_PERSISTENCE_CONTRACT.md`](ANSWER_PERSISTENCE_CONTRACT.md)
+  - [`TASKS/TASK-009B-ANSWER-PERSISTENCE.md`](TASKS/TASK-009B-ANSWER-PERSISTENCE.md)
+  - Option B recommended: append-only `answer_requests`, `answer_results`, `answer_evidence_entries`, `answer_uncertainty_flags`
+  - `answer_request_hash` + DEC-011 replay; RL-O-01 preserved; pure-pointer evidence doctrine (DEC-010)
+  - Citation non-persistence; uncertainty flag schema; failure model; zero-evidence path
+  - DEC-015 locked in [`DECISION_LOG.md`](DECISION_LOG.md)
+
+### Notes
+
+- Governance/design only — **TASK-009B implementation NOT AUTHORIZED**
+- No migrations, ORM, services, workers, APIs, or tests
+- Next gate: Claude review → 009B-IMPL-AUTH
+
 ## [answer-layer-review] - 2026-06-02
 
 ### Added

@@ -1,3 +1,7 @@
+from app.models.answer_evidence_entry import AnswerEvidenceEntry
+from app.models.answer_request import AnswerRequest
+from app.models.answer_result import AnswerResult
+from app.models.answer_uncertainty_flag import AnswerUncertaintyFlag
 from app.models.audit_log import AuditLog
 from app.models.country import Country
 from app.models.monitoring_attempt import MonitoringAttempt
@@ -41,6 +45,10 @@ from app.models.source_version_promotion import SourceVersionPromotion
 from app.models.tax_type import TaxType
 
 __all__ = [
+    "AnswerEvidenceEntry",
+    "AnswerRequest",
+    "AnswerResult",
+    "AnswerUncertaintyFlag",
     "AuditLog",
     "Country",
     "MonitoringAttempt",
