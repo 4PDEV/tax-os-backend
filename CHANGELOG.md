@@ -4,6 +4,22 @@ All notable changes to `tax-os-backend` are documented here.
 
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versions align with git tags where applicable.
 
+## [task-009c-answer-worker-skeleton] - 2026-06-02
+
+### Added
+
+- TASK-009C answer worker skeleton:
+  - `backend/app/workers/answer_runtime/` — `run_answer_worker`, `AnswerWorkerRequest`, `AnswerWorkerOutcome`
+  - Single-worker orchestration (OD-021); delegates to `persist_answer_for_ranking_request` only
+  - Documented queue lifecycle (accepted → running → completed | failed) — no broker infrastructure
+  - `backend/tests/test_answer_worker_skeleton.py` — 16/16 tests; R-1 mutex release closed
+
+### Notes
+
+- Tag: `v0.2.3-answer-worker-skeleton` — commit `1ec1423`
+- Answer stack complete through worker boundary — **response runtime NOT AUTHORIZED**
+- Next gate: **TASK-010A-PREAUTH** — Response Runtime Governance
+
 ## [task-009c-impl-auth-accepted] - 2026-06-02
 
 ### Changed

@@ -4,7 +4,7 @@
 
 > **Also read:** [CURRENT_STATUS.md](CURRENT_STATUS.md) · [TASK_REGISTRY.md](TASK_REGISTRY.md) · [DECISION_LOG.md](DECISION_LOG.md) · [IMPLEMENTATION_ROADMAP.md](IMPLEMENTATION_ROADMAP.md) · [OPEN_DECISIONS.md](OPEN_DECISIONS.md)
 
-**Last handoff realigned:** 2026-06-02 · **Branch:** `main` · **HEAD:** `f7a37ef` · **Tags:** `v0.1.4-ranking-execution`, `v0.1.3-ranking-persistence`, `v0.1.2-ranking-preauth-reconciled` · **origin/main:** up to date
+**Last handoff realigned:** 2026-06-02 · **Branch:** `main` · **HEAD:** `1ec1423` · **Tags:** `v0.2.3-answer-worker-skeleton`, `v0.2.2-answer-worker-impl-auth`, `v0.1.9-answer-persistence` · **origin/main:** up to date
 
 ---
 
@@ -66,7 +66,8 @@ Source Registry → Source Versions → Extraction → Parsing → Legal Objects
 | Answer persistence review (009B+) | **COMPLETE** / **ACCEPTED WITH REMEDIATION** |
 | Answer worker pre-auth (009C-PREAUTH) | **ACCEPTED** — DEC-017 |
 | Answer worker impl auth (009C-IMPL-AUTH) | **ACCEPTED** — DEC-018 |
-| Answer worker skeleton (009C) | **AUTHORIZED FOR LIMITED IMPLEMENTATION** |
+| Answer worker skeleton (009C) | **COMPLETE** / **ACCEPTED** — `v0.2.3-answer-worker-skeleton` |
+| Response runtime governance (010A-PREAUTH) | **NOT STARTED** — next gate |
 
 **Foundational rule:** No AI legal reasoning in ingestion, legal-object, citation, retrieval, or ranking layers.
 
@@ -152,7 +153,9 @@ Ranking stores **order only**. Provenance lives **once** in `retrieval_evidence_
 
 **TASK-009C-IMPL-AUTH:** **ACCEPTED WITH REMEDIATION** — DEC-018 — [`TASKS/TASK-009C-IMPLEMENTATION-AUTHORIZATION.md`](TASKS/TASK-009C-IMPLEMENTATION-AUTHORIZATION.md).
 
-**TASK-009C:** **AUTHORIZED FOR LIMITED IMPLEMENTATION** — `answer_runtime/` skeleton + `test_answer_worker_skeleton.py` only.
+**TASK-009C:** **COMPLETE** / **ACCEPTED** — answer worker skeleton — tag `v0.2.3-answer-worker-skeleton` — [`TASKS/TASK-009C-ANSWER-WORKER.md`](TASKS/TASK-009C-ANSWER-WORKER.md).
+
+**TASK-010A-PREAUTH:** **NOT STARTED** — response runtime governance — next gate.
 
 ---
 
@@ -272,11 +275,12 @@ All items applied in [`RANKING_RUNTIME_CONTRACT.md`](RANKING_RUNTIME_CONTRACT.md
 18. ~~**009B+ persistence review**~~ — **done** (ACCEPTED WITH REMEDIATION).
 19. ~~**TASK-009C-PREAUTH**~~ — **done** (DEC-017).
 20. ~~**009C-IMPL-AUTH**~~ — **accepted** (DEC-018).
-21. **TASK-009C** bounded worker implementation — **authorized** (limited).
-22. Response runtime / public APIs / queues — not authorized.
+21. ~~**TASK-009C** bounded worker implementation~~ — **done** (`v0.2.3-answer-worker-skeleton`).
+22. **TASK-010A-PREAUTH** — response runtime governance — **next gate**.
+23. Response runtime implementation / public APIs / queues — **not authorized**.
 5. Start new ChatGPT chat using this document as primary context.
 
-**Not authorized:** TASK-009C answer worker, response runtime, public APIs, AI answer generation, CitationAssembler, legal conclusions, recommendations, concurrent workers.
+**Not authorized:** response runtime implementation, public APIs, AI answer generation, CitationAssembler, legal conclusions, recommendations, concurrent workers.
 
 ---
 
@@ -285,7 +289,7 @@ All items applied in [`RANKING_RUNTIME_CONTRACT.md`](RANKING_RUNTIME_CONTRACT.md
 Copy into a new ChatGPT session:
 
 ```text
-We are continuing TAX-OS, a Source-Referenced Business & Tax Research Platform. ChatGPT is Architect/Governance. Cursor is Developer. Claude is Reviewer. GitHub/docs are the source of truth, not chat history. Read and follow PROJECT_STATE.md, DECISION_LOG.md, TASK_REGISTRY.md, MASTER_SCOPE, and ADDENDUMS. Current active task is TASK-009C bounded answer worker skeleton implementation — response runtime, public APIs, and queues remain **not authorized**. Do not reopen locked decisions unless explicitly instructed.
+We are continuing TAX-OS, a Source-Referenced Business & Tax Research Platform. ChatGPT is Architect/Governance. Cursor is Developer. Claude is Reviewer. GitHub/docs are the source of truth, not chat history. Read and follow PROJECT_STATE.md, DECISION_LOG.md, TASK_REGISTRY.md, MASTER_SCOPE, and ADDENDUMS. Answer worker (009C) is **complete**. Current active task is **TASK-010A-PREAUTH** — Response Runtime Governance (design only). Response runtime implementation, public APIs, and queues remain **not authorized**. Do not reopen locked decisions unless explicitly instructed.
 ```
 
 ---

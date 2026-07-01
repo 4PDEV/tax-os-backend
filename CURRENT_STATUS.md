@@ -5,13 +5,15 @@ For detailed historical sections, see [PROJECT_STATE.md](PROJECT_STATE.md). For 
 
 **Last realigned:** 2026-06-02  
 **Branch:** `main`  
-**Alembic head:** `c7e3a1f94d82` (answer persistence — TASK-009B)
+**HEAD:** `1ec1423`  
+**Alembic head:** `c7e3a1f94d82` (answer persistence — TASK-009B)  
+**Latest tag:** `v0.2.3-answer-worker-skeleton` (TASK-009C)
 
 ---
 
 ## Current Architecture Phase
 
-**Governed engineering platform — monitoring agent contract gated**
+**Governed engineering platform — answer worker complete; response runtime governance next**
 
 The platform is materially beyond early foundation. Core registry, processing queue, extraction/parser **contracts**, legal-object **persistence**, citation **governance**, temporal **governance**, and ingestion **artifact persistence** are in place on `main`.
 
@@ -47,7 +49,8 @@ The platform is materially beyond early foundation. Core registry, processing qu
 | Answer persistence review (009B+) | **ACCEPTED WITH REMEDIATION** |
 | Answer worker pre-auth (009C-PREAUTH) | **ACCEPTED** — DEC-017 |
 | Answer worker impl auth (009C-IMPL-AUTH) | **ACCEPTED** — DEC-018 |
-| Answer worker skeleton (009C) | **AUTHORIZED FOR LIMITED IMPLEMENTATION** |
+| Answer worker skeleton (009C) | **COMPLETE** / **ACCEPTED** — `v0.2.3-answer-worker-skeleton` |
+| Response runtime governance (010A-PREAUTH) | **NOT STARTED** — next gate |
 | AI / semantic ranking | **NOT AUTHORIZED** |
 | Ranking APIs | **NOT AUTHORIZED** |
 | Concurrent ranking workers | **NOT AUTHORIZED** (OD-021) |
@@ -114,9 +117,9 @@ The platform is materially beyond early foundation. Core registry, processing qu
 
 **TASK-009C-IMPL-AUTH:** **ACCEPTED WITH REMEDIATION** — DEC-018 ([`TASKS/TASK-009C-IMPLEMENTATION-AUTHORIZATION.md`](TASKS/TASK-009C-IMPLEMENTATION-AUTHORIZATION.md)).
 
-**TASK-009C implementation:** **AUTHORIZED FOR LIMITED IMPLEMENTATION** — worker skeleton only (`answer_runtime/` + tests). R-1: OD-021 mutex release test (non-blocking).
+**TASK-009C:** **COMPLETE** / **ACCEPTED** — answer worker skeleton — tag `v0.2.3-answer-worker-skeleton` ([`TASKS/TASK-009C-ANSWER-WORKER.md`](TASKS/TASK-009C-ANSWER-WORKER.md)). R-1 remediation **closed** (16/16 tests).
 
-**Current gate:** **TASK-009C** bounded implementation — response runtime, public APIs, queues **NOT AUTHORIZED**.
+**Current gate:** **TASK-010A-PREAUTH** — Response Runtime Governance (design only). Response runtime implementation, public APIs, and queues **NOT AUTHORIZED**.
 
 | Gate item | Status |
 |-----------|--------|
@@ -126,16 +129,15 @@ The platform is materially beyond early foundation. Core registry, processing qu
 | TASK-009B+ persistence review | **ACCEPTED WITH REMEDIATION** |
 | TASK-009C-PREAUTH | **ACCEPTED** |
 | TASK-009C-IMPL-AUTH | **ACCEPTED** |
-| TASK-009C implementation | **AUTHORIZED FOR LIMITED IMPLEMENTATION** |
-| TASK-009C answer worker | **AUTHORIZED** (bounded) |
-| Response runtime | **NOT AUTHORIZED** |
+| TASK-009C implementation | **COMPLETE** |
+| TASK-009C answer worker | **COMPLETE** / **ACCEPTED** |
+| TASK-010A-PREAUTH | **NOT STARTED** — next gate |
+| Response runtime implementation | **NOT AUTHORIZED** |
 | Public APIs | **NOT AUTHORIZED** |
-| Answer worker | **NOT AUTHORIZED** |
 | AI / semantic answer generation | **NOT AUTHORIZED** |
-| Answer APIs / response runtime | **NOT AUTHORIZED** |
 | Concurrent answer workers | **NOT AUTHORIZED** (OD-021) |
 
-Answer persistence (009B) is **complete**. Answer worker (009C), response runtime, and public APIs remain **not authorized**.
+Answer persistence (009B) and answer worker (009C) are **complete**. Response runtime governance (010A-PREAUTH) is the **next gate**; response runtime implementation and public APIs remain **not authorized**.
 
 **Architecture chain:** Evidence → Ranking → Answer Assembly → Response Runtime. Doctrine: `retrieval result` ≠ ranking · `ranking` ≠ answer · `answer` ≠ legal conclusion.
 
@@ -435,4 +437,4 @@ FOUNDATION → EXTRACTION CONTRACTS → LEGAL OBJECT GOVERNANCE → CITATION GOV
 → TEMPORAL GOVERNANCE → INGESTION PERSISTENCE → [TEST HARDENING] → AGENT LAYER → …
 ```
 
-**You are here:** 009C-IMPL-AUTH **ACCEPTED** · **TASK-009C implementation AUTHORIZED** (limited) · **Next:** build `answer_runtime/` skeleton.
+**You are here:** TASK-009C **COMPLETE** (`v0.2.3-answer-worker-skeleton`) · **Next:** **TASK-010A-PREAUTH** — Response Runtime Governance.
