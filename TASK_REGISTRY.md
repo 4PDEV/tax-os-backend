@@ -106,9 +106,9 @@ Bounded task tracking for `tax-os-backend`. Authoritative specs remain in `tax-o
 | TASK-009B-IMPL-AUTH | Answer Persistence Implementation Authorization | Complete | **ACCEPTED** — DEC-016 — [`TASKS/TASK-009B-IMPLEMENTATION-AUTHORIZATION.md`](TASKS/TASK-009B-IMPLEMENTATION-AUTHORIZATION.md) |
 | TASK-009B | Answer Persistence (Option B) | Complete | **COMPLETE** / **ACCEPTED** — tag `v0.1.9-answer-persistence` |
 | TASK-009B+ | Answer Persistence Review | Complete | **ACCEPTED WITH REMEDIATION** — [`TASKS/ANSWER-PERSISTENCE-REVIEW.md`](TASKS/ANSWER-PERSISTENCE-REVIEW.md) |
-| TASK-009C-PREAUTH | Answer Worker Pre-Auth Contract | Complete | **COMPLETE** — DEC-017 — [`ANSWER_WORKER_CONTRACT.md`](ANSWER_WORKER_CONTRACT.md) |
-| TASK-009C-IMPL-AUTH | Answer Worker Implementation Authorization | Planned | **Next gate** — after Claude review |
-| TASK-009C | Answer Worker Skeleton | Hold | **NOT AUTHORIZED** |
+| TASK-009C-PREAUTH | Answer Worker Pre-Auth Contract | Complete | **ACCEPTED** — DEC-017 — [`ANSWER_WORKER_CONTRACT.md`](ANSWER_WORKER_CONTRACT.md) |
+| TASK-009C-IMPL-AUTH | Answer Worker Implementation Authorization | Complete | **ACCEPTED** — DEC-018 — [`TASKS/TASK-009C-IMPLEMENTATION-AUTHORIZATION.md`](TASKS/TASK-009C-IMPLEMENTATION-AUTHORIZATION.md) |
+| TASK-009C | Answer Worker Skeleton | In progress | **AUTHORIZED FOR LIMITED IMPLEMENTATION** |
 | TASK-DOC-001 | Master Status Document Realignment | Complete | CURRENT_STATUS, IMPLEMENTATION_ROADMAP, ARCHITECTURE_PHASE_MAP |
 
 ## Status Legend

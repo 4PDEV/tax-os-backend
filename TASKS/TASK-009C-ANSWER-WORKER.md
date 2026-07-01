@@ -2,24 +2,24 @@
 
 ## Status
 
-**TASK-009C-PREAUTH** — governance contract delivered; **implementation NOT AUTHORIZED**.
+**TASK-009C-PREAUTH** — **ACCEPTED** — DEC-017.
 
 | Phase | Status |
 |-------|--------|
 | TASK-009A answer assembly | **COMPLETE** / **ACCEPTED** — `v0.1.8-answer-assembly` |
 | TASK-009B answer persistence | **COMPLETE** / **ACCEPTED** — `v0.1.9-answer-persistence` |
 | Answer persistence review (009B+) | **ACCEPTED WITH REMEDIATION** |
-| TASK-009C-PREAUTH (this document) | **COMPLETE** — contract envelope |
-| TASK-009C-IMPL-AUTH | **NOT STARTED** |
-| TASK-009C answer worker code | **NOT AUTHORIZED** |
+| TASK-009C-PREAUTH (this document) | **ACCEPTED** — DEC-017 |
+| TASK-009C-IMPL-AUTH | **ACCEPTED** — DEC-018 — [`TASK-009C-IMPLEMENTATION-AUTHORIZATION.md`](TASK-009C-IMPLEMENTATION-AUTHORIZATION.md) |
+| TASK-009C answer worker code | **AUTHORIZED FOR LIMITED IMPLEMENTATION** |
 
 ## Prerequisite chain
 
 ```text
 009A assembly → 009B persistence → 009B+ review (accepted with remediation)
-  → 009C-PREAUTH (this contract)
+  → 009C-PREAUTH (accepted)
+  → 009C-IMPL-AUTH (complete)
   → [Claude review — pending]
-  → 009C-IMPL-AUTH — NOT STARTED
   → 009C worker skeleton — NOT AUTHORIZED
 ```
 
@@ -111,7 +111,7 @@ IMPL-AUTH and implementation checklists in contract §11.
 
 ## Next gate
 
-**Claude review** of 009C-PREAUTH → **TASK-009C-IMPL-AUTH** → explicit TASK-009C implementation authorization.
+**Claude review** of 009C-IMPL-AUTH → explicit TASK-009C implementation authorization.
 
 ---
 

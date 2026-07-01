@@ -45,7 +45,9 @@ The platform is materially beyond early foundation. Core registry, processing qu
 | Answer persistence impl auth (009B-IMPL-AUTH) | **COMPLETE** — DEC-016 |
 | Answer persistence (009B) | **COMPLETE** / **ACCEPTED** — tag `v0.1.9-answer-persistence` |
 | Answer persistence review (009B+) | **ACCEPTED WITH REMEDIATION** |
-| Answer worker pre-auth (009C-PREAUTH) | **COMPLETE** — DEC-017 |
+| Answer worker pre-auth (009C-PREAUTH) | **ACCEPTED** — DEC-017 |
+| Answer worker impl auth (009C-IMPL-AUTH) | **ACCEPTED** — DEC-018 |
+| Answer worker skeleton (009C) | **AUTHORIZED FOR LIMITED IMPLEMENTATION** |
 | AI / semantic ranking | **NOT AUTHORIZED** |
 | Ranking APIs | **NOT AUTHORIZED** |
 | Concurrent ranking workers | **NOT AUTHORIZED** (OD-021) |
@@ -108,9 +110,13 @@ The platform is materially beyond early foundation. Core registry, processing qu
 
 **Answer persistence review (009B+):** **ACCEPTED WITH REMEDIATION** — [`TASKS/ANSWER-PERSISTENCE-REVIEW.md`](TASKS/ANSWER-PERSISTENCE-REVIEW.md).
 
-**TASK-009C-PREAUTH:** **COMPLETE** — DEC-017 ([`ANSWER_WORKER_CONTRACT.md`](ANSWER_WORKER_CONTRACT.md)).
+**TASK-009C-PREAUTH:** **ACCEPTED** — DEC-017 ([`ANSWER_WORKER_CONTRACT.md`](ANSWER_WORKER_CONTRACT.md)).
 
-**Current gate:** **Claude review** of 009C-PREAUTH → **009C-IMPL-AUTH** — 009C implementation, response runtime, public APIs **NOT AUTHORIZED**.
+**TASK-009C-IMPL-AUTH:** **ACCEPTED WITH REMEDIATION** — DEC-018 ([`TASKS/TASK-009C-IMPLEMENTATION-AUTHORIZATION.md`](TASKS/TASK-009C-IMPLEMENTATION-AUTHORIZATION.md)).
+
+**TASK-009C implementation:** **AUTHORIZED FOR LIMITED IMPLEMENTATION** — worker skeleton only (`answer_runtime/` + tests). R-1: OD-021 mutex release test (non-blocking).
+
+**Current gate:** **TASK-009C** bounded implementation — response runtime, public APIs, queues **NOT AUTHORIZED**.
 
 | Gate item | Status |
 |-----------|--------|
@@ -118,9 +124,10 @@ The platform is materially beyond early foundation. Core registry, processing qu
 | TASK-009B-IMPL-AUTH | **ACCEPTED** |
 | TASK-009B implementation | **COMPLETE** |
 | TASK-009B+ persistence review | **ACCEPTED WITH REMEDIATION** |
-| TASK-009C-PREAUTH | **COMPLETE** |
-| TASK-009C-IMPL-AUTH | **NOT STARTED** |
-| TASK-009C answer worker | **NOT AUTHORIZED** |
+| TASK-009C-PREAUTH | **ACCEPTED** |
+| TASK-009C-IMPL-AUTH | **ACCEPTED** |
+| TASK-009C implementation | **AUTHORIZED FOR LIMITED IMPLEMENTATION** |
+| TASK-009C answer worker | **AUTHORIZED** (bounded) |
 | Response runtime | **NOT AUTHORIZED** |
 | Public APIs | **NOT AUTHORIZED** |
 | Answer worker | **NOT AUTHORIZED** |
@@ -428,4 +435,4 @@ FOUNDATION → EXTRACTION CONTRACTS → LEGAL OBJECT GOVERNANCE → CITATION GOV
 → TEMPORAL GOVERNANCE → INGESTION PERSISTENCE → [TEST HARDENING] → AGENT LAYER → …
 ```
 
-**You are here:** 009C-PREAUTH **COMPLETE** · **Next:** Claude review → 009C-IMPL-AUTH · **009C code NOT AUTHORIZED**.
+**You are here:** 009C-IMPL-AUTH **ACCEPTED** · **TASK-009C implementation AUTHORIZED** (limited) · **Next:** build `answer_runtime/` skeleton.

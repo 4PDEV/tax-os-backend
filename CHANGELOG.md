@@ -4,6 +4,39 @@ All notable changes to `tax-os-backend` are documented here.
 
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versions align with git tags where applicable.
 
+## [task-009c-impl-auth-accepted] - 2026-06-02
+
+### Changed
+
+- Claude review acceptance of TASK-009C-IMPLEMENTATION-AUTHORIZATION — **AUTHORIZED FOR LIMITED IMPLEMENTATION**
+- DEC-018 updated — bounded worker skeleton scope
+- Governance: `PROJECT_STATE.md`, `TASK_REGISTRY.md`, `CURRENT_STATUS.md`
+
+### Notes
+
+- Remediation R-1 (non-blocking): OD-021 mutex release test in future `test_answer_worker_skeleton.py`
+- Tag: `v0.2.2-answer-worker-impl-auth`
+
+## [task-009c-impl-auth] - 2026-06-02
+
+### Added
+
+- TASK-009C-IMPLEMENTATION-AUTHORIZATION — answer worker implementation design package:
+  - [`TASKS/TASK-009C-IMPLEMENTATION-AUTHORIZATION.md`](TASKS/TASK-009C-IMPLEMENTATION-AUTHORIZATION.md)
+  - D-C-01 module boundary (`answer_runtime/` — 3 modules)
+  - D-C-02 `run_answer_worker` entry; D-C-03 frozen DTO fields
+  - D-C-04 delegation to `persist_answer_for_ranking_request` only
+  - D-C-05 failure mapping incl. F-3 duplicate_rejected / F-4 dual status tests
+  - D-C-06 OD-021 mutex; D-C-07 queue boundary; D-C-08 import guards
+  - D-C-09 test matrix; D-C-10 implementation scope
+  - DEC-018 locked in [`DECISION_LOG.md`](DECISION_LOG.md)
+
+### Notes
+
+- Governance/design only — **TASK-009C implementation NOT AUTHORIZED**
+- No worker code, queues, migrations, ORM, services, APIs, or tests
+- Next gate: Claude review → explicit TASK-009C implementation authorization
+
 ## [task-009c-preauth] - 2026-06-02
 
 ### Added

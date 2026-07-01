@@ -301,3 +301,47 @@ Authority: TASK-009C-PREAUTH — [`ANSWER_WORKER_CONTRACT.md`](ANSWER_WORKER_CON
 
 Status:
 LOCKED
+
+---
+
+## DEC-018 — Answer Worker Implementation Envelope (009C-v1)
+
+TASK-009C implementation (when authorized) is bounded to **single-worker orchestration skeleton only**.
+
+**Frozen package:**
+
+```text
+backend/app/workers/answer_runtime/
+  models.py | worker.py | __init__.py
+```
+
+**Frozen entry:** `run_answer_worker(db, request) -> AnswerWorkerOutcome`
+
+**Frozen delegation:**
+
+- Sole write path: `persist_answer_for_ranking_request(...)` with `requested_by_actor_type="worker"`
+- Read-only `list_*` for outcome count enrichment on **accepted** result only
+- Prohibited: `assemble_answer_package`, `resolve_ranking_assembly_inputs`, all `create_answer_*`
+
+**Frozen mapping:**
+
+| Persistence | `worker_status` | `answer_status` |
+|-------------|-----------------|-----------------|
+| `completed` | `completed` | `completed` |
+| `failed` | `failed` | `failed` |
+| `duplicate_rejected` | `failed` | `duplicate_rejected` — **existing** `answer_request_id` (F-3) |
+
+**Frozen OD-021:** process-local non-blocking mutex; no distributed workers or queue brokers
+
+**Frozen tests:** `backend/tests/test_answer_worker_skeleton.py` — must assert **both** `worker_status` and `answer_status` (F-4)
+
+**Prohibited in 009C:** migrations, ORM, persistence/assembly changes, queues, APIs, response runtime, AI, `CitationAssembler`, narrative fields, concurrent workers
+
+Authority: TASK-009C-IMPL-AUTH — [`TASKS/TASK-009C-IMPLEMENTATION-AUTHORIZATION.md`](TASKS/TASK-009C-IMPLEMENTATION-AUTHORIZATION.md)
+
+**TASK-009C implementation:** **AUTHORIZED FOR LIMITED IMPLEMENTATION** — bounded worker skeleton per DEC-018.
+
+**Remediation R-1 (non-blocking):** OD-021 mutex release — sequential non-concurrent invocations test in `test_answer_worker_skeleton.py`.
+
+Status:
+LOCKED
