@@ -79,6 +79,7 @@ Source Registry → Source Versions → Extraction → Parsing → Legal Objects
 | Response runtime (010A) | **COMPLETE** / **ACCEPTED WITH FINDINGS** — `v0.2.4-response-runtime` |
 | Response runtime layer review (010A+) | **COMPLETE** / **ACCEPTED WITH FINDINGS** — `v0.2.6-response-runtime-layer-review` |
 | API layer pre-auth (011A-PREAUTH) | **ACCEPTED WITH FINDINGS** — DEC-021 — [`API_RUNTIME_CONTRACT.md`](API_RUNTIME_CONTRACT.md) |
+| API layer impl auth (011A-IMPL-AUTH) | **ACCEPTED WITH FINDINGS** — DEC-022 |
 | API layer implementation (011A) | **NOT AUTHORIZED** |
 
 **Foundational rule:** No AI legal reasoning in ingestion, legal-object, citation, retrieval, or ranking layers.
@@ -171,9 +172,9 @@ Ranking stores **order only**. Provenance lives **once** in `retrieval_evidence_
 
 **TASK-010A+:** **COMPLETE** / **ACCEPTED WITH FINDINGS** — Response Runtime Layer Review closed.
 
-**TASK-011A-PREAUTH:** **ACCEPTED WITH FINDINGS** — API layer governance — DEC-021 ([`API_RUNTIME_CONTRACT.md`](API_RUNTIME_CONTRACT.md), [`TASKS/TASK-011A-API-LAYER.md`](TASKS/TASK-011A-API-LAYER.md)).
+**TASK-011A-IMPL-AUTH:** **ACCEPTED WITH FINDINGS** — API layer implementation authorization — DEC-022 ([`TASKS/TASK-011A-IMPLEMENTATION-AUTHORIZATION.md`](TASKS/TASK-011A-IMPLEMENTATION-AUTHORIZATION.md)).
 
-**Next gate:** **TASK-011A-IMPL-AUTH**. API implementation, FastAPI routes, and HTTP delivery **NOT AUTHORIZED**.
+**Next gate:** **Explicit limited TASK-011A implementation authorization**. API implementation, FastAPI routes, and HTTP delivery **NOT AUTHORIZED**.
 
 ---
 
@@ -315,8 +316,10 @@ All items applied in [`RANKING_RUNTIME_CONTRACT.md`](RANKING_RUNTIME_CONTRACT.md
 26. ~~**Response Runtime Layer Review (010A+)**~~ — **done** (ACCEPTED WITH FINDINGS).
 27. ~~**TASK-011A-PREAUTH**~~ — **done** (ACCEPTED WITH FINDINGS — DEC-021).
 28. ~~**Claude governance review** of TASK-011A-PREAUTH~~ — **done** (ACCEPTED WITH FINDINGS).
-29. **TASK-011A-IMPL-AUTH** — **next gate**.
-30. API implementation / FastAPI routes — **not authorized**.
+29. ~~**TASK-011A-IMPL-AUTH**~~ — **done** (ACCEPTED WITH FINDINGS — DEC-022).
+30. ~~**Claude governance review** of TASK-011A-IMPL-AUTH~~ — **done** (ACCEPTED WITH FINDINGS).
+31. **Explicit limited TASK-011A implementation authorization** — **next gate**.
+32. API implementation / FastAPI routes — **not authorized**.
 5. Start new ChatGPT chat using this document as primary context.
 
 **Not authorized:** API layer, public HTTP delivery, queues, AI answer generation, CitationAssembler, narrative `answer_text`, legal conclusions, recommendations, concurrent workers.
@@ -328,7 +331,7 @@ All items applied in [`RANKING_RUNTIME_CONTRACT.md`](RANKING_RUNTIME_CONTRACT.md
 Copy into a new ChatGPT session:
 
 ```text
-We are continuing TAX-OS, a Source-Referenced Business & Tax Research Platform. ChatGPT is Architect/Governance. Cursor is Developer. Claude is Reviewer. GitHub/docs are the source of truth, not chat history. Read and follow PROJECT_STATE.md, DECISION_LOG.md, TASK_REGISTRY.md, MASTER_SCOPE, and ADDENDUMS. TASK-011A-PREAUTH is **accepted with findings** (DEC-021). Current gate is **TASK-011A-IMPL-AUTH**. API implementation, FastAPI routes, queues, and AI remain **not authorized**. Do not reopen locked decisions unless explicitly instructed.
+We are continuing TAX-OS, a Source-Referenced Business & Tax Research Platform. ChatGPT is Architect/Governance. Cursor is Developer. Claude is Reviewer. GitHub/docs are the source of truth, not chat history. Read and follow PROJECT_STATE.md, DECISION_LOG.md, TASK_REGISTRY.md, MASTER_SCOPE, and ADDENDUMS. TASK-011A-IMPL-AUTH is **accepted with findings** (DEC-022). Current gate is **explicit limited TASK-011A implementation authorization**. API implementation, FastAPI routes, queues, and AI remain **not authorized**. Do not reopen locked decisions unless explicitly instructed.
 ```
 
 ---

@@ -9,7 +9,7 @@
 | Response runtime (010A) | **COMPLETE** / **ACCEPTED WITH FINDINGS** — `v0.2.4-response-runtime` |
 | Response runtime layer review (010A+) | **COMPLETE** / **ACCEPTED WITH FINDINGS** — `v0.2.6-response-runtime-layer-review` |
 | TASK-011A-PREAUTH (this document) | **ACCEPTED WITH FINDINGS** — DEC-021 |
-| TASK-011A-IMPL-AUTH | **NOT STARTED** — next gate |
+| TASK-011A-IMPL-AUTH | **ACCEPTED WITH FINDINGS** — DEC-022 — [`TASK-011A-IMPLEMENTATION-AUTHORIZATION.md`](TASK-011A-IMPLEMENTATION-AUTHORIZATION.md) |
 | TASK-011A API layer code | **NOT AUTHORIZED** |
 
 ## Prerequisite chain
@@ -19,8 +19,9 @@
   → 008B–008D, U-01, 008A+ Ranking (complete)
   → 009A Assembly → 009B Persistence → 009C Worker (complete)
   → 010A Response Runtime → 010A+ Layer Review (complete)
-  → 011A-PREAUTH (accepted with findings — Claude review)
-  → 011A-IMPL-AUTH — next gate
+  → 011A-PREAUTH (accepted with findings)
+  → 011A-IMPL-AUTH (accepted with findings — DEC-022)
+  → Explicit limited TASK-011A implementation authorization — next gate
   → 011A Implementation — NOT AUTHORIZED
 ```
 
@@ -42,7 +43,7 @@ Establish the governed API layer contract — HTTP transport boundary above resp
 | Primary contract | [`API_RUNTIME_CONTRACT.md`](../API_RUNTIME_CONTRACT.md) |
 | Response runtime (downstream delegate) | [`RESPONSE_RUNTIME_CONTRACT.md`](../RESPONSE_RUNTIME_CONTRACT.md) |
 | Response runtime task record | [`TASKS/TASK-010A-RESPONSE-RUNTIME.md`](TASK-010A-RESPONSE-RUNTIME.md) |
-| Decision locks | [`DECISION_LOG.md`](../DECISION_LOG.md) — DEC-021 |
+| Decision locks | [`DECISION_LOG.md`](../DECISION_LOG.md) — DEC-021, DEC-022 |
 
 ## Governance decisions delivered
 
@@ -128,12 +129,23 @@ API-OQ-01 through API-OQ-08 documented in contract — all defer implementation.
 
 TASK-011A-PREAUTH may proceed to governance commit and tag. TASK-011A implementation remains **NOT AUTHORIZED**. TASK-011A-IMPL-AUTH may begin only after PREAUTH governance has been committed and tagged.
 
-### Non-blocking findings (IMPL-AUTH carry-forward)
+### Non-blocking findings (PREAUTH → IMPL-AUTH)
 
 | ID | Finding | Disposition |
 |----|---------|-------------|
-| **Finding 4** | Clarify `response_metadata` → `delivery_metadata` mapping | **Recorded** — `null` → `null`; object → object; never synthesize empty object |
-| **Finding 5** | v1 HTTP status tradeoff for `answer_not_completed` / `answer_not_deliverable` | **Recorded** — both map to 409; distinguish via API `error_code` (`answer_not_ready` vs `answer_not_deliverable`) |
+| **Finding 4** | Clarify `response_metadata` → `delivery_metadata` mapping | **CLOSED** in IMPL-AUTH — `null` → `null`; object → object; never synthesize empty object |
+| **Finding 5** | v1 HTTP status tradeoff for `answer_not_completed` / `answer_not_deliverable` | **CLOSED** in IMPL-AUTH — both → 409; distinguish via `error_code` |
+
+### IMPL-AUTH review (Claude)
+
+**Verdict:** **ACCEPTED WITH FINDINGS** — 20/20 checks; no blocking findings.
+
+| ID | Finding | Disposition |
+|----|---------|-------------|
+| **Finding 3** | DTO count sync (5 top-level + 3 nested = 8) | **RECORDED** — inventory in IMPL-AUTH §D-A-05 |
+| **Finding 4** | Error shape choice (nested vs top-level) | **OPEN until implementation** — recommended nested `ApiDeliveryError` |
+
+TASK-011A-IMPL-AUTH may proceed to governance commit and tag. TASK-011A implementation remains **NOT AUTHORIZED**. Explicit limited implementation authorization may begin only after IMPL-AUTH is committed and tagged.
 
 ## Architectural risks
 
@@ -141,7 +153,7 @@ Documented in contract — runtime bypass, metadata leakage, error vocabulary le
 
 ## Next gate
 
-**TASK-011A-IMPL-AUTH** — API Layer Implementation Authorization design package. Implementation, FastAPI routes, and HTTP delivery remain **NOT AUTHORIZED** until explicit IMPL-AUTH acceptance and implementation authorization.
+**Explicit limited TASK-011A implementation authorization.** FastAPI routes and HTTP delivery remain **NOT AUTHORIZED** until that prompt is issued.
 
 ---
 

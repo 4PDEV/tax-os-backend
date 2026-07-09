@@ -62,6 +62,7 @@ The platform is materially beyond early foundation. Core registry, processing qu
 | Response runtime (010A) | **COMPLETE** / **ACCEPTED WITH FINDINGS** — `v0.2.4-response-runtime` |
 | Response runtime layer review (010A+) | **COMPLETE** / **ACCEPTED WITH FINDINGS** — `v0.2.6-response-runtime-layer-review` |
 | API layer pre-auth (011A-PREAUTH) | **ACCEPTED WITH FINDINGS** — DEC-021 — [`API_RUNTIME_CONTRACT.md`](API_RUNTIME_CONTRACT.md) |
+| API layer impl auth (011A-IMPL-AUTH) | **ACCEPTED WITH FINDINGS** — DEC-022 — [`TASKS/TASK-011A-IMPLEMENTATION-AUTHORIZATION.md`](TASKS/TASK-011A-IMPLEMENTATION-AUTHORIZATION.md) |
 | API layer implementation (011A) | **NOT AUTHORIZED** |
 | API layer / public HTTP delivery | **NOT AUTHORIZED** |
 
@@ -133,15 +134,17 @@ The platform is materially beyond early foundation. Core registry, processing qu
 
 **TASK-010A+:** **COMPLETE** / **ACCEPTED WITH FINDINGS** — Response Runtime Layer Review closed.
 
-**TASK-011A-PREAUTH:** **ACCEPTED WITH FINDINGS** — API layer governance — DEC-021 ([`API_RUNTIME_CONTRACT.md`](API_RUNTIME_CONTRACT.md), [`TASKS/TASK-011A-API-LAYER.md`](TASKS/TASK-011A-API-LAYER.md)). Claude review: 20/20 checks; no blocking findings.
+**TASK-011A-PREAUTH:** **ACCEPTED WITH FINDINGS** — API layer governance — DEC-021 — tag `v0.2.7-api-layer-preauth`.
 
-**Current gate:** **TASK-011A-IMPL-AUTH**. API implementation, FastAPI routes, queues, AI, `CitationAssembler`, narrative `answer_text`, and legal conclusions **NOT AUTHORIZED**.
+**TASK-011A-IMPL-AUTH:** **ACCEPTED WITH FINDINGS** — API layer implementation authorization — DEC-022 ([`TASKS/TASK-011A-IMPLEMENTATION-AUTHORIZATION.md`](TASKS/TASK-011A-IMPLEMENTATION-AUTHORIZATION.md)). PREAUTH Findings 4/5 **closed**. IMPL-AUTH Findings 3/4 **recorded** (DTO inventory sync; error shape open until implementation).
+
+**Current gate:** **Explicit limited TASK-011A implementation authorization**. API implementation, FastAPI routes, queues, AI, `CitationAssembler`, narrative `answer_text`, and legal conclusions **NOT AUTHORIZED**.
 
 | Gate item | Status |
 |-----------|--------|
-| TASK-010A+ layer review | **COMPLETE** / **ACCEPTED WITH FINDINGS** |
 | TASK-011A-PREAUTH | **ACCEPTED WITH FINDINGS** |
-| TASK-011A-IMPL-AUTH | **NOT STARTED** — next gate |
+| TASK-011A-IMPL-AUTH | **ACCEPTED WITH FINDINGS** |
+| Explicit limited implementation authorization | **PENDING** — next gate |
 | TASK-011A implementation | **NOT AUTHORIZED** |
 | API layer / FastAPI / public APIs | **NOT AUTHORIZED** |
 | Queue infrastructure | **NOT AUTHORIZED** |
@@ -151,7 +154,7 @@ The platform is materially beyond early foundation. Core registry, processing qu
 | Legal conclusions / recommendations | **NOT AUTHORIZED** |
 | Concurrent answer workers | **NOT AUTHORIZED** (OD-021) |
 
-Retrieval, ranking, answer assembly, answer persistence, answer worker, and response runtime layers are **complete**. **TASK-011A-PREAUTH** is **accepted with findings**. **TASK-011A-IMPL-AUTH** is the **next gate**. API delivery and HTTP transport remain **not authorized**.
+Retrieval, ranking, answer assembly, answer persistence, answer worker, and response runtime layers are **complete**. **TASK-011A-PREAUTH** is **accepted with findings**. **TASK-011A-IMPL-AUTH** is **accepted with findings**. **Explicit limited TASK-011A implementation authorization** is the **next gate**. API delivery and HTTP transport remain **not authorized**.
 
 **Architecture chain:** Evidence → Ranking → Answer Assembly → Response Runtime → API Layer. Doctrine: `retrieval result` ≠ ranking · `ranking` ≠ answer · `answer` ≠ legal conclusion · `delivery` ≠ legal conclusion.
 
@@ -451,4 +454,4 @@ FOUNDATION → EXTRACTION CONTRACTS → LEGAL OBJECT GOVERNANCE → CITATION GOV
 → TEMPORAL GOVERNANCE → INGESTION PERSISTENCE → [TEST HARDENING] → AGENT LAYER → …
 ```
 
-**You are here:** TASK-011A-PREAUTH **ACCEPTED WITH FINDINGS** (DEC-021) · **Next:** **TASK-011A-IMPL-AUTH**.
+**You are here:** TASK-011A-IMPL-AUTH **ACCEPTED WITH FINDINGS** (DEC-022) · **Next:** **Explicit limited TASK-011A implementation authorization**.

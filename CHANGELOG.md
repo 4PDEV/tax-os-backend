@@ -4,6 +4,31 @@ All notable changes to `tax-os-backend` are documented here.
 
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versions align with git tags where applicable.
 
+## [task-011a-impl-auth] - 2026-06-02
+
+### Added
+
+- TASK-011A-IMPLEMENTATION-AUTHORIZATION — API layer implementation design package:
+  - [`TASKS/TASK-011A-IMPLEMENTATION-AUTHORIZATION.md`](TASKS/TASK-011A-IMPLEMENTATION-AUTHORIZATION.md)
+  - D-A-01–D-A-13: `backend/app/api/delivery/` envelope (`models`, `mapper`, `errors`, `__init__`)
+  - Frozen entry: `build_api_delivery_response` → sole delegate `build_response`
+  - Frozen DTOs: **5 top-level** (`ApiDeliveryRequest`, `ApiDeliveryResponse`, `ApiDeliveryOutcome`, `ApiDeliveryError`, `ApiDeliveryMetadata`) + **3 nested** (`ApiDeliveryCitationReference`, `ApiDeliveryEvidenceEntry`, `ApiDeliveryUncertaintyFlag`) = **8** total
+  - PREAUTH Finding 4 **closed**: `response_metadata` → `delivery_metadata` null/object rule
+  - PREAUTH Finding 5 **closed**: v1 409 trade-off; distinguish via `answer_not_ready` / `answer_not_deliverable`
+  - `delivery_incomplete` → 503 frozen
+  - Test authorization: `test_api_delivery_skeleton.py` only — no TestClient, no routes
+  - DEC-022 locked in [`DECISION_LOG.md`](DECISION_LOG.md)
+
+### Notes
+
+- Claude governance review: **ACCEPTED WITH FINDINGS** — 20/20 checks; no blocking findings
+- IMPL-AUTH Finding 3 recorded: DTO inventory sync (5 + 3 = 8)
+- IMPL-AUTH Finding 4 recorded: error shape choice open until implementation (recommended nested `ApiDeliveryError`)
+- Tag: `v0.2.8-api-layer-impl-auth`
+- Governance/design only — **TASK-011A implementation NOT AUTHORIZED**
+- No FastAPI routes, handlers, middleware, auth, workers, queues, or tests
+- Next gate: **Explicit limited TASK-011A implementation authorization**
+
 ## [task-011a-preauth] - 2026-06-02
 
 ### Added

@@ -470,3 +470,41 @@ Authority: TASK-011A-PREAUTH — [`API_RUNTIME_CONTRACT.md`](API_RUNTIME_CONTRAC
 
 Status:
 LOCKED
+
+---
+
+## DEC-022 — API Layer Implementation Envelope (011A-v1)
+
+TASK-011A implementation (when authorized) is bounded to **transport mapping above response runtime only**.
+
+**Frozen package:**
+
+```text
+backend/app/api/delivery/
+  models.py | mapper.py | errors.py | __init__.py
+```
+
+**Frozen entry:** `build_api_delivery_response(db, request) -> ApiDeliveryOutcome`
+
+**Frozen delegate:** `build_response(db, ResponseRequest)` — **sole** downstream call
+
+**Frozen API DTOs:** 5 top-level (`ApiDeliveryRequest`, `ApiDeliveryResponse`, `ApiDeliveryOutcome`, `ApiDeliveryError`, `ApiDeliveryMetadata`) + 3 nested (`ApiDeliveryCitationReference`, `ApiDeliveryEvidenceEntry`, `ApiDeliveryUncertaintyFlag`) = **8** total
+
+**Frozen version map:** `011A-v1` → `010A-v1`
+
+**Frozen metadata rule (Finding 4):** `response_metadata` null → `delivery_metadata` null; object → object; never synthesize empty object; never enrich
+
+**Frozen HTTP mapping (Finding 5):** `answer_not_completed` / `answer_not_deliverable` → **409**; clients distinguish via `answer_not_ready` / `answer_not_deliverable`; `delivery_incomplete` → **503**
+
+**Frozen tests:** `backend/tests/test_api_delivery_skeleton.py` — no FastAPI TestClient; no routes
+
+**Prohibited in 011A v1 slice:** FastAPI routes, middleware, auth, OpenAPI, migrations, ORM, persistence/assembly/worker/runtime changes, queues, AI, `CitationFormatter`/`CitationAssembler`, narrative fields, caching, streaming, pagination
+
+Authority: TASK-011A-IMPL-AUTH — [`TASKS/TASK-011A-IMPLEMENTATION-AUTHORIZATION.md`](TASKS/TASK-011A-IMPLEMENTATION-AUTHORIZATION.md)
+
+**TASK-011A-IMPL-AUTH:** **ACCEPTED WITH FINDINGS** — Claude governance review (20/20 checks); tag `v0.2.8-api-layer-impl-auth`. Non-blocking: Finding 3 (DTO inventory sync 5+3=8); Finding 4 (error shape choice open until implementation — recommended nested `ApiDeliveryError`).
+
+**TASK-011A implementation:** **NOT AUTHORIZED** — bounded delivery skeleton per DEC-022 when explicitly authorized.
+
+Status:
+LOCKED

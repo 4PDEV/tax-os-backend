@@ -50,7 +50,8 @@ Upstream contracts (binding, closed):
 - [`TASKS/TASK-010A-IMPLEMENTATION-AUTHORIZATION.md`](TASKS/TASK-010A-IMPLEMENTATION-AUTHORIZATION.md)
 - [`ANSWER_PERSISTENCE_CONTRACT.md`](ANSWER_PERSISTENCE_CONTRACT.md) (009B-v1)
 - [`ANSWER_WORKER_CONTRACT.md`](ANSWER_WORKER_CONTRACT.md) (009C-v1)
-- [`DECISION_LOG.md`](DECISION_LOG.md) — DEC-010 through DEC-020, DEC-021, OD-021
+- [`TASKS/TASK-011A-IMPLEMENTATION-AUTHORIZATION.md`](TASKS/TASK-011A-IMPLEMENTATION-AUTHORIZATION.md)
+- [`DECISION_LOG.md`](DECISION_LOG.md) — DEC-010 through DEC-021, DEC-022, OD-021
 
 ---
 
@@ -240,7 +241,7 @@ API maps runtime DTO fields **without mutation**:
 | `uncertainty_flags` | `uncertainty_flags` | Copy |
 | `response_metadata` | `delivery_metadata` | Rename only; no enrichment — see mapping rule below |
 
-**`response_metadata` → `delivery_metadata` mapping (locked — Finding 4 / IMPL-AUTH carry-forward):**
+**`response_metadata` → `delivery_metadata` mapping (locked — Finding 4 CLOSED in IMPL-AUTH):**
 
 ```text
 null  → null
@@ -308,7 +309,7 @@ map to **409 Conflict**. Clients **must** distinguish them via API `error_code` 
 | `answer_not_completed` | `answer_not_ready` |
 | `answer_not_deliverable` | `answer_not_deliverable` |
 
-Alternative HTTP status splits (e.g. `424` for not-ready) are **deferred** to IMPL-AUTH or a future contract amendment — not implemented in PREAUTH.
+Alternative HTTP status splits (e.g. `424` for not-ready) are **deferred** to a future contract amendment. **Finding 5 CLOSED** in [`TASKS/TASK-011A-IMPLEMENTATION-AUTHORIZATION.md`](TASKS/TASK-011A-IMPLEMENTATION-AUTHORIZATION.md) (§D-A-07) — intentional v1 409 trade-off frozen.
 
 ### API-local validation failures (before runtime call)
 
@@ -541,20 +542,23 @@ Every recommendation **defers implementation**. No open question authorizes code
 | ID | Criterion |
 |----|-----------|
 | I-01 | Claude review of TASK-011A-PREAUTH | **MET** — ACCEPTED WITH FINDINGS |
-| I-02 | TASK-011A-IMPL-AUTH design package |
-| I-03 | Explicit **AUTHORIZED FOR LIMITED IMPLEMENTATION** prompt |
-| I-04 | Integration test discipline with `TEST_DATABASE_URL` |
+| I-02 | TASK-011A-IMPL-AUTH design package | **MET** |
+| I-03 | Claude review of TASK-011A-IMPL-AUTH | **MET** — ACCEPTED WITH FINDINGS |
+| I-04 | Explicit **AUTHORIZED FOR LIMITED IMPLEMENTATION** prompt |
+| I-05 | Integration test discipline with `TEST_DATABASE_URL` |
 
 ### Future review gate
 
 ```text
-TASK-011A-PREAUTH (this document) — ACCEPTED WITH FINDINGS
-  → TASK-011A-IMPL-AUTH — next gate
-  → explicit implementation authorization
+TASK-011A-PREAUTH — ACCEPTED WITH FINDINGS
+  → TASK-011A-IMPL-AUTH — ACCEPTED WITH FINDINGS (DEC-022)
+  → Explicit limited TASK-011A implementation authorization — next gate
   → bounded api/delivery/ skeleton + tests (when authorized)
 ```
 
-**TASK-011A-PREAUTH:** **ACCEPTED WITH FINDINGS** — Claude governance review complete (20/20 checks). **TASK-011A implementation remains NOT AUTHORIZED.**
+**TASK-011A-PREAUTH:** **ACCEPTED WITH FINDINGS** — tag `v0.2.7-api-layer-preauth`.
+
+**TASK-011A-IMPL-AUTH:** **ACCEPTED WITH FINDINGS** — tag `v0.2.8-api-layer-impl-auth`. **Implementation NOT AUTHORIZED.**
 
 ---
 
