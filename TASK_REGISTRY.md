@@ -115,7 +115,8 @@ Bounded task tracking for `tax-os-backend`. Authoritative specs remain in `tax-o
 | TASK-010A+ | Response Runtime Layer Review | Complete | **ACCEPTED WITH FINDINGS** — tag `v0.2.6-response-runtime-layer-review` |
 | TASK-011A-PREAUTH | API Layer Governance | Complete | **ACCEPTED WITH FINDINGS** — DEC-021 — [`API_RUNTIME_CONTRACT.md`](API_RUNTIME_CONTRACT.md) |
 | TASK-011A-IMPL-AUTH | API Layer Implementation Authorization | Complete | **ACCEPTED WITH FINDINGS** — DEC-022 — [`TASK-011A-IMPLEMENTATION-AUTHORIZATION.md`](TASKS/TASK-011A-IMPLEMENTATION-AUTHORIZATION.md) |
-| TASK-011A | API Layer Implementation | Planned | **NOT AUTHORIZED** — pending explicit limited implementation authorization |
+| TASK-011A | API Layer Implementation | Complete | **ACCEPTED WITH FINDINGS** — tag `v0.2.9-api-delivery-skeleton` |
+| TASK-011A+ | API Layer Review | Planned | **NOT STARTED** — next gate |
 | TASK-DOC-001 | Master Status Document Realignment | Complete | CURRENT_STATUS, IMPLEMENTATION_ROADMAP, ARCHITECTURE_PHASE_MAP |
 
 ## Status Legend

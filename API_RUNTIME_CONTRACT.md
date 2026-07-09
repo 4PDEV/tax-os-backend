@@ -544,21 +544,24 @@ Every recommendation **defers implementation**. No open question authorizes code
 | I-01 | Claude review of TASK-011A-PREAUTH | **MET** — ACCEPTED WITH FINDINGS |
 | I-02 | TASK-011A-IMPL-AUTH design package | **MET** |
 | I-03 | Claude review of TASK-011A-IMPL-AUTH | **MET** — ACCEPTED WITH FINDINGS |
-| I-04 | Explicit **AUTHORIZED FOR LIMITED IMPLEMENTATION** prompt |
-| I-05 | Integration test discipline with `TEST_DATABASE_URL` |
+| I-04 | Explicit **AUTHORIZED FOR LIMITED IMPLEMENTATION** prompt | **MET** |
+| I-05 | Bounded `api/delivery/` skeleton + tests | **MET** — `v0.2.9-api-delivery-skeleton` |
+| I-06 | API Layer Review (011A+) | **NOT MET** — next gate |
 
 ### Future review gate
 
 ```text
 TASK-011A-PREAUTH — ACCEPTED WITH FINDINGS
   → TASK-011A-IMPL-AUTH — ACCEPTED WITH FINDINGS (DEC-022)
-  → Explicit limited TASK-011A implementation authorization — next gate
-  → bounded api/delivery/ skeleton + tests (when authorized)
+  → TASK-011A implementation — ACCEPTED WITH FINDINGS (v0.2.9-api-delivery-skeleton)
+  → API Layer Review (011A+) — next gate
 ```
 
 **TASK-011A-PREAUTH:** **ACCEPTED WITH FINDINGS** — tag `v0.2.7-api-layer-preauth`.
 
-**TASK-011A-IMPL-AUTH:** **ACCEPTED WITH FINDINGS** — tag `v0.2.8-api-layer-impl-auth`. **Implementation NOT AUTHORIZED.**
+**TASK-011A-IMPL-AUTH:** **ACCEPTED WITH FINDINGS** — tag `v0.2.8-api-layer-impl-auth`.
+
+**TASK-011A implementation:** **ACCEPTED WITH FINDINGS** — tag `v0.2.9-api-delivery-skeleton`. Nested `ApiDeliveryError` frozen. FastAPI routes **NOT AUTHORIZED**.
 
 ---
 

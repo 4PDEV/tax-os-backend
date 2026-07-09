@@ -4,6 +4,25 @@ All notable changes to `tax-os-backend` are documented here.
 
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versions align with git tags where applicable.
 
+## [task-011a-api-delivery-skeleton] - 2026-06-02
+
+### Added
+
+- TASK-011A API delivery skeleton:
+  - `backend/app/api/delivery/` — `models.py`, `mapper.py`, `errors.py`, `__init__.py`
+  - Entry: `build_api_delivery_response` → sole delegate `build_response`
+  - Nested `ApiDeliveryError` frozen as v1 failure shape
+  - Version map `011A-v1` → `010A-v1`; Finding 4 metadata null/object rule; Finding 5 409 trade-off
+  - `backend/tests/test_api_delivery_skeleton.py` — 30/30 tests
+
+### Notes
+
+- Claude implementation review: **ACCEPTED WITH FINDINGS** (non-blocking future hardening)
+- Impl Finding 4: `__all__` single-callable export guard — test applied
+- Impl Finding 5: `error_category=None` → `service_unavailable` path — backlog
+- Tag: `v0.2.9-api-delivery-skeleton`
+- Next gate: **API Layer Review (011A+)**; FastAPI routes **NOT AUTHORIZED**
+
 ## [task-011a-impl-auth] - 2026-06-02
 
 ### Added

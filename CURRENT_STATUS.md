@@ -7,7 +7,7 @@ For detailed historical sections, see [PROJECT_STATE.md](PROJECT_STATE.md). For 
 **Branch:** `main`  
 **HEAD:** `83037b6`  
 **Alembic head:** `c7e3a1f94d82` (answer persistence — TASK-009B)  
-**Latest tag:** `v0.2.6-response-runtime-layer-review` (TASK-010A+)
+**Latest tag:** `v0.2.9-api-delivery-skeleton` (TASK-011A)
 
 **Repository traceability (confirmed):**
 
@@ -22,7 +22,7 @@ dd91441 — feat: implement TASK-010A response runtime — tag v0.2.4-response-r
 
 ## Current Architecture Phase
 
-**Governed engineering platform — response runtime layer complete**
+**Governed engineering platform — API delivery skeleton complete; layer review next**
 
 The platform is materially beyond early foundation. Core registry, processing queue, extraction/parser **contracts**, legal-object **persistence**, citation **governance**, temporal **governance**, and ingestion **artifact persistence** are in place on `main`.
 
@@ -63,7 +63,8 @@ The platform is materially beyond early foundation. Core registry, processing qu
 | Response runtime layer review (010A+) | **COMPLETE** / **ACCEPTED WITH FINDINGS** — `v0.2.6-response-runtime-layer-review` |
 | API layer pre-auth (011A-PREAUTH) | **ACCEPTED WITH FINDINGS** — DEC-021 — [`API_RUNTIME_CONTRACT.md`](API_RUNTIME_CONTRACT.md) |
 | API layer impl auth (011A-IMPL-AUTH) | **ACCEPTED WITH FINDINGS** — DEC-022 — [`TASKS/TASK-011A-IMPLEMENTATION-AUTHORIZATION.md`](TASKS/TASK-011A-IMPLEMENTATION-AUTHORIZATION.md) |
-| API layer implementation (011A) | **NOT AUTHORIZED** |
+| API layer implementation (011A) | **ACCEPTED WITH FINDINGS** — `v0.2.9-api-delivery-skeleton` |
+| API layer review (011A+) | **NOT STARTED** — next gate |
 | API layer / public HTTP delivery | **NOT AUTHORIZED** |
 
 **TASK-007A:** **CLOSED** — APPROVED WITH REQUIRED REMEDIATION BEFORE TASK-007B ([`ARCHITECTURE_REVIEW_RETRIEVAL_RUNTIME_007A-PREAUTH.md`](ARCHITECTURE_REVIEW_RETRIEVAL_RUNTIME_007A-PREAUTH.md)).
@@ -136,16 +137,19 @@ The platform is materially beyond early foundation. Core registry, processing qu
 
 **TASK-011A-PREAUTH:** **ACCEPTED WITH FINDINGS** — API layer governance — DEC-021 — tag `v0.2.7-api-layer-preauth`.
 
-**TASK-011A-IMPL-AUTH:** **ACCEPTED WITH FINDINGS** — API layer implementation authorization — DEC-022 ([`TASKS/TASK-011A-IMPLEMENTATION-AUTHORIZATION.md`](TASKS/TASK-011A-IMPLEMENTATION-AUTHORIZATION.md)). PREAUTH Findings 4/5 **closed**. IMPL-AUTH Findings 3/4 **recorded** (DTO inventory sync; error shape open until implementation).
+**TASK-011A-IMPL-AUTH:** **ACCEPTED WITH FINDINGS** — API layer implementation authorization — DEC-022 ([`TASKS/TASK-011A-IMPLEMENTATION-AUTHORIZATION.md`](TASKS/TASK-011A-IMPLEMENTATION-AUTHORIZATION.md)).
 
-**Current gate:** **Explicit limited TASK-011A implementation authorization**. API implementation, FastAPI routes, queues, AI, `CitationAssembler`, narrative `answer_text`, and legal conclusions **NOT AUTHORIZED**.
+**TASK-011A:** **ACCEPTED WITH FINDINGS** — API delivery skeleton — tag `v0.2.9-api-delivery-skeleton`. Nested `ApiDeliveryError` frozen. 30/30 tests. FastAPI routes **NOT AUTHORIZED**.
+
+**Current gate:** **API Layer Review (011A+)**. FastAPI routes, HTTP transport, queues, AI, `CitationAssembler`, narrative `answer_text`, and legal conclusions **NOT AUTHORIZED**.
 
 | Gate item | Status |
 |-----------|--------|
 | TASK-011A-PREAUTH | **ACCEPTED WITH FINDINGS** |
 | TASK-011A-IMPL-AUTH | **ACCEPTED WITH FINDINGS** |
-| Explicit limited implementation authorization | **PENDING** — next gate |
-| TASK-011A implementation | **NOT AUTHORIZED** |
+| TASK-011A implementation | **ACCEPTED WITH FINDINGS** |
+| API Layer Review (011A+) | **NOT STARTED** — next gate |
+| FastAPI / public HTTP delivery | **NOT AUTHORIZED** |
 | API layer / FastAPI / public APIs | **NOT AUTHORIZED** |
 | Queue infrastructure | **NOT AUTHORIZED** |
 | AI / semantic answer generation | **NOT AUTHORIZED** |
@@ -154,7 +158,7 @@ The platform is materially beyond early foundation. Core registry, processing qu
 | Legal conclusions / recommendations | **NOT AUTHORIZED** |
 | Concurrent answer workers | **NOT AUTHORIZED** (OD-021) |
 
-Retrieval, ranking, answer assembly, answer persistence, answer worker, and response runtime layers are **complete**. **TASK-011A-PREAUTH** is **accepted with findings**. **TASK-011A-IMPL-AUTH** is **accepted with findings**. **Explicit limited TASK-011A implementation authorization** is the **next gate**. API delivery and HTTP transport remain **not authorized**.
+Retrieval, ranking, answer assembly, answer persistence, answer worker, and response runtime layers are **complete**. **TASK-011A-PREAUTH** / **IMPL-AUTH** / **implementation** are **accepted with findings**. **API Layer Review (011A+)** is the **next gate**. API delivery and HTTP transport remain **not authorized**.
 
 **Architecture chain:** Evidence → Ranking → Answer Assembly → Response Runtime → API Layer. Doctrine: `retrieval result` ≠ ranking · `ranking` ≠ answer · `answer` ≠ legal conclusion · `delivery` ≠ legal conclusion.
 
@@ -454,4 +458,4 @@ FOUNDATION → EXTRACTION CONTRACTS → LEGAL OBJECT GOVERNANCE → CITATION GOV
 → TEMPORAL GOVERNANCE → INGESTION PERSISTENCE → [TEST HARDENING] → AGENT LAYER → …
 ```
 
-**You are here:** TASK-011A-IMPL-AUTH **ACCEPTED WITH FINDINGS** (DEC-022) · **Next:** **Explicit limited TASK-011A implementation authorization**.
+**You are here:** TASK-011A **ACCEPTED WITH FINDINGS** (`v0.2.9-api-delivery-skeleton`) · **Next:** **API Layer Review (011A+)**.

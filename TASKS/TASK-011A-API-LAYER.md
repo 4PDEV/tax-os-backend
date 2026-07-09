@@ -10,7 +10,7 @@
 | Response runtime layer review (010A+) | **COMPLETE** / **ACCEPTED WITH FINDINGS** — `v0.2.6-response-runtime-layer-review` |
 | TASK-011A-PREAUTH (this document) | **ACCEPTED WITH FINDINGS** — DEC-021 |
 | TASK-011A-IMPL-AUTH | **ACCEPTED WITH FINDINGS** — DEC-022 — [`TASK-011A-IMPLEMENTATION-AUTHORIZATION.md`](TASK-011A-IMPLEMENTATION-AUTHORIZATION.md) |
-| TASK-011A API layer code | **NOT AUTHORIZED** |
+| TASK-011A API layer code | **ACCEPTED WITH FINDINGS** — `v0.2.9-api-delivery-skeleton` |
 
 ## Prerequisite chain
 
@@ -21,8 +21,8 @@
   → 010A Response Runtime → 010A+ Layer Review (complete)
   → 011A-PREAUTH (accepted with findings)
   → 011A-IMPL-AUTH (accepted with findings — DEC-022)
-  → Explicit limited TASK-011A implementation authorization — next gate
-  → 011A Implementation — NOT AUTHORIZED
+  → 011A implementation (accepted with findings — `v0.2.9-api-delivery-skeleton`)
+  → API Layer Review (011A+) — next gate
 ```
 
 ## Important
@@ -142,10 +142,19 @@ TASK-011A-PREAUTH may proceed to governance commit and tag. TASK-011A implementa
 
 | ID | Finding | Disposition |
 |----|---------|-------------|
-| **Finding 3** | DTO count sync (5 top-level + 3 nested = 8) | **RECORDED** — inventory in IMPL-AUTH §D-A-05 |
-| **Finding 4** | Error shape choice (nested vs top-level) | **OPEN until implementation** — recommended nested `ApiDeliveryError` |
+| **Finding 3** | DTO count sync (5 top-level + 3 nested = 8) | **CLOSED** — inventory in IMPL-AUTH §D-A-05 |
+| **Finding 4** | Error shape choice (nested vs top-level) | **CLOSED** — nested `ApiDeliveryError` frozen in implementation |
 
-TASK-011A-IMPL-AUTH may proceed to governance commit and tag. TASK-011A implementation remains **NOT AUTHORIZED**. Explicit limited implementation authorization may begin only after IMPL-AUTH is committed and tagged.
+### Implementation review (Claude)
+
+**Verdict:** **ACCEPTED WITH FINDINGS** — no blocking findings. Tag `v0.2.9-api-delivery-skeleton`.
+
+| ID | Finding | Disposition |
+|----|---------|-------------|
+| **Impl Finding 4** | `__all__` single-callable export guard | **RECORDED** — test hardening applied |
+| **Impl Finding 5** | `error_category=None` → `service_unavailable` path | **BACKLOG** — future defense-in-depth |
+
+TASK-011A implementation accepted. May proceed to commit and tag. FastAPI routes / HTTP transport remain **NOT AUTHORIZED**.
 
 ## Architectural risks
 
@@ -153,7 +162,7 @@ Documented in contract — runtime bypass, metadata leakage, error vocabulary le
 
 ## Next gate
 
-**Explicit limited TASK-011A implementation authorization.** FastAPI routes and HTTP delivery remain **NOT AUTHORIZED** until that prompt is issued.
+**API Layer Review (011A+).** FastAPI routes, HTTP delivery, auth, queues, and AI remain **NOT AUTHORIZED**.
 
 ---
 

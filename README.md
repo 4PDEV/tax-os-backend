@@ -72,8 +72,9 @@ tax-os-backend/
 | Response runtime layer review (010A+) | **COMPLETE** — **ACCEPTED WITH FINDINGS** — tag `v0.2.6-response-runtime-layer-review` |
 | API layer pre-auth (011A-PREAUTH) | **ACCEPTED WITH FINDINGS** — DEC-021 — tag `v0.2.7-api-layer-preauth` |
 | API layer impl auth (011A-IMPL-AUTH) | **ACCEPTED WITH FINDINGS** — DEC-022 — tag `v0.2.8-api-layer-impl-auth` |
-| Current next gate | Explicit limited TASK-011A implementation authorization |
-| API layer implementation (011A) | **NOT AUTHORIZED** |
+| API layer implementation (011A) | **ACCEPTED WITH FINDINGS** — tag `v0.2.9-api-delivery-skeleton` |
+| Current next gate | **API Layer Review (011A+)** |
+| FastAPI / public HTTP delivery | **NOT AUTHORIZED** |
 | API layer | **NOT AUTHORIZED** |
 | FastAPI / public APIs | **NOT AUTHORIZED** |
 | Queue infrastructure | **NOT AUTHORIZED** |

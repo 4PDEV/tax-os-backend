@@ -4,15 +4,13 @@
 
 **ACCEPTED WITH FINDINGS** — Claude governance review (20/20 checks); design package locked.
 
-**TASK-011A-IMPL-AUTH may proceed to governance commit and tag.**  
-**TASK-011A implementation remains NOT AUTHORIZED.**  
-**Explicit limited implementation authorization may begin only after IMPL-AUTH governance has been committed and tagged.**
+**TASK-011A implementation:** **ACCEPTED WITH FINDINGS** — tag `v0.2.9-api-delivery-skeleton`.
 
 | Phase | Status |
 |-------|--------|
 | TASK-011A-PREAUTH | **ACCEPTED WITH FINDINGS** — DEC-021 |
 | TASK-011A-IMPLEMENTATION-AUTHORIZATION (this document) | **ACCEPTED WITH FINDINGS** — DEC-022 |
-| TASK-011A API layer code | **NOT AUTHORIZED** |
+| TASK-011A API layer code | **ACCEPTED WITH FINDINGS** — `v0.2.9-api-delivery-skeleton` |
 
 ## Accepted baseline
 
@@ -211,16 +209,16 @@ API_TO_RUNTIME_CONTRACT_VERSION = {
 | `delivery_metadata` | `ApiDeliveryMetadata` \| None | Success | See §D-A-06 Finding 4 rule |
 | `error` | `ApiDeliveryError` \| None | Failure | API error envelope |
 
-### Failure shape choice (Finding 4 — open until implementation)
+### Failure shape (IMPL-AUTH Finding 4 — CLOSED)
 
-Implementation **must choose one** failure shape before or during the authorized implementation slice and reflect the choice back into this governance document:
+**Frozen v1 shape:** nested `ApiDeliveryError` on `ApiDeliveryResponse.error`.
 
 | Option | Shape | Verdict |
 |--------|-------|---------|
-| **A (recommended v1)** | Nested `ApiDeliveryError` object on `ApiDeliveryResponse.error` | **Preferred** |
-| **B (alternative)** | Top-level `error_code` + `error_message` on `ApiDeliveryResponse` | Permitted |
+| **A** | Nested `ApiDeliveryError` object on `ApiDeliveryResponse.error` | **SELECTED / FROZEN** |
+| **B** | Top-level `error_code` + `error_message` on `ApiDeliveryResponse` | **Rejected for 011A-v1** |
 
-Do not implement both. Do not leave the choice open after implementation. Close this finding by updating §D-A-05 to a single frozen shape when code is authorized.
+Top-level `error_code` / `error_message` fields on `ApiDeliveryResponse` are **prohibited** in 011A-v1.
 
 ### `ApiDeliveryOutcome`
 
@@ -558,22 +556,31 @@ Individually **prohibited** unless a future task explicitly authorizes:
 
 | ID | Finding | Disposition |
 |----|---------|-------------|
-| **Finding 3** | DTO count documentation sync (5 top-level + 3 nested = 8) | **RECORDED** — inventory table in §D-A-05; definitions unchanged |
-| **Finding 4** | Error shape choice (nested `ApiDeliveryError` vs top-level fields) | **OPEN until implementation** — recommended nested; must freeze one shape and update governance |
+| **Finding 3** | DTO count documentation sync (5 top-level + 3 nested = 8) | **CLOSED** — inventory table in §D-A-05 |
+| **Finding 4** | Error shape choice (nested `ApiDeliveryError` vs top-level fields) | **CLOSED** — nested `ApiDeliveryError` frozen in implementation |
+
+### Implementation review findings (Claude) — future hardening backlog
+
+**Verdict:** **ACCEPTED WITH FINDINGS** — no blocking findings.
+
+| ID | Finding | Disposition |
+|----|---------|-------------|
+| **Impl Finding 4** | `__all__` must export exactly one callable (`build_api_delivery_response`); remaining exports DTOs/constants only | **RECORDED** — covered by `test_public_exports_single_callable_only` |
+| **Impl Finding 5** | Map `ResponseOutcome(error_category=None)` through full API path → expect `service_unavailable`; no runtime category leakage | **BACKLOG** — defense-in-depth; do not change runtime behaviour |
 
 ---
 
-## Implementation checklist (for future authorized prompt)
+## Implementation checklist
 
-- [ ] Scope: `backend/app/api/delivery/` + `test_api_delivery_skeleton.py` only
-- [ ] Entry: `build_api_delivery_response` only
-- [ ] Delegate: `build_response` only
-- [ ] No routes, middleware, auth, OpenAPI
-- [ ] PREAUTH Finding 4 metadata rule enforced in mapper
-- [ ] PREAUTH Finding 5 status table enforced in `errors.py`
-- [ ] IMPL-AUTH Finding 4: freeze one failure shape; update §D-A-05
-- [ ] Import guard test passes
-- [ ] No FastAPI `TestClient`
+- [x] Scope: `backend/app/api/delivery/` + `test_api_delivery_skeleton.py` only
+- [x] Entry: `build_api_delivery_response` only
+- [x] Delegate: `build_response` only
+- [x] No routes, middleware, auth, OpenAPI
+- [x] PREAUTH Finding 4 metadata rule enforced in mapper
+- [x] PREAUTH Finding 5 status table enforced in `errors.py`
+- [x] IMPL-AUTH Finding 4: nested `ApiDeliveryError` frozen
+- [x] Import guard test passes
+- [x] No FastAPI `TestClient`
 
 ---
 
@@ -601,8 +608,8 @@ Individually **prohibited** unless a future task explicitly authorizes:
 
 ## Next gate
 
-**Explicit limited TASK-011A implementation authorization.** Implementation remains **NOT AUTHORIZED** until that prompt is issued after this package is committed and tagged (`v0.2.8-api-layer-impl-auth`).
+**API Layer Review (011A+).** FastAPI routes, HTTP transport, auth, queues, and AI remain **NOT AUTHORIZED**.
 
 ---
 
-END OF TASK-011A IMPLEMENTATION AUTHORIZATION PACKAGE (implementation NOT AUTHORIZED)
+END OF TASK-011A IMPLEMENTATION AUTHORIZATION PACKAGE

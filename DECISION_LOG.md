@@ -496,15 +496,17 @@ backend/app/api/delivery/
 
 **Frozen HTTP mapping (Finding 5):** `answer_not_completed` / `answer_not_deliverable` → **409**; clients distinguish via `answer_not_ready` / `answer_not_deliverable`; `delivery_incomplete` → **503**
 
+**Frozen failure shape:** nested `ApiDeliveryError` on `ApiDeliveryResponse.error` — **CLOSED** (implementation selected Option A; top-level error fields prohibited in 011A-v1)
+
 **Frozen tests:** `backend/tests/test_api_delivery_skeleton.py` — no FastAPI TestClient; no routes
 
 **Prohibited in 011A v1 slice:** FastAPI routes, middleware, auth, OpenAPI, migrations, ORM, persistence/assembly/worker/runtime changes, queues, AI, `CitationFormatter`/`CitationAssembler`, narrative fields, caching, streaming, pagination
 
 Authority: TASK-011A-IMPL-AUTH — [`TASKS/TASK-011A-IMPLEMENTATION-AUTHORIZATION.md`](TASKS/TASK-011A-IMPLEMENTATION-AUTHORIZATION.md)
 
-**TASK-011A-IMPL-AUTH:** **ACCEPTED WITH FINDINGS** — Claude governance review (20/20 checks); tag `v0.2.8-api-layer-impl-auth`. Non-blocking: Finding 3 (DTO inventory sync 5+3=8); Finding 4 (error shape choice open until implementation — recommended nested `ApiDeliveryError`).
+**TASK-011A-IMPL-AUTH:** **ACCEPTED WITH FINDINGS** — Claude governance review (20/20 checks); tag `v0.2.8-api-layer-impl-auth`.
 
-**TASK-011A implementation:** **NOT AUTHORIZED** — bounded delivery skeleton per DEC-022 when explicitly authorized.
+**TASK-011A implementation:** **ACCEPTED WITH FINDINGS** — bounded delivery skeleton per DEC-022; tag `v0.2.9-api-delivery-skeleton`. Nested `ApiDeliveryError` frozen. Non-blocking: Impl Finding 4 (`__all__` export guard — tested); Impl Finding 5 (`error_category=None` mapping — backlog).
 
 Status:
 LOCKED
