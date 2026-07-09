@@ -67,7 +67,9 @@ Source Registry → Source Versions → Extraction → Parsing → Legal Objects
 | Answer worker pre-auth (009C-PREAUTH) | **ACCEPTED** — DEC-017 |
 | Answer worker impl auth (009C-IMPL-AUTH) | **ACCEPTED** — DEC-018 |
 | Answer worker skeleton (009C) | **COMPLETE** / **ACCEPTED** — `v0.2.3-answer-worker-skeleton` |
-| Response runtime governance (010A-PREAUTH) | **NOT STARTED** — next gate |
+| Response runtime governance (010A-PREAUTH) | **ACCEPTED** — DEC-019 |
+| Response runtime impl auth (010A-IMPL-AUTH) | **COMPLETE** — DEC-020 |
+| Response runtime (010A) | **COMPLETE** / **ACCEPTED WITH FINDINGS** — `v0.2.4-response-runtime` |
 
 **Foundational rule:** No AI legal reasoning in ingestion, legal-object, citation, retrieval, or ranking layers.
 
@@ -155,7 +157,9 @@ Ranking stores **order only**. Provenance lives **once** in `retrieval_evidence_
 
 **TASK-009C:** **COMPLETE** / **ACCEPTED** — answer worker skeleton — tag `v0.2.3-answer-worker-skeleton` — [`TASKS/TASK-009C-ANSWER-WORKER.md`](TASKS/TASK-009C-ANSWER-WORKER.md).
 
-**TASK-010A-PREAUTH:** **NOT STARTED** — response runtime governance — next gate.
+**TASK-010A:** **COMPLETE** / **ACCEPTED WITH FINDINGS** — response runtime — tag `v0.2.4-response-runtime`.
+
+**Next gate:** Response Runtime Layer Review (010A+). Public APIs **NOT AUTHORIZED**.
 
 ---
 
@@ -200,6 +204,20 @@ Ranking stores **order only**. Provenance lives **once** in `retrieval_evidence_
 | Assembly authority | `assemble_answer_package` (009A) — persistence stores only |
 | Citation display | Read-time `CitationFormatter` only — no persisted citation text |
 | Zero-evidence | `completed`, `rank_count=0`, `zero_evidence` uncertainty flag |
+
+---
+
+## 6c. Response Runtime Doctrine (010A-PREAUTH)
+
+| Doctrine | Rule |
+|----------|------|
+| `persistence` ≠ delivery | Runtime reads `completed` results — no writes |
+| `delivery` ≠ legal conclusion | No `answer_text`, conclusions, or recommendations in 010A-v1 |
+| Read-only provenance resolution | Join via persisted pointers — not retrieval execution |
+| Deterministic rendering (G-11) | Same inputs → identical `ResponsePackage` |
+| Evidence order frozen | `presentation_order_index` as persisted — no re-sort |
+| CitationFormatter only | Read-only display; no `CitationAssembler` |
+| Worker boundary | No `run_answer_worker` or persistence orchestration |
 
 ---
 
@@ -276,8 +294,12 @@ All items applied in [`RANKING_RUNTIME_CONTRACT.md`](RANKING_RUNTIME_CONTRACT.md
 19. ~~**TASK-009C-PREAUTH**~~ — **done** (DEC-017).
 20. ~~**009C-IMPL-AUTH**~~ — **accepted** (DEC-018).
 21. ~~**TASK-009C** bounded worker implementation~~ — **done** (`v0.2.3-answer-worker-skeleton`).
-22. **TASK-010A-PREAUTH** — response runtime governance — **next gate**.
-23. Response runtime implementation / public APIs / queues — **not authorized**.
+22. ~~**TASK-010A-PREAUTH**~~ — **accepted** (DEC-019).
+23. ~~**010A-IMPL-AUTH**~~ — **done** (DEC-020).
+24. ~~**Claude review** of 010A-IMPL-AUTH~~ — **accepted with findings**.
+25. ~~**TASK-010A** response runtime implementation~~ — **done** (`v0.2.4-response-runtime`).
+26. **Response Runtime Layer Review (010A+)** — **next gate**.
+27. Public APIs / queues — **not authorized**.
 5. Start new ChatGPT chat using this document as primary context.
 
 **Not authorized:** response runtime implementation, public APIs, AI answer generation, CitationAssembler, legal conclusions, recommendations, concurrent workers.
@@ -289,7 +311,7 @@ All items applied in [`RANKING_RUNTIME_CONTRACT.md`](RANKING_RUNTIME_CONTRACT.md
 Copy into a new ChatGPT session:
 
 ```text
-We are continuing TAX-OS, a Source-Referenced Business & Tax Research Platform. ChatGPT is Architect/Governance. Cursor is Developer. Claude is Reviewer. GitHub/docs are the source of truth, not chat history. Read and follow PROJECT_STATE.md, DECISION_LOG.md, TASK_REGISTRY.md, MASTER_SCOPE, and ADDENDUMS. Answer worker (009C) is **complete**. Current active task is **TASK-010A-PREAUTH** — Response Runtime Governance (design only). Response runtime implementation, public APIs, and queues remain **not authorized**. Do not reopen locked decisions unless explicitly instructed.
+We are continuing TAX-OS, a Source-Referenced Business & Tax Research Platform. ChatGPT is Architect/Governance. Cursor is Developer. Claude is Reviewer. GitHub/docs are the source of truth, not chat history. Read and follow PROJECT_STATE.md, DECISION_LOG.md, TASK_REGISTRY.md, MASTER_SCOPE, and ADDENDUMS. TASK-010A response runtime is **complete** (ACCEPTED WITH FINDINGS). Current gate is **Response Runtime Layer Review (010A+)**. Public APIs, queues, and AI remain **not authorized**. Do not reopen locked decisions unless explicitly instructed.
 ```
 
 ---

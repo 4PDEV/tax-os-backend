@@ -4,6 +4,65 @@ All notable changes to `tax-os-backend` are documented here.
 
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versions align with git tags where applicable.
 
+## [task-010a-response-runtime] - 2026-06-02
+
+### Added
+
+- TASK-010A response runtime:
+  - `backend/app/services/response_runtime/` — `build_response`, frozen DTOs
+  - Read-only delivery from completed answer persistence; `CitationFormatter` gate
+  - OQ-R-09: `legal_object_id` + `source_version_id` pass-through on `ResponseEvidenceEntry`
+  - `backend/tests/test_response_runtime_skeleton.py` — 15/15 tests
+
+### Notes
+
+- Claude implementation review: **ACCEPTED WITH FINDINGS** (non-blocking test hygiene)
+- Tag: `v0.2.4-response-runtime`
+- Next gate: Response Runtime Layer Review (010A+); public APIs **NOT AUTHORIZED**
+
+## [task-010a-impl-auth] - 2026-06-02
+
+### Added
+
+- TASK-010A-IMPLEMENTATION-AUTHORIZATION — response runtime implementation design package:
+  - [`TASKS/TASK-010A-IMPLEMENTATION-AUTHORIZATION.md`](TASKS/TASK-010A-IMPLEMENTATION-AUTHORIZATION.md)
+  - D-R-01 module boundary (`response_runtime/` — 4 modules)
+  - D-R-02 responsibilities; D-R-03 frozen DTOs
+  - F-1 / OQ-R-09 Option A: `legal_object_id` + `source_version_id` on `ResponseEvidenceEntry`
+  - F-5: `get_answer_request` / `get_answer_result` verified as approved read dependencies
+  - D-R-04–D-R-12 validation, imports, behaviour, errors, determinism, non-goals, tests, scope
+  - DEC-020 locked in [`DECISION_LOG.md`](DECISION_LOG.md)
+
+### Changed
+
+- [`RESPONSE_RUNTIME_CONTRACT.md`](RESPONSE_RUNTIME_CONTRACT.md) — OQ-R-09 closed; `ResponseEvidenceEntry` updated
+
+### Notes
+
+- Governance/design only — **TASK-010A implementation NOT AUTHORIZED**
+- Next gate: Claude review → explicit TASK-010A implementation authorization
+
+## [task-010a-preauth] - 2026-06-02
+
+### Added
+
+- TASK-010A-PREAUTH — response runtime governance contract:
+  - [`RESPONSE_RUNTIME_CONTRACT.md`](RESPONSE_RUNTIME_CONTRACT.md)
+  - [`TASKS/TASK-010A-RESPONSE-RUNTIME.md`](TASKS/TASK-010A-RESPONSE-RUNTIME.md)
+  - G-01 boundary: read + render only — no retrieve, rank, assemble, persist, workers
+  - G-02 entry: `build_response` in `response_runtime/` (design frozen)
+  - G-03 `ResponseRequest`; G-04 `ResponsePackage` / `ResponseOutcome`
+  - G-05 read model; G-06 deterministic rendering; G-07 `CitationFormatter` only
+  - G-08 runtime error vocabulary; G-09 import guards; G-10 layer separation
+  - G-11 determinism; G-12 readiness checklist
+  - DEC-019 locked in [`DECISION_LOG.md`](DECISION_LOG.md)
+
+### Notes
+
+- Governance/design only — **TASK-010A implementation NOT AUTHORIZED**
+- No runtime code, APIs, workers, migrations, ORM, or tests
+- Next gate: Claude review → TASK-010A-IMPL-AUTH
+
 ## [task-009c-answer-worker-skeleton] - 2026-06-02
 
 ### Added

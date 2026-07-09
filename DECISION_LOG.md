@@ -345,3 +345,89 @@ Authority: TASK-009C-IMPL-AUTH — [`TASKS/TASK-009C-IMPLEMENTATION-AUTHORIZATIO
 
 Status:
 LOCKED
+
+---
+
+## DEC-019 — Response Runtime Boundary (010A-v1)
+
+TASK-010A defines the **read-only delivery layer** above completed answer persistence.
+
+**Core rule:** Response runtime **reads and renders** persisted answers — it does **not** retrieve, rank, assemble, persist, invoke workers, or generate legal conclusions.
+
+**Frozen package (future):**
+
+```text
+backend/app/services/response_runtime/
+```
+
+**Frozen entry:** `build_response(db, request) -> ResponseOutcome`
+
+**Frozen inputs:** `ResponseRequest` — `answer_request_id`, `contract_version` (`010A-v1`), `include_rendered_citation_text`, optional `answer_result_id`
+
+**Frozen outputs:** `ResponsePackage` — deterministic delivery DTO; no persistence metadata leakage; no ORM objects
+
+**Frozen read model:**
+
+- `answer_results`, `answer_evidence_entries`, `answer_uncertainty_flags`
+- Read-only provenance/citation joins via persisted pointers
+- Permitted: `get_answer_*`, `list_*` from answer persistence only
+- Evidence/uncertainty loaded from **accepted** sibling; terminal `completed` supplies eligibility
+
+**Frozen rendering:** persisted `presentation_order_index` order only — no sort, filter, dedupe, inference
+
+**Frozen citation rule:** read-only `CitationFormatter` permitted; `CitationAssembler` prohibited
+
+**Frozen determinism:** same completed result × same rendering options → identical `ResponsePackage`; no timestamps in payload identity
+
+**Frozen error vocabulary:** runtime-specific categories (`answer_not_completed`, `answer_not_deliverable`, …) — do not expose persistence/worker categories directly
+
+**Prohibited in 010A:** retrieval/ranking/assembly execution, all `create_answer_*`, workers, queues, APIs, AI, `CitationAssembler`, narrative `answer_text`, legal conclusions, recommendations
+
+Authority: TASK-010A-PREAUTH — [`RESPONSE_RUNTIME_CONTRACT.md`](RESPONSE_RUNTIME_CONTRACT.md); [`TASKS/TASK-010A-RESPONSE-RUNTIME.md`](TASKS/TASK-010A-RESPONSE-RUNTIME.md)
+
+**TASK-010A implementation remains NOT AUTHORIZED.**
+
+Status:
+LOCKED
+
+---
+
+## DEC-020 — Response Runtime Implementation Envelope (010A-v1)
+
+TASK-010A implementation (when authorized) is bounded to **read-only delivery runtime only**.
+
+**Frozen package:**
+
+```text
+backend/app/services/response_runtime/
+  models.py | runtime.py | rendering.py | __init__.py
+```
+
+**Frozen entry:** `build_response(db, request) -> ResponseOutcome`
+
+**Frozen delegation:**
+
+- Read-only: `get_answer_request`, `get_answer_result`, `list_results_for_request`, `list_evidence_entries_for_result`, `list_uncertainty_flags_for_result` (F-5 — **already exist**)
+- Read-only provenance joins in `rendering.py` only
+- Read-only `CitationFormatter` when `include_rendered_citation_text=true`
+- Prohibited: all `create_answer_*`, `persist_answer_for_ranking_request`, `run_answer_worker`, `assemble_answer_package`
+
+**Frozen `ResponseEvidenceEntry` (F-1 / OQ-R-09 Option A):**
+
+- `legal_object_id` and `source_version_id` included as **read-only provenance references**
+- Display/pass-through only — not authoritative; never interpreted or inferred; `null` when join unresolved
+
+**Frozen rendering:** persisted `presentation_order_index` order only; G-11 determinism
+
+**Frozen errors:** runtime vocabulary only — no persistence category reuse
+
+**Frozen tests:** `backend/tests/test_response_runtime_skeleton.py`
+
+**Prohibited in 010A:** migrations, ORM, persistence/assembly/worker changes, queues, APIs, AI, `CitationAssembler`, narrative fields, caching, streaming, pagination
+
+Authority: TASK-010A-IMPL-AUTH — [`TASKS/TASK-010A-IMPLEMENTATION-AUTHORIZATION.md`](TASKS/TASK-010A-IMPLEMENTATION-AUTHORIZATION.md)
+
+**TASK-010A implementation:** **ACCEPTED WITH FINDINGS** — bounded runtime per DEC-020; tag `v0.2.4-response-runtime`. Non-blocking: citation-flag negative test, import guard token expansion, future D-R-06/G-05 doc reconciliation.
+
+Status:
+LOCKED
