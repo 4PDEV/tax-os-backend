@@ -435,3 +435,38 @@ Authority: TASK-010A-IMPL-AUTH — [`TASKS/TASK-010A-IMPLEMENTATION-AUTHORIZATIO
 
 Status:
 LOCKED
+
+---
+
+## DEC-021 — API Layer Boundary (011A-v1)
+
+TASK-011A defines the **HTTP transport layer** strictly above response runtime.
+
+**Core rule:** API layer **transports** `build_response` outcomes — it does **not** retrieve, rank, assemble, persist, invoke workers, render provenance joins directly, or generate legal conclusions.
+
+**Frozen conceptual entry:** `POST /query/{answer_request_id}` — design only; no route implementation in PREAUTH
+
+**Frozen API inputs:** `ApiDeliveryRequest` — `answer_request_id`, `api_contract_version` (`011A-v1`), `include_rendered_citation_text`, optional `answer_result_id`
+
+**Frozen API → runtime mapping:** `011A-v1` → `ResponseRequest` with `contract_version=010A-v1`
+
+**Frozen delegate:** `build_response(db, request)` — **sole** downstream entry; no reach-around into answer persistence, workers, or lower layers
+
+**Frozen outputs:** `ApiDeliveryResponse` — external envelope; no persistence metadata, audit IDs, replay hashes, or worker fields
+
+**Frozen HTTP mapping:** deterministic status table — 200 completed; 400 validation; 404 not found; 409 not ready / not deliverable; 503 incomplete / unavailable
+
+**Frozen API error vocabulary:** `error_code` only — runtime `error_category` translated at boundary; persistence/worker categories never exposed
+
+**Frozen determinism:** same `ApiDeliveryRequest` × same `ResponseOutcome` → identical HTTP payload and status
+
+**Prohibited in 011A:** direct retrieval/ranking/assembly/persistence/worker imports, `CitationFormatter`/`CitationAssembler` at API, queues, auth implementation, caching, streaming, pagination, AI, narrative `answer_text`, legal conclusions, recommendations, FastAPI route implementation in PREAUTH
+
+Authority: TASK-011A-PREAUTH — [`API_RUNTIME_CONTRACT.md`](API_RUNTIME_CONTRACT.md); [`TASKS/TASK-011A-API-LAYER.md`](TASKS/TASK-011A-API-LAYER.md)
+
+**TASK-011A-PREAUTH:** **ACCEPTED WITH FINDINGS** — Claude governance review (20/20 checks); tag `v0.2.7-api-layer-preauth`. Non-blocking: Finding 4 (`response_metadata` → `delivery_metadata` mapping); Finding 5 (409 status tradeoff — distinguish via `error_code`).
+
+**TASK-011A implementation remains NOT AUTHORIZED.**
+
+Status:
+LOCKED

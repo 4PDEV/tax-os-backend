@@ -4,6 +4,31 @@ All notable changes to `tax-os-backend` are documented here.
 
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versions align with git tags where applicable.
 
+## [task-011a-preauth] - 2026-06-02
+
+### Added
+
+- TASK-011A-PREAUTH — API layer governance contract:
+  - [`API_RUNTIME_CONTRACT.md`](API_RUNTIME_CONTRACT.md)
+  - [`TASKS/TASK-011A-API-LAYER.md`](TASKS/TASK-011A-API-LAYER.md)
+  - G-01–G-12: HTTP transport boundary above response runtime only
+  - Conceptual entry: `POST /query/{answer_request_id}` (design only)
+  - `ApiDeliveryRequest` / `ApiDeliveryResponse` frozen envelopes
+  - API → runtime version mapping (`011A-v1` → `010A-v1`)
+  - Deterministic HTTP status mapping and API-only error vocabulary
+  - Sole delegate: `build_response` — no reach-around into lower layers
+  - API-OQ-01–API-OQ-08 documented with deferred recommendations
+  - DEC-021 locked in [`DECISION_LOG.md`](DECISION_LOG.md)
+
+### Notes
+
+- Claude governance review: **ACCEPTED WITH FINDINGS** — 20/20 checks; no blocking findings
+- Non-blocking findings recorded for IMPL-AUTH: Finding 4 (`delivery_metadata` mapping); Finding 5 (409 status tradeoff)
+- Tag: `v0.2.7-api-layer-preauth`
+- Governance/design only — **TASK-011A implementation NOT AUTHORIZED**
+- No FastAPI routes, handlers, middleware, auth, workers, queues, or tests
+- Next gate: **TASK-011A-IMPL-AUTH**
+
 ## [response-runtime-layer-review] - 2026-06-02
 
 ### Added

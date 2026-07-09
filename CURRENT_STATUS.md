@@ -61,6 +61,8 @@ The platform is materially beyond early foundation. Core registry, processing qu
 | Answer worker skeleton (009C) | **COMPLETE** / **ACCEPTED** — `v0.2.3-answer-worker-skeleton` |
 | Response runtime (010A) | **COMPLETE** / **ACCEPTED WITH FINDINGS** — `v0.2.4-response-runtime` |
 | Response runtime layer review (010A+) | **COMPLETE** / **ACCEPTED WITH FINDINGS** — `v0.2.6-response-runtime-layer-review` |
+| API layer pre-auth (011A-PREAUTH) | **ACCEPTED WITH FINDINGS** — DEC-021 — [`API_RUNTIME_CONTRACT.md`](API_RUNTIME_CONTRACT.md) |
+| API layer implementation (011A) | **NOT AUTHORIZED** |
 | API layer / public HTTP delivery | **NOT AUTHORIZED** |
 
 **TASK-007A:** **CLOSED** — APPROVED WITH REQUIRED REMEDIATION BEFORE TASK-007B ([`ARCHITECTURE_REVIEW_RETRIEVAL_RUNTIME_007A-PREAUTH.md`](ARCHITECTURE_REVIEW_RETRIEVAL_RUNTIME_007A-PREAUTH.md)).
@@ -129,22 +131,18 @@ The platform is materially beyond early foundation. Core registry, processing qu
 
 **TASK-010A:** **COMPLETE** / **ACCEPTED WITH FINDINGS** — response runtime — tag `v0.2.4-response-runtime` ([`TASKS/TASK-010A-RESPONSE-RUNTIME.md`](TASKS/TASK-010A-RESPONSE-RUNTIME.md)). 15/15 tests.
 
-**TASK-010A+:** **COMPLETE** / **ACCEPTED WITH FINDINGS** — Response Runtime Layer Review closed. Response Runtime Layer may be marked complete. No API-layer implementation or pre-authorization is opened.
+**TASK-010A+:** **COMPLETE** / **ACCEPTED WITH FINDINGS** — Response Runtime Layer Review closed.
 
-**Current gate:** **Post-layer governance**. Public APIs, queues, AI, `CitationAssembler`, narrative `answer_text`, and legal conclusions **NOT AUTHORIZED**.
+**TASK-011A-PREAUTH:** **ACCEPTED WITH FINDINGS** — API layer governance — DEC-021 ([`API_RUNTIME_CONTRACT.md`](API_RUNTIME_CONTRACT.md), [`TASKS/TASK-011A-API-LAYER.md`](TASKS/TASK-011A-API-LAYER.md)). Claude review: 20/20 checks; no blocking findings.
+
+**Current gate:** **TASK-011A-IMPL-AUTH**. API implementation, FastAPI routes, queues, AI, `CitationAssembler`, narrative `answer_text`, and legal conclusions **NOT AUTHORIZED**.
 
 | Gate item | Status |
 |-----------|--------|
-| TASK-009B-PREAUTH | **ACCEPTED** |
-| TASK-009B-IMPL-AUTH | **ACCEPTED** |
-| TASK-009B implementation | **COMPLETE** |
-| TASK-009B+ persistence review | **ACCEPTED WITH REMEDIATION** |
-| TASK-009C-PREAUTH | **ACCEPTED** |
-| TASK-009C-IMPL-AUTH | **ACCEPTED** |
-| TASK-009C implementation | **COMPLETE** |
-| TASK-009C answer worker | **COMPLETE** / **ACCEPTED** |
-| TASK-010A implementation | **COMPLETE** / **ACCEPTED WITH FINDINGS** |
 | TASK-010A+ layer review | **COMPLETE** / **ACCEPTED WITH FINDINGS** |
+| TASK-011A-PREAUTH | **ACCEPTED WITH FINDINGS** |
+| TASK-011A-IMPL-AUTH | **NOT STARTED** — next gate |
+| TASK-011A implementation | **NOT AUTHORIZED** |
 | API layer / FastAPI / public APIs | **NOT AUTHORIZED** |
 | Queue infrastructure | **NOT AUTHORIZED** |
 | AI / semantic answer generation | **NOT AUTHORIZED** |
@@ -153,9 +151,9 @@ The platform is materially beyond early foundation. Core registry, processing qu
 | Legal conclusions / recommendations | **NOT AUTHORIZED** |
 | Concurrent answer workers | **NOT AUTHORIZED** (OD-021) |
 
-Retrieval, ranking, answer assembly, answer persistence, answer worker, and response runtime layers are **complete**. **Post-layer governance** is the current gate. API delivery and HTTP transport remain **not authorized**.
+Retrieval, ranking, answer assembly, answer persistence, answer worker, and response runtime layers are **complete**. **TASK-011A-PREAUTH** is **accepted with findings**. **TASK-011A-IMPL-AUTH** is the **next gate**. API delivery and HTTP transport remain **not authorized**.
 
-**Architecture chain:** Evidence → Ranking → Answer Assembly → Response Runtime. Doctrine: `retrieval result` ≠ ranking · `ranking` ≠ answer · `answer` ≠ legal conclusion.
+**Architecture chain:** Evidence → Ranking → Answer Assembly → Response Runtime → API Layer. Doctrine: `retrieval result` ≠ ranking · `ranking` ≠ answer · `answer` ≠ legal conclusion · `delivery` ≠ legal conclusion.
 
 **Environments:** development and internal staging only. No public production deployment.
 
@@ -453,4 +451,4 @@ FOUNDATION → EXTRACTION CONTRACTS → LEGAL OBJECT GOVERNANCE → CITATION GOV
 → TEMPORAL GOVERNANCE → INGESTION PERSISTENCE → [TEST HARDENING] → AGENT LAYER → …
 ```
 
-**You are here:** TASK-010A+ **COMPLETE** (`v0.2.6-response-runtime-layer-review`) · **Next:** **Post-layer governance** (API pre-authorization **NOT AUTHORIZED**).
+**You are here:** TASK-011A-PREAUTH **ACCEPTED WITH FINDINGS** (DEC-021) · **Next:** **TASK-011A-IMPL-AUTH**.

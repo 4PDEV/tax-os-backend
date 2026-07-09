@@ -70,7 +70,9 @@ tax-os-backend/
 | Answer worker (009C) | **COMPLETE** |
 | Response runtime (010A) | **COMPLETE** — tag `v0.2.4-response-runtime` |
 | Response runtime layer review (010A+) | **COMPLETE** — **ACCEPTED WITH FINDINGS** — tag `v0.2.6-response-runtime-layer-review` |
-| Current next gate | Post-layer governance; API pre-authorization **NOT AUTHORIZED** |
+| API layer pre-auth (011A-PREAUTH) | **ACCEPTED WITH FINDINGS** — DEC-021 — tag `v0.2.7-api-layer-preauth` |
+| Current next gate | **TASK-011A-IMPL-AUTH** |
+| API layer implementation (011A) | **NOT AUTHORIZED** |
 | API layer | **NOT AUTHORIZED** |
 | FastAPI / public APIs | **NOT AUTHORIZED** |
 | Queue infrastructure | **NOT AUTHORIZED** |
