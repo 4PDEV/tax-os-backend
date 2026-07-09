@@ -4,7 +4,14 @@
 
 > **Also read:** [CURRENT_STATUS.md](CURRENT_STATUS.md) · [TASK_REGISTRY.md](TASK_REGISTRY.md) · [DECISION_LOG.md](DECISION_LOG.md) · [IMPLEMENTATION_ROADMAP.md](IMPLEMENTATION_ROADMAP.md) · [OPEN_DECISIONS.md](OPEN_DECISIONS.md)
 
-**Last handoff realigned:** 2026-06-02 · **Branch:** `main` · **HEAD:** `1ec1423` · **Tags:** `v0.2.3-answer-worker-skeleton`, `v0.2.2-answer-worker-impl-auth`, `v0.1.9-answer-persistence` · **origin/main:** up to date
+**Last handoff realigned:** 2026-06-02 · **Branch:** `main` · **HEAD:** `83037b6` · **Tags:** `v0.2.6-response-runtime-layer-review`, `v0.2.5-response-runtime-governance`, `v0.2.4-response-runtime` · **origin/main:** up to date · **working tree:** clean
+
+**Repository traceability (confirmed):**
+
+```text
+dd91441 — feat: implement TASK-010A response runtime — tag v0.2.4-response-runtime
+83037b6 — docs: record TASK-010A response runtime governance — tag v0.2.5-response-runtime-governance
+```
 
 ---
 
@@ -70,6 +77,7 @@ Source Registry → Source Versions → Extraction → Parsing → Legal Objects
 | Response runtime governance (010A-PREAUTH) | **ACCEPTED** — DEC-019 |
 | Response runtime impl auth (010A-IMPL-AUTH) | **COMPLETE** — DEC-020 |
 | Response runtime (010A) | **COMPLETE** / **ACCEPTED WITH FINDINGS** — `v0.2.4-response-runtime` |
+| Response runtime layer review (010A+) | **COMPLETE** / **ACCEPTED WITH FINDINGS** — `v0.2.6-response-runtime-layer-review` |
 
 **Foundational rule:** No AI legal reasoning in ingestion, legal-object, citation, retrieval, or ranking layers.
 
@@ -159,7 +167,9 @@ Ranking stores **order only**. Provenance lives **once** in `retrieval_evidence_
 
 **TASK-010A:** **COMPLETE** / **ACCEPTED WITH FINDINGS** — response runtime — tag `v0.2.4-response-runtime`.
 
-**Next gate:** Response Runtime Layer Review (010A+). Public APIs **NOT AUTHORIZED**.
+**TASK-010A+:** **COMPLETE** / **ACCEPTED WITH FINDINGS** — Response Runtime Layer Review closed. Response Runtime Layer may be marked complete. No API-layer implementation or pre-authorization is opened.
+
+**Next gate:** **Post-layer governance**. Public APIs, queues, AI, `CitationAssembler`, narrative `answer_text`, and legal conclusions **NOT AUTHORIZED**.
 
 ---
 
@@ -298,11 +308,12 @@ All items applied in [`RANKING_RUNTIME_CONTRACT.md`](RANKING_RUNTIME_CONTRACT.md
 23. ~~**010A-IMPL-AUTH**~~ — **done** (DEC-020).
 24. ~~**Claude review** of 010A-IMPL-AUTH~~ — **accepted with findings**.
 25. ~~**TASK-010A** response runtime implementation~~ — **done** (`v0.2.4-response-runtime`).
-26. **Response Runtime Layer Review (010A+)** — **next gate**.
-27. Public APIs / queues — **not authorized**.
+26. ~~**Response Runtime Layer Review (010A+)**~~ — **done** (ACCEPTED WITH FINDINGS).
+27. **Post-layer governance** — API pre-authorization **NOT AUTHORIZED**.
+28. Public APIs / queues / AI — **not authorized**.
 5. Start new ChatGPT chat using this document as primary context.
 
-**Not authorized:** response runtime implementation, public APIs, AI answer generation, CitationAssembler, legal conclusions, recommendations, concurrent workers.
+**Not authorized:** API layer, public HTTP delivery, queues, AI answer generation, CitationAssembler, narrative `answer_text`, legal conclusions, recommendations, concurrent workers.
 
 ---
 
@@ -311,7 +322,7 @@ All items applied in [`RANKING_RUNTIME_CONTRACT.md`](RANKING_RUNTIME_CONTRACT.md
 Copy into a new ChatGPT session:
 
 ```text
-We are continuing TAX-OS, a Source-Referenced Business & Tax Research Platform. ChatGPT is Architect/Governance. Cursor is Developer. Claude is Reviewer. GitHub/docs are the source of truth, not chat history. Read and follow PROJECT_STATE.md, DECISION_LOG.md, TASK_REGISTRY.md, MASTER_SCOPE, and ADDENDUMS. TASK-010A response runtime is **complete** (ACCEPTED WITH FINDINGS). Current gate is **Response Runtime Layer Review (010A+)**. Public APIs, queues, and AI remain **not authorized**. Do not reopen locked decisions unless explicitly instructed.
+We are continuing TAX-OS, a Source-Referenced Business & Tax Research Platform. ChatGPT is Architect/Governance. Cursor is Developer. Claude is Reviewer. GitHub/docs are the source of truth, not chat history. Read and follow PROJECT_STATE.md, DECISION_LOG.md, TASK_REGISTRY.md, MASTER_SCOPE, and ADDENDUMS. Response runtime layer (010A+) is **complete** (ACCEPTED WITH FINDINGS). Current gate is **post-layer governance**. API layer, public HTTP delivery, queues, and AI remain **not authorized**. Do not reopen locked decisions unless explicitly instructed.
 ```
 
 ---

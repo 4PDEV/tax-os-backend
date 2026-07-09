@@ -59,30 +59,40 @@ tax-os-backend/
 
 ## Current Development Status
 
+**Canonical live status:** [CURRENT_STATUS.md](CURRENT_STATUS.md)
+
 | Area | Status |
 |------|--------|
-| Platform phase | Legal memory + temporal governance + ingestion persistence (see [CURRENT_STATUS.md](CURRENT_STATUS.md)) |
-| Alembic migrations | Head `f9e4d2a87c10` |
-| Citation temporal compliance | **TASK-004E complete** — AC-01 closed |
-| Citation execution pre-auth | **TASK-006AC closed** — review record in `TASKS/TASK-006AC-CONTROLLED-CITATION-EXECUTION-PREAUTH-REVIEW.md` |
-| Citation execution remediation | **TASK-006AC1 complete** — acceptance review complete |
-| Citation layer (006Y–006AD) | **CLOSED** — review APPROVED FOR CONTINUE; tag `checkpoint-task-006y-006ad-citation-pipeline-review` |
-| Controlled citation execution | **COMPLETE** (006AD) |
-| Retrieval pre-auth (007A) | **CLOSED** — APPROVED WITH REQUIRED REMEDIATION BEFORE 007B |
-| Retrieval contract (007B) | **COMPLETE** — [`RETRIEVAL_RUNTIME_CONTRACT.md`](RETRIEVAL_RUNTIME_CONTRACT.md) |
-| Retrieval persistence pre-auth (007C) | **CLOSED** — APPROVED WITH REQUIRED REMEDIATION BEFORE 007C |
-| Retrieval persistence remediation (007C1) | **COMPLETE** — acceptance **CLOSED** |
-| Retrieval persistence (007C) | **COMPLETE** — [`TASKS/TASK-007C-RETRIEVAL-PERSISTENCE.md`](TASKS/TASK-007C-RETRIEVAL-PERSISTENCE.md) |
-| Retrieval worker skeleton (007D) | **COMPLETE** — dry-run only — [`TASKS/TASK-007D-RETRIEVAL-WORKER-SKELETON.md`](TASKS/TASK-007D-RETRIEVAL-WORKER-SKELETON.md) |
-| Retrieval execution remediation (007D1) | **COMPLETE** — [`RETRIEVAL_EXECUTION_REMEDIATION_007D1.md`](RETRIEVAL_EXECUTION_REMEDIATION_007D1.md) |
-| Controlled retrieval execution (007E) | **COMPLETE** — **ACCEPTED** — [`TASKS/TASK-007E-CONTROLLED-RETRIEVAL-EXECUTION.md`](TASKS/TASK-007E-CONTROLLED-RETRIEVAL-EXECUTION.md) |
-| Retrieval layer (007A–007E) | **COMPLETE** — review APPROVED FOR CONTINUE; tag `checkpoint-task-007a-007e-retrieval-pipeline-review` |
-| Ranking remediation (008A1) | **COMPLETE** — acceptance **CLOSED** — [`RANKING_RUNTIME_008A1_ACCEPTANCE_REVIEW.md`](RANKING_RUNTIME_008A1_ACCEPTANCE_REVIEW.md) |
-| Ranking contract (008B) | **COMPLETE** — [`RANKING_RUNTIME_CONTRACT.md`](RANKING_RUNTIME_CONTRACT.md) |
-| Approved next gate | **TASK-008D** — Ranking Execution implementation (**NOT AUTHORIZED**); pre-auth contract complete |
-| Answer assembly (009A) | **NOT AUTHORIZED** — after ranking layer review |
-| Ranking persistence (008C) | **COMPLETE** — execution/worker (008D+) **NOT AUTHORIZED** |
-| Admin CRUD APIs | Operational |
+| Retrieval layer (007A–007E) | **COMPLETE** |
+| Ranking layer (008B–008D, U-01, 008A+) | **COMPLETE** |
+| Answer assembly (009A) | **COMPLETE** |
+| Answer persistence (009B) | **COMPLETE** |
+| Answer worker (009C) | **COMPLETE** |
+| Response runtime (010A) | **COMPLETE** — tag `v0.2.4-response-runtime` |
+| Response runtime layer review (010A+) | **COMPLETE** — **ACCEPTED WITH FINDINGS** — tag `v0.2.6-response-runtime-layer-review` |
+| Current next gate | Post-layer governance; API pre-authorization **NOT AUTHORIZED** |
+| API layer | **NOT AUTHORIZED** |
+| FastAPI / public APIs | **NOT AUTHORIZED** |
+| Queue infrastructure | **NOT AUTHORIZED** |
+| AI answer generation | **NOT AUTHORIZED** |
+| CitationAssembler | **NOT AUTHORIZED** |
+| Narrative `answer_text` | **NOT AUTHORIZED** |
+| Legal conclusions / recommendations | **NOT AUTHORIZED** |
+
+**Repository traceability (confirmed):**
+
+```text
+dd91441 — feat: implement TASK-010A response runtime — tag v0.2.4-response-runtime
+83037b6 — docs: record TASK-010A response runtime governance — tag v0.2.5-response-runtime-governance
+```
+
+`main` is up to date with `origin/main`; working tree clean at closeout.
+
+| Area | Status |
+|------|--------|
+| Platform phase | Governed evidence → ranking → answer → response delivery stack (see [CURRENT_STATUS.md](CURRENT_STATUS.md)) |
+| Alembic head | `c7e3a1f94d82` (answer persistence — TASK-009B) |
+| Admin CRUD APIs | Operational (registry phase only) |
 | Legal object / citation contracts | Merged on `main` (003A–004D) |
 | Temporal governance | Merged (005A–005C); tag `checkpoint-task-005a-spec` |
 | Ingestion artifact persistence | TASK-006A on `main` |
@@ -118,7 +128,7 @@ Initial jurisdiction focus: **Rwanda**. Initial tax domains: VAT, PAYE/PIT, WHT,
 | [OPEN_DECISIONS.md](OPEN_DECISIONS.md) | Pending decisions |
 | [CHANGELOG.md](CHANGELOG.md) | Version history |
 | [TESTING_GUIDE.md](TESTING_GUIDE.md) | Test DB safety + deterministic suite commands |
-- [TASK_REGISTRY.md](TASK_REGISTRY.md) | Task tracking |
+| [TASK_REGISTRY.md](TASK_REGISTRY.md) | Task tracking |
 | [TASKS/](TASKS/) | **Authoritative task specs (required for review)** |
 | [SOURCE_ATTACHMENT_WORKFLOW.md](SOURCE_ATTACHMENT_WORKFLOW.md) | Source file attachment lifecycle |
 | [SOURCE_PROCESSING_WORKFLOW.md](SOURCE_PROCESSING_WORKFLOW.md) | Processing queue and job finalization |

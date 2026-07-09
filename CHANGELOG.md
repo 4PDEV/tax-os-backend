@@ -4,6 +4,38 @@ All notable changes to `tax-os-backend` are documented here.
 
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versions align with git tags where applicable.
 
+## [response-runtime-layer-review] - 2026-06-02
+
+### Added
+
+- Response Runtime Layer Review (TASK-010A+) — end-to-end governance closeout:
+  - Verdict: **ACCEPTED WITH FINDINGS** — Response Runtime Layer **COMPLETE**
+  - F-1 traceability: `dd91441` / `v0.2.4-response-runtime`; `83037b6` / `v0.2.5-response-runtime-governance`; `main` up to date with `origin/main`; working tree clean
+  - F-2 README status realigned through TASK-010A
+
+### Changed
+
+- [`README.md`](README.md), [`CURRENT_STATUS.md`](CURRENT_STATUS.md), [`PROJECT_STATE.md`](PROJECT_STATE.md), [`TASK_REGISTRY.md`](TASK_REGISTRY.md), [`TASKS/TASK-010A-RESPONSE-RUNTIME.md`](TASKS/TASK-010A-RESPONSE-RUNTIME.md) — layer acceptance recorded
+
+### Notes
+
+- Tag: `v0.2.6-response-runtime-layer-review`
+- Response Runtime Layer may be marked complete
+- No API-layer implementation or pre-authorization is opened
+- Optional test hardening: expanded `FORBIDDEN_RUNTIME_TOKENS` in `test_response_runtime_skeleton.py`
+
+## [task-010a-response-runtime-governance] - 2026-06-02
+
+### Added
+
+- TASK-010A governance artifacts tracked:
+  - [`RESPONSE_RUNTIME_CONTRACT.md`](RESPONSE_RUNTIME_CONTRACT.md)
+  - [`TASKS/TASK-010A-IMPLEMENTATION-AUTHORIZATION.md`](TASKS/TASK-010A-IMPLEMENTATION-AUTHORIZATION.md)
+
+### Notes
+
+- Tag: `v0.2.5-response-runtime-governance`
+
 ## [task-010a-response-runtime] - 2026-06-02
 
 ### Added

@@ -112,7 +112,7 @@ Bounded task tracking for `tax-os-backend`. Authoritative specs remain in `tax-o
 | TASK-010A-PREAUTH | Response Runtime Governance | Complete | **ACCEPTED** — DEC-019 — [`RESPONSE_RUNTIME_CONTRACT.md`](RESPONSE_RUNTIME_CONTRACT.md) |
 | TASK-010A-IMPL-AUTH | Response Runtime Implementation Authorization | Complete | **COMPLETE** — DEC-020 — [`TASK-010A-IMPLEMENTATION-AUTHORIZATION.md`](TASK-010A-IMPLEMENTATION-AUTHORIZATION.md) |
 | TASK-010A | Response Runtime | Complete | **ACCEPTED WITH FINDINGS** — tag `v0.2.4-response-runtime` |
-| TASK-010A+ | Response Runtime Layer Review | Planned | **NOT STARTED** — next gate |
+| TASK-010A+ | Response Runtime Layer Review | Complete | **ACCEPTED WITH FINDINGS** — tag `v0.2.6-response-runtime-layer-review` |
 | TASK-DOC-001 | Master Status Document Realignment | Complete | CURRENT_STATUS, IMPLEMENTATION_ROADMAP, ARCHITECTURE_PHASE_MAP |
 
 ## Status Legend

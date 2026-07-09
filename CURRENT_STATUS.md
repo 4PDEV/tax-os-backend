@@ -5,15 +5,24 @@ For detailed historical sections, see [PROJECT_STATE.md](PROJECT_STATE.md). For 
 
 **Last realigned:** 2026-06-02  
 **Branch:** `main`  
-**HEAD:** `1ec1423`  
+**HEAD:** `83037b6`  
 **Alembic head:** `c7e3a1f94d82` (answer persistence — TASK-009B)  
-**Latest tag:** `v0.2.4-response-runtime` (TASK-010A)
+**Latest tag:** `v0.2.6-response-runtime-layer-review` (TASK-010A+)
+
+**Repository traceability (confirmed):**
+
+```text
+dd91441 — feat: implement TASK-010A response runtime — tag v0.2.4-response-runtime
+83037b6 — docs: record TASK-010A response runtime governance — tag v0.2.5-response-runtime-governance
+```
+
+`main` is up to date with `origin/main`; working tree clean.
 
 ---
 
 ## Current Architecture Phase
 
-**Governed engineering platform — response runtime complete; layer review next**
+**Governed engineering platform — response runtime layer complete**
 
 The platform is materially beyond early foundation. Core registry, processing queue, extraction/parser **contracts**, legal-object **persistence**, citation **governance**, temporal **governance**, and ingestion **artifact persistence** are in place on `main`.
 
@@ -51,10 +60,8 @@ The platform is materially beyond early foundation. Core registry, processing qu
 | Answer worker impl auth (009C-IMPL-AUTH) | **ACCEPTED** — DEC-018 |
 | Answer worker skeleton (009C) | **COMPLETE** / **ACCEPTED** — `v0.2.3-answer-worker-skeleton` |
 | Response runtime (010A) | **COMPLETE** / **ACCEPTED WITH FINDINGS** — `v0.2.4-response-runtime` |
-| Response runtime layer review (010A+) | **NOT STARTED** — next gate |
-| AI / semantic ranking | **NOT AUTHORIZED** |
-| Ranking APIs | **NOT AUTHORIZED** |
-| Concurrent ranking workers | **NOT AUTHORIZED** (OD-021) |
+| Response runtime layer review (010A+) | **COMPLETE** / **ACCEPTED WITH FINDINGS** — `v0.2.6-response-runtime-layer-review` |
+| API layer / public HTTP delivery | **NOT AUTHORIZED** |
 
 **TASK-007A:** **CLOSED** — APPROVED WITH REQUIRED REMEDIATION BEFORE TASK-007B ([`ARCHITECTURE_REVIEW_RETRIEVAL_RUNTIME_007A-PREAUTH.md`](ARCHITECTURE_REVIEW_RETRIEVAL_RUNTIME_007A-PREAUTH.md)).
 
@@ -122,7 +129,9 @@ The platform is materially beyond early foundation. Core registry, processing qu
 
 **TASK-010A:** **COMPLETE** / **ACCEPTED WITH FINDINGS** — response runtime — tag `v0.2.4-response-runtime` ([`TASKS/TASK-010A-RESPONSE-RUNTIME.md`](TASKS/TASK-010A-RESPONSE-RUNTIME.md)). 15/15 tests.
 
-**Current gate:** **Response Runtime Layer Review (010A+)**. Public APIs, queues, and AI **NOT AUTHORIZED**.
+**TASK-010A+:** **COMPLETE** / **ACCEPTED WITH FINDINGS** — Response Runtime Layer Review closed. Response Runtime Layer may be marked complete. No API-layer implementation or pre-authorization is opened.
+
+**Current gate:** **Post-layer governance**. Public APIs, queues, AI, `CitationAssembler`, narrative `answer_text`, and legal conclusions **NOT AUTHORIZED**.
 
 | Gate item | Status |
 |-----------|--------|
@@ -135,12 +144,16 @@ The platform is materially beyond early foundation. Core registry, processing qu
 | TASK-009C implementation | **COMPLETE** |
 | TASK-009C answer worker | **COMPLETE** / **ACCEPTED** |
 | TASK-010A implementation | **COMPLETE** / **ACCEPTED WITH FINDINGS** |
-| TASK-010A+ layer review | **NOT STARTED** — next gate |
-| Public APIs | **NOT AUTHORIZED** |
+| TASK-010A+ layer review | **COMPLETE** / **ACCEPTED WITH FINDINGS** |
+| API layer / FastAPI / public APIs | **NOT AUTHORIZED** |
+| Queue infrastructure | **NOT AUTHORIZED** |
 | AI / semantic answer generation | **NOT AUTHORIZED** |
+| CitationAssembler | **NOT AUTHORIZED** |
+| Narrative `answer_text` | **NOT AUTHORIZED** |
+| Legal conclusions / recommendations | **NOT AUTHORIZED** |
 | Concurrent answer workers | **NOT AUTHORIZED** (OD-021) |
 
-Answer persistence (009B), answer worker (009C), and response runtime (010A) are **complete**. **Response Runtime Layer Review (010A+)** is the **next gate**. Public APIs and response runtime HTTP delivery remain **not authorized**.
+Retrieval, ranking, answer assembly, answer persistence, answer worker, and response runtime layers are **complete**. **Post-layer governance** is the current gate. API delivery and HTTP transport remain **not authorized**.
 
 **Architecture chain:** Evidence → Ranking → Answer Assembly → Response Runtime. Doctrine: `retrieval result` ≠ ranking · `ranking` ≠ answer · `answer` ≠ legal conclusion.
 
@@ -440,4 +453,4 @@ FOUNDATION → EXTRACTION CONTRACTS → LEGAL OBJECT GOVERNANCE → CITATION GOV
 → TEMPORAL GOVERNANCE → INGESTION PERSISTENCE → [TEST HARDENING] → AGENT LAYER → …
 ```
 
-**You are here:** TASK-010A **COMPLETE** (`v0.2.4-response-runtime`) · **Next:** **Response Runtime Layer Review (010A+)**.
+**You are here:** TASK-010A+ **COMPLETE** (`v0.2.6-response-runtime-layer-review`) · **Next:** **Post-layer governance** (API pre-authorization **NOT AUTHORIZED**).

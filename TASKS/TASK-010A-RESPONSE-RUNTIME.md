@@ -12,6 +12,7 @@
 | TASK-010A-PREAUTH (this document) | **ACCEPTED** — DEC-019 |
 | TASK-010A-IMPL-AUTH | **COMPLETE** — DEC-020 — [`TASK-010A-IMPLEMENTATION-AUTHORIZATION.md`](TASK-010A-IMPLEMENTATION-AUTHORIZATION.md) |
 | TASK-010A response runtime code | **COMPLETE** / **ACCEPTED WITH FINDINGS** — `v0.2.4-response-runtime` |
+| TASK-010A+ layer review | **COMPLETE** / **ACCEPTED WITH FINDINGS** — `v0.2.6-response-runtime-layer-review` |
 
 ## Prerequisite chain
 
@@ -20,7 +21,7 @@
   → 010A-PREAUTH (accepted — Claude review)
   → 010A-IMPL-AUTH (complete)
   → 010A implementation (accepted with findings)
-  → 010A+ layer review — next gate
+  → 010A+ layer review (accepted with findings)
 ```
 
 ## Important
@@ -123,8 +124,8 @@ Documented in contract — join re-implementation, metadata leakage, order mutat
 
 ## Next gate
 
-**Response Runtime Layer Review (010A+)**. Public APIs and HTTP delivery remain **NOT AUTHORIZED**.
+**Post-layer governance.** API layer, public HTTP delivery, queues, and AI remain **NOT AUTHORIZED**. No API-layer implementation or pre-authorization is opened by TASK-010A+ acceptance.
 
 ---
 
-END OF TASK-010A PRE-AUTHORIZATION (implementation NOT AUTHORIZED)
+END OF TASK-010A PRE-AUTHORIZATION

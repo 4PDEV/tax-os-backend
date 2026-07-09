@@ -385,7 +385,9 @@ backend/app/services/response_runtime/
 
 Authority: TASK-010A-PREAUTH — [`RESPONSE_RUNTIME_CONTRACT.md`](RESPONSE_RUNTIME_CONTRACT.md); [`TASKS/TASK-010A-RESPONSE-RUNTIME.md`](TASKS/TASK-010A-RESPONSE-RUNTIME.md)
 
-**TASK-010A implementation remains NOT AUTHORIZED.**
+**TASK-010A implementation:** **ACCEPTED WITH FINDINGS** — delivered at `v0.2.4-response-runtime`.
+
+**TASK-010A+ layer review:** **ACCEPTED WITH FINDINGS** — Response Runtime Layer complete; no API scope opened.
 
 Status:
 LOCKED
@@ -428,6 +430,8 @@ backend/app/services/response_runtime/
 Authority: TASK-010A-IMPL-AUTH — [`TASKS/TASK-010A-IMPLEMENTATION-AUTHORIZATION.md`](TASKS/TASK-010A-IMPLEMENTATION-AUTHORIZATION.md)
 
 **TASK-010A implementation:** **ACCEPTED WITH FINDINGS** — bounded runtime per DEC-020; tag `v0.2.4-response-runtime`. Non-blocking: citation-flag negative test, import guard token expansion, future D-R-06/G-05 doc reconciliation.
+
+**TASK-010A+ layer review:** **ACCEPTED WITH FINDINGS** — Response Runtime Layer complete; tag `v0.2.6-response-runtime-layer-review`. No API-layer implementation or pre-authorization opened.
 
 Status:
 LOCKED

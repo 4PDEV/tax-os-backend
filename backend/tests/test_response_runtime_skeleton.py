@@ -59,6 +59,9 @@ FORBIDDEN_RUNTIME_TOKENS = (
     "assemble_answer_package",
     "create_answer_request",
     "create_answer_result",
+    "create_answer_evidence_entry",
+    "create_answer_uncertainty_flag",
+    "resolve_ranking_assembly_inputs",
     "execute_controlled_ranking",
 )
 
